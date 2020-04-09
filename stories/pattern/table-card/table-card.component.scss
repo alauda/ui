@@ -1,0 +1,9 @@
+@import '../../../src/theme/pattern';
+
+.header {
+  @include table-card-header;
+}
+
+.placeholder {
+  @include table-placeholder;
+}

@@ -1,0 +1,62 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+@import '../../checkbox/mixin';
+
+@mixin option($block) {
+  .#{$block} {
+    padding: 0 $select-options-padding;
+    color: $color-text-main;
+    background-color: $color-white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+    &--large {
+      height: $input-large-height;
+      line-height: $input-large-height;
+      font-size: $input-large-font-size;
+    }
+
+    &--medium {
+      height: $input-medium-height;
+      line-height: $input-medium-height;
+      font-size: $input-medium-font-size;
+    }
+
+    &--small {
+      height: $input-small-height;
+      line-height: $input-small-height;
+      font-size: $input-small-font-size;
+    }
+
+    &--mini {
+      height: $input-mini-height;
+      line-height: $input-mini-height;
+      font-size: $input-mini-font-size;
+    }
+
+    &:not(.isMulti).isSelected {
+      color: $color-primary;
+      background-color: $color-primary-extra-light;
+    }
+
+    &:hover,
+    &.isFocused {
+      background-color: $color-primary-ultra-light;
+    }
+
+    &.isDisabled {
+      color: $color-text-placeholder;
+      background-color: $color-white;
+      cursor: not-allowed;
+    }
+
+    @include pointer('isSelected');
+
+    &:hover &__pointer,
+    &.isFocused &__pointer {
+      border-color: $checkbox-border-color-primary;
+    }
+  }
+}

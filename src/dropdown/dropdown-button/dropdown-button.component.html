@@ -1,0 +1,25 @@
+<div [class]="bem.block(size)">
+  <button
+    type="button"
+    class="aui-dropdown-button__content"
+    [aui-button]="type"
+    [plain]="plain"
+    [size]="size"
+    [loading]="loading"
+    [disabled]="disabled"
+    (click)="buttonClick.emit($event)"
+  >
+    <ng-content></ng-content>
+  </button>
+  <button
+    type="button"
+    class="aui-dropdown-button__trigger"
+    [aui-button]="type"
+    [plain]="plain"
+    [size]="size"
+    [auiDropdown]="menu"
+    [disabled]="disableTrigger"
+  >
+    <aui-icon icon="angle_down"></aui-icon>
+  </button>
+</div>

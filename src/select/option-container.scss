@@ -1,0 +1,24 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+@mixin option-container($block) {
+  .#{$block} {
+    padding: $select-options-padding 0;
+    border-radius: $border-radius;
+    background-color: $color-white;
+    @include popper-shadow;
+
+    &__content {
+      max-height: $select-options-max-height;
+      position: relative;
+      overflow: auto;
+      @include scroll-bar;
+    }
+
+    &__placeholder {
+      color: $color-text-placeholder;
+      font-size: $font-size-regular;
+      text-align: center;
+    }
+  }
+}

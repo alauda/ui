@@ -1,0 +1,164 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+.aui-tag {
+  display: inline-flex;
+  border-radius: $tag-border-radius;
+  border-style: $tag-border-style;
+  border-width: $tag-border-width;
+  max-width: $tag-max-width;
+  vertical-align: middle;
+
+  &__content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .aui-tag__close .aui-icon {
+    margin-left: $tag-close-margin;
+    border-radius: 50%;
+    cursor: pointer;
+    @include transition;
+  }
+
+  &--large {
+    height: $tag-large-height;
+    line-height: $tag-large-height - $tag-border-width * 2;
+    font-size: $tag-large-font-size;
+    padding: 0 $tag-large-padding;
+    &.isRound {
+      border-radius: $tag-large-height / 2;
+    }
+  }
+
+  &--medium {
+    height: $tag-medium-height;
+    line-height: $tag-medium-height - $tag-border-width * 2;
+    font-size: $tag-medium-font-size;
+    padding: 0 $tag-medium-padding;
+    &.isRound {
+      border-radius: $tag-medium-height / 2;
+    }
+  }
+
+  &--small {
+    height: $tag-small-height;
+    line-height: $tag-small-height - $tag-border-width * 2;
+    font-size: $tag-small-font-size;
+    padding: 0 $tag-mini-padding;
+    &.isRound {
+      border-radius: $tag-small-height / 2;
+    }
+  }
+
+  &--mini {
+    height: $tag-mini-height;
+    line-height: $tag-mini-height - $tag-border-width * 2;
+    font-size: $tag-mini-font-size;
+    padding: 0 $tag-mini-padding;
+    &.isRound {
+      border-radius: $tag-mini-height / 2;
+    }
+  }
+
+  &--primary {
+    color: $tag-primary-color;
+    border-color: $tag-primary-color;
+    background-color: $tag-primary-bg-color;
+
+    .aui-tag__close .aui-icon:hover {
+      color: $tag-primary-bg-color;
+      background-color: $tag-primary-color;
+    }
+  }
+
+  &--success {
+    color: $tag-success-color;
+    border-color: $tag-success-color;
+    background-color: $tag-success-bg-color;
+
+    .aui-tag__close .aui-icon:hover {
+      color: $tag-success-bg-color;
+      background-color: $tag-success-color;
+    }
+  }
+
+  &--warning {
+    color: $tag-warning-color;
+    border-color: $tag-warning-color;
+    background-color: $tag-warning-bg-color;
+
+    .aui-tag__close .aui-icon:hover {
+      color: $tag-warning-bg-color;
+      background-color: $tag-warning-color;
+    }
+  }
+
+  &--error {
+    color: $tag-error-color;
+    border-color: $tag-error-color;
+    background-color: $tag-error-bg-color;
+
+    .aui-tag__close .aui-icon:hover {
+      color: $tag-error-bg-color;
+      background-color: $tag-error-color;
+    }
+  }
+
+  &--info {
+    color: $tag-info-color;
+    border-color: $tag-info-border-color;
+    background-color: $tag-info-bg-color;
+
+    .aui-tag__close .aui-icon:hover {
+      color: $tag-info-bg-color;
+      background-color: $tag-info-color;
+    }
+  }
+
+  &.isInvalid {
+    text-decoration: line-through;
+  }
+
+  &.isSolid {
+    color: $color-white;
+    .aui-tag__close .aui-icon:hover {
+      color: $color-white;
+    }
+  }
+
+  &.isSolid#{&} {
+    &--primary {
+      background-color: $color-primary;
+    }
+
+    &--success {
+      background-color: $color-success;
+    }
+
+    &--warning {
+      background-color: $color-warning;
+    }
+
+    &--error {
+      background-color: $color-error;
+    }
+
+    &--info {
+      background-color: $color-info;
+    }
+  }
+}
+
+aui-tag + aui-tag {
+  .aui-tag--large,
+  .aui-tag--medium,
+  .aui-tag--small {
+    margin-left: $tag-margin;
+  }
+
+  .aui-tag--mini {
+    margin-left: $tag-mini-margin;
+  }
+}

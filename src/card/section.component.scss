@@ -1,0 +1,27 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+$b: aui-section;
+
+.#{$b} {
+  padding: 12px 0;
+  font-size: $font-size-regular;
+
+  &__title {
+    margin-bottom: 16px;
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+  }
+}
+
+#{$b}:first-child > .#{$b} {
+  padding-top: 0;
+}
+
+#{$b}:last-child > .#{$b} {
+  padding-bottom: 0;
+}
+
+#{$b} + #{$b} > .#{$b} {
+  border-top: $section-border-width $section-border-style $section-border-color;
+}

@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputGroupComponent should match snapshot 1`] = `
+<ng-component>
+  <aui-input-group>
+    <div
+      class="aui-input-group aui-input-group--medium hasAddonBefore hasAddonAfter hasPrefix hasSuffix"
+    >
+      <div
+        class="aui-input-group__inner-wrapper"
+      >
+        
+        <div
+          class="aui-input-group__addon aui-input-group__addon--before"
+        >
+          <span
+            auiinputaddonbefore=""
+          >
+            HTTPS
+          </span>
+        </div>
+        <div
+          class="aui-input-group__input-wrapper"
+        >
+          
+          <span
+            class="aui-input-group__prefix"
+          >
+            <aui-icon
+              auiinputprefix=""
+              icon="search_s"
+            >
+              
+              <svg
+                class="aui-icon aui-icon-search_s"
+              >
+                <use
+                  xlink:href="#aui-icon-search_s"
+                />
+              </svg>
+              
+            </aui-icon>
+          </span>
+          <input
+            aui-input=""
+            class="aui-input aui-input--medium"
+            placeholder="placeholder"
+          />
+          
+          <span
+            class="aui-input-group__suffix"
+          >
+            <aui-icon
+              auiinputsuffix=""
+              icon="spinner"
+            >
+              
+              <svg
+                class="aui-icon aui-icon-spinner"
+                viewBox="0 0 200 200"
+              >
+                <defs>
+                  <lineargradient
+                    gradientUnits="userSpaceOnUse"
+                    id="right-11"
+                    x1="150"
+                    x2="150"
+                    y1="20"
+                    y2="180"
+                  >
+                    <stop
+                      offset="0"
+                      style="stop-color:#000000"
+                    />
+                    <stop
+                      offset="1"
+                      style="stop-color:#808080"
+                    />
+                  </lineargradient>
+                  <lineargradient
+                    gradientUnits="userSpaceOnUse"
+                    id="left-11"
+                    x1="50"
+                    x2="50"
+                    y1="0"
+                    y2="180"
+                  >
+                    <stop
+                      offset="0"
+                      style="stop-color:#FFFFFF"
+                    />
+                    <stop
+                      offset="1"
+                      style="stop-color:#808080"
+                    />
+                  </lineargradient>
+                  <mask
+                    id="mask-11"
+                  >
+                    <g>
+                      <path
+                        d="M100,0v20c44.1,0,80,35.9,80,80c0,44.1-35.9,80-80,80v20c55.2,0,100-44.8,100-100S155.2,0,100,0z"
+                        fill="url(#right-11)"
+                      />
+                      <path
+                        d="M20,100c0-44.1,35.9-80,80-80V0C44.8,0,0,44.8,0,100s44.8,100,100,100v-20C55.9,180,20,144.1,20,100z"
+                        fill="url(#left-11)"
+                      />
+                    </g>
+                  </mask>
+                </defs>
+                <rect
+                  height="200"
+                  mask="url(#mask-11)"
+                  width="200"
+                  x="0"
+                  y="0"
+                />
+              </svg>
+              
+            </aui-icon>
+          </span>
+        </div>
+        
+        <div
+          class="aui-input-group__addon aui-input-group__addon--after"
+        >
+          <span
+            auiinputaddonafter=""
+          >
+            GB
+          </span>
+        </div>
+      </div>
+    </div>
+  </aui-input-group>
+</ng-component>
+`;

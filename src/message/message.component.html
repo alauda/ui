@@ -1,0 +1,10 @@
+<div
+  [@inOut]="animateState"
+  (@inOut.done)="onAnimationEnd($event)"
+  [class]="bem.block(type) + ' ' + uniqueId"
+>
+  <div [class]="bem.element('icon', type)">
+    <aui-icon [icon]="icon"></aui-icon>
+  </div>
+  <div [class]="bem.element('content')">{{ content }}</div>
+</div>

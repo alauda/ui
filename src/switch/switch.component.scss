@@ -1,0 +1,107 @@
+// stylelint-disable plugin/no-low-performance-animation-properties
+@import '../theme/mixin';
+@import '../theme/var';
+
+$block: 'aui-switch';
+
+.#{$block} {
+  display: inline-block;
+  position: relative;
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    &:focus + .#{$block}__bar {
+      @include outline-shadow($switch-bar-focus-shadow);
+    }
+  }
+  &__bar {
+    background-color: $switch-background-color;
+    border: 1px solid $switch-border-color;
+    border-radius: $switch-bar-height * 3 / 4;
+    box-shadow: $switch-border-color 0 0 0 0 inset;
+    transition: border $animation-duration, box-shadow $animation-duration;
+    cursor: pointer;
+    display: inline-block;
+    width: $switch-bar-width;
+    height: $switch-bar-height;
+    position: relative;
+    vertical-align: middle;
+    user-select: none;
+    box-sizing: content-box;
+    background-clip: content-box;
+  }
+  &__dot {
+    background: $color-white;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px $switch-box-shadow-color;
+    width: $switch-bar-height - 2px;
+    height: $switch-bar-height - 2px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    transition: background-color $animation-duration, left $animation-duration;
+  }
+
+  &.isChecked {
+    .#{$block}__bar {
+      background-color: $switch-checked-color;
+      border-color: $switch-checked-color;
+      box-shadow: $switch-checked-color 0 0 0 11px inset;
+      transition: border $animation-duration, box-shadow $animation-duration,
+        background-color $animation-duration;
+    }
+    .#{$block}__dot {
+      left: $switch-bar-width - $switch-bar-height + 1px;
+    }
+  }
+  &.isDisabled {
+    .#{$block}__bar {
+      background-color: $switch-disabled-bg-color;
+      border-color: $switch-disabled-bg-color;
+      cursor: not-allowed;
+    }
+  }
+  &.isDisabled.isChecked {
+    .#{$block}__bar {
+      background-color: $switch-checked-disabled-bg-color;
+      border-color: $switch-checked-disabled-bg-color;
+      box-shadow: none;
+    }
+  }
+  &.isLoading {
+    .#{$block}__dot:after {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      content: '';
+      box-sizing: content-box;
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-top-color: $switch-border-color;
+      border-left-color: $switch-border-color;
+      border-right-color: $switch-border-color;
+      animation: spin 1s infinite linear;
+    }
+  }
+  &.isLoading.isChecked {
+    .#{$block}__dot:after {
+      border-top-color: $switch-checked-color;
+      border-left-color: $switch-checked-color;
+      border-right-color: $switch-checked-color;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

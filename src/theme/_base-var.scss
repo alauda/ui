@@ -1,0 +1,100 @@
+// Colors
+$color-white: #fff;
+$color-black: #000;
+
+$color-primary: #006eff;
+$color-success: #0abf5b;
+$color-warning: #ff9d00;
+$color-danger: #e54545;
+$color-error: #e54545;
+$color-info: #ccc;
+
+$status-color-map: (
+  success: $color-success,
+  error: $color-error,
+  warning: $color-warning,
+  info: $color-primary,
+);
+
+$color-primary-light: mix($color-white, $color-primary, 60%);
+$color-success-light: mix($color-white, $color-success, 60%);
+$color-warning-light: mix($color-white, $color-warning, 60%);
+$color-error-light: mix($color-white, $color-error, 60%);
+$color-info-light: mix($color-white, $color-info, 60%);
+
+$color-primary-lighter: mix($color-white, $color-primary, 70%);
+$color-success-lighter: mix($color-white, $color-success, 70%);
+$color-warning-lighter: mix($color-white, $color-warning, 70%);
+$color-error-lighter: mix($color-white, $color-error, 70%);
+$color-info-lighter: mix($color-white, $color-info, 70%);
+
+$color-primary-extra-light: mix($color-white, $color-primary, 90%);
+$color-success-extra-light: mix($color-white, $color-success, 90%);
+$color-warning-extra-light: mix($color-white, $color-warning, 90%);
+$color-error-extra-light: mix($color-white, $color-error, 90%);
+$color-info-extra-light: mix($color-white, $color-info, 90%);
+
+$color-primary-ultra-light: mix($color-white, $color-primary, 95%);
+$color-success-ultra-light: mix($color-white, $color-success, 95%);
+$color-warning-ultra-light: mix($color-white, $color-warning, 95%);
+$color-error-ultra-light: mix($color-white, $color-error, 95%);
+$color-info-ultra-light: mix($color-white, $color-info, 95%);
+
+$color-primary-dark: mix($color-black, $color-primary, 10%);
+$color-success-dark: mix($color-black, $color-success, 10%);
+$color-warning-dark: mix($color-black, $color-warning, 10%);
+$color-error-dark: mix($color-black, $color-error, 10%);
+$color-info-dark: mix($color-black, $color-info, 10%);
+
+$color-primary-darker: mix($color-black, $color-primary, 20%);
+$color-success-darker: mix($color-black, $color-success, 20%);
+$color-warning-darker: mix($color-black, $color-warning, 20%);
+$color-error-darker: mix($color-black, $color-error, 20%);
+$color-info-darker: mix($color-black, $color-info, 20%);
+
+$color-text-main: #333;
+$color-text-secondary: #666;
+$color-text-help: #999;
+$color-text-placeholder: #ccc;
+
+$color-disabled-bg: #f2f2f2;
+
+// Font
+$font-size-extra-large: 20px;
+$font-size-larger: 18px;
+$font-size-large: 16px;
+$font-size-regular: 14px;
+$font-size-small: 12px;
+
+$font-weight-bold: 500;
+$font-weight-normal: 400;
+
+$line-height-extra-large: 28px;
+$line-height-larger: 24px;
+$line-height-large: 22px;
+$line-height-regular: 20px;
+$line-height-small: 16px;
+
+// Height
+$height-large: 40px;
+$height-medium: 32px;
+$height-small: 28px;
+$height-mini: 24px;
+
+// Border
+$border-radius: 0;
+$border-width: 1px;
+$border-style: solid;
+$border-style-dashed: dashed;
+
+// Outline
+$outline-width: 3px;
+$outline-color-primary: mix($color-white, $color-primary, 60%);
+$outline-color-success: mix($color-white, $color-success, 60%);
+$outline-color-warning: mix($color-white, $color-warning, 60%);
+$outline-color-error: mix($color-white, $color-error, 60%);
+$outline-color-info: mix($color-white, $color-info, 60%);
+
+// Animation
+$animation-duration: 0.3s;
+$animation-interpolation: ease;

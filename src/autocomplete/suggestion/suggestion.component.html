@@ -1,0 +1,11 @@
+<div
+  #elRef
+  [hidden]="!(visible$ | async)"
+  [class]="bem.block('medium')"
+  [class.isDisabled]="disabled"
+  [class.isSelected]="selected$ | async"
+  [class.isFocused]="focused"
+  (click)="onClick()"
+>
+  <ng-content></ng-content>
+</div>

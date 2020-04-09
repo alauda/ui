@@ -1,0 +1,69 @@
+@import '../theme/var';
+
+.aui-table {
+  font-size: $table-font-size-base;
+
+  &__row,
+  &__header-row {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+
+    // Workaround for https://goo.gl/pFmjJD in IE 11. Adds a pseudo
+    // element that will stretch the row the correct height. See:
+    // https://connect.microsoft.com/IE/feedback/details/802625
+    &:after {
+      display: inline-block;
+      min-height: inherit;
+      content: '';
+    }
+  }
+  &__row {
+    padding: $table-row-vertical-padding 0;
+    border-top-width: 0;
+    border-bottom-width: $table-border-width;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-style: solid;
+    border-color: $table-row-border-color;
+    background: $table-row-bg;
+    position: relative;
+
+    &.isDisabled:before {
+      content: '';
+      z-index: 10;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $color-white;
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+  &__header-row {
+    height: $table-header-row-height;
+    padding: 0;
+    background-color: $table-header-row-bg;
+    border-color: $table-header-row-border-color;
+    border-style: solid;
+    border-top-width: $table-border-width;
+    border-bottom-width: $table-border-width;
+    border-left-width: 0;
+    border-right-width: 0;
+  }
+  &__cell,
+  &__header-cell {
+    flex: 1;
+    overflow: hidden;
+    word-wrap: break-word;
+    padding: 0 $table-cell-horizontal-padding;
+  }
+  &__header-cell {
+    color: $table-header-row-color;
+    font-weight: 500;
+    height: $table-header-row-height;
+    line-height: $table-header-row-height;
+  }
+}

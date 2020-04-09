@@ -1,0 +1,136 @@
+@import '../theme/var';
+@import '../theme/mixin';
+@import '../../node_modules/@angular/cdk/text-field';
+
+.aui-input {
+  display: inline-block;
+  width: 100%;
+  border: $input-border-style $input-border-width $input-border-color;
+  border-radius: $input-border-radius;
+  background-color: $input-bg-color;
+  color: $input-color;
+  outline: none;
+  text-overflow: ellipsis;
+  @include cdk-text-field-autofill-color($input-bg-color, $input-color);
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+
+  &:invalid,
+  &:required {
+    box-shadow: none;
+  }
+
+  &:hover,
+  &:focus,
+  &.isFocused {
+    border-color: $input-border-color-primary;
+  }
+
+  &[readonly] {
+    background-color: $input-bg-color-disabled;
+    border-color: $input-border-color;
+    cursor: default;
+  }
+
+  &[disabled] {
+    color: $input-placeholder-color;
+    background-color: $input-bg-color-disabled;
+    border-color: $input-border-color;
+    cursor: not-allowed;
+  }
+
+  &--large {
+    height: $input-large-height;
+    padding: 0 $input-large-padding-hoz;
+    font-size: $input-large-font-size;
+  }
+
+  &--medium {
+    height: $input-medium-height;
+    padding: 0 $input-medium-padding-hoz;
+    font-size: $input-medium-font-size;
+  }
+
+  &--small {
+    height: $input-small-height;
+    padding: 0 $input-small-padding-hoz;
+    font-size: $input-small-font-size;
+  }
+
+  &--mini {
+    height: $input-mini-height;
+    padding: 0 $input-mini-padding-hoz;
+    font-size: $input-mini-font-size;
+  }
+}
+
+textarea.aui-input {
+  resize: vertical;
+  overflow: auto;
+
+  // The textarea height(default 3 rows height) equals:
+  // line-height * 3 + padding-top + padding-bottom + border-width * 2
+  &--large {
+    $ver-padding: ($input-large-height - $line-height-large) / 2 -
+      $input-border-width;
+
+    padding: $ver-padding $input-large-padding-hoz;
+    height: $line-height-large * 3 + ($ver-padding + $input-border-width) * 2;
+    min-height: $input-large-height;
+    font-size: $input-large-font-size;
+    line-height: $line-height-large;
+  }
+
+  &--medium {
+    $ver-padding: ($input-medium-height - $line-height-regular) / 2 -
+      $input-border-width;
+
+    padding: $ver-padding $input-medium-padding-hoz;
+    height: $line-height-regular * 3 + ($ver-padding + $input-border-width) * 2;
+    min-height: $input-medium-height;
+    font-size: $input-medium-font-size;
+    line-height: $line-height-regular;
+  }
+
+  &--small {
+    $ver-padding: ($input-small-height - $line-height-regular) / 2 -
+      $input-border-width;
+
+    padding: $ver-padding $input-small-padding-hoz;
+    height: $line-height-regular * 3 + ($ver-padding + $input-border-width) * 2;
+    min-height: $input-small-height;
+    font-size: $input-small-font-size;
+    line-height: $line-height-regular;
+  }
+
+  &--mini {
+    $ver-padding: ($input-mini-height - $line-height-small) / 2 -
+      $input-border-width;
+
+    padding: $ver-padding $input-mini-padding-hoz;
+    height: $line-height-small * 3 + ($ver-padding + $input-border-width) * 2;
+    min-height: $input-mini-height;
+    font-size: $input-mini-font-size;
+    line-height: $line-height-small;
+  }
+}
+
+.aui-input.ng-invalid.ng-dirty,
+.ng-submitted .aui-input.ng-invalid {
+  &,
+  &:hover {
+    border-color: $color-error;
+  }
+}

@@ -1,0 +1,31 @@
+<aui-table auiSort [dataSource]="dataSource" (sortChange)="sortData($event)">
+  <ng-container auiTableColumnDef="id">
+    <aui-table-header-cell *auiTableHeaderCellDef aui-sort-header>
+      No.
+    </aui-table-header-cell>
+    <aui-table-cell *auiTableCellDef="let item">{{ item.id }}</aui-table-cell>
+  </ng-container>
+  <ng-container auiTableColumnDef="name">
+    <aui-table-header-cell *auiTableHeaderCellDef aui-sort-header>
+      Name
+    </aui-table-header-cell>
+    <aui-table-cell *auiTableCellDef="let item">
+      {{ item.name }}
+      ({{ item.displayName }})
+    </aui-table-cell>
+  </ng-container>
+  <ng-container auiTableColumnDef="value">
+    <aui-table-header-cell *auiTableHeaderCellDef aui-sort-header start="desc">
+      Value
+    </aui-table-header-cell>
+    <aui-table-cell *auiTableCellDef="let item">
+      {{ item.value }}
+    </aui-table-cell>
+  </ng-container>
+  <aui-table-header-row
+    *auiTableHeaderRowDef="['id', 'name', 'value']"
+  ></aui-table-header-row>
+  <aui-table-row
+    *auiTableRowDef="let row; columns: ['id', 'name', 'value']"
+  ></aui-table-row>
+</aui-table>

@@ -1,0 +1,45 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+.aui-nav-item-group {
+  position: relative;
+
+  & &__title {
+    padding: $nav-item-selected-marker-width * 2 $nav-item-selected-marker-width *
+      2 $nav-item-selected-marker-width;
+  }
+
+  &__title {
+    color: $nav-menu-color;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+  }
+}
+
+.aui-nav-item-ul {
+  &.isMainPanelCollapsed {
+    .aui-nav-item-group + .aui-nav-item-group {
+      $divider-height: $nav-item-selected-marker-width * 2 + $border-width;
+
+      margin-top: $divider-height;
+
+      &:before {
+        content: '';
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        top: -$divider-height;
+        padding: $nav-item-selected-marker-width $nav-item-selected-marker-width;
+        height: $divider-height;
+        width: 100%;
+        background-clip: content-box;
+        background-color: $nav-menu-bg-color-tertiary;
+      }
+    }
+  }
+}
+
+.aui-nav-item-group__title + .aui-nav-item__content {
+  margin-top: 2px;
+}

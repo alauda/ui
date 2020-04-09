@@ -1,0 +1,32 @@
+<div [class]="bem.block()">
+  <div [class]="bem.element('title')">
+    <span [class]="bem.element('icon', config.confirmType + '')">
+      <aui-icon [icon]="iconMap(config.confirmType)"></aui-icon>
+    </span>
+    <span>{{ config.title }}</span>
+  </div>
+  <div [class]="bem.element('content')">{{ config.content }}</div>
+  <div [class]="bem.element('button-wrapper')">
+    <div>
+      <button
+        [aui-button]="config.confirmType"
+        [ngClass]="bem.element('confirm-button')"
+        [loading]="waitConfirm"
+        [disabled]="waitConfirm || waitCancel"
+        (click)="confirm()"
+      >
+        {{ config.confirmText }}
+      </button>
+      <button
+        *ngIf="config.cancelButton"
+        aui-button
+        [ngClass]="bem.element('cancel-button')"
+        [loading]="waitCancel"
+        [disabled]="waitConfirm || waitCancel"
+        (click)="cancel()"
+      >
+        {{ config.cancelText }}
+      </button>
+    </div>
+  </div>
+</div>

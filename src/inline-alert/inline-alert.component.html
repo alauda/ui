@@ -1,0 +1,18 @@
+<div *ngIf="visible" [class]="bem.block(type)">
+  <div class="aui-inline-alert__icon">
+    <aui-icon [icon]="iconKey"></aui-icon>
+  </div>
+  <div class="aui-inline-alert__body">
+    <div class="aui-inline-alert__title" *ngIf="title || titleRef">
+      <ng-container *ngIf="title">{{ title }}</ng-container>
+      <ng-content select="[auiInlineAlertTitle]"></ng-content>
+    </div>
+    <div class="aui-inline-alert__content">
+      <ng-container *ngIf="content">{{ content }}</ng-container>
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <div class="aui-inline-alert__close" *ngIf="closable" (click)="closeSelf()">
+    <aui-icon icon="close"></aui-icon>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+.aui-breadcrumb {
+  display: flex;
+  align-content: center;
+  font-size: $font-size-regular;
+  color: $color-text-secondary;
+
+  &__separator {
+    margin: 0 4px;
+  }
+
+  aui-breadcrumb-item:last-child #{&}__separator {
+    display: none;
+  }
+}

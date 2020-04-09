@@ -1,0 +1,94 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+.aui-page {
+  min-height: 100%;
+  background-color: $page-background;
+
+  &__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $page-header-height;
+    padding: 0 $page-content-padding;
+    color: $color-white;
+    background-color: $page-header-background;
+  }
+
+  &__toolbar {
+    position: fixed;
+    top: $page-header-height;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    height: $page-toolbar-height;
+    padding: 0 $page-content-padding;
+    background-color: $color-white;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+  }
+
+  &__snackbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: $page-snackbar-height;
+    padding: 0 $page-content-padding;
+    background-color: $color-white;
+    box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.16);
+  }
+
+  &__sider {
+    position: fixed;
+    top: $page-header-height;
+    bottom: 0;
+    left: 0;
+    z-index: 101;
+    width: $page-sider-width;
+    overflow: auto;
+    @include scroll-bar;
+  }
+
+  &__content {
+    min-height: 100vh;
+    padding: $page-content-padding;
+  }
+
+  &.hasHeader &__content {
+    padding-top: $page-header-height + $page-content-padding;
+  }
+
+  &.hasToolbar &__content {
+    padding-top: $page-toolbar-height + $page-content-padding;
+  }
+
+  &.hasHeader.hasToolbar &__content {
+    padding-top: $page-header-height + $page-toolbar-height +
+      $page-content-padding;
+  }
+
+  &.hasSnackbar &__content {
+    padding-bottom: $page-snackbar-height + $page-content-padding;
+  }
+
+  &.hasSider & {
+    &__toolbar,
+    &__snackbar {
+      left: $page-sider-width;
+    }
+    &__content {
+      padding-left: $page-sider-width + $page-content-padding;
+    }
+  }
+}

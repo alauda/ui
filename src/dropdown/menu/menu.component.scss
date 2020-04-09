@@ -1,0 +1,46 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+aui-menu {
+  display: none;
+}
+
+.aui-menu {
+  padding: $menu-padding;
+  max-width: $menu-max-width;
+  border-radius: $border-radius;
+  background-color: $color-white;
+  @include popper-shadow;
+
+  &--large {
+    .aui-menu-item,
+    .aui-submenu {
+      height: $menu-item-large-height;
+      font-size: $menu-item-large-font-size;
+    }
+  }
+
+  &--medium {
+    .aui-menu-item,
+    .aui-submenu {
+      height: $menu-item-medium-height;
+      font-size: $menu-item-medium-font-size;
+    }
+  }
+
+  &--small {
+    .aui-menu-item,
+    .aui-submenu {
+      height: $menu-item-small-height;
+      font-size: $menu-item-small-font-size;
+    }
+  }
+
+  &--mini {
+    .aui-menu-item,
+    .aui-submenu {
+      height: $menu-item-mini-height;
+      font-size: $menu-item-mini-font-size;
+    }
+  }
+}

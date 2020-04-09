@@ -1,0 +1,139 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+@mixin component-style($block) {
+  .#{$block} {
+    display: inline-block;
+    position: relative;
+    width: $select-width;
+    color: $input-color;
+    vertical-align: middle;
+
+    &:hover {
+      cursor: text;
+    }
+
+    .aui-tag {
+      max-width: 100%;
+    }
+
+    &.isDisabled {
+      background-color: $input-bg-color-disabled;
+      border-color: $input-border-color;
+      cursor: not-allowed;
+
+      .aui-tag {
+        color: $input-border-color;
+        background-color: $input-bg-color-disabled;
+      }
+    }
+
+    &__placeholder {
+      display: inline-block;
+      width: 100%;
+      color: $input-placeholder-color;
+      vertical-align: middle;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &[hidden] {
+        display: none;
+      }
+    }
+
+    &__mirror {
+      opacity: 0;
+      position: absolute;
+    }
+
+    &--large {
+      $ver-margin: (
+          $input-large-height - $tag-medium-height - $input-border-width * 2
+        ) / 2;
+
+      min-height: $input-large-height;
+      font-size: $input-large-font-size;
+      padding: $ver-margin $input-large-padding-hoz 0;
+
+      .aui-tag {
+        margin: 0 4px $ver-margin 0;
+      }
+    }
+
+    &--medium {
+      $ver-margin: (
+          $input-medium-height - $tag-mini-height - $input-border-width * 2
+        ) / 2;
+
+      min-height: $input-medium-height;
+      font-size: $input-medium-font-size;
+      padding: $ver-margin $input-medium-padding-hoz 0;
+
+      .aui-tag {
+        margin: 0 4px $ver-margin 0;
+      }
+    }
+
+    &--small {
+      $ver-margin: (
+          $input-small-height - $tag-mini-height - $input-border-width * 2
+        ) / 2;
+
+      min-height: $input-small-height;
+      font-size: $input-small-font-size;
+      padding: $ver-margin $input-small-padding-hoz 0;
+
+      .aui-tag {
+        margin: 0 4px $ver-margin 0;
+      }
+    }
+
+    &--mini {
+      $ver-margin: (
+          $input-mini-height - $tag-mini-height - $input-border-width * 2
+        ) / 2;
+
+      min-height: $input-mini-height;
+      font-size: $input-mini-font-size;
+      padding: $ver-margin $input-mini-padding-hoz 0;
+
+      .aui-tag {
+        margin: 0 4px $ver-margin 0;
+      }
+    }
+
+    &__suffix {
+      position: absolute;
+      top: 50%;
+      right: $input-padding-hoz;
+      transform: translateY(-50%);
+    }
+
+    .aui-tag#{&}__input {
+      width: 1em;
+      padding: 0;
+      border: none;
+      outline: none;
+      background: none;
+      color: $input-color;
+
+      &--hidden {
+        opacity: 0;
+        width: 0;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  #{$block}.ng-invalid.ng-dirty,
+  .ng-submitted #{$block}.ng-invalid {
+    .aui-input {
+      &,
+      &:hover {
+        border-color: $color-error;
+      }
+    }
+  }
+}

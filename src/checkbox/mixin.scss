@@ -1,0 +1,45 @@
+@import '../theme/mixin';
+@import '../theme/var';
+
+@mixin pointer($checkedStatus) {
+  &__pointer {
+    display: inline-block;
+    width: $checkbox-pointer-width;
+    height: $checkbox-pointer-width;
+    margin-right: $checkbox-label-margin;
+    border-radius: $checkbox-pointer-radius;
+    border: $checkbox-border-width $checkbox-border-style $checkbox-border-color;
+    color: $checkbox-bg-color;
+    background-color: $checkbox-bg-color;
+    position: relative;
+    vertical-align: middle;
+    @include transition;
+
+    .aui-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &.cdk-keyboard-focused &__pointer {
+    border-color: $checkbox-border-color-primary;
+    @include outline-shadow($checkbox-outline-color);
+  }
+
+  &.#{$checkedStatus} &__pointer {
+    border-color: $checkbox-border-color-primary;
+    background-color: $checkbox-border-color-primary;
+  }
+
+  &.isDisabled &__label {
+    cursor: not-allowed;
+  }
+
+  &.isDisabled &__pointer {
+    color: $checkbox-border-color;
+    border-color: $checkbox-border-color;
+    background-color: $checkbox-bg-color-disabled;
+  }
+}

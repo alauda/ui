@@ -1,0 +1,158 @@
+{
+  "name": "@alauda/ui",
+  "version": "5.1.3",
+  "description": "Angular UI components by Alauda Frontend Team.",
+  "repository": "git+https://github.com/alauda/alauda-ui.git",
+  "author": "Alauda Frontend",
+  "contributors": [
+    "FengTianze",
+    "JounQin <admin@1stG.me> (https://www.1stG.me)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "alauda",
+    "angular",
+    "components",
+    "ui"
+  ],
+  "scripts": {
+    "build": "ng-packagr && yarn build:copy",
+    "build:copy": "node scripts/copy-resources",
+    "lint": "run-p lint:*",
+    "lint:es": "cross-env PARSER_NO_WATCH=true eslint . --cache --ext js,md,ts -f friendly",
+    "lint:style": "stylelint --cache '{src,stories}/**/*.scss'",
+    "lint:ts": "tslint -p . -t stylish",
+    "lint:tsc": "tsc --incremental false --noEmit",
+    "postinstall": "yarn-deduplicate || exit 0",
+    "release": "standard-version --no-verify",
+    "start": "yarn storybook",
+    "storybook": "start-storybook -c .storybook -p 9001",
+    "storybook:build": "build-storybook -c .storybook -o dist",
+    "test": "jest --coverage",
+    "test:ci": "cross-env JEST_JUNIT_OUTPUT_DIR=reports jest --runInBand --coverage --reporters=jest-junit",
+    "test:clear": "jest --clearCache",
+    "test:update": "jest -u",
+    "test:watch": "jest --watch"
+  },
+  "peerDependencies": {
+    "@angular/animations": "^9.0.0",
+    "@angular/cdk": "^9.0.0",
+    "@angular/common": "^9.0.0",
+    "@angular/core": "^9.0.0",
+    "@angular/forms": "^9.0.0",
+    "@angular/platform-browser": "^9.0.0",
+    "clipboard-polyfill": "^2.0.0",
+    "rxjs": "^6.0.0"
+  },
+  "devDependencies": {
+    "@1stg/app-config": "^0.4.3",
+    "@1stg/lib-config": "^0.4.3",
+    "@1stg/tslint-config": "^0.8.2",
+    "@angular-devkit/build-angular": "^0.900.3",
+    "@angular-devkit/core": "^9.0.3",
+    "@angular/animations": "^9.0.2",
+    "@angular/cdk": "^9.1.0",
+    "@angular/cli": "^9.0.3",
+    "@angular/common": "^9.0.2",
+    "@angular/compiler": "^9.0.2",
+    "@angular/compiler-cli": "^9.0.2",
+    "@angular/core": "^9.0.2",
+    "@angular/forms": "^9.0.2",
+    "@angular/platform-browser": "^9.0.2",
+    "@angular/platform-browser-dynamic": "^9.0.2",
+    "@storybook/addon-actions": "^5.3.14",
+    "@storybook/addon-knobs": "^5.3.14",
+    "@storybook/addon-links": "^5.3.14",
+    "@storybook/addon-options": "^5.3.14",
+    "@storybook/addon-storysource": "^5.3.14",
+    "@storybook/addons": "^5.3.14",
+    "@storybook/angular": "^5.3.14",
+    "@storybook/cli": "^5.3.14",
+    "@types/jest": "^25.1.3",
+    "babel-loader": "^8.0.6",
+    "clipboard-polyfill": "^2.8.6",
+    "core-js": "^3.6.4",
+    "gulp": "^4.0.2",
+    "gulp-dart-sass": "^0.9.1",
+    "gulp-each": "^0.5.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-svg-sprite": "^1.5.0",
+    "jest-junit": "^10.0.0",
+    "jest-preset-angular": "^8.0.0",
+    "ng-packagr": "^9.0.2",
+    "npm-run-all": "^4.1.5",
+    "replace": "^1.1.5",
+    "rxjs": "^6.5.4",
+    "standard-version": "^7.1.0",
+    "svg-sprite": "^1.5.0",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "tsickle": "^0.38.0",
+    "tslib": "^1.11.0",
+    "tslint": "^6.0.0",
+    "typescript": "~3.7.5",
+    "yarn-deduplicate": "^1.1.1",
+    "zone.js": "^0.10.2"
+  },
+  "resolutions": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "eslint-plugin-prettier": "^3.1.2"
+  },
+  "commitlint": {
+    "extends": [
+      "@1stg"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "@1stg/eslint-config/loose",
+    "overrides": [
+      {
+        "files": "*.spec.ts",
+        "rules": {
+          "@typescript-eslint/no-extraneous-class": 0,
+          "jest/expect-expect": 0,
+          "jest/no-export": 0,
+          "sonarjs/no-duplicate-string": 0
+        }
+      }
+    ],
+    "rules": {
+      "@typescript-eslint/no-misused-promises": 0,
+      "prefer-promise-reject-errors": 0
+    }
+  },
+  "eslintIgnore": [
+    "coverage",
+    "dist",
+    "release",
+    "CHANGELOG.md",
+    "/tslint-rules",
+    "!/.*.js"
+  ],
+  "prettier": "@1stg/prettier-config/semi/angular",
+  "remarkConfig": {
+    "plugins": [
+      "@1stg/remark-config",
+      [
+        "lint-no-file-name-irregular-characters",
+        false
+      ]
+    ]
+  },
+  "stylelint": {
+    "extends": "@1stg/stylelint-config/scss/loose",
+    "rules": {
+      "no-descending-specificity": null,
+      "plugin/no-unsupported-browser-features": null,
+      "scss/no-duplicate-dollar-variables": null,
+      "selector-type-no-unknown": [
+        true,
+        {
+          "ignoreTypes": [
+            "/^(aui|ng)-/"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,117 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+.aui-form-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: $form-item-margin-vertical;
+  color: $color-text-main;
+  font-size: $font-size-regular;
+
+  &--top {
+    flex-direction: column;
+  }
+
+  &__label-wrapper {
+    display: flex;
+    align-items: center;
+    line-height: $input-medium-height;
+    flex-shrink: 0;
+    padding-right: 8px;
+    overflow: hidden;
+
+    &.hasLabel:after {
+      content: ':';
+      align-self: flex-start;
+      margin-left: 2px;
+    }
+
+    &--required .aui-form-item__label:before {
+      content: '*';
+      color: $color-error;
+      margin-right: 4px;
+    }
+
+    &--left {
+      justify-content: flex-start;
+
+      .aui-form-item__label {
+        text-align: start;
+      }
+    }
+
+    &--right {
+      justify-content: flex-end;
+
+      .aui-form-item__label {
+        text-align: end;
+      }
+    }
+  }
+
+  &__label {
+    display: block;
+    line-height: 16px;
+  }
+
+  &__container {
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    min-height: $input-medium-height;
+
+    aui-select,
+    aui-multi-select {
+      &.aui-form-item__control {
+        width: 100%;
+      }
+    }
+  }
+
+  &__content + &__hint-wrapper,
+  &__content + &__error-wrapper {
+    margin-top: 4px;
+  }
+
+  &__hint-wrapper,
+  &__error-wrapper {
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+  }
+
+  &__hint-wrapper {
+    color: $color-text-help;
+  }
+
+  &__error-wrapper {
+    color: $color-error;
+  }
+
+  &__addon-wrapper {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    height: $input-medium-height;
+    width: $input-medium-height;
+    padding-left: 8px;
+    color: $color-text-help;
+    font-size: $font-size-regular;
+  }
+}
+
+.aui-form--inline {
+  display: flex;
+
+  .aui-form-item {
+    margin-bottom: 0;
+    margin-right: 8px;
+
+    &__control-wrapper {
+      width: $select-width;
+    }
+  }
+}

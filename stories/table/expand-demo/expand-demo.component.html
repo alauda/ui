@@ -1,0 +1,57 @@
+<aui-table [dataSource]="dataSource">
+  <ng-container auiTableColumnDef="id">
+    <aui-table-header-cell *auiTableHeaderCellDef>
+      No.
+    </aui-table-header-cell>
+    <aui-table-cell *auiTableCellDef="let item">
+      <aui-icon
+        [icon]="this.rowExpanded[item.id] ? 'angle_down' : 'angle_right'"
+        (click)="toggleRow(item.id)"
+      ></aui-icon>
+      {{ item.id }}
+    </aui-table-cell>
+  </ng-container>
+  <ng-container auiTableColumnDef="name">
+    <aui-table-header-cell *auiTableHeaderCellDef>
+      Name
+    </aui-table-header-cell>
+    <aui-table-cell *auiTableCellDef="let item">
+      {{ item.name }}
+      ({{ item.displayName }})
+    </aui-table-cell>
+  </ng-container>
+  <ng-container auiTableColumnDef="value">
+    <aui-table-header-cell *auiTableHeaderCellDef>
+      Value
+    </aui-table-header-cell>
+    <aui-table-cell *auiTableCellDef="let item">
+      {{ item.value }}
+    </aui-table-cell>
+  </ng-container>
+  <ng-container auiTableColumnDef="detail">
+    <aui-table-header-cell *auiTableHeaderCellDef>
+      You can't see this header
+    </aui-table-header-cell>
+    <aui-table-cell
+      *auiTableCellDef="let item"
+      [@expand]="rowExpanded[item.id] ? 'expanded' : null"
+    >
+      <pre>
+          Empty your mind
+          Be formless  Shapeless  like water
+          If you put water into a cup  it becomes the cup
+          You put water into a bottle and it becomes the bottle
+          You put it in a teapot it becomes the teapot
+          Now, water can flow or it can crash.
+          Be water my friend
+        </pre
+      >
+    </aui-table-cell>
+  </ng-container>
+  <aui-table-header-row
+    *auiTableHeaderRowDef="['id', 'name', 'value', 'detail']"
+  ></aui-table-header-row>
+  <aui-table-row
+    *auiTableRowDef="let row; columns: ['id', 'name', 'value', 'detail']"
+  ></aui-table-row>
+</aui-table>

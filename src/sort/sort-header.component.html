@@ -1,0 +1,6 @@
+<div [class]="bem.block({ active: _isSorted() })" (click)="_handleClick()">
+  <button [class]="bem.element('button')" type="button">
+    <ng-content></ng-content>
+  </button>
+  <div [class]="bem.element('indicator', arrowDirection)"></div>
+</div>

@@ -1,0 +1,5 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+@import './mixin';
+
+@include component-style(aui-tags-input);

@@ -1,0 +1,19 @@
+<div
+  [@inOut]="animateState"
+  (@inOut.done)="onAnimationEnd($event)"
+  [class]="bem.block(type) + ' ' + uniqueId + ' ' + customClass"
+>
+  <div class="aui-notification__icon"><aui-icon [icon]="icon"></aui-icon></div>
+  <div class="aui-notification__body">
+    <div *ngIf="title" class="aui-notification__title">{{ title }}</div>
+    <div *ngIf="content" class="aui-notification__content">{{ content }}</div>
+    <ng-template cdkPortalHost></ng-template>
+    <ng-template #modalComponent></ng-template>
+  </div>
+  <div class="aui-notification__close">
+    <div *ngIf="duration <= 0 || isHover" (click)="remove()">
+      <aui-icon icon="close_medium"></aui-icon>
+    </div>
+    <div *ngIf="duration > 0 && !isHover">{{ remains > 0 ? remains : 1 }}s</div>
+  </div>
+</div>

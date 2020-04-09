@@ -1,0 +1,5 @@
+@import '../../../src/theme/pattern';
+
+:host {
+  @include with-detail(detail);
+}

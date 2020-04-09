@@ -1,0 +1,11 @@
+@import '../theme/var';
+
+aui-notification-wrapper {
+  position: fixed;
+  right: $alerts-wrapper-right;
+  top: $alerts-wrapper-top;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

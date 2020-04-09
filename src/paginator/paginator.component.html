@@ -1,0 +1,122 @@
+<div class="aui-paginator aui-paginator--{{ size }}">
+  <div *ngFor="let layout of getLayoutArr()" class="aui-paginator__layout">
+    <div *ngIf="layout === 'pager'" class="aui-paginator__pager">
+      <aui-button-group>
+        <button
+          class="aui-paginator__navigator"
+          aui-button
+          [plain]="true"
+          [square]="true"
+          [size]="size"
+          [disabled]="disabled || currentPage <= 1"
+          (click)="navigate(-1)"
+        >
+          <aui-icon icon="angle_left"></aui-icon>
+        </button>
+        <button
+          class="aui-paginator__page"
+          [aui-button]="currentPage === 1 ? 'primary' : 'default'"
+          [plain]="!(currentPage === 1)"
+          [size]="size"
+          [disabled]="disabled"
+          (click)="jumpTo(1)"
+        >
+          1
+        </button>
+        <button
+          *ngIf="pageCount > 7 && currentPage > 4"
+          class="aui-paginator__fast-navigator"
+          aui-button
+          [plain]="true"
+          [square]="true"
+          [size]="size"
+          [disabled]="disabled"
+          (click)="navigate(-5)"
+        >
+          <aui-icon icon="ellipsis_h_s"></aui-icon>
+          <aui-icon icon="angle_double_left"></aui-icon>
+        </button>
+        <button
+          *ngFor="let page of getCenterPages(); trackBy: trackByIndex"
+          class="aui-paginator__page"
+          [aui-button]="currentPage === page ? 'primary' : 'default'"
+          [plain]="!(currentPage === page)"
+          [size]="size"
+          [disabled]="disabled"
+          (click)="jumpTo(page)"
+        >
+          {{ page }}
+        </button>
+        <button
+          *ngIf="pageCount > 7 && currentPage < pageCount - 3"
+          class="aui-paginator__fast-navigator"
+          aui-button
+          [plain]="true"
+          [square]="true"
+          [size]="size"
+          [disabled]="disabled"
+          (click)="navigate(5)"
+        >
+          <aui-icon icon="ellipsis_h_s"></aui-icon>
+          <aui-icon icon="angle_double_right"></aui-icon>
+        </button>
+        <button
+          *ngIf="pageCount > 1"
+          class="aui-paginator__page"
+          [aui-button]="currentPage === pageCount ? 'primary' : 'default'"
+          [plain]="!(currentPage === pageCount)"
+          [size]="size"
+          [disabled]="disabled"
+          (click)="jumpTo(pageCount)"
+        >
+          {{ pageCount }}
+        </button>
+        <button
+          class="aui-paginator__navigator"
+          aui-button
+          [square]="true"
+          [plain]="true"
+          [size]="size"
+          [disabled]="disabled || currentPage >= pageCount"
+          (click)="navigate(1)"
+        >
+          <aui-icon icon="angle_right"></aui-icon>
+        </button>
+      </aui-button-group>
+    </div>
+    <div *ngIf="layout === 'total'" class="aui-paginator__total">
+      {{ intl.getTotalLabel(total) }}
+    </div>
+    <div *ngIf="layout === 'sizes'" class="aui-paginator__sizes">
+      <aui-select
+        [size]="size"
+        [disabled]="disabled"
+        [value]="pageSize"
+        [filterable]="false"
+        (valueChange)="changePageSize($event)"
+      >
+        <aui-option *ngFor="let size of pageSizeOptions" [value]="size">
+          {{ size }}
+        </aui-option>
+      </aui-select>
+      <span>{{ intl.itemsPerPageLabel }}</span>
+    </div>
+    <div *ngIf="layout === 'jumper'" class="aui-paginator__jumper">
+      <span *ngIf="intl.jumperLabelPrefix">{{ intl.jumperLabelPrefix }}</span>
+      <input
+        aui-input
+        type="number"
+        min="1"
+        [max]="pageCount"
+        [size]="size"
+        [value]="currentPage"
+        [disabled]="disabled"
+        (keydown)="onKeydown($event)"
+      />
+      <span *ngIf="intl.jumperLabelSuffix">{{ intl.jumperLabelSuffix }}</span>
+    </div>
+    <div *ngIf="layout === 'content'" class="aui-paginator__content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

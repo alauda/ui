@@ -1,0 +1,51 @@
+@import '../theme/mixin';
+@import '../theme/var';
+@import './mixin';
+
+$block: 'aui-checkbox';
+
+.#{$block} {
+  margin-right: $checkbox-margin;
+  display: inline-block;
+  color: $checkbox-color;
+  font-size: $checkbox-font-size;
+  line-height: $checkbox-line-height;
+  position: relative;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover .#{$block}__pointer {
+      border-color: $checkbox-border-color-primary;
+    }
+  }
+
+  &.isTag {
+    margin-right: $tag-margin;
+    height: $tag-medium-height;
+    padding: 0 $tag-medium-padding + $tag-border-width;
+    line-height: $tag-medium-height;
+    background-color: $checkbox-tag-bg-color;
+    border-radius: $tag-medium-height / 2;
+    font-size: $tag-medium-font-size;
+
+    &:hover {
+      background-color: $checkbox-tag-bg-color-hover;
+    }
+
+    &.isChecked {
+      background-color: $checkbox-tag-bg-color-hover;
+      color: $color-primary;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  @include pointer('isChecked');
+}

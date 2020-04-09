@@ -1,0 +1,78 @@
+@import '../theme/var';
+@import '../theme/mixin';
+@import '~@angular/cdk/overlay-prebuilt';
+
+.cdk-overlay-pane.aui-notification-overlay-pane {
+  z-index: $message-z-index;
+}
+
+.aui-notification {
+  margin: $notification-margin;
+  display: flex;
+  position: relative;
+  border-radius: $message-border-radius;
+  padding: $notification-padding;
+  align-items: flex-start;
+  background-color: $color-white;
+  border-top-left-radius: $message-border-side-radius;
+  border-bottom-left-radius: $message-border-side-radius;
+  @include model-shadow;
+
+  &__icon {
+    font-size: $font-size-large;
+    width: $font-size-large;
+    line-height: $line-height-larger;
+  }
+
+  @each $status, $color in $status-color-map {
+    &--#{$status} {
+      border-left: $notification-border-left-width solid $color;
+
+      .aui-notification__icon {
+        color: $color;
+      }
+    }
+  }
+
+  &__body {
+    margin: $notification-body-margin;
+    width: $notification-body-width;
+  }
+  &__title {
+    margin-bottom: $notification-title-margin-bottom;
+    font-size: $font-size-larger;
+    text-align: left;
+    color: $notification-title-color;
+    line-height: $line-height-larger;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  &__content {
+    font-size: $font-size-regular;
+    line-height: $line-height-regular;
+    text-align: left;
+    color: #4d4d4d;
+    max-height: $notification-content-max-height;
+    overflow: auto;
+    overflow-wrap: break-word;
+    padding-right: $notification-content-padding-right;
+    margin-top: ($line-height-larger - $line-height-regular) / 2;
+    @include scroll-bar;
+  }
+  &__close {
+    font-size: $font-size-small;
+    right: $notification-close-right;
+    width: $notification-close-width;
+    color: $color-text-help;
+    line-height: $line-height-larger;
+    cursor: pointer;
+    &:hover {
+      color: $notification-close-hover-color;
+    }
+  }
+  &__svg {
+    position: absolute;
+    color: $toast-close-color;
+  }
+}

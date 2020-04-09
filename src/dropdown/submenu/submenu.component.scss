@@ -1,0 +1,32 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+@import '../menu-item/mixin';
+
+@include component-style(aui-submenu);
+
+.aui-submenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 4px;
+
+  &__title {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__arrow {
+    margin-left: 12px;
+  }
+}
+
+.aui-sub-dropdown {
+  &.aui-tooltip {
+    &--start,
+    &--end {
+      margin: -$menu-padding $menu-padding;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<div
+  [hidden]="!visible"
+  class="aui-tree-node"
+  [class.isDisabled]="nodeData.disabled"
+  [class.isSelected]="selected"
+  [attr.data-value]="nodeData.value"
+>
+  <div class="aui-tree-node__content">
+    <aui-icon
+      *ngIf="nodeData.children"
+      class="aui-tree-node__indicator"
+      [icon]="nodeData.expanded ? 'angle_down' : 'angle_right'"
+      (click)="switchExpanded()"
+    ></aui-icon>
+    <span
+      #titleRef
+      class="aui-tree-node__title"
+      [class.isDisabled]="nodeData.disabled"
+      [class.isSelected]="selected"
+      (click)="onClick()"
+    >
+      <aui-icon
+        *ngIf="nodeData.icon"
+        margin="right"
+        [icon]="getIcon()"
+      ></aui-icon>
+      {{ nodeData.label }}
+    </span>
+  </div>
+  <div
+    *ngIf="nodeData.children"
+    [hidden]="!nodeData.expanded"
+    class="aui-tree-node__children"
+  >
+    <aui-tree-node
+      *ngFor="let data of nodeData.children; trackBy: trackByLabel"
+      [nodeData]="data"
+    ></aui-tree-node>
+  </div>
+</div>

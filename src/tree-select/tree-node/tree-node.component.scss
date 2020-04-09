@@ -1,0 +1,51 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+.aui-tree-node {
+  &__content {
+    display: flex;
+    height: $input-medium-height;
+    line-height: $input-medium-height;
+    font-size: $input-medium-font-size;
+    color: $color-text-main;
+    background-color: $color-white;
+    cursor: pointer;
+  }
+
+  &__title {
+    display: inline-block;
+    margin-left: $select-options-padding / 2;
+    padding: 0 $select-options-padding / 2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &:hover {
+      background-color: $color-primary-ultra-light;
+    }
+
+    &.isSelected {
+      color: $color-primary;
+      background-color: $color-primary-extra-light;
+    }
+
+    &.isDisabled {
+      color: $color-text-placeholder;
+      background-color: $color-white;
+      cursor: not-allowed;
+    }
+  }
+
+  &__indicator {
+    margin-left: $select-options-padding;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__children {
+    margin-left: $select-options-padding + $input-medium-font-size;
+  }
+}

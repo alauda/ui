@@ -1,0 +1,35 @@
+@import '../theme/mixin';
+@import '../theme/var';
+
+$block: 'aui-back-top';
+
+.#{$block} {
+  @include transition(opacity);
+  @include flex-center;
+
+  right: $back-top-position-offset;
+  bottom: $back-top-position-offset;
+  height: $back-top-box-size;
+  width: $back-top-box-size;
+  border-radius: $back-top-border-radius;
+  background-color: $color-black;
+  cursor: pointer;
+  overflow: hidden;
+  visibility: hidden;
+  position: fixed;
+  opacity: 0;
+
+  .aui-back-top__icon {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  &.show {
+    visibility: visible;
+    opacity: 0.4;
+  }
+
+  &:hover {
+    opacity: 0.6;
+  }
+}

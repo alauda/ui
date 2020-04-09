@@ -1,0 +1,35 @@
+<div [class]="bem.block(labelPosition)" [class.hasError]="hasError$ | async">
+  <div
+    [class]="
+      bem.element(
+        'label-wrapper',
+        { required: itemControl?.required },
+        labelPosition
+      )
+    "
+    [class.hasLabel]="!!itemLabel"
+    [style.width]="labelWidth"
+  >
+    <ng-content select="label[auiFormItemLabel]"></ng-content>
+  </div>
+  <div class="aui-form-item__container">
+    <div class="aui-form-item__content">
+      <ng-content></ng-content>
+      <div
+        *ngIf="emptyAddon || addons?.length"
+        class="aui-form-item__addon-wrapper"
+      >
+        <ng-content select="[auiFormItemAddon]"></ng-content>
+      </div>
+    </div>
+    <div
+      *ngIf="(hasError$ | async) && errors?.length"
+      class="aui-form-item__error-wrapper"
+    >
+      <ng-content select="[auiFormItemError]"></ng-content>
+    </div>
+    <div *ngIf="hints?.length" class="aui-form-item__hint-wrapper">
+      <ng-content select="[auiFormItemHint]"></ng-content>
+    </div>
+  </div>
+</div>
