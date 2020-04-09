@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 5.1.4 (2020-04-09)
+
+
+### Bug Fixes
+
+* multi-select height ([e71f015](https://github.com/alauda/alauda-ui/commit/e71f015ecb542668ef54e0f3248167219f3384bb))
+
 ### [5.1.3](https://bitbucket.org/mathildetech/alauda-ui/branches/compare/v5.1.3..v5.1.2#diff) (2020-04-08)
 
 
