@@ -1,0 +1,65 @@
+<div [ngClass]="bem.block()">
+  <aui-tab-header
+    [selectedIndex]="selectedIndex"
+    [type]="type"
+    [size]="size"
+    (indexFocused)="_focusChanged($event)"
+    (selectFocusedIndex)="selectedIndex = $event"
+  >
+    <div
+      role="tab"
+      *ngFor="let tab of _tabs; let i = index"
+      auiTabLabelWrapper
+      cdkMonitorElementFocus
+      [class.isActive]="selectedIndex == i"
+      [class.closeable]="tab.closeable && !tab.disabled"
+      [disabled]="tab.disabled"
+      (click)="_handleClick(tab, i)"
+      [title]="tab.textLabel"
+      [attr.tabIndex]="_getTabIndex(tab, i)"
+      [attr.aria-posinset]="i + 1"
+      [attr.aria-setsize]="_tabs.length"
+      [attr.aria-label]="tab.textLabel"
+    >
+      <div class="aui-tab-label__content">
+        <!-- If there is a label template, use it. -->
+        <ng-template [ngIf]="tab.templateLabel">
+          <ng-template [cdkPortalOutlet]="tab.templateLabel"></ng-template>
+        </ng-template>
+        <!-- If there is not a label template, fall back to the text label. -->
+        <ng-template [ngIf]="!tab.templateLabel">
+          {{ tab.textLabel }}
+        </ng-template>
+      </div>
+
+      <aui-icon
+        *ngIf="tab.closeable && !tab.disabled"
+        class="aui-tab-label__close"
+        icon="close_small"
+        (click)="tab.close.emit(); $event.stopPropagation()"
+      ></aui-icon>
+    </div>
+
+    <ng-container *ngIf="_headerAddon">
+      <ng-container *auiTabHeaderAddon>
+        <ng-template [cdkPortalOutlet]="_headerAddon"></ng-template>
+      </ng-container>
+    </ng-container>
+  </aui-tab-header>
+
+  <div [ngClass]="bem.element('body-wrapper')">
+    <ng-container *ngIf="lazy">
+      <aui-tab-body
+        role="tabpanel"
+        *ngFor="let tab of activatedTabs"
+        [content]="tab.content"
+        [hidden]="tab !== activeTab"
+      ></aui-tab-body>
+    </ng-container>
+    <aui-tab-body
+      role="tabpanel"
+      *ngIf="!lazy && activeTab"
+      [content]="activeTab.content"
+    ></aui-tab-body>
+  </div>
+</div>

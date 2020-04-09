@@ -1,0 +1,11 @@
+.aui-radio-group {
+  display: inline-flex;
+
+  &--column {
+    flex-direction: column;
+
+    .aui-radio {
+      margin-right: 0;
+    }
+  }
+}

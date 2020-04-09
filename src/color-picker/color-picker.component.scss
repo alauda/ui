@@ -1,0 +1,42 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+.aui-color-picker {
+  display: inline-block;
+  padding: 3px;
+  width: $input-medium-height;
+  height: $input-medium-height;
+  border: $input-border-style $input-border-width $input-border-color;
+  border-radius: $input-border-radius;
+  background-color: $input-bg-color;
+  color: $input-color;
+  outline: none;
+  cursor: pointer;
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  &::-moz-color-swatch-wrapper {
+    padding: 0;
+  }
+  &::-webkit-color-swatch {
+    border: none;
+    border-radius: $input-border-radius;
+  }
+  &::-moz-color-swatch {
+    border: none;
+    border-radius: $input-border-radius;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: $input-border-color-primary;
+  }
+
+  &[disabled] {
+    color: $input-placeholder-color;
+    background-color: $input-bg-color-disabled;
+    border-color: $input-border-color;
+    cursor: not-allowed;
+  }
+}

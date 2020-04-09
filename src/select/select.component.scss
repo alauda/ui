@@ -1,0 +1,81 @@
+@import '../theme/var';
+@import '../theme/mixin';
+@import './option-container';
+
+@include option-container(aui-option-container);
+
+.aui-select {
+  display: inline-block;
+  position: relative;
+  width: $select-width;
+
+  &__clear .aui-icon {
+    @include clear-button;
+  }
+
+  &__label-container.aui-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-flex;
+    align-items: center;
+    pointer-events: none;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  &.isFilterable.isOpened &__label-container.aui-input {
+    color: $input-placeholder-color;
+  }
+
+  &__label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &.isClearable .aui-input-group .aui-input {
+    &--large {
+      padding-right: $input-padding-hoz * 2 + $input-large-font-size * 2 +
+        $icon-margin-hoz;
+    }
+    &--medium {
+      padding-right: $input-padding-hoz * 2 + $input-medium-font-size * 2 +
+        $icon-margin-hoz;
+    }
+    &--small {
+      padding-right: $input-padding-hoz * 2 + $input-small-font-size * 2 +
+        $icon-margin-hoz;
+    }
+    &--mini {
+      padding-right: $input-padding-hoz * 2 + $input-mini-font-size * 2 +
+        $icon-margin-hoz;
+    }
+  }
+
+  &:not(.isDisabled) .aui-icon-caret_down_s {
+    fill: $input-color;
+  }
+
+  &__input.aui-input[readonly] {
+    background-color: $input-bg-color;
+    border-color: $input-border-color;
+    cursor: text;
+
+    &:focus {
+      border-color: $input-border-color-primary;
+    }
+  }
+}
+
+aui-select.ng-invalid.ng-dirty,
+.ng-submitted aui-select.ng-invalid {
+  .aui-input {
+    text-decoration: line-through;
+
+    &,
+    &:hover {
+      border-color: $color-error;
+    }
+  }
+}

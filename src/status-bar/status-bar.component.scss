@@ -1,0 +1,84 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+$block: aui-status-bar;
+
+.#{$block} {
+  display: inline-flex;
+  overflow: hidden;
+  width: 100%;
+  border-radius: $status-bar-border-radius;
+  vertical-align: middle;
+
+  &--medium {
+    height: $status-bar-medium-height;
+  }
+
+  &--small {
+    height: $status-bar-small-height;
+  }
+
+  &__chunk {
+    min-width: 2px;
+    height: 100%;
+    flex: 1 1 1;
+
+    &--primary {
+      background-color: mix($color-white, $color-primary, 20%);
+    }
+    &--success {
+      background-color: mix($color-white, $color-success, 20%);
+    }
+    &--warning {
+      background-color: mix($color-white, $color-warning, 20%);
+    }
+    &--error {
+      background-color: mix($color-white, $color-error, 20%);
+    }
+    &--info {
+      background-color: mix($color-white, $color-info, 20%);
+    }
+    &--pending {
+      height: $status-bar-pending-gradient-width * 8;
+      animation: pending 0.5s linear infinite;
+      background: repeating-linear-gradient(
+        -60deg,
+        $status-bar-pending-color,
+        $status-bar-pending-color $status-bar-pending-gradient-width,
+        $status-bar-pending-color-light $status-bar-pending-gradient-width,
+        $status-bar-pending-color-light $status-bar-pending-gradient-width * 2
+      );
+    }
+  }
+
+  &__chunk + &__chunk {
+    margin-left: 1px;
+  }
+
+  &:hover {
+    .#{$block}__chunk--primary {
+      background-color: $color-primary;
+    }
+    .#{$block}__chunk--success {
+      background-color: $color-success;
+    }
+    .#{$block}__chunk--warning {
+      background-color: $color-warning;
+    }
+    .#{$block}__chunk--error {
+      background-color: $color-error;
+    }
+    .#{$block}__chunk--info {
+      background-color: $color-info;
+    }
+  }
+}
+
+@keyframes pending {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,32 @@
+<div
+  [class]="rootClass"
+  (mousedown)="$event.preventDefault()"
+  (click)="inputRef.focus()"
+>
+  <span [hidden]="!displayPlaceholder" [class]="bem.element('placeholder')">
+    {{ placeholder }}
+  </span>
+  <aui-tag
+    *ngFor="let tag of value$ | async; let index = index; trackBy: trackByValue"
+    type="info"
+    [size]="tagSize"
+    [round]="true"
+    [closeable]="!disabled"
+    (close)="onRemove(index)"
+  >
+    {{ tag }}
+  </aui-tag>
+  <input
+    #inputRef
+    [class]="inputClass"
+    autocomplete="off"
+    [disabled]="disabled"
+    (focus)="onInputFocus()"
+    (blur)="onInputBlur($event)"
+    (keydown)="onKeyDown($event)"
+    (input)="onInput()"
+  />
+  <span #inputValueMirror [class]="bem.element('mirror')">
+    {{ inputValue }}
+  </span>
+</div>

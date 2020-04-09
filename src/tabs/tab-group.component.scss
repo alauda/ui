@@ -1,0 +1,11 @@
+@import '../theme/mixin';
+@import '../theme/var';
+
+.aui-tab-group {
+  display: flex;
+  flex-flow: column;
+}
+
+aui-tab-header + .aui-tab-group__body-wrapper {
+  margin-top: 16px;
+}

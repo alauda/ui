@@ -1,0 +1,33 @@
+<aui-card>
+  <div class="header">
+    <div>@include table-card-header</div>
+    <div><aui-search></aui-search></div>
+  </div>
+  <aui-table>
+    <ng-container auiTableColumnDef="id">
+      <aui-table-header-cell *auiTableHeaderCellDef>No.</aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">{{ item.id }}</aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="name">
+      <aui-table-header-cell *auiTableHeaderCellDef>Name</aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item.name }} ({{ item.displayName }})
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="value">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        Value
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item.value }}
+      </aui-table-cell>
+    </ng-container>
+    <aui-table-header-row
+      *auiTableHeaderRowDef="['id', 'name', 'value']"
+    ></aui-table-header-row>
+    <aui-table-row
+      *auiTableRowDef="let row; columns: ['id', 'name', 'value']"
+    ></aui-table-row>
+  </aui-table>
+  <div class="placeholder">@include table-placeholder</div>
+</aui-card>

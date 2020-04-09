@@ -1,0 +1,49 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+.aui-button-group {
+  display: inline-block;
+
+  button {
+    border-radius: 0;
+
+    &:first-of-type {
+      border-top-left-radius: $button-border-radius;
+      border-bottom-left-radius: $button-border-radius;
+    }
+
+    &:last-of-type {
+      border-top-right-radius: $button-border-radius;
+      border-bottom-right-radius: $button-border-radius;
+    }
+  }
+
+  .aui-button {
+    z-index: 1;
+
+    &:hover,
+    &:active,
+    &.isActive,
+    &.cdk-keyboard-focused {
+      z-index: 2;
+    }
+
+    &[disabled] {
+      z-index: 0;
+    }
+
+    + .aui-button {
+      margin-left: -$button-border-width;
+    }
+
+    &:not(.isPlain) + .aui-button:not(.isPlain) {
+      margin-left: $button-border-width;
+    }
+  }
+}
+
+aui-button-group + aui-button-group > .aui-button-group,
+aui-button-group + .aui-button,
+.aui-button + aui-button-group > .aui-button-group {
+  margin-left: $button-margin;
+}

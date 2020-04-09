@@ -1,0 +1,48 @@
+@import '../theme/var';
+@import '../theme/mixin';
+@import '../select/option-container';
+
+@include option-container(aui-tree-node-container);
+
+.aui-tree-select {
+  display: inline-block;
+  position: relative;
+  width: $select-width;
+
+  &:not(.isDisabled) {
+    &:hover .aui-input {
+      border-color: $input-border-color-primary;
+    }
+    .aui-icon-caret_down_s {
+      fill: $input-color;
+    }
+  }
+
+  &__clear .aui-icon {
+    @include clear-button;
+  }
+
+  &.isClearable .aui-input-group .aui-tree-select__input.aui-input {
+    &--medium {
+      padding-right: $input-padding-hoz * 2 + $input-medium-font-size * 2 +
+        $icon-margin-hoz;
+    }
+  }
+
+  &__input.aui-input[readonly]:not([disabled]) {
+    background-color: $input-bg-color;
+    cursor: text;
+  }
+}
+
+aui-tree-select.ng-invalid.ng-dirty,
+.ng-submitted aui-tree-select.ng-invalid {
+  .aui-input {
+    text-decoration: line-through;
+
+    &,
+    &:hover {
+      border-color: $color-error;
+    }
+  }
+}

@@ -1,0 +1,527 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+$button-size: (
+  large: (
+    height: $button-large-height,
+    font-size: $button-large-font-size,
+    padding-hoz: $button-large-padding-hoz,
+  ),
+  medium: (
+    height: $button-medium-height,
+    font-size: $button-medium-font-size,
+    padding-hoz: $button-medium-padding-hoz,
+  ),
+  small: (
+    height: $button-small-height,
+    font-size: $button-small-font-size,
+    padding-hoz: $button-small-padding-hoz,
+  ),
+  mini: (
+    height: $button-mini-height,
+    font-size: $button-mini-font-size,
+    padding-hoz: $button-mini-padding-hoz,
+  ),
+);
+
+.aui-button {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-width: $button-border-width;
+  border-radius: $button-border-radius;
+  border-style: $button-border-style;
+  background: none;
+  outline: none;
+  flex-shrink: 0;
+  cursor: pointer;
+  user-select: none;
+  @include transition;
+
+  &::-moz-focus-inner {
+    border: none;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &__content {
+    flex-shrink: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @each $key in large medium small mini {
+    $map: map-get($button-size, $key);
+
+    &--#{$key} {
+      height: map-get($map, height);
+      line-height: map-get($map, height) - $button-border-width * 2;
+      font-size: map-get($map, font-size);
+
+      .aui-button__content {
+        padding: 0 map-get($map, padding-hoz);
+      }
+
+      &.isRound {
+        border-radius: map-get($map, height) / 2;
+      }
+
+      &.isSquare {
+        width: map-get($map, height);
+
+        .aui-button__content {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  &--text {
+    color: $color-primary;
+    background-color: transparent;
+    border: $button-border-width solid transparent;
+
+    .aui-button__content {
+      padding: 0 $text-button-padding-hoz;
+    }
+
+    &.aui-button--large:not(.isSquare) {
+      height: $text-button-large-height;
+      line-height: $text-button-large-height - $button-border-width * 2;
+      font-size: $text-button-large-font-size;
+    }
+
+    &.aui-button--medium:not(.isSquare) {
+      height: $text-button-medium-height;
+      line-height: $text-button-medium-height - $button-border-width * 2;
+      font-size: $text-button-medium-font-size;
+    }
+
+    &.aui-button--small:not(.isSquare) {
+      height: $text-button-small-height;
+      line-height: $text-button-small-height - $button-border-width * 2;
+      font-size: $text-button-small-font-size;
+    }
+
+    &.aui-button--mini:not(.isSquare) {
+      height: $text-button-mini-height;
+      line-height: $text-button-mini-height - $button-border-width * 2;
+      font-size: $text-button-mini-font-size;
+    }
+
+    &.isPlain {
+      color: $color-text-main;
+    }
+
+    &:hover {
+      color: $color-primary;
+      background-color: $color-primary-ultra-light;
+    }
+
+    &.cdk-focused:not(.cdk-mouse-focused) {
+      color: $color-primary;
+      @include outline-shadow($outline-color-primary);
+    }
+
+    &:active,
+    &.isActive {
+      color: $color-primary-darker;
+      background-color: $color-primary-extra-light;
+    }
+
+    &[disabled] {
+      color: $button-default-content-disabled;
+      background-color: transparent;
+    }
+  }
+
+  &--default {
+    color: $button-default-content;
+    background-color: $button-default-bg;
+    border-color: $button-default-border;
+
+    &:hover {
+      color: $button-default-content-hover;
+      background-color: $button-default-bg-hover;
+      border-color: $button-default-border-hover;
+    }
+
+    &.cdk-focused:not(.cdk-mouse-focused) {
+      color: $button-default-content-focus;
+      background-color: $button-default-bg-focus;
+      border-color: $button-default-border-focus;
+      @include outline-shadow($outline-color-primary);
+    }
+
+    &:active,
+    &.isActive {
+      color: $button-default-content-active;
+      background-color: $button-default-bg-active;
+      border-color: $button-default-border-active;
+    }
+
+    &[disabled] {
+      color: $button-default-content-disabled;
+      background-color: $button-default-bg-disabled;
+      border-color: $button-default-border-disabled;
+    }
+  }
+
+  &--primary {
+    color: $button-primary-content;
+    background-color: $button-primary-bg;
+    border-color: $button-primary-border;
+
+    &:hover {
+      color: $button-primary-content-hover;
+      background-color: $button-primary-bg-hover;
+      border-color: $button-primary-border-hover;
+    }
+
+    &.cdk-focused:not(.cdk-mouse-focused) {
+      color: $button-primary-content-focus;
+      background-color: $button-primary-bg-focus;
+      border-color: $button-primary-border-focus;
+      @include outline-shadow($outline-color-primary);
+    }
+
+    &:active,
+    &.isActive {
+      color: $button-primary-content-active;
+      background-color: $button-primary-bg-active;
+      border-color: $button-primary-border-active;
+    }
+
+    &[disabled] {
+      color: $button-primary-content-disabled;
+      background-color: $button-primary-bg-disabled;
+      border-color: $button-primary-border-disabled;
+    }
+
+    &.isPlain {
+      color: $button-primary-border;
+      background-color: $color-white;
+      border-color: $button-primary-border;
+      $hover-bg: mix($color-white, $button-primary-border, 90%);
+
+      &:hover {
+        color: $button-primary-border;
+        background-color: $hover-bg;
+        border-color: $button-primary-border;
+      }
+
+      &.cdk-focused:not(.cdk-mouse-focused) {
+        color: $button-primary-border;
+        background-color: $color-white;
+        border-color: $button-primary-border;
+        @include outline-shadow($outline-color-primary);
+      }
+
+      &:active,
+      &.isActive {
+        color: mix($color-black, $button-primary-border, 20%);
+        background-color: $hover-bg;
+        border-color: $button-primary-border;
+      }
+
+      &[disabled] {
+        color: $button-default-content-disabled;
+        background-color: $button-default-bg-disabled;
+        border-color: $button-default-border-disabled;
+      }
+    }
+  }
+
+  &--success {
+    color: $button-success-content;
+    background-color: $button-success-bg;
+    border-color: $button-success-border;
+
+    &:hover {
+      color: $button-success-content-hover;
+      background-color: $button-success-bg-hover;
+      border-color: $button-success-border-hover;
+    }
+
+    &.cdk-focused:not(.cdk-mouse-focused) {
+      color: $button-success-content-focus;
+      background-color: $button-success-bg-focus;
+      border-color: $button-success-border-focus;
+      @include outline-shadow($outline-color-success);
+    }
+
+    &:active,
+    &.isActive {
+      color: $button-success-content-active;
+      background-color: $button-success-bg-active;
+      border-color: $button-success-border-active;
+    }
+
+    &[disabled] {
+      color: $button-success-content-disabled;
+      background-color: $button-success-bg-disabled;
+      border-color: $button-success-border-disabled;
+    }
+
+    &.isPlain {
+      color: $button-success-border;
+      background-color: $color-white;
+      border-color: $button-success-border;
+      $hover-bg: mix($color-white, $button-success-border, 90%);
+
+      &:hover {
+        color: $button-success-border;
+        background-color: $hover-bg;
+        border-color: $button-success-border;
+      }
+
+      &.cdk-focused:not(.cdk-mouse-focused) {
+        color: $button-success-border;
+        background-color: $color-white;
+        border-color: $button-success-border;
+        @include outline-shadow($outline-color-success);
+      }
+
+      &:active,
+      &.isActive {
+        color: mix($color-black, $button-success-border, 20%);
+        background-color: $hover-bg;
+        border-color: $button-success-border;
+      }
+
+      &[disabled] {
+        color: $button-default-content-disabled;
+        background-color: $button-default-bg-disabled;
+        border-color: $button-default-border-disabled;
+      }
+    }
+  }
+
+  &--warning {
+    color: $button-warning-content;
+    background-color: $button-warning-bg;
+    border-color: $button-warning-border;
+
+    &:hover {
+      color: $button-warning-content-hover;
+      background-color: $button-warning-bg-hover;
+      border-color: $button-warning-border-hover;
+    }
+
+    &.cdk-focused:not(.cdk-mouse-focused) {
+      color: $button-warning-content-focus;
+      background-color: $button-warning-bg-focus;
+      border-color: $button-warning-border-focus;
+      @include outline-shadow($outline-color-warning);
+    }
+
+    &:active,
+    &.isActive {
+      color: $button-warning-content-active;
+      background-color: $button-warning-bg-active;
+      border-color: $button-warning-border-active;
+    }
+
+    &[disabled] {
+      color: $button-warning-content-disabled;
+      background-color: $button-warning-bg-disabled;
+      border-color: $button-warning-border-disabled;
+    }
+
+    &.isPlain {
+      color: $button-warning-border;
+      background-color: $color-white;
+      border-color: $button-warning-border;
+      $hover-bg: mix($color-white, $button-warning-border, 90%);
+
+      &:hover {
+        color: $button-warning-border;
+        background-color: $hover-bg;
+        border-color: $button-warning-border;
+      }
+
+      &.cdk-focused:not(.cdk-mouse-focused) {
+        color: $button-warning-border;
+        background-color: $color-white;
+        border-color: $button-warning-border;
+        @include outline-shadow($outline-color-warning);
+      }
+
+      &:active,
+      &.isActive {
+        color: mix($color-black, $button-warning-border, 20%);
+        background-color: $hover-bg;
+        border-color: $button-warning-border;
+      }
+
+      &[disabled] {
+        color: $button-default-content-disabled;
+        background-color: $button-default-bg-disabled;
+        border-color: $button-default-border-disabled;
+      }
+    }
+  }
+
+  // error is deprecated, delete when remove error type
+  &--danger,
+  &--error {
+    color: $button-danger-content;
+    background-color: $button-danger-bg;
+    border-color: $button-danger-border;
+
+    &:hover {
+      color: $button-danger-content-hover;
+      background-color: $button-danger-bg-hover;
+      border-color: $button-danger-border-hover;
+    }
+
+    &.cdk-focused:not(.cdk-mouse-focused) {
+      color: $button-danger-content-focus;
+      background-color: $button-danger-bg-focus;
+      border-color: $button-danger-border-focus;
+      @include outline-shadow($outline-color-error);
+    }
+
+    &:active,
+    &.isActive {
+      color: $button-danger-content-active;
+      background-color: $button-danger-bg-active;
+      border-color: $button-danger-border-active;
+    }
+
+    &[disabled] {
+      color: $button-danger-content-disabled;
+      background-color: $button-danger-bg-disabled;
+      border-color: $button-danger-border-disabled;
+    }
+
+    &.isPlain {
+      color: $button-danger-border;
+      background-color: $color-white;
+      border-color: $button-danger-border;
+      $hover-bg: mix($color-white, $button-danger-border, 90%);
+
+      &:hover {
+        color: $button-danger-border;
+        background-color: $hover-bg;
+        border-color: $button-danger-border;
+      }
+
+      &.cdk-focused:not(.cdk-mouse-focused) {
+        color: $button-danger-border;
+        background-color: $color-white;
+        border-color: $button-danger-border;
+        @include outline-shadow($outline-color-error);
+      }
+
+      &:active,
+      &.isActive {
+        color: mix($color-black, $button-danger-border, 20%);
+        background-color: $hover-bg;
+        border-color: $button-danger-border;
+      }
+
+      &[disabled] {
+        color: $button-default-content-disabled;
+        background-color: $button-default-bg-disabled;
+        border-color: $button-default-border-disabled;
+      }
+    }
+  }
+
+  &--info {
+    color: $button-info-content;
+    background-color: $button-info-bg;
+    border-color: $button-info-border;
+
+    &:hover {
+      color: $button-info-content-hover;
+      background-color: $button-info-bg-hover;
+      border-color: $button-info-border-hover;
+    }
+
+    &.cdk-focused:not(.cdk-mouse-focused) {
+      color: $button-info-content-focus;
+      background-color: $button-info-bg-focus;
+      border-color: $button-info-border-focus;
+      @include outline-shadow($outline-color-info);
+    }
+
+    &:active,
+    &.isActive {
+      color: $button-info-content-active;
+      background-color: $button-info-bg-active;
+      border-color: $button-info-border-active;
+    }
+
+    &[disabled] {
+      color: $button-info-content-disabled;
+      background-color: $button-info-bg-disabled;
+      border-color: $button-info-border-disabled;
+    }
+
+    &.isPlain {
+      color: $button-info-border;
+      background-color: $color-white;
+      border-color: $button-info-border;
+      $hover-bg: mix($color-white, $button-info-border, 90%);
+
+      &:hover {
+        color: $button-info-border;
+        background-color: $hover-bg;
+        border-color: $button-info-border;
+      }
+
+      &.cdk-focused:not(.cdk-mouse-focused) {
+        color: $button-info-border;
+        background-color: $color-white;
+        border-color: $button-info-border;
+        @include outline-shadow($outline-color-info);
+      }
+
+      &:active,
+      &.isActive {
+        color: mix($color-black, $button-info-border, 20%);
+        background-color: $hover-bg;
+        border-color: $button-info-border;
+      }
+
+      &[disabled] {
+        color: $button-default-content-disabled;
+        background-color: $button-default-bg-disabled;
+        border-color: $button-default-border-disabled;
+      }
+    }
+  }
+
+  &.isLoading {
+    .aui-button__content {
+      opacity: 0;
+    }
+
+    aui-icon {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.aui-button + .aui-button,
+aui-dropdown-button + aui-dropdown-button > .aui-dropdown-button,
+aui-dropdown-button + .aui-button,
+.aui-button + aui-dropdown-button > .aui-dropdown-button {
+  margin-left: $button-margin;
+}
+
+.aui-button--text + .aui-button--text {
+  margin-left: $text-button-margin;
+}

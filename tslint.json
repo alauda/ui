@@ -1,0 +1,25 @@
+{
+  "extends": ["@1stg/tslint-config/angular", "@1stg/tslint-config/eslint"],
+  "rulesDirectory": "./tslint-rules",
+  "rules": {
+    "component-selector": [true, "element", "aui", "kebab-case"],
+    "directive-selector": [true, "attribute", "aui", "camelCase"],
+    "no-host-metadata-property": false,
+    "validate-decorators": [
+      true,
+      {
+        "Component": {
+          "encapsulation": "\\.None$",
+          "preserveWhitespaces": "false$",
+          "changeDetection": "\\.OnPush$",
+          "!styles": ".*",
+          "!host": "\\[class\\]"
+        },
+        "Directive": {
+          "!host": "\\[class\\]"
+        }
+      },
+      "src/**/!(*.spec).ts"
+    ]
+  }
+}

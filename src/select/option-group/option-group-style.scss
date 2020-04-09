@@ -1,0 +1,20 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+@mixin option-group($block) {
+  .#{$block} {
+    &__title {
+      font-size: $font-size-small;
+      line-height: $line-height-small;
+      padding: $menu-group-title-padding $select-options-padding;
+      color: $color-text-help;
+    }
+  }
+
+  #{$block}:not(:first-child) .#{$block} {
+    margin-top: $menu-padding;
+    padding-top: $menu-padding;
+    border-top: $menu-group-divide-width $menu-group-divide-style
+      $menu-group-divide-color;
+  }
+}

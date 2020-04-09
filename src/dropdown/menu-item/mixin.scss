@@ -1,0 +1,95 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+@mixin component-style($block) {
+  .#{$block} {
+    @include transition;
+
+    display: block;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-align: left;
+    padding: $menu-item-padding;
+    height: $menu-item-medium-height;
+    font-size: $menu-item-medium-font-size;
+    color: $color-text-main;
+    background-color: $color-white;
+    border-radius: $menu-item-radius;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+    &--default {
+      &:hover,
+      &.isActive {
+        color: $menu-item-primary-color;
+        background-color: $menu-item-primary-bg;
+      }
+    }
+
+    &--primary {
+      color: $menu-item-primary-color;
+      &:hover,
+      &.isActive {
+        background-color: $menu-item-primary-bg;
+      }
+    }
+
+    &--success {
+      color: $menu-item-success-color;
+
+      &:hover,
+      &.isActive {
+        background-color: $menu-item-primary-bg;
+      }
+    }
+
+    &--warning {
+      color: $menu-item-warning-color;
+      &:hover,
+      &.isActive {
+        background-color: $menu-item-warning-bg;
+      }
+    }
+
+    &--danger {
+      color: $menu-item-danger-color;
+      &:hover,
+      &.isActive {
+        background-color: $menu-item-danger-bg;
+      }
+    }
+
+    &[disabled],
+    &[disabled]:hover {
+      color: $color-text-placeholder;
+      background-color: $color-white;
+      cursor: not-allowed;
+    }
+
+    aui-icon:first-child {
+      margin-right: 8px;
+    }
+  }
+
+  #{$block} {
+    &:not(:first-child) .hasDivider {
+      overflow: visible;
+      margin-top: $menu-padding * 2;
+      &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        left: 0;
+        right: 0;
+        top: -$menu-padding;
+        height: $menu-group-divide-width;
+        background: $menu-group-divide-color;
+        pointer-events: none;
+      }
+    }
+  }
+}

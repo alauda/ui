@@ -1,0 +1,19 @@
+<button
+  [class]="className"
+  [auiTooltip]="menu.template"
+  [auiTooltipDisabled]="disabled"
+  [auiTooltipTrigger]="trigger"
+  [auiTooltipHideOnClick]="true"
+  auiTooltipPosition="end top"
+  auiTooltipType="plain"
+  auiTooltipClass="aui-sub-dropdown"
+  auiTooltipActive="isActive"
+  (click)="$event.stopPropagation()"
+>
+  <span class="aui-submenu__title"><ng-content></ng-content></span>
+  <aui-icon class="aui-submenu__arrow" icon="angle_right"></aui-icon>
+</button>
+
+<aui-menu #menu [size]="size">
+  <ng-content select="aui-menu-item"></ng-content>
+</aui-menu>

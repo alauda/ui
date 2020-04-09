@@ -1,0 +1,31 @@
+@import '../theme/var';
+@import '../theme/mixin';
+@import '~@angular/cdk/overlay-prebuilt';
+
+.cdk-overlay-pane.aui-message-overlay-pane {
+  z-index: $message-z-index;
+}
+
+.aui-message {
+  display: flex;
+  padding: $message-padding;
+  border-radius: $message-border-radius;
+  align-items: center;
+  background-color: $message-default-bg;
+  border-top-left-radius: $message-border-side-radius;
+  border-bottom-left-radius: $message-border-side-radius;
+  margin-bottom: $message-margin-bottom;
+  @include model-shadow;
+
+  @each $status, $color in $status-color-map {
+    &__icon--#{$status} {
+      color: $color;
+    }
+  }
+
+  &__content {
+    font-size: $font-size-regular;
+    line-height: $line-height-regular;
+    margin-left: $message-content-margin-left;
+  }
+}

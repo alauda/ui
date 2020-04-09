@@ -1,0 +1,24 @@
+<div
+  #elRef
+  class="aui-checkbox"
+  [class.isDisabled]="disabled"
+  [class.isChecked]="value$ | async"
+  [class.isTag]="type === 'tag'"
+>
+  <input
+    [name]="name"
+    [id]="id"
+    class="aui-checkbox__input"
+    type="checkbox"
+    [checked]="value$ | async"
+    [disabled]="disabled"
+    (click)="onClick()"
+    (blur)="onBlur()"
+  />
+  <label class="aui-checkbox__label" [for]="id">
+    <i class="aui-checkbox__pointer">
+      <aui-icon icon="check_s" [hidden]="!(value$ | async)"></aui-icon>
+    </i>
+    <span class="aui-checkbox__content"><ng-content></ng-content></span>
+  </label>
+</div>

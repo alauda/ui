@@ -1,0 +1,234 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+$block: 'aui-search';
+
+.#{$block} {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  color: $input-color;
+
+  &:hover:not(.isDisabled) .aui-input {
+    border-color: $input-border-color-primary;
+  }
+
+  &.isDisabled {
+    color: $input-placeholder-color;
+    cursor: not-allowed;
+  }
+
+  &--large {
+    $icon-width: $input-large-padding-hoz * 2 + $input-large-font-size +
+      $input-border-width;
+    $button-width: $icon-width + $input-border-width;
+
+    font-size: $input-large-font-size;
+
+    .#{$block}__clear,
+    .#{$block}__spinner {
+      right: $input-large-padding-hoz + $border-width;
+    }
+
+    .#{$block}__icon {
+      left: $input-large-padding-hoz + $input-border-width;
+    }
+
+    .#{$block}__button-icon {
+      padding: 0 $input-large-padding-hoz;
+    }
+
+    &.isClearable .#{$block}__input,
+    &.isSearching .#{$block}__input {
+      padding-right: $icon-width;
+    }
+
+    &.hasIcon .#{$block}__input {
+      padding-left: $icon-width;
+    }
+
+    &.hasButton .#{$block} {
+      &__input {
+        padding-right: $button-width + $input-large-padding-hoz;
+      }
+
+      &__clear {
+        right: $button-width + $input-large-padding-hoz;
+      }
+    }
+
+    &.hasButton.isClearable .#{$block}__input {
+      padding-right: $icon-width + $button-width;
+    }
+  }
+
+  &--medium {
+    $icon-width: $input-medium-padding-hoz * 2 + $input-medium-font-size +
+      $input-border-width;
+    $button-width: $icon-width + $input-border-width;
+
+    font-size: $input-medium-font-size;
+
+    .#{$block}__clear,
+    .#{$block}__spinner {
+      right: $input-medium-padding-hoz + $border-width;
+    }
+
+    .#{$block}__icon {
+      left: $input-medium-padding-hoz + $input-border-width;
+    }
+
+    .#{$block}__button-icon {
+      padding: 0 $input-medium-padding-hoz;
+    }
+
+    &.isClearable .#{$block}__input,
+    &.isSearching .#{$block}__input {
+      padding-right: $icon-width;
+    }
+
+    &.hasIcon .#{$block}__input {
+      padding-left: $icon-width;
+    }
+
+    &.hasButton .#{$block} {
+      &__input {
+        padding-right: $button-width + $input-medium-padding-hoz;
+      }
+
+      &__clear {
+        right: $button-width + $input-medium-padding-hoz;
+      }
+    }
+
+    &.hasButton.isClearable .#{$block}__input {
+      padding-right: $icon-width + $button-width;
+    }
+  }
+
+  &--small {
+    $icon-width: $input-small-padding-hoz * 2 + $input-small-font-size +
+      $input-border-width;
+    $button-width: $icon-width + $input-border-width;
+
+    font-size: $input-small-font-size;
+
+    .#{$block}__clear,
+    .#{$block}__spinner {
+      right: $input-small-padding-hoz + $border-width;
+    }
+
+    .#{$block}__icon {
+      left: $input-small-padding-hoz + $input-border-width;
+    }
+
+    .#{$block}__button-icon {
+      padding: 0 $input-small-padding-hoz;
+    }
+
+    &.isClearable .#{$block}__input,
+    &.isSearching .#{$block}__input {
+      padding-right: $icon-width;
+    }
+
+    &.hasIcon .#{$block}__input {
+      padding-left: $icon-width;
+    }
+
+    &.hasButton .#{$block} {
+      &__input {
+        padding-right: $button-width + $input-small-padding-hoz;
+      }
+
+      &__clear {
+        right: $button-width + $input-small-padding-hoz;
+      }
+    }
+
+    &.hasButton.isClearable .#{$block}__input {
+      padding-right: $icon-width + $button-width;
+    }
+  }
+
+  &--mini {
+    $icon-width: $input-mini-padding-hoz * 2 + $input-mini-font-size +
+      $input-border-width;
+    $button-width: $icon-width + $input-border-width;
+
+    font-size: $input-mini-font-size;
+
+    .#{$block}__clear,
+    .#{$block}__spinner {
+      right: $input-mini-padding-hoz + $border-width;
+    }
+
+    .#{$block}__icon {
+      left: $input-mini-padding-hoz + $input-border-width;
+    }
+
+    .#{$block}__button-icon {
+      padding: 0 $input-mini-padding-hoz;
+    }
+
+    &.isClearable .#{$block}__input,
+    &.isSearching .#{$block}__input {
+      padding-right: $icon-width;
+    }
+
+    &.hasIcon .#{$block}__input {
+      padding-left: $icon-width;
+    }
+
+    &.hasButton .#{$block} {
+      &__input {
+        padding-right: $button-width + $input-mini-padding-hoz;
+      }
+
+      &__clear {
+        right: $button-width + $input-mini-padding-hoz;
+      }
+    }
+
+    &.hasButton.isClearable .#{$block}__input {
+      padding-right: $icon-width + $button-width;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $input-prefix-icon-color;
+  }
+
+  &__button {
+    position: absolute;
+    top: 0;
+    right: $input-border-width;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: $input-suffix-icon-color;
+  }
+
+  &:not(.isDisabled):not(.isSearching) &__button:hover {
+    color: $input-border-color-primary;
+    cursor: pointer;
+  }
+
+  &__button-icon {
+    border-left: $input-border-style $input-border-color $input-border-width;
+  }
+
+  &__clear,
+  &__spinner {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $input-suffix-icon-color;
+  }
+
+  &__clear .aui-icon {
+    @include clear-button;
+  }
+}

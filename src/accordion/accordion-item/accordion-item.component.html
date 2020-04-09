@@ -1,0 +1,27 @@
+<div class="aui-accordion-item">
+  <div
+    class="aui-accordion-item__header"
+    [class.aui-accordion-item__header-toggle--right]="
+      togglePosition === 'right'
+    "
+    (click)="toggle()"
+  >
+    <aui-icon
+      *ngIf="!hideToggle"
+      [class.aui-accordion-item__header-toggle--expanded]="expanded"
+      class="aui-accordion-item__header-toggle"
+      icon="angle_right"
+    ></aui-icon>
+    <div
+      class="aui-accordion-item__header-content"
+      [class.aui-accordion-item__header-content--expanded]="expanded"
+    >
+      <ng-content select="[auiAccordionItemHeader]"></ng-content>
+    </div>
+  </div>
+  <div class="aui-accordion-item__content" role="region" [id]="id">
+    <div class="aui-accordion-item__content-body" [hidden]="!expanded">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

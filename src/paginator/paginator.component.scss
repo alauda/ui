@@ -1,0 +1,100 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+.aui-paginator {
+  display: inline-flex;
+  align-items: center;
+  color: $color-text-main;
+
+  &__page.aui-button .aui-button__content {
+    padding: 0 $text-button-padding-hoz;
+  }
+
+  &--large {
+    font-size: $button-large-font-size;
+
+    .aui-paginator__page {
+      min-width: $button-large-height;
+    }
+  }
+
+  &--medium {
+    font-size: $button-medium-font-size;
+
+    .aui-paginator__page {
+      min-width: $button-medium-height;
+    }
+  }
+
+  &--small {
+    font-size: $button-small-font-size;
+
+    .aui-paginator__page {
+      min-width: $button-small-height;
+    }
+  }
+
+  &--mini {
+    font-size: $button-mini-font-size;
+
+    .aui-paginator__page {
+      min-width: $button-mini-height;
+    }
+  }
+
+  &__fast-navigator {
+    &[hidden] {
+      display: none;
+    }
+
+    .aui-icon {
+      margin: 0;
+    }
+
+    aui-icon:last-child {
+      display: none;
+    }
+
+    &:hover aui-icon {
+      &:first-child {
+        display: none;
+      }
+      &:last-child {
+        display: inline;
+      }
+    }
+  }
+
+  &__sizes {
+    display: inline-flex;
+    align-items: center;
+
+    .aui-select {
+      width: 68px;
+      margin-right: 4px;
+    }
+  }
+
+  &__jumper {
+    .aui-input {
+      width: 60px;
+    }
+
+    span + input,
+    input + span {
+      margin-left: 4px;
+    }
+  }
+
+  .aui-button-group .aui-button--primary {
+    z-index: 2;
+  }
+
+  &__layout {
+    display: inline-block;
+
+    + .aui-paginator__layout {
+      margin-left: 12px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<div
+  class="aui-switch"
+  [class.isLoading]="loading"
+  [class.isDisabled]="disabled"
+  [class.isChecked]="value$ | async"
+  (click)="onSwitch()"
+>
+  <input
+    #input
+    [ngClass]="bem.element('input')"
+    type="checkbox"
+    [disabled]="disabled"
+    [checked]="value$ | async"
+    (blur)="onBlur()"
+  />
+  <span [ngClass]="bem.element('bar')">
+    <i [ngClass]="bem.element('dot')"></i>
+  </span>
+</div>

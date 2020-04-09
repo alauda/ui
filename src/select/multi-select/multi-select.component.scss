@@ -1,0 +1,99 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+@import '../../input/tags-input/mixin';
+@import '../option-container';
+
+@include option-container(aui-option-container);
+
+$block: aui-multi-select;
+
+@include component-style($block);
+
+.#{$block} {
+  &--large {
+    $paddingRight: $input-large-padding-hoz * 2 + $input-large-font-size +
+      $input-border-width;
+
+    padding-right: $paddingRight;
+
+    .#{$block} {
+      &__suffix {
+        right: $input-large-padding-hoz + $input-border-width;
+      }
+    }
+
+    &.isClearable {
+      padding-right: $paddingRight + $input-large-font-size + $icon-margin-hoz;
+    }
+  }
+
+  &--medium {
+    $paddingRight: $input-medium-padding-hoz * 2 + $input-medium-font-size +
+      $input-border-width;
+
+    padding-right: $paddingRight;
+
+    .#{$block} {
+      &__suffix {
+        right: $input-medium-padding-hoz + $input-border-width;
+      }
+    }
+
+    &.isClearable {
+      padding-right: $paddingRight + $input-medium-font-size + $icon-margin-hoz;
+    }
+  }
+
+  &--small {
+    $paddingRight: $input-small-padding-hoz * 2 + $input-small-font-size +
+      $input-border-width;
+
+    padding-right: $paddingRight;
+
+    .#{$block} {
+      &__suffix {
+        right: $input-small-padding-hoz + $input-border-width;
+      }
+    }
+
+    &.isClearable {
+      padding-right: $paddingRight + $input-small-font-size + $icon-margin-hoz;
+    }
+  }
+
+  &--mini {
+    $paddingRight: $input-mini-padding-hoz * 2 + $input-mini-font-size +
+      $input-border-width;
+
+    padding-right: $paddingRight;
+
+    .#{$block} {
+      &__suffix {
+        right: $input-mini-padding-hoz + $input-border-width;
+      }
+    }
+
+    &.isClearable {
+      padding-right: $paddingRight + $input-mini-font-size + $icon-margin-hoz;
+    }
+  }
+
+  &__suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__clear .aui-icon {
+    @include clear-button;
+  }
+
+  &__indicator {
+    color: $input-suffix-icon-color;
+    cursor: default;
+  }
+
+  &:not(.isDisabled) .aui-icon-caret_down_s {
+    fill: $input-color;
+  }
+}

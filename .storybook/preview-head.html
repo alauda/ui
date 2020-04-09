@@ -1,0 +1,62 @@
+<style>
+  /* stylelint-disable selector-type-no-unknown */
+  html,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 8px;
+    height: 100%;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue',
+      Helvetica, 'Ubuntu', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+      'WenQuanYi Micro Hei', sans-serif;
+  }
+
+  storybook-dynamic-app-root:first-child,
+  storybook-dynamic-app-root > ng-component {
+    display: block;
+    height: 100%;
+  }
+
+  a {
+    color: #006eff;
+    text-decoration: none;
+  }
+  a:hover,
+  a:active,
+  a:focus {
+    color: #0058cc;
+  }
+
+  [class^='aui-'] {
+    box-sizing: border-box;
+  }
+  [class^='aui-'][hidden] {
+    display: none;
+  }
+
+  aui-icon[ng-reflect-aui-tooltip-copy],
+  aui-icon[auiTooltipCopy] {
+    cursor: pointer;
+  }
+  span + aui-icon[ng-reflect-aui-tooltip-copy],
+  span + aui-icon[auiTooltipCopy] {
+    margin-left: 4px;
+  }
+  aui-icon[ng-reflect-aui-tooltip-copy]:hover,
+  aui-icon[auiTooltipCopy]:hover {
+    color: #006eff;
+  }
+
+  .aui-dialog aui-form-item:last-child .aui-form-item,
+  .aui-section__content aui-form-item:last-child .aui-form-item {
+    margin-bottom: 0;
+  }
+
+  .aui-tab-label__content aui-icon:first-child .aui-icon {
+    margin-right: 4px;
+  }
+</style>

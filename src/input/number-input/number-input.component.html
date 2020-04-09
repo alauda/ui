@@ -1,0 +1,39 @@
+<div [ngClass]="bem.block(size)">
+  <button
+    *ngIf="controls"
+    aui-button
+    type="button"
+    [ngClass]="bem.element('decrease')"
+    square="true"
+    [size]="size"
+    [disabled]="disabled || minDisabled"
+    (click)="takeOneStep(false)"
+  >
+    <aui-icon icon="minus"></aui-icon>
+  </button>
+  <input
+    aui-input
+    autocomplete="off"
+    [max]="max"
+    [min]="min"
+    [step]="step"
+    [value]="value$ | async"
+    (change)="changeHandle($event)"
+    [disabled]="disabled"
+    [ngClass]="bem.element('input')"
+    [placeholder]="placeholder"
+    [size]="size"
+  />
+  <button
+    *ngIf="controls"
+    aui-button
+    type="button"
+    [ngClass]="bem.element('increase')"
+    square="true"
+    [size]="size"
+    [disabled]="disabled || maxDisabled"
+    (click)="takeOneStep(true)"
+  >
+    <aui-icon icon="plus"></aui-icon>
+  </button>
+</div>

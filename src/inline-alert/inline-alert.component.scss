@@ -1,0 +1,69 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+.aui-inline-alert {
+  display: flex;
+  padding: $inline-alert-padding;
+  margin-bottom: $inline-alert-vertical-margin;
+  border-radius: $inline-alert-border-radius;
+  border: $inline-alert-border-width $inline-alert-border-style
+    $inline-alert-primary-color;
+  color: $color-text-main;
+  background-color: $color-white;
+
+  @each $status, $color in $status-color-map {
+    &--#{$status} {
+      border-color: $color;
+    }
+
+    &--#{$status} &__icon {
+      color: $color;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    height: $inline-alert-title-line-height;
+    font-size: $font-size-large;
+  }
+  &__close {
+    display: flex;
+    align-items: center;
+    height: $inline-alert-title-line-height;
+    font-size: $font-size-small;
+    color: $inline-alert-close-color;
+    cursor: pointer;
+    &:hover {
+      color: $inline-alert-close-color-hover;
+    }
+  }
+
+  &__body {
+    max-width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+    padding: 0 8px;
+  }
+
+  &__title {
+    font-size: $inline-alert-title-font-size;
+    line-height: $inline-alert-title-line-height;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__content {
+    margin-top: (
+        $inline-alert-title-line-height - $inline-alert-content-line-height
+      ) / 2;
+    font-size: $inline-alert-content-font-size;
+    line-height: $inline-alert-content-line-height;
+  }
+
+  &__title + &__content {
+    margin-top: 4px;
+  }
+}

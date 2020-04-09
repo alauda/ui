@@ -1,0 +1,53 @@
+<div class="demo-container">
+  <div class="links">
+    Links
+    <ul>
+      <li>
+        <a href="javascript:void(0)" auiTocLink="content1" [for]="toc1">
+          content 1
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" auiTocLink="content2" [for]="toc1">
+          content 2
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" auiTocLink="content3" [for]="toc1">
+          content 3
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" auiTocLink="content4" [for]="toc1">
+          content 4
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" auiTocLink="content5" [for]="toc1">
+          content 5
+        </a>
+      </li>
+      <li *ngFor="let item of list">
+        <a href="javascript:void(0)" [auiTocLink]="item" [for]="toc1">
+          {{ item }}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="contents" auiTocContainer #toc1="auiTocContainer">
+    <div class="content" auiTocContent="content1">Content 1</div>
+    <div class="content" auiTocContent="content2">Content 2</div>
+    <div class="content" auiTocContent="content3">Content 3</div>
+    <div class="content" auiTocContent="content4">Content 4</div>
+    <div class="content" auiTocContent="content5">Content 5</div>
+    <div
+      *ngFor="let item of list"
+      class="content"
+      [auiTocContent]="item"
+      (click)="remove(item)"
+    >
+      {{ item }}
+    </div>
+    <button rcButton="primary" (click)="add(toc1)">{{ 'add' }}</button>
+  </div>
+</div>

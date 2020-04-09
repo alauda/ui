@@ -1,0 +1,84 @@
+@import '../theme/mixin';
+@import '../theme/var';
+
+$block: 'aui-radio';
+
+.#{$block} {
+  margin-right: $radio-margin;
+  display: inline-block;
+  color: $radio-color;
+  font-size: $radio-font-size;
+  line-height: $radio-line-height;
+  position: relative;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      .#{$block}__pointer {
+        border-color: $radio-border-color-primary;
+      }
+    }
+  }
+
+  &__content {
+    vertical-align: middle;
+  }
+
+  &__pointer {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: $radio-pointer-outer-radius * 2;
+    height: $radio-pointer-outer-radius * 2;
+    margin-right: $radio-label-margin;
+    border-radius: 50%;
+    border: $radio-border-width $radio-border-style $radio-border-color;
+    background-color: $color-white;
+    vertical-align: middle;
+    @include transition;
+
+    &:before {
+      content: '';
+      display: block;
+      width: $radio-pointer-inner-radius * 2;
+      height: $radio-pointer-inner-radius * 2;
+      border-radius: 50%;
+    }
+  }
+
+  &.cdk-keyboard-focused &__pointer {
+    border-color: $radio-border-color-primary;
+    @include outline-shadow($radio-outline-color);
+  }
+
+  &.isChecked &__pointer {
+    border-color: $radio-border-color-primary;
+    background-color: $radio-border-color-primary;
+
+    &:before {
+      background-color: $color-white;
+    }
+  }
+
+  &.isDisabled &__label {
+    cursor: not-allowed;
+  }
+
+  &.isDisabled &__pointer {
+    border-color: $radio-border-color;
+    background-color: $radio-bg-color-disabled;
+  }
+
+  &.isDisabled.isChecked &__pointer:before {
+    background-color: $radio-border-color;
+  }
+}

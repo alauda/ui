@@ -1,0 +1,10 @@
+<div [class]="bem.element('header')">
+  <div [class]="bem.element('header-title')"><ng-content></ng-content></div>
+  <div
+    *ngIf="closeable"
+    [class]="bem.element('header-close')"
+    (click)="dialogRef.close(result)"
+  >
+    <aui-icon icon="close"></aui-icon>
+  </div>
+</div>

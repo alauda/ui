@@ -1,0 +1,178 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+.aui-input-group {
+  display: inline-block;
+  width: 100%;
+  color: $input-color;
+
+  &.isDisabled {
+    color: $input-placeholder-color;
+    cursor: not-allowed;
+  }
+
+  &--large {
+    $padding: $input-large-padding-hoz * 2 + $input-large-font-size +
+      $input-border-width;
+
+    height: $input-large-height;
+    font-size: $input-large-font-size;
+
+    &.hasPrefix .aui-input {
+      padding-left: $padding;
+    }
+
+    &.hasSuffix .aui-input {
+      padding-right: $padding;
+    }
+
+    .aui-input-group {
+      &__prefix {
+        left: $input-large-padding-hoz + $input-border-width;
+      }
+      &__suffix {
+        right: $input-large-padding-hoz + $input-border-width;
+      }
+      &__addon {
+        padding: 0 $input-large-padding-hoz;
+      }
+    }
+  }
+
+  &--medium {
+    $padding: $input-medium-padding-hoz * 2 + $input-medium-font-size +
+      $input-border-width;
+
+    height: $input-medium-height;
+    font-size: $input-medium-font-size;
+
+    &.hasPrefix .aui-input {
+      padding-left: $padding;
+    }
+    &.hasSuffix .aui-input {
+      padding-right: $padding;
+    }
+
+    .aui-input-group {
+      &__prefix {
+        left: $input-medium-padding-hoz + $input-border-width;
+      }
+      &__suffix {
+        right: $input-medium-padding-hoz + $input-border-width;
+      }
+      &__addon {
+        padding: 0 $input-medium-padding-hoz;
+      }
+    }
+  }
+
+  &--small {
+    $padding: $input-small-padding-hoz * 2 + $input-small-font-size +
+      $input-border-width;
+
+    height: $input-small-height;
+    font-size: $input-small-font-size;
+
+    &.hasPrefix .aui-input {
+      padding-left: $padding;
+    }
+    &.hasSuffix .aui-input {
+      padding-right: $padding;
+    }
+
+    .aui-input-group {
+      &__prefix {
+        left: $input-small-padding-hoz + $input-border-width;
+      }
+      &__suffix {
+        right: $input-small-padding-hoz + $input-border-width;
+      }
+      &__addon {
+        padding: 0 $input-small-padding-hoz;
+      }
+    }
+  }
+
+  &--mini {
+    $padding: $input-mini-padding-hoz * 2 + $input-mini-font-size +
+      $input-border-width;
+
+    height: $input-mini-height;
+    font-size: $input-mini-font-size;
+
+    &.hasPrefix .aui-input {
+      padding-left: $padding;
+    }
+    &.hasSuffix .aui-input {
+      padding-right: $padding;
+    }
+
+    .aui-input-group {
+      &__prefix {
+        left: $input-mini-padding-hoz + $input-border-width;
+      }
+      &__suffix {
+        right: $input-mini-padding-hoz + $input-border-width;
+      }
+      &__addon {
+        padding: 0 $input-mini-padding-hoz;
+      }
+    }
+  }
+
+  &__inner-wrapper {
+    display: flex;
+    height: 100%;
+  }
+
+  &__input-wrapper {
+    width: 100%;
+    position: relative;
+
+    &:hover .aui-input:not([disabled]) {
+      border-color: $input-border-color-primary;
+    }
+  }
+
+  &__addon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    height: 100%;
+    border: $input-border-width $input-border-style $input-border-color;
+    background-color: $input-bg-color-disabled;
+
+    &--before {
+      border-right: none;
+      border-radius: $input-border-radius 0 0 $input-border-radius;
+    }
+    &--after {
+      border-left: none;
+      border-radius: 0 $input-border-radius $input-border-radius 0;
+    }
+  }
+
+  &__prefix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $input-prefix-icon-color;
+  }
+
+  &__suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $input-suffix-icon-color;
+  }
+
+  &.hasAddonBefore .aui-input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &.hasAddonAfter .aui-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}

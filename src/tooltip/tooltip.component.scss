@@ -1,0 +1,62 @@
+@import '../theme/var';
+@import '../theme/mixin';
+@import '~@angular/cdk/overlay-prebuilt';
+
+.aui-tooltip {
+  padding: $tooltip-padding-ver $tooltip-padding-hoz;
+  line-height: $tooltip-line-height;
+  font-size: $tooltip-font-size;
+  border-radius: $tooltip-border-radius;
+  border-width: $tooltip-border-width;
+  border-style: solid;
+  @include popper-shadow;
+
+  max-width: $tooltip-max-width;
+  word-wrap: break-word; // do NOT add 'word-break: break-all;', design requirement
+
+  &--default {
+    color: $tooltip-default-text;
+    background-color: $tooltip-default-bg;
+    border-color: $tooltip-default-border;
+  }
+
+  &--primary {
+    color: $tooltip-primary-text;
+    background-color: $tooltip-primary-bg;
+    border-color: $tooltip-primary-border;
+  }
+
+  &--success {
+    color: $tooltip-success-text;
+    background-color: $tooltip-success-bg;
+    border-color: $tooltip-success-border;
+  }
+
+  &--warning {
+    color: $tooltip-warning-text;
+    background-color: $tooltip-warning-bg;
+    border-color: $tooltip-warning-border;
+  }
+
+  &--error {
+    color: $tooltip-error-text;
+    background-color: $tooltip-error-bg;
+    border-color: $tooltip-error-border;
+  }
+
+  &--info {
+    color: $tooltip-info-text;
+    background-color: $tooltip-info-bg;
+    border-color: $tooltip-info-border;
+  }
+
+  &--start,
+  &--end {
+    margin: 0 $tooltip-offset;
+  }
+
+  &--top,
+  &--bottom {
+    margin: $tooltip-offset 0;
+  }
+}

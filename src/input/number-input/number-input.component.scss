@@ -1,0 +1,56 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+$block: 'aui-number-input';
+
+.#{$block} {
+  display: inline-flex;
+  position: relative;
+  width: 144px;
+
+  &--large {
+    width: 172px;
+  }
+
+  &--small {
+    width: 140px;
+  }
+
+  &--mini {
+    width: 122px;
+  }
+
+  &__decrease,
+  &__increase {
+    z-index: 1;
+    &:hover,
+    &:active,
+    &.isActive,
+    &.cdk-keyboard-focused {
+      z-index: 2;
+    }
+  }
+
+  &__decrease.aui-button {
+    left: 1px;
+    border-radius: $border-radius 0 0 $border-radius;
+  }
+
+  &__increase.aui-button {
+    right: 1px;
+    border-radius: 0 $border-radius $border-radius 0;
+  }
+
+  .aui-input {
+    &:not(:first-child) {
+      border-radius: 0;
+    }
+
+    text-align: center;
+    &:hover,
+    &:active,
+    &:focus {
+      z-index: 2;
+    }
+  }
+}

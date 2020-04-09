@@ -1,0 +1,12 @@
+{
+  "extends": "@1stg/tsconfig/angular",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@alauda/ui": ["src/public-api"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
+  }
+}

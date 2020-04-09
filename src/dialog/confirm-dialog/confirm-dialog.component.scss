@@ -1,0 +1,55 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+.aui-confirm-dialog {
+  $icon-size: $line-height-larger;
+  $icon-margin: 8px;
+
+  margin: auto;
+  padding: 32px 32px 24px;
+  border-radius: $border-radius;
+  min-width: $dialog-small-width;
+  max-width: $dialog-medium-width;
+  background-color: $color-white;
+
+  &__title {
+    margin-bottom: 8px;
+    line-height: $icon-size;
+    font-size: $font-size-larger;
+    color: $color-text-main;
+    display: flex;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  &__icon {
+    margin-right: $icon-margin;
+    font-size: $icon-size;
+
+    &--primary,
+    &--warning {
+      color: $color-warning;
+    }
+    &--success {
+      color: $color-success;
+    }
+    &--danger {
+      color: $color-error;
+    }
+  }
+
+  &__content {
+    margin-bottom: 24px;
+    padding-left: $icon-margin + $icon-size;
+    font-size: $font-size-regular;
+    line-height: $line-height-regular;
+    color: $color-text-secondary;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  &__button-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}

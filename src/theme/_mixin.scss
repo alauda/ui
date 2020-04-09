@@ -1,0 +1,59 @@
+@import 'var';
+
+// 使用 box-shadow 模拟带圆角的 outline
+@mixin outline-shadow($color: $outline-color-primary) {
+  box-shadow: 0 0 0 $outline-width $color;
+}
+
+@mixin popper-shadow() {
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
+}
+
+@mixin model-shadow() {
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.16);
+}
+
+@mixin transition($target: all) {
+  transition: $target $animation-duration $animation-interpolation;
+}
+
+@mixin absolute-center() {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin scroll-bar($color: rgba(0, 0, 0, 0.3)) {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+  }
+}
+
+@mixin clear-button() {
+  border-radius: 50%;
+  color: $input-suffix-icon-color;
+  cursor: pointer;
+  @include transition;
+
+  &:hover {
+    color: $input-bg-color;
+    background-color: $input-suffix-icon-color;
+  }
+}
+
+@mixin text-overflow() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

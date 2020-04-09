@@ -1,0 +1,134 @@
+@import '../../../src/theme/var';
+@import '../../../src/theme/mixin';
+
+.palette {
+  list-style: none;
+  font-size: 0;
+
+  &__line {
+    margin-bottom: 16px;
+  }
+
+  &__card + &__card {
+    margin-left: 16px;
+  }
+
+  &__card {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: $border-radius;
+    color: $color-black;
+    font-size: 14px;
+    text-align: center;
+    line-height: 28px;
+
+    &--primary {
+      background-color: $color-primary;
+    }
+    &--primary-light {
+      background-color: $color-primary-light;
+    }
+    &--primary-lighter {
+      background-color: $color-primary-lighter;
+    }
+    &--primary-extra-light {
+      background-color: $color-primary-extra-light;
+    }
+    &--primary-ultra-light {
+      background-color: $color-primary-ultra-light;
+    }
+    &--primary-dark {
+      background-color: $color-primary-dark;
+    }
+    &--primary-darker {
+      background-color: $color-primary-darker;
+    }
+    &--success {
+      background-color: $color-success;
+    }
+    &--success-light {
+      background-color: $color-success-light;
+    }
+    &--success-lighter {
+      background-color: $color-success-lighter;
+    }
+    &--success-extra-light {
+      background-color: $color-success-extra-light;
+    }
+    &--success-ultra-light {
+      background-color: $color-success-ultra-light;
+    }
+    &--success-dark {
+      background-color: $color-success-dark;
+    }
+    &--success-darker {
+      background-color: $color-success-darker;
+    }
+    &--warning {
+      background-color: $color-warning;
+    }
+    &--warning-light {
+      background-color: $color-warning-light;
+    }
+    &--warning-lighter {
+      background-color: $color-warning-lighter;
+    }
+    &--warning-extra-light {
+      background-color: $color-warning-extra-light;
+    }
+    &--warning-ultra-light {
+      background-color: $color-warning-ultra-light;
+    }
+    &--warning-dark {
+      background-color: $color-warning-dark;
+    }
+    &--warning-darker {
+      background-color: $color-warning-darker;
+    }
+    &--error {
+      background-color: $color-error;
+    }
+    &--error-light {
+      background-color: $color-error-light;
+    }
+    &--error-lighter {
+      background-color: $color-error-lighter;
+    }
+    &--error-extra-light {
+      background-color: $color-error-extra-light;
+    }
+    &--error-ultra-light {
+      background-color: $color-error-ultra-light;
+    }
+    &--error-dark {
+      background-color: $color-error-dark;
+    }
+    &--error-darker {
+      background-color: $color-error-darker;
+    }
+    &--info {
+      background-color: $color-info;
+    }
+    &--info-light {
+      background-color: $color-info-light;
+    }
+    &--info-lighter {
+      background-color: $color-info-lighter;
+    }
+    &--info-extra-light {
+      background-color: $color-info-extra-light;
+    }
+    &--info-ultra-light {
+      background-color: $color-info-ultra-light;
+    }
+    &--info-dark {
+      background-color: $color-info-dark;
+    }
+    &--info-darker {
+      background-color: $color-info-darker;
+    }
+  }
+}

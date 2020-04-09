@@ -1,0 +1,9 @@
+<div [class]="rootClass" [ngStyle]="customStyle">
+  <span class="aui-tag__content"><ng-content></ng-content></span>
+  <aui-icon
+    *ngIf="closeable"
+    class="aui-tag__close"
+    icon="close_small"
+    (click)="close.emit(); $event.stopPropagation()"
+  ></aui-icon>
+</div>

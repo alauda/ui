@@ -1,0 +1,7 @@
+@import '../select/option-container';
+
+@include option-container(aui-autocomplete);
+
+aui-autocomplete {
+  display: none;
+}

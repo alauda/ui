@@ -1,0 +1,20 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+.aui-menu-group {
+  &__title {
+    display: inline-block;
+    margin: 0 0 $menu-group-title-padding 0;
+    padding: $menu-group-title-padding 0;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    color: $color-text-help;
+  }
+}
+
+aui-menu-group:not(:first-child) .aui-menu-group {
+  margin-top: $menu-padding;
+  padding-top: $menu-padding;
+  border-top: $menu-group-divide-width $menu-group-divide-style
+    $menu-group-divide-color;
+}

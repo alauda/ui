@@ -1,0 +1,64 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+$default-border: $card-border-width $card-border-style $card-border-color;
+
+$b: aui-card;
+
+.#{$b} {
+  padding: 20px;
+  border: $default-border;
+  border-radius: $card-border-radius;
+  background-color: $color-white;
+  font-size: $font-size-regular;
+
+  &__header {
+    padding: 0;
+    font-size: $font-size-larger;
+    line-height: $line-height-larger;
+
+    + .#{$b}__content {
+      margin: 12px 0 0 0;
+    }
+  }
+
+  &__content {
+    padding: 0;
+
+    + .#{$b}__footer {
+      margin: 12px 0 0 0;
+    }
+  }
+
+  &__footer {
+    padding: 0;
+  }
+
+  &.hasDivider {
+    .#{$b} {
+      &__header {
+        padding-bottom: 12px;
+        border-bottom: $default-border;
+
+        + .#{$b}__content {
+          margin-top: 16px;
+        }
+      }
+
+      &__content {
+        + .#{$b}__footer {
+          margin-top: 20px;
+        }
+      }
+
+      &__footer {
+        padding-top: 20px;
+        border-top: $default-border;
+      }
+    }
+  }
+}
+
+#{$b} + #{$b} > .#{$b} {
+  margin-top: 16px;
+}

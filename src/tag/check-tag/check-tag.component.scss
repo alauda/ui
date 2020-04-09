@@ -1,0 +1,22 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+.aui-check-tag {
+  cursor: pointer;
+  .aui-tag__content {
+    display: flex;
+    user-select: none;
+  }
+  .aui-tag__checkbox {
+    align-self: center;
+  }
+  &.aui-tag--medium {
+    height: $tag-medium-height;
+    line-height: $tag-medium-height;
+    font-size: $tag-medium-font-size;
+    margin: 0 8px;
+    &.isRound {
+      border-radius: $tag-medium-height / 2;
+    }
+  }
+}

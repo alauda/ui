@@ -1,0 +1,134 @@
+@import '../theme/var';
+@import '../theme/mixin';
+@import '~@angular/cdk/overlay-prebuilt';
+
+.aui-dialog-backdrop {
+  background-color: $dialog-backdrop-color;
+}
+
+.aui-dialog-overlay-pane {
+  justify-content: center;
+  overflow: auto;
+  @include scroll-bar;
+}
+
+.aui-dialog {
+  display: flex;
+  flex-direction: column;
+  background-color: $dialog-bg-color;
+  border-radius: $dialog-border-radius;
+  margin: 18vh auto $dialog-bottom-margin;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+
+  aui-dialog-content {
+    overflow: auto;
+    @include scroll-bar;
+
+    &:not(:first-child) .aui-dialog__content {
+      padding-top: 0;
+    }
+
+    &:not(:last-child) .aui-dialog__content {
+      padding-bottom: 0;
+    }
+  }
+
+  &--small {
+    width: $dialog-small-width;
+  }
+
+  &--medium {
+    width: $dialog-medium-width;
+  }
+
+  &--big {
+    width: $dialog-big-width;
+  }
+
+  &--large {
+    width: $dialog-large-width;
+  }
+
+  &--fit-content {
+    width: fit-content;
+  }
+
+  &--fullscreen {
+    width: $dialog-fullscreen-width;
+    height: $dialog-fullscreen-height;
+    @include absolute-center;
+  }
+
+  &--fit-viewport {
+    max-height: $dialog-fullscreen-height;
+    max-width: $dialog-fullscreen-width;
+    @include absolute-center;
+
+    .aui-dialog {
+      &__header {
+        border-bottom: $card-border-width $card-border-style $card-border-color;
+      }
+      &__footer {
+        border-top: $card-border-width $card-border-style $card-border-color;
+      }
+    }
+
+    aui-dialog-content {
+      &:not(:first-child) .aui-dialog__content {
+        padding-top: 16px;
+      }
+
+      &:not(:last-child) .aui-dialog__content {
+        padding-bottom: 16px;
+      }
+    }
+
+    > ng-component {
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+      &:after {
+        clear: both;
+      }
+    }
+  }
+
+  &__header {
+    padding: $dialog-header-padding;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $dialog-header-color;
+    font-size: $dialog-header-font-size;
+
+    &-title {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: $dialog-header-line-height;
+    }
+
+    &-close {
+      margin-left: 16px;
+      font-size: 16px;
+      color: $color-text-help;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__content {
+    padding: $dialog-content-padding;
+    min-height: $dialog-content-min-height;
+  }
+
+  &__footer {
+    padding: $dialog-footer-padding;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
