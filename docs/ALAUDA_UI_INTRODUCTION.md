@@ -20,12 +20,6 @@
   - src: 源码
   - stories: demo app
 
-## Workflow
-
-1.  按规范提交代码并 PR，触发 bitbucket ci 测试。成员 approve 且测试通过后 merge 进 master
-2.  master 分支触发 cn [构建项目](https://enterprise.alauda.cn/console/build/config/detail/215bf840-160c-4714-800a-85bfe47e8a38)，构建的新镜像触发 [Jenkins 流水线](https://enterprise.alauda.cn/console/jenkins/pipelines/5c857f05-a706-4bc4-97e1-496c6c44b053)自动更新[服务](https://enterprise.alaudatech.cn/console/app_service/service/service_detail/k8s-cn-alauda-UI)
-3.  发版：需要手动修改 `package.json` 中的 `version` 的版本，并提交 `PR` 合并到 `master` 中，流水线检测到 `version` 发生变化会在 UI 规范群中发送通知确认是否确定发版。
-
 ## Coding Standards
 
 ### Angular
