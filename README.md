@@ -12,8 +12,8 @@
 - [Test](#test)
 - [Build Storybook](#build-storybook)
 - [Build Library](#build-library)
-- [LICENCE](#licence)
 - [Read More](#read-more)
+- [LICENCE](#licence)
 
 ## Online Demo
 
@@ -45,7 +45,7 @@ export class AppModule {}
 ## Development
 
 ```sh
-git clone git@bitbucket.org:mathildetech/alauda-ui.git
+git clone https://github.com/alauda/alauda-ui.git
 cd alauda-ui
 yarn install
 yarn start
@@ -77,12 +77,12 @@ yarn storybook:build
 yarn build
 ```
 
-## LICENCE
-
-[MIT](LICENCE) © [Alauda](http://www.alauda.io)
-
 ## Read More
 
 - [coding standards](./docs/CODING_STANDARDS.md)
 - [contributing](./docs/CONTRIBUTING.md)
 - [AOT notes](./docs/AOT_NOTES.md)
+
+## LICENCE
+
+[MIT](LICENCE) © [Alauda](http://www.alauda.io)
