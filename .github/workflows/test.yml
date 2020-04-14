@@ -3,7 +3,8 @@ name: Run unit test
 on: push
 
 jobs:
-  build:
+  run_unit_test:
+    name: Run unit test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

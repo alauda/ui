@@ -5,5 +5,9 @@
     "paths": {
       "@alauda/ui": ["src/public-api"]
     }
+  },
+  "exclude": ["./release"],
+  "angularCompilerOptions": {
+    "enableIvy": false
   }
 }

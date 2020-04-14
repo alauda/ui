@@ -1,5 +1,7 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   OnInit,
   ViewEncapsulation,
@@ -7,7 +9,8 @@ import {
 import { takeUntil } from 'rxjs/operators';
 
 import { Bem, buildBem } from '../../utils/bem';
-import { RadioComponent } from '../radio.component';
+import { BaseRadio } from '../base-radio';
+import { RadioGroupComponent } from '../radio-group/radio-group.component';
 import { RadioSize } from '../radio.types';
 
 @Component({
@@ -18,7 +21,7 @@ import { RadioSize } from '../radio.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class RadioButtonComponent extends RadioComponent implements OnInit {
+export class RadioButtonComponent extends BaseRadio implements OnInit {
   bem: Bem = buildBem('aui-radio-button');
 
   size = RadioSize.Medium;
@@ -28,6 +31,15 @@ export class RadioButtonComponent extends RadioComponent implements OnInit {
     return `${this.bem.block(this.size)} ${this.disabled ? 'isDisabled' : ''} ${
       this.checked ? 'isChecked' : ''
     } ${this.isPlain ? 'isPlain' : ''}`;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+  constructor(
+    radioGroup: RadioGroupComponent,
+    focusMonitor: FocusMonitor,
+    cdr: ChangeDetectorRef,
+  ) {
+    super(radioGroup, focusMonitor, cdr);
   }
 
   ngOnInit() {

@@ -5,7 +5,8 @@ on:
     branches: [master]
 
 jobs:
-  build:
+  deploy_stories:
+    name: Deploy stories
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
