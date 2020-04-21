@@ -22,6 +22,7 @@
   <div class="aui-accordion-item__content" role="region" [id]="id">
     <div class="aui-accordion-item__content-body" [hidden]="!expanded">
       <ng-content></ng-content>
+      <ng-template [ngTemplateOutlet]="lazyContentTpl"></ng-template>
     </div>
   </div>
 </div>
