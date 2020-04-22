@@ -25,16 +25,16 @@ import {
   preserveWhitespaces: false,
 })
 export class PageComponent {
-  @ContentChild(PageHeaderDirective, { read: TemplateRef, static: true })
+  @ContentChild(PageHeaderDirective, { read: TemplateRef })
   pageHeader: TemplateRef<any>;
 
-  @ContentChild(PageContentDirective, { read: TemplateRef, static: false })
+  @ContentChild(PageContentDirective, { read: TemplateRef })
   pageContent: TemplateRef<any>;
 
-  @ContentChild(PageSiderDirective, { read: TemplateRef, static: true })
+  @ContentChild(PageSiderDirective, { read: TemplateRef })
   pageSider: TemplateRef<any>;
 
-  @ContentChild(PageToolbarDirective, { read: TemplateRef, static: false })
+  @ContentChild(PageToolbarDirective, { read: TemplateRef })
   pageToolbar: TemplateRef<any>;
 
   @ContentChildren(PageSnackbarDirective, {
