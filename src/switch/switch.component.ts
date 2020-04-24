@@ -6,8 +6,6 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 import { CommonFormControl } from '../form/public-api';
 import { Bem, buildBem } from '../utils/bem';
@@ -35,14 +33,6 @@ export class SwitchComponent extends CommonFormControl<boolean> {
   @Input()
   loading = false;
 
-  checked = false;
-
-  value$: Observable<boolean> = this.value$$.asObservable().pipe(
-    tap(value => {
-      this.checked = value;
-    }),
-  );
-
   writeValue(value: boolean) {
     this.value$$.next(value);
   }
@@ -51,7 +41,7 @@ export class SwitchComponent extends CommonFormControl<boolean> {
     if (this.disabled) {
       return;
     }
-    this.emitValueChange(!this.checked);
+    this.emitValueChange(!this.snapshot.value);
   }
 
   onBlur() {

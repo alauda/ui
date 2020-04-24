@@ -57,7 +57,7 @@ export class CheckboxGroupComponent extends CommonFormControl<any[]> {
     }
     const values = this.checkboxes
       .filter(item =>
-        item === checkbox ? !item.snapshot.checked : item.snapshot.checked,
+        item === checkbox ? !item.snapshot.value : item.snapshot.value,
       )
       .map(item => item.label);
     this.emitValueChange(values);

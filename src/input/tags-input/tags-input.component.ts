@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { publishReplay, refCount, tap } from 'rxjs/operators';
 
 import { CommonFormControl } from '../../form/public-api';
 import { ComponentSize } from '../../types';
@@ -63,14 +63,12 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
 
   value$: Observable<string[]> = this.value$$.asObservable().pipe(
     tap(value => {
-      this.snapshot.tags = value;
+      this.snapshot.value = value;
       this.clearInput();
     }),
+    publishReplay(1),
+    refCount(),
   );
-
-  snapshot: { tags: string[] } = {
-    tags: [],
-  };
 
   focused = false;
 
@@ -100,7 +98,7 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
   }
 
   get displayPlaceholder() {
-    return !this.snapshot.tags.length && !this.focused;
+    return !this.snapshot.value.length && !this.focused;
   }
 
   constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {
@@ -112,7 +110,7 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
   }
 
   onRemove(index: number) {
-    this.emitValueChange(this.snapshot.tags.filter((_, i) => i !== index));
+    this.emitValueChange(this.snapshot.value.filter((_, i) => i !== index));
   }
 
   onInput() {
@@ -130,7 +128,7 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
   onKeyDown(event: KeyboardEvent) {
     const inputEl = event.target as HTMLInputElement;
     if (event.key === 'Backspace' && inputEl.value === '') {
-      this.onRemove(this.snapshot.tags.length - 1);
+      this.onRemove(this.snapshot.value.length - 1);
       event.stopPropagation();
       event.preventDefault();
     } else if (event.key === 'Enter') {
@@ -160,10 +158,10 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
     if (!this.allowEmpty && !value) {
       return;
     }
-    if (!this.allowRepeat && this.snapshot.tags.includes(value)) {
+    if (!this.allowRepeat && this.snapshot.value.includes(value)) {
       return;
     }
-    this.emitValueChange(this.snapshot.tags.concat(value));
+    this.emitValueChange(this.snapshot.value.concat(value));
   }
 
   private clearInput() {
