@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { Observable, ReplaySubject } from 'rxjs';
+import { publishReplay, refCount, tap } from 'rxjs/operators';
 
 import { coerceAttrBoolean } from '../utils/coercion';
 
@@ -16,7 +17,7 @@ import { coerceAttrBoolean } from '../utils/coercion';
  */
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
-export abstract class CommonFormControl<T> implements ControlValueAccessor {
+export class CommonFormControl<T> implements ControlValueAccessor {
   @Input()
   get disabled() {
     return this._disabled;
@@ -48,7 +49,15 @@ export abstract class CommonFormControl<T> implements ControlValueAccessor {
   private _value: T;
   private _disabled = false;
 
-  value$: Observable<T> = this.value$$.asObservable();
+  snapshot: { value: T } = { value: null };
+
+  value$: Observable<T> = this.value$$.asObservable().pipe(
+    tap(value => {
+      this.snapshot.value = value;
+    }),
+    publishReplay(1),
+    refCount(),
+  );
 
   constructor(protected cdr: ChangeDetectorRef) {}
 
@@ -60,11 +69,11 @@ export abstract class CommonFormControl<T> implements ControlValueAccessor {
     this.valueChange.emit(value);
   }
 
-  registerOnChange(fn: (_: T) => void): void {
+  registerOnChange(fn: (_: T) => void) {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: () => void): void {
+  registerOnTouched(fn: () => void) {
     this.onTouched = fn;
   }
 
@@ -73,7 +82,9 @@ export abstract class CommonFormControl<T> implements ControlValueAccessor {
     this.cdr.markForCheck();
   }
 
-  abstract writeValue(value: T): void;
+  writeValue(value: T) {
+    this.value$$.next(value);
+  }
 }
 
 /**

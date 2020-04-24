@@ -7,8 +7,6 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 import { CommonFormControl } from '../../form/public-api';
 import { ComponentSize } from '../../types';
@@ -61,12 +59,6 @@ export class NumberInputComponent extends CommonFormControl<number> {
 
   minDisabled = false;
   maxDisabled = false;
-  inputValue: number;
-  value$: Observable<number> = this.value$$.asObservable().pipe(
-    tap(value => {
-      this.inputValue = value;
-    }),
-  );
 
   constructor(protected cdr: ChangeDetectorRef) {
     super(cdr);
@@ -75,9 +67,9 @@ export class NumberInputComponent extends CommonFormControl<number> {
   changeHandle(event: KeyboardEvent) {
     const inputEl = event.target as HTMLInputElement;
     const value = inputEl.value;
-    inputEl.value = this.inputValue.toString();
+    inputEl.value = this.snapshot.value.toString();
     if (Number.isNaN(+value)) {
-      this.emitValueChange(this.inputValue);
+      this.emitValueChange(this.snapshot.value);
       return;
     }
     this.checkButtonAndSetValue(Number(value));
@@ -88,7 +80,7 @@ export class NumberInputComponent extends CommonFormControl<number> {
       return;
     }
     const step: number = isPositive ? this.step : -this.step;
-    const val: number = step + this.inputValue;
+    const val: number = step + this.snapshot.value;
     if (Number.isNaN(val)) {
       return;
     }

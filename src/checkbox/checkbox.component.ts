@@ -14,8 +14,8 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BehaviorSubject, Observable, Subject, combineLatest } from 'rxjs';
-import { map, takeUntil, tap } from 'rxjs/operators';
+import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 
 import { CommonFormControl } from '../form/public-api';
 
@@ -60,14 +60,6 @@ export class CheckboxComponent extends CommonFormControl<boolean>
   @ViewChild('elRef', { static: true })
   elRef: ElementRef;
 
-  value$: Observable<boolean> = this.value$$.asObservable().pipe(
-    tap(value => {
-      this.snapshot.checked = value;
-    }),
-  );
-
-  snapshot: { checked: boolean } = { checked: false };
-
   private readonly checkboxGroup: CheckboxGroupComponent;
   private _label: any;
   private readonly label$$ = new BehaviorSubject<any>(this.label);
@@ -77,7 +69,7 @@ export class CheckboxComponent extends CommonFormControl<boolean>
     cdr: ChangeDetectorRef,
     @Optional()
     @Inject(forwardRef(() => CheckboxGroupComponent))
-    checkboxGroup: any, // FIXME: workaround temporarily
+    checkboxGroup: CheckboxGroupComponent,
     private readonly focusMonitor: FocusMonitor,
   ) {
     super(cdr);
@@ -122,7 +114,7 @@ export class CheckboxComponent extends CommonFormControl<boolean>
     if (this.disabled) {
       return;
     }
-    this.emitValueChange(!this.snapshot.checked);
+    this.emitValueChange(!this.snapshot.value);
     if (this.checkboxGroup) {
       this.checkboxGroup.onCheckboxChange(this);
     }
