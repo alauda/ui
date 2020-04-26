@@ -61,6 +61,10 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
   @ViewChild('inputValueMirror', { static: true })
   inputValueMirror: ElementRef;
 
+  snapshot = {
+    value: [] as string[],
+  };
+
   value$: Observable<string[]> = this.value$$.asObservable().pipe(
     tap(value => {
       this.snapshot.value = value;
