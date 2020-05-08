@@ -24,7 +24,8 @@ export class IconComponent {
   icon = 'none';
 
   @Input()
-  link = '';
+  // default value related link: https://gist.github.com/leonderijke/c5cf7c5b2e424c0061d2
+  link = window.location.href.replace(window.location.hash, '');
 
   @Input()
   margin: 'left' | 'right';
