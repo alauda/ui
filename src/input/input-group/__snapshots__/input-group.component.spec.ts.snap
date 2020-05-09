@@ -35,7 +35,7 @@ exports[`InputGroupComponent should match snapshot 1`] = `
                 class="aui-icon aui-icon-search_s"
               >
                 <use
-                  xlink:href="#aui-icon-search_s"
+                  xlink:href="http://localhost/#aui-icon-search_s"
                 />
               </svg>
               

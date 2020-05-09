@@ -35,12 +35,12 @@ describe('InputNumberComponent', () => {
     const iconDecreaseEl = el.querySelector('.aui-number-input__decrease');
     expect(iconDecreaseEl).not.toBeNull();
     expect(iconDecreaseEl.querySelector('use').getAttribute('xlink:href')).toBe(
-      '#aui-icon-minus',
+      'http://localhost/#aui-icon-minus',
     );
     const iconIncreaseEl = el.querySelector('.aui-number-input__increase');
     expect(iconIncreaseEl).not.toBeNull();
     expect(iconIncreaseEl.querySelector('use').getAttribute('xlink:href')).toBe(
-      '#aui-icon-plus',
+      'http://localhost/#aui-icon-plus',
     );
     expect(inputEl).not.toBeNull();
     expect(inputEl.className).toContain('aui-input');

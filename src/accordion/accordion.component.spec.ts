@@ -24,7 +24,7 @@ describe('AccordionComponent', () => {
     expect(accordionItemHeaderEl).not.toBeNull();
     expect(
       accordionItemHeaderEl.querySelector('use').getAttribute('xlink:href'),
-    ).toBe('#aui-icon-angle_right');
+    ).toBe('http://localhost/#aui-icon-angle_right');
   });
 
   it('accordion item content show when click icon', () => {
