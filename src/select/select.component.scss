@@ -71,8 +71,6 @@
 aui-select.ng-invalid.ng-dirty,
 .ng-submitted aui-select.ng-invalid {
   .aui-input {
-    text-decoration: line-through;
-
     &,
     &:hover {
       border-color: $color-error;
