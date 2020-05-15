@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.9](https://github.com/alauda/alauda-ui/compare/v5.1.4...v5.1.9) (2020-05-15)
+
+
+### Features
+
+* common form control set snapshot by default ([a5782a5](https://github.com/alauda/alauda-ui/commit/a5782a5c99a124672ff3dd49bca02855d4f0ae46))
+* **accordion:** add lazy load to accordion item ([0370784](https://github.com/alauda/alauda-ui/commit/0370784b87ed6922e70e9d98ad93cfe802a0c108))
+* page sider static false ([0ed3881](https://github.com/alauda/alauda-ui/commit/0ed3881b7c69bdcfd3b6484af003076a476aef78))
+
+
+### Bug Fixes
+
+* toc container had multi instance ([43115e4](https://github.com/alauda/alauda-ui/commit/43115e4c9877142bc9eeb0a6d5e2e08c4e2f9aa6))
+* **select:** remove line through error style ([8a86be5](https://github.com/alauda/alauda-ui/commit/8a86be5a62bba2080875cc3366bdbb726903f2ea))
+* initial value snapshot of tags input ([af10c6f](https://github.com/alauda/alauda-ui/commit/af10c6f7c5b7cd737f21e2d64016d441236775a9))
+* radio button can't inject radio group ([c0f8e07](https://github.com/alauda/alauda-ui/commit/c0f8e07e902b15e05015cea2c9b9f627adc111fb))
+
 ### [5.1.8](https://github.com/alauda/alauda-ui/compare/v5.1.4...v5.1.8) (2020-05-12)
 
 
