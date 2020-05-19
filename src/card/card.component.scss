@@ -35,7 +35,7 @@ $b: aui-card;
   }
 
   &.hasDivider {
-    .#{$b} {
+    > .#{$b} {
       &__header {
         padding-bottom: 12px;
         border-bottom: $default-border;

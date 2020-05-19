@@ -10,6 +10,10 @@ storiesOf('Card', module).add('card', () => {
       <aui-card>
         <div auiCardHeader>header</div>
         <div style="line-height: 64px; background-color: #ededed;">content</div>
+        <aui-card [divider]="false">
+          <div auiCardHeader>header inside</div>
+          <div style="line-height: 64px; background-color: red;">content</div>
+        </aui-card>
       </aui-card>
 
       <aui-card [divider]="false">
