@@ -1,0 +1,214 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { ButtonModule, IconModule } from '@alauda/ui';
+import { moduleMetadata } from '@storybook/angular';
+
+<Meta
+  title="Button"
+  decorators={[
+    moduleMetadata({
+      imports: [ButtonModule, IconModule],
+    }),
+  ]}
+/>
+
+# Button
+
+点击操作按钮
+
+## 基本按钮
+
+<Preview>
+  <Story name="basic" height="60px">
+    {{
+      template: `
+        <button aui-button>默认按钮</button>
+        <button aui-button="primary">主要按钮</button>
+        <button aui-button="success">成功按钮</button>
+        <button aui-button="warning">警告按钮</button>
+        <button aui-button="danger">危险按钮</button>
+        <button aui-button="info">信息按钮</button>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 朴素按钮
+
+<Preview>
+  <Story name="plain" height="60px">
+    {{
+      template: `
+        <button aui-button [plain]="true">朴素按钮</button>
+        <button aui-button="primary" [plain]="true">主要按钮</button>
+        <button aui-button="success" [plain]="true">成功按钮</button>
+        <button aui-button="warning" [plain]="true">警告按钮</button>
+        <button aui-button="danger" [plain]="true">危险按钮</button>
+        <button aui-button="info" [plain]="true">信息按钮</button>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 圆角按钮
+
+<Preview>
+  <Story name="round" height="60px">
+    {{
+      template: `
+        <button aui-button [round]="true">圆角按钮</button>
+        <button aui-button="primary" [round]="true">主要按钮</button>
+        <button aui-button="success" [round]="true">成功按钮</button>
+        <button aui-button="warning" [round]="true">警告按钮</button>
+        <button aui-button="danger" [round]="true">危险按钮</button>
+        <button aui-button="info" [round]="true">信息按钮</button>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 禁用状态
+
+<Preview>
+  <Story name="disabled" height="100px">
+    {{
+      template: `
+        <button aui-button [disabled]="true">默认按钮</button>
+        <button aui-button="primary" [disabled]="true">主要按钮</button>
+        <button aui-button="success" [disabled]="true">成功按钮</button>
+        <button aui-button="warning" [disabled]="true">警告按钮</button>
+        <button aui-button="danger" [disabled]="true">危险按钮</button>
+        <button aui-button="info" [disabled]="true">信息按钮</button>
+        <br /><br />
+        <button aui-button [plain]="true" [disabled]="true">朴素按钮</button>
+        <button aui-button="primary" [plain]="true" [disabled]="true">主要按钮</button>
+        <button aui-button="success" [plain]="true" [disabled]="true">成功按钮</button>
+        <button aui-button="warning" [plain]="true" [disabled]="true">警告按钮</button>
+        <button aui-button="danger" [plain]="true" [disabled]="true">危险按钮</button>
+        <button aui-button="info" [plain]="true" [disabled]="true">信息按钮</button>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 文字按钮
+
+<Preview>
+  <Story name="text" height="60px">
+    {{
+      template: `
+        <button aui-button="text">文字按钮</button>
+        <button aui-button="text" [disabled]="true">文字按钮</button>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 图标按钮
+
+<Preview>
+  <Story name="icon" height="100px">
+    {{
+      template: `
+        <button aui-button [square]="true"><aui-icon icon="search_s"></aui-icon></button>
+        <button aui-button="primary" [square]="true"><aui-icon icon="search_s"></aui-icon></button>
+        <button aui-button="success" [square]="true"><aui-icon icon="search_s"></aui-icon></button>
+        <button aui-button="warning" [square]="true"><aui-icon icon="search_s"></aui-icon></button>
+        <button aui-button="danger" [square]="true"><aui-icon icon="search_s"></aui-icon></button>
+        <button aui-button="info" [square]="true"><aui-icon icon="search_s"></aui-icon></button>
+        <br />
+        <br />
+        <button aui-button [square]="true" [round]="true"><aui-icon icon="search_s"></aui-icon></button>
+        <button aui-button="primary" [square]="true" [round]="true"><aui-icon icon="search_s"></aui-icon></button>
+        <button aui-button="success" [square]="true" [round]="true"><aui-icon icon="search_s"></aui-icon></button>
+        <button aui-button="warning" [square]="true" [round]="true"><aui-icon icon="search_s"></aui-icon></button>
+        <button aui-button="danger" [square]="true" [round]="true"><aui-icon icon="search_s"></aui-icon></button>
+        <button aui-button="info" [square]="true" [round]="true"><aui-icon icon="search_s"></aui-icon></button>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 加载中
+
+<Preview>
+  <Story name="loading" height="60px">
+    {{
+      template: `
+        <button aui-button="primary" [loading]="true">主要按钮</button>
+        <button aui-button="primary" [plain]="true" [loading]="true">主要按钮</button>
+        <button aui-button="primary" [disabled]="true" [loading]="true">主要按钮</button>
+        <button aui-button="primary" [plain]="true" [disabled]="true" [loading]="true">主要按钮</button>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 尺寸
+
+<Preview>
+  <Story name="size" height="100px">
+    {{
+      template: `
+        <button aui-button size="large">大号按钮</button>
+        <button aui-button size="medium">默认按钮</button>
+        <button aui-button size="small">小号按钮</button>
+        <button aui-button size="mini">迷你按钮</button>
+        <br />
+        <br />
+        <button aui-button="text" size="large">大号文字按钮</button>
+        <button aui-button="text" size="medium">默认文字按钮</button>
+        <button aui-button="text" size="small">小号文字按钮</button>
+        <button aui-button="text" size="mini">迷你文字按钮</button>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 按钮组
+
+<Preview>
+  <Story name="button-group" height="100px">
+    {{
+      template: `
+        <aui-button-group>
+            <button aui-button="primary">
+                <aui-icon icon="angle_left"></aui-icon>
+                上一页
+            </button>
+            <button aui-button="primary">
+                下一页
+                <aui-icon icon="angle_right"></aui-icon>
+            </button>
+        </aui-button-group>
+        <br />
+        <br />
+        <aui-button-group>
+            <button aui-button="primary" [plain]="true" [square]="true">
+                <aui-icon icon="angle_double_left"></aui-icon>
+            </button>
+            <button aui-button="primary" [plain]="true" [square]="true">
+                <aui-icon icon="angle_left"></aui-icon>
+            </button>
+            <button aui-button="primary" [plain]="true" [square]="true">
+                <aui-icon icon="angle_right"></aui-icon>
+            </button>
+            <button aui-button="primary" [plain]="true" [square]="true">
+                <aui-icon icon="angle_double_right"></aui-icon>
+            </button>
+        </aui-button-group>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Inputs
+
+| 名称       | 类型       | 默认值             | 描述           |
+| ---------- | ---------- | ------------------ | -------------- |
+| aui-button | ButtonType | ButtonType.Default | 按钮类型       |
+| size       | ButtonSize | ButtonType.Medium  | 按钮大小       |
+| plain      | boolean    | false              | 是否为朴素按钮 |
+| round      | boolean    | false              | 是否为圆角     |
+| square     | boolean    | false              | 是否为正方形   |
+| disabled   | boolean    | false              | 是否禁用       |
+| loading    | boolean    | false              | 是否为加载状态 |
