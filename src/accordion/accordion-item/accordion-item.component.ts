@@ -67,7 +67,7 @@ export class AccordionItemComponent extends CdkAccordionItem
       // Render the content as soon as the accordion becomes open.
       this.opened
         .pipe(
-          startWith(null!),
+          startWith(null as void),
           filter(() => this.expanded),
           take(1),
         )
