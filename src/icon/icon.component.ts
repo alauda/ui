@@ -7,7 +7,7 @@ import {
 
 import { Bem, buildBem } from '../utils/bem';
 
-import { IconRegistryService } from './icon-registry.service';
+import { IconRegisterService } from './icon-register.service';
 
 let id = 0;
 
@@ -39,7 +39,7 @@ export class IconComponent {
 
   id = id++;
 
-  constructor(private readonly iconRegistryService: IconRegistryService) {}
+  constructor(private readonly iconRegistryService: IconRegisterService) {}
 
   private parseIcon(): [string, string] {
     const defaultPrefix = this.iconRegistryService.getDefaultIconPrefix();

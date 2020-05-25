@@ -9,7 +9,7 @@ import {
 } from './utils/errors';
 
 @Injectable()
-export class IconRegistryService {
+export class IconRegisterService {
   private defaultIconPrefix = 'aui-icon';
   private readonly doc: Document;
 
@@ -20,7 +20,7 @@ export class IconRegistryService {
     @Optional() private readonly httpClient: HttpClient,
   ) {
     this.doc = document;
-    this.registrySvgSymbolsByString(auiIcons);
+    this.registerSvgSymbolsByString(auiIcons);
   }
 
   getDefaultIconPrefix(): string {
@@ -31,7 +31,7 @@ export class IconRegistryService {
     this.defaultIconPrefix = prefix;
   }
 
-  registrySvgSymbolsByUrl(url: string) {
+  registerSvgSymbolsByUrl(url: string) {
     if (!this.httpClient) {
       throw getAuiIconNoHttpProviderError();
     }
@@ -41,7 +41,7 @@ export class IconRegistryService {
       })
       .subscribe(
         res => {
-          this.registrySvgSymbolsByString(res);
+          this.registerSvgSymbolsByString(res);
         },
         () => {
           throw getAuiIconFailedToLoadCustomIconFile(url);
@@ -49,7 +49,7 @@ export class IconRegistryService {
       );
   }
 
-  registrySvgSymbolsByString(str: string) {
+  registerSvgSymbolsByString(str: string) {
     this.appendSvg(str);
   }
 
@@ -62,20 +62,20 @@ export class IconRegistryService {
   }
 }
 
-export function ICON_REGISTRY_PROVIDER_FACTORY(
-  parentRegistry: IconRegistryService,
+export function ICON_REGISTER_PROVIDER_FACTORY(
+  parentRegister: IconRegisterService,
   document: Document,
   httpClient: HttpClient,
 ) {
-  return parentRegistry || new IconRegistryService(document, httpClient);
+  return parentRegister || new IconRegisterService(document, httpClient);
 }
 
-export const ICON_REGISTRY_SERVICE_PROVIDER = {
-  provide: IconRegistryService,
+export const ICON_REGISTER_SERVICE_PROVIDER = {
+  provide: IconRegisterService,
   deps: [
-    [new Optional(), new SkipSelf(), IconRegistryService],
+    [new Optional(), new SkipSelf(), IconRegisterService],
     [new Optional(), DOCUMENT],
     [new Optional(), HttpClient],
   ],
-  useFactory: ICON_REGISTRY_PROVIDER_FACTORY,
+  useFactory: ICON_REGISTER_PROVIDER_FACTORY,
 };
