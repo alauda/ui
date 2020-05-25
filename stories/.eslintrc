@@ -1,4 +1,11 @@
 {
+  "settings": {
+    "node": {
+      "allowModules": [
+        "@alauda/ui"
+      ]
+    }
+  },
   "rules": {
     "@typescript-eslint/no-extraneous-class": 0
   }

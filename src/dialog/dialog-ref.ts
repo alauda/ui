@@ -53,9 +53,7 @@ export class DialogRef<T = ComponentType<any>, R = any> {
   }
 
   updatePosition(): this {
-    this.getPositionStrategy()
-      .top('0')
-      .left('0');
+    this.getPositionStrategy().top('0').left('0');
     this.overlayRef.updatePosition();
     return this;
   }
