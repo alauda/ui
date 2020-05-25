@@ -4,11 +4,13 @@ on: pull_request
 
 jobs:
   run_unit_test:
-    name: Run unit test
+    name: Run lint and unit test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: yarn install
+      - name: Run lint
+        run: yarn lint
       - name: Run test
         run: yarn test:ci
