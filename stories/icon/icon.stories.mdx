@@ -1,7 +1,9 @@
-import { IconModule, ButtonModule } from '@alauda/ui';
 import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
+
 import { IconListComponent } from './icon-list/component';
+
+import { IconModule, ButtonModule } from '@alauda/ui';
 
 <Meta
   title="Icon"
@@ -64,16 +66,16 @@ export class AppModule {
 
 ## 图标列表
 
-<Story name="icon-list" height="600px">
+<Story name="icon-list" height="720px">
   {{ component: IconListComponent }}
 </Story>
 
 ## Inputs
 
-| 名称   | 类型   | 默认值  | 描述         |
-| ------ | ------ | ------- | ------------ |
-| icon   | string | -       | 图标名称     |
-| link   | string | -       | 外部图标地址 |
-| margin | 'left' \| 'right' | -            | 在图标一侧添加边距 |
-| size   | string | -       | 图标大小     |
-| color  | string | -       | 图标颜色     |
+| 名称   | 类型              | 默认值 | 描述               |
+| ------ | ----------------- | ------ | ------------------ |
+| icon   | string            | -      | 图标名称           |
+| link   | string            | -      | 外部图标地址       |
+| margin | 'left' \| 'right' | -      | 在图标一侧添加边距 |
+| size   | string            | -      | 图标大小           |
+| color  | string            | -      | 图标颜色           |
