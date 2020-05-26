@@ -12,7 +12,7 @@ ul {
 li {
   box-sizing: border-box;
   width: 20%;
-  height: 80px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
