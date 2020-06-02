@@ -74,7 +74,9 @@ export class AutocompleteComponent implements AfterContentInit {
       this.hasVisibleSuggestion$,
       this.placeholder.changes.pipe(
         startWith(this.placeholder),
-        map(list => !!list.length),
+        map(
+          (list: QueryList<AutocompletePlaceholderComponent>) => !!list.length,
+        ),
       ),
     ]).pipe(
       map(

@@ -61,7 +61,7 @@ export class DialogComponent {
       : {};
   }
 
-  constructor(private readonly elementRef: ElementRef) {}
+  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}
 
   attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {
     if (this.portalOutlet.hasAttached()) {

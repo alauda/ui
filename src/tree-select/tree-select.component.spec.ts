@@ -32,8 +32,7 @@ describe('TreeSelectComponent', () => {
     ins = fixture.componentInstance;
     debugEl = fixture.debugElement.query(By.css('.aui-tree-select'));
     el = debugEl.nativeElement;
-    inputEl = debugEl.query(By.css('.aui-input'))
-      .nativeElement as HTMLInputElement;
+    inputEl = debugEl.query(By.css('.aui-input')).nativeElement;
 
     inject([OverlayContainer], (overlayContainer: OverlayContainer) => {
       ocEl = overlayContainer.getContainerElement();

@@ -44,7 +44,7 @@ export class PlatformNavComponent {
   private findActivatedItem(key: NavItemKey) {
     const items =
       this.items ||
-      this.groups.reduce(
+      this.groups.reduce<NavItemConfig[]>(
         (prevValue, currValue) => [...prevValue, ...currValue.items],
         [],
       );
@@ -52,7 +52,7 @@ export class PlatformNavComponent {
   }
 
   private flatItems(items: NavItemConfig[]): NavItemConfig[] {
-    return items.reduce(
+    return items.reduce<NavItemConfig[]>(
       (prevValue, currValue) =>
         currValue.children
           ? [...prevValue, ...this.flatItems(currValue.children)]

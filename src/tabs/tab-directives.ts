@@ -89,7 +89,7 @@ export class TabLabelWrapperDirective {
     this.elementRef.nativeElement.focus();
   }
 
-  constructor(public elementRef: ElementRef) {}
+  constructor(public elementRef: ElementRef<HTMLElement>) {}
 }
 
 /**

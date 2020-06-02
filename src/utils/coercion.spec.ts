@@ -2,6 +2,7 @@ import { coerceAttrBoolean, coerceString } from './coercion';
 
 describe('coercion', () => {
   it('should coerce string correctly', () => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(coerceString(undefined)).toBe('');
     expect(coerceString(null)).toBe('');
     expect(coerceString('test')).toBe('test');
@@ -11,6 +12,7 @@ describe('coercion', () => {
 
   it('should coerce attribute boolean correctly', () => {
     expect(coerceAttrBoolean(null)).toBeFalsy();
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(coerceAttrBoolean(undefined)).toBeFalsy();
     expect(coerceAttrBoolean('')).toBeTruthy();
     expect(coerceAttrBoolean('false')).toBeTruthy();

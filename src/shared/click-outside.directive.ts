@@ -16,10 +16,10 @@ export class ClickOutsideDirective {
 
   @HostListener('body:click', ['$event'])
   onBodyClick(event: Event) {
-    if (!this.el.nativeElement.contains(event.target)) {
+    if (!this.el.nativeElement.contains(event.target as Node)) {
       this.auiClickOutside.emit(event);
     }
   }
 
-  constructor(private readonly el: ElementRef) {}
+  constructor(private readonly el: ElementRef<HTMLElement>) {}
 }

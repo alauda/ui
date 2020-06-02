@@ -25,7 +25,7 @@ export class TabHeaderActiveIndicatorComponent {
   bem: Bem = buildBem('aui-tab-header-active-indicator');
 
   constructor(
-    private readonly _elementRef: ElementRef,
+    private readonly _elementRef: ElementRef<HTMLElement>,
     private readonly _ngZone: NgZone,
   ) {}
 
@@ -50,7 +50,7 @@ export class TabHeaderActiveIndicatorComponent {
    */
   private _setStyles(element: HTMLElement) {
     const positions = this._getElementPosition(element);
-    const nativeEl: HTMLElement = this._elementRef.nativeElement;
+    const nativeEl = this._elementRef.nativeElement;
     nativeEl.style.left = positions.left;
     nativeEl.style.width = positions.width;
   }

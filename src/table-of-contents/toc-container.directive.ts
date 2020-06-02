@@ -60,7 +60,10 @@ export class TocContainerDirective implements AfterContentInit, OnDestroy {
     );
   }
 
-  constructor(elementRef: ElementRef, private readonly cdr: ChangeDetectorRef) {
+  constructor(
+    elementRef: ElementRef<HTMLElement>,
+    private readonly cdr: ChangeDetectorRef,
+  ) {
     this._nativeElement = elementRef.nativeElement;
   }
 
@@ -108,6 +111,7 @@ export class TocContainerDirective implements AfterContentInit, OnDestroy {
         debounceTime(200),
         map(scrollTop => {
           return this._contents.reduce(
+            // eslint-disable-next-line unicorn/no-fn-reference-in-iterator
             this.isScrollEnd
               ? this.getMaxContent.bind(this)
               : this.getMinContent(scrollTop),

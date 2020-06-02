@@ -23,7 +23,7 @@ export class TocContentDirective implements OnInit, OnDestroy {
   nativeElement: HTMLElement;
 
   constructor(
-    elemRef: ElementRef,
+    elemRef: ElementRef<HTMLElement>,
     @Optional() private readonly containerDirective: TocContainerDirective,
   ) {
     this.nativeElement = elemRef.nativeElement;

@@ -56,10 +56,10 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
   allowEmpty = false;
 
   @ViewChild('inputRef', { static: true })
-  inputRef: ElementRef;
+  inputRef: ElementRef<HTMLInputElement>;
 
   @ViewChild('inputValueMirror', { static: true })
-  inputValueMirror: ElementRef;
+  inputValueMirror: ElementRef<HTMLElement>;
 
   snapshot = {
     value: [] as string[],
@@ -82,9 +82,9 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
     const size = this.size || ComponentSize.Medium;
     return `aui-input ${this.bem.block(size)} ${
       this.disabled ? 'isDisabled' : ''
-    } ${this.focused ? 'isFocused' : ''} ${
-      this.clearable
-    } ? 'isClearable' : ''`;
+    } ${
+      this.focused ? 'isFocused' : ''
+    } ${this.clearable.toString()} ? 'isClearable' : ''`;
   }
 
   get tagSize() {

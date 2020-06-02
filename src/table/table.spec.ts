@@ -22,7 +22,9 @@ describe('Table', () => {
       const fixture = TestBed.createComponent(SimpleTableAppComponent);
       fixture.detectChanges();
 
-      const tableElement = fixture.nativeElement.querySelector('.aui-table');
+      const tableElement = (fixture.nativeElement as HTMLElement).querySelector(
+        '.aui-table',
+      );
       const data = fixture.componentInstance.dataSource.data;
       expectTableToMatchContent(tableElement, [
         ['Column A', 'Column B', 'Column C'],
@@ -130,8 +132,8 @@ class SimpleTableAppComponent {
 }
 
 // Utilities copied from CDKTable's spec
-function getElements(element: Element, query: string): Element[] {
-  return [].slice.call(element.querySelectorAll(query));
+function getElements(element: Element, query: string) {
+  return ([] as Element[]).slice.call(element.querySelectorAll(query));
 }
 
 function getHeaderRow(tableElement: Element): Element {
@@ -154,7 +156,7 @@ function getHeaderCells(tableElement: Element): Element[] {
 
 function expectTableToMatchContent(
   tableElement: Element,
-  expectedTableContent: any[],
+  expectedTableContent: string[][],
 ) {
   const missedExpectations: string[] = [];
   function checkCellContent(cell: Element, expectedTextContent: string) {

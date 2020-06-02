@@ -11,7 +11,7 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { Observable, ReplaySubject, merge } from 'rxjs';
+import { ReplaySubject, merge } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 import { sleep } from '../utils/async';
@@ -109,7 +109,7 @@ export class BaseTooltip implements TooltipInterface, AfterViewInit, OnDestroy {
   protected inputPosition$$ = new ReplaySubject<string>(1);
   protected inputClass$$ = new ReplaySubject<string>(1);
   protected inputContext$$ = new ReplaySubject<any>(1);
-  protected tooltipChanged$: Observable<void> = merge(
+  protected tooltipChanged$ = merge(
     this.inputContent$$,
     this.inputType$$,
     this.inputPosition$$,
@@ -128,7 +128,7 @@ export class BaseTooltip implements TooltipInterface, AfterViewInit, OnDestroy {
   constructor(
     protected overlay: Overlay,
     protected viewContainerRef: ViewContainerRef,
-    protected elRef: ElementRef,
+    protected elRef: ElementRef<HTMLInputElement>,
     protected renderer: Renderer2,
     protected cdr: ChangeDetectorRef,
     protected ngZone: NgZone,
@@ -319,9 +319,9 @@ export class BaseTooltip implements TooltipInterface, AfterViewInit, OnDestroy {
 
   protected onBodyClick(event: Event) {
     if (
-      !this.elRef.nativeElement.contains(event.target) &&
+      !this.elRef.nativeElement.contains(event.target as Node) &&
       (this.hideOnClick ||
-        !this.componentIns.elRef.nativeElement.contains(event.target))
+        !this.componentIns.elRef.nativeElement.contains(event.target as Node))
     ) {
       this.disposeTooltip();
     }

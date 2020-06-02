@@ -5,7 +5,7 @@ export type OptionFilterFn = (
   option: { label: string | TemplateRef<any>; value: any; labelContext: any },
 ) => boolean;
 
-export type TrackFn = (value: any) => any;
+export type TrackFn = <T = unknown>(value: T) => T;
 
 export type TagClassFn = (
   label: string,

@@ -25,7 +25,7 @@ export abstract class BaseMessage<
   Component extends MessageComponent,
   Config extends MessageConfig
 > {
-  wrapperInstance: { elementRef: ElementRef };
+  wrapperInstance: { elementRef: ElementRef<HTMLElement> };
   componentRefs: Array<ComponentRef<Component>> = [];
 
   constructor(
@@ -52,7 +52,7 @@ export abstract class BaseMessage<
           : this.globalConfig.duration[type],
       ...(content
         ? { type: config as MessageType, content }
-        : (config as object)),
+        : (config as Config)),
     } as Config;
 
     this.removeNeedless(mergedConfig.id);
@@ -69,7 +69,7 @@ export abstract class BaseMessage<
   createType(type: MessageType, option: Config | string) {
     return typeof option === 'string'
       ? this.create(type, option)
-      : this.create({ ...(option as object), type } as Config);
+      : this.create({ ...option, type } as Config);
   }
 
   success(option: Config | string): ComponentRef<Component> {

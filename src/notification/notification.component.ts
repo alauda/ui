@@ -43,7 +43,7 @@ export class NotificationComponent extends MessageComponent
 
   title: string;
   remains: number;
-  childComponentInstance: any;
+  childComponentInstance: unknown;
   customClass = '';
 
   @ViewChild(CdkPortalOutlet, { static: true })
@@ -114,7 +114,7 @@ export class NotificationComponent extends MessageComponent
     return this.portalOutlet.attachTemplatePortal(portal);
   }
 
-  private attachComponentRef(componentRef: ComponentFactory<void>) {
+  private attachComponentRef(componentRef: ComponentFactory<unknown>) {
     this.childComponentInstance = this.modalEl.createComponent(
       componentRef,
       null,

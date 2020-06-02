@@ -5,7 +5,7 @@ import { Component, Directive, ElementRef, OnInit } from '@angular/core';
   selector: '.palette__card',
 })
 export class PaletteCardDirective implements OnInit {
-  constructor(private readonly el: ElementRef) {}
+  constructor(private readonly el: ElementRef<HTMLElement>) {}
 
   ngOnInit() {
     const element = this.el.nativeElement;
