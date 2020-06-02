@@ -87,13 +87,11 @@ export class MessageComponent implements AfterViewInit {
         this.viewContainerRef.element &&
         event.toState === this.animateStartEnd
       ) {
-        this.viewContainerRef.element.nativeElement.parentElement.removeChild(
-          this.viewContainerRef.element.nativeElement,
-        );
+        (this.viewContainerRef.element.nativeElement as HTMLElement).remove();
         this.afterClosed.next();
         this.afterClosed.complete();
       }
-    } catch (err) {
+    } catch {
       throw new Error('No outer layer can be found!');
     }
   }

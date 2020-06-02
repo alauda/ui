@@ -8,7 +8,10 @@ import { Directive } from '@angular/core';
 @Directive({
   selector: '[auiTableHeaderCellDef]',
   providers: [
-    { provide: CdkHeaderCellDef, useExisting: TableHeaderCellDefDirective },
+    {
+      provide: CdkHeaderCellDef,
+      useExisting: TableHeaderCellDefDirective,
+    },
   ],
 })
 export class TableHeaderCellDefDirective extends CdkHeaderCellDef {}

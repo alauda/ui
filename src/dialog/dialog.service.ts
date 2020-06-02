@@ -51,7 +51,7 @@ export class DialogService {
 
     const overlayRef = this.createOverlay(config);
     const dialogIns = this.attachDialog(overlayRef, config);
-    const dialogRef = this.attachDialogContent(
+    const dialogRef = this.attachDialogContent<T, D, R>(
       compOrTempRef,
       dialogIns,
       overlayRef,
@@ -140,13 +140,13 @@ export class DialogService {
     return dialogRef.instance;
   }
 
-  private attachDialogContent<T>(
+  private attachDialogContent<T, D, R>(
     compOrTempRef: ComponentType<T> | TemplateRef<T>,
     dialogIns: DialogComponent,
     overlayRef: OverlayRef,
-    config: DialogConfig,
-  ): DialogRef<T> {
-    const dialogRef = new DialogRef<T>(
+    config: DialogConfig<D>,
+  ): DialogRef<T, R> {
+    const dialogRef = new DialogRef<T, R>(
       overlayRef,
       dialogIns,
       this.scrollDispatcher,
@@ -155,7 +155,7 @@ export class DialogService {
 
     if (compOrTempRef instanceof TemplateRef) {
       dialogIns.attachTemplatePortal(
-        new TemplatePortal<T>(compOrTempRef, null, {
+        new TemplatePortal(compOrTempRef, null, {
           $implicit: config.data,
         } as any),
       );

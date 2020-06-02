@@ -7,7 +7,12 @@ import { Directive, Input } from '@angular/core';
  */
 @Directive({
   selector: '[auiTableColumnDef]',
-  providers: [{ provide: CdkColumnDef, useExisting: TableColumnDefDirective }],
+  providers: [
+    {
+      provide: CdkColumnDef,
+      useExisting: TableColumnDefDirective,
+    },
+  ],
 })
 export class TableColumnDefDirective extends CdkColumnDef {
   /** Unique name for this column. */

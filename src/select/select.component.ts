@@ -44,14 +44,12 @@ import { OptionComponent } from './option/option.component';
     },
   ],
 })
-export class SelectComponent extends BaseSelect<any>
+export class SelectComponent extends BaseSelect<unknown>
   implements AfterContentInit {
   @ViewChild('inputRef', { static: true })
   inputRef: InputComponent;
 
-  values$: Observable<any[]> = this.value$$
-    .asObservable()
-    .pipe(map(val => [val]));
+  values$ = this.value$$.asObservable().pipe(map(val => [val]));
 
   selectedOption$: Observable<{
     label: string | TemplateRef<any>;
@@ -94,7 +92,7 @@ export class SelectComponent extends BaseSelect<any>
                       labelContext,
                     })),
                   )
-                : of(null),
+                : of(null as void),
             ),
           ),
         ),

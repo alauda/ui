@@ -92,7 +92,7 @@ export class TreeSelectComponent extends CommonFormControl<any> {
     return this._trackFn;
   }
 
-  set trackFn(val) {
+  set trackFn(val: TrackFn) {
     if (val !== this._trackFn) {
       this._trackFn = val;
       this.trackFn$$.next(val);
@@ -109,7 +109,7 @@ export class TreeSelectComponent extends CommonFormControl<any> {
   hide = new EventEmitter<void>();
 
   @ViewChild('selectRef', { static: true })
-  protected selectRef: ElementRef;
+  protected selectRef: ElementRef<HTMLElement>;
 
   @ViewChild('tooltipRef', { static: true })
   protected tooltipRef: TooltipDirective;
@@ -124,15 +124,13 @@ export class TreeSelectComponent extends CommonFormControl<any> {
   private _filterString = '';
   private _filterable = false;
   private _clearable = false;
-  private readonly filterString$$ = new BehaviorSubject<string>(
-    this.filterString,
-  );
+  private readonly filterString$$ = new BehaviorSubject(this.filterString);
 
   private readonly filterFn$$ = new BehaviorSubject<NodeFilterFn>(
     this.filterFn,
   );
 
-  private readonly trackFn$$ = new BehaviorSubject<TrackFn>(this.trackFn);
+  private readonly trackFn$$ = new BehaviorSubject(this.trackFn);
 
   trackFn$: Observable<TrackFn> = this.trackFn$$.asObservable();
   filterString$: Observable<string> = this.filterString$$.asObservable();
@@ -221,7 +219,7 @@ export class TreeSelectComponent extends CommonFormControl<any> {
       node => this.trackFn(node.value) === this.trackFn(value),
     );
     if (pickedNode) {
-      this.displayText = this.getLabelFromNode(pickedNode);
+      this.displayText = this.getLabelFromNode(pickedNode).toString();
     } else {
       this.displayText = coerceString(this.trackFn(value));
     }
@@ -272,7 +270,7 @@ export class TreeSelectComponent extends CommonFormControl<any> {
     return (node.label || node.value).toString().includes(filterString);
   }
 
-  private _trackFn(value: any) {
+  private _trackFn<T>(value: T) {
     return value;
   }
 }

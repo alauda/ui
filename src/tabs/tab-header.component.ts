@@ -125,13 +125,13 @@ export class TabHeaderComponent
   _labelWrappers: QueryList<TabLabelWrapperDirective>;
 
   @ViewChild('tabListContainer', { static: true })
-  _tabListContainer: ElementRef;
+  _tabListContainer: ElementRef<HTMLElement>;
 
   @ViewChild('tabList', { static: true })
-  _tabList: ElementRef;
+  _tabList: ElementRef<HTMLElement>;
 
   @ViewChild('paginationWrapper', { static: true })
-  _paginationWrapper: ElementRef;
+  _paginationWrapper: ElementRef<HTMLElement>;
 
   @ViewChild(TabHeaderActiveIndicatorComponent, { static: true })
   _activeIndicator: TabHeaderActiveIndicatorComponent;
@@ -375,10 +375,10 @@ export class TabHeaderComponent
     if (!isEnabled) {
       this.scrollDistance = 0;
     }
-    const detechChanges = isEnabled !== this._showPaginationControls;
+    const detectChanges = isEnabled !== this._showPaginationControls;
     this._showPaginationControls = isEnabled;
 
-    if (detechChanges) {
+    if (detectChanges) {
       this._changeDetectorRef.markForCheck();
     }
   }

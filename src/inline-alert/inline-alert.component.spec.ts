@@ -26,24 +26,24 @@ describe('InlineAlertComponent', () => {
     ins.title = 'text title 1';
     fixture.detectChanges();
     expect(
-      fixture.debugElement.query(
+      (fixture.debugElement.query(
         By.css('#inline-alert .aui-inline-alert__title'),
-      ).nativeElement.textContent,
+      ).nativeElement as HTMLElement).textContent,
     ).toContain('text title 1');
 
     ins.content = 'text content 1';
     fixture.detectChanges();
     expect(
-      fixture.debugElement.query(
+      (fixture.debugElement.query(
         By.css('#inline-alert .aui-inline-alert__content'),
-      ).nativeElement.textContent,
+      ).nativeElement as HTMLElement).textContent,
     ).toContain('text content 1');
   });
 
   it('should be closed by click close button', () => {
-    fixture.debugElement
-      .query(By.css('#inline-alert .aui-inline-alert__close'))
-      .nativeElement.click();
+    (fixture.debugElement.query(
+      By.css('#inline-alert .aui-inline-alert__close'),
+    ).nativeElement as HTMLElement).click();
     fixture.detectChanges();
     expect(
       fixture.debugElement.query(By.css('#inline-alert aui-inline-alert')),
@@ -55,9 +55,9 @@ describe('InlineAlertComponent', () => {
       ins.inlineAlertRef.close.subscribe(() => {
         resolve();
       });
-      fixture.debugElement
-        .query(By.css('#inline-alert .aui-inline-alert__close'))
-        .nativeElement.click();
+      (fixture.debugElement.query(
+        By.css('#inline-alert .aui-inline-alert__close'),
+      ).nativeElement as HTMLElement).click();
       fixture.detectChanges();
     });
   });
@@ -92,8 +92,8 @@ describe('InlineAlertComponent', () => {
       fixture.componentInstance.type = type;
       fixture.detectChanges();
       expect(
-        fixture.debugElement.query(By.css('#inline-alert .aui-inline-alert'))
-          .nativeElement.className,
+        (fixture.debugElement.query(By.css('#inline-alert .aui-inline-alert'))
+          .nativeElement as HTMLElement).className,
       ).toContain(`aui-inline-alert--${type}`);
     }
   });

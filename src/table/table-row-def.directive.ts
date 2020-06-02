@@ -8,7 +8,12 @@ import { Directive, Input } from '@angular/core';
  */
 @Directive({
   selector: '[auiTableRowDef]',
-  providers: [{ provide: CdkRowDef, useExisting: TableRowDefDirective }],
+  providers: [
+    {
+      provide: CdkRowDef,
+      useExisting: TableRowDefDirective,
+    },
+  ],
 })
 export class TableRowDefDirective<T> extends CdkRowDef<T> {
   @Input('auiTableRowDefColumns')

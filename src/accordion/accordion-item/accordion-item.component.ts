@@ -68,7 +68,7 @@ export class AccordionItemComponent extends CdkAccordionItem
       this.opened
         .pipe(
           startWith(null as void),
-          filter(() => this.expanded),
+          filter(() => !!this.expanded),
           take(1),
         )
         .subscribe(() => {

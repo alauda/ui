@@ -122,5 +122,9 @@ class TestComponent {
     },
   ];
 
-  onChunkClick: (status: Status) => {};
+  onChunkClick: (
+    status: Status,
+  ) => {
+    //
+  };
 }

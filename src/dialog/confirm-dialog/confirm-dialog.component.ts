@@ -58,7 +58,7 @@ export class ConfirmDialogComponent {
     try {
       const result = await new Promise(this.config.beforeConfirm);
       this.dialogRef.close({ confirm: true, result });
-    } catch (err) {
+    } catch {
     } finally {
       this.waitConfirm = false;
       this.cdr.markForCheck();
@@ -73,7 +73,7 @@ export class ConfirmDialogComponent {
     try {
       const result = await new Promise(this.config.beforeCancel);
       this.dialogRef.close({ confirm: false, result });
-    } catch (err) {
+    } catch {
     } finally {
       this.waitCancel = false;
       this.cdr.markForCheck();

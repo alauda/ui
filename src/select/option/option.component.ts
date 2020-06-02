@@ -38,14 +38,15 @@ export class OptionComponent {
 
   private _disabled = false;
   private _label: string | TemplateRef<any> = '';
-  private _labelContext: any = {};
-  private _value: any;
+  private _labelContext: unknown = {};
+  private _value: unknown;
   private readonly label$$ = new BehaviorSubject<string | TemplateRef<any>>(
     this.label,
   );
 
-  private readonly labelContext$$ = new BehaviorSubject<any>(this.labelContext);
-  private readonly value$$ = new BehaviorSubject<any>(this.value);
+  private readonly labelContext$$ = new BehaviorSubject(this.labelContext);
+
+  private readonly value$$ = new BehaviorSubject(this.value);
 
   @Input()
   get label() {
@@ -91,7 +92,7 @@ export class OptionComponent {
   @ViewChild('elRef', { static: true })
   elRef: ElementRef;
 
-  private readonly select: BaseSelect<any | any[]>;
+  private readonly select: BaseSelect<any>;
   selected = false;
   visible = true;
   size = ComponentSize.Medium;

@@ -26,40 +26,36 @@ describe('SwitchComponent', () => {
 
   it('should render correct with click event', () => {
     // not-switched => switched
-    fixture.debugElement
-      .query(By.css('#switch2 .aui-switch'))
-      .nativeElement.dispatchEvent(new Event('click'));
+    (fixture.debugElement.query(By.css('#switch2 .aui-switch'))
+      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(
-      fixture.debugElement.query(By.css('#switch2 .aui-switch')).nativeElement
-        .className,
+      (fixture.debugElement.query(By.css('#switch2 .aui-switch'))
+        .nativeElement as HTMLElement).className,
     ).toContain('isChecked');
 
     // switched => not-switched
-    fixture.debugElement
-      .query(By.css('#switch1 .aui-switch'))
-      .nativeElement.dispatchEvent(new Event('click'));
+    (fixture.debugElement.query(By.css('#switch1 .aui-switch'))
+      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(
-      fixture.debugElement.query(By.css('#switch1 .aui-switch')).nativeElement
-        .className,
+      (fixture.debugElement.query(By.css('#switch1 .aui-switch'))
+        .nativeElement as HTMLElement).className,
     ).not.toContain('isChecked');
 
     // disabled: switched => switched
-    fixture.debugElement
-      .query(By.css('#switch3 .aui-switch'))
-      .nativeElement.dispatchEvent(new Event('click'));
+    (fixture.debugElement.query(By.css('#switch3 .aui-switch'))
+      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(
-      fixture.debugElement.query(By.css('#switch3 .aui-switch')).nativeElement
-        .className,
+      (fixture.debugElement.query(By.css('#switch3 .aui-switch'))
+        .nativeElement as HTMLElement).className,
     ).toContain('isChecked');
   });
 
   it('should render correct with ngModel', fakeAsync(() => {
-    fixture.debugElement
-      .query(By.css('#switch4 .aui-switch'))
-      .nativeElement.dispatchEvent(new Event('click'));
+    (fixture.debugElement.query(By.css('#switch4 .aui-switch'))
+      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(ins.switchMap.d).toBe(false);
     ins.switchMap.d = true;
@@ -67,8 +63,8 @@ describe('SwitchComponent', () => {
     tick();
     fixture.detectChanges();
     expect(
-      fixture.debugElement.query(By.css('#switch4 .aui-switch')).nativeElement
-        .className,
+      (fixture.debugElement.query(By.css('#switch4 .aui-switch'))
+        .nativeElement as HTMLElement).className,
     ).toContain('isChecked');
   }));
 });

@@ -8,7 +8,10 @@ import { Directive, Input } from '@angular/core';
 @Directive({
   selector: '[auiTableHeaderRowDef]',
   providers: [
-    { provide: CdkHeaderRowDef, useExisting: TableHeaderRowDefDirective },
+    {
+      provide: CdkHeaderRowDef,
+      useExisting: TableHeaderRowDefDirective,
+    },
   ],
 })
 export class TableHeaderRowDefDirective extends CdkHeaderRowDef {

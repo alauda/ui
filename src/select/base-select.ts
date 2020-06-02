@@ -80,7 +80,7 @@ export abstract class BaseSelect<T> extends CommonFormControl<T>
     return this._trackFn;
   }
 
-  set trackFn(val) {
+  set trackFn(val: TrackFn) {
     if (val !== this._trackFn) {
       this._trackFn = val;
       this.trackFn$$.next(val);
@@ -97,10 +97,10 @@ export abstract class BaseSelect<T> extends CommonFormControl<T>
   }
 
   get allOptions() {
-    return [].concat(
-      this.customOptions ? this.customOptions.toArray() : [],
-      this.contentOptions ? this.contentOptions.toArray() : [],
-    );
+    return [
+      ...(this.customOptions ? this.customOptions.toArray() : []),
+      ...(this.contentOptions ? this.contentOptions.toArray() : []),
+    ];
   }
 
   get opened() {
@@ -142,7 +142,7 @@ export abstract class BaseSelect<T> extends CommonFormControl<T>
   hide = new EventEmitter<void>();
 
   @ViewChild('selectRef', { static: true })
-  protected selectRef: ElementRef;
+  protected selectRef: ElementRef<HTMLElement>;
 
   @ViewChild('tooltipRef', { static: true })
   protected tooltipRef: TooltipDirective;
@@ -162,7 +162,7 @@ export abstract class BaseSelect<T> extends CommonFormControl<T>
   /**
    * Utility field to make sure the users always see the value as type array
    */
-  abstract readonly values$: Observable<any[]>;
+  abstract readonly values$: Observable<unknown[]>;
 
   allOptions$: Observable<OptionComponent[]>;
 
@@ -192,7 +192,7 @@ export abstract class BaseSelect<T> extends CommonFormControl<T>
   filterFn$: Observable<OptionFilterFn> = this.filterFn$$.asObservable();
   hasVisibleOption$: Observable<boolean>;
   hasMatchedOption$: Observable<boolean>;
-  customCreatedValues$: Observable<string[]>;
+  customCreatedValues$: Observable<unknown[]>;
   containerWidth: string;
 
   ngAfterContentInit() {
@@ -229,10 +229,12 @@ export abstract class BaseSelect<T> extends CommonFormControl<T>
       this.customOptions.changes.pipe(startWith(this.customOptions)),
       this.contentOptions.changes.pipe(startWith(this.contentOptions)),
     ]).pipe(
-      map(([customOptions, contentOptions]) => [
-        ...customOptions.toArray(),
-        ...contentOptions.toArray(),
-      ]),
+      map(
+        ([customOptions, contentOptions]: [
+          QueryList<OptionComponent>,
+          QueryList<OptionComponent>,
+        ]) => [...customOptions.toArray(), ...contentOptions.toArray()],
+      ),
       publishReplay(1),
       refCount(),
     );
@@ -264,7 +266,7 @@ export abstract class BaseSelect<T> extends CommonFormControl<T>
       switchMap((options: QueryList<OptionComponent>) =>
         options.length > 0
           ? combineLatest(options.map(option => option.visible$))
-          : of([]),
+          : of([] as boolean[]),
       ),
       map(visible => visible.some(value => value)),
       publishReplay(1),
@@ -430,7 +432,7 @@ export abstract class BaseSelect<T> extends CommonFormControl<T>
     this.closeOption();
   }
 
-  private _trackFn(value: any) {
+  private _trackFn<T>(value: T) {
     return value;
   }
 
