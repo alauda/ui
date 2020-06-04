@@ -1,0 +1,111 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { FormsModule } from '@angular/forms';
+
+import { LoadingSwitchComponent } from './loading-switch/component';
+
+import { SwitchModule } from '@alauda/ui';
+
+<Meta
+  title="Switch"
+  decorators={[
+    moduleMetadata({
+      imports: [SwitchModule, FormsModule],
+      declarations: [LoadingSwitchComponent],
+    }),
+  ]}
+/>
+
+# Switch
+
+开关组件
+
+## 基本开关
+
+<Preview>
+  <Story name="basic" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-switch [(ngModel)]="data"></aui-switch>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 加载状态
+
+<Preview>
+  <Story name="loading" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-switch [(ngModel)]="data" [loading]="true"></aui-switch>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 禁用态
+
+<Preview>
+  <Story name="disabled" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-switch
+          style="margin-right:8px;"
+          [(ngModel)]="data"
+          [disabled]="true"
+        ></aui-switch>
+        <aui-switch [(ngModel)]="initData" [disabled]="true"></aui-switch>
+      `,
+      props: {
+        initData: true,
+      },
+    }}
+  </Story>
+</Preview>
+
+## 手动控制开关态
+
+可以人为驱动 switch 的状态变化，实现更加精细的控制
+
+```typescript
+@Component({
+  template: `
+    <aui-switch
+      [value]="data"
+      [loading]="loading"
+      (valueChange)="toggle()"
+    ></aui-switch>
+  `,
+})
+export class LoadingSwitchComponent {
+  data = false;
+  loading = false;
+
+  toggle() {
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+      this.data = !this.data;
+    }, 500);
+  }
+}
+```
+
+<Story name="manual" height="60px">
+  {{ component: LoadingSwitchComponent }}
+</Story>
+
+## Switch Inputs
+
+| 名称     | 类型    | 默认值 | 描述                  |
+| -------- | ------- | ------ | --------------------- |
+| value    | boolean | -      | switch value          |
+| disabled | boolean | false  | 禁用 switch           |
+| loading  | boolean | false  | 是否处于 loading 状态 |
+
+## Switch Outputs
+
+| 名称        | 回调参数 | 描述                 |
+| ----------- | -------- | -------------------- |
+| valueChange | void     | switch 的 value 变化 |

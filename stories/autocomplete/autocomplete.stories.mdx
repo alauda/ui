@@ -1,0 +1,146 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { AutocompleteModule, InputModule } from '@alauda/ui';
+
+<Meta
+  title="Autocomplete"
+  decorators={[
+    moduleMetadata({
+      imports: [AutocompleteModule, InputModule],
+    }),
+  ]}
+/>
+
+# Autocomplete
+
+自动补全组件
+
+## 基本自动补全
+
+<Preview>
+  <Story name="basic" height="260px">
+    {{
+      template: /* HTML */ `
+        <input aui-input [auiAutocomplete]="suggestions" placeholder="爱好" />
+        <aui-autocomplete #suggestions>
+          <aui-suggestion value="basketball">basketball</aui-suggestion>
+          <aui-suggestion value="swimming">swimming</aui-suggestion>
+          <aui-suggestion value="reading">reading</aui-suggestion>
+          <aui-suggestion value="baking">baking</aui-suggestion>
+          <aui-autocomplete-placeholder>
+            no suggestions
+          </aui-autocomplete-placeholder>
+        </aui-autocomplete>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 自动补全分组
+
+<Preview>
+  <Story name="suggestions group" height="360px">
+    {{
+      template: /* HTML */ `
+        <input aui-input [auiAutocomplete]="suggestions" placeholder="雇员" />
+        <aui-autocomplete #suggestions>
+          <aui-suggestion-group>
+            <div auiSuggestionGroupTitle>女性</div>
+            <aui-suggestion value="susan">susan</aui-suggestion>
+            <aui-suggestion value="mary">mary</aui-suggestion>
+            <aui-suggestion value="avril">avril</aui-suggestion>
+          </aui-suggestion-group>
+          <aui-suggestion-group>
+            <div auiSuggestionGroupTitle>男性</div>
+            <aui-suggestion value="john">john</aui-suggestion>
+            <aui-suggestion value="bob">bob</aui-suggestion>
+            <aui-suggestion value="david" [disabled]="true">
+              david
+            </aui-suggestion>
+          </aui-suggestion-group>
+          <aui-autocomplete-placeholder>
+            no suggestions
+          </aui-autocomplete-placeholder>
+        </aui-autocomplete>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 不默认选中第一个
+
+<Preview>
+  <Story name="not first" height="260px">
+    {{
+      template: /* HTML */ `
+        <input
+          aui-input
+          [auiAutocomplete]="suggestions"
+          [auiAutocompleteDefaultFirstSuggestion]="false"
+          placeholder="爱好"
+        />
+        <aui-autocomplete #suggestions>
+          <aui-suggestion value="basketball">basketball</aui-suggestion>
+          <aui-suggestion value="swimming">swimming</aui-suggestion>
+          <aui-suggestion value="reading">reading</aui-suggestion>
+          <aui-suggestion value="baking">baking</aui-suggestion>
+          <aui-autocomplete-placeholder>
+            no suggestions
+          </aui-autocomplete-placeholder>
+        </aui-autocomplete>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 点击不显示推荐项
+
+<Preview>
+  <Story name="no trigger" height="260px">
+    {{
+      template: /* HTML */ `
+        <input
+          aui-input
+          [auiAutocomplete]="suggestions"
+          auiAutocompleteTrigger="input"
+          placeholder="国家"
+        />
+        <aui-autocomplete #suggestions>
+          <aui-suggestion value="china">china</aui-suggestion>
+          <aui-suggestion value="america">america</aui-suggestion>
+          <aui-suggestion value="austria">austria</aui-suggestion>
+          <aui-suggestion value="english">english</aui-suggestion>
+          <aui-suggestion value="singapore">singapore</aui-suggestion>
+          <aui-autocomplete-placeholder>
+            no suggestions
+          </aui-autocomplete-placeholder>
+        </aui-autocomplete>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Autocomplete Inputs
+
+| 名称                                  | 类型                                              | 默认值 | 描述                                                                           |
+| ------------------------------------- | ------------------------------------------------- | ------ | ------------------------------------------------------------------------------ |
+| auiAutocomplete                       | NgTemplate                                        | -      | 自动补全组件模板引用                                                           |
+| auiAutocompleteClass                  | string                                            | -      | 向自动补全组件添加类名                                                         |
+| auiAutocompleteFilterFn               | function: (inputValue,suggestionValue) => boolean | -      | 自动补全过滤器,传入参数为当前输入文本和 suggestion 的 value 值，符合条件的显示 |
+| auiAutocompleteDefaultFirstSuggestion | boolean                                           | true   | 下拉时自动选中第一个，回车即可选中                                             |
+| auiAutocompleteTrigger                | 'auto' \| 'input'                                 | 'auto' | 点击输入框时是否显示推荐项，默认 auto 为显示                                   |
+
+## Autocomplete Outputs
+
+| 名称                | 回调参数 | 描述         |
+| ------------------- | -------- | ------------ |
+| auiAutocompleteShow | void     | 自动补全打开 |
+| auiAutocompleteHide | void     | 自动补全关闭 |
+
+## Suggestion Inputs
+
+| 名称     | 类型    | 默认值 | 描述                      |
+| -------- | ------- | ------ | ------------------------- |
+| value    | string  | -      | suggestion 条目对应的值   |
+| disabled | boolean | false  | 禁用 suggestion，不可选择 |
