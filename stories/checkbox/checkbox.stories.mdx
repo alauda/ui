@@ -1,0 +1,124 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { CheckboxModule } from '@alauda/ui';
+
+<Meta
+  title="Checkbox"
+  decorators={[
+    moduleMetadata({
+      imports: [CheckboxModule],
+    }),
+  ]}
+/>
+
+# Checkbox 多选框
+
+## 基本用法
+
+<Preview>
+  <Story name="basic" height="60px">
+    {{
+      template: `
+        <aui-checkbox
+            [(ngModel)]="model"
+          >
+            选项一
+          </aui-checkbox>
+      `,
+      props: {
+        model: false,
+      },
+    }}
+  </Story>
+</Preview>
+
+## 多选组合
+
+<Preview>
+  <Story name="group" height="60px">
+    {{
+      template: `
+        <aui-checkbox-group [(ngModel)]="model">
+          <aui-checkbox label="label1">选项一</aui-checkbox>
+          <aui-checkbox label="label2">选项二</aui-checkbox>
+          <aui-checkbox label="label3">选项三</aui-checkbox>
+        </aui-checkbox-group>
+      `,
+      props: {
+        model: ['label1'],
+      },
+    }}
+  </Story>
+</Preview>
+
+## 标签样式
+
+<Preview>
+  <Story name="tag" height="60px">
+    {{
+      template: `
+        <aui-checkbox-group [(ngModel)]="model">
+          <aui-checkbox label="label1">选项一</aui-checkbox>
+          <aui-checkbox label="label2" type="tag">选项二</aui-checkbox>
+          <aui-checkbox label="label3" type="tag">选项三</aui-checkbox>
+        </aui-checkbox-group>
+      `,
+      props: {
+        model: ['label1'],
+      },
+    }}
+  </Story>
+</Preview>
+
+## 不可用
+
+<Preview>
+  <Story name="disabled" height="60px">
+    {{
+      template: `
+        <aui-checkbox-group [(ngModel)]="model">
+          <aui-checkbox label="label1">选项一</aui-checkbox>
+          <aui-checkbox label="label2">选项二</aui-checkbox>
+          <aui-checkbox label="label3" [disabled]="true">选项三</aui-checkbox>
+        </aui-checkbox-group>
+      `,
+      props: {
+        model: ['label1'],
+      },
+    }}
+  </Story>
+</Preview>
+
+## 垂直布局
+
+<Preview>
+  <Story name="vertical" height="120px">
+    {{
+      template: `
+        <aui-checkbox-group [(ngModel)]="model" direction="column">
+          <aui-checkbox label="label1">选项一</aui-checkbox>
+          <aui-checkbox label="label2">选项二</aui-checkbox>
+          <aui-checkbox label="label3">选项三</aui-checkbox>
+        </aui-checkbox-group>
+      `,
+      props: {
+        model: ['label1'],
+      },
+    }}
+  </Story>
+</Preview>
+
+## Checkbox Group Inputs
+
+| 名称      | 类型              | 默认值 | 描述               |
+| --------- | ----------------- | ------ | ------------------ |
+| direction | 'row' \| 'column' | 'row'  | 按钮横纵向排列方式 |
+| trackFn   | Function          | -      | 值匹配规则         |
+
+## Checkbox Inputs
+
+| 名称     | 类型    | 默认值 | 描述       |
+| -------- | ------- | ------ | ---------- |
+| disabled | boolean | false  | 是否禁用   |
+| label    | string  | -      | 选项对应值 |
