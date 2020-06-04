@@ -113,8 +113,8 @@ $block: 'aui-radio-button';
   &--mini {
     .#{$block} {
       &__label {
-        height: $radio-button-small-height - $radio-border-width * 2;
-        padding: 0 $radio-button-small-padding-hoz;
+        height: $radio-button-mini-height - $radio-border-width * 2;
+        padding: 0 $radio-button-mini-padding-hoz;
       }
     }
   }
