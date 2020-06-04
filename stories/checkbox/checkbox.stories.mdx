@@ -19,8 +19,9 @@ import { CheckboxModule } from '@alauda/ui';
 <Preview>
   <Story name="basic" height="60px">
     {{
-      template: `
-        value: {{ model }}<br/>
+      template: /* HTML */ `
+        value: {{ model }}
+        <br />
         <aui-checkbox [(ngModel)]="model.a">选项A</aui-checkbox>
         <aui-checkbox [(ngModel)]="model.b">选项B</aui-checkbox>
       `,
@@ -39,8 +40,9 @@ import { CheckboxModule } from '@alauda/ui';
 <Preview>
   <Story name="group" height="60px">
     {{
-      template: `
-        value: {{ model }}<br/>
+      template: /* HTML */ `
+        value: {{ model }}
+        <br />
         <aui-checkbox-group [(ngModel)]="model">
           <aui-checkbox label="label1">选项一</aui-checkbox>
           <aui-checkbox label="label2">选项二</aui-checkbox>
@@ -59,8 +61,9 @@ import { CheckboxModule } from '@alauda/ui';
 <Preview>
   <Story name="tag" height="60px">
     {{
-      template: `
-        value: {{ model }}<br/>
+      template: /* HTML */ `
+        value: {{ model }}
+        <br />
         <aui-checkbox-group [(ngModel)]="model">
           <aui-checkbox label="label1">选项一</aui-checkbox>
           <aui-checkbox label="label2" type="tag">选项二</aui-checkbox>
@@ -79,8 +82,9 @@ import { CheckboxModule } from '@alauda/ui';
 <Preview>
   <Story name="disabled" height="60px">
     {{
-      template: `
-        value: {{ model }}<br/>
+      template: /* HTML */ `
+        value: {{ model }}
+        <br />
         <aui-checkbox-group [(ngModel)]="model">
           <aui-checkbox label="label1">选项一</aui-checkbox>
           <aui-checkbox label="label2">选项二</aui-checkbox>
@@ -99,8 +103,9 @@ import { CheckboxModule } from '@alauda/ui';
 <Preview>
   <Story name="vertical" height="120px">
     {{
-      template: `
-        value: {{ model }}<br/>
+      template: /* HTML */ `
+        value: {{ model }}
+        <br />
         <aui-checkbox-group [(ngModel)]="model" direction="column">
           <aui-checkbox label="label1">选项一</aui-checkbox>
           <aui-checkbox label="label2">选项二</aui-checkbox>

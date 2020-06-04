@@ -19,11 +19,11 @@ import { RadioModule } from '@alauda/ui';
 <Preview>
   <Story name="group" height="60px">
     {{
-      template: `
-        <aui-radio-group  [(ngModel)]="model">
-            <aui-radio value="1">选项一</aui-radio>
-            <aui-radio value="2">选项二</aui-radio>
-            <aui-radio value="3">选项三</aui-radio>
+      template: /* HTML */ `
+        <aui-radio-group [(ngModel)]="model">
+          <aui-radio value="1">选项一</aui-radio>
+          <aui-radio value="2">选项二</aui-radio>
+          <aui-radio value="3">选项三</aui-radio>
         </aui-radio-group>
       `,
       props: {
@@ -38,11 +38,11 @@ import { RadioModule } from '@alauda/ui';
 <Preview>
   <Story name="disabled" height="60px">
     {{
-      template: `
+      template: /* HTML */ `
         <aui-radio-group [(ngModel)]="model">
-            <aui-radio value="1">选项一</aui-radio>
-            <aui-radio value="2">选项二</aui-radio>
-            <aui-radio value="3" [disabled]="true">选项三</aui-radio>
+          <aui-radio value="1">选项一</aui-radio>
+          <aui-radio value="2">选项二</aui-radio>
+          <aui-radio value="3" [disabled]="true">选项三</aui-radio>
         </aui-radio-group>
       `,
       props: {
@@ -57,11 +57,11 @@ import { RadioModule } from '@alauda/ui';
 <Preview>
   <Story name="vertical" height="120px">
     {{
-      template: `
+      template: /* HTML */ `
         <aui-radio-group [(ngModel)]="model" direction="column">
-            <aui-radio value="1">选项一</aui-radio>
-            <aui-radio value="2">选项二</aui-radio>
-            <aui-radio value="3">选项三</aui-radio>
+          <aui-radio value="1">选项一</aui-radio>
+          <aui-radio value="2">选项二</aui-radio>
+          <aui-radio value="3">选项三</aui-radio>
         </aui-radio-group>
       `,
       props: {
@@ -76,12 +76,12 @@ import { RadioModule } from '@alauda/ui';
 <Preview>
   <Story name="button" height="60px">
     {{
-      template: `
+      template: /* HTML */ `
         <aui-radio-group [(ngModel)]="model">
-            <aui-radio-button value="1">选项一</aui-radio-button>
-            <aui-radio-button value="2">选项二</aui-radio-button>
-            <aui-radio-button value="3">选项三</aui-radio-button>
-          </aui-radio-group>
+          <aui-radio-button value="1">选项一</aui-radio-button>
+          <aui-radio-button value="2">选项二</aui-radio-button>
+          <aui-radio-button value="3">选项三</aui-radio-button>
+        </aui-radio-group>
       `,
       props: {
         model: '1',
@@ -95,12 +95,12 @@ import { RadioModule } from '@alauda/ui';
 <Preview>
   <Story name="button plain" height="60px">
     {{
-      template: `
+      template: /* HTML */ `
         <aui-radio-group [(ngModel)]="model" [plain]="false">
-            <aui-radio-button value="1">选项一</aui-radio-button>
-            <aui-radio-button value="2">选项二</aui-radio-button>
-            <aui-radio-button value="3">选项三</aui-radio-button>
-          </aui-radio-group>
+          <aui-radio-button value="1">选项一</aui-radio-button>
+          <aui-radio-button value="2">选项二</aui-radio-button>
+          <aui-radio-button value="3">选项三</aui-radio-button>
+        </aui-radio-group>
       `,
       props: {
         model: '1',
