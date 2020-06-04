@@ -1,0 +1,97 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
+import { BackTopModule } from '@alauda/ui';
+
+<Meta
+  title="BackTop"
+  decorators={[
+    moduleMetadata({
+      imports: [BackTopModule, ScrollingModule],
+    }),
+  ]}
+/>
+
+# BackTop
+
+返回顶部组件
+
+## 默认指定外部的 cdkScrollable 组件
+
+<Preview>
+  <Story name="inscroll" height="300px">
+    {{
+      template: /* HTML */ `
+        <div style="height:300px;overflow:auto;" cdkScrollable>
+          <div style="height:1000px">
+            选择外部的 cdkScrollable 组件作为指定滚动容器，尝试滚动此元素
+          </div>
+          <aui-back-top></aui-back-top>
+        </div>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 通过模板变量选择滚动容器
+
+<Preview>
+  <Story name="use element ref" height="300px">
+    {{
+      template: /* HTML */ `
+        <div style="height:300px;overflow:auto;" #containerRef>
+          <div style="height:1000px">
+            通过指定的 ElementRef 选择滚动容器，尝试滚动此元素
+          </div>
+        </div>
+        <aui-back-top [target]="containerRef"></aui-back-top>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 无外部滚动容器，默认根据 window
+
+<Preview>
+  <Story name="default window" height="300px">
+    {{
+      template: /* HTML */ `
+        <div style="height:1000px">
+          默认选择 window 作为滚动对象，尝试滚动此元素
+        </div>
+        <aui-back-top></aui-back-top>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 根据 selector 指定滚动容器
+
+<Preview>
+  <Story name="use selector" height="300px">
+    {{
+      template: /* HTML */ `
+        <div style="height:300px;overflow:auto;" class="target">
+          <div style="height:1000px">
+            通过选择器指定滚动容器，尝试滚动此元素
+          </div>
+        </div>
+        <aui-back-top target=".target"></aui-back-top>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Backtop Inputs
+
+| 名称             | 类型                        | 默认值 | 描述                                                                                                                       |
+| ---------------- | --------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------- |
+| visibilityHeight | number                      | 400    | 目标容器滚动到多高的距离，展示 backtop 按钮                                                                                |
+| target           | Element \| Window \| string | -      | 指定目标容器，可以指定 ElementRef，selector 来选择目标组件，不指定时优先选择外部的 cdkScrollable 组件，若没有则选择 window |
+
+## Backtop Outputs
+
+| 名称  | 回调参数 | 描述                   |
+| ----- | -------- | ---------------------- |
+| click | Event    | 点击返回顶部按钮时触发 |
