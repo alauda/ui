@@ -20,14 +20,15 @@ import { CheckboxModule } from '@alauda/ui';
   <Story name="basic" height="60px">
     {{
       template: `
-        <aui-checkbox
-            [(ngModel)]="model"
-          >
-            选项一
-          </aui-checkbox>
+        value: {{ model }}<br/>
+        <aui-checkbox [(ngModel)]="model.a">选项A</aui-checkbox>
+        <aui-checkbox [(ngModel)]="model.b">选项B</aui-checkbox>
       `,
       props: {
-        model: false,
+        model: {
+          a: true,
+          b: false,
+        },
       },
     }}
   </Story>
@@ -39,6 +40,7 @@ import { CheckboxModule } from '@alauda/ui';
   <Story name="group" height="60px">
     {{
       template: `
+        value: {{ model }}<br/>
         <aui-checkbox-group [(ngModel)]="model">
           <aui-checkbox label="label1">选项一</aui-checkbox>
           <aui-checkbox label="label2">选项二</aui-checkbox>
@@ -58,6 +60,7 @@ import { CheckboxModule } from '@alauda/ui';
   <Story name="tag" height="60px">
     {{
       template: `
+        value: {{ model }}<br/>
         <aui-checkbox-group [(ngModel)]="model">
           <aui-checkbox label="label1">选项一</aui-checkbox>
           <aui-checkbox label="label2" type="tag">选项二</aui-checkbox>
@@ -71,12 +74,13 @@ import { CheckboxModule } from '@alauda/ui';
   </Story>
 </Preview>
 
-## 不可用
+## 禁用状态
 
 <Preview>
   <Story name="disabled" height="60px">
     {{
       template: `
+        value: {{ model }}<br/>
         <aui-checkbox-group [(ngModel)]="model">
           <aui-checkbox label="label1">选项一</aui-checkbox>
           <aui-checkbox label="label2">选项二</aui-checkbox>
@@ -96,6 +100,7 @@ import { CheckboxModule } from '@alauda/ui';
   <Story name="vertical" height="120px">
     {{
       template: `
+        value: {{ model }}<br/>
         <aui-checkbox-group [(ngModel)]="model" direction="column">
           <aui-checkbox label="label1">选项一</aui-checkbox>
           <aui-checkbox label="label2">选项二</aui-checkbox>
@@ -111,14 +116,28 @@ import { CheckboxModule } from '@alauda/ui';
 
 ## Checkbox Group Inputs
 
-| 名称      | 类型              | 默认值 | 描述               |
-| --------- | ----------------- | ------ | ------------------ |
-| direction | 'row' \| 'column' | 'row'  | 按钮横纵向排列方式 |
-| trackFn   | Function          | -      | 值匹配规则         |
+| 名称      | 类型              | 默认值 | 描述                         |
+| --------- | ----------------- | ------ | ---------------------------- |
+| direction | 'row' \| 'column' | 'row'  | 按钮横纵向排列方式           |
+| trackFn   | Function          | -      | 值匹配规则                   |
+| value     | any               | -      | checkout group 的 value 变化 |
+
+## Checkbox Group Outputs
+
+| 名称        | 回调参数 | 描述                         |
+| ----------- | -------- | ---------------------------- |
+| valueChange | void     | checkbox group 的 value 变化 |
 
 ## Checkbox Inputs
 
-| 名称     | 类型    | 默认值 | 描述       |
-| -------- | ------- | ------ | ---------- |
-| disabled | boolean | false  | 是否禁用   |
-| label    | string  | -      | 选项对应值 |
+| 名称     | 类型    | 默认值            | 描述       |
+| -------- | ------- | ----------------- | ---------- |
+| disabled | boolean | false             | 是否禁用   |
+| label    | string  | -                 | 选项对应值 |
+| value    | boolean | checkbox 的 value |
+
+## Checkbox Group Outputs
+
+| 名称        | 回调参数 | 描述                         |
+| ----------- | -------- | ---------------------------- |
+| valueChange | void     | checkbox group 的 value 变化 |

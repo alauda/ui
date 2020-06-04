@@ -1,7 +1,7 @@
 import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
-import { RadioModule, RadioSize } from '@alauda/ui';
+import { RadioModule } from '@alauda/ui';
 
 <Meta
   title="Radio"
@@ -33,7 +33,7 @@ import { RadioModule, RadioSize } from '@alauda/ui';
   </Story>
 </Preview>
 
-## 单选组合 包含不可用选项
+## 禁用状态
 
 <Preview>
   <Story name="disabled" height="60px">
@@ -115,17 +115,17 @@ import { RadioModule, RadioSize } from '@alauda/ui';
   <Story name="button size" height="150px">
     {{
       template: `
-        <aui-radio-group [(ngModel)]="model" [size]="medium">
+        <aui-radio-group [(ngModel)]="model" size="medium">
             <aui-radio-button value="1">选项一</aui-radio-button>
             <aui-radio-button value="2">选项二</aui-radio-button>
             <aui-radio-button value="3">选项三</aui-radio-button>
           </aui-radio-group><br/><br/>
-        <aui-radio-group [(ngModel)]="model" [size]="small">
+        <aui-radio-group [(ngModel)]="model" size="small">
             <aui-radio-button value="1">选项一</aui-radio-button>
             <aui-radio-button value="2">选项二</aui-radio-button>
             <aui-radio-button value="3">选项三</aui-radio-button>
           </aui-radio-group><br/><br/>
-        <aui-radio-group [(ngModel)]="model" [size]="mini">
+        <aui-radio-group [(ngModel)]="model" size="mini">
             <aui-radio-button value="1">选项一</aui-radio-button>
             <aui-radio-button value="2">选项二</aui-radio-button>
             <aui-radio-button value="3">选项三</aui-radio-button>
@@ -133,9 +133,6 @@ import { RadioModule, RadioSize } from '@alauda/ui';
       `,
       props: {
         model: '1',
-        medium: RadioSize.Medium,
-        small: RadioSize.Small,
-        mini: RadioSize.Mini,
       },
     }}
   </Story>
@@ -143,13 +140,19 @@ import { RadioModule, RadioSize } from '@alauda/ui';
 
 ## Radio Group Inputs
 
-| 名称             | 类型              | 默认值           | 描述                                                |
-| ---------------- | ----------------- | ---------------- | --------------------------------------------------- |
-| name             | string            | -                | Radio group 下所有 input[type="radio"] 的 name 属性 |
-| direction        | 'row' \| 'column' | 'row'            | 按钮横纵向排列方式                                  |
-| size             | RadioSize         | RadioSize.Medium | 按钮大小（只针对按钮样式的组合）                    |
-| plain            | boolean           | true             | 是否为朴素按钮（只针对按钮样式的组合）              |
-| isPlain (已弃用) | boolean           | true             | 是否为朴素按钮 （只针对按钮样式的组合）             |
+| 名称      | 类型              | 默认值           | 描述                                                |
+| --------- | ----------------- | ---------------- | --------------------------------------------------- |
+| name      | string            | -                | Radio group 下所有 input[type="radio"] 的 name 属性 |
+| direction | 'row' \| 'column' | 'row'            | 按钮横纵向排列方式                                  |
+| size      | RadioSize         | RadioSize.Medium | 按钮大小（只针对按钮样式的组合）                    |
+| plain     | boolean           | true             | 是否为朴素按钮（只针对按钮样式的组合）              |
+| value     | any               | -                | Radio group 的 value                                |
+
+## Radio Group Outputs
+
+| 名称        | 回调参数 | 描述                      |
+| ----------- | -------- | ------------------------- |
+| valueChange | void     | Radio group 的 value 变化 |
 
 ## Radio / Radio Button Inputs
 
