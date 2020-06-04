@@ -7,6 +7,11 @@ import { Directive } from '@angular/core';
  */
 @Directive({
   selector: '[auiTableCellDef]',
-  providers: [{ provide: CdkCellDef, useExisting: TableCellDefDirective }],
+  providers: [
+    {
+      provide: CdkCellDef,
+      useExisting: TableCellDefDirective,
+    },
+  ],
 })
 export class TableCellDefDirective extends CdkCellDef {}

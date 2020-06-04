@@ -52,21 +52,21 @@ import { TagClassFn } from '../select.types';
     },
   ],
 })
-export class MultiSelectComponent extends BaseSelect<any[]>
+export class MultiSelectComponent extends BaseSelect<unknown[]>
   implements AfterContentInit {
   bem: Bem = buildBem('aui-multi-select');
   selectedOptions$: Observable<
     Array<{ value: any; label?: string | TemplateRef<any>; labelContext?: any }>
   >;
 
-  selectedValues: any[] = [];
-  values$: Observable<any[]> = this.value$$.asObservable();
+  selectedValues: unknown[] = [];
+  values$ = this.value$$.asObservable();
 
   @Input()
   tagClassFn: TagClassFn;
 
   @ViewChild('inputRef', { static: true })
-  inputRef: ElementRef;
+  inputRef: ElementRef<HTMLInputElement>;
 
   get rootClass() {
     const size = this.size || ComponentSize.Medium;
@@ -133,7 +133,11 @@ export class MultiSelectComponent extends BaseSelect<any[]>
                   ),
                 ),
               )
-            : of([]),
+            : of(
+                [] as Array<{
+                  value: unknown;
+                }>,
+              ),
         ),
       ),
       this.trackFn$,

@@ -36,7 +36,10 @@ export class TooltipComponent {
 
   hover$ = new Subject<boolean>();
 
-  constructor(public elRef: ElementRef, public cdr: ChangeDetectorRef) {}
+  constructor(
+    public elRef: ElementRef<HTMLElement>,
+    public cdr: ChangeDetectorRef,
+  ) {}
 
   setupInputs(inputs: {
     inputContent$: Observable<string | TemplateRef<any>>;

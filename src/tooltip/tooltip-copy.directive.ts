@@ -91,8 +91,7 @@ export class TooltipCopyDirective extends BaseTooltip implements OnInit {
       try {
         await clipboard.writeText(this.auiTooltipCopy);
         this.content = this.auiTooltipCopySuccessTip;
-      } catch (err) {
-        console.error(err);
+      } catch {
         this.content = this.auiTooltipCopyFailTip;
       }
     }

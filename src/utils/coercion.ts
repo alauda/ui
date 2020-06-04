@@ -1,4 +1,4 @@
-export function coerceString(val: any): string {
+export function coerceString(val: unknown): string {
   return val === undefined || val === null ? '' : val.toString();
 }
 

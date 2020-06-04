@@ -66,7 +66,7 @@ export class InputComponent {
   disabled$ = new BehaviorSubject<boolean>(this.disabled);
 
   constructor(
-    public elementRef: ElementRef,
+    public elementRef: ElementRef<HTMLInputElement>,
     private readonly renderer: Renderer2,
   ) {
     this.renderer.addClass(this.elementRef.nativeElement, 'aui-input');

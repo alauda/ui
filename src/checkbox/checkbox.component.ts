@@ -61,8 +61,8 @@ export class CheckboxComponent extends CommonFormControl<boolean>
   elRef: ElementRef;
 
   private readonly checkboxGroup: CheckboxGroupComponent;
-  private _label: any;
-  private readonly label$$ = new BehaviorSubject<any>(this.label);
+  private _label: unknown;
+  private readonly label$$ = new BehaviorSubject(this.label);
   private readonly destroy$$ = new Subject<void>();
 
   constructor(
@@ -80,15 +80,12 @@ export class CheckboxComponent extends CommonFormControl<boolean>
           takeUntil(this.destroy$$),
           map(([value, label]) => {
             if (this.checkboxGroup.trackFn) {
-              return (
-                value &&
-                value.some(v => {
-                  return (
-                    this.checkboxGroup.trackFn(v) ===
-                    this.checkboxGroup.trackFn(label)
-                  );
-                })
-              );
+              return value?.some(v => {
+                return (
+                  this.checkboxGroup.trackFn(v) ===
+                  this.checkboxGroup.trackFn(label)
+                );
+              });
             }
             return value?.includes(label);
           }),

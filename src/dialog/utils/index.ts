@@ -6,7 +6,7 @@ export function getClosestDialog(
   element: ElementRef,
   openDialogs: Array<DialogRef<any>>,
 ) {
-  let parent: HTMLElement | null = element.nativeElement.parentElement;
+  let parent = (element.nativeElement as HTMLElement).parentElement;
 
   while (parent?.tagName !== 'AUI-DIALOG') {
     parent = parent.parentElement;

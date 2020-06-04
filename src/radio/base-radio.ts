@@ -37,8 +37,8 @@ export class BaseRadio implements OnInit, AfterViewInit, OnDestroy {
   checked = false;
   name = '';
 
-  protected _value: any;
-  protected readonly value$$ = new BehaviorSubject<any>(this.value);
+  protected _value: unknown;
+  protected readonly value$$ = new BehaviorSubject(this.value);
   protected destroy$$ = new Subject<void>();
 
   constructor(

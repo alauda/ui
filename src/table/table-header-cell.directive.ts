@@ -15,7 +15,7 @@ const bem = buildBem('aui-table');
   },
 })
 export class TableHeaderCellDirective extends CdkHeaderCell {
-  constructor(columnDef: CdkColumnDef, elementRef: ElementRef) {
+  constructor(columnDef: CdkColumnDef, elementRef: ElementRef<HTMLElement>) {
     super(columnDef, elementRef);
     elementRef.nativeElement.classList.add(
       bem.element(`column-${columnDef.cssClassFriendlyName}`),

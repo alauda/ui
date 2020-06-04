@@ -16,7 +16,7 @@ describe('RadioComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
   let ins: TestComponent;
   let buttonDebug: DebugElement;
-  let buttonEl: HTMLInputElement;
+  let buttonEl: HTMLButtonElement;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -51,13 +51,12 @@ describe('RadioComponent', () => {
   }));
 
   it('should ngModel work', fakeAsync(() => {
-    fixture.debugElement
-      .query(By.css('#btn2 input'))
-      .nativeElement.dispatchEvent(new Event('click'));
+    (fixture.debugElement.query(By.css('#btn2 input'))
+      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(
-      fixture.debugElement.query(By.css('#btn2 .aui-radio-button'))
-        .nativeElement.classList,
+      (fixture.debugElement.query(By.css('#btn2 .aui-radio-button'))
+        .nativeElement as HTMLElement).classList,
     ).toContain('isChecked');
     expect(ins.food).toEqual('8');
 
@@ -66,17 +65,16 @@ describe('RadioComponent', () => {
     tick();
     fixture.detectChanges();
     expect(
-      fixture.debugElement.query(By.css('#btn1 .aui-radio-button'))
-        .nativeElement.classList,
+      (fixture.debugElement.query(By.css('#btn1 .aui-radio-button'))
+        .nativeElement as HTMLElement).classList,
     ).toContain('isChecked');
 
-    fixture.debugElement
-      .query(By.css('#btn3 input'))
-      .nativeElement.dispatchEvent(new Event('click'));
+    (fixture.debugElement.query(By.css('#btn3 input'))
+      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(
-      fixture.debugElement.query(By.css('#btn3 .aui-radio-button'))
-        .nativeElement.classList,
+      (fixture.debugElement.query(By.css('#btn3 .aui-radio-button'))
+        .nativeElement as HTMLElement).classList,
     ).toContain('isChecked');
   }));
 });

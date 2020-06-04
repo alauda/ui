@@ -7,10 +7,10 @@ import {
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/angular';
 
-const trackFn = (val: any) => val?.key || val;
+const trackFn = (val: any): string => val?.key || val;
 const filterFn = (filter: string, option: OptionComponent) =>
   trackFn(option.value).includes(filter);
-const tagClassFn = (_: string, tag: any) => `tag-${tag.key}`;
+const tagClassFn = (_: string, tag: { key: string }) => `tag-${tag.key}`;
 
 storiesOf('Select', module)
   .addDecorator(withKnobs)

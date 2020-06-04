@@ -10,7 +10,12 @@ import { By } from '@angular/platform-browser';
 
 import { LifeCycle, LifeCycleDirective } from '../utils/life-cycle';
 
-import { TabComponent, TabGroupComponent, TabsModule } from './public-api';
+import {
+  TabChangeEvent,
+  TabComponent,
+  TabGroupComponent,
+  TabsModule,
+} from './public-api';
 
 describe('TabGroupComponent', () => {
   beforeEach(() => {
@@ -32,18 +37,19 @@ describe('TabGroupComponent', () => {
     });
 
     it('should change selected index on click', fakeAsync(() => {
-      const component = fixture.debugElement.componentInstance;
+      const component = fixture.debugElement
+        .componentInstance as TabGroupComponent;
       component.selectedIndex = 0;
       checkSelectedIndex(0, fixture);
 
       // select the second tab
       let tabLabel = fixture.debugElement.queryAll(By.css('.aui-tab-label'))[1];
-      tabLabel.nativeElement.click();
+      (tabLabel.nativeElement as HTMLElement).click();
       checkSelectedIndex(1, fixture);
 
       // select the third tab
       tabLabel = fixture.debugElement.queryAll(By.css('.aui-tab-label'))[2];
-      tabLabel.nativeElement.click();
+      (tabLabel.nativeElement as HTMLElement).click();
       fixture.detectChanges();
       tick();
       checkSelectedIndex(2, fixture);
@@ -56,7 +62,7 @@ describe('TabGroupComponent', () => {
       const tabLabel = fixture.debugElement.queryAll(
         By.css('.aui-tab-label'),
       )[1];
-      tabLabel.nativeElement.click();
+      (tabLabel.nativeElement as HTMLElement).click();
       fixture.detectChanges();
       tick();
       expect(component.selectedIndex).toBe(1);
@@ -83,7 +89,7 @@ describe('TabGroupComponent', () => {
     it('should change tabs based on selectedIndex', fakeAsync(() => {
       const component = fixture.componentInstance;
       const tabComponent = fixture.debugElement.query(By.css('aui-tab-group'))
-        .componentInstance;
+        .componentInstance as TabGroupComponent;
       // eslint-disable-next-line jest/no-jasmine-globals
       spyOn(component, 'handleSelection').and.callThrough();
       checkSelectedIndex(0, fixture);
@@ -97,7 +103,7 @@ describe('TabGroupComponent', () => {
     it('should handle auiTabContent correctly for lazy loaded tabs', fakeAsync(() => {
       const component = fixture.componentInstance;
       const tabComponent = fixture.debugElement.query(By.css('aui-tab-group'))
-        .componentInstance;
+        .componentInstance as TabGroupComponent;
 
       // At first there should no created tabs:
       expect(component.createdTabsCounter).toBe(0);
@@ -131,7 +137,7 @@ describe('TabGroupComponent', () => {
     it('should handle auiTabContent correctly for true lazy loading tabs', fakeAsync(() => {
       const component = fixture.componentInstance;
       const tabComponent = fixture.debugElement.query(By.css('aui-tab-group'))
-        .componentInstance;
+        .componentInstance as TabGroupComponent;
 
       component.setLazy(true);
 
@@ -167,7 +173,7 @@ describe('TabGroupComponent', () => {
     it('should clear lazy loaded tabs after lazy changed to false', fakeAsync(() => {
       const component = fixture.componentInstance;
       const tabComponent = fixture.debugElement.query(By.css('aui-tab-group'))
-        .componentInstance;
+        .componentInstance as TabGroupComponent;
 
       component.setLazy(true);
 
@@ -203,10 +209,9 @@ describe('TabGroupComponent', () => {
 
     it('should update tab positions when selected index is changed', () => {
       fixture.detectChanges();
-      const component: TabGroupComponent = fixture.debugElement.query(
-        By.css('aui-tab-group'),
-      ).componentInstance;
-      const tabs: TabComponent[] = component._tabs.toArray();
+      const component = fixture.debugElement.query(By.css('aui-tab-group'))
+        .componentInstance as TabGroupComponent;
+      const tabs = component._tabs.toArray();
       expect(tabs[0].position).toBe(0);
       expect(tabs[1].position).toBeGreaterThan(0);
       expect(tabs[2].position).toBeGreaterThan(0);
@@ -226,9 +231,8 @@ describe('TabGroupComponent', () => {
 
     it('should clamp the selected index to the size of the number of tabs', () => {
       fixture.detectChanges();
-      const component: TabGroupComponent = fixture.debugElement.query(
-        By.css('aui-tab-group'),
-      ).componentInstance;
+      const component = fixture.debugElement.query(By.css('aui-tab-group'))
+        .componentInstance as TabGroupComponent;
       // Set the index to be negative, expect first tab selected
       fixture.componentInstance.selectedIndex = -1;
       fixture.detectChanges();
@@ -240,7 +244,8 @@ describe('TabGroupComponent', () => {
     });
 
     it('should not crash when setting the selected index to NaN', () => {
-      const component = fixture.debugElement.componentInstance;
+      const component = fixture.debugElement
+        .componentInstance as TabGroupComponent;
       expect(() => {
         component.selectedIndex = NaN;
         fixture.detectChanges();
@@ -273,13 +278,12 @@ function checkSelectedIndex(
   fixture: ComponentFixture<any>,
 ) {
   fixture.detectChanges();
-  const tabComponent: TabGroupComponent = fixture.debugElement.query(
-    By.css('aui-tab-group'),
-  ).componentInstance;
+  const tabComponent = fixture.debugElement.query(By.css('aui-tab-group'))
+    .componentInstance as TabGroupComponent;
   expect(tabComponent.selectedIndex).toBe(expectedIndex);
   const tabLabelElement = fixture.debugElement.query(
     By.css(`.aui-tab-label:nth-of-type(${expectedIndex + 1})`),
-  ).nativeElement;
+  ).nativeElement as HTMLElement;
   expect(tabLabelElement.classList.contains('isActive')).toBe(true);
 }
 
@@ -324,8 +328,7 @@ class SimpleTabsTestAppComponent {
 
   selectedIndex = 0;
   createdTabsCounter = 0;
-  focusEvent: any;
-  selectEvent: any;
+  selectEvent: TabChangeEvent;
 
   lazy = false;
 
@@ -333,7 +336,7 @@ class SimpleTabsTestAppComponent {
     this.lazy = lazy;
   }
 
-  handleSelection(event: any) {
+  handleSelection(event: TabChangeEvent) {
     this.selectEvent = event;
   }
 

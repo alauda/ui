@@ -20,7 +20,7 @@ describe('AccordionComponent', () => {
     fixture.detectChanges();
     const accordionItemHeaderEl = fixture.debugElement.query(
       By.css('.aui-accordion-item__header-toggle'),
-    ).nativeElement;
+    ).nativeElement as HTMLElement;
     expect(accordionItemHeaderEl).not.toBeNull();
     expect(
       accordionItemHeaderEl.querySelector('use').getAttribute('xlink:href'),
@@ -31,13 +31,13 @@ describe('AccordionComponent', () => {
     fixture.detectChanges();
     const accordionItemHeaderEl = fixture.debugElement.query(
       By.css('.aui-accordion-item__header'),
-    ).nativeElement;
+    ).nativeElement as HTMLElement;
     accordionItemHeaderEl.dispatchEvent(new Event('click'));
 
     fixture.detectChanges();
     const accordionContentBodyEl = fixture.debugElement.query(
       By.css('.aui-accordion-item__content-body'),
-    ).nativeElement;
+    ).nativeElement as HTMLElement;
     expect(accordionContentBodyEl.hidden).toBeFalsy();
   });
 });

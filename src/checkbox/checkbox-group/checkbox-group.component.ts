@@ -27,7 +27,7 @@ import { CheckboxComponent } from '../checkbox.component';
     },
   ],
 })
-export class CheckboxGroupComponent extends CommonFormControl<any[]> {
+export class CheckboxGroupComponent extends CommonFormControl<unknown[]> {
   private _trackFn: TrackFn;
 
   @Input()

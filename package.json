@@ -45,8 +45,8 @@
     "rxjs": "^6.0.0"
   },
   "devDependencies": {
-    "@1stg/app-config": "^0.5.1",
-    "@1stg/lib-config": "^0.5.1",
+    "@1stg/app-config": "^0.5.3",
+    "@1stg/lib-config": "^0.5.3",
     "@1stg/tslint-config": "^0.8.3",
     "@angular-devkit/build-angular": "^0.901.1",
     "@angular-devkit/core": "^9.1.1",
@@ -120,6 +120,7 @@
     ],
     "rules": {
       "@typescript-eslint/no-misused-promises": 0,
+      "accessor-pairs": 0,
       "prefer-promise-reject-errors": 0
     }
   },
