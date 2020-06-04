@@ -1,0 +1,162 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { RadioModule } from '@alauda/ui';
+
+<Meta
+  title="Radio"
+  decorators={[
+    moduleMetadata({
+      imports: [RadioModule],
+    }),
+  ]}
+/>
+
+# Radio 单选框
+
+## 单选组合
+
+<Preview>
+  <Story name="group" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-radio-group [(ngModel)]="model">
+          <aui-radio value="1">选项一</aui-radio>
+          <aui-radio value="2">选项二</aui-radio>
+          <aui-radio value="3">选项三</aui-radio>
+        </aui-radio-group>
+      `,
+      props: {
+        model: '1',
+      },
+    }}
+  </Story>
+</Preview>
+
+## 禁用状态
+
+<Preview>
+  <Story name="disabled" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-radio-group [(ngModel)]="model">
+          <aui-radio value="1">选项一</aui-radio>
+          <aui-radio value="2">选项二</aui-radio>
+          <aui-radio value="3" [disabled]="true">选项三</aui-radio>
+        </aui-radio-group>
+      `,
+      props: {
+        model: '1',
+      },
+    }}
+  </Story>
+</Preview>
+
+## 单选组合 垂直
+
+<Preview>
+  <Story name="vertical" height="120px">
+    {{
+      template: /* HTML */ `
+        <aui-radio-group [(ngModel)]="model" direction="column">
+          <aui-radio value="1">选项一</aui-radio>
+          <aui-radio value="2">选项二</aui-radio>
+          <aui-radio value="3">选项三</aui-radio>
+        </aui-radio-group>
+      `,
+      props: {
+        model: '1',
+      },
+    }}
+  </Story>
+</Preview>
+
+## 按钮样式组合
+
+<Preview>
+  <Story name="button" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-radio-group [(ngModel)]="model">
+          <aui-radio-button value="1">选项一</aui-radio-button>
+          <aui-radio-button value="2">选项二</aui-radio-button>
+          <aui-radio-button value="3">选项三</aui-radio-button>
+        </aui-radio-group>
+      `,
+      props: {
+        model: '1',
+      },
+    }}
+  </Story>
+</Preview>
+
+## 按钮样式组合 实色填底
+
+<Preview>
+  <Story name="button plain" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-radio-group [(ngModel)]="model" [plain]="false">
+          <aui-radio-button value="1">选项一</aui-radio-button>
+          <aui-radio-button value="2">选项二</aui-radio-button>
+          <aui-radio-button value="3">选项三</aui-radio-button>
+        </aui-radio-group>
+      `,
+      props: {
+        model: '1',
+      },
+    }}
+  </Story>
+</Preview>
+
+## 按钮样式组合 尺寸
+
+<Preview>
+  <Story name="button size" height="150px">
+    {{
+      template: `
+        <aui-radio-group [(ngModel)]="model" size="medium">
+            <aui-radio-button value="1">选项一</aui-radio-button>
+            <aui-radio-button value="2">选项二</aui-radio-button>
+            <aui-radio-button value="3">选项三</aui-radio-button>
+          </aui-radio-group><br/><br/>
+        <aui-radio-group [(ngModel)]="model" size="small">
+            <aui-radio-button value="1">选项一</aui-radio-button>
+            <aui-radio-button value="2">选项二</aui-radio-button>
+            <aui-radio-button value="3">选项三</aui-radio-button>
+          </aui-radio-group><br/><br/>
+        <aui-radio-group [(ngModel)]="model" size="mini">
+            <aui-radio-button value="1">选项一</aui-radio-button>
+            <aui-radio-button value="2">选项二</aui-radio-button>
+            <aui-radio-button value="3">选项三</aui-radio-button>
+        </aui-radio-group>
+      `,
+      props: {
+        model: '1',
+      },
+    }}
+  </Story>
+</Preview>
+
+## Radio Group Inputs
+
+| 名称      | 类型              | 默认值           | 描述                                                |
+| --------- | ----------------- | ---------------- | --------------------------------------------------- |
+| name      | string            | -                | Radio group 下所有 input[type="radio"] 的 name 属性 |
+| direction | 'row' \| 'column' | 'row'            | 按钮横纵向排列方式                                  |
+| size      | RadioSize         | RadioSize.Medium | 按钮大小（只针对按钮样式的组合）                    |
+| plain     | boolean           | true             | 是否为朴素按钮（只针对按钮样式的组合）              |
+| value     | any               | -                | Radio group 的 value                                |
+
+## Radio Group Outputs
+
+| 名称        | 回调参数 | 描述                      |
+| ----------- | -------- | ------------------------- |
+| valueChange | void     | Radio group 的 value 变化 |
+
+## Radio / Radio Button Inputs
+
+| 名称     | 类型             | 默认值  | 描述         |
+| -------- | ---------------- | ------- | ------------ |
+| disabled | boolean          | false   | 是否禁用     |
+| type     | 'label' \| 'tag' | 'label' | 按钮展示样式 |
