@@ -1,6 +1,8 @@
 import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
+import { IndeterminateCheckboxComponent } from './indeterminate-checkbox/component';
+
 import { CheckboxModule } from '@alauda/ui';
 
 <Meta
@@ -8,6 +10,7 @@ import { CheckboxModule } from '@alauda/ui';
   decorators={[
     moduleMetadata({
       imports: [CheckboxModule],
+      declarations: [IndeterminateCheckboxComponent],
     }),
   ]}
 />
@@ -95,6 +98,14 @@ import { CheckboxModule } from '@alauda/ui';
         model: ['label1'],
       },
     }}
+  </Story>
+</Preview>
+
+## 部分选中状态
+
+<Preview>
+  <Story name="indeterminate" height="60px">
+    {{ component: IndeterminateCheckboxComponent }}
   </Story>
 </Preview>
 

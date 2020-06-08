@@ -3,6 +3,7 @@
   class="aui-checkbox"
   [class.isDisabled]="disabled"
   [class.isChecked]="value$ | async"
+  [class.isIndeterminate]="indeterminate"
   [class.isTag]="type === 'tag'"
 >
   <input
@@ -17,7 +18,11 @@
   />
   <label class="aui-checkbox__label" [for]="id">
     <i class="aui-checkbox__pointer">
-      <aui-icon icon="check_s" [hidden]="!(value$ | async)"></aui-icon>
+      <aui-icon
+        icon="check_s"
+        [hidden]="!(value$ | async) || indeterminate"
+      ></aui-icon>
+      <aui-icon icon="minus_s" [hidden]="!indeterminate"></aui-icon>
     </i>
     <span class="aui-checkbox__content"><ng-content></ng-content></span>
   </label>

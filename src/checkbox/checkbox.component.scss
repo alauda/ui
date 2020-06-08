@@ -48,4 +48,5 @@ $block: 'aui-checkbox';
   }
 
   @include pointer('isChecked');
+  @include pointer('isIndeterminate');
 }

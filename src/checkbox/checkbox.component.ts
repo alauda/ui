@@ -57,12 +57,22 @@ export class CheckboxComponent extends CommonFormControl<boolean>
     this.label$$.next(val);
   }
 
+  @Input()
+  get indeterminate(): boolean {
+    return this._indeterminate;
+  }
+
+  set indeterminate(value: boolean) {
+    this._indeterminate = value;
+  }
+
   @ViewChild('elRef', { static: true })
   elRef: ElementRef;
 
   private readonly checkboxGroup: CheckboxGroupComponent;
   private _label: unknown;
   private readonly label$$ = new BehaviorSubject(this.label);
+  private _indeterminate = false;
   private readonly destroy$$ = new Subject<void>();
 
   constructor(
@@ -110,6 +120,9 @@ export class CheckboxComponent extends CommonFormControl<boolean>
   onClick() {
     if (this.disabled) {
       return;
+    }
+    if (this.indeterminate) {
+      this._indeterminate = false;
     }
     this.emitValueChange(!this.snapshot.value);
     if (this.checkboxGroup) {
