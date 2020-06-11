@@ -1,0 +1,140 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { InlineAlertModule, IconModule } from '@alauda/ui';
+
+<Meta
+  title="Inline Alert"
+  decorators={[
+    moduleMetadata({
+      imports: [InlineAlertModule, IconModule],
+    }),
+  ]}
+/>
+
+# Inline Alert
+
+行内提示
+
+## 基本用法
+
+<Preview>
+  <Story name="basic" height="200px">
+    {{
+      template: /* HTML */ `
+        <aui-inline-alert>
+          <div auiInlineAlertTitle>
+            自定义标题 使用指令 auiInlineAlertTitle 增加标题样式
+          </div>
+          <div>
+            自定义内容
+          </div>
+          <a href="javascript:void(0)">链接</a>
+        </aui-inline-alert>
+        <aui-inline-alert>
+          <div>自定义内容</div>
+          <a href="javascript:void(0)">链接</a>
+        </aui-inline-alert>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 标题和内容使用字符串
+
+<Preview>
+  <Story name="string" height="200px">
+    {{
+      template: /* HTML */ `
+        <aui-inline-alert
+          title="字符串标题"
+          content="字符串内容"
+        ></aui-inline-alert>
+        <aui-inline-alert content="字符串内容"></aui-inline-alert>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 类型
+
+<Preview>
+  <Story name="type" height="600px">
+    {{
+      template: /* HTML */ `
+        <aui-inline-alert
+          title="默认标题"
+          content="默认内容"
+        ></aui-inline-alert>
+        <aui-inline-alert
+          title="信息标题"
+          content="信息内容"
+          type="info"
+        ></aui-inline-alert>
+        <aui-inline-alert
+          title="成功标题"
+          content="成功内容"
+          type="success"
+        ></aui-inline-alert>
+        <aui-inline-alert
+          title="警告标题"
+          content="警告内容"
+          type="warning"
+        ></aui-inline-alert>
+        <aui-inline-alert
+          title="错误标题"
+          content="错误内容"
+          type="error"
+        ></aui-inline-alert>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 可关闭的行内提示
+
+<Preview>
+  <Story name="closable" height="200px">
+    {{
+      template: /* HTML */ `
+        <aui-inline-alert
+          title="可关闭的提示 标题"
+          content="可关闭的提示 内容"
+          [closable]="true"
+          (close)="onClose()"
+        ></aui-inline-alert>
+        <aui-inline-alert
+          content="可关闭的提示 内容"
+          [closable]="true"
+          (close)="onClose()"
+        ></aui-inline-alert>
+      `,
+      props: {
+        onClose() {
+          console.log('Inline alert closed');
+        },
+      },
+    }}
+  </Story>
+</Preview>
+
+## Inputs
+
+| 名称     | 类型            | 默认值               | 描述       |
+| -------- | --------------- | -------------------- | ---------- |
+| title    | string          | -                    | 标题       |
+| content  | string          | -                    | 内容       |
+| type     | InlineAlertType | InlineAlertType.Info | 提示类型   |
+| closable | boolean         | false                | 是否可关闭 |
+
+## Outputs
+
+| 名称  | 回调参数 | 描述                 |
+| ----- | -------- | -------------------- |
+| close | void     | 关闭按键被点击时发射 |
+
+## Directives
+
+| 名称                | 作用范围             | 描述                     |
+| ------------------- | -------------------- | ------------------------ |
+| auiInlineAlertTitle | InlineAlertComponent | 自定义 Inline Alert 标题 |
