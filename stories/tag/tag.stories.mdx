@@ -1,0 +1,148 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { TagModule } from '@alauda/ui';
+
+<Meta
+  title="Tag"
+  decorators={[
+    moduleMetadata({
+      imports: [TagModule],
+    }),
+  ]}
+/>
+
+# Tag
+
+标签
+
+## 基本
+
+<Preview>
+  <Story name="basic" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-tag type="primary">primary</aui-tag>
+        <aui-tag type="success">success</aui-tag>
+        <aui-tag type="warning">warning</aui-tag>
+        <aui-tag type="error">erro</aui-tag>
+        <aui-tag type="info">info</aui-tag>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 实心
+
+<Preview>
+  <Story name="solid" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-tag type="primary" [solid]="true">primary</aui-tag>
+        <aui-tag type="success" [solid]="true">success</aui-tag>
+        <aui-tag type="warning" [solid]="true">warning</aui-tag>
+        <aui-tag type="error" [solid]="true">erro</aui-tag>
+        <aui-tag type="info" [solid]="true">info</aui-tag>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 可关闭
+
+<Preview>
+  <Story name="closeable" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-tag type="primary" [closeable]="true">primary</aui-tag>
+        <aui-tag type="success" [closeable]="true">success</aui-tag>
+        <aui-tag type="warning" [closeable]="true">warning</aui-tag>
+        <aui-tag type="error" [closeable]="true">erro</aui-tag>
+        <aui-tag type="info" [closeable]="true">info</aui-tag>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 无效
+
+<Preview>
+  <Story name="invalid" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-tag type="primary" [invalid]="true">primary</aui-tag>
+        <aui-tag type="success" [invalid]="true">success</aui-tag>
+        <aui-tag type="warning" [invalid]="true">warning</aui-tag>
+        <aui-tag type="error" [invalid]="true">erro</aui-tag>
+        <aui-tag type="info" [invalid]="true">info</aui-tag>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 直角
+
+<Preview>
+  <Story name="square" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-tag type="primary" [round]="false">primary</aui-tag>
+        <aui-tag type="success" [round]="false">success</aui-tag>
+        <aui-tag type="warning" [round]="false">warning</aui-tag>
+        <aui-tag type="error" [round]="false">erro</aui-tag>
+        <aui-tag type="info" [round]="false">info</aui-tag>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 自定义颜色
+
+<Preview>
+  <Story name="custom" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-tag [color]="'#7c70e2,#f2f1fd'">custom</aui-tag>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 可勾选
+
+<Preview>
+  <Story name="check" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-check-tag [(checked)]="model">check</aui-check-tag>
+        value: {{ model }}
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Tag Inputs
+
+| 名称      | 类型          | 默认值               | 描述                                            |
+| --------- | ------------- | -------------------- | ----------------------------------------------- |
+| type      | TagType       | TagType.Primary      | 标签类型                                        |
+| size      | ComponentSize | ComponentSize.Medium | 标签大小                                        |
+| color     | string        | -                    | 自定义颜色, `'BORDER_COLOR[,BACKGOUNRD_COLOR]'` |
+| round     | boolean       | true                 | 是否为圆角                                      |
+| closeable | boolean       | false                | 是否可以关闭                                    |
+| solid     | boolean       | false                | 是否为实心                                      |
+| invalid   | boolean       | false                | 是否无效                                        |
+
+## Check Tag Inputs
+
+| 名称    | 类型          | 默认值               | 描述        |
+| ------- | ------------- | -------------------- | ----------- |
+| size    | ComponentSize | ComponentSize.Medium | 标签大小    |
+| round   | boolean       | true                 | 是否为圆角  |
+| checked | boolean       | false                | model value |
+
+## Check Tag Outputs
+
+| 名称          | 类型    | 默认值 | 描述               |
+| ------------- | ------- | ------ | ------------------ |
+| checkedChange | boolean | -      | 获取状态变化后的值 |

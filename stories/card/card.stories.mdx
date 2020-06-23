@@ -1,0 +1,86 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { CardModule } from '@alauda/ui';
+
+<Meta
+  title="Card"
+  decorators={[
+    moduleMetadata({
+      imports: [CardModule],
+    }),
+  ]}
+/>
+
+# Card
+
+页面内容区域布局卡片
+
+## 基本使用
+
+<Preview>
+  <Story name="basic" height="200px">
+    {{
+      template: /* HTML */ `
+        <aui-card [divider]="false">
+          <div auiCardHeader>header</div>
+          <div style="line-height: 64px; background-color: #ededed;">
+            content
+          </div>
+          <div auiCardFooter>footer</div>
+        </aui-card>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 嵌套使用
+
+<Preview>
+  <Story name="nested" height="400px">
+    {{
+      template: /* HTML */ `
+        <aui-card>
+          <div auiCardHeader>header</div>
+          <div style="line-height: 64px; background-color: #ededed;">
+            content
+          </div>
+          <aui-card [divider]="false">
+            <div auiCardHeader>header inside</div>
+            <div style="line-height: 64px; background-color: red;">content</div>
+          </aui-card>
+          <div auiCardFooter>footer</div>
+        </aui-card>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## 包含 Section
+
+<Preview>
+  <Story name="section" height="320px">
+    {{
+      template: /* HTML */ `
+        <aui-card>
+          <div auiCardFooter>footer</div>
+          <div auiCardHeader>header</div>
+          <aui-section>
+            <div auiSectionTitle>section title</div>
+            section content 1
+          </aui-section>
+          <aui-section>
+            <div auiSectionTitle>section title</div>
+            section content 2
+          </aui-section>
+        </aui-card>
+      `,
+    }}
+  </Story>
+</Preview>
+
+## Card Inputs
+
+| 名称    | 类型    | 默认值 | 描述                           |
+| ------- | ------- | ------ | ------------------------------ |
+| divider | boolean | true   | header 和 content 是否有分隔线 |
