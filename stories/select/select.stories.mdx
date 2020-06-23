@@ -1,0 +1,234 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { SelectModule, IconModule } from '@alauda/ui';
+
+<Meta
+  title="Select"
+  decorators={[
+    moduleMetadata({
+      imports: [SelectModule, IconModule],
+    }),
+  ]}
+/>
+
+# Select
+
+下拉选择框
+
+## 单选
+
+<Preview>
+  <Story name="single" height="240px">
+    {{
+      template: /* HTML */ `
+        <aui-select [(ngModel)]="value">
+          <aui-option *ngFor="let option of arr" [value]="option">
+            {{ option }}
+          </aui-option>
+          <aui-option-placeholder>Empty</aui-option-placeholder>
+        </aui-select>
+        <br />
+        <br />
+        value: {{ value }}
+      `,
+      props: {
+        arr: new Array(5).fill(null).map((_, i) => `option${i + 1}`),
+        value: 'option1',
+      },
+    }}
+  </Story>
+</Preview>
+
+## 单选分组
+
+<Preview>
+  <Story name="group" height="360px">
+    {{
+      template: /* HTML */ `
+        <aui-select [(ngModel)]="value" [trackFn]="trackFn">
+          <aui-option-group *ngFor="let i of arr">
+            <div auiOptionGroupTitle>group {{ i }}</div>
+            <aui-option
+              *ngFor="let j of arr"
+              [label]="'option' + (arr.length * i + j)"
+              [value]="{ key: 'option' + (arr.length * i + j) }"
+            >
+              <aui-icon icon="sun"></aui-icon>
+              option {{ arr.length * i + j }}
+            </aui-option>
+          </aui-option-group>
+          <aui-option-placeholder>Empty</aui-option-placeholder>
+        </aui-select>
+        <br />
+        <br />
+        value: {{ value | json }}
+      `,
+      props: {
+        arr: new Array(5).fill(null).map((_, i) => i + 1),
+        value: { key: 'option11' },
+        trackFn: val => (val ? val.key || val : val),
+      },
+    }}
+  </Story>
+</Preview>
+
+## 加载中
+
+<Preview>
+  <Story name="loading" height="100px">
+    {{
+      template: /* HTML */ `
+        <aui-select [(ngModel)]="value" [loading]="true">
+          <aui-option *ngFor="let option of arr" [value]="option">
+            {{ option }}
+          </aui-option>
+          <aui-option-placeholder>Empty</aui-option-placeholder>
+        </aui-select>
+      `,
+      props: {
+        arr: ['option'],
+        value: '',
+      },
+    }}
+  </Story>
+</Preview>
+
+## 禁用
+
+<Preview>
+  <Story name="disabled" height="100px">
+    {{
+      template: /* HTML */ `
+        <aui-select [(ngModel)]="value" [disabled]="true">
+          <aui-option *ngFor="let option of arr" [value]="option">
+            {{ option }}
+          </aui-option>
+          <aui-option-placeholder>Empty</aui-option-placeholder>
+        </aui-select>
+      `,
+      props: {
+        arr: ['option'],
+        value: 'option',
+      },
+    }}
+  </Story>
+</Preview>
+
+## 可清除
+
+<Preview>
+  <Story name="clearable" height="100px">
+    {{
+      template: /* HTML */ `
+        <aui-select [(ngModel)]="value" [clearable]="true">
+          <aui-option *ngFor="let option of arr" [value]="option">
+            {{ option }}
+          </aui-option>
+          <aui-option-placeholder>Empty</aui-option-placeholder>
+        </aui-select>
+      `,
+      props: {
+        arr: ['option'],
+        value: 'option',
+      },
+    }}
+  </Story>
+</Preview>
+
+## 可筛选
+
+<Preview>
+  <Story name="filterable" height="300px">
+    {{
+      template: /* HTML */ `
+        <aui-select
+          [(ngModel)]="value"
+          [filterable]="true"
+          [filterFn]="filterFn"
+        >
+          <aui-option
+            *ngFor="let option of arr"
+            [value]="option"
+            [label]="option.key"
+          >
+            {{ option.key }}
+          </aui-option>
+          <aui-option-placeholder>Empty</aui-option-placeholder>
+        </aui-select>
+      `,
+      props: {
+        arr: new Array(5).fill(null).map((_, i) => ({
+          key: `option${i + 1}`,
+        })),
+        value: '',
+        filterFn: (keyword, option) => {
+          return !keyword || option.value.key.includes(keyword);
+        },
+      },
+    }}
+  </Story>
+</Preview>
+
+## 多选
+
+<Preview>
+  <Story name="multi" height="240px">
+    {{
+      template: /* HTML */ `
+        <aui-multi-select [(ngModel)]="value">
+          <aui-option *ngFor="let option of arr" [value]="option">
+            {{ option }}
+          </aui-option>
+          <aui-option-placeholder>Empty</aui-option-placeholder>
+        </aui-multi-select>
+        <br />
+        <br />
+        value: {{ value | json }}
+      `,
+      props: {
+        arr: new Array(5).fill(null).map((_, i) => `option${i + 1}`),
+        value: ['option1'],
+      },
+    }}
+  </Story>
+</Preview>
+
+## Select & MultiSelect Inputs
+
+| 名称               | 类型           | 默认值                  | 描述                                      |
+| ------------------ | -------------- | ----------------------- | ----------------------------------------- |
+| size               | ComponentSize  | ComponentSize.Medium    | 大小                                      |
+| value              | any            | - or [](MultiSelect)    | 初始值                                    |
+| placeholder        | string         | -                       | 占位文本                                  |
+| disabled           | boolean        | false                   | 是否禁用                                  |
+| loading            | boolean        | false                   | 是否加载中                                |
+| clearable          | boolean        | false                   | 选项是否可清除                            |
+| filterable         | boolean        | true                    | 是否支持选项过滤                          |
+| defaultFirstOption | boolean        | true                    | 是否第一项作为默认选项                    |
+| filterFn           | OptionFilterFn | Array.property.includes | 自定义过滤方法，filterable 为 true 时设置 |
+| trackFn            | TrackFn        | val => val              | 返回 value 唯一标识符                     |
+
+## MultiSelect Inputs
+
+| 名称       | 类型       | 默认值 | 描述                |
+| ---------- | ---------- | ------ | ------------------- |
+| tagClassFn | TagClassFn | -      | 选中项的 class 定义 |
+
+## Select & MultiSelect Outputs
+
+| 名称         | 类型   | 默认值 | 描述         |
+| ------------ | ------ | ------ | ------------ |
+| show         | -      | -      | 显示时调用   |
+| hide         | -      | -      | 隐藏时调用   |
+| filterChange | string | -      | input 值变化 |
+| valueChange  | any    | -      | 选中值变化   |
+
+## Option Inputs
+
+| 名称         | 类型                  | 默认值 | 描述                                                  |
+| ------------ | --------------------- | ------ | ----------------------------------------------------- |
+| label        | string or TemplateRef | -      | 选中后 select 显示的文案                              |
+| labelContext | Object                | -      | 当 label 为 template 时设置，传递到 template 的上下文 |
+| disabled     | boolean               | false  | 是否禁用                                              |
+| value        | any                   | -      | 选项的值                                              |
