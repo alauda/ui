@@ -12,6 +12,7 @@ import {
   InputAddonBeforeDirective,
   InputPrefixDirective,
   InputSuffixDirective,
+  NumberTypeInputDirective,
 } from './helper-directives';
 import { InputGroupComponent } from './input-group/input-group.component';
 import { InputComponent } from './input.component';
@@ -29,6 +30,7 @@ import { TagsInputComponent } from './tags-input/tags-input.component';
     InputAddonAfterDirective,
     InputPrefixDirective,
     InputSuffixDirective,
+    NumberTypeInputDirective,
     SearchComponent,
     TagsInputComponent,
     NumberInputComponent,
@@ -41,6 +43,7 @@ import { TagsInputComponent } from './tags-input/tags-input.component';
     InputAddonAfterDirective,
     InputPrefixDirective,
     InputSuffixDirective,
+    NumberTypeInputDirective,
     SearchComponent,
     TagsInputComponent,
     NumberInputComponent,
