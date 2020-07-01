@@ -54,6 +54,9 @@
     (keydown)="onKeyDown($event)"
     (input)="onInput($event)"
   />
+  <span #inputValueMirror [class]="bem.element('mirror')">
+    {{ inputValue }}
+  </span>
 </div>
 
 <ng-template #templateRef>
