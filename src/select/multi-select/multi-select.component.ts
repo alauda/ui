@@ -68,6 +68,11 @@ export class MultiSelectComponent extends BaseSelect<unknown[]>
   @ViewChild('inputRef', { static: true })
   inputRef: ElementRef<HTMLInputElement>;
 
+  @ViewChild('inputValueMirror', { static: true })
+  inputValueMirror: ElementRef<HTMLElement>;
+
+  inputValue = '';
+
   get rootClass() {
     const size = this.size || ComponentSize.Medium;
     return `aui-input ${this.bem.block(size)} ${
@@ -168,13 +173,7 @@ export class MultiSelectComponent extends BaseSelect<unknown[]>
 
   onInput(event: Event) {
     super.onInput(event);
-    // TODO: optimize performance
-    this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
-    this.renderer.setStyle(
-      this.inputRef.nativeElement,
-      'width',
-      this.inputRef.nativeElement.scrollWidth + 'px',
-    );
+    this.setInputWidth();
     this.tooltipRef.updatePosition();
   }
 
@@ -266,6 +265,27 @@ export class MultiSelectComponent extends BaseSelect<unknown[]>
 
   private resetInput() {
     this.inputRef.nativeElement.value = '';
+    this.setInputWidth();
     this.filterString = '';
+  }
+
+  // calculate input element width according to its value
+  private setInputWidth() {
+    const { value } = this.inputRef.nativeElement;
+    if (!value.length) {
+      this.inputValue = '';
+      requestAnimationFrame(() => {
+        this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
+      });
+    } else {
+      this.inputValue = value;
+      requestAnimationFrame(() => {
+        this.renderer.setStyle(
+          this.inputRef.nativeElement,
+          'width',
+          `${this.inputValueMirror.nativeElement.scrollWidth}px`,
+        );
+      });
+    }
   }
 }
