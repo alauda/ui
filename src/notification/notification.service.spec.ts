@@ -117,9 +117,7 @@ describe('NotificationService', () => {
 });
 
 @Component({
-  template: `
-    <div class="notification-demo-content">demo content</div>
-  `,
+  template: `<div class="notification-demo-content">demo content</div>`,
 })
 class NotificationContentComponent {}
 

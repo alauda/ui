@@ -1,0 +1,16 @@
+{
+  "extends": "@1stg/stylelint-config/scss/loose",
+  "rules": {
+    "no-descending-specificity": null,
+    "plugin/no-unsupported-browser-features": null,
+    "scss/no-duplicate-dollar-variables": null,
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": [
+          "/^(aui|ng)-/"
+        ]
+      }
+    ]
+  }
+}

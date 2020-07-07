@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    "@1stg/remark-config",
+    [
+      "lint-no-file-name-irregular-characters",
+      false
+    ]
+  ]
+}

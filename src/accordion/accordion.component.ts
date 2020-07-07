@@ -10,9 +10,7 @@ import {
 
 @Component({
   selector: 'aui-accordion',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: `<ng-content></ng-content>`,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,

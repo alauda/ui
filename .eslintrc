@@ -1,0 +1,19 @@
+{
+  "extends": "@1stg/eslint-config/loose",
+  "overrides": [
+    {
+      "files": "*.spec.ts",
+      "rules": {
+        "@typescript-eslint/no-extraneous-class": 0,
+        "jest/expect-expect": 0,
+        "jest/no-export": 0,
+        "sonarjs/no-duplicate-string": 0
+      }
+    }
+  ],
+  "rules": {
+    "@typescript-eslint/no-misused-promises": 0,
+    "accessor-pairs": 0,
+    "prefer-promise-reject-errors": 0
+  }
+}
