@@ -1,0 +1,6 @@
+coverage
+dist
+release
+CHANGELOG.md
+/tslint-rules
+!/.*.js

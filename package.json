@@ -35,127 +35,57 @@
     "test:watch": "jest --watch"
   },
   "peerDependencies": {
-    "@angular/animations": "^9.0.0",
-    "@angular/cdk": "^9.0.0",
-    "@angular/common": "^9.0.0",
-    "@angular/core": "^9.0.0",
-    "@angular/forms": "^9.0.0",
-    "@angular/platform-browser": "^9.0.0",
-    "clipboard-polyfill": "^2.0.0",
+    "@angular/animations": "^10.0.0",
+    "@angular/cdk": "^10.0.0",
+    "@angular/common": "^10.0.0",
+    "@angular/core": "^10.0.0",
+    "@angular/forms": "^10.0.0",
+    "@angular/platform-browser": "^10.0.0",
+    "clipboard-polyfill": "^3.0.0",
     "rxjs": "^6.0.0"
   },
   "devDependencies": {
-    "@1stg/app-config": "^0.5.3",
-    "@1stg/lib-config": "^0.5.3",
-    "@1stg/tslint-config": "^0.8.3",
-    "@angular-devkit/build-angular": "^0.901.1",
-    "@angular-devkit/core": "^9.1.1",
-    "@angular/animations": "^9.1.1",
-    "@angular/cdk": "^9.2.0",
-    "@angular/cli": "^9.1.1",
-    "@angular/common": "^9.1.1",
-    "@angular/compiler": "^9.1.1",
-    "@angular/compiler-cli": "^9.1.1",
-    "@angular/core": "^9.1.1",
-    "@angular/forms": "^9.1.1",
-    "@angular/platform-browser": "^9.1.1",
-    "@angular/platform-browser-dynamic": "^9.1.1",
-    "@babel/core": "^7.9.0",
+    "@1stg/app-config": "^0.5.5",
+    "@1stg/lib-config": "^0.5.5",
+    "@1stg/tslint-config": "^0.8.5",
+    "@angular-devkit/build-angular": "0.1000.1",
+    "@angular-devkit/core": "^10.0.1",
+    "@angular/animations": "^10.0.2",
+    "@angular/cdk": "^10.0.1",
+    "@angular/cli": "^10.0.1",
+    "@angular/common": "^10.0.2",
+    "@angular/compiler": "^10.0.2",
+    "@angular/compiler-cli": "^10.0.2",
+    "@angular/core": "^10.0.2",
+    "@angular/forms": "^10.0.2",
+    "@angular/platform-browser": "^10.0.2",
+    "@angular/platform-browser-dynamic": "^10.0.2",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-docs": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
-    "@storybook/addon-options": "^5.3.18",
     "@storybook/addon-storysource": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/angular": "^5.3.18",
     "@storybook/cli": "^5.3.18",
     "@storybook/source-loader": "^5.3.18",
-    "@types/jest": "^25.2.1",
-    "@types/node": "^14.0.4",
-    "autoprefixer": "^9.8.0",
+    "@types/jest": "^26.0.4",
+    "@types/node": "^14.0.18",
     "babel-loader": "^8.1.0",
-    "clipboard-polyfill": "^2.8.6",
-    "core-js": "^3.6.5",
+    "clipboard-polyfill": "^3.0.0-pre5",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^1.0.2",
-    "jest": "^26.0.1",
-    "jest-junit": "^10.0.0",
-    "jest-preset-angular": "^8.1.3",
-    "ng-packagr": "^9.1.0",
+    "jest": "^26.1.0",
+    "jest-junit": "^11.0.1",
+    "jest-preset-angular": "^8.2.1",
+    "ng-packagr": "^10.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
-    "react": "^16.13.1",
-    "react-is": "^16.13.1",
-    "regenerator-runtime": "^0.13.5",
-    "replace": "^1.1.5",
-    "rollup": "^2.10.5",
-    "rxjs": "^6.5.5",
+    "rxjs": "^6.6.0",
     "standard-version": "^8.0.0",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "tsickle": "0.38.1",
     "tslib": "^2.0.0",
     "tslint": "^6.1.1",
-    "typescript": "3.7.5",
-    "webpack": "^4.42.1",
-    "yarn-deduplicate": "^2.0.0",
-    "zone.js": "^0.10.3"
-  },
-  "commitlint": {
-    "extends": [
-      "@1stg"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "@1stg/eslint-config/loose",
-    "overrides": [
-      {
-        "files": "*.spec.ts",
-        "rules": {
-          "@typescript-eslint/no-extraneous-class": 0,
-          "jest/expect-expect": 0,
-          "jest/no-export": 0,
-          "sonarjs/no-duplicate-string": 0
-        }
-      }
-    ],
-    "rules": {
-      "@typescript-eslint/no-misused-promises": 0,
-      "accessor-pairs": 0,
-      "prefer-promise-reject-errors": 0
-    }
-  },
-  "eslintIgnore": [
-    "coverage",
-    "dist",
-    "release",
-    "CHANGELOG.md",
-    "/tslint-rules",
-    "!/.*.js"
-  ],
-  "prettier": "@1stg/prettier-config/semi/angular",
-  "remarkConfig": {
-    "plugins": [
-      "@1stg/remark-config",
-      [
-        "lint-no-file-name-irregular-characters",
-        false
-      ]
-    ]
-  },
-  "stylelint": {
-    "extends": "@1stg/stylelint-config/scss/loose",
-    "rules": {
-      "no-descending-specificity": null,
-      "plugin/no-unsupported-browser-features": null,
-      "scss/no-duplicate-dollar-variables": null,
-      "selector-type-no-unknown": [
-        true,
-        {
-          "ignoreTypes": [
-            "/^(aui|ng)-/"
-          ]
-        }
-      ]
-    }
+    "typescript": "^3.9.6",
+    "yarn-deduplicate": "^2.0.0"
   }
 }

@@ -136,19 +136,19 @@ import { TableOfContentsModule } from '@alauda/ui';
   </Story>
 </Preview>
 
-## 使用场景:
+## 使用场景
 
 左侧 link 高亮显示当前 container 中显示的 content。
 点击触发 link 时，container 内平滑滚动至 link 绑定的 content。  
 提供 scrollTo 方法支持控制滚动到指定的 content。
 支持 content 内嵌自定义内容。
 
-## 使用限制:
+## 使用限制
 
 container 必须是可滚动的。
 如果滚动到底部，scrollHeight - scrollTop === clientHeight，则默认选中最后一个 content。
 
-## 基本使用方式:
+## 基本使用方式
 
 ```html
 <!-- links -->
@@ -169,7 +169,7 @@ container 必须是可滚动的。
 
 可以在 css 中为 link 和 content 设置 ‘.isActive’, 指定当 link 和 content 被选中时的样式。
 
-## Directives:
+## Directives
 
 ### auiTocContainer Outputs
 

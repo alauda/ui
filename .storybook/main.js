@@ -7,7 +7,6 @@ module.exports = {
   ],
   addons: [
     '@storybook/addon-docs',
-    '@storybook/addon-options',
     '@storybook/addon-knobs',
     '@storybook/addon-actions',
     '@storybook/addon-storysource',
