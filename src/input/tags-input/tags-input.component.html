@@ -9,6 +9,7 @@
   <aui-tag
     *ngFor="let tag of value$ | async; let index = index; trackBy: trackByValue"
     type="info"
+    [title]="tag"
     [size]="tagSize"
     [round]="true"
     [closeable]="!disabled"
