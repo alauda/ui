@@ -3,7 +3,10 @@
   (mousedown)="$event.preventDefault()"
   (click)="inputRef.focus()"
 >
-  <span [hidden]="!displayPlaceholder" [class]="bem.element('placeholder')">
+  <span
+    [hidden]="(value$ | async).length || inputRef.value.length"
+    [class]="bem.element('placeholder')"
+  >
     {{ placeholder }}
   </span>
   <aui-tag

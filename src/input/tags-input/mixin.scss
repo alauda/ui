@@ -36,6 +36,8 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      position: absolute;
+      margin-left: 1px;
 
       &[hidden] {
         display: none;
