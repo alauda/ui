@@ -68,16 +68,18 @@ describe('TagsInputComponent', () => {
     expect(ins.value).toEqual(['service']);
   }));
 
-  it('should placeholder show or hidden correctly', () => {
+  it('should placeholder show or hidden correctly', fakeAsync(() => {
     ins.placeholder = 'placeholder';
     fixture.detectChanges();
     const placeholderEl = el.querySelector('.aui-tags-input__placeholder');
     expect(placeholderEl.innerHTML).toContain('placeholder');
     expect(placeholderEl.getAttribute('hidden')).toBeNull();
-    el.dispatchEvent(new Event('click'));
+    ins.value = ['app', 'service'];
+    fixture.detectChanges();
+    tick();
     fixture.detectChanges();
     expect(placeholderEl.getAttribute('hidden')).toBe('');
-  });
+  }));
 });
 
 @Component({

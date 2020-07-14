@@ -23,7 +23,10 @@
       [icon]="loading ? 'spinner' : 'caret_down_s'"
     ></aui-icon>
   </div>
-  <span [hidden]="!displayPlaceholder" [class]="bem.element('placeholder')">
+  <span
+    [hidden]="selectedValues.length || inputRef.value.length"
+    [class]="bem.element('placeholder')"
+  >
     {{ placeholder }}
   </span>
   <aui-tag

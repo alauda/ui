@@ -96,10 +96,6 @@ export class MultiSelectComponent extends BaseSelect<unknown[]>
     })} aui-tag aui-tag--${this.tagSize}`;
   }
 
-  get displayPlaceholder() {
-    return !this.selectedValues.length && this.inputReadonly;
-  }
-
   get displayClearBtn() {
     return !this.disabled && this.clearable && this.selectedValues.length;
   }

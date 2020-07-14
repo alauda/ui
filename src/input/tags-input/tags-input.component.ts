@@ -82,9 +82,9 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
     const size = this.size || ComponentSize.Medium;
     return `aui-input ${this.bem.block(size)} ${
       this.disabled ? 'isDisabled' : ''
-    } ${
-      this.focused ? 'isFocused' : ''
-    } ${this.clearable.toString()} ? 'isClearable' : ''`;
+    } ${this.focused ? 'isFocused' : ''} ${
+      this.clearable ? 'isClearable' : ''
+    }`;
   }
 
   get tagSize() {
@@ -97,12 +97,8 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
 
   get inputClass() {
     return `${this.bem.element('input', {
-      hidden: this.disabled || this.displayPlaceholder,
+      hidden: this.disabled || (!this.snapshot.value.length && !this.focused),
     })} aui-tag aui-tag--${this.tagSize}`;
-  }
-
-  get displayPlaceholder() {
-    return !this.snapshot.value.length && !this.focused;
   }
 
   constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {
@@ -120,13 +116,19 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
   onInput() {
     this.inputValue = this.inputRef.nativeElement.value;
     // make sure value sync to span element
-    requestAnimationFrame(() => {
-      this.renderer.setStyle(
-        this.inputRef.nativeElement,
-        'width',
-        this.inputValueMirror.nativeElement.scrollWidth + 'px',
-      );
-    });
+    if (!this.inputValue.length) {
+      requestAnimationFrame(() => {
+        this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
+      });
+    } else {
+      requestAnimationFrame(() => {
+        this.renderer.setStyle(
+          this.inputRef.nativeElement,
+          'width',
+          this.inputValueMirror.nativeElement.scrollWidth + 'px',
+        );
+      });
+    }
   }
 
   onKeyDown(event: KeyboardEvent) {
