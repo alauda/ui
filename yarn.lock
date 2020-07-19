@@ -14073,6 +14073,13 @@ ng-packagr@^10.0.0:
     terser "^4.3.8"
     update-notifier "^4.0.0"
 
+ng-tslint@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ng-tslint/-/ng-tslint-1.0.0.tgz#11ca104fec6b48faf5c94c76840cda6c1ec7df62"
+  integrity sha512-p7yV+9qV8Et76XwHW4pCy7GRHg5M3rYilx2w7xeImP2DaHKmJFcqpgpkRYp8Ilt71uj749P90gtLx42cEPFBSA==
+  dependencies:
+    tslib "^2.0.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

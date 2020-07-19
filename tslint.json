@@ -1,6 +1,9 @@
 {
-  "extends": ["@1stg/tslint-config/angular", "@1stg/tslint-config/eslint"],
-  "rulesDirectory": "./tslint-rules",
+  "extends": [
+    "ng-tslint",
+    "@1stg/tslint-config/angular",
+    "@1stg/tslint-config/eslint"
+  ],
   "rules": {
     "component-selector": [true, "element", "aui", "kebab-case"],
     "directive-selector": [true, "attribute", "aui", "camelCase"],
@@ -9,14 +12,26 @@
       true,
       {
         "Component": {
-          "encapsulation": "\\.None$",
-          "preserveWhitespaces": "false$",
-          "changeDetection": "\\.OnPush$",
-          "!styles": ".*",
-          "!host": "\\[class\\]"
+          "argument": 0,
+          "properties": {
+            "!host": "\\[class\\]",
+            "!styles": ".*",
+            "!moduleId": ".*",
+            "changeDetection": "\\.OnPush$",
+            "encapsulation": "\\.None$"
+          }
         },
         "Directive": {
-          "!host": "\\[class\\]"
+          "argument": 0,
+          "properties": {
+            "!host": "\\[class\\]"
+          }
+        },
+        "NgModule": {
+          "argument": 0,
+          "properties": {
+            "*": "^(?!\\s*$).+"
+          }
         }
       },
       "src/**/!(*.spec).ts"
