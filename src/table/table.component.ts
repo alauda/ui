@@ -1,4 +1,8 @@
-import { CDK_TABLE_TEMPLATE, CdkTable } from '@angular/cdk/table';
+import {
+  CDK_TABLE_TEMPLATE,
+  CdkTable,
+  _CoalescedStyleScheduler,
+} from '@angular/cdk/table';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -16,5 +20,6 @@ import {
   },
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [_CoalescedStyleScheduler],
 })
 export class TableComponent<T> extends CdkTable<T> {}
