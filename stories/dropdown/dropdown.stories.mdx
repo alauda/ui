@@ -21,7 +21,7 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
 <Preview>
   <Story name="basic" height="240px">
     {{
-      template: ` /* HTML */ <button
+      template: /* HTML */ `<button
           aui-button="primary"
           [plain]="true"
           [auiDropdown]="menu"
@@ -43,8 +43,7 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
           <aui-menu-item [disabled]="true">
             禁用按钮
           </aui-menu-item>
-        </aui-menu>
-      `,
+        </aui-menu>`,
     }}
   </Story>
 </Preview>
@@ -54,8 +53,7 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
 <Preview>
   <Story name="submenu" height="240px">
     {{
-      template: `
-        <button
+      template: /* HTML */ `<button
           aui-button="primary"
           [plain]="true"
           [auiDropdown]="menu"
@@ -72,8 +70,7 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
             <aui-menu-item>操作四</aui-menu-item>
             <aui-menu-item>操作五</aui-menu-item>
           </aui-submenu>
-        </aui-menu>
-      `,
+        </aui-menu>`,
     }}
   </Story>
 </Preview>
@@ -83,8 +80,7 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
 <Preview>
   <Story name="group" height="340px">
     {{
-      template: `
-        <button
+      template: /* HTML */ `<button
           aui-button="primary"
           [plain]="true"
           [auiDropdown]="menu"
@@ -107,8 +103,7 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
             <aui-menu-item>操作五</aui-menu-item>
             <aui-menu-item>操作六</aui-menu-item>
           </aui-menu-group>
-        </aui-menu>
-      `,
+        </aui-menu>`,
     }}
   </Story>
 </Preview>
@@ -118,17 +113,15 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
 <Preview>
   <Story name="dropdown-button" height="200px">
     {{
-      template: `
-        <aui-dropdown-button type="primary">
-          dropdown button
-          <aui-menu>
-            <aui-menu-item>操作一</aui-menu-item>
-            <aui-menu-item>操作二</aui-menu-item>
-            <aui-menu-item>操作三</aui-menu-item>
-            <aui-menu-item>操作四</aui-menu-item>
-          </aui-menu>
-        </aui-dropdown-button>
-      `,
+      template: /* HTML */ `<aui-dropdown-button type="primary">
+        dropdown button
+        <aui-menu>
+          <aui-menu-item>操作一</aui-menu-item>
+          <aui-menu-item>操作二</aui-menu-item>
+          <aui-menu-item>操作三</aui-menu-item>
+          <aui-menu-item>操作四</aui-menu-item>
+        </aui-menu>
+      </aui-dropdown-button>`,
     }}
   </Story>
 </Preview>
@@ -138,8 +131,7 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
 <Preview>
   <Story name="menu-template" height="180px">
     {{
-      template: `
-        <button
+      template: /* HTML */ `<button
           aui-button="primary"
           [plain]="true"
           [auiDropdown]="menu"
@@ -163,8 +155,7 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
             <aui-menu-item>更新</aui-menu-item>
             <aui-menu-item *ngIf="canDelete">删除</aui-menu-item>
           </ng-template>
-        </aui-menu>
-      `,
+        </aui-menu>`,
     }}
   </Story>
 </Preview>

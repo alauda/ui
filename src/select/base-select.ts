@@ -147,7 +147,7 @@ export abstract class BaseSelect<T> extends CommonFormControl<T>
   @ViewChild('tooltipRef', { static: true })
   protected tooltipRef: TooltipDirective;
 
-  @ViewChild('optionListRef', { static: true })
+  @ViewChild('optionListRef', { static: false })
   protected optionListRef: ElementRef;
 
   @ViewChild('inputtingOption', { static: false })
