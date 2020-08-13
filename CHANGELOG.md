@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.3.0](https://github.com/alauda/alauda-ui/compare/v5.2.0...v5.3.0) (2020-08-13)
+
+
+### Bug Fixes
+
+* **select:** auto scroll to focused option ([1bec1e5](https://github.com/alauda/alauda-ui/commit/1bec1e592c544ec40372e5eef0cb44b4551a5ed4))
+* compatibility with cdk 10.1+ ([#41](https://github.com/alauda/alauda-ui/issues/41)) ([de02bc7](https://github.com/alauda/alauda-ui/commit/de02bc79b97fe4e8bb4bdce8750c8db0d262e492))
+* input should hide when unfocus ([#38](https://github.com/alauda/alauda-ui/issues/38)) ([605491d](https://github.com/alauda/alauda-ui/commit/605491d9405110e393a0194ec1f5192b353f88c0))
+* resize card section margin ([83182f0](https://github.com/alauda/alauda-ui/commit/83182f0d29c7daab4e8efb2d35345c49c861aecf))
+
 ## [5.2.0](https://github.com/alauda/alauda-ui/compare/v5.1.4...v5.2.0) (2020-07-14)
 
 
