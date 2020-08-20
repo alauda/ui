@@ -17,7 +17,7 @@ import { coerceAttrBoolean } from '../utils/coercion';
  */
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
-export class CommonFormControl<T> implements ControlValueAccessor {
+export class CommonFormControl<T, V = T> implements ControlValueAccessor {
   @Input()
   get disabled() {
     return this._disabled;
@@ -45,13 +45,13 @@ export class CommonFormControl<T> implements ControlValueAccessor {
 
   protected onChange: (_: T) => void;
   protected onTouched: () => void;
-  protected value$$ = new ReplaySubject<T>(1);
+  protected value$$ = new ReplaySubject<any>(1);
   private _value: T;
   private _disabled = false;
 
-  snapshot: { value: T } = { value: null };
+  snapshot: { value: V } = { value: null };
 
-  value$: Observable<T> = this.value$$.asObservable().pipe(
+  value$: Observable<V> = this.value$$.asObservable().pipe(
     tap(value => {
       this.snapshot.value = value;
     }),
@@ -63,7 +63,7 @@ export class CommonFormControl<T> implements ControlValueAccessor {
 
   protected emitValueChange(value: T) {
     if (this.onChange) {
-      this.value$$.next(value);
+      this.writeValue(value);
       this.onChange(value);
     }
     this.valueChange.emit(value);
