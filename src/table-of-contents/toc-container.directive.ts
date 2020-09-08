@@ -169,9 +169,9 @@ export class TocContainerDirective implements AfterContentInit, OnDestroy {
     this._onDestroy$.next();
   }
 
-  scrollTo(content: string) {
-    if (content.includes('.')) {
-      this._scrollTo$.next(content.split('.')[0]);
+  scrollTo(content: string | string[]) {
+    if (Array.isArray(content)) {
+      this._scrollTo$.next(content[0]);
     } else {
       this._scrollTo$.next(content);
     }

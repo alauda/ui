@@ -22,7 +22,7 @@ export class TocLinkDirective implements OnInit, OnDestroy {
   for: TocContainerDirective;
 
   @Input()
-  auiTocLink: string;
+  auiTocLink: string | string[];
 
   private readonly _subs: Subscription[] = [];
 
@@ -39,8 +39,8 @@ export class TocLinkDirective implements OnInit, OnDestroy {
     }
     this._subs.push(
       this.for.activedChange.subscribe((actived: string) => {
-        if (this.auiTocLink.includes('.')) {
-          this.active = this.auiTocLink.split('.').includes(actived);
+        if (Array.isArray(this.auiTocLink)) {
+          this.active = this.auiTocLink.includes(actived);
         } else {
           this.active = actived === this.auiTocLink;
         }
