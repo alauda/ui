@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.1](https://github.com/alauda/alauda-ui/compare/v5.3.0...v5.3.1) (2020-09-14)
+
+
+### Bug Fixes
+
+* auiTocLink support array input ([a647e80](https://github.com/alauda/alauda-ui/commit/a647e80df0a68231fe897844369e802e63f671fd))
+* common form control typing ([c80e5a4](https://github.com/alauda/alauda-ui/commit/c80e5a44173cadaac87f4d543186440848f1e7ab))
+
 ## [5.3.0](https://github.com/alauda/alauda-ui/compare/v5.2.0...v5.3.0) (2020-08-13)
 
 
