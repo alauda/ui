@@ -97,7 +97,7 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
 
   get inputClass() {
     return `${this.bem.element('input', {
-      hidden: this.disabled || (!this.snapshot.value.length && !this.focused),
+      hidden: this.disabled || !this.focused,
     })} aui-tag aui-tag--${this.tagSize}`;
   }
 

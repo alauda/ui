@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.1](https://github.com/alauda/alauda-ui/compare/v5.3.0...v5.3.1) (2020-09-14)
+
+
+### Bug Fixes
+
+* auiTocLink support array input ([a647e80](https://github.com/alauda/alauda-ui/commit/a647e80df0a68231fe897844369e802e63f671fd))
+* common form control typing ([c80e5a4](https://github.com/alauda/alauda-ui/commit/c80e5a44173cadaac87f4d543186440848f1e7ab))
+
+## [5.3.0](https://github.com/alauda/alauda-ui/compare/v5.2.0...v5.3.0) (2020-08-13)
+
+
+### Bug Fixes
+
+* **select:** auto scroll to focused option ([1bec1e5](https://github.com/alauda/alauda-ui/commit/1bec1e592c544ec40372e5eef0cb44b4551a5ed4))
+* compatibility with cdk 10.1+ ([#41](https://github.com/alauda/alauda-ui/issues/41)) ([de02bc7](https://github.com/alauda/alauda-ui/commit/de02bc79b97fe4e8bb4bdce8750c8db0d262e492))
+* input should hide when unfocus ([#38](https://github.com/alauda/alauda-ui/issues/38)) ([605491d](https://github.com/alauda/alauda-ui/commit/605491d9405110e393a0194ec1f5192b353f88c0))
+* resize card section margin ([83182f0](https://github.com/alauda/alauda-ui/commit/83182f0d29c7daab4e8efb2d35345c49c861aecf))
+
 ## [5.2.0](https://github.com/alauda/alauda-ui/compare/v5.1.4...v5.2.0) (2020-07-14)
 
 
@@ -11,26 +29,16 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* add switch,autocomplete,backtop docs ([6e0b8b2](https://github.com/alauda/alauda-ui/commit/6e0b8b292795cd955d7116000f67864623c970b7))
 * add title to tag in tag input AIT-3046 ([#34](https://github.com/alauda/alauda-ui/issues/34)) ([4b05ac3](https://github.com/alauda/alauda-ui/commit/4b05ac3843b4a61e749a7fb97de03639e5270548))
 * add toc doc ([#27](https://github.com/alauda/alauda-ui/issues/27)) ([932cb38](https://github.com/alauda/alauda-ui/commit/932cb388b752e8f40ff30287b58b7e37ff9828eb))
-* common form control set snapshot by default ([a5782a5](https://github.com/alauda/alauda-ui/commit/a5782a5c99a124672ff3dd49bca02855d4f0ae46))
-* page sider static false ([0ed3881](https://github.com/alauda/alauda-ui/commit/0ed3881b7c69bdcfd3b6484af003076a476aef78))
 * select tag card docs ([58e6888](https://github.com/alauda/alauda-ui/commit/58e68882b25cad85fe19ea8a5558655bb18afd09))
 * upgrade to Angular 10 ([#33](https://github.com/alauda/alauda-ui/issues/33)) ([03efc87](https://github.com/alauda/alauda-ui/commit/03efc87eb4c56fd7e7b82835aa4ca29f8603328b))
-* **accordion:** add lazy load to accordion item ([0370784](https://github.com/alauda/alauda-ui/commit/0370784b87ed6922e70e9d98ad93cfe802a0c108))
-* **checkbox:** add indeterminate state ([732d489](https://github.com/alauda/alauda-ui/commit/732d48996ddf84efd83033900739ad6ff87ac8c4))
 
 
 ### Bug Fixes
 
-* card header hasDivider apply only chind header ([1741a73](https://github.com/alauda/alauda-ui/commit/1741a731311741572e115651ae3f8230eb4b974d))
 * empty line when one row filled by tag and optimize #ACP-2796 ([#31](https://github.com/alauda/alauda-ui/issues/31)) ([7b8b9b1](https://github.com/alauda/alauda-ui/commit/7b8b9b12d781444371032397e6512ca885026d85)), closes [#ACP-2796](https://github.com/alauda/alauda-ui/issues/ACP-2796)
-* initial value snapshot of tags input ([af10c6f](https://github.com/alauda/alauda-ui/commit/af10c6f7c5b7cd737f21e2d64016d441236775a9))
-* radio button can't inject radio group ([c0f8e07](https://github.com/alauda/alauda-ui/commit/c0f8e07e902b15e05015cea2c9b9f627adc111fb))
 * tag input not hide placeholder when update ([#35](https://github.com/alauda/alauda-ui/issues/35)) ([5289daa](https://github.com/alauda/alauda-ui/commit/5289daa2862affb2e3083c4bf3d7d69c53fa1cb8))
-* toc container had multi instance ([c24df4b](https://github.com/alauda/alauda-ui/commit/c24df4b0e160fa3e22f0693b9786083ff5966a87))
-* **select:** remove line through error style ([8a86be5](https://github.com/alauda/alauda-ui/commit/8a86be5a62bba2080875cc3366bdbb726903f2ea))
 
 ### [5.1.10](https://github.com/alauda/alauda-ui/compare/v5.1.4...v5.1.10) (2020-06-09)
 
@@ -39,66 +47,32 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **checkbox:** add indeterminate state ([732d489](https://github.com/alauda/alauda-ui/commit/732d48996ddf84efd83033900739ad6ff87ac8c4))
 * add switch,autocomplete,backtop docs ([6e0b8b2](https://github.com/alauda/alauda-ui/commit/6e0b8b292795cd955d7116000f67864623c970b7))
-* common form control set snapshot by default ([a5782a5](https://github.com/alauda/alauda-ui/commit/a5782a5c99a124672ff3dd49bca02855d4f0ae46))
-* **accordion:** add lazy load to accordion item ([0370784](https://github.com/alauda/alauda-ui/commit/0370784b87ed6922e70e9d98ad93cfe802a0c108))
-* page sider static false ([0ed3881](https://github.com/alauda/alauda-ui/commit/0ed3881b7c69bdcfd3b6484af003076a476aef78))
 
 
 ### Bug Fixes
 
 * card header hasDivider apply only chind header ([1741a73](https://github.com/alauda/alauda-ui/commit/1741a731311741572e115651ae3f8230eb4b974d))
-* toc container had multi instance ([c24df4b](https://github.com/alauda/alauda-ui/commit/c24df4b0e160fa3e22f0693b9786083ff5966a87))
-* **select:** remove line through error style ([8a86be5](https://github.com/alauda/alauda-ui/commit/8a86be5a62bba2080875cc3366bdbb726903f2ea))
-* initial value snapshot of tags input ([af10c6f](https://github.com/alauda/alauda-ui/commit/af10c6f7c5b7cd737f21e2d64016d441236775a9))
-* radio button can't inject radio group ([c0f8e07](https://github.com/alauda/alauda-ui/commit/c0f8e07e902b15e05015cea2c9b9f627adc111fb))
 
 ### [5.1.9](https://github.com/alauda/alauda-ui/compare/v5.1.4...v5.1.9) (2020-05-15)
-
-
-### Features
-
-* common form control set snapshot by default ([a5782a5](https://github.com/alauda/alauda-ui/commit/a5782a5c99a124672ff3dd49bca02855d4f0ae46))
-* **accordion:** add lazy load to accordion item ([0370784](https://github.com/alauda/alauda-ui/commit/0370784b87ed6922e70e9d98ad93cfe802a0c108))
-* page sider static false ([0ed3881](https://github.com/alauda/alauda-ui/commit/0ed3881b7c69bdcfd3b6484af003076a476aef78))
 
 
 ### Bug Fixes
 
 * toc container had multi instance ([43115e4](https://github.com/alauda/alauda-ui/commit/43115e4c9877142bc9eeb0a6d5e2e08c4e2f9aa6))
-* **select:** remove line through error style ([8a86be5](https://github.com/alauda/alauda-ui/commit/8a86be5a62bba2080875cc3366bdbb726903f2ea))
-* initial value snapshot of tags input ([af10c6f](https://github.com/alauda/alauda-ui/commit/af10c6f7c5b7cd737f21e2d64016d441236775a9))
-* radio button can't inject radio group ([c0f8e07](https://github.com/alauda/alauda-ui/commit/c0f8e07e902b15e05015cea2c9b9f627adc111fb))
 
 ### [5.1.8](https://github.com/alauda/alauda-ui/compare/v5.1.4...v5.1.8) (2020-05-12)
-
-
-### Features
-
-* common form control set snapshot by default ([a5782a5](https://github.com/alauda/alauda-ui/commit/a5782a5c99a124672ff3dd49bca02855d4f0ae46))
-* **accordion:** add lazy load to accordion item ([0370784](https://github.com/alauda/alauda-ui/commit/0370784b87ed6922e70e9d98ad93cfe802a0c108))
-* page sider static false ([0ed3881](https://github.com/alauda/alauda-ui/commit/0ed3881b7c69bdcfd3b6484af003076a476aef78))
 
 
 ### Bug Fixes
 
 * **select:** remove line through error style ([8a86be5](https://github.com/alauda/alauda-ui/commit/8a86be5a62bba2080875cc3366bdbb726903f2ea))
-* initial value snapshot of tags input ([af10c6f](https://github.com/alauda/alauda-ui/commit/af10c6f7c5b7cd737f21e2d64016d441236775a9))
-* radio button can't inject radio group ([c0f8e07](https://github.com/alauda/alauda-ui/commit/c0f8e07e902b15e05015cea2c9b9f627adc111fb))
 
 ### [5.1.7](https://github.com/alauda/alauda-ui/compare/v5.1.4...v5.1.7) (2020-04-26)
-
-
-### Features
-
-* common form control set snapshot by default ([a5782a5](https://github.com/alauda/alauda-ui/commit/a5782a5c99a124672ff3dd49bca02855d4f0ae46))
-* **accordion:** add lazy load to accordion item ([0370784](https://github.com/alauda/alauda-ui/commit/0370784b87ed6922e70e9d98ad93cfe802a0c108))
-* page sider static false ([0ed3881](https://github.com/alauda/alauda-ui/commit/0ed3881b7c69bdcfd3b6484af003076a476aef78))
 
 
 ### Bug Fixes
 
 * initial value snapshot of tags input ([d9c12a7](https://github.com/alauda/alauda-ui/commit/d9c12a771d422d80d5dde5ddb293df74da30cd42))
-* radio button can't inject radio group ([c0f8e07](https://github.com/alauda/alauda-ui/commit/c0f8e07e902b15e05015cea2c9b9f627adc111fb))
 
 ### [5.1.6](https://github.com/alauda/alauda-ui/compare/v5.1.4...v5.1.6) (2020-04-24)
 
@@ -107,12 +81,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * common form control set snapshot by default ([a5782a5](https://github.com/alauda/alauda-ui/commit/a5782a5c99a124672ff3dd49bca02855d4f0ae46))
 * **accordion:** add lazy load to accordion item ([0370784](https://github.com/alauda/alauda-ui/commit/0370784b87ed6922e70e9d98ad93cfe802a0c108))
-* page sider static false ([0ed3881](https://github.com/alauda/alauda-ui/commit/0ed3881b7c69bdcfd3b6484af003076a476aef78))
-
-
-### Bug Fixes
-
-* radio button can't inject radio group ([c0f8e07](https://github.com/alauda/alauda-ui/commit/c0f8e07e902b15e05015cea2c9b9f627adc111fb))
 
 ### [5.1.5](https://github.com/alauda/alauda-ui/compare/v5.1.4...v5.1.5) (2020-04-22)
 
