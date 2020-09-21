@@ -41,6 +41,10 @@ $block: 'aui-number-input';
     border-radius: 0 $border-radius $border-radius 0;
   }
 
+  &__input {
+    min-width: 0;
+  }
+
   .aui-input {
     &:not(:first-child) {
       border-radius: 0;
