@@ -18,4 +18,7 @@ export class TableColumnDefDirective extends CdkColumnDef {
   /** Unique name for this column. */
   @Input('auiTableColumnDef')
   name: string;
+
+  @Input()
+  sticky: boolean;
 }
