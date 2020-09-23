@@ -19,6 +19,7 @@ import { Bem, buildBem } from '../../utils/bem';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  inputs: ['disabled'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -44,9 +45,6 @@ export class NumberInputComponent extends CommonFormControl<number> {
 
   @Input()
   precision: number;
-
-  @Input()
-  disabled = false;
 
   @Input()
   controls = true;

@@ -13,12 +13,13 @@ import { Directive, Input } from '@angular/core';
       useExisting: TableColumnDefDirective,
     },
   ],
+  inputs: ['sticky'],
 })
 export class TableColumnDefDirective extends CdkColumnDef {
-  /** Unique name for this column. */
-  @Input('auiTableColumnDef')
-  name: string;
-
+  // Unique name for this column
+  // Why it does not work in `inputs` property?
   @Input()
-  sticky: boolean;
+  set auiTableColumnDef(value: string) {
+    this.name = value;
+  }
 }

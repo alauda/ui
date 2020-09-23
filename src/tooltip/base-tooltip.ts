@@ -33,14 +33,20 @@ export interface TooltipInterface {
   hide: EventEmitter<void>;
 }
 
-export class BaseTooltip implements TooltipInterface, AfterViewInit, OnDestroy {
+export class BaseTooltip<T = any>
+  implements TooltipInterface, AfterViewInit, OnDestroy {
   static readonly DELAY_TIMES = 50;
 
   set content(value: string | TemplateRef<any>) {
     this.inputContent$$.next(value);
   }
 
-  set context(value: any) {
+  get context() {
+    return this._context;
+  }
+
+  set context(value: T) {
+    this._context = value;
     this.inputContext$$.next(value);
   }
 
@@ -120,6 +126,7 @@ export class BaseTooltip implements TooltipInterface, AfterViewInit, OnDestroy {
   protected _position = 'top';
   protected _trigger = TooltipTrigger.Hover;
   protected _disabled = false;
+  protected _context: T;
 
   get isCreated() {
     return !!this.overlayRef;

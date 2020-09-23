@@ -70,11 +70,11 @@ exports[`InputGroupComponent should match snapshot 1`] = `
                   >
                     <stop
                       offset="0"
-                      style="stop-color:#000000"
+                      style="stop-color: #000000"
                     />
                     <stop
                       offset="1"
-                      style="stop-color:#808080"
+                      style="stop-color: #808080"
                     />
                   </lineargradient>
                   <lineargradient
@@ -87,11 +87,11 @@ exports[`InputGroupComponent should match snapshot 1`] = `
                   >
                     <stop
                       offset="0"
-                      style="stop-color:#FFFFFF"
+                      style="stop-color: #ffffff"
                     />
                     <stop
                       offset="1"
-                      style="stop-color:#808080"
+                      style="stop-color: #808080"
                     />
                   </lineargradient>
                   <mask

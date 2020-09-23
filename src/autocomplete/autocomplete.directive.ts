@@ -34,12 +34,13 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
 @Directive({
   selector: 'input[auiAutocomplete],textarea[auiAutocomplete]',
   exportAs: 'auiAutocomplete',
+  inputs: ['class:auiAutocompleteClass'],
   host: {
     autocomplete: 'off',
   },
 })
 export class AutoCompleteDirective
-  extends BaseTooltip
+  extends BaseTooltip<AutoCompleteContext>
   implements OnInit, OnDestroy {
   @Input('auiAutocomplete')
   get autocomplete() {
@@ -54,9 +55,6 @@ export class AutoCompleteDirective
     this._autocomplete = val;
     this.content = val.template;
   }
-
-  @Input('auiAutocompleteClass')
-  class: string;
 
   @Input('auiAutocompleteFilterFn')
   @Input()
@@ -83,12 +81,6 @@ export class AutoCompleteDirective
   @Output('auiAutocompleteHide')
   hide: EventEmitter<void>;
 
-  readonly type: TooltipType = TooltipType.Plain;
-  readonly trigger: TooltipTrigger = TooltipTrigger.Focus;
-  readonly position = 'bottom start';
-  readonly hideOnClick = true;
-  context: AutoCompleteContext;
-
   private _autocomplete: AutocompleteComponent;
   private focusedSuggestion: SuggestionComponent;
 
@@ -114,6 +106,10 @@ export class AutoCompleteDirective
     private readonly ngControl: NgControl,
   ) {
     super(overlay, viewContainerRef, elRef, renderer, cdr, ngZone);
+    this.type = TooltipType.Plain;
+    this.trigger = TooltipTrigger.Focus;
+    this.position = 'bottom start';
+    this.hideOnClick = true;
   }
 
   ngOnInit() {

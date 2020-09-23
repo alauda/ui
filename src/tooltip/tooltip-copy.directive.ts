@@ -17,6 +17,7 @@ import { TooltipCopyIntl } from './tooltip-intl';
 
 @Directive({
   selector: '[auiTooltipCopy]',
+  inputs: ['position:auiTooltipPosition', 'disabled:auiTooltipDisabled'],
 })
 export class TooltipCopyDirective extends BaseTooltip implements OnInit {
   @Input()
@@ -54,12 +55,6 @@ export class TooltipCopyDirective extends BaseTooltip implements OnInit {
   set auiTooltipCopyFailTip(value: string) {
     this._copyFailTip = value;
   }
-
-  @Input('auiTooltipPosition')
-  position: string;
-
-  @Input('auiTooltipDisabled')
-  disabled: boolean;
 
   private _copyText: string;
   private _copyTip: string;
