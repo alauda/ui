@@ -17,4 +17,7 @@ import { Directive, Input } from '@angular/core';
 export class TableHeaderRowDefDirective extends CdkHeaderRowDef {
   @Input('auiTableHeaderRowDef')
   columns: string[];
+
+  @Input('auiTableHeaderRowDefSticky')
+  sticky: boolean;
 }

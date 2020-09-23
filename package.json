@@ -36,7 +36,7 @@
   },
   "peerDependencies": {
     "@angular/animations": "^10.0.0",
-    "@angular/cdk": "^10.1.0",
+    "@angular/cdk": "^10.2.2",
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
     "@angular/forms": "^10.0.0",
@@ -51,7 +51,7 @@
     "@angular-devkit/build-angular": "^0.1000.5",
     "@angular-devkit/core": "^10.0.1",
     "@angular/animations": "^10.0.8",
-    "@angular/cdk": "^10.1.2",
+    "@angular/cdk": "^10.2.2",
     "@angular/cli": "^10.0.5",
     "@angular/common": "^10.0.8",
     "@angular/compiler": "^10.0.8",

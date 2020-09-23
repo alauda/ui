@@ -20,6 +20,7 @@ storiesOf('Table', module)
   .add('table', () => {
     const disableRow = boolean('disableRow', false);
     const dataSource = object('dataSource', DATA_SOURCE);
+    const sticky = boolean('sticky', false);
     return {
       moduleMetadata: {
         imports: [TableModule],
@@ -51,7 +52,7 @@ storiesOf('Table', module)
             </aui-table-cell>
           </ng-container>
           <aui-table-header-row
-            *auiTableHeaderRowDef="['id', 'name', 'value']"
+            *auiTableHeaderRowDef="['id', 'name', 'value']; sticky: sticky"
           ></aui-table-header-row>
           <aui-table-row
             [disabled]="disableRow"
@@ -62,6 +63,7 @@ storiesOf('Table', module)
       props: {
         dataSource,
         disableRow,
+        sticky,
       },
     };
   })
