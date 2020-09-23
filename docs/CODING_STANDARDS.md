@@ -12,9 +12,9 @@ getter 不可产生副作用。
 
 每个模块新建独立的 `*.types.ts` 文件声明接口或类型。
 
-目录结构、模块导入导出方式**必须**与现有组件保持一致， 错误的方式可能导致 AOT 编译出错。[see more](./AOT_NOTES.md)
+目录结构、模块导入导出方式**必须**与现有组件保持一致，错误的方式可能导致 AOT 编译出错。[see more](./AOT_NOTES.md)
 
-## Angular
+## Angular
 
 使用 onPush 模式以获得更好的性能。
 
@@ -36,7 +36,7 @@ getter 不可产生副作用。
 export class ButtonComponent {}
 ```
 
-使用 BEM 命名方法论。在严格遵守 [BEM](http://getbem.com/) 规范的基础上，可以使用以 `is-` 为前缀的类名  表示状态。
+使用 BEM 命名方法论。在严格遵守 [BEM](http://getbem.com/) 规范的基础上，可以使用以 `is-` 为前缀的类名表示状态。
 
 ```scss
 .aui-button {
@@ -56,10 +56,10 @@ export class ButtonComponent {}
 }
 ```
 
-所有颜色 、字体等在 `./src/theme/var.scss` 中使用语义化变量名进行配置。
+所有颜色、字体等在 `./src/theme/var.scss` 中使用语义化变量名进行配置。
 
 ## Test
 
- 使用 [Jest](https://facebook.github.io/jest/) 运行单元测试。在运行测试前组件已预编译为 `inline template`，因此在测试时不需再调用异步的 `compileComponents`。
+使用 [Jest](https://facebook.github.io/jest/) 运行单元测试。在运行测试前组件已预编译为 `inline template`，因此在测试时不需再调用异步的 `compileComponents`。
 
 虽然 `EventEmitter` 的回调函数是同步调用，但要保证回调函数内测试代码确实得到执行必须在 `subscribe` 内执行 `done()`。

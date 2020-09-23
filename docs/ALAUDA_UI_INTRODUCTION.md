@@ -8,8 +8,8 @@
 - 单元测试 => jest: 命令行运行、更快的测试速度、支持 snapshot 对比
 - 编译 => ngc/rollup: 参照 google [APF](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview#)，支持 AOT。编译过程：
   - 复制源码并 inline template 和样式
-  - ngc 将  ts 编译为 js 并生成 metadata 供 AOT 使用
-  - rollup 将代码  打包成 es2015/es5/umd  模块
+  - ngc 将 ts 编译为 js 并生成 metadata 供 AOT 使用
+  - rollup 将代码打包成 es2015/es5/umd 模块
   - 复制 package.json 等
 - 项目结构 =>
   - config: jest/storybook 配置
@@ -20,7 +20,7 @@
   - src: 源码
   - stories: demo app
 
-## Coding Standards
+## Coding Standards
 
 ### Angular
 
@@ -53,11 +53,11 @@ export class XComponent {}
 
 ## 需要注意的点
 
-- aui 目前没有提供一次性导入全部组件的模块，需要单独导入  要用的组件模块
+- aui 目前没有提供一次性导入全部组件的模块，需要单独导入要用的组件模块
 - 当 `import` 路径为文件夹时，ngc 无法正确生成 `metadata`，所以导出模块的文件全部命名为 `public-api.ts`
 - 运行 jest 测试前组件模板已被预编译为 `inline template`，因此不需要再异步编译
 - 通过 `pipe` 方法组合操作符
-- 多行注释会保留在  编译后的文件中，所以写注释时要考虑下是不是应该用单行注释（比如 `TODO`）
+- 多行注释会保留在编译后的文件中，所以写注释时要考虑下是不是应该用单行注释（比如 `TODO`）
 
 ## Contributing
 

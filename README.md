@@ -51,7 +51,7 @@ yarn install
 yarn start
 ```
 
-开发环境基于 [Storybook](https://storybook.js.org/) 运行， 查看 [文档](https://storybook.js.org/basics/guide-angular/)。
+开发环境基于 [Storybook](https://storybook.js.org/) 运行，查看 [文档](https://storybook.js.org/basics/guide-angular/)。
 
 ## Test
 
