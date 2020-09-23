@@ -1,8 +1,6 @@
 <aui-table [dataSource]="dataSource">
   <ng-container auiTableColumnDef="id">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      No.
-    </aui-table-header-cell>
+    <aui-table-header-cell *auiTableHeaderCellDef>No.</aui-table-header-cell>
     <aui-table-cell *auiTableCellDef="let item">
       <aui-icon
         [icon]="this.rowExpanded[item.id] ? 'angle_down' : 'angle_right'"
@@ -12,9 +10,7 @@
     </aui-table-cell>
   </ng-container>
   <ng-container auiTableColumnDef="name">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      Name
-    </aui-table-header-cell>
+    <aui-table-header-cell *auiTableHeaderCellDef>Name</aui-table-header-cell>
     <aui-table-cell *auiTableCellDef="let item">
       {{ item.name }}
       ({{ item.displayName }})

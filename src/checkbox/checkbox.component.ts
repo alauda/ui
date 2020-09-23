@@ -37,7 +37,8 @@ let uniqueId = 0;
     },
   ],
 })
-export class CheckboxComponent extends CommonFormControl<boolean>
+export class CheckboxComponent
+  extends CommonFormControl<boolean>
   implements AfterViewInit, OnDestroy {
   id = `aui-checkbox-${uniqueId++}`;
 

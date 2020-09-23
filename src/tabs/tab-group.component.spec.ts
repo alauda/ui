@@ -2,9 +2,9 @@ import { Component, QueryList, ViewChildren } from '@angular/core';
 import {
   ComponentFixture,
   TestBed,
-  async,
   fakeAsync,
   tick,
+  waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -69,22 +69,25 @@ describe('TabGroupComponent', () => {
     }));
 
     // Note: needs to be `async` in order to fail when we expect it to.
-    it('should set to correct tab on fast change', async(() => {
-      const component = fixture.componentInstance;
-      component.selectedIndex = 0;
-      fixture.detectChanges();
-      setTimeout(() => {
-        component.selectedIndex = 1;
+    it(
+      'should set to correct tab on fast change',
+      waitForAsync(() => {
+        const component = fixture.componentInstance;
+        component.selectedIndex = 0;
         fixture.detectChanges();
         setTimeout(() => {
-          component.selectedIndex = 0;
+          component.selectedIndex = 1;
           fixture.detectChanges();
-          fixture.whenStable().then(() => {
-            expect(component.selectedIndex).toBe(0);
-          });
+          setTimeout(() => {
+            component.selectedIndex = 0;
+            fixture.detectChanges();
+            fixture.whenStable().then(() => {
+              expect(component.selectedIndex).toBe(0);
+            });
+          }, 1);
         }, 1);
-      }, 1);
-    }));
+      }),
+    );
 
     it('should change tabs based on selectedIndex', fakeAsync(() => {
       const component = fixture.componentInstance;

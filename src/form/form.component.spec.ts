@@ -51,9 +51,7 @@ describe('FormComponent', () => {
         <div auiFormItemError *ngIf="name.errors?.required">required</div>
         <div auiFormItemError *ngIf="name.errors?.minlength">minlength: 3</div>
         <div auiFormItemHint>input your name</div>
-        <div auiFormItemAddon>
-          addon
-        </div>
+        <div auiFormItemAddon>addon</div>
       </aui-form-item>
     </form>
   `,

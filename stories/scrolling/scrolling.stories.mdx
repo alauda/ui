@@ -41,9 +41,7 @@ import { FormModule, RadioModule, ScrollingModule } from '@alauda/ui';
           </div>
         </aui-virtual-scroll-viewport>
         <div *ngIf="!enabled" class="example-viewport">
-          <div *ngFor="let item of items" class="example-item">
-            {{ item }}
-          </div>
+          <div *ngFor="let item of items" class="example-item">{{ item }}</div>
         </div>
       `,
       styles: [

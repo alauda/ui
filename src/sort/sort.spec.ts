@@ -161,12 +161,8 @@ type SimpleAuiSortAppColumnIds = 'defaultA' | 'defaultB' | 'overrideStart';
       [direction]="direction"
       (sortChange)="latestSortEvent = $event"
     >
-      <div id="defaultA" #defaultA aui-sort-header="defaultA">
-        A
-      </div>
-      <div id="defaultB" #defaultB aui-sort-header="defaultB">
-        B
-      </div>
+      <div id="defaultA" #defaultA aui-sort-header="defaultA">A</div>
+      <div id="defaultB" #defaultB aui-sort-header="defaultB">B</div>
       <div
         id="overrideStart"
         #overrideStart

@@ -7,7 +7,6 @@ import {
 import {
   ComponentPortal,
   ComponentType,
-  PortalInjector,
   TemplatePortal,
 } from '@angular/cdk/portal';
 import {
@@ -173,12 +172,21 @@ export class DialogService {
     config: DialogConfig,
     dialogRef: DialogRef<T>,
     dialogIns: DialogComponent,
-  ): PortalInjector {
+  ): Injector {
     const userInjector = config?.viewContainerRef?.injector;
-    const injectionTokens = new WeakMap();
-    injectionTokens.set(DialogRef, dialogRef);
-    injectionTokens.set(DIALOG_DATA, config.data || dialogIns);
-    return new PortalInjector(userInjector || this.injector, injectionTokens);
+    return Injector.create({
+      providers: [
+        {
+          provide: DialogRef,
+          useValue: dialogRef,
+        },
+        {
+          provide: DIALOG_DATA,
+          useValue: config.data || dialogIns,
+        },
+      ],
+      parent: userInjector || this.injector,
+    });
   }
 
   private removeDialog(dialogRef: DialogRef<any>) {

@@ -44,7 +44,8 @@ import { OptionComponent } from './option/option.component';
     },
   ],
 })
-export class SelectComponent extends BaseSelect<unknown>
+export class SelectComponent
+  extends BaseSelect<unknown>
   implements AfterContentInit {
   @ViewChild('inputRef', { static: true })
   inputRef: InputComponent;

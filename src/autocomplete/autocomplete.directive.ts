@@ -38,7 +38,8 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
     autocomplete: 'off',
   },
 })
-export class AutoCompleteDirective extends BaseTooltip
+export class AutoCompleteDirective
+  extends BaseTooltip
   implements OnInit, OnDestroy {
   @Input('auiAutocomplete')
   get autocomplete() {

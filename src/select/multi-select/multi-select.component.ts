@@ -52,7 +52,8 @@ import { TagClassFn } from '../select.types';
     },
   ],
 })
-export class MultiSelectComponent extends BaseSelect<unknown[]>
+export class MultiSelectComponent
+  extends BaseSelect<unknown[]>
   implements AfterContentInit {
   bem: Bem = buildBem('aui-multi-select');
   selectedOptions$: Observable<

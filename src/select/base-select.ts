@@ -30,7 +30,8 @@ import { scrollIntoView } from '../utils/scroll-into-view';
 import { OptionComponent } from './option/option.component';
 import { OptionFilterFn, TrackFn } from './select.types';
 
-export abstract class BaseSelect<T> extends CommonFormControl<T>
+export abstract class BaseSelect<T>
+  extends CommonFormControl<T>
   implements AfterContentInit, AfterViewInit, OnDestroy {
   @Input()
   get size() {
