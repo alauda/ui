@@ -19,8 +19,8 @@
 
 主要考虑了三种实现方式：`font icon`，`inline svg`，`svg symbols`。
 
-- `font icon`：目前使用最广泛最成熟的方案，但因为[一些缺陷](https://css-tricks.com/icon-fonts-vs-svg/)业内开始不再推崇这种方式。 针对 `aui-icon` 的使用场景主要缺陷是可能出现的渲染问题。
-- `inline svg`：实现上比较麻烦，DOM 操作太多。
+- `font icon`：目前使用最广泛最成熟的方案，但因为[一些缺陷](https://css-tricks.com/icon-fonts-vs-svg/)业内开始不再推崇这种方式。针对 `aui-icon` 的使用场景主要缺陷是可能出现的渲染问题。
+- `inline svg`：实现上比较麻烦，DOM 操作太多。
 - `svg symbols`：具有 `inline svg` 的所有优点，使用简单优雅。缺陷是浏览器兼容性，IE 所有不支持外链 svg，所以需要将 svg 插入到文档中。
 
 ## 使用自定义图标

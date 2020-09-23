@@ -7,7 +7,7 @@ The following conditions must be met before merge to `master`:
 - at least 1 approval
 - the last commit was successfully built and no failed builds
 
-## Commit Message
+## Commit Message
 
 ### Commit Message Format
 
