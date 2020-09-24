@@ -63,8 +63,8 @@ export class CommonFormControl<T, V = T> implements ControlValueAccessor {
 
   protected emitValueChange(value: T) {
     if (this.onChange) {
-      this.writeValue(value);
       this.onChange(value);
+      this.writeValue(value);
     }
     this.valueChange.emit(value);
   }
