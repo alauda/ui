@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.2](https://github.com/alauda/alauda-ui/compare/v5.3.1...v5.3.2) (2020-09-25)
+
+
+### Features
+
+* bump deps, support typescript 4.0+ ([#51](https://github.com/alauda/alauda-ui/issues/51)) ([7291f95](https://github.com/alauda/alauda-ui/commit/7291f9519fb69664a9e5bff729a6ae25d4320cee))
+
+
+### Bug Fixes
+
+* changeValue should trigger before blur ([#52](https://github.com/alauda/alauda-ui/issues/52)) ([a4980e9](https://github.com/alauda/alauda-ui/commit/a4980e9e1f9bc1d6e6b5c23c188a02e6662f556d))
+* compatible with cdk 10.2+, support sticky header ([#50](https://github.com/alauda/alauda-ui/issues/50)) ([d900f45](https://github.com/alauda/alauda-ui/commit/d900f4573415929f2e0a9a8b842f8888ce3d8c62))
+* firefox aui-number-input css bug ([#48](https://github.com/alauda/alauda-ui/issues/48)) ([ebe3249](https://github.com/alauda/alauda-ui/commit/ebe324924f440025069435ebcad99782cd3566c4))
+
 ### [5.3.1](https://github.com/alauda/alauda-ui/compare/v5.3.0...v5.3.1) (2020-09-14)
 
 
