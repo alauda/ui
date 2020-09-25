@@ -48,7 +48,7 @@ exports[`FormComponent should match snapshot 1`] = `
                 auiformitemaddon=""
                 class="aui-form-item__addon"
               >
-                 addon 
+                addon
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@ exports[`FormComponent should match snapshot 2`] = `
                 auiformitemaddon=""
                 class="aui-form-item__addon"
               >
-                 addon 
+                addon
               </div>
             </div>
           </div>

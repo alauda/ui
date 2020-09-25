@@ -98,7 +98,8 @@ export class TabLabelWrapperDirective {
 @Directive({
   selector: '[auiTabBodyHost]',
 })
-export class TabBodyPortalDirective extends CdkPortalOutlet
+export class TabBodyPortalDirective
+  extends CdkPortalOutlet
   implements OnInit, OnDestroy {
   private _hostSubscription = Subscription.EMPTY;
 

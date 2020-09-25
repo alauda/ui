@@ -17,9 +17,7 @@ storiesOf('Input', module)
       moduleMetadata: { imports: [InputModule, FormsModule] },
       template: /* HTML */ `
         <div>
-          <p style="margin-top: 26px;">
-            Input:
-          </p>
+          <p style="margin-top: 26px;">Input:</p>
           <input
             style="margin-top: 16px;"
             size="large"
@@ -50,9 +48,7 @@ storiesOf('Input', module)
             [(ngModel)]="value"
             placeholder="disabled"
           />
-          <p style="margin-top: 26px;">
-            Textarea:
-          </p>
+          <p style="margin-top: 26px;">Textarea:</p>
           <textarea
             style="margin-top: 16px;"
             size="large"

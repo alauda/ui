@@ -8,6 +8,7 @@
     "component-selector": [true, "element", "aui", "kebab-case"],
     "directive-selector": [true, "attribute", "aui", "camelCase"],
     "no-host-metadata-property": false,
+    "no-inputs-metadata-property": false,
     "validate-decorators": [
       true,
       {

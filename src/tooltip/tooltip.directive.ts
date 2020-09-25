@@ -9,12 +9,10 @@ import {
   NgZone,
   Output,
   Renderer2,
-  TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
 
 import { BaseTooltip } from './base-tooltip';
-import { TooltipTrigger, TooltipType } from './tooltip.types';
 
 @Directive({
   selector: '[auiTooltip]',
@@ -26,29 +24,17 @@ import { TooltipTrigger, TooltipType } from './tooltip.types';
     },
   ],
   exportAs: 'auiTooltip',
+  inputs: [
+    'content:auiTooltip',
+    'context:auiTooltipContext',
+    'class:auiTooltipClass',
+    'type:auiTooltipType',
+    'position:auiTooltipPosition',
+    'trigger:auiTooltipTrigger',
+    'disabled:auiTooltipDisabled',
+  ],
 })
 export class TooltipDirective extends BaseTooltip {
-  @Input('auiTooltip')
-  content: string | TemplateRef<any>;
-
-  @Input('auiTooltipContext')
-  context: any;
-
-  @Input('auiTooltipClass')
-  class: string;
-
-  @Input('auiTooltipType')
-  type: TooltipType;
-
-  @Input('auiTooltipPosition')
-  position: string;
-
-  @Input('auiTooltipTrigger')
-  trigger: TooltipTrigger;
-
-  @Input('auiTooltipDisabled')
-  disabled: boolean;
-
   @Input('auiTooltipHideOnClick')
   hideOnClick: boolean;
 

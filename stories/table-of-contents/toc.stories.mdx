@@ -25,24 +25,16 @@ import { TableOfContentsModule } from '@alauda/ui';
             Links:
             <ul>
               <li>
-                <a auiTocLink="content1" [for]="toc1">
-                  content 1
-                </a>
+                <a auiTocLink="content1" [for]="toc1">content 1</a>
               </li>
               <li>
-                <a auiTocLink="content2" [for]="toc1">
-                  content 2
-                </a>
+                <a auiTocLink="content2" [for]="toc1">content 2</a>
               </li>
               <li>
-                <a auiTocLink="content3" [for]="toc1">
-                  content 3
-                </a>
+                <a auiTocLink="content3" [for]="toc1">content 3</a>
               </li>
               <li *ngFor="let item of list">
-                <a [auiTocLink]="item" [for]="toc1">
-                  {{ item }}
-                </a>
+                <a [auiTocLink]="item" [for]="toc1">{{ item }}</a>
               </li>
             </ul>
           </div>

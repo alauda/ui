@@ -34,7 +34,8 @@ export class AccordionItemContentDirective {}
   preserveWhitespaces: false,
   viewProviders: [AccordionItemComponent],
 })
-export class AccordionItemComponent extends CdkAccordionItem
+export class AccordionItemComponent
+  extends CdkAccordionItem
   implements AfterContentInit {
   @Input()
   hideToggle: false;

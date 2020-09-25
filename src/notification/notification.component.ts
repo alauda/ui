@@ -31,7 +31,8 @@ let uniqueId = 0;
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class NotificationComponent extends MessageComponent
+export class NotificationComponent
+  extends MessageComponent
   implements AfterViewInit {
   protected readonly animateStartState = 'flyLeft';
   protected readonly animateStartEnd = 'flyUp';

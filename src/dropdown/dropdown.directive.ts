@@ -25,13 +25,19 @@ import { MenuComponent } from './menu/menu.component';
 
 @Directive({
   selector: '[auiDropdown]',
+  exportAs: 'auiDropdown',
+  inputs: [
+    'class:auiDropdownClass',
+    'disabled:auiDropdownDisabled',
+    'position:auiDropdownPosition',
+    'trigger:auiDropdownTrigger',
+  ],
   providers: [
     {
       provide: BaseTooltip,
       useExisting: DropdownDirective,
     },
   ],
-  exportAs: 'auiDropdown',
 })
 export class DropdownDirective extends BaseTooltip implements OnInit {
   @Input('auiDropdown')
@@ -50,18 +56,6 @@ export class DropdownDirective extends BaseTooltip implements OnInit {
   @Input('auiDropdownContext')
   lazyContentContext: any;
 
-  @Input('auiDropdownPosition')
-  position = 'bottom end';
-
-  @Input('auiDropdownClass')
-  class: string;
-
-  @Input('auiDropdownTrigger')
-  trigger = TooltipTrigger.Click;
-
-  @Input('auiDropdownDisabled')
-  disabled: boolean;
-
   @Input('auiDropdownHideOnClick')
   hideOnClick = true;
 
@@ -71,7 +65,6 @@ export class DropdownDirective extends BaseTooltip implements OnInit {
   @Output('auiDropdownHide')
   hide: EventEmitter<void>;
 
-  readonly type: TooltipType = TooltipType.Plain;
   private _menu: MenuComponent;
 
   constructor(
@@ -84,6 +77,9 @@ export class DropdownDirective extends BaseTooltip implements OnInit {
   ) {
     super(overlay, viewContainerRef, elRef, renderer, cdr, ngZone);
     new DropdownActiveDirective(this, elRef, renderer).customClass = 'isActive';
+    this.type = TooltipType.Plain;
+    this.position = 'bottom end';
+    this.trigger = TooltipTrigger.Click;
   }
 
   ngOnInit() {

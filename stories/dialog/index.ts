@@ -61,9 +61,7 @@ storiesOf('Dialog', module).add('dialog', () => {
         </p>
       </aui-dialog-content>
       <aui-dialog-footer>
-        <button aui-button="primary" [auiDialogClose]="true">
-          Confirm
-        </button>
+        <button aui-button="primary" [auiDialogClose]="true">Confirm</button>
         <button aui-button [auiDialogClose]="false">Cancel</button>
       </aui-dialog-footer>
     </ng-template>

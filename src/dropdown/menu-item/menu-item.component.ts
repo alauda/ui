@@ -19,8 +19,16 @@ import { MenuItemType } from '../dropdown.types';
 export class MenuItemComponent {
   bem: Bem = buildBem('aui-menu-item');
 
+  protected _disabled = false;
+
   @Input()
-  disabled = false;
+  get disabled() {
+    return this._disabled;
+  }
+
+  set disabled(value) {
+    this._disabled = value;
+  }
 
   @Input()
   divide = false;

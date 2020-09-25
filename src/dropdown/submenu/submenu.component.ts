@@ -34,16 +34,10 @@ export class SubmenuComponent extends MenuItemComponent {
     return this._disabled || !this.hasEnabledItem;
   }
 
-  set disabled(val) {
-    this._disabled = val;
-  }
-
   @ContentChildren(MenuItemComponent, { descendants: true })
   menuItems: QueryList<MenuItemComponent>;
 
   get hasEnabledItem() {
     return this.menuItems?.length > 0;
   }
-
-  private _disabled = false;
 }
