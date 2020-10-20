@@ -12,16 +12,16 @@
 ```html
 <!-- 选择年 -->
 <aui-year-picker 
-  [(ngModel)]="date" 
-  (ngModelChange)="onChange($event)" 
-  placeHolder="Select year"
+  [(ngModel)]="date"
+  (valueChange)="onChange($event)" 
+  placeholder="Select year"
 ></aui-year-picker>
 
 <!-- 选择月 -->
 <aui-month-picker
   [(ngModel)]="date"
-  (ngModelChange)="onChange($event)"
-  placeHolder="Select month"
+  (valueChange)="onChange($event)" 
+  placeholder="Select month"
 ></aui-month-picker>
 ```
 
@@ -36,23 +36,22 @@
 | 参数               | 说明                     | 类型                         | 默认值             |
 | ------------------ | ------------------------ | ---------------------------- | ------------------ |
 | `[format]`         | 日期格式                 | `string`               | `yyyy | yyyy-MM` |
-| `[placeHolder]`    | 输入框提示文字           | `string`              | -                  |
+| `[placeholder]`    | 输入框提示文字           | `string`              | -                  |
 | `[allowClear]`     | 清除按钮                 | `boolean`            | `false`            |
 | `[disabled]`       | 禁用输入框               | `boolean`            | `false`            |
 | `[disabledDate]`   | 不可选择的日期           | `(current: Date) => boolean` | -                  |
-| `[open]`           | 弹出层是否展开           | `boolean`            | -                  |
-| `[locale]` | 国际化配置 | `object` |  |
 | `[size]`           | 输入框大小               | `large|medium|small|mini`    | `medium`           |
-| `(onOpenChange)` | 弹出日历和关闭日历的回调 | `EventEmitter<boolean>`      | -                  |
+| `(show)` | 弹出日历回调 | `EventEmitter<void>`      | -                  |
+| `(hide)` | 关闭日历回调 | `EventEmitter<void>` | - |
 
 ### ui 结构
 
 ```html
 <aui-year-picker>
-  // 使用 picker 组件
-  <picker>
+  // 使用 aui-picker 组件
+  <aui-picker>
 	  <calendar-header></calendar-header>
-  </picker>
+  </aui-picker>
 </aui-year-picker>
 
 
@@ -89,7 +88,44 @@
 
 ```
 
-### picker
+### locale
+>  通过 service 提供全局国际化(和 Paginator 一致)
+
+```ts
+@NgModule({
+  providers: [
+    {
+      provide: DatePickerIntl,
+      useClass: AppDatePickerIntl,
+    },
+  ]
+});
+
+// AppDatePickerIntl
+import { TranslateService } from '@alauda/common-snippet';
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class AppDatePickerIntl {
+  readonly changes = this.translate.locale$;
+
+  get locale() {
+    return  {
+      today: this.translate.get('today');,
+      now: this.translate.get('now'),
+      ok: this.translate.get('ok'),
+      timeSelect: this.translate.get('select time'),
+      dateSelect: this.translate.get('select date'),
+      weekSelect: this.translate.get('choose a week'),
+      //...
+    };
+  }
+  constructor(private readonly translate: TranslateService) {}
+}
+```
+
+
+### aui-picker
 
 > 用于设置 日期 input 样式状态 及打开关闭日历弹框(`calendar-picker`)
 
@@ -108,36 +144,7 @@
   }	
   ```
 
-- `locale`  aui 内部提供`i18n service`,用来翻译日期组件的一些文字
-
-  ```typescript
-  changeLanguage(): void {
-    this.i18n.setLocale(this.isEnglish ? zh_CN : en_US);
-    this.isEnglish = !this.isEnglish;
-  }
-  
-  // zh
-  export default {
-    today: '今天',
-    now: '此刻',
-    ok: '确定',
-    timeSelect: '选择时间',
-    dateSelect: '选择日期',
-    weekSelect: '选择周',
-    // ...
-  }
-  // en
-  export default {
-    today: 'Today',
-    now: 'Now',
-    ok: 'Ok',
-    timeSelect: 'select time',
-    dateSelect: 'select date',
-    weekSelect: 'Choose a week',
-  }
-  ```
-
-- open 默认打开日历面板，通过`cdk Overlay`创建及销毁 日历面板(`calendar-picker`)
+- 打开关闭日历面板，通过`cdk Overlay`创建及销毁 日历面板(`calendar-picker`)
 
 ```html
 <span
