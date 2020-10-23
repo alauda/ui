@@ -4,7 +4,7 @@
   (click)="inputRef.focus()"
 >
   <span
-    [hidden]="(value$ | async).length || inputRef.value.length"
+    [hidden]="(value$ | async)?.length || inputRef.value.length"
     [class]="bem.element('placeholder')"
   >
     {{ placeholder }}

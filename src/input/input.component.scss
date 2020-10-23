@@ -5,6 +5,8 @@
 .aui-input {
   display: inline-block;
   width: 100%;
+  // firefox has default min-width, override it for flex shrinking
+  min-width: 0;
   border: $input-border-style $input-border-width $input-border-color;
   border-radius: $input-border-radius;
   background-color: $input-bg-color;
