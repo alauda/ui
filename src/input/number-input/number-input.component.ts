@@ -62,6 +62,11 @@ export class NumberInputComponent extends CommonFormControl<number> {
     super(cdr);
   }
 
+  writeValue(val: number) {
+    this.value$$.next(this.toPrecision(val));
+    this.checkButtonState(val);
+  }
+
   changeHandle(event: KeyboardEvent) {
     const inputEl = event.target as HTMLInputElement;
     const value = inputEl.value;
@@ -85,9 +90,8 @@ export class NumberInputComponent extends CommonFormControl<number> {
     this.checkButtonAndSetValue(val);
   }
 
-  checkButtonAndSetValue(value: number) {
-    this.maxDisabled = value >= this.max;
-    this.minDisabled = value <= this.min;
+  private checkButtonAndSetValue(value: number) {
+    this.checkButtonState(value);
     if (this.maxDisabled) {
       return this.emitValueChange(this.max);
     } else if (this.minDisabled) {
@@ -96,12 +100,17 @@ export class NumberInputComponent extends CommonFormControl<number> {
     this.emitValueChange(value);
   }
 
-  toPrecision(value: number) {
+  private checkButtonState(value: number) {
+    this.maxDisabled = value >= this.max;
+    this.minDisabled = value <= this.min;
+  }
+
+  private toPrecision(value: number) {
     const precision = this.getPrecision();
     return parseFloat(parseFloat(Number(value).toFixed(precision) + '') + '');
   }
 
-  getPrecision() {
+  private getPrecision() {
     const { value, step, getValuePrecision, precision } = this;
     const stepPrecision = getValuePrecision(step);
     if (precision !== undefined) {
@@ -111,7 +120,7 @@ export class NumberInputComponent extends CommonFormControl<number> {
     }
   }
 
-  getValuePrecision(value: number) {
+  private getValuePrecision(value: number) {
     if (value === undefined || value === null) {
       return 0;
     }
@@ -122,9 +131,5 @@ export class NumberInputComponent extends CommonFormControl<number> {
       precision = valueString.length - dotPosition - 1;
     }
     return precision;
-  }
-
-  writeValue(val: number) {
-    this.value$$.next(this.toPrecision(val));
   }
 }
