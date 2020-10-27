@@ -17,7 +17,7 @@
 
 ## Online Demo
 
-[Storybook Demo](http://k8s-cn-alauda-ui.nolimited.haproxy-internet-alaudacn.myalauda.cn)
+[Storybook Demo](https://aui.js.org)
 
 ## Getting Started
 
