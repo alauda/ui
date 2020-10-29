@@ -28,6 +28,15 @@ export class CommonFormControl<T, V = T> implements ControlValueAccessor {
   }
 
   @Input()
+  get readonly() {
+    return this.disabled;
+  }
+
+  set readonly(val) {
+    this.disabled = val;
+  }
+
+  @Input()
   get value() {
     return this._value;
   }
