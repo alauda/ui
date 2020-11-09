@@ -126,7 +126,12 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
     return (this.parentForm
       ? combineLatest([
           control.statusChanges.pipe(startWith(control.status)),
-          merge(this.parentForm.statusChanges, this.parentForm.ngSubmit),
+          merge(
+            this.parentForm.statusChanges.pipe(
+              startWith(this.parentForm.status),
+            ),
+            this.parentForm.ngSubmit,
+          ),
         ]).pipe(map(([status]: string[]) => status))
       : control.statusChanges
     ).pipe(
