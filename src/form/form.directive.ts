@@ -49,9 +49,9 @@ export class FormDirective {
     .asObservable()
     .pipe(distinctUntilChanged());
 
-  labelPosition$: Observable<
-    LabelPosition
-  > = this.labelPosition$$.asObservable().pipe(distinctUntilChanged());
+  labelPosition$: Observable<LabelPosition> = this.labelPosition$$
+    .asObservable()
+    .pipe(distinctUntilChanged());
 
   emptyAddon$: Observable<boolean> = this.emptyAddon$$
     .asObservable()

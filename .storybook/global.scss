@@ -1,0 +1,13 @@
+@import '../src/theme/style.scss';
+
+storybook-dynamic-app-root {
+  &:first-child,
+  > ng-component {
+    display: block;
+    height: 100%;
+  }
+}
+
+.sbdocs-table {
+  width: 100%;
+}

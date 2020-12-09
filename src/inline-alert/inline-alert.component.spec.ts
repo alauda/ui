@@ -51,7 +51,7 @@ describe('InlineAlertComponent', () => {
   });
 
   it('should emit close event when click close button', () => {
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
       ins.inlineAlertRef.close.subscribe(() => {
         resolve();
       });

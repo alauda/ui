@@ -69,9 +69,8 @@ export class NavMenuComponent implements AfterContentInit {
   @Output() mainPanelCollapsedChange = new EventEmitter<boolean>();
   @Output() secondaryPanelCollapsedChange = new EventEmitter<boolean>();
 
-  @ContentChildren(NavItemComponent) private readonly items: QueryList<
-    NavItemComponent
-  >;
+  @ContentChildren(NavItemComponent)
+  private readonly items: QueryList<NavItemComponent>;
 
   @ContentChildren(NavItemGroupComponent)
   private readonly groups: QueryList<NavItemGroupComponent>;
@@ -129,14 +128,12 @@ export class NavMenuComponent implements AfterContentInit {
         startWith<NavItemKey[]>([null, null]),
         debounceTime(0),
         switchMap(([prevKey, currKey]) => {
-          if (currKey) {
-            return of(currKey);
-          } else {
-            return this.secondaryPanelHover$$.pipe(
-              debounceTime(0),
-              switchMap(hover => (hover ? of(prevKey) : of(null))),
-            );
-          }
+          return currKey
+            ? of(currKey)
+            : this.secondaryPanelHover$$.pipe(
+                debounceTime(0),
+                switchMap(hover => (hover ? of(prevKey) : of(null))),
+              );
         }),
       )
       .pipe(
@@ -213,10 +210,8 @@ export class NavMenuComponent implements AfterContentInit {
     if (!item) {
       return [];
     }
-    if (item.parentItem) {
-      return [...this.getItemPath(item.parentItem), item.key];
-    } else {
-      return [item.key];
-    }
+    return item.parentItem
+      ? [...this.getItemPath(item.parentItem), item.key]
+      : [item.key];
   }
 }

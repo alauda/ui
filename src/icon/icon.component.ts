@@ -44,11 +44,7 @@ export class IconComponent {
   private parseIcon(): [string, string] {
     const defaultPrefix = this.iconRegistryService.getDefaultIconPrefix();
     const arr = (this.icon || '').split(':');
-    if (arr.length < 2) {
-      return [defaultPrefix, arr[0]];
-    } else {
-      return [arr[0], arr[1]];
-    }
+    return arr.length < 2 ? [defaultPrefix, arr[0]] : [arr[0], arr[1]];
   }
 
   getWidth() {

@@ -8,7 +8,7 @@
       true,
       {
         "ignoreTypes": [
-          "/^(aui|ng)-/"
+          "/^(aui|ng|storybook)-/"
         ]
       }
     ]
