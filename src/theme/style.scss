@@ -27,10 +27,11 @@ a {
   }
 }
 
-aui-icon[ng-reflect-aui-tooltip-copy],
-aui-icon[auiTooltipCopy] {
+.aui-tooltip-copy {
   cursor: pointer;
+}
 
+aui-icon.aui-tooltip-copy {
   span + & {
     margin-left: 4px;
   }
