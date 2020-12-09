@@ -84,11 +84,9 @@ export class MultiSelectComponent
   }
 
   get tagSize() {
-    if (this.size === ComponentSize.Large) {
-      return ComponentSize.Medium;
-    } else {
-      return ComponentSize.Mini;
-    }
+    return this.size === ComponentSize.Large
+      ? ComponentSize.Medium
+      : ComponentSize.Mini;
   }
 
   get inputClass() {

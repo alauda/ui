@@ -110,7 +110,7 @@ describe('SearchComponent', () => {
   }));
 
   it('should emit change event when user input', () => {
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
       ins.searchRef.keywordChange.subscribe(($event: string) => {
         expect($event).toBe('text');
         resolve();
@@ -131,7 +131,7 @@ describe('SearchComponent', () => {
   }));
 
   it('should emit clear event', () => {
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
       ins.searchRef.clear.subscribe(() => {
         resolve();
       });
@@ -160,7 +160,7 @@ describe('SearchComponent', () => {
   });
 
   it('should emit search event when click search button', () => {
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
       ins.searchRef.search.subscribe(($event: string) => {
         expect($event).toBe('text');
         resolve();
@@ -187,7 +187,7 @@ describe('SearchComponent', () => {
   });
 
   it('should emit search event when press enter', () => {
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
       ins.searchRef.search.subscribe(($event: string) => {
         expect($event).toBe('text');
         resolve();

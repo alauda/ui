@@ -69,7 +69,7 @@ describe('DialogService', () => {
   });
 
   it('should be closed by click close button', () => {
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
       const ins = fixture.componentInstance;
       ins.result = 'result';
       dialogService
@@ -87,7 +87,7 @@ describe('DialogService', () => {
   });
 
   it('should open confirm dialog and invoke confirm callback', () => {
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
       dialogService
         .confirm({
           title: 'title',
@@ -106,7 +106,7 @@ describe('DialogService', () => {
   });
 
   it('should open confirm dialog and invoke cancel callback', () => {
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
       dialogService
         .confirm({
           title: 'custom title',
@@ -131,7 +131,7 @@ describe('DialogService', () => {
   });
 
   it('should before confirm work correctly', () => {
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
       const t1 = new Date().getTime();
       dialogService
         .confirm({
@@ -159,7 +159,7 @@ describe('DialogService', () => {
   });
 
   it('should before cancel work correctly', () => {
-    return new Promise(resolve => {
+    return new Promise<void>(resolve => {
       const t1 = new Date().getTime();
       dialogService
         .confirm({

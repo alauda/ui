@@ -38,11 +38,9 @@ export class OptionGroupComponent implements AfterContentInit {
     >).pipe(
       startWith(this.options),
       switchMap(options => {
-        if (options.length > 0) {
-          return combineLatest(options.map(node => node.visible$));
-        } else {
-          return of([false]);
-        }
+        return options.length > 0
+          ? combineLatest(options.map(node => node.visible$))
+          : of([false]);
       }),
       map(values => values.some(value => !!value)),
       publishReplay(1),

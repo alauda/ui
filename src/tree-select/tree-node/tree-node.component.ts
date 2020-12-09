@@ -111,11 +111,9 @@ export class TreeNodeComponent implements AfterViewInit, OnDestroy {
     >).pipe(
       startWith(this.childNodes),
       switchMap(nodes => {
-        if (nodes.length > 0) {
-          return combineLatest(nodes.map(node => node.visible$));
-        } else {
-          return of([false]);
-        }
+        return nodes.length > 0
+          ? combineLatest(nodes.map(node => node.visible$))
+          : of([false]);
       }),
       map(values => values.some(value => !!value)),
     );
