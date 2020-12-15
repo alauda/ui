@@ -80,7 +80,11 @@ storiesOf('Notification', module).add('notification', () => {
       custom class
     </button>
 
-    <ng-template #template><button>inline template button</button></ng-template>
+    <ng-template #template>
+      <div>custom template</div>
+      <br />
+      <button aui-button="primary">inline template button</button>
+    </ng-template>
   `,
 })
 class DemoComponent implements OnDestroy {
@@ -91,6 +95,7 @@ class DemoComponent implements OnDestroy {
 
   notify() {
     const notificationRef = this.notificationService.success({
+      title: 'With template',
       contentRef: this.template,
     });
     notificationRef.instance.beforeClosed.subscribe(noop);

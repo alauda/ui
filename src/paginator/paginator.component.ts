@@ -110,11 +110,9 @@ export class PaginatorComponent implements OnDestroy {
   }
 
   getLayoutArr() {
-    if (typeof this.layout === 'string') {
-      return this.layout.split(',').map(item => item.trim());
-    } else {
-      return this.layout;
-    }
+    return typeof this.layout === 'string'
+      ? this.layout.split(',').map(item => item.trim())
+      : this.layout;
   }
 
   getCenterPages() {

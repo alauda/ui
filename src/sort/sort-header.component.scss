@@ -4,6 +4,7 @@ $block: aui-sort-header;
 
 .#{$block} {
   display: flex;
+  cursor: pointer;
 
   &__button {
     border: none;

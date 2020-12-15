@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Directive,
   ElementRef,
+  HostBinding,
   HostListener,
   Input,
   NgZone,
@@ -20,6 +21,9 @@ import { TooltipCopyIntl } from './tooltip-intl';
   inputs: ['position:auiTooltipPosition', 'disabled:auiTooltipDisabled'],
 })
 export class TooltipCopyDirective extends BaseTooltip implements OnInit {
+  @HostBinding('class.aui-tooltip-copy')
+  className = true;
+
   @Input()
   get auiTooltipCopy() {
     return this._copyText || this.elRef.nativeElement.textContent;

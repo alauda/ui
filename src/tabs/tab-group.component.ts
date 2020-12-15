@@ -141,9 +141,7 @@ export class TabGroupComponent
 
   /** Event emitted when focus has changed within a tab group. */
   @Output()
-  readonly focusChange: EventEmitter<TabChangeEvent> = new EventEmitter<
-    TabChangeEvent
-  >();
+  readonly focusChange: EventEmitter<TabChangeEvent> = new EventEmitter<TabChangeEvent>();
 
   constructor(private readonly _changeDetectorRef: ChangeDetectorRef) {}
 

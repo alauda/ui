@@ -113,11 +113,9 @@ export class NumberInputComponent extends CommonFormControl<number> {
   private getPrecision() {
     const { value, step, getValuePrecision, precision } = this;
     const stepPrecision = getValuePrecision(step);
-    if (precision !== undefined) {
-      return Math.max(precision, stepPrecision);
-    } else {
-      return Math.max(getValuePrecision(value), stepPrecision);
-    }
+    return precision !== undefined
+      ? Math.max(precision, stepPrecision)
+      : Math.max(getValuePrecision(value), stepPrecision);
   }
 
   private getValuePrecision(value: number) {
