@@ -4,7 +4,6 @@
 .aui-tab-header {
   display: flex;
   align-items: center;
-  border-bottom: $tab-border;
   flex-shrink: 0;
   position: relative;
   background-color: $color-white;
@@ -33,6 +32,11 @@
 
   &--card {
     background-color: $tab-header-type-card-bg-color;
+    border: $tab-border;
+  }
+
+  &--line {
+    border-bottom: $tab-border;
   }
 
   &__pagination-wrapper {
