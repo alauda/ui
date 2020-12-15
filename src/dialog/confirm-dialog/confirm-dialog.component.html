@@ -9,6 +9,7 @@
   <div [class]="bem.element('button-wrapper')">
     <div>
       <button
+        *ngIf="config.confirmButton"
         [aui-button]="config.confirmType"
         [ngClass]="bem.element('confirm-button')"
         [loading]="waitConfirm"
