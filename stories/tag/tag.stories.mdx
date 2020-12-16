@@ -1,13 +1,13 @@
 import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
-import { TagModule } from '@alauda/ui';
+import { TagModule, SwitchModule } from '@alauda/ui';
 
 <Meta
   title="Tag"
   decorators={[
     moduleMetadata({
-      imports: [TagModule],
+      imports: [TagModule, SwitchModule],
     }),
   ]}
 />
@@ -19,15 +19,21 @@ import { TagModule } from '@alauda/ui';
 ## 基本
 
 <Preview>
-  <Story name="basic" height="60px">
+  <Story name="basic" height="120px">
     {{
       template: /* HTML */ `
-        <aui-tag type="primary">primary</aui-tag>
-        <aui-tag type="success">success</aui-tag>
-        <aui-tag type="warning">warning</aui-tag>
-        <aui-tag type="error">erro</aui-tag>
-        <aui-tag type="info">info</aui-tag>
+        <div style="margin-bottom: 20px">
+          边框：<aui-switch [(ngModel)]="border"></aui-switch>
+        </div>
+        <aui-tag type="primary" [border]="border">primary</aui-tag>
+        <aui-tag type="success" [border]="border">success</aui-tag>
+        <aui-tag type="warning" [border]="border">warning</aui-tag>
+        <aui-tag type="error" [border]="border">error</aui-tag>
+        <aui-tag type="info" [border]="border">info</aui-tag>
       `,
+      props: {
+        border: false,
+      },
     }}
   </Story>
 </Preview>
@@ -128,6 +134,7 @@ import { TagModule } from '@alauda/ui';
 | type      | TagType       | TagType.Primary      | 标签类型                                        |
 | size      | ComponentSize | ComponentSize.Medium | 标签大小                                        |
 | color     | string        | -                    | 自定义颜色, `'BORDER_COLOR[,BACKGOUNRD_COLOR]'` |
+| border    | boolean       | false                | 是否添加边框                                    |
 | round     | boolean       | true                 | 是否为圆角                                      |
 | closeable | boolean       | false                | 是否可以关闭                                    |
 | solid     | boolean       | false                | 是否为实心                                      |
