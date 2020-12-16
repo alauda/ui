@@ -46,7 +46,12 @@
 
     &__mirror {
       opacity: 0;
+      left: 0;
+      z-index: -99;
       position: absolute;
+      font-size: 12px;
+      // 光标宽度
+      padding-left: 1px;
     }
 
     &--large {
@@ -119,6 +124,9 @@
       outline: none;
       background: none;
       color: $input-color;
+      font-family: inherit;
+      // 字体纵轴偏移量
+      margin-top: -2px;
 
       &--hidden {
         opacity: 0;
@@ -132,7 +140,8 @@
 
   #{$block}.ng-invalid.ng-dirty,
   .ng-submitted #{$block}.ng-invalid {
-    .aui-input {
+    .aui-input,
+    .aui-tags-input {
       &,
       &:hover {
         border-color: $color-error;

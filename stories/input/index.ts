@@ -1,5 +1,10 @@
 import { ComponentSize, IconModule, InputModule } from '@alauda/ui';
-import { FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+  ValidatorFn,
+} from '@angular/forms';
 import { action } from '@storybook/addon-actions';
 import {
   boolean,
@@ -14,7 +19,9 @@ storiesOf('Input', module)
   .addDecorator(withKnobs)
   .add('input', () => {
     return {
-      moduleMetadata: { imports: [InputModule, FormsModule] },
+      moduleMetadata: {
+        imports: [InputModule, FormsModule],
+      },
       template: /* HTML */ `
         <div>
           <p style="margin-top: 26px;">Input:</p>
@@ -168,35 +175,62 @@ storiesOf('Input', module)
   })
   .add('tags input', () => {
     const value = ['app', 'service'];
+    const pattern = /^a/;
     const sizeOptions = {
       [ComponentSize.Large]: ComponentSize.Large,
       [ComponentSize.Medium]: ComponentSize.Medium,
       [ComponentSize.Small]: ComponentSize.Small,
       [ComponentSize.Mini]: ComponentSize.Mini,
     };
+    const checkArrFn: ValidatorFn = control => {
+      const value = control.value as string[];
+      if (value.some(i => i === 'b')) {
+        return { patternA: true };
+      }
+      return null;
+    };
 
+    const control = new FormControl(value, { validators: [checkArrFn] });
     const size = select('size', sizeOptions, ComponentSize.Medium);
     const allowRepeat = boolean('allowRepeat', true);
-    const allowEmpty = boolean('allowEmpty', true);
+    const allowEmpty = boolean('allowEmpty', false);
+    const checkFn: ValidatorFn = control => {
+      const value = control.value as string;
+      if (value.startsWith('a')) {
+        return { patternA: true };
+      }
+      return null;
+    };
+    const printStatus = () => {
+      console.log('print control status to make sure sync', control.status);
+    };
 
     return {
-      moduleMetadata: { imports: [InputModule] },
+      moduleMetadata: { imports: [InputModule, ReactiveFormsModule] },
       template: /* HTML */ `
         <aui-tags-input
           [size]="size"
-          [(value)]="value"
+          [formControl]="control"
+          [inputValidator]="checkFn"
+          [pattern]="pattern"
           [clearable]="true"
           [allowRepeat]="allowRepeat"
           [allowEmpty]="allowEmpty"
           placeholder="placeholder"
         ></aui-tags-input>
-        {{ value | json }}
+        {{ value | json }} status:{{control.status}}
+        <br />
+        <button (click)="printStatus()">submit</button>
       `,
       props: {
+        checkFn,
+        control,
+        pattern,
         value,
         size,
         allowRepeat,
         allowEmpty,
+        printStatus,
       },
     };
   })
