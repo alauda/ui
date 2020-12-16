@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonModule } from '../button/public-api';
 import { IconModule } from '../icon/public-api';
@@ -20,7 +20,14 @@ import { SearchComponent } from './search/search.component';
 import { TagsInputComponent } from './tags-input/tags-input.component';
 
 @NgModule({
-  imports: [CommonModule, ButtonModule, FormsModule, IconModule, TagModule],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IconModule,
+    TagModule,
+  ],
   declarations: [
     AutosizeDirective,
     InputComponent,

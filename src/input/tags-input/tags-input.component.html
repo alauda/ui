@@ -23,14 +23,14 @@
   <input
     #inputRef
     [class]="inputClass"
-    autocomplete="off"
     [disabled]="disabled"
+    autocomplete="off"
     (focus)="onInputFocus()"
     (blur)="onInputBlur($event)"
     (keydown)="onKeyDown($event)"
     (input)="onInput()"
   />
-  <span #inputValueMirror [class]="bem.element('mirror')">
-    {{ inputValue }}
-  </span>
+  <span #inputValueMirror [class]="bem.element('mirror')">{{
+    inputRef.value
+  }}</span>
 </div>

@@ -1,22 +1,34 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Injector,
   Input,
+  OnChanges,
   Renderer2,
+  SimpleChanges,
   ViewChild,
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  AsyncValidatorFn,
+  FormBuilder,
+  NG_VALUE_ACCESSOR,
+  NgControl,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { Observable } from 'rxjs';
-import { publishReplay, refCount, tap } from 'rxjs/operators';
+import { publishReplay, refCount, take, tap } from 'rxjs/operators';
 
 import { CommonFormControl } from '../../form/public-api';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils/bem';
 
+export const INPUT_ERROR_KEY = 'input_data_error';
 @Component({
   selector: 'aui-tags-input',
   templateUrl: './tags-input.component.html',
@@ -36,7 +48,9 @@ import { Bem, buildBem } from '../../utils/bem';
     },
   ],
 })
-export class TagsInputComponent extends CommonFormControl<string[]> {
+export class TagsInputComponent
+  extends CommonFormControl<string[]>
+  implements AfterViewInit, OnChanges {
   bem: Bem = buildBem('aui-tags-input');
 
   @Input()
@@ -54,6 +68,29 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
 
   @Input()
   allowEmpty = false;
+
+  _inputValidator: ValidatorFn;
+  _inputAsyncValidator: AsyncValidatorFn;
+
+  @Input()
+  set inputValidator(fn: ValidatorFn | ValidatorFn[]) {
+    this._inputValidator = Array.isArray(fn) ? Validators.compose(fn) : fn;
+  }
+
+  get inputValidator() {
+    return this._inputValidator;
+  }
+
+  @Input()
+  set inputAsyncValidator(fn: AsyncValidatorFn | AsyncValidatorFn[]) {
+    this._inputAsyncValidator = Array.isArray(fn)
+      ? Validators.composeAsync(fn)
+      : fn;
+  }
+
+  get inputAsyncValidator() {
+    return this._inputAsyncValidator;
+  }
 
   @ViewChild('inputRef', { static: true })
   inputRef: ElementRef<HTMLInputElement>;
@@ -76,7 +113,10 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
 
   focused = false;
 
-  inputValue = '';
+  // 内置form control，仅作校验使用
+  private readonly inputControl = this.fb.control('');
+  // 外层 FormControl，所有的校验逻辑针对输入数据
+  controlContainer: NgControl;
 
   get rootClass() {
     const size = this.size || ComponentSize.Medium;
@@ -95,12 +135,40 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
 
   get inputClass() {
     return `${this.bem.element('input', {
-      hidden: this.disabled || !this.focused,
+      hidden:
+        this.disabled || (!this.focused && !this.inputRef?.nativeElement.value),
     })} aui-tag aui-tag--${this.tagSize}`;
   }
 
-  constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {
+  constructor(
+    cdr: ChangeDetectorRef,
+    private readonly fb: FormBuilder,
+    private readonly renderer: Renderer2,
+    private readonly injector: Injector,
+  ) {
     super(cdr);
+  }
+
+  ngOnChanges({
+    inputValidator,
+    inputAsyncValidator,
+    disabled,
+  }: SimpleChanges) {
+    if (disabled) {
+      this.inputControl[disabled.currentValue ? 'disable' : 'enable']({
+        emitEvent: false,
+      });
+    }
+    if (inputValidator) {
+      this.inputControl.setValidators(this.inputValidator);
+    }
+    if (inputAsyncValidator) {
+      this.inputControl.setAsyncValidators(this.inputAsyncValidator);
+    }
+  }
+
+  ngAfterViewInit() {
+    this.controlContainer = this.injector.get(NgControl, null);
   }
 
   writeValue(val: string[]) {
@@ -112,21 +180,19 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
   }
 
   onInput() {
-    this.inputValue = this.inputRef.nativeElement.value;
+    const value = this.inputRef.nativeElement.value;
     // make sure value sync to span element
-    if (!this.inputValue.length) {
-      requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      if (!value.length) {
         this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
-      });
-    } else {
-      requestAnimationFrame(() => {
+      } else {
         this.renderer.setStyle(
           this.inputRef.nativeElement,
           'width',
           this.inputValueMirror.nativeElement.scrollWidth + 'px',
         );
-      });
-    }
+      }
+    });
   }
 
   onKeyDown(event: KeyboardEvent) {
@@ -160,17 +226,61 @@ export class TagsInputComponent extends CommonFormControl<string[]> {
 
   private pushValue(value: string) {
     if (!this.allowEmpty && !value) {
+      this.removeInputControlError();
       return;
     }
     if (!this.allowRepeat && this.snapshot.value.includes(value)) {
       return;
     }
-    this.emitValueChange(this.snapshot.value.concat(value));
+    this.inputControl.setValue(this.inputRef.nativeElement.value);
+    // inputControl 自身的状态为同步计算
+    this.syncControlStatus();
+    if (this.inputControl.valid) {
+      this.emitValueChange(this.snapshot.value.concat(value));
+    } else if (this.inputControl.pending) {
+      // PENDING 后只会变为 VALID 或 INVALID 的决议状态
+      this.inputControl.statusChanges.pipe(take(1)).subscribe(_ => {
+        this.syncControlStatus();
+        if (this.inputControl.valid) {
+          this.emitValueChange(this.snapshot.value.concat(value));
+        }
+      });
+    }
+  }
+
+  private syncControlStatus() {
+    const { pending, valid, invalid, disabled } = this.inputControl;
+    if (valid) {
+      this.removeInputControlError();
+      this.controlContainer?.control.markAsDirty();
+    } else if (pending) {
+      this.controlContainer?.control.markAsPending();
+    } else if (invalid) {
+      this.controlContainer?.control.markAsDirty();
+      this.controlContainer?.control.setErrors({
+        ...(this.controlContainer?.control?.errors || {}),
+        [INPUT_ERROR_KEY]: this.inputControl.errors,
+      });
+    } else if (disabled) {
+      // 与当前 input 校验脱离
+      this.controlContainer?.control?.updateValueAndValidity();
+    }
+  }
+
+  private removeInputControlError() {
+    let errors = this.controlContainer?.control.errors;
+    if (errors?.[INPUT_ERROR_KEY]) {
+      delete errors[INPUT_ERROR_KEY];
+    }
+    if (Object.keys(errors || {}).length === 0) {
+      errors = null;
+    }
+    this.controlContainer?.control.setErrors(errors);
   }
 
   private clearInput() {
-    this.inputRef.nativeElement.value = '';
     this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
-    this.inputValue = '';
+    this.inputRef.nativeElement.value = '';
+    this.inputControl.setValue('');
   }
 }
