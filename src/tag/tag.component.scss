@@ -127,6 +127,16 @@
     }
   }
 
+  &.hasBorder {
+    border-style: $tag-border-style;
+  }
+
+  &.hasBorder#{&} {
+    &--info {
+      background-color: $color-info-extra-light;
+    }
+  }
+
   &.isSolid#{&} {
     &--primary {
       background-color: $color-primary;

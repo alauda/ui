@@ -33,6 +33,9 @@ export class TagComponent {
   closeable = false;
 
   @Input()
+  border = false;
+
+  @Input()
   solid = false;
 
   @Input()
@@ -51,9 +54,9 @@ export class TagComponent {
     return `${this.bem.block(
       this.type || TagType.Primary,
       this.size || ComponentSize.Medium,
-    )} ${this.solid ? 'isSolid' : ''} ${this.invalid ? 'isInvalid' : ''} ${
-      this.round ? 'isRound' : ''
-    }`;
+    )} ${this.solid ? 'isSolid' : ''} ${this.border ? 'hasBorder' : ''} ${
+      this.invalid ? 'isInvalid' : ''
+    } ${this.round ? 'isRound' : ''}`;
   }
 
   get customStyle() {
