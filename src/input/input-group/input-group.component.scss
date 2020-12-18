@@ -128,10 +128,6 @@
   &__input-wrapper {
     width: 100%;
     position: relative;
-
-    &:hover .aui-input:not([disabled]) {
-      border-color: $input-border-color-primary;
-    }
   }
 
   &__addon {

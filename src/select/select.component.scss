@@ -66,6 +66,11 @@
       border-color: $input-border-color-primary;
     }
   }
+  &__input.aui-input {
+    &:hover {
+      border-color: $input-border-color-primary;
+    }
+  }
 }
 
 aui-select.ng-invalid.ng-dirty,
