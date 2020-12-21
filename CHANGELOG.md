@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.4](https://github.com/alauda/alauda-ui/compare/v5.3.3...v5.3.4) (2020-12-21)
+
+
+### Features
+
+* add tab-card border ([b477f97](https://github.com/alauda/alauda-ui/commit/b477f9706960dfb6085cecb8373e75ad328b82fe))
+* add tag border props ([06ae89e](https://github.com/alauda/alauda-ui/commit/06ae89ea33a75866db11890f5d5997f6697e0824))
+* provide tags-input input validation ([9310f1a](https://github.com/alauda/alauda-ui/commit/9310f1ac1ba4bce598420c2b3e40a342a93c1d50))
+* remove tag border ([2684df2](https://github.com/alauda/alauda-ui/commit/2684df2357869272e9d9842b9b0d9a7849e5eea5))
+
+
+### Bug Fixes
+
+* aui option labelContext AIT-4714 ([a4009b1](https://github.com/alauda/alauda-ui/commit/a4009b1e7e6644081a0deddd2ed5be1cd70fbf6e))
+* aui-sort cursor style ([3738796](https://github.com/alauda/alauda-ui/commit/3738796d3d93f8ad89d90ae5cc6f1a3b19625887))
+* background color of default tooltip ([c46d621](https://github.com/alauda/alauda-ui/commit/c46d621a5e3e62f9ed7eb95e81e4271b1f80da3a))
+* height of custom scroll bar ([e5413c4](https://github.com/alauda/alauda-ui/commit/e5413c4e0b793636937d58182f60ecccc85a402b))
+* host aui-tooltip-copy class for ng 11 ([9c6cb40](https://github.com/alauda/alauda-ui/commit/9c6cb4024ac55535885004313428b286ca25e7e5))
+* input-group hover css bug ([#60](https://github.com/alauda/alauda-ui/issues/60)) ([c62a77b](https://github.com/alauda/alauda-ui/commit/c62a77bf93d925b95028259dbf8c7e0b920469c0))
+
 ### [5.3.3](https://github.com/alauda/alauda-ui/compare/v5.3.2...v5.3.3) (2020-11-09)
 
 
