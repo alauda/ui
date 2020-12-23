@@ -38,11 +38,6 @@
 aui-tree-select.ng-invalid.ng-dirty,
 .ng-submitted aui-tree-select.ng-invalid {
   .aui-input {
-    text-decoration: line-through;
-
-    &,
-    &:hover {
-      border-color: $color-error;
-    }
+    border-color: $color-error !important;
   }
 }

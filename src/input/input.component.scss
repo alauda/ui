@@ -131,8 +131,5 @@ textarea.aui-input {
 
 .aui-input.ng-invalid.ng-dirty,
 .ng-submitted .aui-input.ng-invalid {
-  &,
-  &:hover {
-    border-color: $color-error;
-  }
+  border-color: $color-error !important;
 }

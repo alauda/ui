@@ -58,16 +58,11 @@
   }
 
   &__input.aui-input[readonly] {
-    background-color: $input-bg-color;
+    background-color: $input-bg-color-disabled;
     border-color: $input-border-color;
     cursor: text;
 
     &:focus {
-      border-color: $input-border-color-primary;
-    }
-  }
-  &__input.aui-input {
-    &:hover {
       border-color: $input-border-color-primary;
     }
   }
@@ -76,9 +71,6 @@
 aui-select.ng-invalid.ng-dirty,
 .ng-submitted aui-select.ng-invalid {
   .aui-input {
-    &,
-    &:hover {
-      border-color: $color-error;
-    }
+    border-color: $color-error !important;
   }
 }
