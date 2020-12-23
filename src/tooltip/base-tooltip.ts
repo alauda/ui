@@ -1,5 +1,5 @@
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { ComponentPortal, ComponentType } from '@angular/cdk/portal';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -104,6 +104,7 @@ export class BaseTooltip<T = any>
   hide = new EventEmitter<void>();
 
   protected overlayRef: OverlayRef;
+  protected componentClass: ComponentType<any> = TooltipComponent;
   protected componentIns: TooltipComponent;
   protected hostHovered = false;
   protected tooltipHovered = false;
@@ -150,7 +151,10 @@ export class BaseTooltip<T = any>
       return;
     }
     this.overlayRef = this.createOverlay();
-    const portal = new ComponentPortal(TooltipComponent, this.viewContainerRef);
+    const portal = new ComponentPortal(
+      this.componentClass,
+      this.viewContainerRef,
+    );
     this.componentIns = this.overlayRef.attach(portal).instance;
     this.componentIns.setupInputs({
       inputClass$: this.inputClass$$.asObservable(),
