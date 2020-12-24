@@ -58,13 +58,18 @@
   }
 
   &__input.aui-input[readonly] {
-    background-color: $input-bg-color-disabled;
+    background-color: $input-bg-color;
     border-color: $input-border-color;
     cursor: text;
 
     &:focus {
       border-color: $input-border-color-primary;
     }
+  }
+
+  &__input.aui-input[disabled] {
+    background-color: $input-bg-color-disabled;
+    border-color: $input-border-color;
   }
 }
 
