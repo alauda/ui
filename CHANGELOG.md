@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.6](https://github.com/alauda/alauda-ui/compare/v5.3.5...v5.3.6) (2020-12-24)
+
+
+### Bug Fixes
+
+* select background color ([3d5ec1b](https://github.com/alauda/alauda-ui/commit/3d5ec1b96dc53d25a3de2e14b925fc902b3beb38))
+
 ### [5.3.5](https://github.com/alauda/alauda-ui/compare/v5.3.4...v5.3.5) (2020-12-24)
 
 
