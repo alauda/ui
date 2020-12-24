@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.5](https://github.com/alauda/alauda-ui/compare/v5.3.4...v5.3.5) (2020-12-24)
+
+
+### Features
+
+* base tooltip support override TooltipComponent ([b4f383f](https://github.com/alauda/alauda-ui/commit/b4f383f822a572e97a9f234ab93c1bf4d3a3b418))
+
+
+### Bug Fixes
+
+* emitValueChange method of CommonFormControl should be public ([7baac16](https://github.com/alauda/alauda-ui/commit/7baac16c40425759c8f86d6c50639b8b33fd5a83))
+* resolved input and select components hover style bug ([35dad00](https://github.com/alauda/alauda-ui/commit/35dad005289941121cce88e34c1325bf93507fbd))
+* word not aligin middle in vertical ([c3e91db](https://github.com/alauda/alauda-ui/commit/c3e91dbeb59d11d0ce26b7242ae6dddb48ed3fec))
+
 ### [5.3.4](https://github.com/alauda/alauda-ui/compare/v5.3.3...v5.3.4) (2020-12-21)
 
 
