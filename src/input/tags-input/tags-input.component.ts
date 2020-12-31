@@ -22,7 +22,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { publishReplay, refCount, take, tap } from 'rxjs/operators';
+import { map, publishReplay, refCount, take, tap } from 'rxjs/operators';
 
 import { CommonFormControl } from '../../form/public-api';
 import { ComponentSize } from '../../types';
@@ -69,6 +69,9 @@ export class TagsInputComponent
   @Input()
   allowEmpty = false;
 
+  @Input()
+  readonlyTags: string[] = [];
+
   _inputValidator: ValidatorFn;
   _inputAsyncValidator: AsyncValidatorFn;
 
@@ -103,6 +106,7 @@ export class TagsInputComponent
   };
 
   value$: Observable<string[]> = this.value$$.asObservable().pipe(
+    map(value => this.sortByReadonly(value)),
     tap(value => {
       this.snapshot.value = value;
       this.clearInput();
@@ -176,6 +180,10 @@ export class TagsInputComponent
   }
 
   onRemove(index: number) {
+    const target = this.snapshot.value[index];
+    if (target && this.readonlyTags.includes(target)) {
+      return;
+    }
     this.emitValueChange(this.snapshot.value.filter((_, i) => i !== index));
   }
 
@@ -222,6 +230,21 @@ export class TagsInputComponent
 
   trackByValue(_: number, value: string) {
     return value;
+  }
+
+  private sortByReadonly(items: string[]) {
+    const data = items.reduce(
+      (acc, curr) => {
+        if (this.readonlyTags.includes(curr)) {
+          acc.head.push(curr);
+        } else {
+          acc.tail.push(curr);
+        }
+        return acc;
+      },
+      { head: [], tail: [] },
+    );
+    return [...data.head, ...data.tail];
   }
 
   private pushValue(value: string) {

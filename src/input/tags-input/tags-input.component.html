@@ -15,7 +15,7 @@
     [title]="tag"
     [size]="tagSize"
     [round]="true"
-    [closeable]="!disabled"
+    [closeable]="!(disabled || readonlyTags.includes(tag))"
     (close)="onRemove(index)"
   >
     {{ tag }}

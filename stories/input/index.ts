@@ -212,7 +212,6 @@ storiesOf('Input', module)
           [size]="size"
           [formControl]="control"
           [inputValidator]="checkFn"
-          [pattern]="pattern"
           [clearable]="true"
           [allowRepeat]="allowRepeat"
           [allowEmpty]="allowEmpty"
@@ -221,6 +220,19 @@ storiesOf('Input', module)
         {{ value | json }} status:{{control.status}}
         <br />
         <button (click)="printStatus()">submit</button>
+        <br />
+        <br />
+        <div>只读标签，不可删除</div>
+        <aui-tags-input
+          [size]="size"
+          [formControl]="control"
+          [inputValidator]="checkFn"
+          [clearable]="true"
+          [readonlyTags]="['service']"
+          [allowRepeat]="allowRepeat"
+          [allowEmpty]="allowEmpty"
+          placeholder="placeholder"
+        ></aui-tags-input>
       `,
       props: {
         checkFn,
