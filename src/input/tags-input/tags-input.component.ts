@@ -233,18 +233,14 @@ export class TagsInputComponent
   }
 
   private sortByReadonly(items: string[]) {
-    const data = items.reduce(
-      (acc, curr) => {
-        if (this.readonlyTags.includes(curr)) {
-          acc.head.push(curr);
-        } else {
-          acc.tail.push(curr);
-        }
-        return acc;
-      },
-      { head: [], tail: [] },
-    );
-    return [...data.head, ...data.tail];
+    return this.readonlyTags.length
+      ? [
+          ...items.reduce(
+            (acc, curr) => acc.add(curr),
+            new Set(this.readonlyTags),
+          ),
+        ]
+      : items;
   }
 
   private pushValue(value: string) {
