@@ -70,14 +70,6 @@ export class CommonFormControl<T, V = T> implements ControlValueAccessor {
 
   constructor(protected cdr: ChangeDetectorRef) {}
 
-  emitValueChange(value: T) {
-    if (this.onChange) {
-      this.onChange(value);
-      this.writeValue(value);
-    }
-    this.valueChange.emit(value);
-  }
-
   registerOnChange(fn: (_: T) => void) {
     this.onChange = fn;
   }
@@ -92,7 +84,27 @@ export class CommonFormControl<T, V = T> implements ControlValueAccessor {
   }
 
   writeValue(value: T) {
-    this.value$$.next(value);
+    this.value$$.next(this.valueIn(value));
+  }
+
+  emitValue(value: V) {
+    this.emitValueChange(this.valueOut(value));
+  }
+
+  emitValueChange(value: T) {
+    if (this.onChange) {
+      this.onChange(value);
+      this.writeValue(value);
+    }
+    this.valueChange.emit(value);
+  }
+
+  protected valueIn(v: T): V {
+    return v as any;
+  }
+
+  protected valueOut(v: V): T {
+    return v as any;
   }
 }
 
