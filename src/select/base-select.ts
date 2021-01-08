@@ -403,14 +403,9 @@ export abstract class BaseSelect<T>
     if (this.focusedOption) {
       this.focusedOption.blur();
     }
+
     this.focusedOption = focusedOption;
-    // TODO: 避免 aui-option 中的 labelContext 的引用被修改，为什么？
-    // http://jira.alauda.cn/browse/AIT-4714
-    if (focusedOption?.labelContext) {
-      this.focusedOption.labelContext = {
-        ...(focusedOption.labelContext as Record<string, unknown>),
-      };
-    }
+
     if (this.focusedOption) {
       this.focusedOption.focus();
       this.scrollToOption(this.focusedOption);
