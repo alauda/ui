@@ -4,10 +4,11 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { Bem, buildBem } from '../../utils/bem';
 import { DialogRef } from '../dialog-ref';
-import { ConfirmType } from '../dialog.types';
+import { BeforeAction, ConfirmType, CustomBeforeAction } from '../dialog.types';
 
 import { ConfirmDialogConfig } from './confirm-dialog-config';
 
@@ -19,10 +20,10 @@ import { ConfirmDialogConfig } from './confirm-dialog-config';
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class ConfirmDialogComponent {
+export class ConfirmDialogComponent<T = unknown, R = unknown> {
   bem: Bem = buildBem('aui-confirm-dialog');
 
-  config: ConfirmDialogConfig;
+  config: ConfirmDialogConfig<T, R>;
 
   waitConfirm = false;
   waitCancel = false;
@@ -32,7 +33,7 @@ export class ConfirmDialogComponent {
     private readonly cdr: ChangeDetectorRef,
   ) {}
 
-  setConfig(config: ConfirmDialogConfig) {
+  setConfig(config: ConfirmDialogConfig<T, R>) {
     this.config = { ...new ConfirmDialogConfig(), ...config };
   }
 
@@ -56,7 +57,7 @@ export class ConfirmDialogComponent {
     }
     this.waitConfirm = true;
     try {
-      const result = await new Promise(this.config.beforeConfirm);
+      const result = await this.toPromise(this.config.beforeConfirm);
       this.dialogRef.close({ confirm: true, result });
     } catch {
     } finally {
@@ -68,15 +69,30 @@ export class ConfirmDialogComponent {
   async cancel() {
     if (!this.config.beforeCancel) {
       this.dialogRef.close({ confirm: false, result: null });
+      return;
     }
     this.waitCancel = true;
     try {
-      const result = await new Promise(this.config.beforeCancel);
+      const result = await this.toPromise(this.config.beforeCancel);
       this.dialogRef.close({ confirm: false, result });
     } catch {
     } finally {
       this.waitCancel = false;
       this.cdr.markForCheck();
     }
+  }
+
+  private toPromise<T>(beforeAction: BeforeAction<T>) {
+    if (beforeAction.length) {
+      return new Promise(beforeAction);
+    }
+
+    const result = (beforeAction as CustomBeforeAction<T>)();
+
+    if (result instanceof Observable) {
+      return result.toPromise();
+    }
+
+    return result;
   }
 }

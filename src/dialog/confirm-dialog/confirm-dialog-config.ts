@@ -1,4 +1,4 @@
-import { ConfirmType } from '../dialog.types';
+import { BeforeAction, ConfirmType } from '../dialog.types';
 
 export class ConfirmDialogConfig<T = unknown, R = unknown> {
   title: string;
@@ -8,6 +8,6 @@ export class ConfirmDialogConfig<T = unknown, R = unknown> {
   confirmText? = 'OK';
   cancelText? = 'Cancel';
 
-  beforeConfirm?: (resolve: (result?: T) => void, reject: () => void) => void;
-  beforeCancel?: (resolve: (result?: R) => void, reject: () => void) => void;
+  beforeConfirm?: BeforeAction<T>;
+  beforeCancel?: BeforeAction<R>;
 }
