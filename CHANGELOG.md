@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.6-prod-3.3-0](https://github.com/alauda/alauda-ui/compare/v5.3.6...v5.3.6-prod-3.3-0) (2021-01-08)
+
+
+### Bug Fixes
+
+* avoid ngTemplateOutletContext to modify object reference ([94a11d2](https://github.com/alauda/alauda-ui/commit/94a11d2e3220794728b839154a5d25ad21d67461))
+
 ### [5.3.6](https://github.com/alauda/alauda-ui/compare/v5.3.5...v5.3.6) (2020-12-24)
 
 
