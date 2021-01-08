@@ -75,7 +75,7 @@ export class NumberInputComponent extends CommonFormControl<number> {
       this.emitValueChange(this.snapshot.value);
       return;
     }
-    this.checkButtonAndSetValue(Number(value));
+    this.checkButtonAndSetValue(this.toPrecision(value));
   }
 
   takeOneStep(isPositive = true) {
@@ -105,7 +105,7 @@ export class NumberInputComponent extends CommonFormControl<number> {
     this.minDisabled = value <= this.min;
   }
 
-  private toPrecision(value: number) {
+  private toPrecision(value: number | string) {
     const precision = this.getPrecision();
     return parseFloat(parseFloat(Number(value).toFixed(precision) + '') + '');
   }
