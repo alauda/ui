@@ -105,7 +105,10 @@ export class SelectComponent
         option
           ? {
               label: option.label || coerceString(trackFn(option.value)),
-              labelContext: option.labelContext,
+              // In ng 11, ngTemplateOutletContext will modify the object reference.
+              labelContext: {
+                ...(option.labelContext as Record<string, unknown>),
+              },
             }
           : { label: coerceString(trackFn(value)) },
       ),
