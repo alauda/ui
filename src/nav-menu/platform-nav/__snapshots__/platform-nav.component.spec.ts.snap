@@ -30,6 +30,12 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                   class="aui-nav-item-group"
                 >
                   
+                  <div
+                    class="aui-nav-item-group__title"
+                  >
+                    
+                     group 1 
+                  </div>
                   
                   <aui-nav-item-li>
                     <div
@@ -151,6 +157,12 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                   class="aui-nav-item-group"
                 >
                   
+                  <div
+                    class="aui-nav-item-group__title"
+                  >
+                    
+                     group 2 
+                  </div>
                   
                   <aui-nav-item-li>
                     <div
