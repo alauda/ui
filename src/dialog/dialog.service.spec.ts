@@ -7,6 +7,7 @@ import {
   inject,
   tick,
 } from '@angular/core/testing';
+import { timer } from 'rxjs';
 
 import { DialogModule, DialogService, DialogSize } from './public-api';
 
@@ -132,7 +133,7 @@ describe('DialogService', () => {
 
   it('should before confirm work correctly', () => {
     return new Promise<void>(resolve => {
-      const t1 = new Date().getTime();
+      const t1 = Date.now();
       dialogService
         .confirm({
           title: '',
@@ -141,7 +142,34 @@ describe('DialogService', () => {
           },
         })
         .then(() => {
-          const t2 = new Date().getTime();
+          const t2 = Date.now();
+          expect(t2 - t1).toBeGreaterThanOrEqual(100);
+          resolve();
+        });
+      fixture.detectChanges();
+
+      const confirmBtn: HTMLButtonElement = ocEl.querySelector(
+        '.aui-confirm-dialog__confirm-button',
+      );
+      confirmBtn.dispatchEvent(new Event('click'));
+      fixture.detectChanges();
+
+      expect(confirmBtn.className).toContain('isLoading');
+      expect(confirmBtn.disabled).toBeTruthy();
+    });
+  });
+
+  it('should before confirm observable work correctly', () => {
+    return new Promise<void>(resolve => {
+      const t1 = Date.now();
+      dialogService
+        .confirm({
+          title: '',
+          beforeConfirm: () => timer(100),
+        })
+        // eslint-disable-next-line sonarjs/no-identical-functions
+        .then(() => {
+          const t2 = Date.now();
           expect(t2 - t1).toBeGreaterThanOrEqual(100);
           resolve();
         });
@@ -160,7 +188,7 @@ describe('DialogService', () => {
 
   it('should before cancel work correctly', () => {
     return new Promise<void>(resolve => {
-      const t1 = new Date().getTime();
+      const t1 = Date.now();
       dialogService
         .confirm({
           title: '',
@@ -170,7 +198,34 @@ describe('DialogService', () => {
         })
         // eslint-disable-next-line sonarjs/no-identical-functions
         .catch(() => {
-          const t2 = new Date().getTime();
+          const t2 = Date.now();
+          expect(t2 - t1).toBeGreaterThanOrEqual(100);
+          resolve();
+        });
+      fixture.detectChanges();
+
+      const cancelBtn: HTMLButtonElement = ocEl.querySelector(
+        '.aui-confirm-dialog__cancel-button',
+      );
+      cancelBtn.dispatchEvent(new Event('click'));
+      fixture.detectChanges();
+
+      expect(cancelBtn.className).toContain('isLoading');
+      expect(cancelBtn.disabled).toBeTruthy();
+    });
+  });
+
+  it('should before cancel observable work correctly', () => {
+    return new Promise<void>(resolve => {
+      const t1 = Date.now();
+      dialogService
+        .confirm({
+          title: '',
+          beforeCancel: () => timer(100),
+        })
+        // eslint-disable-next-line sonarjs/no-identical-functions
+        .catch(() => {
+          const t2 = Date.now();
           expect(t2 - t1).toBeGreaterThanOrEqual(100);
           resolve();
         });

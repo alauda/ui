@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export enum DialogSize {
   Small = 'small',
   Medium = 'medium',
@@ -13,3 +15,9 @@ export enum ConfirmType {
   Warning = 'warning',
   Danger = 'danger',
 }
+
+export type CustomBeforeAction<T> = () => Promise<T> | Observable<T>;
+
+export type BeforeAction<T> =
+  | ((resolve: (result?: T) => void, reject: () => void) => void)
+  | CustomBeforeAction<T>;
