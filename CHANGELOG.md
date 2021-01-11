@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.0](https://github.com/alauda/alauda-ui/compare/v5.3.6...v5.4.0) (2021-01-11)
+
+
+### Features
+
+* optimizing common form control useage ([d68cc36](https://github.com/alauda/alauda-ui/commit/d68cc36da0878f9cb1119735a14609ec23cb5ff5))
+* readonly tags, forbid delete ([#86](https://github.com/alauda/alauda-ui/issues/86)) ([f4a1f73](https://github.com/alauda/alauda-ui/commit/f4a1f738eecb48add7b568f2a56c23c7447dc132))
+* support return Promise/Observable directly for ConfirmDialog ([#91](https://github.com/alauda/alauda-ui/issues/91)) ([2034ffe](https://github.com/alauda/alauda-ui/commit/2034ffeba595e8dbcfaa8ec8a08cf533c0605b95)), closes [#83](https://github.com/alauda/alauda-ui/issues/83)
+
+
+### Bug Fixes
+
+* avoid ngTemplateOutletContext to modify object reference ([55f28f8](https://github.com/alauda/alauda-ui/commit/55f28f85f6459fa0b5a76381b431298bf181ea90))
+* number input format value error ([476b435](https://github.com/alauda/alauda-ui/commit/476b435c3a8b66f4701408cf3233ed090312f61b))
+
 ### [5.3.6](https://github.com/alauda/alauda-ui/compare/v5.3.5...v5.3.6) (2020-12-24)
 
 
