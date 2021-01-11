@@ -28,7 +28,7 @@ export class NavItemGroupTitleDirective {
   preserveWhitespaces: false,
 })
 export class NavItemGroupComponent {
-  @ContentChild(NavItemGroupTitleDirective, { static: true })
+  @ContentChild(NavItemGroupTitleDirective)
   title: NavItemGroupTitleDirective;
 
   @ContentChildren(forwardRef(() => NavItemComponent))
