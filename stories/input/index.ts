@@ -319,9 +319,9 @@ storiesOf('Input', module)
       template: /* HTML */ `
         <aui-number-input
           [size]="size"
-          [min]="min"
           [step]="step"
           [precision]="precision"
+          [min]="min"
           [max]="max"
           [controls]="controls"
           [disabled]="disabled"
@@ -329,7 +329,7 @@ storiesOf('Input', module)
           [(ngModel)]="value"
         ></aui-number-input>
         <br />
-        {{ value }}
+        {{ value | json }}
       `,
       props: {
         size,
