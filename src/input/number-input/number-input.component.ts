@@ -1,8 +1,9 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
+  ElementRef,
   Input,
+  ViewChild,
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
@@ -19,7 +20,6 @@ import { Bem, buildBem } from '../../utils/bem';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  inputs: ['disabled'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -55,79 +55,43 @@ export class NumberInputComponent extends CommonFormControl<number> {
   @Input()
   controlsPosition = '';
 
-  minDisabled = false;
-  maxDisabled = false;
+  @ViewChild('inputRef', { read: ElementRef })
+  inputRef: ElementRef<HTMLInputElement>;
 
-  constructor(protected cdr: ChangeDetectorRef) {
-    super(cdr);
-  }
-
-  writeValue(val: number) {
-    this.value$$.next(this.toPrecision(val));
-    this.checkButtonState(val);
-  }
-
-  changeHandle(event: KeyboardEvent) {
-    const inputEl = event.target as HTMLInputElement;
-    const value = inputEl.value;
-    inputEl.value = this.snapshot.value.toString();
-    if (Number.isNaN(+value)) {
-      this.emitValueChange(this.snapshot.value);
-      return;
+  valueIn(v: number) {
+    if (this.inputRef) {
+      this.inputRef.nativeElement.value = v + '';
     }
-    this.checkButtonAndSetValue(this.toPrecision(value));
+    return v;
   }
 
-  takeOneStep(isPositive = true) {
-    if (this.disabled) {
-      return;
+  valueOut(value: number) {
+    return Math.max(
+      this.min ?? Number.MIN_SAFE_INTEGER,
+      Math.min(this.max ?? Number.MAX_SAFE_INTEGER, this.parsePrecision(value)),
+    );
+  }
+
+  inputChanged(value: string) {
+    this.emitValue(parseFloat(value) || this.snapshot.value);
+  }
+
+  takeOneStep(positive: boolean) {
+    if (positive) {
+      this.emitValue(this.snapshot.value + this.step);
+    } else {
+      this.emitValue(this.snapshot.value - this.step);
     }
-    const step: number = isPositive ? this.step : -this.step;
-    const val: number = step + this.snapshot.value;
-    if (Number.isNaN(val)) {
-      return;
-    }
-    this.checkButtonAndSetValue(val);
   }
 
-  private checkButtonAndSetValue(value: number) {
-    this.checkButtonState(value);
-    if (this.maxDisabled) {
-      return this.emitValueChange(this.max);
-    } else if (this.minDisabled) {
-      return this.emitValueChange(this.min);
-    }
-    this.emitValueChange(value);
+  private parsePrecision(value: number) {
+    const precision = this.precision ?? this.getStepPrecision();
+    return parseFloat(value.toFixed(precision));
   }
 
-  private checkButtonState(value: number) {
-    this.maxDisabled = value >= this.max;
-    this.minDisabled = value <= this.min;
-  }
-
-  private toPrecision(value: number | string) {
-    const precision = this.getPrecision();
-    return parseFloat(parseFloat(Number(value).toFixed(precision) + '') + '');
-  }
-
-  private getPrecision() {
-    const { value, step, getValuePrecision, precision } = this;
-    const stepPrecision = getValuePrecision(step);
-    return precision !== undefined
-      ? Math.max(precision, stepPrecision)
-      : Math.max(getValuePrecision(value), stepPrecision);
-  }
-
-  private getValuePrecision(value: number) {
-    if (value === undefined || value === null) {
-      return 0;
-    }
-    const valueString = value.toString();
-    const dotPosition = valueString.indexOf('.');
-    let precision = 0;
-    if (dotPosition !== -1) {
-      precision = valueString.length - dotPosition - 1;
-    }
-    return precision;
+  private getStepPrecision() {
+    const step = this.step + '';
+    const index = step.indexOf('.');
+    return index < 0 ? 0 : step.slice(index + 1).length;
   }
 }
