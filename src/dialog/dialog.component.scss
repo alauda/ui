@@ -97,20 +97,17 @@
     padding: $dialog-header-padding;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    color: $dialog-header-color;
-    font-size: $dialog-header-font-size;
 
     &-title {
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      width: 100%;
       line-height: $dialog-header-line-height;
+      font-size: $dialog-header-font-size;
+      color: $dialog-header-color;
     }
 
     &-close {
       margin-left: 16px;
+      line-height: $dialog-header-line-height;
       font-size: 16px;
       color: $color-text-help;
       cursor: pointer;
