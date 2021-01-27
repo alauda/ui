@@ -23,11 +23,13 @@ $block: 'aui-number-input';
   &__decrease,
   &__increase {
     z-index: 1;
-    &:hover,
-    &:active,
-    &.isActive,
-    &.cdk-keyboard-focused {
-      z-index: 2;
+    &:not([disabled]) {
+      &:hover,
+      &:active,
+      &.isActive,
+      &.cdk-keyboard-focused {
+        z-index: 3;
+      }
     }
   }
 
@@ -54,7 +56,15 @@ $block: 'aui-number-input';
     &:hover,
     &:active,
     &:focus {
-      z-index: 2;
+      z-index: 3;
     }
+  }
+}
+
+aui-number-input.ng-invalid.ng-dirty,
+.ng-submitted aui-number-input.ng-invalid {
+  .aui-number-input__input {
+    border-color: $color-error;
+    z-index: 2;
   }
 }

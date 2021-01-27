@@ -60,7 +60,7 @@ export class NumberInputComponent extends CommonFormControl<number> {
 
   valueIn(v: number) {
     if (this.inputRef) {
-      this.inputRef.nativeElement.value = v + '';
+      this.inputRef.nativeElement.value = (v ?? '') + '';
     }
     return v;
   }
@@ -78,9 +78,9 @@ export class NumberInputComponent extends CommonFormControl<number> {
 
   takeOneStep(positive: boolean) {
     if (positive) {
-      this.emitValue(this.snapshot.value + this.step);
+      this.emitValue((this.snapshot.value ?? 0) + this.step);
     } else {
-      this.emitValue(this.snapshot.value - this.step);
+      this.emitValue((this.snapshot.value ?? 0) - this.step);
     }
   }
 
