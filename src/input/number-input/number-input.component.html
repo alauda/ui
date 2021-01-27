@@ -15,9 +15,6 @@
     #inputRef
     aui-input
     autocomplete="off"
-    [max]="max"
-    [min]="min"
-    [step]="step"
     (change)="inputChanged($event.target.value)"
     [disabled]="disabled"
     [ngClass]="bem.element('input')"

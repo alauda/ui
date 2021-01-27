@@ -29,6 +29,7 @@ storiesOf('Form', module)
     );
 
     const inline = boolean('inline', false);
+
     return {
       moduleMetadata: {
         imports: [
@@ -86,6 +87,17 @@ storiesOf('Form', module)
             <div auiFormItemAddon>
               <aui-icon icon="info_circle_s"></aui-icon>
             </div>
+          </aui-form-item>
+          <aui-form-item>
+            <label auiFormItemLabel>年龄</label>
+            <aui-number-input
+              auiFormItemControl
+              name="age"
+              #age="ngModel"
+              [(ngModel)]="value3"
+              required
+              min="0"
+            ></aui-number-input>
           </aui-form-item>
           <aui-form-item>
             <label auiFormItemLabel>food</label>
