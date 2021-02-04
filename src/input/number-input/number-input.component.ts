@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -28,7 +29,9 @@ import { Bem, buildBem } from '../../utils/bem';
     },
   ],
 })
-export class NumberInputComponent extends CommonFormControl<number> {
+export class NumberInputComponent
+  extends CommonFormControl<number>
+  implements AfterViewInit {
   bem: Bem = buildBem('aui-number-input');
 
   @Input()
@@ -57,6 +60,10 @@ export class NumberInputComponent extends CommonFormControl<number> {
 
   @ViewChild('inputRef', { read: ElementRef })
   inputRef: ElementRef<HTMLInputElement>;
+
+  ngAfterViewInit() {
+    this.inputRef.nativeElement.value = (this.snapshot.value ?? '') + '';
+  }
 
   valueIn(v: number) {
     if (this.inputRef) {
