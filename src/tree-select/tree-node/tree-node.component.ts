@@ -105,22 +105,20 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    const hasVisibleChildNodes$ = (this.childNodes.changes as Observable<
-      QueryList<TreeNodeComponent<T>>
-    >).pipe(
+    const hasVisibleChildNodes$ = this.childNodes.changes.pipe(
       startWith(this.childNodes),
-      switchMap(nodes => {
-        return nodes.length > 0
+      switchMap((nodes: QueryList<TreeNodeComponent<T>>) =>
+        nodes.length > 0
           ? combineLatest(nodes.map(node => node.visible$))
-          : of([false]);
-      }),
-      map(values => values.some(value => !!value)),
+          : of([false]),
+      ),
+      map(visible => visible.some(value => value)),
     );
     this.visible$ = combineLatest([
       this.selfVisible$,
       hasVisibleChildNodes$,
     ]).pipe(
-      map(values => values.some(value => value)),
+      map(visible => visible.some(value => value)),
       publishReplay(1),
       refCount(),
     );

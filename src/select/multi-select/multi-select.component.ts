@@ -7,7 +7,6 @@ import {
   Input,
   QueryList,
   Renderer2,
-  TemplateRef,
   ViewChild,
   ViewEncapsulation,
   forwardRef,
@@ -25,9 +24,14 @@ import {
 
 import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils/bem';
+import { coerceString } from '../../utils/coercion';
 import { BaseSelect } from '../base-select';
 import { OptionComponent } from '../option/option.component';
-import { SelectPrimitiveValue, TagClassFn } from '../select.types';
+import {
+  SelectFilterOption,
+  SelectPrimitiveValue,
+  TagClassFn,
+} from '../select.types';
 
 @Component({
   selector: 'aui-multi-select',
@@ -56,13 +60,7 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
   extends BaseSelect<T, T[]>
   implements AfterContentInit {
   bem: Bem = buildBem('aui-multi-select');
-  selectedOptions$: Observable<
-    Array<{
-      value: T;
-      label?: string | TemplateRef<unknown>;
-      labelContext?: unknown;
-    }>
-  >;
+  selectedOptions$: Observable<Array<SelectFilterOption<T>>>;
 
   selectedValues: T[] = [];
   values$ = this.value$$.asObservable();
@@ -138,11 +136,7 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
                   ),
                 ),
               )
-            : of(
-                [] as Array<{
-                  value: T;
-                }>,
-              ),
+            : of([] as Array<SelectFilterOption<T>>),
         ),
       ),
     ]).pipe(
@@ -151,7 +145,10 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
           value =>
             options.find(
               option => this.trackFn(option.value) === this.trackFn(value),
-            ) || { value },
+            ) || {
+              label: this.labelFn?.(value) || coerceString(this.trackFn(value)),
+              value,
+            },
         ),
       ),
       publishReplay(1),
@@ -210,7 +207,7 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
     }
   }
 
-  writeValue(val: any[]) {
+  writeValue(val: T[]) {
     this.value$$.next(val || []);
     this.resetInput();
     requestAnimationFrame(() => {
@@ -232,7 +229,7 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
     }
   }
 
-  addValue(value: any) {
+  addValue(value: T) {
     const values = this.selectedValues.concat(value);
     this.emitValueChange(values);
     if (this.onChange) {
@@ -243,7 +240,7 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
     }
   }
 
-  removeValue(value: any) {
+  removeValue(value: T) {
     const values = this.selectedValues.filter(
       item => this.trackFn(item) !== this.trackFn(value),
     );

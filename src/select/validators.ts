@@ -16,7 +16,7 @@ import { TrackFn } from './select.types';
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class AuiSelectValidators {
   static includes<T>(
-    options: any[],
+    options: T[],
     trackFn: TrackFn<T> = val => val,
   ): ValidatorFn {
     return (control: AbstractControl) => {

@@ -35,14 +35,16 @@ export class Bem {
 function getActivatedModifiers(
   modifiers: Array<{ [name: string]: boolean } | string>,
 ) {
-  return modifiers
-    .filter(modifier => !!modifier)
-    .map(modifier =>
+  return modifiers.reduce<string[]>((acc, modifier) => {
+    if (!modifier) {
+      return acc;
+    }
+    return acc.concat(
       typeof modifier === 'string'
         ? [modifier]
         : getActivatedModifiersFromObject(modifier),
-    )
-    .reduce((prev: string[], modifier) => prev.concat(modifier), []);
+    );
+  }, []);
 }
 
 function getActivatedModifiersFromObject(modifiers: {

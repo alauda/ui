@@ -81,7 +81,7 @@ export class OptionComponent<T> {
     return this._disabled;
   }
 
-  set disabled(val: any) {
+  set disabled(val: boolean) {
     this._disabled = coerceAttrBoolean(val);
   }
 
@@ -90,7 +90,7 @@ export class OptionComponent<T> {
   @ViewChild('elRef', { static: true })
   elRef: ElementRef;
 
-  private readonly select: BaseSelect<any>;
+  private readonly select: BaseSelect<T>;
   selected = false;
   visible = true;
   size = ComponentSize.Medium;

@@ -68,11 +68,9 @@ export class SelectComponent<T = SelectPrimitiveValue>
     super.ngAfterContentInit();
 
     this.selectedOption$ = combineLatest([
-      (this.contentOptions.changes as Observable<
-        QueryList<OptionComponent<T>>
-      >).pipe(
+      this.contentOptions.changes.pipe(
         startWith(this.contentOptions),
-        switchMap(options =>
+        switchMap((options: QueryList<OptionComponent<T>>) =>
           combineLatest(options.map(option => option.selected$)).pipe(
             startWith(null as void),
             map(() => options.find(option => option.selected)),
@@ -133,7 +131,7 @@ export class SelectComponent<T = SelectPrimitiveValue>
     this.inputRef.elementRef.nativeElement.value = '';
   }
 
-  writeValue(val: any) {
+  writeValue(val: T) {
     this.value$$.next(val);
     this.closeOption();
   }

@@ -33,16 +33,14 @@ export class OptionGroupComponent<T> implements AfterContentInit {
   hasVisibleOption$: Observable<boolean>;
 
   ngAfterContentInit() {
-    this.hasVisibleOption$ = (this.options.changes as Observable<
-      QueryList<OptionComponent<T>>
-    >).pipe(
+    this.hasVisibleOption$ = this.options.changes.pipe(
       startWith(this.options),
-      switchMap(options => {
-        return options.length > 0
+      switchMap((options: QueryList<OptionComponent<T>>) =>
+        options.length > 0
           ? combineLatest(options.map(node => node.visible$))
-          : of([false]);
-      }),
-      map(values => values.some(value => !!value)),
+          : of([false]),
+      ),
+      map(visible => visible.some(value => value)),
       publishReplay(1),
       refCount(),
     );

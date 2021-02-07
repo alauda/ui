@@ -176,11 +176,9 @@ export abstract class BaseSelect<T, V = T>
   ngAfterContentInit() {
     this.customCreatedOptions$ = combineLatest([
       this.values$,
-      (this.contentOptions.changes as Observable<
-        QueryList<OptionComponent<T>>
-      >).pipe(
+      this.contentOptions.changes.pipe(
         startWith(this.contentOptions),
-        switchMap(options =>
+        switchMap((options: QueryList<OptionComponent<T>>) =>
           options.length > 0
             ? combineLatest(options.map(option => option.value$))
             : of([] as T[]),
@@ -381,7 +379,7 @@ export abstract class BaseSelect<T, V = T>
     this.resetFocusedOption(visibleOptions[i]);
   }
 
-  protected resetFocusedOption(focusedOption: OptionComponent<T> = null) {
+  protected resetFocusedOption(focusedOption?: OptionComponent<T>) {
     if (this.focusedOption === focusedOption) {
       return;
     }

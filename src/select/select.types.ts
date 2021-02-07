@@ -20,6 +20,6 @@ export type TrackFn<T, R = unknown> = (value: T) => R;
 
 export type TagClassFn = (
   label: string,
-  value: any,
+  value: unknown,
 ) => // tslint:disable-next-line: max-union-size
 string | string[] | Set<string> | { [className: string]: unknown };
