@@ -1,9 +1,11 @@
-export type NodeFilterFn = (filter: string, node: TreeNode) => boolean;
+import { SelectPrimitiveValue } from '../select/select.types';
 
-export interface TreeNode {
+export type NodeFilterFn<T> = (filter: string, node: TreeNode<T>) => boolean;
+
+export interface TreeNode<T = SelectPrimitiveValue> {
   label: string;
-  value: unknown;
-  children?: TreeNode[];
+  value: T;
+  children?: Array<TreeNode<T>>;
   disabled?: boolean;
   expanded?: boolean;
   icon?: string;

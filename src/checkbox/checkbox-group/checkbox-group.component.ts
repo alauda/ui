@@ -27,8 +27,8 @@ import { CheckboxComponent } from '../checkbox.component';
     },
   ],
 })
-export class CheckboxGroupComponent extends CommonFormControl<unknown[]> {
-  private _trackFn: TrackFn;
+export class CheckboxGroupComponent<T> extends CommonFormControl<T[]> {
+  private _trackFn: TrackFn<T>;
 
   @Input()
   direction: 'row' | 'column' = 'row';
@@ -45,13 +45,13 @@ export class CheckboxGroupComponent extends CommonFormControl<unknown[]> {
   }
 
   @ContentChildren(forwardRef(() => CheckboxComponent))
-  checkboxes: QueryList<CheckboxComponent>;
+  checkboxes: QueryList<CheckboxComponent<T>>;
 
-  writeValue(val: any[]) {
+  writeValue(val: T[]) {
     this.value$$.next(val);
   }
 
-  onCheckboxChange(checkbox: CheckboxComponent) {
+  onCheckboxChange(checkbox: CheckboxComponent<T>) {
     if (this.onTouched) {
       this.onTouched();
     }

@@ -54,7 +54,7 @@ export class CommonFormControl<T, V = T> implements ControlValueAccessor {
 
   protected onChange: (_: T) => void;
   protected onTouched: () => void;
-  protected value$$ = new ReplaySubject<any>(1);
+  protected value$$ = new ReplaySubject<V>(1);
   private _value: T;
   private _disabled = false;
 

@@ -1,5 +1,5 @@
 export function coerceString(val: unknown): string {
-  return val === undefined || val === null ? '' : val.toString();
+  return val == null ? '' : val.toString();
 }
 
 export function coerceAttrBoolean(val: any): boolean {

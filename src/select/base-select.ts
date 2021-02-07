@@ -24,14 +24,14 @@ import {
 import { CommonFormControl } from '../form/public-api';
 import { TooltipDirective } from '../tooltip/public-api';
 import { ComponentSize } from '../types';
-import { coerceAttrBoolean } from '../utils/coercion';
+import { coerceAttrBoolean, coerceString } from '../utils/coercion';
 import { scrollIntoView } from '../utils/scroll-into-view';
 
 import { OptionComponent } from './option/option.component';
-import { OptionFilterFn, TrackFn } from './select.types';
+import { OptionFilterFn, SelectFilterOption, TrackFn } from './select.types';
 
-export abstract class BaseSelect<T>
-  extends CommonFormControl<T>
+export abstract class BaseSelect<T, V = T>
+  extends CommonFormControl<V>
   implements AfterContentInit, AfterViewInit, OnDestroy {
   @Input()
   get size() {
@@ -65,28 +65,13 @@ export abstract class BaseSelect<T>
   }
 
   @Input()
-  get filterFn() {
-    return this._filterFn;
-  }
-
-  set filterFn(val) {
-    if (val !== this._filterFn) {
-      this._filterFn = val;
-      this.filterFn$$.next(val);
-    }
-  }
+  filterFn: OptionFilterFn<T> = this._filterFn.bind(this);
 
   @Input()
-  get trackFn() {
-    return this._trackFn;
-  }
+  trackFn: TrackFn<T> = this._trackFn;
 
-  set trackFn(val: TrackFn) {
-    if (val !== this._trackFn) {
-      this._trackFn = val;
-      this.trackFn$$.next(val);
-    }
-  }
+  @Input()
+  labelFn?: (value: T) => string;
 
   @Input()
   get allowCreate() {
@@ -152,22 +137,22 @@ export abstract class BaseSelect<T>
   protected optionListRef: ElementRef;
 
   @ViewChild('inputtingOption', { static: false })
-  protected inputtingOption: OptionComponent;
+  protected inputtingOption: OptionComponent<T>;
 
   @ViewChildren(OptionComponent)
-  customOptions: QueryList<OptionComponent>;
+  customOptions: QueryList<OptionComponent<T>>;
 
   @ContentChildren(OptionComponent, { descendants: true })
-  contentOptions: QueryList<OptionComponent>;
+  contentOptions: QueryList<OptionComponent<T>>;
 
   /**
    * Utility field to make sure the users always see the value as type array
    */
-  abstract readonly values$: Observable<unknown[]>;
+  abstract readonly values$: Observable<T[]>;
 
-  allOptions$: Observable<OptionComponent[]>;
+  allOptions$: Observable<Array<OptionComponent<T>>>;
 
-  protected focusedOption: OptionComponent;
+  protected focusedOption: OptionComponent<T>;
 
   private _size = ComponentSize.Medium;
   private _filterable = true;
@@ -181,44 +166,44 @@ export abstract class BaseSelect<T>
     this.filterString,
   );
 
-  private readonly filterFn$$ = new BehaviorSubject<OptionFilterFn>(
-    this.filterFn,
-  );
-
-  private readonly trackFn$$ = new BehaviorSubject<TrackFn>(this.trackFn);
-
-  size$: Observable<ComponentSize> = this.size$$.asObservable();
-  trackFn$: Observable<TrackFn> = this.trackFn$$.asObservable();
-  filterString$: Observable<string> = this.filterString$$.asObservable();
-  filterFn$: Observable<OptionFilterFn> = this.filterFn$$.asObservable();
+  size$ = this.size$$.asObservable();
+  filterString$ = this.filterString$$.asObservable();
   hasVisibleOption$: Observable<boolean>;
   hasMatchedOption$: Observable<boolean>;
-  customCreatedValues$: Observable<unknown[]>;
+  customCreatedOptions$: Observable<Array<SelectFilterOption<T>>>;
   containerWidth: string;
 
   ngAfterContentInit() {
-    this.customCreatedValues$ = combineLatest([
+    this.customCreatedOptions$ = combineLatest([
       this.values$,
       (this.contentOptions.changes as Observable<
-        QueryList<OptionComponent>
+        QueryList<OptionComponent<T>>
       >).pipe(
         startWith(this.contentOptions),
         switchMap(options =>
           options.length > 0
             ? combineLatest(options.map(option => option.value$))
-            : of([]),
+            : of([] as T[]),
         ),
       ),
-      this.trackFn$,
     ]).pipe(
-      map(([values, optionValues, trackFn]) =>
-        values
-          .filter(
-            value =>
-              !optionValues.map(v => trackFn(v)).includes(trackFn(value)),
-          )
-          .map(value => trackFn(value))
-          .filter(value => !!value),
+      map(([values, optionValues]) =>
+        values.reduce<Array<SelectFilterOption<T>>>((acc, value) => {
+          const included = optionValues
+            .map(value => this.trackFn(value))
+            .includes(this.trackFn(value));
+          if (!included) {
+            const label =
+              this.labelFn?.(value) || coerceString(this.trackFn(value));
+            if (label) {
+              acc.push({
+                label,
+                value,
+              });
+            }
+          }
+          return acc;
+        }, []),
       ),
       publishReplay(1),
       refCount(),
@@ -232,8 +217,8 @@ export abstract class BaseSelect<T>
     ]).pipe(
       map(
         ([customOptions, contentOptions]: [
-          QueryList<OptionComponent>,
-          QueryList<OptionComponent>,
+          QueryList<OptionComponent<T>>,
+          QueryList<OptionComponent<T>>,
         ]) => [...customOptions.toArray(), ...contentOptions.toArray()],
       ),
       publishReplay(1),
@@ -249,14 +234,13 @@ export abstract class BaseSelect<T>
         switchMap(options =>
           options.length > 0
             ? combineLatest(options.map(option => option.value$))
-            : of([]),
+            : of([] as T[]),
         ),
       ),
       this.filterString$,
-      this.trackFn$,
     ]).pipe(
-      map(([values, filterString, trackFn]) =>
-        values.some(value => trackFn(value) === filterString),
+      map(([values, filterString]) =>
+        values.some(value => this.trackFn(value) === filterString),
       ),
       publishReplay(1),
       refCount(),
@@ -264,7 +248,7 @@ export abstract class BaseSelect<T>
 
     this.hasVisibleOption$ = this.contentOptions.changes.pipe(
       startWith(this.contentOptions),
-      switchMap((options: QueryList<OptionComponent>) =>
+      switchMap((options: QueryList<OptionComponent<T>>) =>
         options.length > 0
           ? combineLatest(options.map(option => option.visible$))
           : of([] as boolean[]),
@@ -342,12 +326,14 @@ export abstract class BaseSelect<T>
     }
   }
 
-  onOptionClick(option: OptionComponent) {
+  onOptionClick(option: OptionComponent<T>) {
     this.resetFocusedOption(option);
     this.selectOption(option);
   }
 
-  isTemplate(label: string | TemplateRef<any>) {
+  isTemplate(
+    label: string | TemplateRef<unknown>,
+  ): label is TemplateRef<unknown> {
     return label instanceof TemplateRef;
   }
 
@@ -395,7 +381,7 @@ export abstract class BaseSelect<T>
     this.resetFocusedOption(visibleOptions[i]);
   }
 
-  protected resetFocusedOption(focusedOption: OptionComponent = null) {
+  protected resetFocusedOption(focusedOption: OptionComponent<T> = null) {
     if (this.focusedOption === focusedOption) {
       return;
     }
@@ -412,7 +398,7 @@ export abstract class BaseSelect<T>
     }
   }
 
-  protected scrollToOption(option: OptionComponent) {
+  protected scrollToOption(option: OptionComponent<T>) {
     if (this.optionListRef) {
       scrollIntoView(
         this.optionListRef.nativeElement,
@@ -441,14 +427,15 @@ export abstract class BaseSelect<T>
 
   private _filterFn(
     filterString: string,
-    option: { label: string | TemplateRef<any>; value: any; labelContext: any },
+    { label, value }: SelectFilterOption<T>,
   ) {
     return (
-      (typeof option.label === 'string' && option.label) ||
-      option.value + ''
-    ).includes(filterString);
+      (typeof label === 'string' && label) ||
+      this.labelFn?.(value) ||
+      coerceString(this.trackFn(value))
+    )?.includes(filterString);
   }
 
-  abstract selectOption(option: OptionComponent): void;
+  abstract selectOption(option: OptionComponent<T>): void;
   abstract clearValue(event: Event): void;
 }

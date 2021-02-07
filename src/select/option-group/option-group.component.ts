@@ -26,15 +26,15 @@ import { OptionComponent } from '../option/option.component';
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class OptionGroupComponent implements AfterContentInit {
+export class OptionGroupComponent<T> implements AfterContentInit {
   @ContentChildren(forwardRef(() => OptionComponent))
-  options: QueryList<OptionComponent>;
+  options: QueryList<OptionComponent<T>>;
 
   hasVisibleOption$: Observable<boolean>;
 
   ngAfterContentInit() {
     this.hasVisibleOption$ = (this.options.changes as Observable<
-      QueryList<OptionComponent>
+      QueryList<OptionComponent<T>>
     >).pipe(
       startWith(this.options),
       switchMap(options => {

@@ -37,7 +37,7 @@ let uniqueId = 0;
     },
   ],
 })
-export class CheckboxComponent
+export class CheckboxComponent<T>
   extends CommonFormControl<boolean>
   implements AfterViewInit, OnDestroy {
   id = `aui-checkbox-${uniqueId++}`;
@@ -70,8 +70,8 @@ export class CheckboxComponent
   @ViewChild('elRef', { static: true })
   elRef: ElementRef;
 
-  private readonly checkboxGroup: CheckboxGroupComponent;
-  private _label: unknown;
+  private readonly checkboxGroup: CheckboxGroupComponent<T>;
+  private _label: T;
   private readonly label$$ = new BehaviorSubject(this.label);
   private _indeterminate = false;
   private readonly destroy$$ = new Subject<void>();
@@ -80,7 +80,7 @@ export class CheckboxComponent
     cdr: ChangeDetectorRef,
     @Optional()
     @Inject(forwardRef(() => CheckboxGroupComponent))
-    checkboxGroup: CheckboxGroupComponent,
+    checkboxGroup: CheckboxGroupComponent<T>,
     private readonly focusMonitor: FocusMonitor,
   ) {
     super(cdr);

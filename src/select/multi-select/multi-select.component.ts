@@ -27,7 +27,7 @@ import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils/bem';
 import { BaseSelect } from '../base-select';
 import { OptionComponent } from '../option/option.component';
-import { TagClassFn } from '../select.types';
+import { SelectPrimitiveValue, TagClassFn } from '../select.types';
 
 @Component({
   selector: 'aui-multi-select',
@@ -52,15 +52,19 @@ import { TagClassFn } from '../select.types';
     },
   ],
 })
-export class MultiSelectComponent
-  extends BaseSelect<unknown[]>
+export class MultiSelectComponent<T = SelectPrimitiveValue>
+  extends BaseSelect<T, T[]>
   implements AfterContentInit {
   bem: Bem = buildBem('aui-multi-select');
   selectedOptions$: Observable<
-    Array<{ value: any; label?: string | TemplateRef<any>; labelContext?: any }>
+    Array<{
+      value: T;
+      label?: string | TemplateRef<unknown>;
+      labelContext?: unknown;
+    }>
   >;
 
-  selectedValues: unknown[] = [];
+  selectedValues: T[] = [];
   values$ = this.value$$.asObservable();
 
   @Input()
@@ -100,7 +104,8 @@ export class MultiSelectComponent
   }
 
   focused = false;
-  trackByValue = (_: number, item: OptionComponent) => this.trackFn(item.value);
+  trackByValue = (_: number, item: OptionComponent<T>) =>
+    this.trackFn(item.value);
 
   constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {
     super(cdr);
@@ -116,7 +121,7 @@ export class MultiSelectComponent
       this.value$,
       this.contentOptions.changes.pipe(
         startWith(this.contentOptions),
-        switchMap((options: QueryList<OptionComponent>) =>
+        switchMap((options: QueryList<OptionComponent<T>>) =>
           options.length > 0
             ? combineLatest(
                 options.map(option =>
@@ -135,18 +140,17 @@ export class MultiSelectComponent
               )
             : of(
                 [] as Array<{
-                  value: unknown;
+                  value: T;
                 }>,
               ),
         ),
       ),
-      this.trackFn$,
     ]).pipe(
-      map(([values, options, trackFn]) =>
+      map(([values, options]) =>
         values.map(
           value =>
             options.find(
-              option => trackFn(option.value) === trackFn(value),
+              option => this.trackFn(option.value) === this.trackFn(value),
             ) || { value },
         ),
       ),
@@ -214,7 +218,7 @@ export class MultiSelectComponent
     });
   }
 
-  selectOption(option: OptionComponent) {
+  selectOption(option: OptionComponent<T>) {
     if (option.selected) {
       this.removeValue(option.value);
     } else {

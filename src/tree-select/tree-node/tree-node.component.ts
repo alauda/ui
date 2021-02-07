@@ -37,11 +37,11 @@ import { TreeNode } from '../tree-select.types';
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class TreeNodeComponent implements AfterViewInit, OnDestroy {
+export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
   bem: Bem = buildBem('aui-tree-node');
 
-  private _nodeData: TreeNode;
-  private readonly nodeData$$ = new BehaviorSubject<TreeNode>(this.nodeData);
+  private _nodeData: TreeNode<T>;
+  private readonly nodeData$$ = new BehaviorSubject<TreeNode<T>>(this.nodeData);
   private readonly destroy$$ = new Subject<void>();
 
   @Input()
@@ -61,12 +61,12 @@ export class TreeNodeComponent implements AfterViewInit, OnDestroy {
   titleRef: ElementRef;
 
   @ViewChildren(TreeNodeComponent)
-  childNodes: QueryList<TreeNodeComponent>;
+  childNodes: QueryList<TreeNodeComponent<T>>;
 
   selected = false;
   visible = true;
 
-  private readonly select: TreeSelectComponent;
+  private readonly select: TreeSelectComponent<T>;
   selected$: Observable<boolean>;
   selfVisible$: Observable<boolean>;
   visible$: Observable<boolean>;
@@ -78,13 +78,13 @@ export class TreeNodeComponent implements AfterViewInit, OnDestroy {
   ) {
     this.select = select;
     this.selected$ = combineLatest([
-      this.select.trackFn$,
       this.select.value$,
       this.nodeData$$.pipe(map(data => data.value)),
     ]).pipe(
       map(
-        ([trackFn, selectValue, selfValue]) =>
-          selectValue && trackFn(selectValue) === trackFn(selfValue),
+        ([selectValue, selfValue]) =>
+          selectValue &&
+          this.select.trackFn(selectValue) === this.select.trackFn(selfValue),
       ),
       tap(selected => {
         this.selected = selected;
@@ -93,12 +93,11 @@ export class TreeNodeComponent implements AfterViewInit, OnDestroy {
       refCount(),
     );
     this.selfVisible$ = combineLatest([
-      this.select.filterFn$,
       this.select.filterString$,
       this.nodeData$$,
     ]).pipe(
-      map(([filterFn, filterString, nodeData]) =>
-        filterFn(filterString, nodeData),
+      map(([filterString, nodeData]) =>
+        this.select.filterFn(filterString, nodeData),
       ),
       publishReplay(1),
       refCount(),
@@ -107,7 +106,7 @@ export class TreeNodeComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     const hasVisibleChildNodes$ = (this.childNodes.changes as Observable<
-      QueryList<TreeNodeComponent>
+      QueryList<TreeNodeComponent<T>>
     >).pipe(
       startWith(this.childNodes),
       switchMap(nodes => {
@@ -172,11 +171,11 @@ export class TreeNodeComponent implements AfterViewInit, OnDestroy {
       : this.nodeData.icon;
   }
 
-  trackByLabel(_: number, data: TreeNode) {
+  trackByLabel(_: number, data: TreeNode<T>) {
     return data.label;
   }
 
-  scrollToNode(node: TreeNodeComponent) {
+  scrollToNode(node: TreeNodeComponent<T>) {
     if (this.select.nodeListRef) {
       scrollIntoView(
         this.select.nodeListRef.nativeElement,

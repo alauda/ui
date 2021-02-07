@@ -15,7 +15,10 @@ import { TrackFn } from './select.types';
 // @dynamic
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class AuiSelectValidators {
-  static includes(options: any[], trackFn: TrackFn = val => val): ValidatorFn {
+  static includes<T>(
+    options: any[],
+    trackFn: TrackFn<T> = val => val,
+  ): ValidatorFn {
     return (control: AbstractControl) => {
       return options.some(option => trackFn(option) === trackFn(control.value))
         ? null
@@ -38,13 +41,13 @@ export class AuiSelectValidators {
     },
   ],
 })
-export class IncludesDirective implements Validator, AfterContentInit {
+export class IncludesDirective<T> implements Validator, AfterContentInit {
   @Input()
   get includes() {
     return this._includes;
   }
 
-  set includes(val: any) {
+  set includes(val: boolean) {
     this._includes = coerceAttrBoolean(val);
     if (this.onValidatorChange) {
       this.onValidatorChange();
@@ -52,13 +55,13 @@ export class IncludesDirective implements Validator, AfterContentInit {
   }
 
   @Input()
-  trackFn: TrackFn;
+  trackFn: TrackFn<T>;
 
   private _includes = false;
 
   onValidatorChange: () => void;
 
-  constructor(private readonly selectRef: SelectComponent) {}
+  constructor(private readonly selectRef: SelectComponent<T>) {}
 
   ngAfterContentInit() {
     this.selectRef.contentOptions.changes.subscribe(() => {

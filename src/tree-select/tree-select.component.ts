@@ -14,12 +14,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { CommonFormControl } from '../form/public-api';
 import { InputComponent } from '../input/public-api';
-import { TrackFn } from '../select/select.types';
+import { SelectPrimitiveValue, TrackFn } from '../select/select.types';
 import { TooltipDirective } from '../tooltip/public-api';
 import { coerceAttrBoolean, coerceString } from '../utils/coercion';
 
 import { TreeNodeComponent } from './tree-node/tree-node.component';
-import { NodeFilterFn, TreeNode } from './tree-select.types';
+import { TreeNode } from './tree-select.types';
 
 @Component({
   selector: 'aui-tree-select',
@@ -36,7 +36,9 @@ import { NodeFilterFn, TreeNode } from './tree-select.types';
     },
   ],
 })
-export class TreeSelectComponent extends CommonFormControl<any> {
+export class TreeSelectComponent<
+  T = SelectPrimitiveValue
+> extends CommonFormControl<T> {
   @Input()
   get nodesData() {
     return this._nodesData;
@@ -76,28 +78,13 @@ export class TreeSelectComponent extends CommonFormControl<any> {
   }
 
   @Input()
-  get filterFn() {
-    return this._filterFn;
-  }
-
-  set filterFn(val) {
-    if (val !== this._filterFn) {
-      this._filterFn = val;
-      this.filterFn$$.next(val);
-    }
-  }
+  filterFn = this._filterFn;
 
   @Input()
-  get trackFn() {
-    return this._trackFn;
-  }
+  trackFn: TrackFn<T> = this._trackFn;
 
-  set trackFn(val: TrackFn) {
-    if (val !== this._trackFn) {
-      this._trackFn = val;
-      this.trackFn$$.next(val);
-    }
-  }
+  @Input()
+  labelFn?: (value: T) => string;
 
   @Output()
   filterChange = new EventEmitter<string>();
@@ -120,25 +107,18 @@ export class TreeSelectComponent extends CommonFormControl<any> {
   @ViewChild('inputRef', { static: true })
   inputRef: InputComponent;
 
-  private _nodesData: TreeNode[] = [];
+  private _nodesData: Array<TreeNode<T>> = [];
   private _filterString = '';
   private _filterable = false;
   private _clearable = false;
   private readonly filterString$$ = new BehaviorSubject(this.filterString);
 
-  private readonly filterFn$$ = new BehaviorSubject<NodeFilterFn>(
-    this.filterFn,
-  );
-
-  private readonly trackFn$$ = new BehaviorSubject(this.trackFn);
-
-  trackFn$: Observable<TrackFn> = this.trackFn$$.asObservable();
   filterString$: Observable<string> = this.filterString$$.asObservable();
-  filterFn$: Observable<NodeFilterFn> = this.filterFn$$.asObservable();
 
   containerWidth: string;
   displayText = '';
-  flattedNodes: TreeNode[] = [];
+  flattedNodes: Array<TreeNode<T>> = [];
+
   get opened() {
     return this.tooltipRef.isCreated;
   }
@@ -195,7 +175,7 @@ export class TreeSelectComponent extends CommonFormControl<any> {
     this.cdr.markForCheck();
   }
 
-  onNodeClick(node: TreeNodeComponent) {
+  onNodeClick(node: TreeNodeComponent<T>) {
     this.selectNode(node);
   }
 
@@ -205,7 +185,7 @@ export class TreeSelectComponent extends CommonFormControl<any> {
     ).length;
   }
 
-  selectNode(node: TreeNodeComponent) {
+  selectNode(node: TreeNodeComponent<T>) {
     if (!node.selected) {
       this.emitValueChange(node.nodeData.value);
       if (this.onChange) {
@@ -226,12 +206,12 @@ export class TreeSelectComponent extends CommonFormControl<any> {
   }
 
   clearValue(event: Event) {
-    this.emitValueChange('');
+    this.emitValueChange(null);
     event.stopPropagation();
     event.preventDefault();
   }
 
-  writeValue(value: any) {
+  writeValue(value: T) {
     this.value$$.next(value);
     this.updateSelectDisplay(value);
     this.closeNodes();
@@ -249,12 +229,11 @@ export class TreeSelectComponent extends CommonFormControl<any> {
     return !this.disabled && this.clearable && this.getInputValue();
   }
 
-  trackByLabel(_: number, data: TreeNode) {
-    return data.label;
-  }
+  // `this` is not available in `trackBy`...
+  trackByLabel = (_: number, node: TreeNode<T>) => this.getLabelFromNode(node);
 
-  private flatNodesData(nodes: TreeNode[] = []): TreeNode[] {
-    return nodes.reduce((prevValue: TreeNode[], currentNode) => {
+  private flatNodesData(nodes: Array<TreeNode<T>> = []): Array<TreeNode<T>> {
+    return nodes.reduce((prevValue: Array<TreeNode<T>>, currentNode) => {
       return prevValue.concat(
         currentNode,
         this.flatNodesData(currentNode.children),
@@ -262,12 +241,16 @@ export class TreeSelectComponent extends CommonFormControl<any> {
     }, []);
   }
 
-  private getLabelFromNode(node: TreeNode) {
-    return node.label || this.trackFn(node.value);
+  private getLabelFromNode(node: TreeNode<T>) {
+    return (
+      node.label ||
+      this.labelFn?.(node.value) ||
+      coerceString(this.trackFn(node.value))
+    );
   }
 
-  private _filterFn(filterString: string, node: TreeNode) {
-    return (node.label || node.value).toString().includes(filterString);
+  private _filterFn(filterString: string, node: TreeNode<T>) {
+    return this.getLabelFromNode(node)?.includes(filterString);
   }
 
   private _trackFn<T>(value: T) {

@@ -64,13 +64,23 @@ describe('SelectComponent', () => {
     const optionEls = ocEl.querySelectorAll('.aui-option');
     expect(optionEls.item(0).className).toContain('isSelected');
     expect(getLabelEl().innerHTML).toContain('1');
-    ins.value = 5;
+    ins.value = {
+      label: '5',
+      value: 5,
+    };
     fixture.detectChanges();
     expect(getLabelEl().innerHTML).toContain('5');
 
+    ins.value = {
+      label: '0',
+      value: Symbol(0),
+    };
+    fixture.detectChanges();
+    expect(getLabelEl().innerHTML).toContain('0');
+
     optionEls.item(1).dispatchEvent(new Event('click'));
     fixture.detectChanges();
-    expect(ins.value).toBe(2);
+    expect(ins.value.value).toBe(2);
     expect(getLabelEl().innerHTML).toContain('2');
   });
 
@@ -78,23 +88,23 @@ describe('SelectComponent', () => {
     ins.clearable = true;
     fixture.detectChanges();
 
-    expect(ins.value).toBe(1);
+    expect(ins.value.value).toBe(1);
     expect(getLabelEl().innerHTML).toContain('1');
 
     const closeEl = el.querySelector('.aui-select__clear');
     closeEl.dispatchEvent(new Event('click'));
     fixture.detectChanges();
 
-    expect(ins.value).toBe('');
+    expect(ins.value).toBe(null);
     expect(getLabelEl().textContent).toEqual('');
   });
 
   it('should label correctly rendered', () => {
-    ins.customLabelFn = (val: number) => `custom label for ${val}`;
+    ins.getOptionLabel = (label: string) => `custom label for ${label}`;
     expect(getLabelEl().innerHTML).toContain('1');
     fixture.detectChanges();
     expect(getLabelEl().innerHTML).toContain('custom label for 1');
-    ins.customLabelFn = (val: number) => `new custom label for ${val}`;
+    ins.getOptionLabel = (label: string) => `new custom label for ${label}`;
     fixture.detectChanges();
     expect(getLabelEl().innerHTML).toContain('new custom label for 1');
   });
@@ -110,31 +120,45 @@ describe('SelectComponent', () => {
       [size]="size"
       [loading]="loading"
       [placeholder]="placeholder"
+      [labelFn]="getCustomOptionLabel"
     >
       <aui-option
-        *ngFor="let val of options"
-        [value]="val"
-        [label]="customLabelFn(val)"
-        [disabled]="disabledOptions.includes(val)"
+        *ngFor="let option of options"
+        [value]="option"
+        [label]="getOptionLabel(option.label)"
+        [disabled]="disabledOptions.includes(option.value)"
       >
-        {{ val }}
+        {{ getOptionLabel(option.label) }}
       </aui-option>
     </aui-select>
   `,
 })
 class TestComponent {
-  value = 1;
   disabled: boolean;
   clearable: boolean;
   size: ComponentSize;
   loading: boolean;
   placeholder = '';
 
-  options = [1, 2, 3, 4];
+  options = Array.from({ length: 4 }).map((_, index) => {
+    const value = index + 1;
+    return {
+      label: String(value),
+      value,
+    };
+  });
+
+  value: {
+    label: string;
+    value: number | symbol;
+  } = this.options[0];
+
   disabledOptions = [4];
 
   @ViewChild('selectRef', { static: true })
   selectRef: SelectComponent;
 
-  customLabelFn = (val: number) => `${val}`;
+  getOptionLabel = (label: string): string => label;
+
+  getCustomOptionLabel = (option: { label: string }) => option?.label;
 }
