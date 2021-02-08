@@ -33,16 +33,14 @@ export class SuggestionGroupComponent implements AfterContentInit {
   hasVisibleSuggestion$: Observable<boolean>;
 
   ngAfterContentInit() {
-    this.hasVisibleSuggestion$ = (this.suggestions.changes as Observable<
-      QueryList<SuggestionComponent>
-    >).pipe(
+    this.hasVisibleSuggestion$ = this.suggestions.changes.pipe(
       startWith(this.suggestions),
-      switchMap(options => {
-        return options.length > 0
+      switchMap((options: QueryList<SuggestionComponent>) =>
+        options.length > 0
           ? combineLatest(options.map(node => node.visible$))
-          : of([false]);
-      }),
-      map(values => values.some(value => !!value)),
+          : of([false]),
+      ),
+      map(visible => visible.some(value => value)),
       publishReplay(1),
       refCount(),
     );

@@ -89,14 +89,12 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
   }
 
   ngAfterContentInit() {
-    this.hasError$ = (this.ngControls.changes as Observable<
-      QueryList<NgControl>
-    >).pipe(
+    this.hasError$ = this.ngControls.changes.pipe(
       startWith(this.ngControls),
-      switchMap(controls =>
+      switchMap((controls: QueryList<NgControl>) =>
         combineLatest(
           controls.map(control => this.mapControlStatus(control)),
-        ).pipe(map(statusArr => statusArr.some(hasError => hasError))),
+        ).pipe(map(statuses => statuses.some(status => status))),
       ),
     );
   }

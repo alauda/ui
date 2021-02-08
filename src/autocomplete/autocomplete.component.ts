@@ -54,14 +54,12 @@ export class AutocompleteComponent implements AfterContentInit {
   constructor(private readonly cdr: ChangeDetectorRef) {}
 
   ngAfterContentInit() {
-    this.hasVisibleSuggestion$ = (this.suggestions.changes as Observable<
-      QueryList<SuggestionComponent>
-    >).pipe(
+    this.hasVisibleSuggestion$ = this.suggestions.changes.pipe(
       startWith(this.suggestions),
-      switchMap(suggestions =>
+      switchMap((suggestions: QueryList<SuggestionComponent>) =>
         combineLatest(suggestions.map(suggestion => suggestion.visible$)),
       ),
-      map(visible => visible.some(value => !!value)),
+      map(visible => visible.some(value => value)),
       distinctUntilChanged(),
       tap(() => {
         this.cdr.detectChanges();

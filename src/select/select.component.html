@@ -73,11 +73,11 @@
       </aui-option>
       <ng-container *ngIf="allowCreate">
         <aui-option
-          *ngFor="let value of customCreatedValues$ | async"
-          [label]="value"
-          [value]="value"
+          *ngFor="let option of customCreatedOptions$ | async"
+          [label]="option.label"
+          [value]="option.value"
         >
-          {{ value }}
+          {{ option.label }}
         </aui-option>
       </ng-container>
       <ng-content></ng-content>
@@ -86,7 +86,7 @@
       *ngIf="
         !(
           (hasVisibleOption$ | async) ||
-          (allowCreate && (customCreatedValues$ | async).length) ||
+          (allowCreate && (customCreatedOptions$ | async).length) ||
           (allowCreate && filterString)
         )
       "

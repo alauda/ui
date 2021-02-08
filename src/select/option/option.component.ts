@@ -33,16 +33,14 @@ import { MultiSelectComponent } from '../multi-select/multi-select.component';
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class OptionComponent {
+export class OptionComponent<T> {
   bem: Bem = buildBem('aui-option');
 
   private _disabled = false;
-  private _label: string | TemplateRef<any> = '';
+  private _label: string | TemplateRef<unknown> = '';
   private _labelContext: unknown = {};
-  private _value: unknown;
-  private readonly label$$ = new BehaviorSubject<string | TemplateRef<any>>(
-    this.label,
-  );
+  private _value: T;
+  private readonly label$$ = new BehaviorSubject(this.label);
 
   private readonly labelContext$$ = new BehaviorSubject(this.labelContext);
 
@@ -83,7 +81,7 @@ export class OptionComponent {
     return this._disabled;
   }
 
-  set disabled(val: any) {
+  set disabled(val: boolean) {
     this._disabled = coerceAttrBoolean(val);
   }
 
@@ -92,7 +90,7 @@ export class OptionComponent {
   @ViewChild('elRef', { static: true })
   elRef: ElementRef;
 
-  private readonly select: BaseSelect<any>;
+  private readonly select: BaseSelect<T>;
   selected = false;
   visible = true;
   size = ComponentSize.Medium;
@@ -113,13 +111,11 @@ export class OptionComponent {
   ) {
     this.isMulti = select instanceof MultiSelectComponent;
     this.select = select;
-    this.selected$ = combineLatest([
-      this.select.trackFn$,
-      this.select.values$,
-      this.value$$,
-    ]).pipe(
-      map(([trackFn, selectValue, selfValue]) =>
-        selectValue?.map(trackFn).includes(trackFn(selfValue)),
+    this.selected$ = combineLatest([this.select.values$, this.value$$]).pipe(
+      map(([selectValue, selfValue]) =>
+        selectValue
+          ?.map(this.select.trackFn)
+          .includes(this.select.trackFn(selfValue)),
       ),
       distinctUntilChanged(),
       tap(selected => {
@@ -134,13 +130,14 @@ export class OptionComponent {
       }),
     );
     this.visible$ = combineLatest([
-      this.select.filterFn$,
       this.select.filterString$,
       combineLatest([this.label$, this.value$, this.labelContext$]).pipe(
         map(([label, value, labelContext]) => ({ label, value, labelContext })),
       ),
     ]).pipe(
-      map(([filterFn, filterString, option]) => filterFn(filterString, option)),
+      map(([filterString, option]) =>
+        this.select.filterFn(filterString, option),
+      ),
       distinctUntilChanged(),
       tap(visible => {
         this.visible = visible;

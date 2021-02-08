@@ -26,23 +26,21 @@ import { OptionComponent } from '../option/option.component';
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class OptionGroupComponent implements AfterContentInit {
+export class OptionGroupComponent<T> implements AfterContentInit {
   @ContentChildren(forwardRef(() => OptionComponent))
-  options: QueryList<OptionComponent>;
+  options: QueryList<OptionComponent<T>>;
 
   hasVisibleOption$: Observable<boolean>;
 
   ngAfterContentInit() {
-    this.hasVisibleOption$ = (this.options.changes as Observable<
-      QueryList<OptionComponent>
-    >).pipe(
+    this.hasVisibleOption$ = this.options.changes.pipe(
       startWith(this.options),
-      switchMap(options => {
-        return options.length > 0
+      switchMap((options: QueryList<OptionComponent<T>>) =>
+        options.length > 0
           ? combineLatest(options.map(node => node.visible$))
-          : of([false]);
-      }),
-      map(values => values.some(value => !!value)),
+          : of([false]),
+      ),
+      map(visible => visible.some(value => value)),
       publishReplay(1),
       refCount(),
     );

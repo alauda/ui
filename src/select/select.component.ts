@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   QueryList,
-  TemplateRef,
   ViewChild,
   ViewEncapsulation,
   forwardRef,
@@ -24,6 +23,7 @@ import { coerceString } from '../utils/coercion';
 
 import { BaseSelect } from './base-select';
 import { OptionComponent } from './option/option.component';
+import { SelectOption, SelectPrimitiveValue } from './select.types';
 
 @Component({
   selector: 'aui-select',
@@ -44,18 +44,15 @@ import { OptionComponent } from './option/option.component';
     },
   ],
 })
-export class SelectComponent
-  extends BaseSelect<unknown>
+export class SelectComponent<T = SelectPrimitiveValue>
+  extends BaseSelect<T>
   implements AfterContentInit {
   @ViewChild('inputRef', { static: true })
   inputRef: InputComponent;
 
   values$ = this.value$$.asObservable().pipe(map(val => [val]));
 
-  selectedOption$: Observable<{
-    label: string | TemplateRef<any>;
-    labelContext?: any;
-  }>;
+  selectedOption$: Observable<SelectOption>;
 
   hasSelected$: Observable<boolean>;
 
@@ -71,11 +68,9 @@ export class SelectComponent
     super.ngAfterContentInit();
 
     this.selectedOption$ = combineLatest([
-      (this.contentOptions.changes as Observable<
-        QueryList<OptionComponent>
-      >).pipe(
+      this.contentOptions.changes.pipe(
         startWith(this.contentOptions),
-        switchMap(options =>
+        switchMap((options: QueryList<OptionComponent<T>>) =>
           combineLatest(options.map(option => option.selected$)).pipe(
             startWith(null as void),
             map(() => options.find(option => option.selected)),
@@ -99,18 +94,22 @@ export class SelectComponent
         ),
       ),
       this.value$,
-      this.trackFn$,
     ]).pipe(
-      map(([option, value, trackFn]) =>
+      map(([option, value]) =>
         option
           ? {
-              label: option.label || coerceString(trackFn(option.value)),
-              // In ng 11, ngTemplateOutletContext will modify the object reference.
+              label:
+                option.label ||
+                this.labelFn?.(option.value) ||
+                coerceString(this.trackFn(option.value)),
+              // https://github.com/angular/angular/issues/24515
               labelContext: {
                 ...(option.labelContext as Record<string, unknown>),
               },
             }
-          : { label: coerceString(trackFn(value)) },
+          : {
+              label: this.labelFn?.(value) || coerceString(this.trackFn(value)),
+            },
       ),
       publishReplay(1),
       refCount(),
@@ -132,18 +131,18 @@ export class SelectComponent
     this.inputRef.elementRef.nativeElement.value = '';
   }
 
-  writeValue(val: any) {
+  writeValue(val: T) {
     this.value$$.next(val);
     this.closeOption();
   }
 
-  selectOption(option: OptionComponent) {
+  selectOption(option: OptionComponent<T>) {
     this.emitValueChange(option.value);
     this.closeOption();
   }
 
   clearValue(event: Event) {
-    this.emitValueChange('');
+    this.emitValueChange(null);
     event.stopPropagation();
     event.preventDefault();
   }

@@ -28,7 +28,7 @@
     "start": "yarn storybook",
     "storybook": "start-storybook -c .storybook -p 9001",
     "storybook:build": "build-storybook -c .storybook -o dist",
-    "test": "jest --coverage",
+    "test": "jest --coverage --detectOpenHandles",
     "test:ci": "cross-env JEST_JUNIT_OUTPUT_DIR=reports jest --runInBand --coverage --reporters=jest-junit",
     "test:clear": "jest --clearCache",
     "test:update": "jest -u",

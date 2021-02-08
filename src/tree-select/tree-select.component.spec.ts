@@ -92,7 +92,7 @@ describe('TreeSelectComponent', () => {
     expect(closeEl).not.toBeNull();
     closeEl.dispatchEvent(new Event('click'));
     fixture.detectChanges();
-    expect(ins.value).toBe('');
+    expect(ins.value).toBe(null);
     expect(inputEl.value).toBe('');
   });
 
