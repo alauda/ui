@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.5.0](https://github.com/alauda/alauda-ui/compare/v5.4.1...v5.5.0) (2021-02-18)
+
+
+### Features
+
+* add labelFn Input for select, better select related types ([#98](https://github.com/alauda/alauda-ui/issues/98)) ([570cc55](https://github.com/alauda/alauda-ui/commit/570cc55f0063a8d3ee3ae1852ccb7a1ddf32acc5))
+* breadcrumb item context max width ([5306e4c](https://github.com/alauda/alauda-ui/commit/5306e4c7df0f9269b3fdf9bddf7e8b0a59b21679))
+* optimize number input invalid style ([374d648](https://github.com/alauda/alauda-ui/commit/374d6487e59bc2cd1c5ffc73d149a900e19099e6))
+
+
+### Bug Fixes
+
+* dialog dont hide multi line title ([29d79a2](https://github.com/alauda/alauda-ui/commit/29d79a2dd108aebdf4f828ba77edb354151e77a8))
+* number input displays initial value ([958c682](https://github.com/alauda/alauda-ui/commit/958c6826b15fdfaf1f26614064157878539a3ecb))
+
 ### [5.4.1](https://github.com/alauda/alauda-ui/compare/v5.4.0...v5.4.1) (2021-01-12)
 
 
