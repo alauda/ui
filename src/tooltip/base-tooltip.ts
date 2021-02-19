@@ -3,6 +3,7 @@ import { ComponentPortal, ComponentType } from '@angular/cdk/portal';
 import {
   AfterViewInit,
   ChangeDetectorRef,
+  Directive,
   ElementRef,
   EventEmitter,
   NgZone,
@@ -33,6 +34,8 @@ export interface TooltipInterface {
   hide: EventEmitter<void>;
 }
 
+@Directive()
+// tslint:disable-next-line: directive-class-suffix
 export class BaseTooltip<T = any>
   implements TooltipInterface, AfterViewInit, OnDestroy {
   static readonly DELAY_TIMES = 50;
@@ -165,7 +168,9 @@ export class BaseTooltip<T = any>
     });
 
     if (this.trigger === TooltipTrigger.Hover) {
-      this.componentIns.hover$.subscribe(this.onTooltipHovered.bind(this));
+      this.componentIns.hover$.subscribe(hovered => {
+        this.onTooltipHovered(hovered);
+      });
     }
     if (
       this.trigger === TooltipTrigger.Hover ||

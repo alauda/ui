@@ -231,9 +231,7 @@ export class AutoCompleteDirective
       return;
     }
     const step = dir === 'down' ? 1 : -1;
-    let i = visibleSuggestions.findIndex(
-      option => option === this.focusedSuggestion,
-    );
+    let i = visibleSuggestions.indexOf(this.focusedSuggestion);
     i = i + step;
     if (i >= visibleSuggestions.length) {
       i = 0;

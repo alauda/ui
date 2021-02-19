@@ -120,7 +120,7 @@ export class PaginatorComponent implements OnDestroy {
       Math.max(0, this.currentPage - 4),
       Math.max(0, this.pageCount - 7),
     );
-    return new Array(Math.max(this.pageCount - 2, 0))
+    return Array.from({ length: Math.max(this.pageCount - 2, 0) })
       .fill(null)
       .map((_, index) => index + 2)
       .slice(start, start + 5);

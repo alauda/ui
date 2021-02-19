@@ -66,21 +66,23 @@ export class DialogService {
     return dialogRef;
   }
 
-  confirm<T = unknown, R = unknown>(config: ConfirmDialogConfig): Promise<T> {
+  confirm<T = unknown, R = unknown>(
+    config: ConfirmDialogConfig<T, R>,
+  ): Promise<T> {
     const dialogRef = this.open<
-      ConfirmDialogComponent,
-      null,
+      ConfirmDialogComponent<T, R>,
+      void,
       { confirm: boolean; result: T | R }
     >(ConfirmDialogComponent, {
       size: DialogSize.FitContent,
     });
     dialogRef.componentInstance.setConfig(config);
-
     return new Promise((resolve, reject) => {
       dialogRef.afterClosed().subscribe(action => {
         if (action.confirm) {
           resolve(action.result as T);
         } else {
+          // eslint-disable-next-line prefer-promise-reject-errors
           reject(action.result as R);
         }
       });

@@ -184,7 +184,7 @@ storiesOf('Input', module)
     };
     const checkArrFn: ValidatorFn = control => {
       const value = control.value as string[];
-      if (value.some(i => i === 'b')) {
+      if (value.includes('b')) {
         return { patternA: true };
       }
       return null;

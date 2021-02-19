@@ -33,7 +33,9 @@ import { SelectModule, IconModule } from '@alauda/ui';
         value: {{ value }}
       `,
       props: {
-        arr: new Array(5).fill(null).map((_, i) => `option${i + 1}`),
+        arr: Array.from({ length: 5 })
+          .fill(null)
+          .map((_, i) => `option${i + 1}`),
         value: 'option1',
       },
     }}
@@ -65,7 +67,9 @@ import { SelectModule, IconModule } from '@alauda/ui';
         value: {{ value | json }}
       `,
       props: {
-        arr: new Array(5).fill(null).map((_, i) => i + 1),
+        arr: Array.from({ length: 5 })
+          .fill(null)
+          .map((_, i) => i + 1),
         value: { key: Symbol('special'), value: 'option11' },
         labelFn: option => option?.value,
         trackFn: val => (val ? val.key || val : val),
@@ -159,9 +163,11 @@ import { SelectModule, IconModule } from '@alauda/ui';
         </aui-select>
       `,
       props: {
-        arr: new Array(5).fill(null).map((_, i) => ({
-          key: `option${i + 1}`,
-        })),
+        arr: Array.from({ length: 5 })
+          .fill(null)
+          .map((_, i) => ({
+            key: `option${i + 1}`,
+          })),
         value: '',
         filterFn: (keyword, option) => {
           return !keyword || option.value.key.includes(keyword);
@@ -188,7 +194,9 @@ import { SelectModule, IconModule } from '@alauda/ui';
         value: {{ value | json }}
       `,
       props: {
-        arr: new Array(5).fill(null).map((_, i) => `option${i + 1}`),
+        arr: Array.from({ length: 5 })
+          .fill(null)
+          .map((_, i) => `option${i + 1}`),
         value: ['option1'],
       },
     }}

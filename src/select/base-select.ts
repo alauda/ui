@@ -2,6 +2,7 @@ import {
   AfterContentInit,
   AfterViewInit,
   ContentChildren,
+  Directive,
   ElementRef,
   EventEmitter,
   Input,
@@ -30,6 +31,8 @@ import { scrollIntoView } from '../utils/scroll-into-view';
 import { OptionComponent } from './option/option.component';
 import { OptionFilterFn, SelectFilterOption, TrackFn } from './select.types';
 
+@Directive()
+// tslint:disable-next-line: directive-class-suffix
 export abstract class BaseSelect<T, V = T>
   extends CommonFormControl<V>
   implements AfterContentInit, AfterViewInit, OnDestroy {
@@ -369,7 +372,7 @@ export abstract class BaseSelect<T, V = T>
       return;
     }
     const step = dir === 'down' ? 1 : -1;
-    let i = visibleOptions.findIndex(option => option === this.focusedOption);
+    let i = visibleOptions.indexOf(this.focusedOption);
     i = i + step;
     if (i >= visibleOptions.length) {
       i = 0;

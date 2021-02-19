@@ -221,7 +221,7 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
     } else {
       this.addValue(option.value);
     }
-    const isCustom = !this.contentOptions.find(
+    const isCustom = !this.contentOptions.some(
       ({ value }) => value === option.value,
     );
     if (isCustom) {

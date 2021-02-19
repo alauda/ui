@@ -16,8 +16,11 @@ export enum ConfirmType {
   Danger = 'danger',
 }
 
-export type CustomBeforeAction<T> = () => Promise<T> | Observable<T>;
+export type PromiseExecutor<T> = (
+  resolve: (result?: T | PromiseLike<T>) => void,
+  reject: (reason?: unknown) => void,
+) => void;
 
-export type BeforeAction<T> =
-  | ((resolve: (result?: T) => void, reject: () => void) => void)
-  | CustomBeforeAction<T>;
+export type CustomBeforeAction<T> = () => PromiseLike<T> | Observable<T>;
+
+export type BeforeAction<T> = PromiseExecutor<T> | CustomBeforeAction<T>;
