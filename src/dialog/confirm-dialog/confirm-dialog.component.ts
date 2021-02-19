@@ -8,7 +8,12 @@ import { Observable } from 'rxjs';
 
 import { Bem, buildBem } from '../../utils/bem';
 import { DialogRef } from '../dialog-ref';
-import { BeforeAction, ConfirmType, CustomBeforeAction } from '../dialog.types';
+import {
+  BeforeAction,
+  ConfirmType,
+  CustomBeforeAction,
+  PromiseExecutor,
+} from '../dialog.types';
 
 import { ConfirmDialogConfig } from './confirm-dialog-config';
 
@@ -84,7 +89,7 @@ export class ConfirmDialogComponent<T = unknown, R = unknown> {
 
   private toPromise<T>(beforeAction: BeforeAction<T>) {
     if (beforeAction.length) {
-      return new Promise(beforeAction);
+      return new Promise(beforeAction as PromiseExecutor<T>);
     }
 
     const result = (beforeAction as CustomBeforeAction<T>)();

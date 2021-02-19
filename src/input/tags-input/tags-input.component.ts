@@ -268,7 +268,7 @@ export class TagsInputComponent
   }
 
   private syncControlStatus() {
-    const { pending, valid, invalid, disabled } = this.inputControl;
+    const { pending, valid, invalid, disabled, errors } = this.inputControl;
     if (valid) {
       this.removeInputControlError();
       this.controlContainer?.control.markAsDirty();
@@ -278,7 +278,7 @@ export class TagsInputComponent
       this.controlContainer?.control.markAsDirty();
       this.controlContainer?.control.setErrors({
         ...(this.controlContainer?.control?.errors || {}),
-        [INPUT_ERROR_KEY]: this.inputControl.errors,
+        [INPUT_ERROR_KEY]: errors,
       });
     } else if (disabled) {
       // 与当前 input 校验脱离

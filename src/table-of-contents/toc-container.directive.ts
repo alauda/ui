@@ -156,8 +156,8 @@ export class TocContainerDirective implements AfterContentInit, OnDestroy {
       takeUntil(this._onDestroy$),
     );
 
-    this._subs.push(actived$.subscribe(this.activedChange));
     this._subs.push(
+      actived$.subscribe(this.activedChange),
       scrollTween$.subscribe(tweenValue => {
         this.scrollTop = tweenValue;
       }),
