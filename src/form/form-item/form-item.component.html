@@ -23,12 +23,12 @@
       </div>
     </div>
     <div
-      *ngIf="(hasError$ | async) && errors?.length"
+      *ngIf="(hasError$ | async) && (errorCount$ | async)"
       class="aui-form-item__error-wrapper"
     >
       <ng-content select="[auiFormItemError]"></ng-content>
     </div>
-    <div *ngIf="hints?.length" class="aui-form-item__hint-wrapper">
+    <div *ngIf="hintCount$ | async" class="aui-form-item__hint-wrapper">
       <ng-content select="[auiFormItemHint]"></ng-content>
     </div>
   </div>
