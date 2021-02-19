@@ -124,18 +124,6 @@ exports[`FormComponent should match snapshot 2`] = `
             </div>
           </div>
           
-          <div
-            class="aui-form-item__error-wrapper"
-          >
-            
-            <div
-              auiformitemerror=""
-              class="aui-form-item__error"
-            >
-              required
-            </div>
-            
-          </div>
           
           <div
             class="aui-form-item__hint-wrapper"

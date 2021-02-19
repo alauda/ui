@@ -72,6 +72,8 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
   hints: QueryList<FormItemHintDirective>;
 
   hasError$: Observable<boolean>;
+  errorCount$: Observable<number>;
+  hintCount$: Observable<number>;
   parentForm: NgForm | FormGroupDirective;
 
   private readonly destroy$$ = new Subject<void>();
@@ -96,6 +98,16 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
           controls.map(control => this.mapControlStatus(control)),
         ).pipe(map(statuses => statuses.some(status => status))),
       ),
+    );
+
+    this.errorCount$ = this.errors.changes.pipe(
+      map(errors => errors.length),
+      startWith(this.errors.length),
+    );
+
+    this.hintCount$ = this.hints.changes.pipe(
+      map(hints => hints.length),
+      startWith(this.hints.length),
     );
   }
 
