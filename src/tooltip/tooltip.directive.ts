@@ -17,7 +17,6 @@ import { BaseTooltip } from './base-tooltip';
 @Directive({
   selector: '[auiTooltip]',
   providers: [
-    TooltipDirective,
     {
       provide: BaseTooltip,
       useExisting: TooltipDirective,
