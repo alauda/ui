@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { Observable, ReplaySubject, combineLatest } from 'rxjs';
 import {
+  debounceTime,
   distinctUntilChanged,
   map,
   publishReplay,
@@ -61,8 +62,9 @@ export class AutocompleteComponent implements AfterContentInit {
       ),
       map(visible => visible.some(value => value)),
       distinctUntilChanged(),
+      debounceTime(0),
       tap(() => {
-        this.cdr.detectChanges();
+        this.cdr.markForCheck();
       }),
       publishReplay(1),
       refCount(),
