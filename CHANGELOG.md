@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.5.1](https://github.com/alauda/alauda-ui/compare/v5.5.0...v5.5.1) (2021-02-23)
+
+
+### Bug Fixes
+
+* autocomplete change detection ([1f5fed3](https://github.com/alauda/alauda-ui/commit/1f5fed3a39c46fb04f8c062e497039b8b3331de4))
+* multi select dont display selected labels ([86a5c74](https://github.com/alauda/alauda-ui/commit/86a5c749f6e93478d0bae436a699a47c9ce6edf2))
+* support dynamic hints and errors rendering ([aca336a](https://github.com/alauda/alauda-ui/commit/aca336a0dc2fa0b199ab49336cdb333a98e39133))
+* tooltip active directive is not working ([6ecd764](https://github.com/alauda/alauda-ui/commit/6ecd764404b24d31fb4c36b4418f095a149e373a))
+
 ## [5.5.0](https://github.com/alauda/alauda-ui/compare/v5.4.1...v5.5.0) (2021-02-18)
 
 
