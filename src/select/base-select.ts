@@ -434,7 +434,7 @@ export abstract class BaseSelect<T, V = T>
       (typeof label === 'string' && label) ||
       this.labelFn?.(value) ||
       coerceString(this.trackFn(value))
-    )?.includes(filterString);
+    )?.includes(filterString ?? '');
   }
 
   abstract selectOption(option: OptionComponent<T>): void;

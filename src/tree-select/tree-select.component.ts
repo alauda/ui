@@ -250,7 +250,7 @@ export class TreeSelectComponent<
   }
 
   private _filterFn(filterString: string, node: TreeNode<T>) {
-    return this.getLabelFromNode(node)?.includes(filterString);
+    return this.getLabelFromNode(node)?.includes(filterString ?? '');
   }
 
   private _trackFn<T>(value: T) {
