@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.5.2](https://github.com/alauda/alauda-ui/compare/v5.5.1...v5.5.2) (2021-02-23)
+
+
+### Bug Fixes
+
+* support undefined filter string which is common initial value ([#103](https://github.com/alauda/alauda-ui/issues/103)) ([0ee4c0d](https://github.com/alauda/alauda-ui/commit/0ee4c0da55a4f8293c13a349b9212e217f4c6379))
+
 ### [5.5.1](https://github.com/alauda/alauda-ui/compare/v5.5.0...v5.5.1) (2021-02-23)
 
 
