@@ -141,15 +141,21 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
       ),
     ]).pipe(
       map(([values, options]) =>
-        values.map(
-          value =>
-            options.find(
-              option => this.trackFn(option.value) === this.trackFn(value),
-            ) || {
-              label: this.labelFn?.(value) || coerceString(this.trackFn(value)),
-              value,
-            },
-        ),
+        values.map(value => {
+          const option = options.find(
+            option => this.trackFn(option.value) === this.trackFn(value),
+          );
+          return option
+            ? {
+                label: option.label || coerceString(this.trackFn(option.value)),
+                value: option.value,
+              }
+            : {
+                label:
+                  this.labelFn?.(value) || coerceString(this.trackFn(value)),
+                value,
+              };
+        }),
       ),
       publishReplay(1),
       refCount(),
