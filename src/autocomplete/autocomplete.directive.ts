@@ -270,6 +270,6 @@ export class AutoCompleteDirective
   }
 
   private _filterFn(inputValue: string, suggestion: string) {
-    return suggestion.includes(inputValue);
+    return suggestion.includes(inputValue ?? '');
   }
 }
