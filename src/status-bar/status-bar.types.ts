@@ -1,20 +1,26 @@
+import { ValueOf } from '../types';
+
 export interface Status {
   type?: StatusType;
   class?: string;
   scale: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
-export enum StatusType {
-  Primary = 'primary',
-  Success = 'success',
-  Warning = 'warning',
-  Error = 'error',
-  Info = 'info',
-  Pending = 'pending',
-}
+export const StatusType = {
+  Primary: 'primary',
+  Success: 'success',
+  Warning: 'warning',
+  Error: 'error',
+  Info: 'info',
+  Pending: 'pending',
+} as const;
 
-export enum StatusBarSize {
-  Medium = 'medium',
-  Small = 'small',
-}
+export type StatusType = ValueOf<typeof StatusType>;
+
+export const StatusBarSize = {
+  Medium: 'medium',
+  Small: 'small',
+} as const;
+
+export type StatusBarSize = ValueOf<typeof StatusBarSize>;

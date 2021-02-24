@@ -18,6 +18,7 @@
   "scripts": {
     "build": "ng-packagr && yarn build:copy",
     "build:copy": "node scripts/copy-resources",
+    "debug": "ng-packagr -p ng-package.debug.json && yarn build:copy --debug",
     "lint": "run-p lint:*",
     "lint:es": "cross-env PARSER_NO_WATCH=true eslint . --cache --ext js,md,mdx,ts -f friendly",
     "lint:style": "stylelint --cache '{src,stories}/**/*.scss'",

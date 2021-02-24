@@ -57,20 +57,20 @@ export class TagsInputComponent
   placeholder = '';
 
   @Input()
-  size = ComponentSize.Medium;
+  size: ComponentSize = ComponentSize.Medium;
 
   // TODO: implement this feature
   @Input()
-  clearable = false;
+  clearable: boolean | '' = false;
 
   @Input()
-  allowRepeat = false;
+  allowRepeat: boolean | '' = false;
 
   @Input()
-  allowEmpty = false;
+  allowEmpty: boolean | '' = false;
 
   @Input()
-  readonlyTags: string[] = [];
+  readonlyTags: string[] | readonly string[] = [];
 
   _inputValidator: ValidatorFn;
   _inputAsyncValidator: AsyncValidatorFn;

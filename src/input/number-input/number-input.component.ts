@@ -13,6 +13,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CommonFormControl } from '../../form/public-api';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils/bem';
+import { coerceNumber } from '../../utils/coercion';
 
 @Component({
   selector: 'aui-number-input',
@@ -35,13 +36,13 @@ export class NumberInputComponent
   bem: Bem = buildBem('aui-number-input');
 
   @Input()
-  size = ComponentSize.Medium;
+  size: ComponentSize = ComponentSize.Medium;
 
   @Input()
-  min = Number.MIN_SAFE_INTEGER;
+  min: string | number = Number.MIN_SAFE_INTEGER;
 
   @Input()
-  max = Number.MAX_SAFE_INTEGER;
+  max: string | number = Number.MAX_SAFE_INTEGER;
 
   @Input()
   step = 1;
@@ -74,8 +75,11 @@ export class NumberInputComponent
 
   valueOut(value: number) {
     return Math.max(
-      this.min ?? Number.MIN_SAFE_INTEGER,
-      Math.min(this.max ?? Number.MAX_SAFE_INTEGER, this.parsePrecision(value)),
+      coerceNumber(this.min, Number.MIN_SAFE_INTEGER),
+      Math.min(
+        coerceNumber(this.max, Number.MAX_SAFE_INTEGER),
+        this.parsePrecision(value),
+      ),
     );
   }
 

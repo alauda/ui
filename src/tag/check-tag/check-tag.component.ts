@@ -26,7 +26,7 @@ export class CheckTagComponent {
   checked = false;
 
   @Input()
-  size = ComponentSize.Medium;
+  size: ComponentSize = ComponentSize.Medium;
 
   @Input()
   round = true;

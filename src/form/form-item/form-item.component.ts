@@ -48,7 +48,7 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
   labelWidth = 'auto';
 
   @Input()
-  labelPosition = LabelPosition.Right;
+  labelPosition: LabelPosition = LabelPosition.Right;
 
   @Input()
   emptyAddon = false;

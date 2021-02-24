@@ -81,7 +81,7 @@ export class OptionComponent<T> {
     return this._disabled;
   }
 
-  set disabled(val: boolean) {
+  set disabled(val: boolean | '') {
     this._disabled = coerceAttrBoolean(val);
   }
 
@@ -93,7 +93,7 @@ export class OptionComponent<T> {
   private readonly select: BaseSelect<T>;
   selected = false;
   visible = true;
-  size = ComponentSize.Medium;
+  size: ComponentSize = ComponentSize.Medium;
   focused = false;
 
   value$ = this.value$$.asObservable();

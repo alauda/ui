@@ -54,7 +54,7 @@ export abstract class BaseSelect<T, V = T>
     return this._filterable;
   }
 
-  set filterable(val) {
+  set filterable(val: boolean | '') {
     this._filterable = coerceAttrBoolean(val);
   }
 
@@ -63,7 +63,7 @@ export abstract class BaseSelect<T, V = T>
     return this._clearable;
   }
 
-  set clearable(val) {
+  set clearable(val: boolean | '') {
     this._clearable = coerceAttrBoolean(val);
   }
 
@@ -81,7 +81,7 @@ export abstract class BaseSelect<T, V = T>
     return this._allowCreate;
   }
 
-  set allowCreate(val) {
+  set allowCreate(val: boolean | '') {
     this._allowCreate = coerceAttrBoolean(val);
   }
 
@@ -157,7 +157,7 @@ export abstract class BaseSelect<T, V = T>
 
   protected focusedOption: OptionComponent<T>;
 
-  private _size = ComponentSize.Medium;
+  private _size: ComponentSize = ComponentSize.Medium;
   private _filterable = true;
   private _clearable = false;
   private _allowCreate = false;

@@ -45,7 +45,7 @@ export class InputComponent {
     return this._disabled;
   }
 
-  set disabled(val: any) {
+  set disabled(val: boolean | '') {
     const booleanVal = coerceAttrBoolean(val);
     if (booleanVal === this._disabled) {
       return;
@@ -59,11 +59,15 @@ export class InputComponent {
     this.disabled$.next(booleanVal);
   }
 
-  private _size = ComponentSize.Medium;
+  private _size: ComponentSize = ComponentSize.Medium;
   private _disabled = false;
 
   size$ = new BehaviorSubject<ComponentSize>(this.size);
-  disabled$ = new BehaviorSubject<boolean>(this.disabled);
+
+  /**
+   * workaround for @link https://github.com/microsoft/TypeScript/pull/42425
+   */
+  disabled$ = new BehaviorSubject<boolean>(this.disabled as boolean);
 
   constructor(
     public elementRef: ElementRef<HTMLInputElement>,

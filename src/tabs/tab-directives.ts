@@ -72,7 +72,7 @@ export class TabLabelWrapperDirective {
     return this._disabled;
   }
 
-  set disabled(value: any) {
+  set disabled(value: boolean | '') {
     this._disabled = coerceAttrBoolean(value);
   }
 

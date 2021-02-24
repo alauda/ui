@@ -48,7 +48,7 @@ export class FormItemControlDirective {
     return this._required;
   }
 
-  set required(val) {
+  set required(val: boolean | '') {
     this._required = coerceAttrBoolean(val);
   }
 

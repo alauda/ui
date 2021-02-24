@@ -45,7 +45,7 @@ export class TabComponent implements AfterContentInit, OnDestroy, OnChanges {
     return this._disabled;
   }
 
-  set disabled(value: any) {
+  set disabled(value: boolean | '') {
     this._disabled = coerceAttrBoolean(value);
   }
 

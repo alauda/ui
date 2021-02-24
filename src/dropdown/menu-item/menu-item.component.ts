@@ -34,7 +34,7 @@ export class MenuItemComponent {
   divide = false;
 
   @Input()
-  type = MenuItemType.Default;
+  type: MenuItemType = MenuItemType.Default;
 
   @Input()
   actived = false;

@@ -26,13 +26,13 @@ export class DropdownButtonComponent {
   bem: Bem = buildBem('aui-dropdown-button');
 
   @Input()
-  type = ButtonType.Default;
+  type: ButtonType = ButtonType.Default;
 
   @Input()
   plain = true;
 
   @Input()
-  size = ComponentSize.Medium;
+  size: ComponentSize = ComponentSize.Medium;
 
   @Input()
   loading = false;
@@ -42,7 +42,7 @@ export class DropdownButtonComponent {
     return this._disabled;
   }
 
-  set disabled(val) {
+  set disabled(val: boolean | '') {
     this._disabled = coerceAttrBoolean(val);
   }
 

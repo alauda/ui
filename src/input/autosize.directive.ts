@@ -7,6 +7,17 @@ import {
 } from '@angular/core';
 
 import { calcTextareaHeight } from './utils';
+
+const DEFAULT_VALUE = {
+  minRows: 3,
+  maxRows: 6,
+};
+
+export interface AutoSizeValue {
+  minRows: number;
+  maxRows?: number;
+}
+
 /**
  * Directive to automatically resize a textarea to fit its content.
  */
@@ -16,13 +27,7 @@ import { calcTextareaHeight } from './utils';
   exportAs: 'TextareaAutosize',
 })
 export class AutosizeDirective implements AfterViewInit {
-  private _autoSize: {
-    minRows: number;
-    maxRows?: number;
-  } = {
-    minRows: 3,
-    maxRows: 6,
-  };
+  private _autoSize: AutoSizeValue = DEFAULT_VALUE;
 
   private textareaCalcStyle: {
     minHeight?: string;
@@ -40,7 +45,10 @@ export class AutosizeDirective implements AfterViewInit {
     return this._autoSize;
   }
 
-  set autoSize(value: { minRows: number; maxRows?: number }) {
+  set autoSize(value: AutoSizeValue | '') {
+    if (!value) {
+      value = DEFAULT_VALUE;
+    }
     this._autoSize = value;
     this.resizeTextarea();
   }
@@ -48,10 +56,11 @@ export class AutosizeDirective implements AfterViewInit {
   constructor(protected elementRef: ElementRef<HTMLTextAreaElement>) {}
 
   resizeTextarea() {
+    const autoSize = this._autoSize;
     this.textareaCalcStyle = calcTextareaHeight(
       this.elementRef.nativeElement,
-      this.autoSize.minRows,
-      this.autoSize.maxRows,
+      autoSize.minRows,
+      autoSize.maxRows,
     );
     this.elementRef.nativeElement.style.minHeight = this.textareaCalcStyle.minHeight;
     this.elementRef.nativeElement.style.maxHeight = this.textareaCalcStyle.maxHeight;

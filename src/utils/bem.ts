@@ -18,7 +18,7 @@ export class Bem {
 
   element(
     name: string,
-    ...modifiers: Array<{ [name: string]: boolean } | string>
+    ...modifiers: Array<{ [name: string]: boolean | '' } | string>
   ) {
     const activatedModifiers = getActivatedModifiers(modifiers);
 
@@ -33,7 +33,7 @@ export class Bem {
 }
 
 function getActivatedModifiers(
-  modifiers: Array<{ [name: string]: boolean } | string>,
+  modifiers: Array<{ [name: string]: boolean | '' } | string>,
 ) {
   return modifiers.reduce<string[]>((acc, modifier) => {
     if (!modifier) {
@@ -48,7 +48,7 @@ function getActivatedModifiers(
 }
 
 function getActivatedModifiersFromObject(modifiers: {
-  [name: string]: boolean;
+  [name: string]: boolean | '';
 }) {
   return Object.keys(modifiers).filter(key => modifiers[key]);
 }

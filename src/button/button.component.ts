@@ -45,7 +45,11 @@ export class ButtonComponent implements OnDestroy {
   }
 
   set size(val) {
-    if (!val || this._size === val) {
+    // when change from other size to default
+    if (!val) {
+      val = ComponentSize.Medium;
+    }
+    if (this._size === val) {
       return;
     }
     this.renderer.removeClass(this.el.nativeElement, prefix + this._size);
@@ -105,8 +109,8 @@ export class ButtonComponent implements OnDestroy {
     this._square = val;
   }
 
-  private _type = ButtonType.Default;
-  private _size = ComponentSize.Medium;
+  private _type: ButtonType = ButtonType.Default;
+  private _size: ComponentSize = ComponentSize.Medium;
   private _plain = false;
   private _loading = false;
   private _round = false;
