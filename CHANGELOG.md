@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.6.0](https://github.com/alauda/alauda-ui/compare/v5.5.2...v5.6.0) (2021-02-25)
+
+
+### Features
+
+* improve compatibility with `strictTemplates` ([#105](https://github.com/alauda/alauda-ui/issues/105)) ([b6760a2](https://github.com/alauda/alauda-ui/commit/b6760a275f69dc7553792fb4ff826dcc515bc6a5)), closes [#104](https://github.com/alauda/alauda-ui/issues/104)
+
 ### [5.5.2](https://github.com/alauda/alauda-ui/compare/v5.5.1...v5.5.2) (2021-02-23)
 
 
