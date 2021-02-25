@@ -66,8 +66,8 @@ export class TabGroupComponent
   /** Subscription to changes in the tab labels. */
   private _tabLabelSubscription = Subscription.EMPTY;
 
-  private _type = TabType.Line;
-  private _size = TabSize.Medium;
+  private _type: TabType = TabType.Line;
+  private _size: TabSize = TabSize.Medium;
 
   /** true lazy mode for template ref children */
   private _lazy: boolean;

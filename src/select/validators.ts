@@ -47,7 +47,7 @@ export class IncludesDirective<T> implements Validator, AfterContentInit {
     return this._includes;
   }
 
-  set includes(val: boolean) {
+  set includes(val: boolean | '') {
     this._includes = coerceAttrBoolean(val);
     if (this.onValidatorChange) {
       this.onValidatorChange();

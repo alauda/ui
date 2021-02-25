@@ -122,7 +122,10 @@ export class TabHeaderComponent
   _headerAddon: TabHeaderAddonDirective;
 
   @ContentChildren(TabLabelWrapperDirective)
-  _labelWrappers: QueryList<TabLabelWrapperDirective>;
+  /**
+   * workaround for @link https://github.com/microsoft/TypeScript/pull/42425
+   */
+  _labelWrappers: QueryList<TabLabelWrapperDirective & { disabled?: boolean }>;
 
   @ViewChild('tabListContainer', { static: true })
   _tabListContainer: ElementRef<HTMLElement>;

@@ -24,7 +24,7 @@ import { RadioSize } from '../radio.types';
 export class RadioButtonComponent extends BaseRadio implements OnInit {
   bem: Bem = buildBem('aui-radio-button');
 
-  size = RadioSize.Medium;
+  size: RadioSize = RadioSize.Medium;
   isPlain = true;
 
   get rootClass() {

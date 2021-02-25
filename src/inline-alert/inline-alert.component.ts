@@ -35,7 +35,7 @@ export class InlineAlertComponent {
   closable = false;
 
   @Input()
-  type = InlineAlertType.Info;
+  type: InlineAlertType = InlineAlertType.Info;
 
   @Output()
   close = new EventEmitter<void>();

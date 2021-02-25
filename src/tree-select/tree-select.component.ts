@@ -64,7 +64,7 @@ export class TreeSelectComponent<
     return this._filterable;
   }
 
-  set filterable(val) {
+  set filterable(val: boolean | '') {
     this._filterable = coerceAttrBoolean(val);
   }
 
@@ -73,7 +73,7 @@ export class TreeSelectComponent<
     return this._clearable;
   }
 
-  set clearable(val) {
+  set clearable(val: boolean | '') {
     this._clearable = coerceAttrBoolean(val);
   }
 

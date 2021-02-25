@@ -28,7 +28,7 @@ export class MenuComponent {
   bem: Bem = buildBem('aui-menu');
 
   @Input()
-  size = ComponentSize.Small;
+  size: ComponentSize = ComponentSize.Small;
 
   @ViewChild(TemplateRef, { static: true })
   template: TemplateRef<any>;

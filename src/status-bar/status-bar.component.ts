@@ -27,7 +27,7 @@ export class StatusBarComponent {
   status: Status[] = [];
 
   @Input()
-  size = StatusBarSize.Medium;
+  size: StatusBarSize = StatusBarSize.Medium;
 
   @Input()
   template: TemplateRef<any>;

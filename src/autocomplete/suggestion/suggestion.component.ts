@@ -53,7 +53,7 @@ export class SuggestionComponent {
     return this._disabled;
   }
 
-  set disabled(val: any) {
+  set disabled(val: boolean | '') {
     this._disabled = coerceAttrBoolean(val);
   }
 

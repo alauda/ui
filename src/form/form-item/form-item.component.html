@@ -3,7 +3,7 @@
     [class]="
       bem.element(
         'label-wrapper',
-        { required: itemControl?.required },
+        { required: !!itemControl?.required },
         labelPosition
       )
     "

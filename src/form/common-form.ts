@@ -23,7 +23,7 @@ export class CommonFormControl<T, V = T> implements ControlValueAccessor {
     return this._disabled;
   }
 
-  set disabled(val) {
+  set disabled(val: boolean | '') {
     this._disabled = coerceAttrBoolean(val);
   }
 

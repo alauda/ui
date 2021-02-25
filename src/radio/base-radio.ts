@@ -2,6 +2,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   AfterViewInit,
   ChangeDetectorRef,
+  Directive,
   ElementRef,
   Input,
   OnDestroy,
@@ -15,11 +16,13 @@ import { RadioGroupComponent } from './radio-group/radio-group.component';
 
 let uniqueId = 0;
 
+@Directive()
+// tslint:disable-next-line: directive-class-suffix
 export class BaseRadio implements OnInit, AfterViewInit, OnDestroy {
   id = `aui-radio-${uniqueId++}`;
 
   @Input()
-  disabled = false;
+  disabled: boolean | '' = false;
 
   @Input()
   get value() {

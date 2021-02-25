@@ -22,7 +22,7 @@ export class SearchComponent {
   bem: Bem = buildBem('aui-search');
 
   @Input()
-  size = ComponentSize.Medium;
+  size: ComponentSize = ComponentSize.Medium;
 
   @Input()
   searchButton = false;

@@ -4,7 +4,7 @@
     aui-button
     type="button"
     [ngClass]="bem.element('decrease')"
-    square="true"
+    [square]="true"
     [size]="size"
     [disabled]="disabled || (value$ | async) <= min"
     (click)="takeOneStep(false)"
@@ -15,7 +15,7 @@
     #inputRef
     aui-input
     autocomplete="off"
-    (change)="inputChanged($event.target.value)"
+    (change)="inputChanged($any($event.target).value)"
     [disabled]="disabled"
     [ngClass]="bem.element('input')"
     [placeholder]="placeholder"
@@ -26,7 +26,7 @@
     aui-button
     type="button"
     [ngClass]="bem.element('increase')"
-    square="true"
+    [square]="true"
     [size]="size"
     [disabled]="disabled || (value$ | async) >= max"
     (click)="takeOneStep(true)"

@@ -116,7 +116,7 @@ export class TestComponent {
   content = '';
   closable = true;
   color = '';
-  type = InlineAlertType.Info;
+  type: InlineAlertType = InlineAlertType.Info;
   @ViewChild('inlineAlertRef', { static: true })
   inlineAlertRef: InlineAlertComponent;
 }

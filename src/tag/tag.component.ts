@@ -24,10 +24,10 @@ export class TagComponent {
   bem: Bem = buildBem('aui-tag');
 
   @Input()
-  type = TagType.Primary;
+  type: TagType = TagType.Primary;
 
   @Input()
-  size = ComponentSize.Medium;
+  size: ComponentSize = ComponentSize.Medium;
 
   @Input()
   closeable = false;
