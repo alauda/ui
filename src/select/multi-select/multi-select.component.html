@@ -33,6 +33,7 @@
     *ngFor="let option of selectedOptions$ | async; trackBy: trackByValue"
     type="info"
     [round]="true"
+    [border]="true"
     [size]="tagSize"
     [closeable]="!disabled"
     (close)="removeValue(option.value)"
