@@ -84,7 +84,7 @@ export class NumberInputComponent
   }
 
   inputChanged(value: string) {
-    this.emitValue(parseFloat(value) || this.snapshot.value);
+    this.emitValue(coerceNumber(value, this.snapshot.value));
   }
 
   takeOneStep(positive: boolean) {
