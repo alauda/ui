@@ -1,5 +1,11 @@
 {
   "extends": "../tsconfig",
+  "compilerOptions": {
+    "baseUrl": "../",
+    "paths": {
+      "@alauda/ui": ["./src/public-api"]
+    }
+  },
   "include": ["../src/**/*", "../stories/**/*"],
   "exclude": ["../src/**/*.spec.ts"]
 }

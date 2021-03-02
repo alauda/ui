@@ -157,8 +157,8 @@ $nav-menu-color: $color-text-help;
 $nav-menu-color-hover: $color-white;
 $nav-menu-divider-color: #555;
 $nav-menu-bg-color-main: #333;
-$nav-menu-bg-color-secondary: mix($color-black, $nav-menu-bg-color-main, 24%);
-$nav-menu-bg-color-tertiary: mix($color-white, $nav-menu-bg-color-main, 5%);
+$nav-menu-bg-color-secondary: mix(#000, $nav-menu-bg-color-main, 24%);
+$nav-menu-bg-color-tertiary: mix(#fff, $nav-menu-bg-color-main, 5%);
 
 $nav-item-selected-marker-width: 4px;
 $nav-item-selected-marker-color: $color-primary;

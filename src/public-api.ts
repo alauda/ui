@@ -30,3 +30,4 @@ export * from './color-picker/public-api';
 export * from './accordion/public-api';
 export * from './page/public-api';
 export * from './scrolling/public-api';
+export * from './theme/public-api';

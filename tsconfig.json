@@ -2,13 +2,10 @@
   "$schema": "./node_modules/ts-node/tsconfig.schema.json",
   "extends": "@1stg/tsconfig/angular",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@alauda/ui": ["src/public-api"]
-    }
+    "baseUrl": "."
   },
-  "include": ["./.storybook/**/*.ts", "src", "stories"],
-  "exclude": ["./release"],
+  "include": ["src/**/*"],
+  "exclude": ["release", "stories", "src/**/*.spec.ts"],
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
