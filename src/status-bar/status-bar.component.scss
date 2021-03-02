@@ -24,19 +24,19 @@ $block: aui-status-bar;
     flex: 1 1 1;
 
     &--primary {
-      background-color: mix($color-white, $color-primary, 20%);
+      background-color: $color-primary-lighter;
     }
     &--success {
-      background-color: mix($color-white, $color-success, 20%);
+      background-color: $color-success-lighter;
     }
     &--warning {
-      background-color: mix($color-white, $color-warning, 20%);
+      background-color: $color-warning-lighter;
     }
     &--error {
-      background-color: mix($color-white, $color-error, 20%);
+      background-color: $color-error-lighter;
     }
     &--info {
-      background-color: mix($color-white, $color-info, 20%);
+      background-color: $color-info-lighter;
     }
     &--pending {
       height: $status-bar-pending-gradient-width * 8;

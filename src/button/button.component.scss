@@ -208,11 +208,12 @@ $button-size: (
       color: $button-primary-border;
       background-color: $color-white;
       border-color: $button-primary-border;
-      $hover-bg: mix($color-white, $button-primary-border, 90%);
 
-      &:hover {
+      &:hover,
+      &:active,
+      &.isActive {
         color: $button-primary-border;
-        background-color: $hover-bg;
+        background-color: $color-primary-ultra-light;
         border-color: $button-primary-border;
       }
 
@@ -221,13 +222,6 @@ $button-size: (
         background-color: $color-white;
         border-color: $button-primary-border;
         @include outline-shadow($outline-color-primary);
-      }
-
-      &:active,
-      &.isActive {
-        color: mix($color-black, $button-primary-border, 20%);
-        background-color: $hover-bg;
-        border-color: $button-primary-border;
       }
 
       &[disabled] {
@@ -273,11 +267,12 @@ $button-size: (
       color: $button-success-border;
       background-color: $color-white;
       border-color: $button-success-border;
-      $hover-bg: mix($color-white, $button-success-border, 90%);
 
-      &:hover {
+      &:hover,
+      &:active,
+      &.isActive {
         color: $button-success-border;
-        background-color: $hover-bg;
+        background-color: $color-success-ultra-light;
         border-color: $button-success-border;
       }
 
@@ -286,13 +281,6 @@ $button-size: (
         background-color: $color-white;
         border-color: $button-success-border;
         @include outline-shadow($outline-color-success);
-      }
-
-      &:active,
-      &.isActive {
-        color: mix($color-black, $button-success-border, 20%);
-        background-color: $hover-bg;
-        border-color: $button-success-border;
       }
 
       &[disabled] {
@@ -338,11 +326,12 @@ $button-size: (
       color: $button-warning-border;
       background-color: $color-white;
       border-color: $button-warning-border;
-      $hover-bg: mix($color-white, $button-warning-border, 90%);
 
-      &:hover {
+      &:hover,
+      &:active,
+      &.isActive {
         color: $button-warning-border;
-        background-color: $hover-bg;
+        background-color: $color-warning-ultra-light;
         border-color: $button-warning-border;
       }
 
@@ -351,13 +340,6 @@ $button-size: (
         background-color: $color-white;
         border-color: $button-warning-border;
         @include outline-shadow($outline-color-warning);
-      }
-
-      &:active,
-      &.isActive {
-        color: mix($color-black, $button-warning-border, 20%);
-        background-color: $hover-bg;
-        border-color: $button-warning-border;
       }
 
       &[disabled] {
@@ -405,11 +387,12 @@ $button-size: (
       color: $button-danger-border;
       background-color: $color-white;
       border-color: $button-danger-border;
-      $hover-bg: mix($color-white, $button-danger-border, 90%);
 
-      &:hover {
+      &:hover,
+      &:active,
+      &.isActive {
         color: $button-danger-border;
-        background-color: $hover-bg;
+        background-color: $color-danger-ultra-light;
         border-color: $button-danger-border;
       }
 
@@ -418,13 +401,6 @@ $button-size: (
         background-color: $color-white;
         border-color: $button-danger-border;
         @include outline-shadow($outline-color-error);
-      }
-
-      &:active,
-      &.isActive {
-        color: mix($color-black, $button-danger-border, 20%);
-        background-color: $hover-bg;
-        border-color: $button-danger-border;
       }
 
       &[disabled] {
@@ -470,11 +446,12 @@ $button-size: (
       color: $button-info-border;
       background-color: $color-white;
       border-color: $button-info-border;
-      $hover-bg: mix($color-white, $button-info-border, 90%);
 
-      &:hover {
+      &:hover,
+      &:active,
+      &.isActive {
         color: $button-info-border;
-        background-color: $hover-bg;
+        background-color: $color-info-ultra-light;
         border-color: $button-info-border;
       }
 
@@ -483,13 +460,6 @@ $button-size: (
         background-color: $color-white;
         border-color: $button-info-border;
         @include outline-shadow($outline-color-info);
-      }
-
-      &:active,
-      &.isActive {
-        color: mix($color-black, $button-info-border, 20%);
-        background-color: $hover-bg;
-        border-color: $button-info-border;
       }
 
       &[disabled] {

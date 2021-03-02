@@ -1,8 +1,12 @@
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
-import { Configuration } from 'webpack';
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const IgnoreNotFoundExportPlugin = require('./IgnoreNotFoundExportPlugin.js');
 
-function webpackFinal(config: Configuration) {
-  config.resolve.plugins = [new TsconfigPathsPlugin()];
+function webpackFinal(config) {
+  config.resolve.plugins = [
+    new TsconfigPathsPlugin({
+      configFile: '.storybook/tsconfig.json',
+    }),
+  ];
 
   // story source addon
   config.module.rules.push({
@@ -16,10 +20,13 @@ function webpackFinal(config: Configuration) {
     enforce: 'pre',
   });
 
+  // remove useless import type warning
+  config.plugins.push(new IgnoreNotFoundExportPlugin());
+
   return config;
 }
 
-export default {
+module.exports = {
   stories: [
     '../stories/**/index.@(js|ts)',
     '../stories/**/*.stories.@(js|ts|mdx)',
@@ -29,6 +36,7 @@ export default {
     '@storybook/addon-knobs',
     '@storybook/addon-actions',
     '@storybook/addon-storysource',
+    'storybook-dark-mode',
   ],
   webpackFinal,
 };
