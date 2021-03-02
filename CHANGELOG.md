@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.6.1](https://github.com/alauda/alauda-ui/compare/v5.6.0...v5.6.1) (2021-03-02)
+
+
+### Features
+
+* change back top style ([b1fdc3d](https://github.com/alauda/alauda-ui/commit/b1fdc3d24928a44bd97ac39c69d0676d5c7c2768))
+
+
+### Bug Fixes
+
+* multi select tags should have border ([0bb064a](https://github.com/alauda/alauda-ui/commit/0bb064ac3b2c98ab65b160ca6e098b662e1a152b))
+* number input min value set 0 error ([#107](https://github.com/alauda/alauda-ui/issues/107)) ([8f368a4](https://github.com/alauda/alauda-ui/commit/8f368a46b0dc7f6f670ca8c893e19126342bbafd))
+
 ## [5.6.0](https://github.com/alauda/alauda-ui/compare/v5.5.2...v5.6.0) (2021-02-25)
 
 
