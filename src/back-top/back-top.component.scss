@@ -4,32 +4,39 @@
 $block: 'aui-back-top';
 
 .#{$block} {
-  @include transition(opacity);
+  @include transition;
   @include flex-center;
 
   right: $back-top-position-offset;
   bottom: $back-top-position-offset;
   height: $back-top-box-size;
   width: $back-top-box-size;
+  border-color: transparent;
+  border-width: $border-width;
+  border-style: $border-style;
   border-radius: $back-top-border-radius;
-  background-color: $color-black;
+  background-color: $color-white;
   cursor: pointer;
   overflow: hidden;
   visibility: hidden;
   position: fixed;
-  opacity: 0;
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 16%);
 
   .aui-back-top__icon {
-    font-size: 24px;
-    color: #fff;
+    font-size: 18px;
+    color: $color-text-help;
   }
 
   &.show {
     visibility: visible;
-    opacity: 0.4;
   }
 
   &:hover {
-    opacity: 0.6;
+    border-color: $color-primary;
+    background-color: $color-primary-ultra-light;
+    box-shadow: none;
+    .aui-back-top__icon {
+      color: $color-primary;
+    }
   }
 }
