@@ -50,7 +50,7 @@ export class TreeSelectComponent<
     }
     this._nodesData = val;
     this.flattedNodes = this.flatNodesData(val);
-    this.updateSelectDisplay(this.value);
+    this.updateSelectDisplay(this.propValue);
   }
 
   @Input()
