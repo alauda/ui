@@ -36,16 +36,16 @@ export class CommonFormControl<T, V = T> implements ControlValueAccessor {
     this.disabled = val;
   }
 
-  @Input()
-  get value() {
-    return this._value;
+  @Input('value')
+  get propValue() {
+    return this._propValue;
   }
 
-  set value(val) {
-    if (val === this._value) {
+  set propValue(val) {
+    if (val === this._propValue) {
       return;
     }
-    this._value = val;
+    this._propValue = val;
     this.writeValue(val);
   }
 
@@ -55,7 +55,7 @@ export class CommonFormControl<T, V = T> implements ControlValueAccessor {
   protected onChange: (_: T) => void;
   protected onTouched: () => void;
   protected value$$ = new ReplaySubject<V>(1);
-  private _value: T;
+  private _propValue: T;
   private _disabled = false;
 
   snapshot: { value: V } = { value: null };
