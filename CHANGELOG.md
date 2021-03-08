@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.6.2](https://github.com/alauda/alauda-ui/compare/v5.6.1...v5.6.2) (2021-03-08)
+
+
+### Bug Fixes
+
+* multi select label template display error ([8ac18f5](https://github.com/alauda/alauda-ui/commit/8ac18f55b804f829312a86a8f1606d9c79b5d447))
+
 ### [5.6.1](https://github.com/alauda/alauda-ui/compare/v5.6.0...v5.6.1) (2021-03-02)
 
 
