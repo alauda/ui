@@ -148,6 +148,7 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
           return option
             ? {
                 label: option.label || coerceString(this.trackFn(option.value)),
+                labelContext: option.labelContext,
                 value: option.value,
               }
             : {
