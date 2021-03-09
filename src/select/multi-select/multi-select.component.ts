@@ -22,8 +22,8 @@ import {
   switchMap,
   takeUntil,
 } from 'rxjs/operators';
-import { createWithMaxRowCount } from 'src/input/tags-input/with-max-row-count';
 
+import { createWithMaxRowCount } from '../../input/tags-input/with-max-row-count';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, coerceString } from '../../utils';
 import { BaseSelect } from '../base-select';
