@@ -9,4 +9,6 @@ export class DialogConfig<D = any> {
   size?: DialogSize = DialogSize.Medium;
   hasBackdrop? = true;
   fitViewport? = false;
+  className?: string;
+  offsetTop?: string;
 }

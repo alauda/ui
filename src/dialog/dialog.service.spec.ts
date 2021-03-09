@@ -279,6 +279,32 @@ describe('DialogService', () => {
     expect(confirmBtn.disabled).toBeFalsy();
     expect(cancelBtn.disabled).toBeFalsy();
   }));
+
+  it('custom class name should be work', () => {
+    dialogService.open(DialogContentComponent, {
+      className: 'custom-class',
+    });
+
+    fixture.detectChanges();
+
+    expect(ocEl.querySelector('.aui-dialog')).not.toBeNull();
+    expect(ocEl.querySelector('.aui-dialog').classList).toContain(
+      'custom-class',
+    );
+  });
+
+  it('custom style offsetTop should be work', () => {
+    dialogService.open(DialogContentComponent, {
+      offsetTop: '10vh',
+    });
+
+    fixture.detectChanges();
+
+    expect(ocEl.querySelector('.aui-dialog')).not.toBeNull();
+    expect(ocEl.querySelector<HTMLElement>('.aui-dialog').style.marginTop).toEqual(
+      '10vh',
+    );
+  });
 });
 
 @Component({

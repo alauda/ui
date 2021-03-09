@@ -50,7 +50,7 @@ export class DialogComponent {
   get rootClass() {
     return `${this.bem.block(this.config.size)} ${
       this.config.fitViewport ? this.bem.modifier('fit-viewport') : ''
-    }`;
+    } ${this.config.className || ''}`;
   }
 
   get customStyle() {
@@ -58,7 +58,9 @@ export class DialogComponent {
       ? {
           display: 'none',
         }
-      : {};
+      : this.config.offsetTop ? {
+        'margin-top': this.config.offsetTop
+      } : {};
   }
 
   constructor(private readonly elementRef: ElementRef<HTMLElement>) {}
