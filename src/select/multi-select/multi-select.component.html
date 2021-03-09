@@ -40,7 +40,7 @@
     [ngClass]="tagClassFn && tagClassFn(option.label, option.value)"
   >
     <ng-container
-      *ngIf="isTemplate(option.label); else label"
+      *ngIf="isTemplateRef(option.label); else label"
       [ngTemplateOutlet]="option.label"
       [ngTemplateOutletContext]="option.labelContext"
     ></ng-container>

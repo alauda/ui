@@ -1,5 +1,7 @@
 .*cache
 *.log
+*.tsbuildinfo
+.idea
 coverage
 dist
 node_modules
@@ -7,4 +9,3 @@ release
 reports
 /ng-package.debug.json
 /report.*.json
-/.idea

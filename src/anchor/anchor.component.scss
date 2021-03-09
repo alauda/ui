@@ -1,0 +1,116 @@
+@import '../theme/mixin';
+@import '../theme/var';
+
+aui-anchor {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.aui-anchor {
+  padding: 30px 16px;
+  border-left: 1px solid $card-border-color;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate3d(-50%, -50%, 0);
+    @include point(5px, $card-border-color);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate3d(-50%, 50%, 0);
+    @include point(5px, $card-border-color);
+  }
+
+  $p: &;
+
+  &__label {
+    scroll-margin-top: $page-content-padding;
+  }
+
+  @at-root .aui-page {
+    &.hasHeader #{$p}__label {
+      scroll-margin-top: $page-header-height + $page-content-padding;
+    }
+
+    &.hasToolbar #{$p}__label {
+      scroll-margin-top: $page-toolbar-height + $page-content-padding;
+    }
+
+    &.hasHeader.hasToolbar #{$p}__label {
+      scroll-margin-top: $page-header-height + $page-toolbar-height +
+        $page-content-padding;
+    }
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: 12px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 9px;
+      left: -16px;
+      transform: translate3d(-50%, -50%, 0);
+      box-sizing: border-box;
+      border: 1px solid $color-text-help;
+      @include point(9px, #fff);
+    }
+
+    a {
+      color: $color-text-main;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    $p: &;
+
+    &.active {
+      &:before {
+        border: 0;
+        @include point(9px, $color-primary);
+      }
+
+      &,
+      & & {
+        a {
+          color: $color-primary;
+        }
+      }
+
+      #{$p}:not(.active) a {
+        color: $color-text-secondary;
+      }
+    }
+
+    & & {
+      margin-top: 4px;
+      margin-bottom: 0;
+      margin-left: 14px;
+      font-size: 10px;
+
+      &:before {
+        display: none;
+      }
+
+      a {
+        color: $color-text-help;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}

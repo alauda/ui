@@ -1,4 +1,4 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
 import { IndeterminateCheckboxComponent } from './indeterminate-checkbox/component';
@@ -19,7 +19,7 @@ import { CheckboxModule } from '@alauda/ui';
 
 ## 基本用法
 
-<Preview>
+<Canvas>
   <Story name="basic" height="60px">
     {{
       template: /* HTML */ `
@@ -36,11 +36,11 @@ import { CheckboxModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 多选组合
 
-<Preview>
+<Canvas>
   <Story name="group" height="60px">
     {{
       template: /* HTML */ `
@@ -57,11 +57,11 @@ import { CheckboxModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 标签样式
 
-<Preview>
+<Canvas>
   <Story name="tag" height="60px">
     {{
       template: /* HTML */ `
@@ -78,11 +78,11 @@ import { CheckboxModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 禁用状态
 
-<Preview>
+<Canvas>
   <Story name="disabled" height="60px">
     {{
       template: /* HTML */ `
@@ -99,19 +99,19 @@ import { CheckboxModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 部分选中状态
 
-<Preview>
+<Canvas>
   <Story name="indeterminate" height="60px">
     {{ component: IndeterminateCheckboxComponent }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 垂直布局
 
-<Preview>
+<Canvas>
   <Story name="vertical" height="120px">
     {{
       template: /* HTML */ `
@@ -128,7 +128,7 @@ import { CheckboxModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Checkbox Group Inputs
 

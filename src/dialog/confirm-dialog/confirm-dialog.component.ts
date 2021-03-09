@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Bem, buildBem } from '../../utils/bem';
+import { Bem, buildBem } from '../../utils';
 import { DialogRef } from '../dialog-ref';
 import {
   BeforeAction,

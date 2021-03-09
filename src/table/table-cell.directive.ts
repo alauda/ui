@@ -1,7 +1,7 @@
 import { CdkCell, CdkColumnDef } from '@angular/cdk/table';
 import { Directive, ElementRef } from '@angular/core';
 
-import { buildBem } from '../utils/bem';
+import { buildBem } from '../utils';
 
 const bem = buildBem('aui-table');
 

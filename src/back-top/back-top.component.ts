@@ -68,17 +68,13 @@ export class BackTopComponent {
         fromEvent(target, 'scroll').pipe(
           // use default scheduler
           throttleTime(50, undefined, { leading: true, trailing: true }),
-          map(() => {
-            return this.getTargetScrollTop(target);
-          }),
+          map(() => this.getTargetScrollTop(target)),
         ),
       ),
     ),
     this.visibilityHeight$$,
   ]).pipe(
-    map(([scrollTop, visibilityHeight]) => {
-      return scrollTop >= visibilityHeight;
-    }),
+    map(([scrollTop, visibilityHeight]) => scrollTop >= visibilityHeight),
     distinctUntilChanged(),
   );
 

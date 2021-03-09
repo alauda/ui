@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { Bem, buildBem } from '../utils/bem';
+import { Bem, buildBem } from '../utils';
 
 import { TabType } from './tabs.types';
 

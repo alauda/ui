@@ -50,8 +50,8 @@ describe('InlineAlertComponent', () => {
     ).toBeNull();
   });
 
-  it('should emit close event when click close button', () => {
-    return new Promise<void>(resolve => {
+  it('should emit close event when click close button', () =>
+    new Promise<void>(resolve => {
       ins.inlineAlertRef.close.subscribe(() => {
         resolve();
       });
@@ -59,8 +59,7 @@ describe('InlineAlertComponent', () => {
         By.css('#inline-alert .aui-inline-alert__close'),
       ).nativeElement as HTMLElement).click();
       fixture.detectChanges();
-    });
-  });
+    }));
 
   it('should hide close button when not closable', () => {
     ins.closable = true;

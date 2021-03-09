@@ -10,7 +10,7 @@ import {
 import { BehaviorSubject } from 'rxjs';
 
 import { ComponentSize } from '../types';
-import { coerceAttrBoolean } from '../utils/coercion';
+import { coerceAttrBoolean } from '../utils';
 
 @Component({
   // tslint:disable-next-line: component-selector

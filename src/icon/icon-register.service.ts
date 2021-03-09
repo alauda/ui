@@ -6,7 +6,7 @@ import { auiIcons } from './icons';
 import {
   getAuiIconFailedToLoadCustomIconFile,
   getAuiIconNoHttpProviderError,
-} from './utils/errors';
+} from './utils';
 
 @Injectable()
 export class IconRegisterService {

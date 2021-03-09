@@ -17,93 +17,91 @@ import { storiesOf } from '@storybook/angular';
 
 storiesOf('Input', module)
   .addDecorator(withKnobs)
-  .add('input', () => {
-    return {
-      moduleMetadata: {
-        imports: [InputModule, FormsModule],
-      },
-      template: /* HTML */ `
-        <div>
-          <p style="margin-top: 26px;">Input:</p>
-          <input
-            style="margin-top: 16px;"
-            size="large"
-            aui-input
-            [(ngModel)]="value"
-            placeholder="placeholder"
-          />
-          <input
-            style="margin-top: 16px;"
-            size="medium"
-            aui-input
-            [(ngModel)]="value"
-            placeholder="placeholder"
-          />
-          <input
-            readonly
-            style="margin-top: 16px;"
-            size="small"
-            aui-input
-            [(ngModel)]="value"
-            placeholder="readonly"
-          />
-          <input
-            disabled
-            style="margin-top: 16px;"
-            size="mini"
-            aui-input
-            [(ngModel)]="value"
-            placeholder="disabled"
-          />
-          <p style="margin-top: 26px;">Textarea:</p>
-          <textarea
-            style="margin-top: 16px;"
-            size="large"
-            aui-input
-            [(ngModel)]="value"
-            placeholder="size:large, default 3 rows"
-          ></textarea>
-          <textarea
-            style="margin-top: 16px;"
-            size="medium"
-            aui-input
-            [(ngModel)]="value"
-            placeholder="size:medium, default 3 rows"
-          ></textarea>
-          <textarea
-            readonly
-            style="margin-top: 16px;"
-            size="small"
-            aui-input
-            [(ngModel)]="value"
-            placeholder="size:small, default 3 rows"
-          ></textarea>
-          <textarea
-            disabled
-            style="margin-top: 16px;"
-            size="mini"
-            aui-input
-            [(ngModel)]="value"
-            placeholder="size:mini, default 3 rows"
-          ></textarea>
-          <p style="margin-top: 26px;">
-            Textarea with autosize (size:default = medium):
-          </p>
-          <textarea
-            autosize
-            aui-input
-            placeholder="autosize default: 1 row"
-          ></textarea>
-          <textarea
-            [autosize]="{minRows:3,maxRows:10}"
-            style="margin-top: 16px;"
-            aui-input
-            placeholder="autosize: min 3 rows, max 10 rows"
-          ></textarea>
-        </div>
-      `,
-    };
-  })
+  .add('input', () => ({
+    moduleMetadata: {
+      imports: [InputModule, FormsModule],
+    },
+    template: /* HTML */ `
+      <div>
+        <p style="margin-top: 26px;">Input:</p>
+        <input
+          style="margin-top: 16px;"
+          size="large"
+          aui-input
+          [(ngModel)]="value"
+          placeholder="placeholder"
+        />
+        <input
+          style="margin-top: 16px;"
+          size="medium"
+          aui-input
+          [(ngModel)]="value"
+          placeholder="placeholder"
+        />
+        <input
+          readonly
+          style="margin-top: 16px;"
+          size="small"
+          aui-input
+          [(ngModel)]="value"
+          placeholder="readonly"
+        />
+        <input
+          disabled
+          style="margin-top: 16px;"
+          size="mini"
+          aui-input
+          [(ngModel)]="value"
+          placeholder="disabled"
+        />
+        <p style="margin-top: 26px;">Textarea:</p>
+        <textarea
+          style="margin-top: 16px;"
+          size="large"
+          aui-input
+          [(ngModel)]="value"
+          placeholder="size:large, default 3 rows"
+        ></textarea>
+        <textarea
+          style="margin-top: 16px;"
+          size="medium"
+          aui-input
+          [(ngModel)]="value"
+          placeholder="size:medium, default 3 rows"
+        ></textarea>
+        <textarea
+          readonly
+          style="margin-top: 16px;"
+          size="small"
+          aui-input
+          [(ngModel)]="value"
+          placeholder="size:small, default 3 rows"
+        ></textarea>
+        <textarea
+          disabled
+          style="margin-top: 16px;"
+          size="mini"
+          aui-input
+          [(ngModel)]="value"
+          placeholder="size:mini, default 3 rows"
+        ></textarea>
+        <p style="margin-top: 26px;">
+          Textarea with autosize (size:default = medium):
+        </p>
+        <textarea
+          autosize
+          aui-input
+          placeholder="autosize default: 1 row"
+        ></textarea>
+        <textarea
+          [autosize]="{minRows:3,maxRows:10}"
+          style="margin-top: 16px;"
+          aui-input
+          placeholder="autosize: min 3 rows, max 10 rows"
+        ></textarea>
+      </div>
+    `,
+  }))
   .add('input group', () => {
     const disabled = boolean('disabled', false);
     return {

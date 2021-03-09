@@ -1,4 +1,4 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
 import { CardModule } from '@alauda/ui';
@@ -18,7 +18,7 @@ import { CardModule } from '@alauda/ui';
 
 ## 基本使用
 
-<Preview>
+<Canvas>
   <Story name="basic" height="200px">
     {{
       template: /* HTML */ `
@@ -32,11 +32,11 @@ import { CardModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 嵌套使用
 
-<Preview>
+<Canvas>
   <Story name="nested" height="400px">
     {{
       template: /* HTML */ `
@@ -54,11 +54,11 @@ import { CardModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 包含 Section
 
-<Preview>
+<Canvas>
   <Story name="section" height="320px">
     {{
       template: /* HTML */ `
@@ -77,7 +77,7 @@ import { CardModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Card Inputs
 

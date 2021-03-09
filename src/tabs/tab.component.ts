@@ -18,7 +18,7 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { coerceAttrBoolean } from '../utils/coercion';
+import { coerceAttrBoolean } from '../utils';
 
 import { TabContentDirective, TabLabelDirective } from './tab-directives';
 

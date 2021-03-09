@@ -22,7 +22,7 @@ import {
   takeUntil,
 } from 'rxjs/operators';
 
-import { Bem, buildBem } from '../../utils/bem';
+import { Bem, buildBem } from '../../utils';
 import { FormDirective } from '../form.directive';
 import { LabelPosition } from '../form.types';
 import {

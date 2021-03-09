@@ -7,7 +7,7 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 
-import { coerceAttrBoolean } from '../utils/coercion';
+import { coerceAttrBoolean } from '../utils';
 
 import { SelectComponent } from './select.component';
 import { TrackFn } from './select.types';
@@ -19,13 +19,12 @@ export class AuiSelectValidators {
     options: T[],
     trackFn: TrackFn<T> = val => val,
   ): ValidatorFn {
-    return (control: AbstractControl) => {
-      return options.some(option => trackFn(option) === trackFn(control.value))
+    return (control: AbstractControl) =>
+      options.some(option => trackFn(option) === trackFn(control.value))
         ? null
         : {
             includes: control.value,
           };
-    };
   }
 }
 

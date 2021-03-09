@@ -8,24 +8,20 @@ import { Component } from '@angular/core';
 import { storiesOf } from '@storybook/angular';
 
 storiesOf('Nav Menu', module)
-  .add('nav menu', () => {
-    return {
-      moduleMetadata: {
-        imports: [NavMenuModule, IconModule],
-        declarations: [NavMenuDemoComponent],
-      },
-      component: NavMenuDemoComponent,
-    };
-  })
-  .add('platform nav', () => {
-    return {
-      moduleMetadata: {
-        imports: [PlatformNavModule],
-        declarations: [PlatformNavDemoComponent],
-      },
-      component: PlatformNavDemoComponent,
-    };
-  });
+  .add('nav menu', () => ({
+    moduleMetadata: {
+      imports: [NavMenuModule, IconModule],
+      declarations: [NavMenuDemoComponent],
+    },
+    component: NavMenuDemoComponent,
+  }))
+  .add('platform nav', () => ({
+    moduleMetadata: {
+      imports: [PlatformNavModule],
+      declarations: [PlatformNavDemoComponent],
+    },
+    component: PlatformNavDemoComponent,
+  }));
 
 @Component({
   template: `

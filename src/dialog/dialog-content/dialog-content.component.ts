@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { Bem, buildBem } from '../../utils/bem';
+import { Bem, buildBem } from '../../utils';
 
 @Component({
   selector: 'aui-dialog-content',

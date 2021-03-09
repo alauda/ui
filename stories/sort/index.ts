@@ -2,14 +2,12 @@ import { Sort, SortModule } from '@alauda/ui';
 import { Component } from '@angular/core';
 import { storiesOf } from '@storybook/angular';
 
-storiesOf('Sort', module).add('sort', () => {
-  return {
-    moduleMetadata: {
-      imports: [SortModule],
-    },
-    component: DemoComponent,
-  };
-});
+storiesOf('Sort', module).add('sort', () => ({
+  moduleMetadata: {
+    imports: [SortModule],
+  },
+  component: DemoComponent,
+}));
 
 interface Element {
   id: number;
@@ -48,8 +46,8 @@ class DemoComponent {
 
   sortData(sort: Sort) {
     const activeKey = sort.active as keyof Element;
-    this.dataSource.sort((a, b) => {
-      return a[activeKey] === b[activeKey]
+    this.dataSource.sort((a, b) =>
+      a[activeKey] === b[activeKey]
         ? 0
         : a[activeKey] > b[activeKey]
         ? sort.direction === 'asc'
@@ -57,7 +55,7 @@ class DemoComponent {
           : -1
         : sort.direction === 'asc'
         ? -1
-        : 1;
-    });
+        : 1,
+    );
   }
 }

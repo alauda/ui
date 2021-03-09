@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "ng-tslint",
-    "@1stg/tslint-config/angular",
-    "@1stg/tslint-config/eslint"
-  ],
+  "extends": ["@1stg/tslint-config/angular", "@1stg/tslint-config/eslint"],
   "rules": {
     "component-selector": [true, "element", "aui", "kebab-case"],
     "directive-selector": [true, "attribute", "aui", "camelCase"],

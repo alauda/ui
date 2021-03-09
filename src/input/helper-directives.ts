@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-extraneous-class */
 import { Directive } from '@angular/core';
 
 @Directive({

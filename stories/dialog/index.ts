@@ -13,16 +13,14 @@ import { Component, OnDestroy, TemplateRef } from '@angular/core';
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/angular';
 
-storiesOf('Dialog', module).add('dialog', () => {
-  return {
-    moduleMetadata: {
-      imports: [ButtonModule, DialogModule, SelectModule],
-      declarations: [DemoComponent, DialogContentComponent],
-      entryComponents: [DialogContentComponent],
-    },
-    component: DemoComponent,
-  };
-});
+storiesOf('Dialog', module).add('dialog', () => ({
+  moduleMetadata: {
+    imports: [ButtonModule, DialogModule, SelectModule],
+    declarations: [DemoComponent, DialogContentComponent],
+    entryComponents: [DialogContentComponent],
+  },
+  component: DemoComponent,
+}));
 
 @Component({
   template: `

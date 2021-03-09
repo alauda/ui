@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { Bem, buildBem } from '../../utils/bem';
+import { Bem, buildBem } from '../../utils';
 import { DialogRef } from '../dialog-ref';
 import { DialogService } from '../dialog.service';
 import { getClosestDialog } from '../utils';

@@ -15,7 +15,7 @@ import {
 import { ReplaySubject, merge } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { sleep } from '../utils/async';
+import { sleep } from '../utils';
 
 import { TooltipComponent } from './tooltip.component';
 import { TooltipTrigger, TooltipType } from './tooltip.types';

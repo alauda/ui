@@ -19,7 +19,7 @@ import {
 } from 'rxjs/operators';
 
 import { InputComponent } from '../input/public-api';
-import { coerceString } from '../utils/coercion';
+import { coerceString } from '../utils';
 
 import { BaseSelect } from './base-select';
 import { OptionComponent } from './option/option.component';
@@ -60,9 +60,8 @@ export class SelectComponent<T = SelectPrimitiveValue>
     return `aui-select aui-select--${this.size}`;
   }
 
-  isClearable = (hasSelected: boolean) => {
-    return !this.disabled && this.clearable && hasSelected;
-  };
+  isClearable = (hasSelected: boolean) =>
+    !this.disabled && this.clearable && hasSelected;
 
   ngAfterContentInit() {
     super.ngAfterContentInit();

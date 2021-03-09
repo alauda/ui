@@ -12,3 +12,16 @@ storybook-dynamic-app-root {
 .sbdocs-table {
   width: 100%;
 }
+
+.d-block {
+  display: block;
+}
+
+ol,
+ul {
+  &.d-block li {
+    display: block;
+    width: unset;
+    height: unset;
+  }
+}

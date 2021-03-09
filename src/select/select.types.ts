@@ -18,8 +18,11 @@ export type OptionFilterFn<T> = (
 
 export type TrackFn<T, R = unknown> = (value: T) => R;
 
-export type TagClassFn = (
-  label: string,
-  value: unknown,
+export type TagClassFn<
+  V,
+  T extends string | TemplateRef<unknown> = string | TemplateRef<unknown>
+> = (
+  label: T,
+  value: V,
 ) => // tslint:disable-next-line: max-union-size
 string | string[] | Set<string> | { [className: string]: unknown };

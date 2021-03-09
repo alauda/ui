@@ -19,8 +19,7 @@ import {
   tap,
 } from 'rxjs/operators';
 
-import { Bem, buildBem } from '../../utils/bem';
-import { coerceAttrBoolean } from '../../utils/coercion';
+import { Bem, buildBem, coerceAttrBoolean } from '../../utils';
 import { AutocompleteComponent } from '../autocomplete.component';
 
 @Component({

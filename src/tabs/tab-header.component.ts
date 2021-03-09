@@ -20,8 +20,7 @@ import {
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { Bem, buildBem } from '../utils/bem';
-import { coerceNumber } from '../utils/coercion';
+import { Bem, buildBem, coerceNumber } from '../utils';
 
 import {
   TabHeaderAddonDirective,
@@ -182,7 +181,6 @@ export class TabHeaderComponent
    */
   ngAfterContentInit() {
     const resize = this._viewportRuler.change(150);
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const realign = () => {
       this._updatePagination();
       this._alignActiveIndicatorToSelectedTab();

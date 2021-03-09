@@ -5,7 +5,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { Bem, buildBem } from '../utils/bem';
+import { Bem, buildBem } from '../utils';
 
 import { IconRegisterService } from './icon-register.service';
 

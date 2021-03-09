@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-extraneous-class */
 // tslint:disable: no-host-metadata-property
 import { Directive, Input } from '@angular/core';
 
-import { coerceAttrBoolean } from '../utils/coercion';
+import { coerceAttrBoolean } from '../utils';
 
 @Directive({
   selector: 'label[auiFormItemLabel]',

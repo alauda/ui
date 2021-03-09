@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 
 import { ComponentSize } from '../../types';
-import { Bem, buildBem } from '../../utils/bem';
+import { Bem, buildBem } from '../../utils';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 
 import { MenuContentDirective } from './menu-content.directive';

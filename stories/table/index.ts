@@ -67,24 +67,20 @@ storiesOf('Table', module)
       },
     };
   })
-  .add('sort', () => {
-    return {
-      moduleMetadata: {
-        imports: [TableModule, SortModule],
-        declarations: [SortDemoComponent],
-      },
-      component: SortDemoComponent,
-    };
-  })
-  .add('expand', () => {
-    return {
-      moduleMetadata: {
-        imports: [TableModule, IconModule, BrowserAnimationsModule],
-        declarations: [ExpandDemoComponent],
-      },
-      component: ExpandDemoComponent,
-    };
-  });
+  .add('sort', () => ({
+    moduleMetadata: {
+      imports: [TableModule, SortModule],
+      declarations: [SortDemoComponent],
+    },
+    component: SortDemoComponent,
+  }))
+  .add('expand', () => ({
+    moduleMetadata: {
+      imports: [TableModule, IconModule, BrowserAnimationsModule],
+      declarations: [ExpandDemoComponent],
+    },
+    component: ExpandDemoComponent,
+  }));
 
 export interface Element {
   id: number;

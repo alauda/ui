@@ -1,8 +1,7 @@
 {
   "extends": "./tsconfig",
   "compilerOptions": {
-    "types": ["jest", "node"],
-    "allowJs": true
+    "types": ["jest", "node", "resize-observer-browser"]
   },
   "include": ["src/**/*.spec.ts"]
 }

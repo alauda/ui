@@ -1,14 +1,23 @@
 {
   "$schema": "./node_modules/ts-node/tsconfig.schema.json",
-  "extends": "@1stg/tsconfig/angular",
+  "extends": "@1stg/tsconfig/loose",
+  "include": ["./.storybook/**/*.ts", "src", "stories", "jest.setup.ts"],
+  "exclude": ["release"],
   "compilerOptions": {
-    "baseUrl": "."
+    "emitDecoratorMetadata": true,
+    "target": "ES2015"
   },
-  "include": ["src/**/*"],
-  "exclude": ["release", "stories", "src/**/*.spec.ts"],
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
     }
+  },
+  // For vscode-ng-language-service
+  "angularCompilerOptions": {
+    "disableTypeScriptVersionCheck": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "strictTemplates": true,
+    "trace": true
   }
 }

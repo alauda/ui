@@ -19,8 +19,7 @@ import {
 } from '@angular/core';
 import { Subject, Subscription, merge } from 'rxjs';
 
-import { Bem, buildBem } from '../utils/bem';
-import { coerceNumber } from '../utils/coercion';
+import { Bem, buildBem, coerceNumber } from '../utils';
 
 import { TabHeaderAddonDirective } from './tab-directives';
 import { TabHeaderComponent } from './tab-header.component';

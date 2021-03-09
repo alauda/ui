@@ -69,8 +69,8 @@ describe('DialogService', () => {
     );
   });
 
-  it('should be closed by click close button', () => {
-    return new Promise<void>(resolve => {
+  it('should be closed by click close button', () =>
+    new Promise<void>(resolve => {
       const ins = fixture.componentInstance;
       ins.result = 'result';
       dialogService
@@ -84,11 +84,10 @@ describe('DialogService', () => {
       fixture.detectChanges();
       ocEl.querySelector('#close').dispatchEvent(new Event('click'));
       fixture.detectChanges();
-    });
-  });
+    }));
 
-  it('should open confirm dialog and invoke confirm callback', () => {
-    return new Promise<void>(resolve => {
+  it('should open confirm dialog and invoke confirm callback', () =>
+    new Promise<void>(resolve => {
       dialogService
         .confirm({
           title: 'title',
@@ -103,11 +102,10 @@ describe('DialogService', () => {
       ocEl
         .querySelector('.aui-confirm-dialog__confirm-button')
         .dispatchEvent(new Event('click'));
-    });
-  });
+    }));
 
-  it('should open confirm dialog and invoke cancel callback', () => {
-    return new Promise<void>(resolve => {
+  it('should open confirm dialog and invoke cancel callback', () =>
+    new Promise<void>(resolve => {
       dialogService
         .confirm({
           title: 'custom title',
@@ -128,11 +126,10 @@ describe('DialogService', () => {
       ocEl
         .querySelector('.aui-confirm-dialog__cancel-button')
         .dispatchEvent(new Event('click'));
-    });
-  });
+    }));
 
-  it('should before confirm work correctly', () => {
-    return new Promise<void>(resolve => {
+  it('should before confirm work correctly', () =>
+    new Promise<void>(resolve => {
       const t1 = Date.now();
       dialogService
         .confirm({
@@ -156,11 +153,10 @@ describe('DialogService', () => {
 
       expect(confirmBtn.className).toContain('isLoading');
       expect(confirmBtn.disabled).toBeTruthy();
-    });
-  });
+    }));
 
-  it('should before confirm observable work correctly', () => {
-    return new Promise<void>(resolve => {
+  it('should before confirm observable work correctly', () =>
+    new Promise<void>(resolve => {
       const t1 = Date.now();
       dialogService
         .confirm({
@@ -183,11 +179,10 @@ describe('DialogService', () => {
 
       expect(confirmBtn.className).toContain('isLoading');
       expect(confirmBtn.disabled).toBeTruthy();
-    });
-  });
+    }));
 
-  it('should before cancel work correctly', () => {
-    return new Promise<void>(resolve => {
+  it('should before cancel work correctly', () =>
+    new Promise<void>(resolve => {
       const t1 = Date.now();
       dialogService
         .confirm({
@@ -212,11 +207,10 @@ describe('DialogService', () => {
 
       expect(cancelBtn.className).toContain('isLoading');
       expect(cancelBtn.disabled).toBeTruthy();
-    });
-  });
+    }));
 
-  it('should before cancel observable work correctly', () => {
-    return new Promise<void>(resolve => {
+  it('should before cancel observable work correctly', () =>
+    new Promise<void>(resolve => {
       const t1 = Date.now();
       dialogService
         .confirm({
@@ -239,8 +233,7 @@ describe('DialogService', () => {
 
       expect(cancelBtn.className).toContain('isLoading');
       expect(cancelBtn.disabled).toBeTruthy();
-    });
-  });
+    }));
 
   it('should before confirm callback could prevent close event', fakeAsync(() => {
     dialogService

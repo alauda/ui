@@ -16,7 +16,7 @@ import {
 
 import { MessageAnimations } from '../message/message-animations';
 import { MessageComponent } from '../message/message.component';
-import { Bem, buildBem } from '../utils/bem';
+import { Bem, buildBem } from '../utils';
 
 import { NotificationConfig } from './notification.config';
 

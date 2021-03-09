@@ -127,14 +127,14 @@ export class NavMenuComponent implements AfterContentInit {
         bufferCount(2, 1),
         startWith<NavItemKey[]>([null, null]),
         debounceTime(0),
-        switchMap(([prevKey, currKey]) => {
-          return currKey
+        switchMap(([prevKey, currKey]) =>
+          currKey
             ? of(currKey)
             : this.secondaryPanelHover$$.pipe(
                 debounceTime(0),
                 switchMap(hover => (hover ? of(prevKey) : of(null))),
-              );
-        }),
+              ),
+        ),
       )
       .pipe(
         switchMap(key =>

@@ -24,8 +24,7 @@ import {
   tap,
 } from 'rxjs/operators';
 
-import { Bem, buildBem } from '../../utils/bem';
-import { scrollIntoView } from '../../utils/scroll-into-view';
+import { Bem, buildBem, scrollIntoView } from '../../utils';
 import { TreeSelectComponent } from '../tree-select.component';
 import { TreeNode } from '../tree-select.types';
 

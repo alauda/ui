@@ -104,7 +104,5 @@ export class PaginatorZh extends PaginatorIntl {
 
   jumperLabelSuffix = '页';
 
-  getTotalLabel = (length: number) => {
-    return `共 ${length} 条`;
-  };
+  getTotalLabel = (length: number) => `共 ${length} 条`;
 }

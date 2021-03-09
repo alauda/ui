@@ -9,7 +9,6 @@ import {
   OnDestroy,
   Output,
   QueryList,
-  TemplateRef,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
@@ -25,8 +24,12 @@ import {
 import { CommonFormControl } from '../form/public-api';
 import { TooltipDirective } from '../tooltip/public-api';
 import { ComponentSize } from '../types';
-import { coerceAttrBoolean, coerceString } from '../utils/coercion';
-import { scrollIntoView } from '../utils/scroll-into-view';
+import {
+  coerceAttrBoolean,
+  coerceString,
+  isTemplateRef,
+  scrollIntoView,
+} from '../utils';
 
 import { OptionComponent } from './option/option.component';
 import { OptionFilterFn, SelectFilterOption, TrackFn } from './select.types';
@@ -147,6 +150,8 @@ export abstract class BaseSelect<T, V = T>
 
   @ContentChildren(OptionComponent, { descendants: true })
   contentOptions: QueryList<OptionComponent<T>>;
+
+  isTemplateRef = isTemplateRef;
 
   /**
    * Utility field to make sure the users always see the value as type array
@@ -330,12 +335,6 @@ export abstract class BaseSelect<T, V = T>
   onOptionClick(option: OptionComponent<T>) {
     this.resetFocusedOption(option);
     this.selectOption(option);
-  }
-
-  isTemplate(
-    label: string | TemplateRef<unknown>,
-  ): label is TemplateRef<unknown> {
-    return label instanceof TemplateRef;
   }
 
   protected autoFocusFirstOption() {

@@ -70,7 +70,7 @@ exports[`InputGroupComponent should match snapshot 1`] = `
                   >
                     <stop
                       offset="0"
-                      style="stop-color: #000000"
+                      style="stop-color: #000"
                     />
                     <stop
                       offset="1"
@@ -87,7 +87,7 @@ exports[`InputGroupComponent should match snapshot 1`] = `
                   >
                     <stop
                       offset="0"
-                      style="stop-color: #ffffff"
+                      style="stop-color: #fff"
                     />
                     <stop
                       offset="1"

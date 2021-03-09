@@ -184,6 +184,8 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                           class="aui-select__label"
                         >
                           
+                          
+                          
                           100
                           
                         </div>
@@ -511,6 +513,8 @@ exports[`PaginatorComponent should render current template 1`] = `
                         <div
                           class="aui-select__label"
                         >
+                          
+                          
                           
                           20
                           
@@ -850,6 +854,8 @@ exports[`PaginatorComponent should render current template 2`] = `
                         <div
                           class="aui-select__label"
                         >
+                          
+                          
                           
                           20
                           

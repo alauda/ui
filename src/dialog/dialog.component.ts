@@ -13,10 +13,10 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { Bem, buildBem } from '../utils/bem';
+import { Bem, buildBem } from '../utils';
 
 import { DialogConfig } from './dialog-config';
-import { throwDialogContentAlreadyAttachedError } from './utils/errors';
+import { throwDialogContentAlreadyAttachedError } from './utils';
 
 @Component({
   selector: 'aui-dialog',

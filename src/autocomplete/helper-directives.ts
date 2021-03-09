@@ -7,5 +7,4 @@ import { Directive } from '@angular/core';
     '[class.aui-suggestion-group__title]': 'true',
   },
 })
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class SuggestionGroupTitleDirective {}

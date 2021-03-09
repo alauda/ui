@@ -14,8 +14,8 @@ export class SortDemoComponent {
 
   sortData(sort: Sort) {
     const activeKey = sort.active as keyof Element;
-    this.dataSource = DATA_SOURCE.slice().sort((a, b) => {
-      return a[activeKey] === b[activeKey]
+    this.dataSource = DATA_SOURCE.slice().sort((a, b) =>
+      a[activeKey] === b[activeKey]
         ? 0
         : a[activeKey] > b[activeKey]
         ? sort.direction === 'asc'
@@ -23,7 +23,7 @@ export class SortDemoComponent {
           : -1
         : sort.direction === 'asc'
         ? -1
-        : 1;
-    });
+        : 1,
+    );
   }
 }

@@ -22,7 +22,7 @@ jobs:
           git config --local user.name "GitHub Action"
           yarn release $VERSION
         env:
-          VERSION: ${{github.event.inputs.version}}
+          VERSION: ${{ github.event.inputs.version }}
       - name: Build package
         run: yarn build
       - name: Publish
@@ -30,7 +30,7 @@ jobs:
           npm set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
           npm publish release
         env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:

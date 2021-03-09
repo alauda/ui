@@ -25,7 +25,7 @@ import {
   TooltipTrigger,
   TooltipType,
 } from '../tooltip/public-api';
-import { scrollIntoView } from '../utils/scroll-into-view';
+import { scrollIntoView } from '../utils';
 
 import { AutocompleteComponent } from './autocomplete.component';
 import { AutoCompleteContext, SuggestionFilterFn } from './autocomplete.types';

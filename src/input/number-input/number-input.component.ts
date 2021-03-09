@@ -12,8 +12,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { CommonFormControl } from '../../form/public-api';
 import { ComponentSize } from '../../types';
-import { Bem, buildBem } from '../../utils/bem';
-import { coerceNumber } from '../../utils/coercion';
+import { Bem, buildBem, coerceNumber } from '../../utils';
 
 @Component({
   selector: 'aui-number-input',
