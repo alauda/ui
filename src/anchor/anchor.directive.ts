@@ -120,6 +120,9 @@ export class AnchorDirective implements AfterContentInit, OnDestroy {
   auiAnchor: HTMLElement | '';
 
   @Input()
+  adaptPosition = true;
+
+  @Input()
   padding = 20;
 
   @Input()
@@ -127,9 +130,6 @@ export class AnchorDirective implements AfterContentInit, OnDestroy {
 
   @Input()
   injectId = window === window.top;
-
-  @Input()
-  adaptPosition = true;
 
   @ContentChildren(AnchorLabelDirective, { descendants: true })
   anchorLabels: QueryList<AnchorLabelDirective>;

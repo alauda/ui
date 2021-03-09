@@ -172,9 +172,9 @@ export class AnchorComponent
               ({ target }) =>
                 target.offsetTop +
                   target.offsetHeight / 2 +
-                  (scrollableEl === window
-                    ? (target.offsetParent as HTMLElement)?.offsetTop ?? 0
-                    : 0) >
+                  ((scrollableEl === window &&
+                    (target.offsetParent as HTMLElement)?.offsetTop) ||
+                    0) >
                 scrollTop + paddingTop,
             ) || last(this.items);
           return activedItem ? of(activedItem) : EMPTY;

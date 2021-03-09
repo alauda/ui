@@ -65,7 +65,7 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
   values$ = this.value$$.asObservable();
 
   @Input()
-  tagClassFn: TagClassFn;
+  tagClassFn: TagClassFn<T>;
 
   @ViewChild('inputRef', { static: true })
   inputRef: ElementRef<HTMLInputElement>;
