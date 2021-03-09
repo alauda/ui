@@ -31,11 +31,11 @@ export function createWithMaxRowCount<
     size: ComponentSize;
   }
 >(component: T) {
-  const hostPosition = () => (component.maxRowCount > 0 ? 'relative' : 'unset');
-  const hostDisplay = () => (component.maxRowCount ? 'block' : 'unset');
+  const hostPosition = () => (component.maxRowCount > 0 ? 'relative' : null);
+  const hostDisplay = () => (component.maxRowCount ? 'block' : null);
   const maxHeight = () => {
     if (component.maxRowCount <= 0) {
-      return 'unset';
+      return null;
     }
 
     const paddingPatch = getContainerPaddingPatch(component.size);
