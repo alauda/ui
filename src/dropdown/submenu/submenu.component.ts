@@ -9,7 +9,7 @@ import {
 
 import { TooltipTrigger } from '../../tooltip/public-api';
 import { ComponentSize } from '../../types';
-import { Bem, buildBem } from '../../utils/bem';
+import { Bem, buildBem } from '../../utils';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 
 @Component({

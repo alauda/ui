@@ -3,15 +3,13 @@ import { Component, OnDestroy } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { storiesOf } from '@storybook/angular';
 
-storiesOf('Message', module).add('message', () => {
-  return {
-    moduleMetadata: {
-      imports: [MessageModule, BrowserAnimationsModule, ButtonModule],
-      declarations: [DemoComponent],
-    },
-    component: DemoComponent,
-  };
-});
+storiesOf('Message', module).add('message', () => ({
+  moduleMetadata: {
+    imports: [MessageModule, BrowserAnimationsModule, ButtonModule],
+    declarations: [DemoComponent],
+  },
+  component: DemoComponent,
+}));
 
 @Component({
   template: `

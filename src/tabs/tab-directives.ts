@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { coerceAttrBoolean } from '../utils/coercion';
+import { coerceAttrBoolean } from '../utils';
 
 import { TabBodyComponent } from './tab-body.component';
 

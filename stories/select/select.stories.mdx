@@ -1,4 +1,4 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
 import { SelectModule, IconModule } from '@alauda/ui';
@@ -18,7 +18,7 @@ import { SelectModule, IconModule } from '@alauda/ui';
 
 ## 单选
 
-<Preview>
+<Canvas>
   <Story name="single" height="240px">
     {{
       template: /* HTML */ `
@@ -40,11 +40,11 @@ import { SelectModule, IconModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 单选分组
 
-<Preview>
+<Canvas>
   <Story name="group" height="360px">
     {{
       template: /* HTML */ `
@@ -76,11 +76,11 @@ import { SelectModule, IconModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 加载中
 
-<Preview>
+<Canvas>
   <Story name="loading" height="100px">
     {{
       template: /* HTML */ `
@@ -97,11 +97,11 @@ import { SelectModule, IconModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 禁用
 
-<Preview>
+<Canvas>
   <Story name="disabled" height="100px">
     {{
       template: /* HTML */ `
@@ -118,11 +118,11 @@ import { SelectModule, IconModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 可清除
 
-<Preview>
+<Canvas>
   <Story name="clearable" height="100px">
     {{
       template: /* HTML */ `
@@ -139,11 +139,11 @@ import { SelectModule, IconModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 可筛选
 
-<Preview>
+<Canvas>
   <Story name="filterable" height="300px">
     {{
       template: /* HTML */ `
@@ -169,17 +169,16 @@ import { SelectModule, IconModule } from '@alauda/ui';
             key: `option${i + 1}`,
           })),
         value: '',
-        filterFn: (keyword, option) => {
-          return !keyword || option.value.key.includes(keyword);
-        },
+        filterFn: (keyword, option) =>
+          !keyword || option.value.key.includes(keyword),
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 多选
 
-<Preview>
+<Canvas>
   <Story name="multi" height="240px">
     {{
       template: /* HTML */ `
@@ -201,7 +200,7 @@ import { SelectModule, IconModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Select & MultiSelect Inputs
 

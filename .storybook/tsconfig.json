@@ -1,11 +1,12 @@
 {
-  "extends": "../tsconfig",
-  "compilerOptions": {
-    "baseUrl": "../",
-    "paths": {
-      "@alauda/ui": ["./src/public-api"]
-    }
-  },
-  "include": ["../src/**/*", "../stories/**/*"],
-  "exclude": ["../src/**/*.spec.ts"]
+  "extends": "../tsconfig.base",
+  "include": ["../stories"],
+  // For vscode-ng-language-service
+  "angularCompilerOptions": {
+    "disableTypeScriptVersionCheck": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "strictTemplates": true,
+    "trace": true
+  }
 }

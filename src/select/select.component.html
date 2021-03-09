@@ -46,12 +46,14 @@
       [attr.disabled]="disabled ? true : null"
     >
       <div class="aui-select__label">
-        <ng-container
-          *ngIf="isTemplate((selectedOption$ | async).label); else label"
-          [ngTemplateOutlet]="(selectedOption$ | async).label"
-          [ngTemplateOutletContext]="(selectedOption$ | async).labelContext"
-        ></ng-container>
-        <ng-template #label>{{ (selectedOption$ | async).label }}</ng-template>
+        <ng-container *ngIf="(selectedOption$ | async).label as optionLabel">
+          <ng-container
+            *ngIf="isTemplateRef(optionLabel); else label"
+            [ngTemplateOutlet]="optionLabel"
+            [ngTemplateOutletContext]="(selectedOption$ | async).labelContext"
+          ></ng-container>
+          <ng-template #label>{{ optionLabel }}</ng-template>
+        </ng-container>
       </div>
     </div>
   </aui-input-group>

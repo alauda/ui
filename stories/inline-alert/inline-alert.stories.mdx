@@ -1,4 +1,4 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
 import { InlineAlertModule, IconModule } from '@alauda/ui';
@@ -18,7 +18,7 @@ import { InlineAlertModule, IconModule } from '@alauda/ui';
 
 ## 基本用法
 
-<Preview>
+<Canvas>
   <Story name="basic" height="200px">
     {{
       template: /* HTML */ `
@@ -36,11 +36,11 @@ import { InlineAlertModule, IconModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 标题和内容使用字符串
 
-<Preview>
+<Canvas>
   <Story name="string" height="200px">
     {{
       template: /* HTML */ `
@@ -52,11 +52,11 @@ import { InlineAlertModule, IconModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 类型
 
-<Preview>
+<Canvas>
   <Story name="type" height="600px">
     {{
       template: /* HTML */ `
@@ -87,11 +87,11 @@ import { InlineAlertModule, IconModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 可关闭的行内提示
 
-<Preview>
+<Canvas>
   <Story name="closable" height="200px">
     {{
       template: /* HTML */ `
@@ -114,7 +114,7 @@ import { InlineAlertModule, IconModule } from '@alauda/ui';
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Inputs
 

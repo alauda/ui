@@ -7,15 +7,13 @@ import { PlatformNavDemoComponent } from '../nav-menu';
 
 storiesOf('Page', module)
   .addDecorator(withKnobs)
-  .add('page', () => {
-    return {
-      moduleMetadata: {
-        imports: [PageModule, PlatformNavModule, IconModule],
-        declarations: [PlatformNavDemoComponent, DemoComponent],
-      },
-      component: DemoComponent,
-    };
-  });
+  .add('page', () => ({
+    moduleMetadata: {
+      imports: [PageModule, PlatformNavModule, IconModule],
+      declarations: [PlatformNavDemoComponent, DemoComponent],
+    },
+    component: DemoComponent,
+  }));
 
 @Component({
   template: `

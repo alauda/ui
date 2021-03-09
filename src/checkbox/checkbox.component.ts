@@ -91,12 +91,11 @@ export class CheckboxComponent<T>
           takeUntil(this.destroy$$),
           map(([value, label]) => {
             if (this.checkboxGroup.trackFn) {
-              return value?.some(v => {
-                return (
+              return value?.some(
+                v =>
                   this.checkboxGroup.trackFn(v) ===
-                  this.checkboxGroup.trackFn(label)
-                );
-              });
+                  this.checkboxGroup.trackFn(label),
+              );
             }
             return value?.includes(label);
           }),

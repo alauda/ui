@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { buildBem } from '../utils/bem';
+import { buildBem } from '../utils';
 
 import { TableComponent, TableModule } from './public-api';
 

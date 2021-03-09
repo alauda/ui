@@ -1,4 +1,4 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
 import { IconListComponent } from './icon-list/component';
@@ -21,7 +21,7 @@ Icon 模块内置了一套常用的图标，并且支持导入自定义的 [SVG 
 
 ## 内置图标使用方法
 
-<Preview>
+<Canvas>
   <Story name="basic" height="100px">
     {{
       template: `
@@ -35,7 +35,7 @@ Icon 模块内置了一套常用的图标，并且支持导入自定义的 [SVG 
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 引入自定义图标
 

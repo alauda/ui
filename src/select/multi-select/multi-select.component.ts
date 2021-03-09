@@ -23,8 +23,7 @@ import {
 } from 'rxjs/operators';
 
 import { ComponentSize } from '../../types';
-import { Bem, buildBem } from '../../utils/bem';
-import { coerceString } from '../../utils/coercion';
+import { Bem, buildBem, coerceString } from '../../utils';
 import { BaseSelect } from '../base-select';
 import { OptionComponent } from '../option/option.component';
 import {
@@ -102,7 +101,8 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
   }
 
   focused = false;
-  trackByValue = (_: number, item: OptionComponent<T>) =>
+
+  trackByValue = (_: number, item: SelectFilterOption<T>) =>
     this.trackFn(item.value);
 
   constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {

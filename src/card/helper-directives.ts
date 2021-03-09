@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-extraneous-class */
 // tslint:disable: no-host-metadata-property
 import { Directive } from '@angular/core';
 

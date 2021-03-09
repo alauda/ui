@@ -26,9 +26,10 @@ import { map, publishReplay, refCount, take, tap } from 'rxjs/operators';
 
 import { CommonFormControl } from '../../form/public-api';
 import { ComponentSize } from '../../types';
-import { Bem, buildBem } from '../../utils/bem';
+import { Bem, buildBem } from '../../utils';
 
 export const INPUT_ERROR_KEY = 'input_data_error';
+
 @Component({
   selector: 'aui-tags-input',
   templateUrl: './tags-input.component.html',

@@ -1,4 +1,4 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
 import { TooltipModule, ButtonModule } from '@alauda/ui';
@@ -18,7 +18,7 @@ import { TooltipModule, ButtonModule } from '@alauda/ui';
 
 ## 基础用法
 
-<Preview>
+<Canvas>
   <Story name="basic" height="80px">
     {{
       template: `
@@ -68,11 +68,11 @@ import { TooltipModule, ButtonModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 复制
 
-<Preview>
+<Canvas>
   <Story name="copy" height="100px">
     {{
       template: /* HTML */ `<button
@@ -84,11 +84,11 @@ import { TooltipModule, ButtonModule } from '@alauda/ui';
       </button>`,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 弹出位置
 
-<Preview>
+<Canvas>
   <Story name="position" height="240px">
     {{
       template: `
@@ -210,11 +210,11 @@ import { TooltipModule, ButtonModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 复杂内容
 
-<Preview>
+<Canvas>
   <Story name="complex-content" height="120px">
     {{
       template: `
@@ -264,7 +264,7 @@ import { TooltipModule, ButtonModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Inputs
 

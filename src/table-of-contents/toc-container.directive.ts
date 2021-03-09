@@ -109,14 +109,13 @@ export class TocContainerDirective implements AfterContentInit, OnDestroy {
       .pipe(
         startWith(this.scrollTop),
         debounceTime(200),
-        map(scrollTop => {
-          return this._contents.reduce(
-            // eslint-disable-next-line unicorn/no-fn-reference-in-iterator
+        map(scrollTop =>
+          this._contents.reduce(
             this.isScrollEnd
               ? this.getMaxContent.bind(this)
               : this.getMinContent(scrollTop),
-          );
-        }),
+          ),
+        ),
         map(actived => actived.auiTocContent),
       )
       .pipe(

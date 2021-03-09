@@ -109,8 +109,8 @@ describe('SearchComponent', () => {
     expect(inputEl.value).toBe('keyword');
   }));
 
-  it('should emit change event when user input', () => {
-    return new Promise<void>(resolve => {
+  it('should emit change event when user input', () =>
+    new Promise<void>(resolve => {
       ins.searchRef.keywordChange.subscribe(($event: string) => {
         expect($event).toBe('text');
         resolve();
@@ -119,8 +119,7 @@ describe('SearchComponent', () => {
       inputEl.value = 'text';
       inputEl.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-    });
-  });
+    }));
 
   it('should input element be disabled', fakeAsync(() => {
     ins.disabled = true;
@@ -130,8 +129,8 @@ describe('SearchComponent', () => {
     expect(inputEl.disabled).toBeTruthy();
   }));
 
-  it('should emit clear event', () => {
-    return new Promise<void>(resolve => {
+  it('should emit clear event', () =>
+    new Promise<void>(resolve => {
       ins.searchRef.clear.subscribe(() => {
         resolve();
       });
@@ -142,8 +141,7 @@ describe('SearchComponent', () => {
       fixture.detectChanges();
       el.querySelector('.aui-search__clear').dispatchEvent(new Event('click'));
       expect(ins.searchRef.keyword).toBe('');
-    });
-  });
+    }));
 
   it('should not emit clear event when disabled', () => {
     ins.searchRef.clear.subscribe(() => {
@@ -159,8 +157,8 @@ describe('SearchComponent', () => {
     expect(ins.keyword).toBe('text');
   });
 
-  it('should emit search event when click search button', () => {
-    return new Promise<void>(resolve => {
+  it('should emit search event when click search button', () =>
+    new Promise<void>(resolve => {
       ins.searchRef.search.subscribe(($event: string) => {
         expect($event).toBe('text');
         resolve();
@@ -171,8 +169,7 @@ describe('SearchComponent', () => {
       ins.searchButton = true;
       fixture.detectChanges();
       el.querySelector('.aui-search__button').dispatchEvent(new Event('click'));
-    });
-  });
+    }));
 
   it('should not emit search event when click search button', () => {
     ins.searchRef.search.subscribe(() => {
@@ -186,8 +183,8 @@ describe('SearchComponent', () => {
     el.querySelector('.aui-search__button').dispatchEvent(new Event('click'));
   });
 
-  it('should emit search event when press enter', () => {
-    return new Promise<void>(resolve => {
+  it('should emit search event when press enter', () =>
+    new Promise<void>(resolve => {
       ins.searchRef.search.subscribe(($event: string) => {
         expect($event).toBe('text');
         resolve();
@@ -198,8 +195,7 @@ describe('SearchComponent', () => {
       ins.searchButton = true;
       fixture.detectChanges();
       inputEl.dispatchEvent(new KeyboardEvent('keyup', { key: 'enter' }));
-    });
-  });
+    }));
 });
 
 @Component({

@@ -20,8 +20,7 @@ import {
 } from 'rxjs/operators';
 
 import { ComponentSize } from '../../types';
-import { Bem, buildBem } from '../../utils/bem';
-import { coerceAttrBoolean } from '../../utils/coercion';
+import { Bem, buildBem, coerceAttrBoolean } from '../../utils';
 import { BaseSelect } from '../base-select';
 import { MultiSelectComponent } from '../multi-select/multi-select.component';
 

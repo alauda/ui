@@ -16,7 +16,7 @@ import { CommonFormControl } from '../form/public-api';
 import { InputComponent } from '../input/public-api';
 import { SelectPrimitiveValue, TrackFn } from '../select/select.types';
 import { TooltipDirective } from '../tooltip/public-api';
-import { coerceAttrBoolean, coerceString } from '../utils/coercion';
+import { coerceAttrBoolean, coerceString } from '../utils';
 
 import { TreeNodeComponent } from './tree-node/tree-node.component';
 import { TreeNode } from './tree-select.types';
@@ -233,12 +233,11 @@ export class TreeSelectComponent<
   trackByLabel = (_: number, node: TreeNode<T>) => this.getLabelFromNode(node);
 
   private flatNodesData(nodes: Array<TreeNode<T>> = []): Array<TreeNode<T>> {
-    return nodes.reduce((prevValue: Array<TreeNode<T>>, currentNode) => {
-      return prevValue.concat(
-        currentNode,
-        this.flatNodesData(currentNode.children),
-      );
-    }, []);
+    return nodes.reduce(
+      (prevValue: Array<TreeNode<T>>, currentNode) =>
+        prevValue.concat(currentNode, this.flatNodesData(currentNode.children)),
+      [],
+    );
   }
 
   private getLabelFromNode(node: TreeNode<T>) {

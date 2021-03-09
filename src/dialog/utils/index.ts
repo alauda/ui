@@ -16,3 +16,5 @@ export function getClosestDialog(
     ? openDialogs.find(dialog => dialog.id === parent.dataset.id)
     : null;
 }
+
+export * from './errors';

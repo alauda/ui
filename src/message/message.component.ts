@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { Bem, buildBem } from '../utils/bem';
+import { Bem, buildBem } from '../utils';
 
 import { MessageAnimations } from './message-animations';
 import { MessageConfig, MessageType } from './message.config';

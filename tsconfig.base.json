@@ -1,0 +1,10 @@
+{
+  // for eslint, storybook and tsc
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@alauda/ui": ["src/public-api"]
+    }
+  }
+}

@@ -11,32 +11,30 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/angular';
 import { noop } from 'rxjs';
 
-storiesOf('Notification', module).add('notification', () => {
-  return {
-    moduleMetadata: {
-      imports: [NotificationModule, BrowserAnimationsModule, ButtonModule],
-      declarations: [DemoComponent],
-      providers: [
-        {
-          provide: NOTIFICATION_CONFIG,
-          useValue: {
-            duration: {
-              [MessageType.Error]: 0,
-              [MessageType.Success]: 3333,
-              [MessageType.Warning]: 3333,
-              [MessageType.Info]: 3333,
-            },
-            maxStack: 3,
+storiesOf('Notification', module).add('notification', () => ({
+  moduleMetadata: {
+    imports: [NotificationModule, BrowserAnimationsModule, ButtonModule],
+    declarations: [DemoComponent],
+    providers: [
+      {
+        provide: NOTIFICATION_CONFIG,
+        useValue: {
+          duration: {
+            [MessageType.Error]: 0,
+            [MessageType.Success]: 3333,
+            [MessageType.Warning]: 3333,
+            [MessageType.Info]: 3333,
           },
+          maxStack: 3,
         },
-      ],
-    },
-    component: DemoComponent,
-    props: {
-      action: action('after closed result: '),
-    },
-  };
-});
+      },
+    ],
+  },
+  component: DemoComponent,
+  props: {
+    action: action('after closed result: '),
+  },
+}));
 
 @Component({
   template: `

@@ -148,7 +148,5 @@ class TestComponent {
   @ViewChild('selectRef', { static: true })
   selectRef: MultiSelectComponent;
 
-  tagClassFn = (_: string, tag: string) => {
-    return `tag-${tag}`;
-  };
+  tagClassFn = (_: string, tag: string) => `tag-${tag}`;
 }

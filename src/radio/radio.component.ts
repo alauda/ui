@@ -6,7 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { Bem, buildBem } from '../utils/bem';
+import { Bem, buildBem } from '../utils';
 
 import { BaseRadio } from './base-radio';
 import { RadioGroupComponent } from './radio-group/radio-group.component';

@@ -1,4 +1,4 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -19,7 +19,7 @@ import { BackTopModule } from '@alauda/ui';
 
 ## 默认指定外部的 cdkScrollable 组件
 
-<Preview>
+<Canvas>
   <Story name="inscroll" height="300px">
     {{
       template: /* HTML */ `
@@ -32,11 +32,11 @@ import { BackTopModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 通过模板变量选择滚动容器
 
-<Preview>
+<Canvas>
   <Story name="use element ref" height="300px">
     {{
       template: /* HTML */ `
@@ -49,11 +49,11 @@ import { BackTopModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 无外部滚动容器，默认根据 window
 
-<Preview>
+<Canvas>
   <Story name="default window" height="300px">
     {{
       template: /* HTML */ `
@@ -64,11 +64,11 @@ import { BackTopModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 根据 selector 指定滚动容器
 
-<Preview>
+<Canvas>
   <Story name="use selector" height="300px">
     {{
       template: /* HTML */ `
@@ -81,7 +81,7 @@ import { BackTopModule } from '@alauda/ui';
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Backtop Inputs
 

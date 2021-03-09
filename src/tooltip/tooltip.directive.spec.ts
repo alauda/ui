@@ -139,27 +139,25 @@ describe('TooltipDirective', () => {
     );
   });
 
-  it('should emit show event', () => {
-    return new Promise(resolve => {
+  it('should emit show event', () =>
+    new Promise(resolve => {
       ins.tooltip.show.subscribe(resolve);
 
       ins.trigger = TooltipTrigger.Click;
       fixture.detectChanges();
       hostEl.dispatchEvent(new Event('click'));
       fixture.detectChanges();
-    });
-  });
+    }));
 
-  it('should emit hide event', () => {
-    return new Promise(resolve => {
+  it('should emit hide event', () =>
+    new Promise(resolve => {
       ins.tooltip.hide.subscribe(resolve);
 
       ins.trigger = TooltipTrigger.Click;
       fixture.detectChanges();
       hostEl.dispatchEvent(new Event('click'));
       document.body.click();
-    });
-  });
+    }));
 });
 
 @Component({

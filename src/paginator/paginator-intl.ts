@@ -19,9 +19,7 @@ export class PaginatorIntl {
   jumperLabelPrefix = 'Goto';
   jumperLabelSuffix = '';
 
-  getTotalLabel = (length: number) => {
-    return `Total ${length}`;
-  };
+  getTotalLabel = (length: number) => `Total ${length}`;
 }
 
 export function PAGINATOR_INTL_PROVIDER_FACTORY(parentIntl: PaginatorIntl) {

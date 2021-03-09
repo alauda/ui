@@ -8,7 +8,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { CommonFormControl } from '../form/public-api';
-import { Bem, buildBem } from '../utils/bem';
+import { Bem, buildBem } from '../utils';
 
 const prefix = 'aui-switch';
 

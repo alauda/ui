@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { ComponentSize } from '../../types';
-import { Bem, buildBem } from '../../utils/bem';
+import { Bem, buildBem } from '../../utils';
 
 @Component({
   selector: 'aui-search',

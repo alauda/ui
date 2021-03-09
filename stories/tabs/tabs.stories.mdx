@@ -1,4 +1,4 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
 import { LazyTestComponent } from './lazy-test.component';
@@ -29,7 +29,7 @@ import {
 
 ## 基础用法
 
-<Preview>
+<Canvas>
   <Story name="basic" height="100px">
     {{
       template: /* HTML */ `
@@ -41,11 +41,11 @@ import {
       `,
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 样式
 
-<Preview>
+<Canvas>
   <Story name="type" height="200px">
     {{
       template: /* HTML */ `
@@ -86,11 +86,11 @@ import {
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 自定义 Label
 
-<Preview>
+<Canvas>
   <Story name="customLabel" height="100px">
     {{
       template: /* HTML */ `
@@ -116,13 +116,13 @@ import {
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 添加删除
 
 > 通过自定义 Group Header 实现
 
-<Preview>
+<Canvas>
   <Story name="editable" height="100px">
     {{
       template: /* HTML */ `
@@ -161,11 +161,11 @@ import {
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## 禁用
 
-<Preview>
+<Canvas>
   <Story name="disabled" height="100px">
     {{
       template: /* HTML */ `
@@ -181,13 +181,13 @@ import {
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Lazy 模式
 
 > 依赖 `*auiTabContent`，与默认模式按需加载每次切换 Tab 都会销毁重新创建相比，lazy 启用时在按需加载组件的同时会缓存已加载的 Tab 内容。
 
-<Preview>
+<Canvas>
   <Story name="lazy" height="150px">
     {{
       template: /* HTML */ `
@@ -221,7 +221,7 @@ import {
       },
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## TabGroupComponent Inputs
 

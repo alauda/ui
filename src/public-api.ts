@@ -1,4 +1,5 @@
 export * from './types';
+export * from './utils';
 export * from './table/public-api';
 export * from './sort/public-api';
 export * from './button/public-api';
@@ -31,3 +32,4 @@ export * from './accordion/public-api';
 export * from './page/public-api';
 export * from './scrolling/public-api';
 export * from './theme/public-api';
+export * from './anchor/public-api';
