@@ -2,4 +2,12 @@
 @import '../../theme/mixin';
 @import './mixin';
 
+$block: aui-tags-input;
+
 @include component-style(aui-tags-input);
+
+.#{$block} {
+  &.withHeightLimit {
+    @include with-height-limit;
+  }
+}

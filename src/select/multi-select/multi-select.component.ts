@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostBinding,
   Input,
   QueryList,
   Renderer2,
@@ -21,6 +22,7 @@ import {
   switchMap,
   takeUntil,
 } from 'rxjs/operators';
+import { createWithMaxRowCount } from 'src/input/tags-input/with-max-row-count';
 
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, coerceString } from '../../utils';
@@ -67,11 +69,27 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
   @Input()
   tagClassFn: TagClassFn<T>;
 
+  @Input()
+  maxRowCount = 0;
+
+  @Input()
+  customRowHeight = 0; // 0: use default style const value, > 1: for ```tagClassFn``` maybe affect lineHeight
+
   @ViewChild('inputRef', { static: true })
   inputRef: ElementRef<HTMLInputElement>;
 
   @ViewChild('inputValueMirror', { static: true })
   inputValueMirror: ElementRef<HTMLElement>;
+
+  @HostBinding('style.position')
+  get hostPosition() {
+    return this.withMaxRowCount.hostPosition();
+  }
+
+  @HostBinding('style.display')
+  get hostDisplay() {
+    return this.withMaxRowCount.hostDisplay();
+  }
 
   inputValue = '';
 
@@ -81,7 +99,7 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
       this.disabled ? 'isDisabled' : ''
     } ${this.focused ? 'isFocused' : ''} ${
       this.displayClearBtn ? 'isClearable' : ''
-    }`;
+    } ${this.maxRowCount > 0 ? 'withHeightLimit' : ''}`;
   }
 
   get tagSize() {
@@ -99,6 +117,12 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
   get displayClearBtn() {
     return !this.disabled && this.clearable && this.selectedValues.length;
   }
+
+  get maxHeight() {
+    return this.withMaxRowCount.maxHeight();
+  }
+
+  private readonly withMaxRowCount = createWithMaxRowCount(this);
 
   focused = false;
 
