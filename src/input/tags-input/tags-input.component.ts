@@ -12,6 +12,7 @@ import {
   ViewChild,
   ViewEncapsulation,
   forwardRef,
+  HostBinding,
 } from '@angular/core';
 import {
   AsyncValidatorFn,
@@ -27,6 +28,7 @@ import { map, publishReplay, refCount, take, tap } from 'rxjs/operators';
 import { CommonFormControl } from '../../form/public-api';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils';
+import { createWithMaxRowCount } from './with-max-row-count';
 
 export const INPUT_ERROR_KEY = 'input_data_error';
 
@@ -73,6 +75,12 @@ export class TagsInputComponent
   @Input()
   readonlyTags: string[] | readonly string[] = [];
 
+  @Input()
+  maxRowCount = 0;
+
+  @Input()
+  customRowHeight = 0; // 0: use default style const value, > 1: for ```tagClassFn``` maybe affect lineHeight
+
   _inputValidator: ValidatorFn;
   _inputAsyncValidator: AsyncValidatorFn;
 
@@ -102,6 +110,22 @@ export class TagsInputComponent
   @ViewChild('inputValueMirror', { static: true })
   inputValueMirror: ElementRef<HTMLElement>;
 
+  @HostBinding('style.position')
+  get hostPosition() {
+    return this.withMaxRowCount.hostPosition();
+  }
+
+  @HostBinding('style.display')
+  get hostDisplay() {
+    return this.withMaxRowCount.hostDisplay();
+  }
+
+  get maxHeight() {
+    return this.withMaxRowCount.maxHeight();
+  }
+
+  private readonly withMaxRowCount = createWithMaxRowCount(this);
+
   snapshot = {
     value: [] as string[],
   };
@@ -129,7 +153,7 @@ export class TagsInputComponent
       this.disabled ? 'isDisabled' : ''
     } ${this.focused ? 'isFocused' : ''} ${
       this.clearable ? 'isClearable' : ''
-    }`;
+    } ${this.maxRowCount > 0 ? 'withHeightLimit' : ''}`;
   }
 
   get tagSize() {

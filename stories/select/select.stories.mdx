@@ -182,7 +182,7 @@ import { SelectModule, IconModule } from '@alauda/ui';
   <Story name="multi" height="240px">
     {{
       template: /* HTML */ `
-        <aui-multi-select [(ngModel)]="value">
+        <aui-multi-select [(ngModel)]="value" [maxRowCount]="3">
           <aui-option *ngFor="let option of arr" [value]="option">
             {{ option }}
           </aui-option>

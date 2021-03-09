@@ -214,6 +214,7 @@ storiesOf('Input', module)
           [allowRepeat]="allowRepeat"
           [allowEmpty]="allowEmpty"
           placeholder="placeholder"
+          [maxRowCount]="3"
         ></aui-tags-input>
         {{ value | json }} status:{{control.status}}
         <br />

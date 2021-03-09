@@ -93,6 +93,10 @@ $block: aui-multi-select;
     cursor: default;
   }
 
+  &.withHeightLimit {
+    @include with-height-limit;
+  }
+
   &:not(.isDisabled) .aui-icon-caret_down_s {
     fill: $input-color;
   }

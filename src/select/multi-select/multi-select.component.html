@@ -10,6 +10,7 @@
   (auiTooltipShow)="onShowOptions()"
   (auiTooltipHide)="onHideOptions()"
   (mousedown)="$event.preventDefault()"
+  [style.max-height]="maxHeight"
 >
   <div class="aui-multi-select__suffix">
     <aui-icon

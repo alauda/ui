@@ -146,3 +146,10 @@
     }
   }
 }
+
+@mixin with-height-limit {
+  @include scroll-bar;
+
+  overflow: auto;
+  position: static;
+}
