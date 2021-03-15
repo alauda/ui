@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.6.3](https://github.com/alauda/alauda-ui/compare/v5.6.2...v5.6.3) (2021-03-15)
+
+
+### Features
+
+* add anchor module ([#111](https://github.com/alauda/alauda-ui/issues/111)) ([47403b9](https://github.com/alauda/alauda-ui/commit/47403b9651d780c40f38e8af8d1a1154f8be8718))
+* support dark mode ([6e75972](https://github.com/alauda/alauda-ui/commit/6e759728c7e5872b233b3a4302ca98324912ba5f))
+* tag input and multi select support max row count ([#113](https://github.com/alauda/alauda-ui/issues/113)) ([ee1dcbf](https://github.com/alauda/alauda-ui/commit/ee1dcbfaec954fbea7c99686914ba83f26a14af3))
+
 ### [5.6.2](https://github.com/alauda/alauda-ui/compare/v5.6.1...v5.6.2) (2021-03-08)
 
 
