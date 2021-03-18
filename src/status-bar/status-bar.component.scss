@@ -33,10 +33,10 @@ $block: aui-status-bar;
       background-color: #ffb133;
     }
     &--error {
-      background-color: #d6d6d6;
+      background-color: #ea6a6a;
     }
     &--info {
-      background-color: $color-info-lighter;
+      background-color: #d6d6d6;
     }
     &--pending {
       height: $status-bar-pending-gradient-width * 8;
