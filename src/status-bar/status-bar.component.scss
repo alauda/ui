@@ -24,16 +24,16 @@ $block: aui-status-bar;
     flex: 1 1 1;
 
     &--primary {
-      background-color: $color-primary-lighter;
+      background-color: #338bff;
     }
     &--success {
-      background-color: $color-success-lighter;
+      background-color: #3bcc7c;
     }
     &--warning {
-      background-color: $color-warning-lighter;
+      background-color: #ffb133;
     }
     &--error {
-      background-color: $color-error-lighter;
+      background-color: #d6d6d6;
     }
     &--info {
       background-color: $color-info-lighter;
