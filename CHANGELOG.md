@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.6.5](https://github.com/alauda/alauda-ui/compare/v5.6.4...v5.6.5) (2021-03-18)
+
+
+### Bug Fixes
+
+* status bar error/info color ([2d77ea2](https://github.com/alauda/alauda-ui/commit/2d77ea2bb50b954ee57152a29b81a5ec9c04b5b5))
+
 ### [5.6.4](https://github.com/alauda/alauda-ui/compare/v5.6.3...v5.6.4) (2021-03-18)
 
 
