@@ -38,8 +38,6 @@ export interface TooltipInterface {
 // tslint:disable-next-line: directive-class-suffix
 export class BaseTooltip<T = any>
   implements TooltipInterface, AfterViewInit, OnDestroy {
-  static readonly DELAY_TIMES = 50;
-
   set content(value: string | TemplateRef<any>) {
     this.inputContent$$.next(value);
   }
@@ -101,6 +99,7 @@ export class BaseTooltip<T = any>
     }
   }
 
+  delay = 50;
   hideOnClick = false;
 
   show = new EventEmitter<void>();
@@ -304,7 +303,7 @@ export class BaseTooltip<T = any>
   protected async onMouseEnter() {
     this.hostHovered = true;
     if (!this.isCreated) {
-      await sleep(BaseTooltip.DELAY_TIMES);
+      await sleep(this.delay);
       if (this.hostHovered) {
         this.createTooltip();
       }
@@ -313,7 +312,7 @@ export class BaseTooltip<T = any>
 
   protected async onMouseLeave() {
     this.hostHovered = false;
-    await sleep(BaseTooltip.DELAY_TIMES);
+    await sleep(this.delay);
     if (!this.tooltipHovered && !this.hostHovered) {
       this.disposeTooltip();
     }
@@ -322,7 +321,7 @@ export class BaseTooltip<T = any>
   protected async onTooltipHovered(hovered: boolean) {
     this.tooltipHovered = hovered;
     if (!hovered) {
-      await sleep(BaseTooltip.DELAY_TIMES);
+      await sleep(this.delay);
       if (!this.tooltipHovered && !this.hostHovered) {
         this.disposeTooltip();
       }

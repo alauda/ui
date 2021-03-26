@@ -13,6 +13,8 @@ import { By } from '@angular/platform-browser';
 import { TooltipDirective, TooltipModule } from './public-api';
 import { TooltipTrigger, TooltipType } from './tooltip.types';
 
+const DELAY_TIMES = 50;
+
 describe('TooltipDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
   let ins: TestComponent;
@@ -38,7 +40,7 @@ describe('TooltipDirective', () => {
 
   it('should render tooltip when mouseenter & destroy tooltip when mouseleave', fakeAsync(() => {
     hostEl.dispatchEvent(new Event('mouseenter'));
-    tick(TooltipDirective.DELAY_TIMES);
+    tick(DELAY_TIMES);
     fixture.detectChanges();
 
     expect(ins.tooltip.isCreated).toBeTruthy();
@@ -48,7 +50,7 @@ describe('TooltipDirective', () => {
     expect(hostEl.className).toContain('tooltip-actived');
 
     hostEl.dispatchEvent(new Event('mouseleave'));
-    tick(TooltipDirective.DELAY_TIMES);
+    tick(DELAY_TIMES);
 
     expect(ins.tooltip.isCreated).toBeFalsy();
     expect(ocEl.querySelector('.aui-tooltip')).toBeNull();
@@ -57,7 +59,7 @@ describe('TooltipDirective', () => {
 
   it('should still display when mouse move to tooltip', fakeAsync(() => {
     hostEl.dispatchEvent(new Event('mouseenter'));
-    tick(TooltipDirective.DELAY_TIMES);
+    tick(DELAY_TIMES);
     fixture.detectChanges();
     hostEl.dispatchEvent(new Event('mouseleave'));
     tick(20);
@@ -67,7 +69,7 @@ describe('TooltipDirective', () => {
 
     expect(ins.tooltip.isCreated).toBeTruthy();
     expect(ocEl.querySelector('.aui-tooltip')).not.toBeNull();
-    tick(TooltipDirective.DELAY_TIMES - 40);
+    tick(DELAY_TIMES - 40);
   }));
 
   it('should click trigger work', () => {

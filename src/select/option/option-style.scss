@@ -54,8 +54,8 @@
 
     @include pointer('isSelected');
 
-    &:hover &__pointer,
-    &.isFocused &__pointer {
+    &:not(.isDisabled):hover &__pointer,
+    &:not(.isDisabled).isFocused &__pointer {
       border-color: $checkbox-border-color-primary;
     }
   }
