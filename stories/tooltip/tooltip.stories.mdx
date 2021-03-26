@@ -212,6 +212,25 @@ import { TooltipModule, ButtonModule } from '@alauda/ui';
   </Story>
 </Canvas>
 
+## 隐藏延迟
+
+<Canvas>
+  <Story name="hidden-delay" height="120px">
+    {{
+      template: `
+        <div style="padding-top: 64px;">
+          <span auiTooltip="hidden in 50ms" auiTooltipPosition="top start">50ms</span>
+          <span auiTooltip="hidden in 100ms" auiTooltipPosition="top start" [auiTooltipDelay]="100" style="margin-left: 20px;">100ms</span>
+          <span auiTooltip="hidden in 200ms" auiTooltipPosition="top start" [auiTooltipDelay]="200" style="margin-left: 20px;">200ms</span>
+          <span auiTooltip="hidden in 300ms" auiTooltipPosition="top start" [auiTooltipDelay]="300" style="margin-left: 20px;">300ms</span>
+          <span auiTooltip="hidden in 400ms" auiTooltipPosition="top start" [auiTooltipDelay]="400" style="margin-left: 20px;">400ms</span>
+          <span auiTooltip="hidden in 500ms" auiTooltipPosition="top start" [auiTooltipDelay]="500" style="margin-left: 20px;">500ms</span>
+        </div>
+      `,
+    }}
+  </Story>
+</Canvas>
+
 ## 复杂内容
 
 <Canvas>
