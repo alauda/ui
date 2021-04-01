@@ -34,6 +34,9 @@ export interface TooltipInterface {
   hide: EventEmitter<void>;
 }
 
+export const DISPLAY_DELAY = 50;
+export const HIDDEN_DELAY = 150;
+
 @Directive()
 // tslint:disable-next-line: directive-class-suffix
 export class BaseTooltip<T = any>
@@ -99,7 +102,6 @@ export class BaseTooltip<T = any>
     }
   }
 
-  delay = 50;
   hideOnClick = false;
 
   show = new EventEmitter<void>();
@@ -303,7 +305,7 @@ export class BaseTooltip<T = any>
   protected async onMouseEnter() {
     this.hostHovered = true;
     if (!this.isCreated) {
-      await sleep(this.delay);
+      await sleep(DISPLAY_DELAY);
       if (this.hostHovered) {
         this.createTooltip();
       }
@@ -312,7 +314,7 @@ export class BaseTooltip<T = any>
 
   protected async onMouseLeave() {
     this.hostHovered = false;
-    await sleep(this.delay);
+    await sleep(HIDDEN_DELAY);
     if (!this.tooltipHovered && !this.hostHovered) {
       this.disposeTooltip();
     }
@@ -321,7 +323,7 @@ export class BaseTooltip<T = any>
   protected async onTooltipHovered(hovered: boolean) {
     this.tooltipHovered = hovered;
     if (!hovered) {
-      await sleep(this.delay);
+      await sleep(HIDDEN_DELAY);
       if (!this.tooltipHovered && !this.hostHovered) {
         this.disposeTooltip();
       }

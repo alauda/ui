@@ -34,9 +34,6 @@ import { BaseTooltip } from './base-tooltip';
   ],
 })
 export class TooltipDirective extends BaseTooltip {
-  @Input('auiTooltipDelay')
-  delay = 50;
-
   @Input('auiTooltipHideOnClick')
   hideOnClick: boolean;
 
