@@ -44,9 +44,7 @@
     text-align: left;
     color: $notification-title-color;
     line-height: $line-height-larger;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    word-break: break-word;
   }
   &__content {
     font-size: $font-size-regular;
