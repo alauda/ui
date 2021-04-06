@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.6.6](https://github.com/alauda/alauda-ui/compare/v5.6.5...v5.6.6) (2021-04-06)
+
+
+### Features
+
+* notification style wrap ([#118](https://github.com/alauda/alauda-ui/issues/118)) ([f61814a](https://github.com/alauda/alauda-ui/commit/f61814ac8e85a025494d8584fce018fea72eb3eb))
+* optimize tooltip hiding delay ([e0a09f2](https://github.com/alauda/alauda-ui/commit/e0a09f2d9f41f949ce9cfef0648cc102f5ed205f))
+
+
+### Bug Fixes
+
+* option disable style ([6bcad3b](https://github.com/alauda/alauda-ui/commit/6bcad3b46f7b81cd513bdbfbda8d9fee6ebfb951))
+
 ### [5.6.5](https://github.com/alauda/alauda-ui/compare/v5.6.4...v5.6.5) (2021-03-18)
 
 
