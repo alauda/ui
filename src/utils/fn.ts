@@ -9,3 +9,6 @@ export const last = <T>(values: T[]) => values?.[values.length - 1];
 export const isTemplateRef = (
   label: string | TemplateRef<unknown>,
 ): label is TemplateRef<unknown> => label instanceof TemplateRef;
+
+export const handlePixel = (value: number | string) =>
+  Number.isNaN(+value) ? (value as string) : value + 'px';
