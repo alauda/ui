@@ -5,7 +5,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { Bem, buildBem } from '../utils';
+import { Bem, buildBem, handlePixel } from '../utils';
 
 import { IconRegisterService } from './icon-register.service';
 
@@ -51,7 +51,7 @@ export class IconComponent {
     if (!this.size) {
       return false;
     }
-    return (this.size || '').split(',')[0];
+    return handlePixel((this.size || '').split(',')[0]);
   }
 
   getHeight() {
@@ -59,7 +59,7 @@ export class IconComponent {
       return false;
     }
     const arr = (this.size || '').split(',');
-    return arr[1] || arr[0];
+    return handlePixel(arr[1] || arr[0]);
   }
 
   getIconId() {
