@@ -26,6 +26,10 @@
       background-color: $color-primary-ultra-light;
     }
 
+    &.unselectable {
+      color: $color-text-help;
+    }
+
     &.isSelected {
       color: $color-primary;
       background-color: $color-primary-extra-light;

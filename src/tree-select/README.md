@@ -31,3 +31,4 @@
 | value    | 选中值                   | any     | -      |
 | disabled | 禁用                     | boolean | false  |
 | expanded | 是否默认展开节点         | boolean | false  |
+| leafOnly | 只允许选择叶子节点       | boolean | false  |

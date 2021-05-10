@@ -73,6 +73,7 @@ storiesOf('TreeSelect', module)
     const disabled = boolean('disabled', false);
     const loading = boolean('loading', false);
     const placeholder = text('placeholder', 'placeholder');
+    const leafOnly = boolean('leafOnly', false);
     return {
       moduleMetadata: {
         imports: [FormsModule, TreeSelectModule],
@@ -87,6 +88,7 @@ storiesOf('TreeSelect', module)
           [clearable]="clearable"
           [filterable]="filterable"
           [placeholder]="placeholder"
+          [leafOnly]="leafOnly"
         >
           <aui-tree-node-placeholder>None</aui-tree-node-placeholder>
         </aui-tree-select>
@@ -99,6 +101,7 @@ storiesOf('TreeSelect', module)
         disabled,
         loading,
         placeholder,
+        leafOnly,
       },
     };
   });

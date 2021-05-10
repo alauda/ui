@@ -49,6 +49,7 @@
       <aui-tree-node
         *ngFor="let data of nodesData; trackBy: trackByLabel"
         [nodeData]="data"
+        [leafOnly]="leafOnly"
       ></aui-tree-node>
     </div>
     <div
