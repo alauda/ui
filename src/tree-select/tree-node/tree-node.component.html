@@ -17,6 +17,7 @@
       class="aui-tree-node__title"
       [class.isDisabled]="nodeData.disabled"
       [class.isSelected]="selected"
+      [class.unselectable]="leafOnly && !isLeaf"
       (click)="onClick()"
     >
       <aui-icon
@@ -35,6 +36,7 @@
     <aui-tree-node
       *ngFor="let data of nodeData.children; trackBy: trackByLabel"
       [nodeData]="data"
+      [leafOnly]="leafOnly"
     ></aui-tree-node>
   </div>
 </div>

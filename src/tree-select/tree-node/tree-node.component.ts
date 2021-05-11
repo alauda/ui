@@ -24,7 +24,7 @@ import {
   tap,
 } from 'rxjs/operators';
 
-import { Bem, buildBem, scrollIntoView } from '../../utils';
+import { Bem, buildBem, coerceAttrBoolean, scrollIntoView } from '../../utils';
 import { TreeSelectComponent } from '../tree-select.component';
 import { TreeNode } from '../tree-select.types';
 
@@ -56,6 +56,15 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
     this.nodeData$$.next(val);
   }
 
+  @Input()
+  get leafOnly() {
+    return this._leafOnly;
+  }
+
+  set leafOnly(val: boolean | '') {
+    this._leafOnly = coerceAttrBoolean(val);
+  }
+
   @ViewChild('titleRef', { static: true })
   titleRef: ElementRef;
 
@@ -64,7 +73,9 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
 
   selected = false;
   visible = true;
+  isLeaf = false;
 
+  private _leafOnly = true;
   private readonly select: TreeSelectComponent<T>;
   selected$: Observable<boolean>;
   selfVisible$: Observable<boolean>;
@@ -112,6 +123,7 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
           : of([false]),
       ),
       map(visible => visible.some(value => value)),
+      tap(hasVisibleChildren => (this.isLeaf = !hasVisibleChildren)),
     );
     this.visible$ = combineLatest([
       this.selfVisible$,
@@ -145,6 +157,10 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
 
   onClick() {
     if (this.nodeData.disabled) {
+      return;
+    }
+    if (this.leafOnly && !this.isLeaf) {
+      this.switchExpanded();
       return;
     }
     this.select.onNodeClick(this);

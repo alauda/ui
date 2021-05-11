@@ -78,6 +78,15 @@ export class TreeSelectComponent<
   }
 
   @Input()
+  get leafOnly() {
+    return this._leafOnly;
+  }
+
+  set leafOnly(val: boolean | '') {
+    this._leafOnly = coerceAttrBoolean(val);
+  }
+
+  @Input()
   filterFn = this._filterFn;
 
   @Input()
@@ -111,6 +120,7 @@ export class TreeSelectComponent<
   private _filterString = '';
   private _filterable = false;
   private _clearable = false;
+  private _leafOnly = false;
   private readonly filterString$$ = new BehaviorSubject(this.filterString);
 
   filterString$: Observable<string> = this.filterString$$.asObservable();
