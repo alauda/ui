@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.6.8](https://github.com/alauda/alauda-ui/compare/v5.6.7...v5.6.8) (2021-05-13)
+
+
+### Features
+
+* treeselect support select leaf only ([#122](https://github.com/alauda/alauda-ui/issues/122)) ([8556560](https://github.com/alauda/alauda-ui/commit/85565601a353fbf58a0a6c7d93b0ac6787924ca2))
+
 ### [5.6.7](https://github.com/alauda/alauda-ui/compare/v5.6.6...v5.6.7) (2021-05-07)
 
 ### [5.6.6](https://github.com/alauda/alauda-ui/compare/v5.6.5...v5.6.6) (2021-04-06)
