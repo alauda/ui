@@ -11,6 +11,7 @@ import { TableHeaderRowDefDirective } from './table-header-row-def.directive';
 import { TableHeaderRowComponent } from './table-header-row.component';
 import { TableRowDefDirective } from './table-row-def.directive';
 import { TableRowComponent } from './table-row.component';
+import { TableScrollWrapperDirective } from './table-scroll-wrapper.directive';
 import { TableComponent } from './table.component';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { TableComponent } from './table.component';
     TableCellDefDirective,
     TableHeaderCellDefDirective,
     TableColumnDefDirective,
+    TableScrollWrapperDirective,
   ],
   exports: [
     TableComponent,
@@ -38,6 +40,7 @@ import { TableComponent } from './table.component';
     TableCellDefDirective,
     TableHeaderCellDefDirective,
     TableColumnDefDirective,
+    TableScrollWrapperDirective,
   ],
 })
 export class TableModule {}
