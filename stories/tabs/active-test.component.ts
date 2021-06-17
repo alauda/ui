@@ -1,4 +1,4 @@
-import { TabComponent } from '@alauda/ui';
+import { TabComponent, TabContextService } from '@alauda/ui';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,10 +17,14 @@ import { takeUntil } from 'rxjs/operators';
 export class ActiveTestComponent implements OnInit, OnDestroy {
   private readonly destroy$$ = new Subject<void>();
 
-  constructor(private readonly tabComponent: TabComponent) {}
+  constructor(
+    // it is only used to get `textLabel` for storybook demo
+    private readonly tabComponent: TabComponent,
+    private readonly tabContext: TabContextService,
+  ) {}
 
   ngOnInit() {
-    this.tabComponent.active$
+    this.tabContext.active$
       .pipe(takeUntil(this.destroy$$))
       .subscribe(active => {
         console.log(this.tabComponent.textLabel, active);

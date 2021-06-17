@@ -258,16 +258,16 @@ describe('TabGroupComponent', () => {
     it('should set the isActive flag on each of the tabs', () => {
       fixture.detectChanges();
       const tabs = fixture.componentInstance.tabs.toArray();
-      expect(tabs[0].isActive).toBe(true);
-      expect(tabs[1].isActive).toBe(false);
-      expect(tabs[2].isActive).toBe(false);
-      expect(tabs[3].isActive).toBe(false);
+      expect(tabs[0].tabContext.isActive).toBe(true);
+      expect(tabs[1].tabContext.isActive).toBe(false);
+      expect(tabs[2].tabContext.isActive).toBe(false);
+      expect(tabs[3].tabContext.isActive).toBe(false);
       fixture.componentInstance.selectedIndex = 2;
       fixture.detectChanges();
-      expect(tabs[0].isActive).toBe(false);
-      expect(tabs[1].isActive).toBe(false);
-      expect(tabs[2].isActive).toBe(true);
-      expect(tabs[3].isActive).toBe(false);
+      expect(tabs[0].tabContext.isActive).toBe(false);
+      expect(tabs[1].tabContext.isActive).toBe(false);
+      expect(tabs[2].tabContext.isActive).toBe(true);
+      expect(tabs[3].tabContext.isActive).toBe(false);
     });
   });
 });
