@@ -111,11 +111,11 @@ export class TabHeaderComponent
 
   /** Event emitted when the option is selected. */
   @Output()
-  readonly selectFocusedIndex = new EventEmitter();
+  readonly selectFocusedIndex = new EventEmitter<number>();
 
   /** Event emitted when a label is focused. */
   @Output()
-  readonly indexFocused = new EventEmitter();
+  readonly indexFocused = new EventEmitter<number>();
 
   @ContentChild(TabHeaderAddonDirective, { static: false })
   _headerAddon: TabHeaderAddonDirective;

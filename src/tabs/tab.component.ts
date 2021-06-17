@@ -9,14 +9,17 @@ import {
   Input,
   OnChanges,
   OnDestroy,
+  Optional,
   Output,
   SimpleChanges,
+  SkipSelf,
   TemplateRef,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { coerceAttrBoolean } from '../utils';
 
@@ -70,10 +73,26 @@ export class TabComponent implements AfterContentInit, OnDestroy, OnChanges {
     return this._contentPortal;
   }
 
+  private readonly active$$ = new BehaviorSubject(false);
+
   /**
    * Whether the tab is currently active.
    */
-  isActive = false;
+  get isActive() {
+    return this.active$$.value;
+  }
+
+  set isActive(isActive: boolean) {
+    if (this.isActive !== isActive) {
+      this.active$$.next(isActive);
+    }
+  }
+
+  active$: Observable<boolean> = this.parent
+    ? combineLatest([this.parent.active$, this.active$$]).pipe(
+        map(([a, b]) => a && b),
+      )
+    : this.active$$.asObservable();
 
   /**
    * The relatively indexed position where 0 represents the center, negative is left, and positive
@@ -95,7 +114,10 @@ export class TabComponent implements AfterContentInit, OnDestroy, OnChanges {
 
   private _disabled = false;
 
-  constructor(private readonly _viewContainerRef: ViewContainerRef) {}
+  constructor(
+    private readonly _viewContainerRef: ViewContainerRef,
+    @Optional() @SkipSelf() private readonly parent: TabComponent,
+  ) {}
 
   ngAfterContentInit(): void {
     this._contentPortal = new TemplatePortal(
