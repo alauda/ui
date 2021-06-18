@@ -17,7 +17,7 @@ export class TabContextService {
     this.active$$.next(isActive);
   }
 
-  active$: Observable<boolean> = (this._parent
+  readonly active$: Observable<boolean> = (this._parent
     ? combineLatest([this._parent.active$, this.active$$]).pipe(
         map(([a, b]) => a && b),
       )
