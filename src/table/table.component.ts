@@ -42,6 +42,13 @@ import {
   ],
 })
 export class TableComponent<T> extends CdkTable<T> {
-  // FIXME: disable override because it will break constructor, but why MatTable works?
-  // protected stickyCssClass = 'aui-table-sticky';
+  // FIXME: workaround to override because it will break constructor if it is field, but why MatTable works?
+  // @ts-expect-error
+  protected get stickyCssClass() {
+    return 'aui-table-sticky';
+  }
+
+  protected set stickyCssClass(_stickyCssClass: string) {
+    //
+  }
 }

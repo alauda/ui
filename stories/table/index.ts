@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/angular';
 
 import { ExpandDemoComponent } from './expand-demo/expand-demo.component';
 import { SortDemoComponent } from './sort-demo/sort-demo.component';
+import { StickyColumnsDemoComponent } from './sticky-columns/sticky-columns-demo.component';
 
 export const DATA_SOURCE: Element[] = [
   { id: 1, name: 'element1', displayName: 'Element One', value: 5 },
@@ -80,6 +81,13 @@ storiesOf('Table', module)
       declarations: [ExpandDemoComponent],
     },
     component: ExpandDemoComponent,
+  }))
+  .add('sticky-columns', () => ({
+    moduleMetadata: {
+      imports: [TableModule],
+      declarations: [StickyColumnsDemoComponent],
+    },
+    component: StickyColumnsDemoComponent,
   }));
 
 export interface Element {
