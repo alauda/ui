@@ -1,6 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
+import { ActiveTestComponent } from './active-test.component';
 import { LazyTestComponent } from './lazy-test.component';
 
 import {
@@ -18,7 +19,7 @@ import {
   decorators={[
     moduleMetadata({
       imports: [ButtonModule, IconModule, FormModule, RadioModule, TabsModule],
-      declarations: [LazyTestComponent],
+      declarations: [ActiveTestComponent, LazyTestComponent],
     }),
   ]}
 />
@@ -204,19 +205,66 @@ import {
           </aui-radio-group>
         </aui-form-item>
         <aui-tab-group [lazy]="lazy">
-          <aui-tab label="Tab 0">
+          <aui-tab label="Tab 1">
             <tabs-lazy-test *auiTabContent>Content 1</tabs-lazy-test>
           </aui-tab>
-          <aui-tab label="Tab 1">
+          <aui-tab label="Tab 2">
             <tabs-lazy-test *auiTabContent>Content 2</tabs-lazy-test>
           </aui-tab>
-          <aui-tab label="Tab 2">
+          <aui-tab label="Tab 3">
             <tabs-lazy-test *auiTabContent>Content 3</tabs-lazy-test>
           </aui-tab>
         </aui-tab-group>
       `,
       props: {
         tabs: Array.from({ length: 10 }).fill(),
+        lazy: true,
+      },
+    }}
+  </Story>
+</Canvas>
+
+## Tab Active 状态
+
+<Canvas>
+  <Story name="active" height="100px">
+    {{
+      template: /* HTML */ `
+        <aui-form-item>
+          <label auiFormItemLabel>启用 Lazy</label>
+          <aui-radio-group
+            auiFormItemControl
+            [(ngModel)]="lazy"
+            [plain]="false"
+            size="mini"
+          >
+            <aui-radio-button [value]="true">是</aui-radio-button>
+            <aui-radio-button [value]="false">否</aui-radio-button>
+          </aui-radio-group>
+        </aui-form-item>
+        <aui-tab-group [lazy]="lazy">
+          <aui-tab label="Tab 1">
+            <tabs-active-test *auiTabContent>Content 1</tabs-active-test>
+          </aui-tab>
+          <aui-tab label="Tab 2">
+            <tabs-active-test *auiTabContent>
+              <aui-tab-group [lazy]="true">
+                <aui-tab label="Tab 2-1">
+                  <tabs-active-test *auiTabContent>
+                    Content 2-1
+                  </tabs-active-test>
+                </aui-tab>
+                <aui-tab label="Tab 2-2">
+                  <tabs-active-test *auiTabContent>
+                    Content 2-2
+                  </tabs-active-test>
+                </aui-tab>
+              </aui-tab-group>
+            </tabs-active-test>
+          </aui-tab>
+        </aui-tab-group>
+      `,
+      props: {
         lazy: true,
       },
     }}

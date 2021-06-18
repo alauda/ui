@@ -20,6 +20,7 @@ import { Subject } from 'rxjs';
 
 import { coerceAttrBoolean } from '../utils';
 
+import { TabContextService } from './tab-context.service';
 import { TabContentDirective, TabLabelDirective } from './tab-directives';
 
 @Component({
@@ -29,6 +30,7 @@ import { TabContentDirective, TabLabelDirective } from './tab-directives';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [TabContextService],
 })
 export class TabComponent implements AfterContentInit, OnDestroy, OnChanges {
   /** Plain text label for the tab, used when there is no template label. */
@@ -71,11 +73,6 @@ export class TabComponent implements AfterContentInit, OnDestroy, OnChanges {
   }
 
   /**
-   * Whether the tab is currently active.
-   */
-  isActive = false;
-
-  /**
    * The relatively indexed position where 0 represents the center, negative is left, and positive
    * represents the right.
    */
@@ -95,7 +92,10 @@ export class TabComponent implements AfterContentInit, OnDestroy, OnChanges {
 
   private _disabled = false;
 
-  constructor(private readonly _viewContainerRef: ViewContainerRef) {}
+  constructor(
+    private readonly _viewContainerRef: ViewContainerRef,
+    public readonly tabContext: TabContextService,
+  ) {}
 
   ngAfterContentInit(): void {
     this._contentPortal = new TemplatePortal(

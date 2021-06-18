@@ -190,7 +190,7 @@ export class TabGroupComponent
     // Setup the position for each tab and optionally setup an origin on the next selected tab.
     this._tabs.forEach((tab: TabComponent, index: number) => {
       tab.position = index - indexToSelect;
-      tab.isActive = index === indexToSelect;
+      tab.tabContext.isActive = index === indexToSelect;
       // If there is already a selected tab, then set up an origin for the next selected tab
       // if it doesn't have one already.
       if (this._selectedIndex != null && tab.position === 0 && !tab.origin) {
@@ -226,7 +226,7 @@ export class TabGroupComponent
       // explicit change that selects a different tab.
       if (indexToSelect === this._selectedIndex) {
         for (const [i, tab] of tabs.entries()) {
-          if (tab.isActive) {
+          if (tab.tabContext.isActive) {
             // Assign both to the `_indexToSelect` and `_selectedIndex` so we don't fire a changed
             // event, otherwise the consumer may end up in an infinite loop in some edge cases like
             // adding a tab within the `selectedIndexChange` event.
