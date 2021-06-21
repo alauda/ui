@@ -161,7 +161,7 @@ describe('DialogService', () => {
       dialogService
         .confirm({
           title: '',
-          beforeConfirm: () => timer(100),
+          beforeConfirm: () => timer(100, 100),
         })
         // eslint-disable-next-line sonarjs/no-identical-functions
         .then(() => {
