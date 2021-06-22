@@ -1,0 +1,8 @@
+::ng-deep {
+  .aui-tooltip.range-picker-wrapper {
+    max-width: none;
+  }
+}
+aui-date-picker-trigger {
+  display: inline-block;
+}

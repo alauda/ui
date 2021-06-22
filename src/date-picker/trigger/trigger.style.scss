@@ -1,0 +1,72 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+$block: aui-date-picker-trigger;
+aui-range-picker,
+aui-date-picker {
+  &.ng-invalid {
+    &.ng-submitted,
+    &.ng-dirty {
+      .#{$block}__container {
+        border-color: $color-error !important;
+      }
+    }
+  }
+}
+
+.#{$block} {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    width: 200px;
+    border: $input-border-width $input-border-style $input-border-color;
+    position: relative;
+    cursor: pointer;
+    input[readonly] {
+      cursor: pointer;
+      border: none;
+      @include view-readonly;
+    }
+    &.is-focus,
+    &:hover {
+      border-color: $color-primary;
+    }
+    &.is-range {
+      width: 260px;
+    }
+    &.is-disabled {
+      input[readonly] {
+        background: transparent;
+        cursor: not-allowed;
+      }
+
+      background: $color-disabled-bg;
+      border: $input-border-width $input-border-style $input-border-color !important;
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    .placeholder {
+      color: $color-text-placeholder;
+    }
+  }
+
+  &__addon {
+    color: $color-text-help;
+    margin-right: 8px;
+    font-size: $date-picker-icon-size;
+    width: $date-picker-icon-size;
+    height: $date-picker-icon-size;
+    .clear {
+      @include clear-button;
+    }
+  }
+}

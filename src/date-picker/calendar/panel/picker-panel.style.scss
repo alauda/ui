@@ -1,0 +1,127 @@
+// stylelint-disable plugin/no-low-performance-animation-properties
+@import '../../../theme/mixin';
+
+$block: aui-picker-panel;
+$in-range-bgcolor: #edf4ff;
+$left-in-range-shadow: -6px 0 0 0 $in-range-bgcolor;
+$right-in-range-shadow: 6px 0 0 0 $in-range-bgcolor;
+
+$left-disabled-shadow: -6px 0 0 0 $color-disabled-bg;
+$right-disabled-shadow: 6px 0 0 0 $color-disabled-bg;
+
+$left-mask-shadow: -12px 0 0 0 white;
+
+.#{$block} {
+  &__container {
+    height: min-content;
+    box-sizing: border-box;
+    justify-content: stretch;
+    display: flex;
+    flex-direction: column;
+    margin: 12px 9px;
+    width: $range-picker-header-width;
+    align-items: center;
+    &.month-panel-container,
+    &.year-panel-container {
+      button {
+        width: 56px;
+        height: 28px !important;
+      }
+    }
+    &.day-panel-container {
+      height: min-content;
+      padding: 0;
+      margin: 0;
+      button {
+        width: $date-picker-cell-size;
+        height: $date-picker-cell-size !important;
+      }
+
+      .#{$block}__row + .#{$block}__row {
+        margin-top: $date-picker-row-gap;
+      }
+    }
+  }
+
+  &__row + &__row {
+    margin-top: $date-picker-seprator-gap;
+  }
+
+  &__row {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-size: $font-size-regular;
+    font-weight: normal;
+
+    &.week-header {
+      span {
+        display: inline-block;
+        margin: 0;
+        width: 36px;
+        text-align: center;
+      }
+
+      color: $color-text-help;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__cell {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin-inline: 6px;
+
+    button {
+      box-sizing: content-box;
+      // Use trackby to enhance performence, which reuses button and may cause size change with animation.So overwrite transition
+      transition: color $animation-duration $animation-interpolation,
+        background-color $animation-duration $animation-interpolation;
+    }
+
+    &.in-range {
+      background-color: $in-range-bgcolor;
+      box-shadow: $left-in-range-shadow, $right-in-range-shadow;
+    }
+
+    &.is-range-end {
+      box-shadow: $left-in-range-shadow;
+    }
+
+    &.is-range-start {
+      box-shadow: $right-in-range-shadow;
+    }
+
+    &.is-disabled {
+      background-color: $color-disabled-bg;
+      box-shadow: $left-disabled-shadow, $right-disabled-shadow;
+    }
+
+    &.is-disabled + &:not(.is-disabled):not(.is-range-start) {
+      box-shadow: $left-mask-shadow;
+    }
+
+    &.is-disabled + &:not(.is-disabled).is-range-start {
+      box-shadow: $left-mask-shadow, $right-in-range-shadow;
+    }
+
+    &:not(.is-disabled) + &.is-disabled {
+      box-shadow: $right-disabled-shadow;
+    }
+
+    &.is-today button {
+      border-color: #1890ff;
+    }
+
+    &.is-active button {
+      background-color: $color-primary;
+      color: #fff;
+    }
+    &.is-background button {
+      background-color: initial !important;
+      color: rgba(0, 0, 0, 0.25);
+    }
+  }
+}

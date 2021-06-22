@@ -1,0 +1,9 @@
+@import '../../../theme/mixin';
+
+.aui-calendar-footer__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: $border-width $border-style #e8e8e8;
+  padding: 8px 0 0;
+}
