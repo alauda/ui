@@ -8,9 +8,17 @@ if [ "$NPM_TAG" = "beta" ]; then
   TMP=$(mktemp)
   jq ".version = \"$PUBLISH_VERSION\"" "$SRC_PKG" >"$TMP"
   mv -f "$TMP" "$SRC_PKG"
+
+  if [ "$CI" = "true" ] && [ "$(git remote get-url origin)" != "https://github.com/alauda/alauda-ui.git" ]; then
+    echo "Publish beta is only available on non-forked PR!"
+    echo "If you're a member of alauda, just checkout a new branch instead."
+    exit 0
+  fi
 else
-  git config --local user.email "action@github.com"
-  git config --local user.name "GitHub Action"
+  if [ "$CI" = "true" ]; then
+    git config --local user.email "actions@github.com"
+    git config --local user.name "GitHub Actions"
+  fi
   yarn release --release-as "$PUBLISH_VERSION"
 fi
 
