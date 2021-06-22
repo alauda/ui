@@ -26,7 +26,7 @@
     "lint:ts": "tslint -p . -t stylish",
     "lint:tsc": "tsc -p tsconfig.base.json --noEmit",
     "postinstall": "yarn-deduplicate --strategy fewer || exit 0",
-    "release": "standard-version --no-verify --release-as",
+    "release": "standard-version --no-verify",
     "start": "yarn storybook",
     "storybook": "start-storybook -c .storybook -p 9001",
     "storybook:build": "build-storybook -c .storybook -o dist",

@@ -13,23 +13,13 @@ jobs:
     name: Publish package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Install dependencies
-        run: yarn install
-      - name: Update package version
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          yarn release $VERSION
+        run: yarn --frozen-lockfile
+      - name: Release
+        run: sh scripts/release.sh
         env:
-          VERSION: ${{ github.event.inputs.version }}
-      - name: Build package
-        run: yarn build
-      - name: Publish
-        run: |
-          npm set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
-          npm publish release
-        env:
+          PUBLISH_VERSION: ${{ github.event.inputs.version }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Push changes
         uses: ad-m/github-push-action@master

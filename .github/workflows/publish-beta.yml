@@ -1,0 +1,19 @@
+name: Publish beta
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  publish_beta:
+    name: Publish beta
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Release beta
+        run: sh scripts/release.sh
+        env:
+          PUBLISH_VERSION: beta
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
