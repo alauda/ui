@@ -1,0 +1,84 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { ComponentSize, TimePickerModule } from '@alauda/ui';
+
+<Meta
+  title="TimePicker"
+  decorators={[
+    moduleMetadata({
+      imports: [TimePickerModule],
+    }),
+  ]}
+/>
+
+# TimePicker
+
+时间选择器
+
+## 基本
+
+<Canvas>
+  <Story name="basic" height="120px">
+    {{
+      template: /* HTML */ `
+        initData :{{timeClone|json}}
+        <br />
+        <aui-time-picker
+          [(ngModel)]="time"
+          [size]="csize.Small"
+          required
+        ></aui-time-picker>
+        <br />
+        Form value: {{time|json}}
+        <br />
+        <br />
+        initData: {{time2|json}}
+        <br />
+        <aui-time-picker
+          [(ngModel)]="time2"
+          [size]="csize.Small"
+        ></aui-time-picker>
+        <br />
+        Form value: {{time2|json}}
+      `,
+      props: {
+        time: Date.now(),
+        timeClone: Date.now(),
+        time2: { hour: 2, minute: 10, second: 3 },
+        csize: ComponentSize,
+      },
+    }}
+  </Story>
+</Canvas>
+
+## TimePicker Inputs
+
+| 名称           | 类型                                         | 默认值               | 描述                             |
+| -------------- | -------------------------------------------- | -------------------- | -------------------------------- |
+| format         | string                                       | 'HH:mm:ss'           | 日期格式                         |
+| size           | ComponentSize                                | ComponentSize.Medium | input 大小                       |
+| placeholder    | string                                       | -                    | 自定义 placeholder               |
+| clearable      | boolean                                      | true                 | 可否清除                         |
+| showIcon       | boolean                                      | true                 | 是否显示图标                     |
+| hourStep       | number                                       | 1                    | 小时步长                         |
+| minuteStep     | number                                       | 1                    | 分钟步长                         |
+| secondStep     | number                                       | 1                    | 秒步长                           |
+| footerTemplate | TemplateRef                                  | null                 | footer 模板，不传显示默认 footer |
+| disableHours   | () => number[]                               | ()=>[]               | 禁用的小时                       |
+| disableMinutes | (hour?: number) => number[]                  | ()=>[]               | 禁用的分钟                       |
+| disableSeconds | (hour?: number, minute?: number) => number[] | ()=>[]               | 禁用的秒钟                       |
+
+## TimePicker Outputs
+
+| 名称       | 类型    | 默认值 | 描述                  |
+| ---------- | ------- | ------ | --------------------- |
+| openChange | boolean | -      | 打开或关闭事件 output |
+
+### TimePicker 表单输入数据格式
+
+`Dayjs.ConfigType | TimePickerModel`
+
+### TimePicker 表单输出数据格式
+
+`TimePickerModel`

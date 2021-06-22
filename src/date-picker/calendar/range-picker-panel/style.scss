@@ -1,0 +1,51 @@
+@import '../../../theme/var';
+
+$block: aui-date-range-picker-panel;
+
+.#{$block} {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: $range-picker-body-width;
+    font-size: $font-size-regular;
+
+    .placeholder {
+      color: $color-text-placeholder;
+      &.separator {
+        margin-inline: 12px;
+      }
+    }
+    .date-value {
+      color: $color-text-main;
+    }
+    .date-holder {
+      display: inline-block;
+      margin-right: 8px;
+      width: 82px;
+    }
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    aui-calendar-header {
+      flex: 0 0 $range-picker-header-width;
+    }
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+  }
+  &__footer {
+    .time-picker {
+      width: 88px;
+      display: inline-block;
+    }
+  }
+  &__footer-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+}

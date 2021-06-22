@@ -1,0 +1,53 @@
+@import '../theme/mixin';
+
+$block: aui-time-picker;
+
+::ng-deep {
+  .aui-input-group__addon.aui-input-group__addon--after {
+    background-color: initial;
+    border: none;
+  }
+}
+
+#{$block} {
+  &.ng-invalid {
+    &.ng-submitted,
+    &.ng-dirty {
+      .#{$block}__container {
+        border-color: $color-error !important;
+      }
+    }
+  }
+}
+
+.#{$block} {
+  &__container {
+    display: inline-flex;
+    border: $border-style $border-width $default-border-color;
+    &:hover,
+    &.focus {
+      border-color: $hover-border-color;
+    }
+    > .aui-input {
+      border: none;
+      &[readonly] {
+        background-color: initial;
+        cursor: pointer;
+      }
+      &.disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+  &__icon {
+    color: $color-text-help;
+    font-size: $time-picker-icon-size;
+    width: $time-picker-icon-size;
+    height: $time-picker-icon-size;
+    align-self: center;
+    margin-right: 6px;
+    .clear {
+      @include clear-button;
+    }
+  }
+}

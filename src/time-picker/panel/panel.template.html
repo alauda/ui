@@ -1,0 +1,101 @@
+<div
+  *ngIf="enabledColumns"
+  [class]="bem.element('wrapper')"
+  [style.width.px]="totalWidth"
+>
+  <div [class]="bem.element('content')">
+    <div [class]="bem.element('column')" #hourRef *ngIf="hourEnabled">
+      <ul>
+        <li
+          *ngFor="let item of getControlTypeConfig(TimePickerControlType.Hour)"
+          [class]="bem.element('cell')"
+          [style.height.px]="CONTROL_ITEM_HEIGHT"
+          [ngClass]="{
+            disabled: isDisabled(item, TimePickerControlType.Hour),
+            selected: matchValue(
+              item,
+              TimePickerControlType.Hour,
+              snapshot.value
+            )
+          }"
+          (click)="selectValue(item, TimePickerControlType.Hour)"
+        >
+          {{ item | number: '2.0-0' }}
+        </li>
+      </ul>
+      <div [class]="bem.element('column-strut')"></div>
+    </div>
+    <div [class]="bem.element('column')" #minuteRef *ngIf="minuteEnabled">
+      <ul>
+        <li
+          *ngFor="
+            let item of getControlTypeConfig(TimePickerControlType.Minute);
+            trackBy: trackBy
+          "
+          [class]="bem.element('cell')"
+          [style.height.px]="CONTROL_ITEM_HEIGHT"
+          [ngClass]="{
+            disabled: isDisabled(item, TimePickerControlType.Minute),
+            selected: matchValue(
+              item,
+              TimePickerControlType.Minute,
+              snapshot.value
+            )
+          }"
+          (click)="selectValue(item, TimePickerControlType.Minute)"
+        >
+          {{ item | number: '2.0-0' }}
+        </li>
+      </ul>
+      <div [class]="bem.element('column-strut')"></div>
+    </div>
+    <div [class]="bem.element('column')" #secondRef *ngIf="secondEnabled">
+      <ul>
+        <li
+          *ngFor="
+            let item of getControlTypeConfig(TimePickerControlType.Second)
+          "
+          [class]="bem.element('cell')"
+          [style.height.px]="CONTROL_ITEM_HEIGHT"
+          [ngClass]="{
+            disabled: isDisabled(item, TimePickerControlType.Second),
+            selected: matchValue(
+              item,
+              TimePickerControlType.Second,
+              snapshot.value
+            )
+          }"
+          (click)="selectValue(item, TimePickerControlType.Second)"
+        >
+          {{ item | number: '2.0-0' }}
+        </li>
+      </ul>
+      <div [class]="bem.element('column-strut')"></div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!footerTemplate; else customFooter">
+    <div [class]="bem.element('footer')">
+      <button
+        aui-button="text"
+        (click)="selectNow()"
+        [size]="ComponentSize.Small"
+      >
+        {{ 'now' | auiI18n }}
+      </button>
+      <button
+        aui-button="primary"
+        [size]="ComponentSize.Small"
+        (click)="$event.stopImmediatePropagation(); confirm.next()"
+      >
+        {{ 'confirm' | auiI18n }}
+      </button>
+    </div>
+  </ng-container>
+  <ng-template #customFooter>
+    <ng-container
+      [ngTemplateOutlet]="footerTemplate"
+      [ngTemplateOutletContext]="{ $implicit: this }"
+    ></ng-container>
+  </ng-template>
+</div>

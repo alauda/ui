@@ -1,0 +1,53 @@
+<div
+  [class]="bem.element('container')"
+  [class.focus]="focused"
+  (mouseenter)="hovered = true"
+  (mouseleave)="hovered = false"
+>
+  <input
+    aui-input
+    [size]="size"
+    (blur)="focused = false; blur()"
+    (focus)="focused = true"
+    (click)="openTooltip()"
+    [(ngModel)]="timeFormatValue"
+    (ngModelChange)="changeFromInput($event)"
+    [auiTooltip]="template"
+    [placeholder]="placeholder"
+    [auiTooltipDisabled]="disabled"
+    [class.disabled]="disabled"
+    [auiTooltipPosition]="tooltipPosition"
+    auiTooltipTrigger="manual"
+    #tooltip="auiTooltip"
+    auiTooltipType="plain"
+  />
+  <span auiInputAddonAfter [class]="bem.element('icon')" *ngIf="showIcon">
+    <aui-icon
+      *ngIf="clearable && timeFormatValue && hovered; else clock"
+      class="clear"
+      icon="close_small"
+      (click)="clear()"
+    ></aui-icon>
+    <ng-template #clock>
+      <aui-icon icon="time"></aui-icon>
+    </ng-template>
+  </span>
+</div>
+
+<ng-template #template>
+  <aui-time-picker-panel
+    (click)="$event.stopImmediatePropagation()"
+    [(ngModel)]="timeValue"
+    (ngModelChange)="changeFromPanel($event)"
+    (confirm)="submit()"
+    [hourStep]="hourStep"
+    [minuteStep]="minuteStep"
+    [secondStep]="secondStep"
+    [disabled]="disabled"
+    [format]="format"
+    [footerTemplate]="footerTemplate"
+    [disableHours]="disableHours"
+    [disableMinutes]="disableMinutes"
+    [disableSeconds]="disableSeconds"
+  ></aui-time-picker-panel>
+</ng-template>

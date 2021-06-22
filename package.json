@@ -16,7 +16,7 @@
     "ui"
   ],
   "scripts": {
-    "build": "ng-packagr && yarn build:copy",
+    "build": "ng-packagr -c tsconfig.lib.json && yarn build:copy",
     "build:copy": "node scripts/copy-resources",
     "debug": "ng-packagr -p ng-package.debug.json && yarn build:copy --debug",
     "dev": "yarn start",
@@ -44,6 +44,7 @@
     "@angular/forms": "^10.0.0 || ^11.0.0",
     "@angular/platform-browser": "^10.0.0 || ^11.0.0",
     "clipboard-polyfill": "^3.0.0",
+    "dayjs": "^1.0.0",
     "rxjs": "^6.0.0"
   },
   "devDependencies": {
@@ -73,6 +74,7 @@
     "@types/node": "^14.14.31",
     "@types/resize-observer-browser": "^0.1.5",
     "clipboard-polyfill": "^3.0.2",
+    "dayjs": "^1.10.4",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^1.0.2",
     "jest": "^26.6.3",

@@ -1,0 +1,237 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import dayjs from 'dayjs';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { DatePickerModule, DatePickerType, DateNavRange } from '@alauda/ui';
+
+<Meta
+  title="DatePicker"
+  decorators={[
+    moduleMetadata({
+      imports: [DatePickerModule, FormsModule, ReactiveFormsModule],
+    }),
+  ]}
+/>
+
+# DatePicker
+
+日期选择组件
+
+## 基本
+
+<Canvas>
+  <Story name="Date Picker" height="200px">
+    {{
+      template: /* HTML */ `
+        showTime: true; weekStartDay: 2
+        <aui-date-picker
+          [type]="DatePickerType.Day"
+          [showTime]="true"
+          [clearText]="'xxx'"
+          [minDate]="minDate"
+          [maxDate]="maxDate"
+          [(ngModel)]="time"
+          [weekStartDay]="2"
+          [disabledTime]="disabledTimeFn"
+          required
+        ></aui-date-picker>
+        Form value1: {{time?.toDate()}}
+        <br />
+        <br />
+        showTime: false
+        <aui-date-picker
+          [type]="DatePickerType.Day"
+          [(ngModel)]="time2"
+        ></aui-date-picker>
+        Form value2: {{time2?.toDate()}}
+        <br />
+        <br />
+        disable until today
+        <aui-date-picker
+          [type]="DatePickerType.Day"
+          [(ngModel)]="time3"
+          [showTime]="true"
+          [disabledDate]="disableDateFn"
+        ></aui-date-picker>
+        Form value3: {{time3?.toDate()}}
+        <br />
+        <br />
+        disabled
+        <aui-date-picker
+          [type]="DatePickerType.Day"
+          [formControl]="control"
+          [showTime]="true"
+        ></aui-date-picker>
+        <br />
+        <br />
+        With extra footer
+        <aui-date-picker
+          [type]="DatePickerType.Day"
+          [(ngModel)]="time4"
+          [extraFooter]="extraFooter"
+          [weekStartDay]="2"
+        ></aui-date-picker>
+        <ng-template #extraFooter let-context="context">
+          <div
+            style="height:40px;display:flex;justify-content:center;align-items: center"
+          >
+            <button (click)="context.confirmValue(now,false)">today</button>
+          </div>
+        </ng-template>
+      `,
+      props: {
+        log: function (x) {
+          console.log(x);
+        },
+        now: dayjs(),
+        time: dayjs().add(7, 'day'),
+        time2: null,
+        time3: null,
+        time4: null,
+        minDate: dayjs().add(3, 'day'),
+        maxDate: dayjs().add(10, 'day'),
+        control: new FormControl({ value: null, disabled: true }),
+        DatePickerType: DatePickerType,
+        disableDateFn: function (date, navRange) {
+          return date.isBefore(
+            dayjs(),
+            navRange === DateNavRange.Month
+              ? 'date'
+              : navRange === DateNavRange.Year
+              ? 'month'
+              : 'year',
+          );
+        },
+        disabledTimeFn: function (date) {
+          if (date?.isSame(dayjs(), 'date')) {
+            return {
+              hours: () => [1, 2, 3, 4],
+              minutes: () => [4, 12],
+            };
+          }
+          return null;
+        },
+      },
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Range Picker" height="200px">
+    {{
+      template: /* HTML */ `
+        showTime: true
+        <aui-range-picker
+          [(ngModel)]="range"
+          required
+          [clearText]="'xxx'"
+          [disabledTime]="disabledTimeFn()"
+        ></aui-range-picker>
+        Form value: {{range|json}}
+        <br />
+        <br />
+        showTime: false
+        <aui-range-picker
+          [(ngModel)]="range2"
+          [showTime]="false"
+        ></aui-range-picker>
+        Form value: {{range2|json}}
+        <br />
+        <br />
+        disable some day
+        <aui-range-picker
+          [(ngModel)]="range3"
+          [showTime]="true"
+          [weekStartDay]="3"
+          [maxDate]="maxDate"
+          [minDate]="minDate"
+          [disabledDate]="disableDateFn"
+          [disabledTime]="disabledTimeFn()"
+        ></aui-range-picker>
+        <br />
+        <br />
+        disabled
+        <aui-range-picker
+          [formControl]="control"
+          [showTime]="false"
+        ></aui-range-picker>
+      `,
+      props: {
+        range: [dayjs(), dayjs()],
+        range2: null,
+        range3: null,
+        minDate: dayjs().add(3, 'day'),
+        maxDate: dayjs().add(10, 'day'),
+        disableDateFn: function (date, navRange) {
+          return (
+            (navRange === DateNavRange.Month &&
+              date.isBefore(dayjs(), 'date')) ||
+            date.isSame(dayjs().add(1, 'month').add(2, 'date'), 'date')
+          );
+        },
+        disabledTimeFn: function () {
+          return {
+            left: date =>
+              date?.isSame(dayjs(), 'date')
+                ? {
+                    hours: () => [1, 2, 3, 4],
+                    minutes: () => [4, 12],
+                  }
+                : null,
+          };
+        },
+        control: new FormControl({ value: null, disabled: true }),
+      },
+    }}
+  </Story>
+</Canvas>
+
+## DatePicker Inputs
+
+| 名称           | 类型                                                                                                                                 | 默认值               | 描述                                 |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------ |
+| clearable      | boolean                                                                                                                              | true                 | 是否显示清除按钮                     |
+| clearText      | string                                                                                                                               | 'clear'              | 清除按钮文案                         |
+| format         | string                                                                                                                               | 'YYYY-MM-DD'         | 日期显示格式                         |
+| showTime       | boolean                                                                                                                              | false                | 是否显示选择时间                     |
+| type           | DatePickerType                                                                                                                       | DatePickerType.Day   | 指定日期组件类型，为选择日，月，或年 |
+| size           | ComponentSize                                                                                                                        | ComponentSize.Medium | 触发器大小                           |
+| weekStartDay   | number                                                                                                                               | 0                    | 面板的第一个日期为周几               |
+| disabledDate   | (date: Dayjs, type: DateNavRange) => boolean                                                                                         | () => false          | 禁用某些日期                         |
+| disabledTime   | (date: Dayjs) => {hours: () => number[];minutes: (hour?: number) => number[];seconds: (hour?: number, minute?: number) => number[];} | () => null           | 禁用某些时间                         |
+| extraFooter    | TemplateRef                                                                                                                          | null                 | 额外的 footer                        |
+| footerTemplate | TemplateRef                                                                                                                          | null                 | 自定义 footer 内容区                 |
+| minDate        | Dayjs                                                                                                                                | null                 | 最小日期                             |
+| maxDate        | Dayjs                                                                                                                                | null                 | 最大日期                             |
+
+### DatePicker 表单输入数据格式
+
+`Dayjs`
+
+### DatePicker 表单输出数据格式
+
+`Dayjs`
+
+## RangePicker Inputs
+
+| 名称         | 类型                                         | 默认值               | 描述                   |
+| ------------ | -------------------------------------------- | -------------------- | ---------------------- |
+| clearable    | boolean                                      | true                 | 是否显示清除按钮       |
+| clearText    | string                                       | 'clear'              | 清除按钮文案           |
+| format       | string                                       | 'YYYY-MM-DD'         | 日期显示格式           |
+| showTime     | boolean                                      | false                | 是否显示选择时间       |
+| size         | ComponentSize                                | ComponentSize.Medium | 触发器大小             |
+| weekStartDay | number                                       | 0                    | 面板的第一个日期为周几 |
+| disabledDate | (date: Dayjs, type: DateNavRange) => boolean | () => false          | 禁用某些日期           |
+| disabledTime | {left: DisabledTimeFn,right:DisabledTimeFn}  | null                 | 禁用某些时间           |
+| minDate      | Dayjs                                        | null                 | 最小日期               |
+| maxDate      | Dayjs                                        | null                 | 最大日期               |
+
+### RangePicker 表单输入数据格式
+
+`[DayJs,Dayjs]`
+
+### RangePicker 表单输出数据格式
+
+`[DayJs,Dayjs]`

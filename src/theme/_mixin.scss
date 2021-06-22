@@ -65,3 +65,8 @@
   border-radius: 50%;
   background-color: $color;
 }
+
+@mixin view-readonly {
+  background-color: $input-bg-color;
+  border-color: $input-border-color;
+}

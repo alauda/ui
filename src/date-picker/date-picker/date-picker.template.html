@@ -1,0 +1,40 @@
+<aui-date-picker-trigger
+  [size]="size"
+  [value]="value"
+  [format]="format"
+  [style.display]="'inline-block'"
+  [auiTooltip]="template"
+  auiTooltipType="info"
+  auiTooltipClass="date-picker-wrapper"
+  [disabled]="!!disabled"
+  auiTooltipPosition="bottom start"
+  auiTooltipTrigger="click"
+  [auiTooltipDisabled]="!!disabled"
+  [auiTooltipHideOnClick]="true"
+  (auiTooltipHide)="openChange.next(false); emitValueChange(value)"
+  (auiTooltipShow)="openChange.next(true)"
+  (clear)="clearValue()"
+  #tooltip="auiTooltip"
+></aui-date-picker-trigger>
+
+<ng-template #template>
+  <aui-date-picker-panel
+    [type]="type"
+    style="padding-top: 9px; display: inline-block"
+    [(ngModel)]="value"
+    [showTime]="showTime"
+    [showFooter]="showFooter"
+    [disabledDate]="disabledDate"
+    [disabledTime]="disabledTime"
+    [weekStartDay]="weekStartDay"
+    [extraFooter]="extraFooter"
+    [footerTemplate]="footerTemplate"
+    [clearable]="clearable"
+    [clearText]="clearText"
+    [minDate]="minDate"
+    [maxDate]="maxDate"
+    (click)="$event.stopImmediatePropagation()"
+    (clear)="clearValue()"
+    (confirm)="tooltip.disposeTooltip(); emitValueChange(value)"
+  ></aui-date-picker-panel>
+</ng-template>

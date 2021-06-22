@@ -1,0 +1,105 @@
+<div [class]="bem.element('container')">
+  <div [class]="bem.element('nav-action')">
+    <ng-container
+      *ngIf="dateNavRange !== DateNavRange.Decade"
+      [ngTemplateOutlet]="yearControl"
+      [ngTemplateOutletContext]="{ side: 'left' }"
+    ></ng-container>
+
+    <ng-container
+      *ngIf="dateNavRange === DateNavRange.Decade"
+      [ngTemplateOutlet]="decadeControl"
+      [ngTemplateOutletContext]="{ side: 'left' }"
+    ></ng-container>
+  </div>
+  <!-- 内容区 -->
+  <span
+    *ngIf="dateNavRange === DateNavRange.Month"
+    [class]="bem.element('nav-content')"
+  >
+    <a href="javascript:;" (click)="clickNav(DateNavRange.Year)">
+      {{ headerRange?.start?.year() }}{{ 'year_suffix' | auiI18n }}
+    </a>
+    <a href="javascript:;" (click)="clickNav(DateNavRange.Month)">
+      {{ headerRange?.start?.month() + 1 }}{{ 'month_suffix' | auiI18n }}
+    </a>
+  </span>
+
+  <span
+    *ngIf="dateNavRange === DateNavRange.Year"
+    [class]="bem.element('nav-content')"
+  >
+    <a href="javascript:;" (click)="clickNav(DateNavRange.Year)">
+      {{ headerRange?.start?.year() }}{{ 'year_suffix' | auiI18n }}
+    </a>
+  </span>
+
+  <span
+    *ngIf="dateNavRange === DateNavRange.Decade"
+    [class]="bem.element('nav-content')"
+  >
+    {{ headerRange?.start.year() }}-{{ headerRange?.end?.year() }}
+  </span>
+
+  <div [class]="bem.element('nav-action')">
+    <ng-container
+      *ngIf="dateNavRange !== DateNavRange.Decade"
+      [ngTemplateOutlet]="yearControl"
+      [ngTemplateOutletContext]="{ side: 'right' }"
+    ></ng-container>
+
+    <ng-container
+      *ngIf="dateNavRange === DateNavRange.Decade"
+      [ngTemplateOutlet]="decadeControl"
+      [ngTemplateOutletContext]="{ side: 'right' }"
+    ></ng-container>
+  </div>
+</div>
+
+<ng-template #yearControl let-side="side">
+  <span style="display: flex">
+    <a
+      href="javascript:;"
+      *ngIf="
+        dateNavRange === DateNavRange.Month &&
+        side === 'right' &&
+        shouldShowNav(DateNavRange.Month, side)
+      "
+      (click)="navHead(DateNavRange.Month, 1)"
+    >
+      <aui-icon icon="angle_right"></aui-icon>
+    </a>
+    <a
+      href="javascript:;"
+      (click)="navHead(DateNavRange.Year, side === 'left' ? -1 : 1)"
+      *ngIf="shouldShowNav(DateNavRange.Year, side)"
+    >
+      <aui-icon
+        [icon]="side === 'left' ? 'angle_double_left' : 'angle_double_right'"
+      ></aui-icon>
+    </a>
+    <a
+      href="javascript:;"
+      *ngIf="
+        dateNavRange === DateNavRange.Month &&
+        side === 'left' &&
+        shouldShowNav(DateNavRange.Month, side)
+      "
+      (click)="navHead(DateNavRange.Month, -1)"
+    >
+      <aui-icon icon="angle_left"></aui-icon>
+    </a>
+  </span>
+</ng-template>
+
+<ng-template #decadeControl let-side="side">
+  <a
+    href="javascript:;"
+    (click)="navHead(DateNavRange.Decade, side === 'left' ? -10 : 10)"
+    *ngIf="shouldShowNav(DateNavRange.Decade, side)"
+  >
+    <aui-icon
+      [icon]="side === 'left' ? 'angle_double_left' : 'angle_double_right'"
+    ></aui-icon>
+  </a>
+</ng-template>
