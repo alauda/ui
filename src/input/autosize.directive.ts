@@ -2,9 +2,12 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
-  HostListener,
   Input,
+  OnDestroy,
 } from '@angular/core';
+import { NgControl } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { startWith, takeUntil } from 'rxjs/operators';
 
 import { calcTextareaHeight } from './utils';
 
@@ -22,23 +25,15 @@ export interface AutoSizeValue {
  * Directive to automatically resize a textarea to fit its content.
  */
 @Directive({
-  // tslint:disable-next-line: directive-selector
-  selector: 'textarea[autosize]',
+  selector:
+    // tslint:disable-next-line: directive-selector
+    'textarea[autosize][ngModel],textarea[autosize][formControl],textarea[autosize][formControlName]',
   exportAs: 'TextareaAutosize',
 })
-export class AutosizeDirective implements AfterViewInit {
+export class AutosizeDirective implements AfterViewInit, OnDestroy {
   private _autoSize: AutoSizeValue = DEFAULT_VALUE;
 
-  private textareaCalcStyle: {
-    minHeight?: string;
-    maxHeight?: string;
-    height?: string;
-  } = {};
-
-  @HostListener('input')
-  onTextareaInput() {
-    this.resizeTextarea();
-  }
+  private readonly destroy$$ = new Subject<void>();
 
   @Input('autosize')
   get autoSize() {
@@ -53,21 +48,32 @@ export class AutosizeDirective implements AfterViewInit {
     this.resizeTextarea();
   }
 
-  constructor(protected elementRef: ElementRef<HTMLTextAreaElement>) {}
+  constructor(
+    private readonly elRef: ElementRef<HTMLTextAreaElement>,
+    private readonly ngControl: NgControl,
+  ) {}
 
   resizeTextarea() {
+    const el = this.elRef.nativeElement;
     const autoSize = this._autoSize;
-    this.textareaCalcStyle = calcTextareaHeight(
-      this.elementRef.nativeElement,
-      autoSize.minRows,
-      autoSize.maxRows,
+    Object.assign(
+      el.style,
+      calcTextareaHeight(
+        el,
+        autoSize.minRows ?? DEFAULT_VALUE.minRows,
+        autoSize.maxRows || DEFAULT_VALUE.maxRows, // 0 is unacceptable
+      ),
     );
-    this.elementRef.nativeElement.style.minHeight = this.textareaCalcStyle.minHeight;
-    this.elementRef.nativeElement.style.maxHeight = this.textareaCalcStyle.maxHeight;
-    this.elementRef.nativeElement.style.height = this.textareaCalcStyle.height;
   }
 
   ngAfterViewInit() {
-    this.resizeTextarea();
+    this.ngControl.valueChanges
+      .pipe(startWith(null as void), takeUntil(this.destroy$$))
+      .subscribe(() => this.resizeTextarea());
+  }
+
+  ngOnDestroy() {
+    this.destroy$$.next();
+    this.destroy$$.complete();
   }
 }
