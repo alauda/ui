@@ -88,17 +88,6 @@ storiesOf('Input', module)
         <p style="margin-top: 26px;">
           Textarea with autosize (size:default = medium):
         </p>
-        <textarea
-          autosize
-          aui-input
-          placeholder="autosize default: 1 row"
-        ></textarea>
-        <textarea
-          [autosize]="{minRows:3,maxRows:10}"
-          style="margin-top: 16px;"
-          aui-input
-          placeholder="autosize: min 3 rows, max 10 rows"
-        ></textarea>
       </div>
     `,
   }))
@@ -339,6 +328,25 @@ storiesOf('Input', module)
         value,
         disabled,
         controls,
+      },
+    };
+  })
+  .add('autosize', () => {
+    const minRows = number('minRows', 0);
+    const maxRows = number('maxRows', 0);
+    const value = text('value', 'Hello world!');
+    return {
+      moduleMetadata: {
+        imports: [FormsModule, InputModule],
+      },
+      template: /* HTML */ `<textarea
+        [autosize]="{ minRows: minRows, maxRows: maxRows }"
+        [(ngModel)]="value"
+      ></textarea>`,
+      props: {
+        minRows,
+        maxRows,
+        value,
       },
     };
   });
