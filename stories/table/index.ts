@@ -1,9 +1,15 @@
-import { IconModule, SortModule, TableModule } from '@alauda/ui';
+import {
+  IconModule,
+  ScrollingModule,
+  SortModule,
+  TableModule,
+} from '@alauda/ui';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { boolean, object, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/angular';
 
 import { ExpandDemoComponent } from './expand-demo/expand-demo.component';
+import { FixedSizeVirtualScrollDemoComponent } from './fixed-size-virtual-scroll-demo/fixed-size-virtual-scroll-demo.component';
 import { SortDemoComponent } from './sort-demo/sort-demo.component';
 import { StickyColumnsDemoComponent } from './sticky-columns/sticky-columns-demo.component';
 
@@ -88,6 +94,13 @@ storiesOf('Table', module)
       declarations: [StickyColumnsDemoComponent],
     },
     component: StickyColumnsDemoComponent,
+  }))
+  .add('virtual scroll', () => ({
+    moduleMetadata: {
+      imports: [TableModule, ScrollingModule],
+      declarations: [FixedSizeVirtualScrollDemoComponent],
+    },
+    component: FixedSizeVirtualScrollDemoComponent,
   }));
 
 export interface Element {

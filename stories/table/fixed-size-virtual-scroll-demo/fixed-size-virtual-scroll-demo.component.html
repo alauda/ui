@@ -1,0 +1,38 @@
+<aui-virtual-scroll-viewport
+  fixedSize
+  style="height: 400px"
+  [dataSource]="dataSource$$ | async"
+>
+  <aui-table>
+    <ng-container auiTableColumnDef="id">
+      <aui-table-header-cell *auiTableHeaderCellDef>No.</aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item.id }}
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="name">
+      <aui-table-header-cell *auiTableHeaderCellDef>Name</aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        element{{ item.id }}
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="value">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        Value
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item"> Value </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="detail">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        Detail
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item"> Detail info </aui-table-cell>
+    </ng-container>
+    <aui-table-header-row
+      *auiTableHeaderRowDef="['id', 'name', 'value', 'detail']; sticky: true"
+    ></aui-table-header-row>
+    <aui-table-row
+      *auiTableRowDef="let row; columns: ['id', 'name', 'value', 'detail']"
+    ></aui-table-row>
+  </aui-table>
+</aui-virtual-scroll-viewport>
