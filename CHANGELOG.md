@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.7.0](https://github.com/alauda/alauda-ui/compare/v5.6.8...v5.7.0) (2021-06-28)
+
+
+### Features
+
+* date picker & time picker ([#124](https://github.com/alauda/alauda-ui/issues/124)) ([c8dece2](https://github.com/alauda/alauda-ui/commit/c8dece2f7318530dfd263263cabce32dd36e35ca))
+* fixed size table virtual scroll ([#123](https://github.com/alauda/alauda-ui/issues/123)) ([0ad29cf](https://github.com/alauda/alauda-ui/commit/0ad29cf045753d03bc1dc72805e9cb3169a005ad))
+* support observable active status for tab component ([#130](https://github.com/alauda/alauda-ui/issues/130)) ([2ced08f](https://github.com/alauda/alauda-ui/commit/2ced08fb53c5c05578ef24b1646045b5c2c6094d))
+* table column sticky ([#129](https://github.com/alauda/alauda-ui/issues/129)) ([c464cd5](https://github.com/alauda/alauda-ui/commit/c464cd5d8fd94edb4bab40e14db3cce968b4c464))
+
+
+### Bug Fixes
+
+* detect textarea value changes for autosize ([#134](https://github.com/alauda/alauda-ui/issues/134)) ([8453e51](https://github.com/alauda/alauda-ui/commit/8453e519cedac8bc00533bb974dfc17f9f3df583))
+* only get first value from observable for beforeAction ([#131](https://github.com/alauda/alauda-ui/issues/131)) ([e1c92c6](https://github.com/alauda/alauda-ui/commit/e1c92c6880e5555282ec9087d64bff23c3c3b9dc))
+
 ### [5.6.8](https://github.com/alauda/alauda-ui/compare/v5.6.7...v5.6.8) (2021-05-13)
 
 
