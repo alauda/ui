@@ -1,0 +1,7 @@
+{
+  "node": "14",
+  "publishDirectory": {
+    "@alauda/ui": "release"
+  },
+  "sandboxes": []
+}

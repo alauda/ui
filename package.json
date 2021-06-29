@@ -16,9 +16,10 @@
     "ui"
   ],
   "scripts": {
-    "build": "ng-packagr -c tsconfig.lib.json && yarn build:copy",
+    "build": "run-s build:lib build:copy",
     "build:copy": "node scripts/copy-resources",
-    "debug": "ng-packagr -p ng-package.debug.json && yarn build:copy --debug",
+    "build:lib": "ng-packagr -c tsconfig.lib.json",
+    "debug": "yarn build:lib -p ng-package.debug.json && yarn build:copy --debug",
     "dev": "yarn start",
     "lint": "run-p lint:*",
     "lint:es": "cross-env PARSER_NO_WATCH=true eslint . --cache --ext js,md,mdx,ts -f friendly",
@@ -26,7 +27,8 @@
     "lint:ts": "tslint -p . -t stylish",
     "lint:tsc": "tsc -p tsconfig.base.json --noEmit",
     "postinstall": "yarn-deduplicate --strategy fewer || exit 0",
-    "release": "standard-version --no-verify",
+    "prerelease": "yarn build",
+    "release": "changeset publish",
     "start": "yarn storybook",
     "storybook": "start-storybook -c .storybook -p 9001",
     "storybook:build": "build-storybook -c .storybook -o dist",
@@ -62,6 +64,8 @@
     "@angular/forms": "^11.2.4",
     "@angular/platform-browser": "^11.2.4",
     "@angular/platform-browser-dynamic": "^11.2.4",
+    "@changesets/changelog-github": "^0.4.0",
+    "@changesets/cli": "^2.16.0",
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-docs": "^6.1.21",
     "@storybook/addon-knobs": "^6.1.21",
@@ -84,7 +88,6 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^8.2.7",
     "rxjs": "^6.6.6",
-    "standard-version": "^9.1.1",
     "storybook-dark-mode": "^1.0.4",
     "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
@@ -95,5 +98,9 @@
   },
   "resolutions": {
     "prettier": "^2.2.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "release"
   }
 }
