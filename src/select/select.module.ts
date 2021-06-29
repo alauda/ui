@@ -6,7 +6,10 @@ import { InputModule } from '../input/public-api';
 import { TagModule } from '../tag/public-api';
 import { TooltipModule } from '../tooltip/public-api';
 
-import { OptionGroupTitleDirective } from './helper-directives';
+import {
+  OptionContentDirective,
+  OptionGroupTitleDirective,
+} from './helper-directives';
 import { MultiSelectComponent } from './multi-select/multi-select.component';
 import { OptionGroupComponent } from './option-group/option-group.component';
 import { OptionPlaceholderComponent } from './option-placeholder.component';
@@ -24,6 +27,7 @@ import { IncludesDirective } from './validators';
     MultiSelectComponent,
     IncludesDirective,
     OptionGroupTitleDirective,
+    OptionContentDirective,
   ],
   exports: [
     SelectComponent,
@@ -33,6 +37,7 @@ import { IncludesDirective } from './validators';
     MultiSelectComponent,
     IncludesDirective,
     OptionGroupTitleDirective,
+    OptionContentDirective,
   ],
 })
 export class SelectModule {}
