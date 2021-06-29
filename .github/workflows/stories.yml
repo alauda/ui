@@ -1,25 +1,21 @@
-name: Run tests
+name: Deploy stories
 
-on: pull_request
+on:
+  push:
+    branches: [master]
 
 jobs:
-  run_unit_test:
-    name: Unit test
-    strategy:
-      matrix:
-        node:
-          - 12
-          - 14
-          # - 16 # https://github.com/angular/angular/pull/41544#issuecomment-840655866
+  deploy_stories:
+    name: Deploy stories
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      - name: Setup Node.js ${{ matrix.node }}
+      - name: Setup Node.js 14
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 14
 
       - name: Link Yarn global binaries into PATH
         run: echo "$(yarn global bin)" >> $GITHUB_PATH
@@ -36,8 +32,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Run test
-        run: yarn test:ci
+      - name: Build stories
+        run: yarn storybook:build
+
+      - name: Deploy stories
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v1
+        with:
+          build_dir: dist
+          fqdn: aui.js.org
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
