@@ -45,7 +45,7 @@
   }
 
   &--info {
-    color: $tooltip-info-text;
+    padding: $tooltip-padding-hoz;
     background-color: $tooltip-info-bg;
     border-color: $tooltip-info-border;
   }

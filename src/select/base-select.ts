@@ -1,6 +1,7 @@
 import {
   AfterContentInit,
   AfterViewInit,
+  ContentChild,
   ContentChildren,
   Directive,
   ElementRef,
@@ -31,6 +32,7 @@ import {
   scrollIntoView,
 } from '../utils';
 
+import { OptionContentDirective } from './helper-directives';
 import { OptionComponent } from './option/option.component';
 import { OptionFilterFn, SelectFilterOption, TrackFn } from './select.types';
 
@@ -124,6 +126,9 @@ export abstract class BaseSelect<T, V = T>
   @Input()
   defaultFirstOption = true;
 
+  @Input()
+  lazy = true;
+
   @Output()
   filterChange = new EventEmitter<string>();
 
@@ -144,6 +149,9 @@ export abstract class BaseSelect<T, V = T>
 
   @ViewChild('inputtingOption', { static: false })
   protected inputtingOption: OptionComponent<T>;
+
+  @ContentChild(OptionContentDirective)
+  protected optionContent?: OptionContentDirective;
 
   @ViewChildren(OptionComponent)
   customOptions: QueryList<OptionComponent<T>>;
@@ -266,6 +274,7 @@ export abstract class BaseSelect<T, V = T>
   }
 
   ngOnDestroy() {
+    this.optionContent?.detach();
     this.destroy$$.next();
     this.destroy$$.complete();
   }
@@ -279,17 +288,32 @@ export abstract class BaseSelect<T, V = T>
   }
 
   onShowOptions() {
-    this.containerWidth = this.selectRef.nativeElement.offsetWidth + 'px';
-    this.show.emit();
+    const exec = () => {
+      this.containerWidth = this.selectRef.nativeElement.offsetWidth + 'px';
 
-    requestAnimationFrame(() => {
-      this.autoFocusFirstOption();
-    });
+      requestAnimationFrame(() => {
+        this.autoFocusFirstOption();
+      });
+
+      this.show.emit();
+    };
+
+    if (this.optionContent) {
+      requestAnimationFrame(() => {
+        this.optionContent.attach();
+        exec();
+      });
+    } else {
+      exec();
+    }
   }
 
   onHideOptions() {
     if (this.onTouched) {
       this.onTouched();
+    }
+    if (!this.lazy) {
+      this.optionContent?.detach();
     }
     this.resetFocusedOption();
     this.filterString = '';

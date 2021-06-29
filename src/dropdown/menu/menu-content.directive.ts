@@ -32,8 +32,10 @@ export class MenuContentDirective implements OnDestroy {
     this.doc = document;
   }
 
-  attach(context: any) {
-    this.detach();
+  attach(context?: any) {
+    if (this.portal?.isAttached) {
+      return;
+    }
     if (!this.portal) {
       this.portal = new TemplatePortal(this.templateRef, this.viewContainerRef);
     }
