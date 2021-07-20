@@ -7,10 +7,10 @@ import {
   Input,
   OnChanges,
   OnDestroy,
-  forwardRef,
   SimpleChanges,
+  forwardRef,
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { filter, map, takeUntil, tap } from 'rxjs/operators';
 
 import { TableComponent } from '../table/public-api';
@@ -43,9 +43,10 @@ const defaults = {
     },
   ],
 })
-export class FixedSizeTableVirtualScrollDirective
+export class FixedSizeTableVirtualScrollDirective<T = unknown>
   implements AfterContentInit, OnChanges, OnDestroy {
   private readonly onDestroy$ = new Subject();
+  private readonly _dataSource$$ = new BehaviorSubject<T[]>([]);
 
   @Input()
   rowHeight: number = defaults.rowHeight;
@@ -57,7 +58,10 @@ export class FixedSizeTableVirtualScrollDirective
   buffer: number = defaults.buffer;
 
   @Input()
-  dataSource: readonly unknown[];
+  set dataSource(dataSource: T[]) {
+    this._dataSource$$.next(dataSource);
+    this.scrollStrategy.dataLength = dataSource?.length;
+  }
 
   @ContentChild(TableComponent, { static: false })
   table: TableComponent<any>;
@@ -80,12 +84,12 @@ export class FixedSizeTableVirtualScrollDirective
       .subscribe(stickyOffset => {
         this.setSticky(stickyOffset);
       });
-    this.scrollStrategy.renderedRangeStream
+    combineLatest([this.scrollStrategy.renderedRangeStream, this._dataSource$$])
       .pipe(
-        map(({ start, end }) =>
+        map(([{ start, end }, dataSource]) =>
           typeof start !== 'number' || typeof end !== 'number'
-            ? this.dataSource
-            : this.dataSource?.slice(start, end),
+            ? dataSource
+            : dataSource?.slice(start, end),
         ),
         takeUntil(this.onDestroy$),
       )
@@ -94,10 +98,7 @@ export class FixedSizeTableVirtualScrollDirective
       });
   }
 
-  ngOnChanges({ dataSource, rowHeight, headerHeight, buffer }: SimpleChanges) {
-    if (dataSource) {
-      this.scrollStrategy.dataLength = this.dataSource?.length;
-    }
+  ngOnChanges({ rowHeight, headerHeight, buffer }: SimpleChanges) {
     if (rowHeight || headerHeight || buffer) {
       this.scrollStrategy.setConfig(
         this.rowHeight,
