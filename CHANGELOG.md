@@ -8,8 +8,6 @@
 
 - [#140](https://github.com/alauda/alauda-ui/pull/140) [`fe8c2ff`](https://github.com/alauda/alauda-ui/commit/fe8c2ff0d934acca7d8786e17c85d1313f14c415) Thanks [@tunblr](https://github.com/tunblr)! - fix: rendered rows not consist with input
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
 ### [5.7.2](https://github.com/alauda/alauda-ui/compare/v5.6.8...v5.7.2) (2021-06-29)
 
 ### Features
