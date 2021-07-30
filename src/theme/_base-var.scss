@@ -1,13 +1,43 @@
-// Colors
-$color-white: var(--aui-color-white);
-$color-black: var(--aui-color-black);
+@function getSize($name, $level: m) {
+  @return var(--aui-#{$name}-#{$level});
+}
 
-$color-primary: var(--aui-color-primary);
-$color-success: var(--aui-color-success);
-$color-warning: var(--aui-color-warning);
-$color-danger: var(--aui-color-danger);
-$color-error: var(--aui-color-error);
-$color-info: var(--aui-color-info);
+@function getColor($name: primary, $level: main) {
+  @if $name == neutral and $level == main {
+    @return var(--aui-color-neutral-1);
+  }
+
+  @if $level == main {
+    @return var(--aui-color-#{$name});
+  }
+
+  @return var(--aui-color-#{$name}-#{$level});
+}
+
+$color-text-main: getcolor(neutral, 1);
+$color-text-secondary: getcolor(neutral, 2);
+$color-text-help: getcolor(neutral, 4);
+$color-text-disabled: getcolor(neutral, 6);
+$color-text-placeholder: getcolor(neutral, 6);
+
+$color-disabled-bg: getcolor(neutral, 8);
+
+/**
+ ******************************
+ *  以下变量不再推荐使用
+ ******************************
+ */
+
+// Colors
+$color-white: #fff;
+$color-black: #000;
+
+$color-primary: #007af5;
+$color-success: #00c261;
+$color-warning: #f5a300;
+$color-danger: #eb0027;
+$color-error: $color-danger;
+$color-info: #c8cacd;
 
 $status-color-map: (
   success: $color-success,
@@ -16,54 +46,47 @@ $status-color-map: (
   info: $color-primary,
 );
 
-$color-primary-light: var(--aui-color-primary-light);
-$color-success-light: var(--aui-color-success-light);
-$color-warning-light: var(--aui-color-warning-light);
-$color-error-light: var(--aui-color-error-light);
-$color-danger-light: $color-error-light;
-$color-info-light: var(--aui-color-info-light);
+$color-primary-light: mix($color-white, $color-primary, 60%);
+$color-success-light: mix($color-white, $color-success, 60%);
+$color-warning-light: mix($color-white, $color-warning, 60%);
+$color-danger-light: mix($color-white, $color-danger, 60%);
+$color-error-light: $color-danger-light;
+$color-info-light: mix($color-white, $color-info, 60%);
 
-$color-primary-lighter: var(--aui-color-primary-lighter);
-$color-success-lighter: var(--aui-color-success-lighter);
-$color-warning-lighter: var(--aui-color-warning-lighter);
-$color-error-lighter: var(--aui-color-error-lighter);
-$color-danger-lighter: $color-error-lighter;
-$color-info-lighter: var(--aui-color-info-lighter);
+$color-primary-lighter: mix($color-white, $color-primary, 70%);
+$color-success-lighter: mix($color-white, $color-success, 70%);
+$color-warning-lighter: mix($color-white, $color-warning, 70%);
+$color-danger-lighter: mix($color-white, $color-danger, 70%);
+$color-error-lighter: $color-danger-lighter;
+$color-info-lighter: mix($color-white, $color-info, 70%);
 
-$color-primary-extra-light: var(--aui-color-primary-extra-light);
-$color-success-extra-light: var(--aui-color-success-extra-light);
-$color-warning-extra-light: var(--aui-color-warning-extra-light);
-$color-error-extra-light: var(--aui-color-error-extra-light);
-$color-danger-extra-light: $color-error-extra-light;
-$color-info-extra-light: var(--aui-color-info-extra-light);
+$color-primary-extra-light: mix($color-white, $color-primary, 90%);
+$color-success-extra-light: mix($color-white, $color-success, 90%);
+$color-warning-extra-light: mix($color-white, $color-warning, 90%);
+$color-danger-extra-light: mix($color-white, $color-danger, 90%);
+$color-error-extra-light: $color-danger-extra-light;
+$color-info-extra-light: mix($color-white, $color-info, 90%);
 
-$color-primary-ultra-light: var(--aui-color-primary-ultra-light);
-$color-success-ultra-light: var(--aui-color-success-ultra-light);
-$color-warning-ultra-light: var(--aui-color-warning-ultra-light);
-$color-error-ultra-light: var(--aui-color-error-ultra-light);
-$color-danger-ultra-light: $color-error-ultra-light;
-$color-info-ultra-light: var(--aui-color-info-ultra-light);
+$color-primary-ultra-light: mix($color-white, $color-primary, 95%);
+$color-success-ultra-light: mix($color-white, $color-success, 95%);
+$color-warning-ultra-light: mix($color-white, $color-warning, 95%);
+$color-danger-ultra-light: mix($color-white, $color-danger, 95%);
+$color-error-ultra-light: $color-danger-ultra-light;
+$color-info-ultra-light: mix($color-white, $color-info, 95%);
 
-$color-primary-dark: var(--aui-color-primary-dark);
-$color-success-dark: var(--aui-color-success-dark);
-$color-warning-dark: var(--aui-color-warning-dark);
-$color-error-dark: var(--aui-color-error-dark);
-$color-danger-dark: $color-error-dark;
-$color-info-dark: var(--aui-color-info-dark);
+$color-primary-dark: mix($color-black, $color-primary, 10%);
+$color-success-dark: mix($color-black, $color-primary, 10%);
+$color-warning-dark: mix($color-black, $color-primary, 10%);
+$color-danger-dark: mix($color-black, $color-primary, 10%);
+$color-error-dark: $color-danger-dark;
+$color-info-dark: mix($color-black, $color-primary, 10%);
 
-$color-primary-darker: var(--aui-color-primary-darker);
-$color-success-darker: var(--aui-color-success-darker);
-$color-warning-darker: var(--aui-color-warning-darker);
-$color-error-darker: var(--aui-color-error-darker);
-$color-danger-darker: $color-error-darker;
-$color-info-darker: var(--aui-color-info-darker);
-
-$color-text-main: var(--aui-color-text-main);
-$color-text-secondary: var(--aui-color-text-secondary);
-$color-text-help: var(--aui-color-text-help);
-$color-text-placeholder: var(--aui-color-text-placeholder);
-
-$color-disabled-bg: var(--aui-color-disabled-bg);
+$color-primary-darker: mix($color-black, $color-primary, 20%);
+$color-success-darker: mix($color-black, $color-primary, 20%);
+$color-warning-darker: mix($color-black, $color-primary, 20%);
+$color-danger-darker: mix($color-black, $color-primary, 20%);
+$color-error-darker: $color-danger-dark;
+$color-info-darker: mix($color-black, $color-primary, 20%);
 
 // Font
 $font-size-extra-large: 20px;
@@ -88,18 +111,18 @@ $height-small: 28px;
 $height-mini: 24px;
 
 // Border
-$border-radius: 0;
+$border-radius: 2px;
 $border-width: 1px;
 $border-style: solid;
 $border-style-dashed: dashed;
 
 // Outline
 $outline-width: 3px;
-$outline-color-primary: var(--aui-color-outline-primary);
-$outline-color-success: var(--aui-color-outline-success);
-$outline-color-warning: var(--aui-color-outline-warning);
-$outline-color-error: var(--aui-color-outline-error);
-$outline-color-info: var(--aui-color-outline-info);
+$outline-color-primary: mix($color-white, $color-primary, 60%);
+$outline-color-success: mix($color-white, $color-success, 60%);
+$outline-color-warning: mix($color-white, $color-warning, 60%);
+$outline-color-error: mix($color-white, $color-error, 60%);
+$outline-color-info: mix($color-white, $color-info, 60%);
 
 // Animation
 $animation-duration: 0.3s;

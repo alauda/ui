@@ -1,8 +1,9 @@
 @import 'base-var';
 @import 'mixin';
-@import 'colors';
+@import 'theme-preset';
 
 :root {
+  @include component-size;
   @include light-mode;
 }
 
@@ -24,16 +25,19 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue',
     Helvetica, 'Ubuntu', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
     'WenQuanYi Micro Hei', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
 }
 
 a {
-  color: $color-primary;
+  color: getcolor(primary);
   text-decoration: none;
 
   &:hover,
   &:active,
   &:focus {
-    color: $color-primary-darker;
+    color: getcolor(primary, 0);
   }
 }
 
@@ -52,11 +56,11 @@ a {
 
 aui-icon.aui-tooltip-copy {
   span + & {
-    margin-left: 4px;
+    margin-left: getsize(inline-margin, s);
   }
 
   &:hover {
-    color: $color-primary;
+    color: getcolor(primary);
   }
 }
 
@@ -66,5 +70,5 @@ aui-icon.aui-tooltip-copy {
 }
 
 .aui-tab-label__content aui-icon:first-child .aui-icon {
-  margin-right: 4px;
+  margin-right: getsize(inline-margin, s);
 }
