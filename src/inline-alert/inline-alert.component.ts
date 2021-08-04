@@ -11,7 +11,6 @@ import {
 import { Bem, buildBem } from '../utils';
 
 import { InlineAlertTitleDirective } from './helper-directives';
-import { iconMap } from './icon-map';
 import { InlineAlertType } from './inline-alert.types';
 
 @Component({
@@ -40,13 +39,25 @@ export class InlineAlertComponent {
   @Output()
   close = new EventEmitter<void>();
 
-  @ContentChild(InlineAlertTitleDirective, { static: true })
+  @ContentChild(InlineAlertTitleDirective)
   titleRef: InlineAlertTitleDirective;
 
   visible = true;
 
-  get iconKey() {
-    return iconMap[this.type || InlineAlertType.Info];
+  iconMap(type: InlineAlertType) {
+    switch (type) {
+      case InlineAlertType.Success:
+        return 'check_circle_s';
+      case InlineAlertType.Warning:
+        return 'exclamation_circle_s';
+      case InlineAlertType.Danger:
+      case InlineAlertType.Error:
+        return 'exclamation_triangle_s';
+      case InlineAlertType.Primary:
+      case InlineAlertType.Info:
+      default:
+        return 'info_circle_s';
+    }
   }
 
   closeSelf() {

@@ -430,26 +430,6 @@ $menu-item-warning-bg: $color-warning-extra-light;
 $menu-item-danger-color: $color-error;
 $menu-item-danger-bg: $color-error-extra-light;
 
-// Inline alert
-$inline-alert-vertical-margin: 16px;
-$inline-alert-border-radius: $border-radius;
-$inline-alert-border-style: $border-style;
-$inline-alert-border-width: $border-width;
-$inline-alert-close-color: $color-text-help;
-$inline-alert-close-color-hover: $color-text-main;
-$inline-alert-padding: (12px - $inline-alert-border-width)
-  (16px - $inline-alert-border-width);
-
-$inline-alert-title-font-size: $font-size-larger;
-$inline-alert-title-line-height: $line-height-larger;
-$inline-alert-content-font-size: $font-size-regular;
-$inline-alert-content-line-height: $line-height-regular;
-
-$inline-alert-primary-color: $color-primary;
-$inline-alert-success-color: $color-success;
-$inline-alert-warning-color: $color-warning;
-$inline-alert-error-color: $color-error;
-
 // Card
 $card-border-color: #ededed;
 $card-border-style: $border-style;
