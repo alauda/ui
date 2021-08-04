@@ -1,66 +1,87 @@
 @import '../theme/var';
 @import '../theme/mixin';
 
-.aui-inline-alert {
-  display: flex;
-  padding: $inline-alert-padding;
-  margin-bottom: $inline-alert-vertical-margin;
-  border-radius: $inline-alert-border-radius;
-  border: $inline-alert-border-width $inline-alert-border-style
-    $inline-alert-primary-color;
-  color: $color-text-main;
-  background-color: $color-white;
+$padding-h: 16px - 1px;
+$padding-v: 12px - 1px;
 
-  @each $status, $color in $status-color-map {
-    &--#{$status} {
-      border-color: $color;
+@mixin color-of-types() {
+  $types: (
+    primary: primary,
+    success: success,
+    warning: warning,
+    danger: danger,
+    error: danger,
+    info: primary,
+  );
+
+  @each $name, $value in $types {
+    &--#{$name} {
+      background-color: get-color($value, 7);
+      border-color: get-color($value);
     }
-
-    &--#{$status} &__icon {
-      color: $color;
+    &--#{$name} &__icon {
+      color: get-color($value);
     }
   }
+}
+
+.aui-inline-alert {
+  display: flex;
+  margin: 0 0 get-size(spacing, xl);
+  padding: $padding-v $padding-h;
+  border-radius: get-size(border-radius);
+  border-width: 1px;
+  border-style: solid;
+
+  @include color-of-types;
 
   &__icon {
     display: flex;
+    margin: 0 8px 0 0;
     align-items: center;
-    height: $inline-alert-title-line-height;
-    font-size: $font-size-large;
+    height: get-size(line-height, m);
+    font-size: get-size(font-size, l);
   }
-  &__close {
-    display: flex;
-    align-items: center;
-    height: $inline-alert-title-line-height;
-    font-size: $font-size-small;
-    color: $inline-alert-close-color;
-    cursor: pointer;
-    &:hover {
-      color: $inline-alert-close-color-hover;
-    }
+
+  &.hasTitle &__icon {
+    height: get-size(line-height, xl);
   }
 
   &__body {
-    max-width: 100%;
-    flex-grow: 1;
-    flex-shrink: 1;
+    flex: 1;
+    width: 100%;
     overflow: hidden;
-    padding: 0 8px;
+  }
+
+  &__close {
+    display: block;
+    margin: 4px 0 0 $padding-h;
+    height: 1em;
+    line-height: 1em;
+    font-size: get-size(font-size, s);
+    color: get-color(neutral, 4);
+    cursor: pointer;
+
+    &:hover {
+      color: get-color(neutral, 2);
+    }
   }
 
   &__title {
-    font-size: $inline-alert-title-font-size;
-    line-height: $inline-alert-title-line-height;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    @include text-size(xl);
+    @include text-overflow;
+
+    color: get-color(text, main);
   }
 
   &__content {
-    margin-top: (
-        $inline-alert-title-line-height - $inline-alert-content-line-height
-      ) / 2;
-    font-size: $inline-alert-content-font-size;
-    line-height: $inline-alert-content-line-height;
+    @include text-size(m);
+
+    color: get-color(text, main);
+  }
+
+  &.hasTitle &__content {
+    color: get-color(text, secondary);
   }
 
   &__title + &__content {

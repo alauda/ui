@@ -31,13 +31,13 @@ body {
 }
 
 a {
-  color: getcolor(primary);
+  color: get-color(primary);
   text-decoration: none;
 
   &:hover,
   &:active,
   &:focus {
-    color: getcolor(primary, 0);
+    color: get-color(primary, 0);
   }
 }
 
@@ -56,11 +56,11 @@ a {
 
 aui-icon.aui-tooltip-copy {
   span + & {
-    margin-left: getsize(inline-margin, s);
+    margin-left: get-size(spacing, s);
   }
 
   &:hover {
-    color: getcolor(primary);
+    color: get-color(primary);
   }
 }
 
@@ -70,5 +70,5 @@ aui-icon.aui-tooltip-copy {
 }
 
 .aui-tab-label__content aui-icon:first-child .aui-icon {
-  margin-right: getsize(inline-margin, s);
+  margin-right: get-size(spacing, s);
 }

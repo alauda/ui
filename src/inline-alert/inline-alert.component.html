@@ -1,7 +1,9 @@
-<div *ngIf="visible" [class]="bem.block(type)">
-  <div class="aui-inline-alert__icon">
-    <aui-icon [icon]="iconKey"></aui-icon>
-  </div>
+<div
+  *ngIf="visible"
+  [class]="bem.block(type)"
+  [class.hasTitle]="title || titleRef"
+>
+  <aui-icon class="aui-inline-alert__icon" [icon]="iconMap(type)"></aui-icon>
   <div class="aui-inline-alert__body">
     <div class="aui-inline-alert__title" *ngIf="title || titleRef">
       <ng-container *ngIf="title">{{ title }}</ng-container>
@@ -12,7 +14,10 @@
       <ng-content></ng-content>
     </div>
   </div>
-  <div class="aui-inline-alert__close" *ngIf="closable" (click)="closeSelf()">
-    <aui-icon icon="close"></aui-icon>
-  </div>
+  <aui-icon
+    *ngIf="closable"
+    class="aui-inline-alert__close"
+    icon="close"
+    (click)="closeSelf()"
+  ></aui-icon>
 </div>
