@@ -1,12 +1,10 @@
 import { ValueOf } from '../types';
 
 export const InlineAlertType = {
-  /**
-   * @deprecated use `InlineAlertType.Info` instead
-   */
-  Primary: 'info',
+  Primary: 'primary',
   Success: 'success',
   Warning: 'warning',
+  Danger: 'danger',
   Error: 'error',
   Info: 'info',
 } as const;
