@@ -2,51 +2,121 @@
 @import '../theme/mixin';
 @import '~@angular/cdk/overlay-prebuilt';
 
-.aui-dialog-backdrop {
-  background-color: $dialog-backdrop-color;
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing.aui-dialog-backdrop {
+  background-color: get-color(neutral);
+  opacity: 0.4;
 }
 
-.aui-dialog-overlay-pane {
+.cdk-overlay-pane.aui-dialog-overlay-pane {
   justify-content: center;
   overflow: auto;
   @include scroll-bar;
 }
 
+$spacing: 20px;
+$fullscreen-width: 90vw;
+$fullscreen-height: calc(100vh - (#{$spacing} * 2));
+
 .aui-dialog {
+  // FIXME: margin-bottom is not working
+  margin: 18vh auto 20px;
   display: flex;
   flex-direction: column;
-  background-color: $dialog-bg-color;
-  border-radius: $dialog-border-radius;
-  margin: 18vh auto $dialog-bottom-margin;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  background-color: get-color(neutral, 10);
+  border-radius: get-size(border-radius);
+  @include modal-shadow;
+  @include text-size(m);
+
+  color: get-color(text);
 
   aui-dialog-content {
+    height: 100%;
     overflow: auto;
     @include scroll-bar;
 
-    &:not(:first-child) .aui-dialog__content {
-      padding-top: 0;
+    &:first-child .aui-dialog__content {
+      padding-top: $spacing;
     }
 
-    &:not(:last-child) .aui-dialog__content {
-      padding-bottom: 0;
+    &:last-child .aui-dialog__content {
+      padding-bottom: $spacing;
     }
+  }
+
+  &__header {
+    margin: 0 $spacing;
+    padding: $spacing 0;
+    display: flex;
+    justify-content: space-between;
+
+    &.hasDivider {
+      margin-bottom: 16px;
+      border-bottom: $divider-line;
+    }
+
+    &-title {
+      width: 100%;
+      @include text-size(xxl);
+
+      color: get-color(text);
+
+      aui-icon:first-child {
+        font-size: get-size(line-height, xl);
+        margin-right: get-size(spacing);
+
+        &[icon='info_circle_s'] {
+          color: get-color(primary);
+        }
+        &[icon='check_circle_s'] {
+          color: get-color(success);
+        }
+        &[icon='exclamation_circle_s'] {
+          color: get-color(warning);
+        }
+        &[icon='exclamation_triangle_s'] {
+          color: get-color(danger);
+        }
+      }
+    }
+
+    &-close {
+      margin-left: get-size(spacing, xl);
+      line-height: get-size(line-height, xxl);
+      font-size: get-size(font-size, l);
+      color: get-color(neutral, 4);
+      cursor: pointer;
+
+      &:hover {
+        color: get-color(primary);
+      }
+    }
+  }
+
+  &__content {
+    padding: 0 $spacing;
+    min-height: 80px;
+  }
+
+  &__footer {
+    padding: $spacing;
+    display: flex;
+    justify-content: flex-end;
   }
 
   &--small {
-    width: $dialog-small-width;
+    width: 400px;
   }
 
   &--medium {
-    width: $dialog-medium-width;
+    width: 600px;
   }
 
   &--big {
-    width: $dialog-big-width;
+    width: 800px;
   }
 
   &--large {
-    width: $dialog-large-width;
+    width: 960px;
   }
 
   &--fit-content {
@@ -54,22 +124,24 @@
   }
 
   &--fullscreen {
-    width: $dialog-fullscreen-width;
-    height: $dialog-fullscreen-height;
+    width: $fullscreen-width;
+    height: $fullscreen-height;
     @include absolute-center;
   }
 
   &--fit-viewport {
-    max-height: $dialog-fullscreen-height;
-    max-width: $dialog-fullscreen-width;
+    max-width: $fullscreen-width;
+    max-height: $fullscreen-height;
     @include absolute-center;
 
     .aui-dialog {
       &__header {
-        border-bottom: $card-border-width $card-border-style $card-border-color;
+        margin: 0;
+        padding: $spacing;
+        border-bottom: $divider-line;
       }
       &__footer {
-        border-top: $card-border-width $card-border-style $card-border-color;
+        border-top: $divider-line;
       }
     }
 
@@ -91,41 +163,5 @@
         clear: both;
       }
     }
-  }
-
-  &__header {
-    padding: $dialog-header-padding;
-    display: flex;
-    justify-content: space-between;
-
-    &-title {
-      width: 100%;
-      line-height: $dialog-header-line-height;
-      font-size: $dialog-header-font-size;
-      color: $dialog-header-color;
-    }
-
-    &-close {
-      margin-left: 16px;
-      line-height: $dialog-header-line-height;
-      font-size: 16px;
-      color: $color-text-help;
-      cursor: pointer;
-
-      &:hover {
-        color: $color-primary;
-      }
-    }
-  }
-
-  &__content {
-    padding: $dialog-content-padding;
-    min-height: $dialog-content-min-height;
-  }
-
-  &__footer {
-    padding: $dialog-footer-padding;
-    display: flex;
-    justify-content: flex-end;
   }
 }

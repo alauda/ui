@@ -225,29 +225,6 @@ $tooltip-error-text: $color-error;
 $tooltip-info-border: $color-white;
 $tooltip-info-bg: $color-white;
 
-// Dialog
-$dialog-backdrop-color: rgba(0, 0, 0, 0.3);
-$dialog-bg-color: $color-white;
-$dialog-border-radius: $border-radius;
-
-$dialog-small-width: 420px;
-$dialog-medium-width: 600px;
-$dialog-big-width: 800px;
-$dialog-large-width: 960px;
-$dialog-fullscreen-width: 90vw;
-$dialog-fullscreen-height: 90vh;
-
-$dialog-header-font-size: $font-size-extra-large;
-$dialog-header-line-height: $line-height-extra-large;
-$dialog-header-color: $color-text-main;
-
-$dialog-content-min-height: 80px;
-
-$dialog-header-padding: 24px 24px 20px;
-$dialog-content-padding: 24px;
-$dialog-footer-padding: 20px 24px 24px;
-$dialog-bottom-margin: 50px;
-
 // Radio
 $radio-margin: 24px;
 $radio-font-size: $font-size-regular;

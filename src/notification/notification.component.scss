@@ -16,7 +16,7 @@
   background-color: $color-white;
   border-top-left-radius: $message-border-side-radius;
   border-bottom-left-radius: $message-border-side-radius;
-  @include model-shadow;
+  @include modal-shadow;
 
   &__icon {
     font-size: $font-size-large;
