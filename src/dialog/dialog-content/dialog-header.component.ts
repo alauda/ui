@@ -24,6 +24,9 @@ export class DialogHeaderComponent implements OnInit {
   bem: Bem = buildBem('aui-dialog');
 
   @Input()
+  divider = true;
+
+  @Input()
   closeable = true;
 
   @Input()
