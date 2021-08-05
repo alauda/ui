@@ -38,6 +38,7 @@ a {
   &:active,
   &:focus {
     color: get-color(primary, 0);
+    text-decoration: underline;
   }
 }
 

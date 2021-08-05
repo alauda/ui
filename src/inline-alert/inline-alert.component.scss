@@ -71,13 +71,13 @@ $padding-v: 12px - 1px;
     @include text-size(xl);
     @include text-overflow;
 
-    color: get-color(text, main);
+    color: get-color(text);
   }
 
   &__content {
     @include text-size(m);
 
-    color: get-color(text, main);
+    color: get-color(text);
   }
 
   &.hasTitle &__content {

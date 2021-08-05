@@ -6,7 +6,7 @@ export class DialogConfig<D = any> {
   id?: number;
   viewContainerRef?: ViewContainerRef;
   data?: D;
-  size?: DialogSize = DialogSize.Medium;
+  size?: DialogSize = DialogSize.Big;
   hasBackdrop? = true;
   fitViewport? = false;
 }

@@ -26,6 +26,8 @@
   @return var(--aui-color-#{$name}-#{$level});
 }
 
+$divider-line: 1px solid get-color(neutral, 8);
+
 /**
  ******************************
  *  以下变量不再推荐使用

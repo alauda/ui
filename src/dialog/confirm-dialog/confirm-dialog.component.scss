@@ -1,22 +1,24 @@
 @import '../../theme/var';
 @import '../../theme/mixin';
 
-.aui-confirm-dialog {
-  $icon-size: $line-height-larger;
-  $icon-margin: 8px;
+$padding: 32px;
+$action-padding: 20px;
+$icon-size: get-size(line-height, xl);
+$icon-margin: get-size(spacing);
 
+.aui-confirm-dialog {
   margin: auto;
-  padding: 32px 32px 24px;
-  border-radius: $border-radius;
-  min-width: $dialog-small-width;
-  max-width: $dialog-medium-width;
-  background-color: $color-white;
+  padding: $padding $padding $action-padding;
+  border-radius: get-size(border-radius);
+  min-width: 400px;
+  max-width: 600px;
+  background-color: get-color(neutral, 10);
 
   &__title {
-    margin-bottom: 8px;
-    line-height: $icon-size;
-    font-size: $font-size-larger;
-    color: $color-text-main;
+    margin-bottom: get-size(spacing);
+    @include text-size(xl);
+
+    color: get-color(text);
     display: flex;
     word-wrap: break-word;
     word-break: break-all;
@@ -28,27 +30,27 @@
 
     &--primary,
     &--warning {
-      color: $color-warning;
+      color: get-color(warning);
     }
     &--success {
-      color: $color-success;
+      color: get-color(success);
     }
     &--danger {
-      color: $color-error;
+      color: get-color(danger);
     }
   }
 
   &__content {
-    margin-bottom: 24px;
-    padding-left: $icon-margin + $icon-size;
-    font-size: $font-size-regular;
-    line-height: $line-height-regular;
-    color: $color-text-secondary;
+    padding-left: calc(#{$icon-margin} + #{$icon-size});
+    @include text-size(m);
+
+    color: get-color(text, secondary);
     word-wrap: break-word;
     word-break: break-all;
   }
 
   &__button-wrapper {
+    margin: $action-padding ($action-padding - $padding) 0 0;
     display: flex;
     flex-direction: row-reverse;
   }
