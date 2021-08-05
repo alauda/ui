@@ -15,7 +15,7 @@
   border-top-left-radius: $message-border-side-radius;
   border-bottom-left-radius: $message-border-side-radius;
   margin-bottom: $message-margin-bottom;
-  @include model-shadow;
+  @include modal-shadow;
 
   @each $status, $color in $status-color-map {
     &__icon--#{$status} {

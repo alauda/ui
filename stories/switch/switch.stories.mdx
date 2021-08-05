@@ -23,7 +23,7 @@ import { SwitchModule } from '@alauda/ui';
 ## 基本开关
 
 <Canvas>
-  <Story name="basic" height="60px">
+  <Story name="Basic" height="60px">
     {{
       template: /* HTML */ ` <aui-switch [(ngModel)]="data"></aui-switch> `,
     }}
@@ -33,7 +33,7 @@ import { SwitchModule } from '@alauda/ui';
 ## 加载状态
 
 <Canvas>
-  <Story name="loading" height="60px">
+  <Story name="Loading" height="60px">
     {{
       template: /* HTML */ `
         <aui-switch [(ngModel)]="data" [loading]="true"></aui-switch>
@@ -45,7 +45,7 @@ import { SwitchModule } from '@alauda/ui';
 ## 禁用态
 
 <Canvas>
-  <Story name="disabled" height="60px">
+  <Story name="Disabled" height="60px">
     {{
       template: /* HTML */ `
         <aui-switch
@@ -90,7 +90,7 @@ export class LoadingSwitchComponent {
 }
 ```
 
-<Story name="manual" height="60px">
+<Story name="Manual" height="60px">
   {{ component: LoadingSwitchComponent }}
 </Story>
 

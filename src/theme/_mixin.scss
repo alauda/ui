@@ -11,12 +11,16 @@
   box-shadow: 0 0 0 $outline-width $color;
 }
 
-@mixin popper-shadow() {
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
+@mixin card-shadow() {
+  box-shadow: 0 0 4px 0 rgba(50, 52, 55, 0.1);
 }
 
-@mixin model-shadow() {
-  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.16);
+@mixin popper-shadow() {
+  box-shadow: 0 2px 8px 0 rgba(50, 52, 55, 0.2);
+}
+
+@mixin modal-shadow() {
+  box-shadow: 0 4px 16px 0 rgba(50, 52, 55, 0.2);
 }
 
 @mixin transition($target: all) {

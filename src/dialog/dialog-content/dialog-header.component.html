@@ -1,4 +1,4 @@
-<div [class]="bem.element('header')">
+<div [class]="bem.element('header')" [class.hasDivider]="divider">
   <div [class]="bem.element('header-title')"><ng-content></ng-content></div>
   <div
     *ngIf="closeable"
