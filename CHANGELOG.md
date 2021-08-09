@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.7.4
+
+### Patch Changes
+
+- [#145](https://github.com/alauda/alauda-ui/pull/145) [`c0c2f82`](https://github.com/alauda/alauda-ui/commit/c0c2f829f46c3ea7aa046eb356b19289618e77a7) Thanks [@zangguodong](https://github.com/zangguodong)! - fix: date-picker style problem
+
 ## 5.7.3
 
 ### Patch Changes
