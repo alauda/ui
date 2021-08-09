@@ -2,6 +2,14 @@
 @import '../../theme/mixin';
 
 $block: aui-date-picker-trigger;
+
+$height-mapper: (
+  'medium': $height-medium,
+  'large': $height-large,
+  'small': $height-small,
+  'mini': $height-mini,
+);
+
 aui-range-picker,
 aui-date-picker {
   &.ng-invalid {
@@ -14,13 +22,18 @@ aui-date-picker {
   }
 }
 
+:host {
+  display: inline-block;
+  width: 100%;
+}
+
 .#{$block} {
   &__container {
     display: flex;
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
-    width: 200px;
+    width: 100%;
     border: $input-border-width $input-border-style $input-border-color;
     position: relative;
     cursor: pointer;
@@ -29,12 +42,16 @@ aui-date-picker {
       border: none;
       @include view-readonly;
     }
+    // trigger有自己的border，隐藏了input的border，修正input由于border-box设定引起的高度差异
+    @each $name, $height in $height-mapper {
+      .aui-input--#{$name} {
+        height: $height - 2px;
+      }
+    }
+
     &.is-focus,
     &:hover {
       border-color: $color-primary;
-    }
-    &.is-range {
-      width: 260px;
     }
     &.is-disabled {
       input[readonly] {
@@ -65,6 +82,7 @@ aui-date-picker {
     font-size: $date-picker-icon-size;
     width: $date-picker-icon-size;
     height: $date-picker-icon-size;
+    line-height: 1em;
     .clear {
       @include clear-button;
     }

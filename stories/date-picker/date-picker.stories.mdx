@@ -47,12 +47,13 @@ import { DatePickerModule, DatePickerType, DateNavRange } from '@alauda/ui';
         Form value2: {{time2?.toDate()}}
         <br />
         <br />
-        disable until today
+        disable until now
         <aui-date-picker
           [type]="DatePickerType.Day"
           [(ngModel)]="time3"
           [showTime]="true"
           [disabledDate]="disableDateFn"
+          [disabledTime]="disableTimeToNow"
         ></aui-date-picker>
         Form value3: {{time3?.toDate()}}
         <br />
@@ -103,6 +104,18 @@ import { DatePickerModule, DatePickerType, DateNavRange } from '@alauda/ui';
               : 'year',
           );
         },
+        disableTimeToNow: function () {
+          const currentHour = dayjs().hour();
+          const currentMinute = dayjs().minute();
+          const currentSecond = dayjs().second();
+          return {
+            hours: () => Array.from({ length: currentHour }).map((_, i) => i),
+            minutes: () =>
+              Array.from({ length: currentMinute }).map((_, i) => i),
+            seconds: () =>
+              Array.from({ length: currentSecond }).map((_, i) => i),
+          };
+        },
         disabledTimeFn: function (date) {
           if (date?.isSame(dayjs(), 'date')) {
             return {
@@ -135,6 +148,7 @@ import { DatePickerModule, DatePickerType, DateNavRange } from '@alauda/ui';
         <aui-range-picker
           [(ngModel)]="range2"
           [showTime]="false"
+          [showFooter]="true"
         ></aui-range-picker>
         Form value: {{range2|json}}
         <br />

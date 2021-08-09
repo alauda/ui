@@ -21,7 +21,8 @@ import { DateNavRange, DisabledTimeFn } from '../date-picker.type';
   selector: 'aui-date-picker',
   templateUrl: './date-picker.template.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  // tslint:disable-next-line: validate-decorators
+  encapsulation: ViewEncapsulation.Emulated,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -29,6 +30,7 @@ import { DateNavRange, DisabledTimeFn } from '../date-picker.type';
       multi: true,
     },
   ],
+  styleUrls: ['./date-picker.style.scss'],
 })
 export class DatePickerComponent
   extends CommonFormControl<ConfigType, Dayjs>
