@@ -3,29 +3,35 @@
 @import '~@angular/cdk/overlay-prebuilt';
 
 .cdk-overlay-pane.aui-message-overlay-pane {
-  z-index: $message-z-index;
+  z-index: 1001;
 }
+
+$color-map: (
+  success: green,
+  warning: yellow,
+  error: red,
+  info: blue,
+);
 
 .aui-message {
   display: flex;
-  padding: $message-padding;
-  border-radius: $message-border-radius;
-  align-items: center;
-  background-color: $message-default-bg;
-  border-top-left-radius: $message-border-side-radius;
-  border-bottom-left-radius: $message-border-side-radius;
-  margin-bottom: $message-margin-bottom;
+  margin-bottom: get-size(spacing-xxl);
+  padding: 8px 16px;
+  min-width: 100px;
+  max-width: 800px;
+  border-radius: get-size(border-radius-m);
+  background-color: get-color(n-10);
+  @include text-set(m);
   @include modal-shadow;
 
-  @each $status, $color in $status-color-map {
-    &__icon--#{$status} {
-      color: $color;
-    }
+  &__icon {
+    font-size: get-size(icon-size-m);
   }
 
-  &__content {
-    font-size: $font-size-regular;
-    line-height: $line-height-regular;
-    margin-left: $message-content-margin-left;
+  @each $status, $color in $color-map {
+    &__icon--#{$status} {
+      margin-right: get-size(spacing-m);
+      color: get-color($color);
+    }
   }
 }
