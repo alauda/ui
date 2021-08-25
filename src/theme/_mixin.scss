@@ -1,9 +1,10 @@
 @import 'base-var';
 @import 'var';
 
-@mixin text-size($size: m) {
-  font-size: get-size(font-size, $size);
-  line-height: get-size(line-height, $size);
+@mixin text-set($size: m, $color: main) {
+  font-size: get-size(font-size-#{$size});
+  line-height: get-size(line-height-#{$size});
+  color: get-text-color($color);
 }
 
 // 使用 box-shadow 模拟带圆角的 outline
