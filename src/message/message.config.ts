@@ -48,6 +48,6 @@ export const MESSAGE_CONFIG = new InjectionToken<MessageGlobalConfig>(
 );
 
 export const MESSAGE_DEFAULT_CONFIG = {
-  duration: 6000,
+  duration: 3000,
   maxStack: 8,
 };
