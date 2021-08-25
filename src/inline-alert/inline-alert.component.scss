@@ -1,3 +1,4 @@
+@use 'sass:string';
 @import '../theme/var';
 @import '../theme/mixin';
 
@@ -6,17 +7,17 @@ $padding-v: 12px - 1px;
 
 @mixin color-of-types() {
   $types: (
-    primary: primary,
-    success: success,
-    warning: warning,
-    danger: danger,
-    error: danger,
-    info: primary,
+    primary: blue,
+    success: green,
+    warning: yellow,
+    danger: red,
+    error: red,
+    info: blue,
   );
 
   @each $name, $value in $types {
     &--#{$name} {
-      background-color: get-color($value, 7);
+      background-color: get-color(#{string.slice('#{$value}', 1, 1)}-7);
       border-color: get-color($value);
     }
     &--#{$name} &__icon {
@@ -27,9 +28,9 @@ $padding-v: 12px - 1px;
 
 .aui-inline-alert {
   display: flex;
-  margin: 0 0 get-size(spacing, xl);
+  margin: 0 0 get-size(spacing-xl);
   padding: $padding-v $padding-h;
-  border-radius: get-size(border-radius);
+  border-radius: get-size(border-radius-m);
   border-width: 1px;
   border-style: solid;
 
@@ -39,12 +40,12 @@ $padding-v: 12px - 1px;
     display: flex;
     margin: 0 8px 0 0;
     align-items: center;
-    height: get-size(line-height, m);
-    font-size: get-size(font-size, l);
+    height: get-size(line-height-m);
+    font-size: get-size(font-size-l);
   }
 
   &.hasTitle &__icon {
-    height: get-size(line-height, xl);
+    height: get-size(line-height-xl);
   }
 
   &__body {
@@ -58,30 +59,26 @@ $padding-v: 12px - 1px;
     margin: 4px 0 0 $padding-h;
     height: 1em;
     line-height: 1em;
-    font-size: get-size(font-size, s);
-    color: get-color(neutral, 4);
+    font-size: get-size(font-size-s);
+    color: get-color(n-4);
     cursor: pointer;
 
     &:hover {
-      color: get-color(neutral, 2);
+      color: get-color(n-2);
     }
   }
 
   &__title {
-    @include text-size(xl);
+    @include text-set(xl);
     @include text-overflow;
-
-    color: get-color(text);
   }
 
   &__content {
-    @include text-size(m);
-
-    color: get-color(text);
+    @include text-set(m);
   }
 
   &.hasTitle &__content {
-    color: get-color(text, secondary);
+    color: get-text-color(secondary);
   }
 
   &__title + &__content {
