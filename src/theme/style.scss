@@ -5,6 +5,16 @@
 :root {
   @include component-size;
   @include light-mode;
+
+  --aui-color-primary: var(--aui-color-blue);
+  --aui-color-p-0: var(--aui-color-b-0);
+  --aui-color-p-1: var(--aui-color-b-1);
+  --aui-color-p-2: var(--aui-color-b-2);
+  --aui-color-p-3: var(--aui-color-b-3);
+  --aui-color-p-4: var(--aui-color-b-4);
+  --aui-color-p-5: var(--aui-color-b-5);
+  --aui-color-p-6: var(--aui-color-b-6);
+  --aui-color-p-7: var(--aui-color-b-7);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,7 +47,7 @@ a {
   &:hover,
   &:active,
   &:focus {
-    color: get-color(primary, 0);
+    color: get-color(p-0);
     text-decoration: underline;
   }
 }
@@ -57,7 +67,7 @@ a {
 
 aui-icon.aui-tooltip-copy {
   span + & {
-    margin-left: get-size(spacing, s);
+    margin-left: get-size(spacing-s);
   }
 
   &:hover {
@@ -71,5 +81,5 @@ aui-icon.aui-tooltip-copy {
 }
 
 .aui-tab-label__content aui-icon:first-child .aui-icon {
-  margin-right: get-size(spacing, s);
+  margin-right: get-size(spacing-s);
 }

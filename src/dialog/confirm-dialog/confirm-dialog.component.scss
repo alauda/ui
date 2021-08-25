@@ -3,22 +3,21 @@
 
 $padding: 32px;
 $action-padding: 20px;
-$icon-size: get-size(line-height, xl);
-$icon-margin: get-size(spacing);
+$icon-size: get-size(line-height-xl);
+$icon-margin: get-size(spacing-m);
 
 .aui-confirm-dialog {
   margin: auto;
   padding: $padding $padding $action-padding;
-  border-radius: get-size(border-radius);
+  border-radius: get-size(border-radius-m);
   min-width: 400px;
   max-width: 600px;
-  background-color: get-color(neutral, 10);
+  background-color: get-color(n-10);
 
   &__title {
-    margin-bottom: get-size(spacing);
-    @include text-size(xl);
+    margin-bottom: get-size(spacing-m);
+    @include text-set(xl);
 
-    color: get-color(text);
     display: flex;
     word-wrap: break-word;
     word-break: break-all;
@@ -30,21 +29,20 @@ $icon-margin: get-size(spacing);
 
     &--primary,
     &--warning {
-      color: get-color(warning);
+      color: get-color(yellow);
     }
     &--success {
-      color: get-color(success);
+      color: get-color(green);
     }
     &--danger {
-      color: get-color(danger);
+      color: get-color(red);
     }
   }
 
   &__content {
     padding-left: calc(#{$icon-margin} + #{$icon-size});
-    @include text-size(m);
+    @include text-set(m, secondary);
 
-    color: get-color(text, secondary);
     word-wrap: break-word;
     word-break: break-all;
   }

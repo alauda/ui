@@ -1,32 +1,24 @@
-@function get-size($name, $level: m) {
-  @return var(--aui-#{$name}-#{$level});
+@function get-size($name) {
+  @return var(--aui-#{$name});
 }
 
-@function get-color($name: primary, $level: main) {
-  @if $name == neutral and $level == main {
-    @return var(--aui-color-neutral-1);
-  }
+@function get-color($name: primary) {
+  @return var(--aui-color-#{$name});
+}
 
-  @if $name == text {
-    @if $level == main {
-      @return get-color(neutral, 1);
-    } @else if $level == secondary {
-      @return get-color(neutral, 2);
-    } @else if $level == help {
-      @return get-color(neutral, 4);
-    } @else if $level == disabled or $level == placeholder {
-      @return get-color(neutral, 6);
-    }
-  }
-
+@function get-text-color($level: main) {
   @if $level == main {
-    @return var(--aui-color-#{$name});
+    @return get-color(n-1);
+  } @else if $level == secondary {
+    @return get-color(n-2);
+  } @else if $level == help {
+    @return get-color(n-4);
+  } @else if $level == disabled or $level == placeholder {
+    @return get-color(n-6);
   }
-
-  @return var(--aui-color-#{$name}-#{$level});
 }
 
-$divider-line: 1px solid get-color(neutral, 8);
+$divider-line: 1px solid get-color(n-8);
 
 /**
  ******************************
@@ -94,13 +86,13 @@ $color-danger-darker: mix($color-black, $color-primary, 20%);
 $color-error-darker: $color-danger-dark;
 $color-info-darker: mix($color-black, $color-primary, 20%);
 
-$color-text-main: get-color(text, main);
-$color-text-secondary: get-color(text, secondary);
-$color-text-help: get-color(text, help);
-$color-text-disabled: get-color(text, disabled);
-$color-text-placeholder: get-color(text, placeholder);
+$color-text-main: get-text-color(main);
+$color-text-secondary: get-text-color(secondary);
+$color-text-help: get-text-color(help);
+$color-text-disabled: get-text-color(disabled);
+$color-text-placeholder: get-text-color(placeholder);
 
-$color-disabled-bg: get-color(neutral, 8);
+$color-disabled-bg: get-color(n-8);
 
 // Font
 $font-size-extra-large: 20px;

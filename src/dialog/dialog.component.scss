@@ -3,7 +3,7 @@
 @import '~@angular/cdk/overlay-prebuilt';
 
 .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.aui-dialog-backdrop {
-  background-color: get-color(neutral);
+  background-color: get-color(n-1);
   opacity: 0.4;
 }
 
@@ -22,12 +22,10 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
   margin: 18vh auto 20px;
   display: flex;
   flex-direction: column;
-  background-color: get-color(neutral, 10);
-  border-radius: get-size(border-radius);
+  background-color: get-color(n-10);
+  border-radius: get-size(border-radius-m);
   @include modal-shadow;
-  @include text-size(m);
-
-  color: get-color(text);
+  @include text-set(m);
 
   aui-dialog-content {
     height: 100%;
@@ -56,34 +54,32 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
 
     &-title {
       width: 100%;
-      @include text-size(xxl);
-
-      color: get-color(text);
+      @include text-set(xxl);
 
       aui-icon:first-child {
-        font-size: get-size(line-height, xl);
-        margin-right: get-size(spacing);
+        font-size: get-size(line-height-xl);
+        margin-right: get-size(spacing-m);
 
         &[icon='info_circle_s'] {
           color: get-color(primary);
         }
         &[icon='check_circle_s'] {
-          color: get-color(success);
+          color: get-color(green);
         }
         &[icon='exclamation_circle_s'] {
-          color: get-color(warning);
+          color: get-color(yellow);
         }
         &[icon='exclamation_triangle_s'] {
-          color: get-color(danger);
+          color: get-color(red);
         }
       }
     }
 
     &-close {
-      margin-left: get-size(spacing, xl);
-      line-height: get-size(line-height, xxl);
-      font-size: get-size(font-size, l);
-      color: get-color(neutral, 4);
+      margin-left: get-size(spacing-xl);
+      line-height: get-size(line-height-xxl);
+      font-size: get-size(font-size-l);
+      color: get-color(n-4);
       cursor: pointer;
 
       &:hover {
