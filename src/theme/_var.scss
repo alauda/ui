@@ -205,9 +205,6 @@ $toast-close-color: #e2e2e2;
 $alerts-wrapper-top: 20px;
 $alerts-wrapper-right: 0;
 
-$messages-wrapper-left: 50%;
-$messages-wrapper-top: 36px;
-
 // Input
 $input-border-radius: $border-radius;
 $input-border-width: $border-width;
@@ -321,15 +318,6 @@ $card-border-radius: $border-radius;
 $section-border-color: $card-border-color;
 $section-border-style: $border-style-dashed;
 $section-border-width: $border-width;
-
-// Message
-$message-padding: 8px 16px;
-$message-border-radius: 3px;
-$message-default-bg: $color-white;
-$message-border-side-radius: 4px;
-$message-margin-bottom: 20px;
-$message-content-margin-left: 8px;
-$message-z-index: 1001;
 
 // Notification
 $notification-margin: 0 20px 10px 0;
