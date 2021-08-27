@@ -90,6 +90,9 @@ export abstract class BaseSelect<T, V = T>
     this._allowCreate = coerceAttrBoolean(val);
   }
 
+  @Input()
+  filterCaseSensitive = false;
+
   get allOptions() {
     return [
       ...(this.customOptions ? this.customOptions.toArray() : []),
@@ -453,11 +456,16 @@ export abstract class BaseSelect<T, V = T>
     filterString: string,
     { label, value }: SelectFilterOption<T>,
   ) {
-    return (
+    filterString = filterString ?? '';
+
+    const text =
       (typeof label === 'string' && label) ||
       this.labelFn?.(value) ||
-      coerceString(this.trackFn(value))
-    )?.includes(filterString ?? '');
+      coerceString(this.trackFn(value));
+
+    return this.filterCaseSensitive
+      ? text?.includes(filterString)
+      : text?.toLowerCase().includes(filterString.toLowerCase());
   }
 
   abstract selectOption(option: OptionComponent<T>): void;
