@@ -6,8 +6,8 @@ export const ButtonType = {
   Success: 'success',
   Warning: 'warning',
   Danger: 'danger',
-  Info: 'info',
   Text: 'text',
+  Inline: 'inline',
   /**
    * represents default internally, @link https://github.com/angular/vscode-ng-language-service/issues/1147
    */
@@ -15,7 +15,11 @@ export const ButtonType = {
   /**
    * @deprecated use `ButtonType.Danger` instead
    */
-  Error: 'error',
+  Error: 'danger',
+  /**
+   * @deprecated use `ButtonType.Default` instead
+   */
+  Info: 'default',
 } as const;
 
 export type ButtonType = ValueOf<typeof ButtonType>;
