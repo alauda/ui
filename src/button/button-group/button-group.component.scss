@@ -4,22 +4,19 @@
 .aui-button-group {
   display: inline-block;
 
-  button {
-    border-radius: 0;
-
-    &:first-of-type {
-      border-top-left-radius: $button-border-radius;
-      border-bottom-left-radius: $button-border-radius;
-    }
-
-    &:last-of-type {
-      border-top-right-radius: $button-border-radius;
-      border-bottom-right-radius: $button-border-radius;
-    }
-  }
-
   .aui-button {
+    border-radius: 0;
     z-index: 1;
+
+    &:first-child {
+      border-top-left-radius: get-size(border-radius-m);
+      border-bottom-left-radius: get-size(border-radius-m);
+    }
+
+    &:last-child {
+      border-top-right-radius: get-size(border-radius-m);
+      border-bottom-right-radius: get-size(border-radius-m);
+    }
 
     &:hover,
     &:active,
@@ -32,18 +29,16 @@
       z-index: 0;
     }
 
-    + .aui-button {
-      margin-left: -$button-border-width;
+    &.isPlain:not(:last-child) {
+      margin-right: -1px;
     }
 
-    &:not(.isPlain) + .aui-button:not(.isPlain) {
-      margin-left: $button-border-width;
+    &:not(:last-child) {
+      margin-right: 1px;
     }
   }
 }
 
-aui-button-group + aui-button-group > .aui-button-group,
-aui-button-group + .aui-button,
-.aui-button + aui-button-group > .aui-button-group {
-  margin-left: $button-margin;
+aui-button-group:not(:last-child) {
+  margin: 0 get-size(spacing-m) 0 0;
 }
