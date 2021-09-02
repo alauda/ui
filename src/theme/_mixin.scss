@@ -8,20 +8,20 @@
 }
 
 // 使用 box-shadow 模拟带圆角的 outline
-@mixin outline-shadow($color: $outline-color-primary) {
-  box-shadow: 0 0 0 $outline-width $color;
+@mixin outline-shadow($color: primary) {
+  box-shadow: 0 0 0 2px get-rgba($color, 0.16);
 }
 
 @mixin card-shadow() {
-  box-shadow: 0 0 4px 0 rgba(50, 52, 55, 0.1);
+  box-shadow: 0 0 4px 0 get-rgba(n-1, 0.1);
 }
 
 @mixin popper-shadow() {
-  box-shadow: 0 2px 8px 0 rgba(50, 52, 55, 0.2);
+  box-shadow: 0 2px 8px 0 get-rgba(n-1, 0.2);
 }
 
 @mixin modal-shadow() {
-  box-shadow: 0 4px 16px 0 rgba(50, 52, 55, 0.2);
+  box-shadow: 0 4px 16px 0 get-rgba(n-1, 0.2);
 }
 
 @mixin transition($target: all) {

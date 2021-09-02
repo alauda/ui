@@ -12,11 +12,11 @@ aui-icon {
   fill: currentColor;
 
   &--left {
-    margin-left: $icon-margin-hoz;
+    margin-left: get-size(spacing-s);
   }
 
   &--right {
-    margin-right: $icon-margin-hoz;
+    margin-right: get-size(spacing-s);
   }
 }
 
@@ -24,8 +24,12 @@ aui-icon {
   animation: rotating 0.5s linear infinite;
 }
 
-aui-icon + aui-icon > .aui-icon {
-  margin-left: $icon-margin-hoz;
+aui-icon:not(:last-child) {
+  margin: 0 get-size(spacing-s) 0 0;
+}
+
+span + aui-icon {
+  margin: 0 0 0 get-size(spacing-s);
 }
 
 @keyframes rotating {

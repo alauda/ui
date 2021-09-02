@@ -1,9 +1,14 @@
+@use "sass:string";
+
 @function get-size($name) {
   @return var(--aui-#{$name});
 }
 
-@function get-color($name: primary) {
-  @return var(--aui-color-#{$name});
+@function get-color($name: primary, $level: none) {
+  @if $level != none {
+    @return rgb(var(--aui-color-#{string.slice('#{$name}', 1, 1)}-#{$level}));
+  }
+  @return rgb(var(--aui-color-#{$name}));
 }
 
 @function get-text-color($level: main) {
@@ -16,6 +21,10 @@
   } @else if $level == disabled or $level == placeholder {
     @return get-color(n-6);
   }
+}
+
+@function get-rgba($name, $opacity) {
+  @return rgba(var(--aui-color-#{$name}), $opacity);
 }
 
 $divider-line: 1px solid get-color(n-8);
@@ -124,11 +133,10 @@ $border-style-dashed: dashed;
 
 // Outline
 $outline-width: 3px;
-$outline-color-primary: mix($color-white, $color-primary, 60%);
-$outline-color-success: mix($color-white, $color-success, 60%);
-$outline-color-warning: mix($color-white, $color-warning, 60%);
-$outline-color-error: mix($color-white, $color-error, 60%);
-$outline-color-info: mix($color-white, $color-info, 60%);
+$outline-color-primary: primary;
+$outline-color-success: green;
+$outline-color-warning: yellow;
+$outline-color-error: red;
 
 // Animation
 $animation-duration: 0.3s;
