@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostBinding,
   Injector,
   Input,
   OnChanges,
@@ -12,7 +13,6 @@ import {
   ViewChild,
   ViewEncapsulation,
   forwardRef,
-  HostBinding,
 } from '@angular/core';
 import {
   AsyncValidatorFn,
@@ -28,6 +28,7 @@ import { map, publishReplay, refCount, take, tap } from 'rxjs/operators';
 import { CommonFormControl } from '../../form/public-api';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils';
+
 import { createWithMaxRowCount } from './with-max-row-count';
 
 export const INPUT_ERROR_KEY = 'input_data_error';
@@ -143,7 +144,7 @@ export class TagsInputComponent
   focused = false;
 
   // 内置form control，仅作校验使用
-  private readonly inputControl = this.fb.control('');
+  readonly inputControl = this.fb.control('');
   // 外层 FormControl，所有的校验逻辑针对输入数据
   controlContainer: NgControl;
 
