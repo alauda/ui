@@ -133,8 +133,10 @@ export class AutoCompleteDirective
     if (this.ngControl) {
       this.ngControl.valueChanges
         .pipe(takeUntil(this.unsubscribe$))
-        .subscribe(value => {
-          this.inputValue$$.next(value);
+        .subscribe((value: string | string[]) => {
+          if (!Array.isArray(value)) {
+            this.inputValue$$.next(value);
+          }
         });
     }
   }
@@ -305,7 +307,7 @@ export class AutoCompleteDirective
   }
 
   private _filterFn(inputValue: string, suggestion: string) {
-    return suggestion.toLowerCase().includes(inputValue?.toLowerCase() ?? '');
+    return suggestion?.toLowerCase().includes(inputValue?.toLowerCase() ?? '');
   }
 }
 
