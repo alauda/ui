@@ -16,9 +16,8 @@ import {
   Renderer2,
   ViewContainerRef,
 } from '@angular/core';
-
 import { NgControl } from '@angular/forms';
-import { BehaviorSubject, fromEvent, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import {
@@ -33,8 +32,7 @@ import { AutoCompleteContext, SuggestionFilterFn } from './autocomplete.types';
 import { SuggestionComponent } from './suggestion/suggestion.component';
 
 @Directive({
-  selector:
-    'input[auiAutocomplete],textarea[auiAutocomplete],[ngModel][auiAutocomplete],[formControl][auiAutocomplete],[formControlName][auiAutocomplete]',
+  selector: 'input[auiAutocomplete],textarea[auiAutocomplete]',
   exportAs: 'auiAutocomplete',
   inputs: ['class:auiAutocompleteClass'],
   host: {
@@ -77,14 +75,16 @@ export class AutoCompleteDirective
   @Input('auiAutocompleteTrigger')
   suggestionTrigger: 'auto' | 'input' = 'auto';
 
-  @Input('auiAutocompleteInnerInput')
-  innerInput: boolean;
+  declare innerSelector: string;
 
   @Output('auiAutocompleteShow')
   show: EventEmitter<void>;
 
   @Output('auiAutocompleteHide')
   hide: EventEmitter<void>;
+
+  @Output('auiAutocompleteSelected')
+  selected = new EventEmitter<string>();
 
   private _autocomplete: AutocompleteComponent;
   private focusedSuggestion: SuggestionComponent;
@@ -101,7 +101,7 @@ export class AutoCompleteDirective
 
   get input(): HTMLInputElement {
     const el = this.elRef.nativeElement;
-    return this.innerInput ? el.querySelector('input,textarea') : el;
+    return this.innerSelector ? el.querySelector(this.innerSelector) : el;
   }
 
   constructor(
@@ -223,6 +223,7 @@ export class AutoCompleteDirective
 
     this.inputValue$$.next(isArrCtrl ? '' : value);
 
+    this.selected.emit(value);
     this.disposeTooltip();
   }
 
@@ -306,4 +307,17 @@ export class AutoCompleteDirective
   private _filterFn(inputValue: string, suggestion: string) {
     return suggestion.includes(inputValue ?? '');
   }
+}
+
+@Directive({
+  selector: '[auiAutocomplete]:not(input):not(textarea)',
+  exportAs: 'auiAutocomplete',
+  inputs: ['class:auiAutocompleteClass'],
+  host: {
+    autocomplete: 'off',
+  },
+})
+export class CustomAutoCompleteDirective extends AutoCompleteDirective {
+  @Input('auiAutocompleteInnerSelector')
+  innerSelector = 'input,textarea';
 }

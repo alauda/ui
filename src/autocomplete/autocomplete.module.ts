@@ -6,7 +6,10 @@ import { TooltipModule } from '../tooltip/public-api';
 
 import { AutocompletePlaceholderComponent } from './autocomplete-placeholder.component';
 import { AutocompleteComponent } from './autocomplete.component';
-import { AutoCompleteDirective } from './autocomplete.directive';
+import {
+  AutoCompleteDirective,
+  CustomAutoCompleteDirective,
+} from './autocomplete.directive';
 import { SuggestionGroupTitleDirective } from './helper-directives';
 import { SuggestionGroupComponent } from './suggestion-group/suggestion-group.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
@@ -15,6 +18,7 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
   imports: [CommonModule, OverlayModule, TooltipModule],
   declarations: [
     AutoCompleteDirective,
+    CustomAutoCompleteDirective,
     AutocompleteComponent,
     SuggestionComponent,
     AutocompletePlaceholderComponent,
@@ -23,6 +27,7 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
   ],
   exports: [
     AutoCompleteDirective,
+    CustomAutoCompleteDirective,
     AutocompleteComponent,
     SuggestionComponent,
     AutocompletePlaceholderComponent,
