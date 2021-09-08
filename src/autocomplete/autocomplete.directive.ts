@@ -305,7 +305,7 @@ export class AutoCompleteDirective
   }
 
   private _filterFn(inputValue: string, suggestion: string) {
-    return suggestion.includes(inputValue ?? '');
+    return suggestion.toLowerCase().includes(inputValue?.toLowerCase() ?? '');
   }
 }
 
