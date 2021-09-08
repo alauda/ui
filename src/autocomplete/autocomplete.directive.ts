@@ -1,12 +1,12 @@
 // tslint:disable: no-output-rename
 import { Overlay } from '@angular/cdk/overlay';
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Directive,
   ElementRef,
   EventEmitter,
   Host,
-  HostListener,
   Input,
   NgZone,
   OnDestroy,
@@ -17,7 +17,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import {
@@ -41,7 +41,7 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
 })
 export class AutoCompleteDirective
   extends BaseTooltip<AutoCompleteContext>
-  implements OnInit, OnDestroy {
+  implements OnInit, OnDestroy, AfterViewInit {
   @Input('auiAutocomplete')
   get autocomplete() {
     return this._autocomplete;
@@ -75,11 +75,16 @@ export class AutoCompleteDirective
   @Input('auiAutocompleteTrigger')
   suggestionTrigger: 'auto' | 'input' = 'auto';
 
+  declare innerSelector: string;
+
   @Output('auiAutocompleteShow')
   show: EventEmitter<void>;
 
   @Output('auiAutocompleteHide')
   hide: EventEmitter<void>;
+
+  @Output('auiAutocompleteSelected')
+  selected = new EventEmitter<string>();
 
   private _autocomplete: AutocompleteComponent;
   private focusedSuggestion: SuggestionComponent;
@@ -94,6 +99,11 @@ export class AutoCompleteDirective
   inputValue$: Observable<string> = this.inputValue$$.asObservable();
   filterFn$: Observable<SuggestionFilterFn> = this.filterFn$$.asObservable();
 
+  get input(): HTMLInputElement {
+    const el = this.elRef.nativeElement;
+    return this.innerSelector ? el.querySelector(this.innerSelector) : el;
+  }
+
   constructor(
     overlay: Overlay,
     viewContainerRef: ViewContainerRef,
@@ -107,7 +117,7 @@ export class AutoCompleteDirective
   ) {
     super(overlay, viewContainerRef, elRef, renderer, cdr, ngZone);
     this.type = TooltipType.Plain;
-    this.trigger = TooltipTrigger.Focus;
+    this.trigger = TooltipTrigger.Manual;
     this.position = 'bottom start';
     this.hideOnClick = true;
   }
@@ -123,10 +133,32 @@ export class AutoCompleteDirective
     if (this.ngControl) {
       this.ngControl.valueChanges
         .pipe(takeUntil(this.unsubscribe$))
-        .subscribe(value => {
-          this.inputValue$$.next(value);
+        .subscribe((value: string | string[]) => {
+          if (!Array.isArray(value)) {
+            this.inputValue$$.next(value);
+          }
         });
     }
+  }
+
+  ngAfterViewInit() {
+    const input = this.input;
+
+    fromEvent(input, 'focus')
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(() => this.onFocus());
+
+    fromEvent(input, 'blur')
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(() => this.onBlur());
+
+    fromEvent(input, 'input')
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(ev => this.onInput(ev));
+
+    fromEvent(input, 'keydown')
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((ev: KeyboardEvent) => this.onKeyDown(ev));
   }
 
   ngOnDestroy() {
@@ -140,14 +172,12 @@ export class AutoCompleteDirective
     }
   }
 
-  @HostListener('input', ['$event'])
   onInput(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.inputValue$$.next(value);
     this.createTooltip();
   }
 
-  @HostListener('keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
     switch (event.key) {
       case 'ArrowDown':
@@ -183,12 +213,19 @@ export class AutoCompleteDirective
   }
 
   onSuggestionClick(value: string) {
+    let isArrCtrl = false;
+
     if (this.ngControl) {
-      this.ngControl.control.patchValue(value);
+      const { control } = this.ngControl;
+      isArrCtrl = Array.isArray(control.value);
+      control.patchValue(isArrCtrl ? [...control.value, value] : value);
     } else {
-      this.elRef.nativeElement.value = value;
+      this.input.value = value;
     }
-    this.inputValue$$.next(value);
+
+    this.inputValue$$.next(isArrCtrl ? '' : value);
+
+    this.selected.emit(value);
     this.disposeTooltip();
   }
 
@@ -270,6 +307,19 @@ export class AutoCompleteDirective
   }
 
   private _filterFn(inputValue: string, suggestion: string) {
-    return suggestion.includes(inputValue ?? '');
+    return suggestion?.toLowerCase().includes(inputValue?.toLowerCase() ?? '');
   }
+}
+
+@Directive({
+  selector: '[auiAutocomplete]:not(input):not(textarea)',
+  exportAs: 'auiAutocomplete',
+  inputs: ['class:auiAutocompleteClass'],
+  host: {
+    autocomplete: 'off',
+  },
+})
+export class CustomAutoCompleteDirective extends AutoCompleteDirective {
+  @Input('auiAutocompleteInnerSelector')
+  innerSelector = 'input,textarea';
 }
