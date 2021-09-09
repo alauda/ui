@@ -95,7 +95,7 @@ textarea.aui-input {
   height: get-height-calc(m, $default-line-count);
   max-height: get-height-calc(m, $max-line-count);
   min-height: get-size(inline-height-m);
-  @include text-set(m);
+  @include text-set(m, main);
 
   resize: vertical;
   overflow: auto;

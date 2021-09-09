@@ -1,10 +1,22 @@
 @import 'base-var';
 @import 'var';
 
-@mixin text-set($size: m, $color: main) {
+@mixin text-set($size: m, $color: none) {
   font-size: get-size(font-size-#{$size});
   line-height: get-size(line-height-#{$size});
-  color: get-text-color($color);
+  @if $color != none {
+    color: get-text-color($color);
+  }
+}
+
+@mixin icon-set($size: m, $color: none) {
+  display: inline-flex;
+  align-items: center;
+  height: get-size(line-height-#{$size});
+  font-size: get-size(font-size-#{$size});
+  @if $color != none {
+    color: get-text-color($color);
+  }
 }
 
 // 使用 box-shadow 模拟带圆角的 outline

@@ -69,12 +69,12 @@ $padding-v: 12px - 1px;
   }
 
   &__title {
-    @include text-set(xl);
+    @include text-set(xl, main);
     @include text-overflow;
   }
 
   &__content {
-    @include text-set(m);
+    @include text-set(m, main);
   }
 
   &.hasTitle &__content {
