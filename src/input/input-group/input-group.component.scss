@@ -1,121 +1,67 @@
 @import '../../theme/var';
 @import '../../theme/mixin';
 
+$input-size: (
+  large: (
+    height: get-size(inline-height-l),
+    font-size: get-size(font-size-l),
+    line-height: get-size(line-height-l),
+    icon-size: get-size(icon-size-l),
+  ),
+  medium: (
+    height: get-size(inline-height-m),
+    font-size: get-size(font-size-m),
+    line-height: get-size(line-height-m),
+    icon-size: get-size(icon-size-m),
+  ),
+  small: (
+    height: get-size(inline-height-s),
+    font-size: get-size(font-size-m),
+    line-height: get-size(line-height-m),
+    icon-size: get-size(icon-size-m),
+  ),
+  mini: (
+    height: get-size(inline-height-xs),
+    font-size: get-size(font-size-s),
+    line-height: get-size(line-height-s),
+    icon-size: get-size(icon-size-s),
+  ),
+);
+
 .aui-input-group {
   display: inline-block;
   width: 100%;
-  color: $input-color;
+  color: get-text-color(main);
 
   &.isDisabled {
-    color: $input-placeholder-color;
+    color: get-text-color(disabled);
     cursor: not-allowed;
   }
 
-  &--large {
-    $padding: $input-large-padding-hoz * 2 + $input-large-font-size +
-      $input-border-width;
+  @each $key in large medium small mini {
+    $map: map-get($input-size, $key);
+    $padding: calc(
+      #{get-size(inline-padding-xs)} * 2 + #{map-get($map, icon-size)}
+    );
 
-    height: $input-large-height;
-    font-size: $input-large-font-size;
+    &--#{$key} {
+      height: map-get($map, height);
+      font-size: map-get($map, font-size);
+      line-height: map-get($map, line-height);
 
-    &.hasPrefix .aui-input {
-      padding-left: $padding;
-    }
-
-    &.hasSuffix .aui-input {
-      padding-right: $padding;
-    }
-
-    .aui-input-group {
-      &__prefix {
-        left: $input-large-padding-hoz + $input-border-width;
+      .aui-input-group__prefix,
+      .aui-input-group__suffix {
+        aui-icon {
+          font-size: map-get($map, icon-size);
+        }
       }
-      &__suffix {
-        right: $input-large-padding-hoz + $input-border-width;
+
+      &.hasPrefix .aui-input {
+        padding-left: $padding;
       }
-      &__addon {
-        padding: 0 $input-large-padding-hoz;
-      }
-    }
-  }
 
-  &--medium {
-    $padding: $input-medium-padding-hoz * 2 + $input-medium-font-size +
-      $input-border-width;
-
-    height: $input-medium-height;
-    font-size: $input-medium-font-size;
-
-    &.hasPrefix .aui-input {
-      padding-left: $padding;
-    }
-    &.hasSuffix .aui-input {
-      padding-right: $padding;
-    }
-
-    .aui-input-group {
-      &__prefix {
-        left: $input-medium-padding-hoz + $input-border-width;
-      }
-      &__suffix {
-        right: $input-medium-padding-hoz + $input-border-width;
-      }
-      &__addon {
-        padding: 0 $input-medium-padding-hoz;
-      }
-    }
-  }
-
-  &--small {
-    $padding: $input-small-padding-hoz * 2 + $input-small-font-size +
-      $input-border-width;
-
-    height: $input-small-height;
-    font-size: $input-small-font-size;
-
-    &.hasPrefix .aui-input {
-      padding-left: $padding;
-    }
-    &.hasSuffix .aui-input {
-      padding-right: $padding;
-    }
-
-    .aui-input-group {
-      &__prefix {
-        left: $input-small-padding-hoz + $input-border-width;
-      }
-      &__suffix {
-        right: $input-small-padding-hoz + $input-border-width;
-      }
-      &__addon {
-        padding: 0 $input-small-padding-hoz;
-      }
-    }
-  }
-
-  &--mini {
-    $padding: $input-mini-padding-hoz * 2 + $input-mini-font-size +
-      $input-border-width;
-
-    height: $input-mini-height;
-    font-size: $input-mini-font-size;
-
-    &.hasPrefix .aui-input {
-      padding-left: $padding;
-    }
-    &.hasSuffix .aui-input {
-      padding-right: $padding;
-    }
-
-    .aui-input-group {
-      &__prefix {
-        left: $input-mini-padding-hoz + $input-border-width;
-      }
-      &__suffix {
-        right: $input-mini-padding-hoz + $input-border-width;
-      }
-      &__addon {
-        padding: 0 $input-mini-padding-hoz;
+      &.hasSuffix .aui-input {
+        padding-right: $padding;
       }
     }
   }
@@ -129,8 +75,8 @@
     width: 100%;
     position: relative;
 
-    &:hover .aui-input:not([disabled]) {
-      border-color: $input-border-color-primary;
+    &:hover .aui-input {
+      border-color: get-color(primary);
     }
   }
 
@@ -139,40 +85,45 @@
     align-items: center;
     flex-shrink: 0;
     height: 100%;
-    border: $input-border-width $input-border-style $input-border-color;
-    background-color: $input-bg-color-disabled;
+    padding: 0 get-size(inline-padding-xs);
+    border: 1px solid get-color(n-7);
+    background-color: get-color(n-8);
 
     &--before {
       border-right: none;
-      border-radius: $input-border-radius 0 0 $input-border-radius;
+      border-radius: get-size(border-radius-m) 0 0 get-size(border-radius-m);
     }
     &--after {
       border-left: none;
-      border-radius: 0 $input-border-radius $input-border-radius 0;
+      border-radius: 0 get-size(border-radius-m) get-size(border-radius-m) 0;
     }
   }
 
   &__prefix {
     position: absolute;
     top: 50%;
+    left: get-size(inline-padding-xs);
     transform: translateY(-50%);
-    color: $input-prefix-icon-color;
+    color: get-text-color(placeholder);
   }
 
   &__suffix {
     position: absolute;
     top: 50%;
+    right: get-size(inline-padding-xs);
     transform: translateY(-50%);
-    color: $input-suffix-icon-color;
+    color: get-text-color(placeholder);
   }
 
   &.hasAddonBefore .aui-input {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    border-left: none;
   }
 
   &.hasAddonAfter .aui-input {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    border-right: none;
   }
 }

@@ -28,10 +28,6 @@ aui-icon:not(:last-child) {
   margin: 0 get-size(spacing-s) 0 0;
 }
 
-span + aui-icon {
-  margin: 0 0 0 get-size(spacing-s);
-}
-
 @keyframes rotating {
   0% {
     transform: rotateZ(0deg);
