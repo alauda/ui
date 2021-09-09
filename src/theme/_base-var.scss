@@ -20,6 +20,8 @@
     @return get-color(n-4);
   } @else if $level == disabled or $level == placeholder {
     @return get-color(n-6);
+  } @else {
+    @return get-color($level);
   }
 }
 
