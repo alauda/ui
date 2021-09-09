@@ -25,7 +25,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
   background-color: get-color(n-10);
   border-radius: get-size(border-radius-m);
   @include modal-shadow;
-  @include text-set(m);
+  @include text-set(m, main);
 
   aui-dialog-content {
     height: 100%;
@@ -54,7 +54,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
 
     &-title {
       width: 100%;
-      @include text-set(xxl);
+      @include text-set(xxl, main);
 
       aui-icon:first-child {
         font-size: get-size(icon-size-xl);

@@ -21,7 +21,7 @@ $color-map: (
   max-width: 800px;
   border-radius: get-size(border-radius-m);
   background-color: get-color(n-10);
-  @include text-set(m);
+  @include text-set(m, main);
   @include modal-shadow;
 
   &__icon {
