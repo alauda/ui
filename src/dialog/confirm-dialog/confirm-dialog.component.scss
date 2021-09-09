@@ -16,7 +16,7 @@ $icon-margin: get-size(spacing-m);
 
   &__title {
     margin-bottom: get-size(spacing-m);
-    @include text-set(xl);
+    @include text-set(xl, main);
 
     display: flex;
     word-wrap: break-word;
