@@ -7,24 +7,28 @@ $button-size: (
     padding-hoz: get-size(inline-padding-l),
     font-size: get-size(font-size-l),
     line-height: get-size(line-height-l),
+    icon-size: get-size(icon-size-l),
   ),
   medium: (
     height: get-size(inline-height-m),
     padding-hoz: get-size(inline-padding-m),
     font-size: get-size(font-size-m),
     line-height: get-size(line-height-m),
+    icon-size: get-size(icon-size-m),
   ),
   small: (
     height: get-size(inline-height-s),
     padding-hoz: get-size(inline-padding-s),
     font-size: get-size(font-size-m),
     line-height: get-size(line-height-m),
+    icon-size: get-size(icon-size-m),
   ),
   mini: (
     height: get-size(inline-height-xs),
-    padding-hoz: get-size(inline-padding-s),
+    padding-hoz: get-size(inline-padding-xs),
     font-size: get-size(font-size-s),
     line-height: get-size(line-height-s),
+    icon-size: get-size(icon-size-s),
   ),
 );
 
@@ -148,6 +152,10 @@ $button-size: (
       height: map-get($map, height);
       font-size: map-get($map, font-size);
       line-height: map-get($map, line-height);
+
+      aui-icon {
+        font-size: map-get($map, icon-size);
+      }
 
       .aui-button__content {
         padding: 0 map-get($map, padding-hoz);

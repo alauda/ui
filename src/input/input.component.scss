@@ -4,16 +4,17 @@
 
 .aui-input {
   display: inline-block;
+  padding: 0 get-size(inline-padding-xs);
   width: 100%;
   // firefox has default min-width, override it for flex shrinking
   min-width: 0;
-  border: $input-border-style $input-border-width $input-border-color;
-  border-radius: $input-border-radius;
-  background-color: $input-bg-color;
-  color: $input-color;
+  border: 1px solid get-color(n-7);
+  border-radius: get-size(border-radius-m);
+  background-color: get-color(n-9);
+  color: get-text-color(main);
   outline: none;
   text-overflow: ellipsis;
-  @include cdk-text-field-autofill-color($input-bg-color, $input-color);
+  @include cdk-text-field-autofill-color(get-color(n-9), get-text-color(main));
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -26,7 +27,7 @@
   }
 
   &::placeholder {
-    color: $input-placeholder-color;
+    color: get-text-color(placeholder);
   }
 
   &:invalid,
@@ -34,102 +35,78 @@
     box-shadow: none;
   }
 
-  &:hover,
+  &:hover {
+    border-color: get-color(primary);
+  }
+
   &:focus,
   &.isFocused {
-    border-color: $input-border-color-primary;
+    border-color: get-color(primary);
+    @include outline-shadow(primary);
   }
 
   &[readonly] {
-    background-color: $input-bg-color-disabled;
-    border-color: $input-border-color;
+    background-color: get-color(n-8);
+    border-color: get-color(n-7) !important;
     cursor: default;
   }
 
   &[disabled] {
-    color: $input-placeholder-color;
-    background-color: $input-bg-color-disabled;
-    border-color: $input-border-color;
+    background-color: get-color(n-8);
+    border-color: get-color(n-7) !important;
+    color: get-text-color(disabled);
     cursor: not-allowed;
   }
 
   &--large {
-    height: $input-large-height;
-    padding: 0 $input-large-padding-hoz;
-    font-size: $input-large-font-size;
+    height: get-size(inline-height-l);
+    font-size: get-size(font-size-l);
   }
 
   &--medium {
-    height: $input-medium-height;
-    padding: 0 $input-medium-padding-hoz;
-    font-size: $input-medium-font-size;
+    height: get-size(inline-height-m);
+    font-size: get-size(font-size-m);
   }
 
   &--small {
-    height: $input-small-height;
-    padding: 0 $input-small-padding-hoz;
-    font-size: $input-small-font-size;
+    height: get-size(inline-height-s);
+    font-size: get-size(font-size-m);
   }
 
   &--mini {
-    height: $input-mini-height;
-    padding: 0 $input-mini-padding-hoz;
-    font-size: $input-mini-font-size;
+    height: get-size(inline-height-xs);
+    font-size: get-size(font-size-s);
   }
 }
 
 textarea.aui-input {
+  $default-line-count: 3;
+  $max-line-count: 6;
+
+  @function get-height-calc($line-height, $line-count) {
+    @return calc(
+      #{get-size(inline-padding-xxs)} * 2 + #{get-size(
+          line-height-#{$line-height}
+        )} * #{$line-count} + 2px
+    );
+  }
+
+  padding: get-size(inline-padding-xxs) get-size(inline-padding-xs);
+  height: get-height-calc(m, $default-line-count);
+  max-height: get-height-calc(m, $max-line-count);
+  min-height: get-size(inline-height-m);
+  @include text-set(m);
+
   resize: vertical;
   overflow: auto;
-
-  // The textarea height(default 3 rows height) equals:
-  // line-height * 3 + padding-top + padding-bottom + border-width * 2
-  &--large {
-    $ver-padding: ($input-large-height - $line-height-large) / 2 -
-      $input-border-width;
-
-    padding: $ver-padding $input-large-padding-hoz;
-    height: $line-height-large * 3 + ($ver-padding + $input-border-width) * 2;
-    min-height: $input-large-height;
-    font-size: $input-large-font-size;
-    line-height: $line-height-large;
-  }
-
-  &--medium {
-    $ver-padding: ($input-medium-height - $line-height-regular) / 2 -
-      $input-border-width;
-
-    padding: $ver-padding $input-medium-padding-hoz;
-    height: $line-height-regular * 3 + ($ver-padding + $input-border-width) * 2;
-    min-height: $input-medium-height;
-    font-size: $input-medium-font-size;
-    line-height: $line-height-regular;
-  }
-
-  &--small {
-    $ver-padding: ($input-small-height - $line-height-regular) / 2 -
-      $input-border-width;
-
-    padding: $ver-padding $input-small-padding-hoz;
-    height: $line-height-regular * 3 + ($ver-padding + $input-border-width) * 2;
-    min-height: $input-small-height;
-    font-size: $input-small-font-size;
-    line-height: $line-height-regular;
-  }
-
-  &--mini {
-    $ver-padding: ($input-mini-height - $line-height-small) / 2 -
-      $input-border-width;
-
-    padding: $ver-padding $input-mini-padding-hoz;
-    height: $line-height-small * 3 + ($ver-padding + $input-border-width) * 2;
-    min-height: $input-mini-height;
-    font-size: $input-mini-font-size;
-    line-height: $line-height-small;
-  }
 }
 
 .aui-input.ng-invalid.ng-dirty,
 .ng-submitted .aui-input.ng-invalid {
-  border-color: $color-error !important;
+  border-color: get-color(red) !important;
+
+  &:focus,
+  &.isFocused {
+    @include outline-shadow(red);
+  }
 }
