@@ -57,7 +57,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
       @include text-set(xxl);
 
       aui-icon:first-child {
-        font-size: get-size(line-height-xl);
+        font-size: get-size(icon-size-xl);
         margin-right: get-size(spacing-m);
 
         &[icon='info_circle_s'] {
