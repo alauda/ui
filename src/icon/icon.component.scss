@@ -24,10 +24,6 @@ aui-icon {
   animation: rotating 0.5s linear infinite;
 }
 
-aui-icon:not(:last-child) {
-  margin: 0 get-size(spacing-s) 0 0;
-}
-
 @keyframes rotating {
   0% {
     transform: rotateZ(0deg);

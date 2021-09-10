@@ -75,8 +75,16 @@ $input-size: (
     width: 100%;
     position: relative;
 
-    &:hover .aui-input {
-      border-color: get-color(primary);
+    &:focus-within {
+      z-index: 2;
+    }
+
+    &:hover {
+      z-index: 2;
+
+      .aui-input {
+        border-color: get-color(primary);
+      }
     }
   }
 
@@ -88,6 +96,7 @@ $input-size: (
     padding: 0 get-size(inline-padding-xs);
     border: 1px solid get-color(n-7);
     background-color: get-color(n-8);
+    z-index: 1;
 
     &--before {
       border-right: none;
@@ -115,15 +124,25 @@ $input-size: (
     color: get-text-color(placeholder);
   }
 
-  &.hasAddonBefore .aui-input {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left: none;
+  &.hasAddonBefore {
+    .aui-input-group__input-wrapper {
+      margin-left: -1px;
+    }
+
+    .aui-input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 
-  &.hasAddonAfter .aui-input {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: none;
+  &.hasAddonAfter {
+    .aui-input-group__input-wrapper {
+      margin-right: -1px;
+    }
+
+    .aui-input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 }

@@ -39,6 +39,4 @@
   }
 }
 
-aui-button-group:not(:last-child) {
-  margin: 0 get-size(spacing-m) 0 0;
-}
+@include default-margin(aui-button-group);
