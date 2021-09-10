@@ -1,6 +1,6 @@
 <svg
   *ngIf="icon === 'spinner'; else icons"
-  [attr.class]="getClass()"
+  [attr.class]="getClass('aui-icon-spinner')"
   [style.fill]="color"
   [style.width]="getWidth()"
   [style.height]="getHeight()"
@@ -52,12 +52,20 @@
 </svg>
 
 <ng-template #icons>
-  <svg
-    [attr.class]="getClass()"
-    [style.fill]="color"
-    [style.width]="getWidth()"
-    [style.height]="getHeight()"
+  <ng-container
+    *ngIf="
+      getIconId(
+        icon ? icon : ({ light: light, dark: dark } | auiTheme)
+      ) as iconId
+    "
   >
-    <use [attr.xlink:href]="link + '#' + getIconId()"></use>
-  </svg>
+    <svg
+      [attr.class]="getClass(iconId)"
+      [style.fill]="color"
+      [style.width]="getWidth()"
+      [style.height]="getHeight()"
+    >
+      <use [attr.xlink:href]="link + '#' + iconId"></use>
+    </svg>
+  </ng-container>
 </ng-template>

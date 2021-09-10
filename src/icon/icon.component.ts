@@ -21,7 +21,13 @@ let id = 0;
 })
 export class IconComponent {
   @Input()
-  icon = 'none';
+  icon: string;
+
+  @Input()
+  light: string;
+
+  @Input()
+  dark: string;
 
   @Input()
   link = '';
@@ -39,11 +45,11 @@ export class IconComponent {
 
   id = id++;
 
-  constructor(private readonly iconRegistryService: IconRegisterService) {}
+  constructor(private readonly iconRegisterService: IconRegisterService) {}
 
-  private parseIcon(): [string, string] {
-    const defaultPrefix = this.iconRegistryService.getDefaultIconPrefix();
-    const arr = (this.icon || '').split(':');
+  private parseIcon(icon: string): [string, string] {
+    const defaultPrefix = this.iconRegisterService.getDefaultIconPrefix();
+    const arr = (icon || '').split(':');
     return arr.length < 2 ? [defaultPrefix, arr[0]] : [arr[0], arr[1]];
   }
 
@@ -62,12 +68,12 @@ export class IconComponent {
     return handlePixel(arr[1] || arr[0]);
   }
 
-  getIconId() {
-    const [prefix, name] = this.parseIcon();
+  getIconId(icon: string) {
+    const [prefix, name] = this.parseIcon(icon);
     return `${prefix}-${name}`;
   }
 
-  getClass() {
-    return `${this.bem.block(this.margin)} ${this.getIconId()}`;
+  getClass(id: string) {
+    return `${this.bem.block(this.margin)} ${id}`;
   }
 }
