@@ -1,18 +1,47 @@
 import { Injectable } from '@angular/core';
+import { ReplaySubject } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
+
+import { ThemeMode } from './theme.types';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
-  getCurrentColorMode(): ColorMode {
-    return (
-      (document
-        .querySelector('html')
-        .getAttribute('aui-color-mode') as ColorMode) || 'light'
-    );
+  private readonly htmlEl: HTMLHtmlElement;
+  private browserTheme: 'light' | 'dark';
+  private themeMode: ThemeMode;
+
+  private readonly currentAppTheme$$ = new ReplaySubject<'light' | 'dark'>(1);
+
+  currentAppTheme$ = this.currentAppTheme$$
+    .asObservable()
+    .pipe(distinctUntilChanged());
+
+  constructor() {
+    this.themeMode = 'light';
+
+    this.htmlEl = document.querySelector('html');
+    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    this.browserTheme = darkModeQuery.matches ? 'dark' : 'light';
+
+    darkModeQuery.addEventListener('change', ({ matches }) => {
+      this.browserTheme = matches ? 'dark' : 'light';
+      if (this.themeMode === 'auto') {
+        this.themeChanged();
+      }
+    });
   }
 
-  setColorMode(mode: ColorMode) {
-    document.querySelector('html').setAttribute('aui-color-mode', mode);
+  setThemeMode(mode: ThemeMode) {
+    this.htmlEl.setAttribute('aui-color-mode', mode);
+    this.themeMode = mode;
+    this.themeChanged();
+  }
+
+  getAppTheme() {
+    return this.themeMode === 'auto' ? this.browserTheme : this.themeMode;
+  }
+
+  private themeChanged() {
+    this.currentAppTheme$$.next(this.getAppTheme());
   }
 }
-
-export type ColorMode = 'auto' | 'light' | 'dark';

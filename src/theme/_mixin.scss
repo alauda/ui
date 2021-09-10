@@ -1,6 +1,28 @@
 @import 'base-var';
 @import 'var';
 
+@mixin theme-light {
+  :root {
+    @content;
+  }
+
+  html[aui-color-mode='light'] {
+    @content;
+  }
+}
+
+@mixin theme-dark {
+  @media (prefers-color-scheme: dark) {
+    html[aui-color-mode='auto'] {
+      @content;
+    }
+  }
+
+  html[aui-color-mode='dark'] {
+    @content;
+  }
+}
+
 @mixin text-set($size: m, $color: none) {
   font-size: get-size(font-size-#{$size});
   line-height: get-size(line-height-#{$size});
