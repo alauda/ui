@@ -77,6 +77,8 @@ export class AutoCompleteDirective
 
   declare innerSelector: string;
 
+  declare allowRepeat: boolean | '';
+
   @Output('auiAutocompleteShow')
   show: EventEmitter<void>;
 
@@ -217,8 +219,15 @@ export class AutoCompleteDirective
 
     if (this.ngControl) {
       const { control } = this.ngControl;
-      isArrCtrl = Array.isArray(control.value);
-      control.patchValue(isArrCtrl ? [...control.value, value] : value);
+      const prevValue = control.value as string | string[];
+      isArrCtrl = Array.isArray(prevValue);
+      if (isArrCtrl) {
+        if (this.allowRepeat || !prevValue.includes(value)) {
+          control.patchValue([...prevValue, value]);
+        }
+      } else {
+        control.patchValue(value);
+      }
     } else {
       this.input.value = value;
     }
@@ -322,4 +331,7 @@ export class AutoCompleteDirective
 export class CustomAutoCompleteDirective extends AutoCompleteDirective {
   @Input('auiAutocompleteInnerSelector')
   innerSelector = 'input,textarea';
+
+  @Input()
+  allowRepeat: boolean | '' = false;
 }
