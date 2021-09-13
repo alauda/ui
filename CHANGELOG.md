@@ -1,5 +1,15 @@
 # Changelog
 
+## 5.7.5
+
+### Patch Changes
+
+- [#151](https://github.com/alauda/alauda-ui/pull/151) [`8cd83cc`](https://github.com/alauda/alauda-ui/commit/8cd83cc10030da727fc0605f22aea78173c6275d) Thanks [@JounQin](https://github.com/JounQin)! - feat: ignore filter case by default
+
+- [#151](https://github.com/alauda/alauda-ui/pull/151) [`8cd83cc`](https://github.com/alauda/alauda-ui/commit/8cd83cc10030da727fc0605f22aea78173c6275d) Thanks [@JounQin](https://github.com/JounQin)! - feat: support autocomplete for custom form item
+
+- [#151](https://github.com/alauda/alauda-ui/pull/151) [`8cd83cc`](https://github.com/alauda/alauda-ui/commit/8cd83cc10030da727fc0605f22aea78173c6275d) Thanks [@JounQin](https://github.com/JounQin)! - feat: add `auiAutocompleteSelected` output for `aui-search`
+
 ## 5.7.4
 
 ### Patch Changes
