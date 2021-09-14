@@ -306,10 +306,13 @@ $button-size: (
   }
 }
 
-.aui-button + .aui-button {
+.aui-button + .aui-button,
+aui-dropdown-button + aui-dropdown-button > .aui-dropdown-button,
+aui-dropdown-button + .aui-button,
+.aui-button + aui-dropdown-button > .aui-dropdown-button {
   margin-left: get-size(spacing-m);
 }
 
-.aui-button--text:not(:last-child) {
-  margin: 0 get-size(spacing-s) 0 0;
+.aui-button--text + .aui-button--text {
+  margin-left: get-size(spacing-s);
 }

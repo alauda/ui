@@ -101,8 +101,6 @@ textarea.aui-input {
   overflow: auto;
 }
 
-@include default-margin('.aui-input');
-
 .aui-input.ng-invalid.ng-dirty,
 .ng-submitted .aui-input.ng-invalid {
   border-color: get-color(red) !important;

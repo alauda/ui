@@ -29,14 +29,18 @@
       z-index: 0;
     }
 
-    &.isPlain:not(:last-child) {
-      margin-right: -1px;
+    + .aui-button {
+      margin-left: -1px;
     }
 
-    &:not(:last-child) {
-      margin-right: 1px;
+    &:not(.isPlain) + .aui-button:not(.isPlain) {
+      margin-left: 1px;
     }
   }
 }
 
-@include default-margin(aui-button-group);
+aui-button-group + aui-button-group > .aui-button-group,
+aui-button-group + .aui-button,
+.aui-button + aui-button-group > .aui-button-group {
+  margin-left: get-size(spacing-m);
+}

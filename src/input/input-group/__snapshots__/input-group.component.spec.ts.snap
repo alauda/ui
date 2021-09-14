@@ -31,6 +31,7 @@ exports[`InputGroupComponent should match snapshot 1`] = `
               icon="search_s"
             >
               
+              
               <svg
                 class="aui-icon aui-icon-search_s"
               >
@@ -38,6 +39,7 @@ exports[`InputGroupComponent should match snapshot 1`] = `
                   xlink:href="#aui-icon-search_s"
                 />
               </svg>
+              
               
             </aui-icon>
           </span>

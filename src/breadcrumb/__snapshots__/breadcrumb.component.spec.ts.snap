@@ -170,6 +170,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
             
             <aui-icon>
               
+              
               <svg
                 class="aui-icon aui-icon-angle_right"
               >
@@ -177,6 +178,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
                   xlink:href="#aui-icon-angle_right"
                 />
               </svg>
+              
               
             </aui-icon>
           </span>
@@ -202,6 +204,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
             
             <aui-icon>
               
+              
               <svg
                 class="aui-icon aui-icon-angle_right"
               >
@@ -209,6 +212,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
                   xlink:href="#aui-icon-angle_right"
                 />
               </svg>
+              
               
             </aui-icon>
           </span>
@@ -230,6 +234,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
             
             <aui-icon>
               
+              
               <svg
                 class="aui-icon aui-icon-angle_right"
               >
@@ -237,6 +242,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
                   xlink:href="#aui-icon-angle_right"
                 />
               </svg>
+              
               
             </aui-icon>
           </span>
