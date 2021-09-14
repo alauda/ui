@@ -58,6 +58,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -65,6 +66,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -113,6 +115,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -120,6 +123,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -185,6 +189,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -192,6 +197,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -219,6 +225,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                           icon="angle_left"
                         >
                           
+                          
                           <svg
                             class="aui-icon aui-icon-angle_left"
                           >
@@ -226,6 +233,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                               xlink:href="#aui-icon-angle_left"
                             />
                           </svg>
+                          
                           
                         </aui-icon>
                       </div>
@@ -282,6 +290,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                                     icon="angle_left"
                                   >
                                     
+                                    
                                     <svg
                                       class="aui-icon aui-icon-angle_left"
                                     >
@@ -289,6 +298,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                                         xlink:href="#aui-icon-angle_left"
                                       />
                                     </svg>
+                                    
                                     
                                   </aui-icon>
                                 </div>
@@ -478,6 +488,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                                     icon="angle_left"
                                   >
                                     
+                                    
                                     <svg
                                       class="aui-icon aui-icon-angle_left"
                                     >
@@ -485,6 +496,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                                         xlink:href="#aui-icon-angle_left"
                                       />
                                     </svg>
+                                    
                                     
                                   </aui-icon>
                                 </div>
@@ -744,6 +756,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -751,6 +764,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -778,6 +792,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                           icon="angle_left"
                         >
                           
+                          
                           <svg
                             class="aui-icon aui-icon-angle_left"
                           >
@@ -785,6 +800,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                               xlink:href="#aui-icon-angle_left"
                             />
                           </svg>
+                          
                           
                         </aui-icon>
                       </div>
@@ -953,6 +969,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -960,6 +977,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -987,6 +1005,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                           icon="angle_left"
                         >
                           
+                          
                           <svg
                             class="aui-icon aui-icon-angle_left"
                           >
@@ -994,6 +1013,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                               xlink:href="#aui-icon-angle_left"
                             />
                           </svg>
+                          
                           
                         </aui-icon>
                       </div>
@@ -1089,6 +1109,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1096,6 +1117,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1133,6 +1155,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
           >
             <aui-icon>
               
+              
               <svg
                 class="aui-icon aui-icon-angle_double_left"
               >
@@ -1140,6 +1163,7 @@ exports[`PlatformNavComponent should render correct template 1`] = `
                   xlink:href="#aui-icon-angle_double_left"
                 />
               </svg>
+              
               
             </aui-icon>
           </div>
@@ -1203,6 +1227,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1210,6 +1235,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1243,6 +1269,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1250,6 +1277,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1289,6 +1317,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1296,6 +1325,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1329,6 +1359,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1336,6 +1367,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1369,6 +1401,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1376,6 +1409,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1415,6 +1449,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1422,6 +1457,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1444,6 +1480,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
           >
             <aui-icon>
               
+              
               <svg
                 class="aui-icon aui-icon-angle_double_right"
               >
@@ -1451,6 +1488,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                   xlink:href="#aui-icon-angle_double_right"
                 />
               </svg>
+              
               
             </aui-icon>
           </div>
@@ -1466,6 +1504,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
           >
             <aui-icon>
               
+              
               <svg
                 class="aui-icon aui-icon-navigation_collapse"
               >
@@ -1473,6 +1512,7 @@ exports[`PlatformNavComponent should render correct template 2`] = `
                   xlink:href="#aui-icon-navigation_collapse"
                 />
               </svg>
+              
               
             </aui-icon>
           </div>
@@ -1535,6 +1575,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1542,6 +1583,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1575,6 +1617,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1582,6 +1625,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1621,6 +1665,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1628,6 +1673,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1661,6 +1707,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1668,6 +1715,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1701,6 +1749,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1708,6 +1757,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1747,6 +1797,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                             
                             <aui-icon>
                               
+                              
                               <svg
                                 class="aui-icon aui-icon-search_s"
                               >
@@ -1754,6 +1805,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                                   xlink:href="#aui-icon-search_s"
                                 />
                               </svg>
+                              
                               
                             </aui-icon>
                             
@@ -1776,6 +1828,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
           >
             <aui-icon>
               
+              
               <svg
                 class="aui-icon aui-icon-angle_double_right"
               >
@@ -1783,6 +1836,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                   xlink:href="#aui-icon-angle_double_right"
                 />
               </svg>
+              
               
             </aui-icon>
           </div>
@@ -1798,6 +1852,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
           >
             <aui-icon>
               
+              
               <svg
                 class="aui-icon aui-icon-navigation_expand"
               >
@@ -1805,6 +1860,7 @@ exports[`PlatformNavComponent should render correct template 3`] = `
                   xlink:href="#aui-icon-navigation_expand"
                 />
               </svg>
+              
               
             </aui-icon>
           </div>

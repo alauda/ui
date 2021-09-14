@@ -37,7 +37,11 @@ a {
   color: get-color(primary);
   text-decoration: none;
 
-  &:hover,
+  &:hover {
+    color: get-color(p-1);
+    text-decoration: underline;
+  }
+
   &:active,
   &:focus {
     color: get-color(p-0);
