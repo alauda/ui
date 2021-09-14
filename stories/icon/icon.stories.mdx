@@ -2,6 +2,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
 
 import { IconListComponent } from './icon-list/component';
+import { ColorfulIconComponent } from './colorful-icon/component';
 
 import { IconModule, ButtonModule } from '@alauda/ui';
 
@@ -10,7 +11,7 @@ import { IconModule, ButtonModule } from '@alauda/ui';
   decorators={[
     moduleMetadata({
       imports: [IconModule, ButtonModule],
-      declarations: [IconListComponent],
+      declarations: [IconListComponent, ColorfulIconComponent],
     }),
   ]}
 />
@@ -67,6 +68,12 @@ export class AppModule {
 
 <Story name="Icon List" height="720px">
   {{ component: IconListComponent }}
+</Story>
+
+## 彩色图标
+
+<Story name="Colorful Icon" height="720px">
+  {{ component: ColorfulIconComponent }}
 </Story>
 
 ## Inputs

@@ -1,0 +1,39 @@
+.namespace-card {
+  margin: 0 16px 0 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  font-size: 48px;
+  color: rgb(var(--aui-color-primary));
+  background-color: rgb(var(--aui-color-n-10));
+  border: 1px solid rgb(var(--aui-color-n-7));
+  border-radius: 2px;
+
+  &.gray {
+    background-color: rgb(var(--aui-color-n-9));
+  }
+
+  &:hover:not(.disabled) {
+    color: rgb(var(--aui-color-n-10));
+    background-color: rgb(var(--aui-color-primary));
+    border-color: rgb(var(--aui-color-primary));
+  }
+
+  &.disabled {
+    color: rgb(var(--aui-color-p-4));
+    background-color: rgb(var(--aui-color-n-8));
+  }
+
+  .namespace-icon {
+    width: 48px;
+    height: 48px;
+    background-size: 100%;
+    background-image: url('/namespace.svg');
+  }
+
+  &:hover .namespace-icon {
+    background-image: url('/namespace-active.svg');
+  }
+}
