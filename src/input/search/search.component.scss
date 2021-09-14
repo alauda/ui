@@ -3,63 +3,26 @@
 
 $block: 'aui-search';
 
+$component-size: (
+  large: (),
+  medium: (
+    height: get-size(inline-height-m),
+    line-height: get-size(line-height-m),
+    icon-size: get-size(icon-size-m),
+  ),
+  small: (),
+  mini: (),
+);
+
 .#{$block} {
   display: inline-block;
   width: 100%;
   position: relative;
-  color: $input-color;
-
-  &:hover:not(.isDisabled) .aui-input {
-    border-color: $input-border-color-primary;
-  }
+  color: get-color(n-4);
 
   &.isDisabled {
-    color: $input-placeholder-color;
+    color: get-text-color(disabled);
     cursor: not-allowed;
-  }
-
-  &--large {
-    $icon-width: $input-large-padding-hoz * 2 + $input-large-font-size +
-      $input-border-width;
-    $button-width: $icon-width + $input-border-width;
-
-    font-size: $input-large-font-size;
-
-    .#{$block}__clear,
-    .#{$block}__spinner {
-      right: $input-large-padding-hoz + $border-width;
-    }
-
-    .#{$block}__icon {
-      left: $input-large-padding-hoz + $input-border-width;
-    }
-
-    .#{$block}__button-icon {
-      padding: 0 $input-large-padding-hoz;
-    }
-
-    &.isClearable .#{$block}__input,
-    &.isSearching .#{$block}__input {
-      padding-right: $icon-width;
-    }
-
-    &.hasIcon .#{$block}__input {
-      padding-left: $icon-width;
-    }
-
-    &.hasButton .#{$block} {
-      &__input {
-        padding-right: $button-width + $input-large-padding-hoz;
-      }
-
-      &__clear {
-        right: $button-width + $input-large-padding-hoz;
-      }
-    }
-
-    &.hasButton.isClearable .#{$block}__input {
-      padding-right: $icon-width + $button-width;
-    }
   }
 
   &--medium {
@@ -106,91 +69,13 @@ $block: 'aui-search';
     }
   }
 
-  &--small {
-    $icon-width: $input-small-padding-hoz * 2 + $input-small-font-size +
-      $input-border-width;
-    $button-width: $icon-width + $input-border-width;
+  @each $key in large medium small mini {
+    $map: map-get($component-size, $key);
 
-    font-size: $input-small-font-size;
-
-    .#{$block}__clear,
-    .#{$block}__spinner {
-      right: $input-small-padding-hoz + $border-width;
-    }
-
-    .#{$block}__icon {
-      left: $input-small-padding-hoz + $input-border-width;
-    }
-
-    .#{$block}__button-icon {
-      padding: 0 $input-small-padding-hoz;
-    }
-
-    &.isClearable .#{$block}__input,
-    &.isSearching .#{$block}__input {
-      padding-right: $icon-width;
-    }
-
-    &.hasIcon .#{$block}__input {
-      padding-left: $icon-width;
-    }
-
-    &.hasButton .#{$block} {
-      &__input {
-        padding-right: $button-width + $input-small-padding-hoz;
+    &--#{$key} {
+      aui-icon {
+        font-size: map-get($map, icon-size);
       }
-
-      &__clear {
-        right: $button-width + $input-small-padding-hoz;
-      }
-    }
-
-    &.hasButton.isClearable .#{$block}__input {
-      padding-right: $icon-width + $button-width;
-    }
-  }
-
-  &--mini {
-    $icon-width: $input-mini-padding-hoz * 2 + $input-mini-font-size +
-      $input-border-width;
-    $button-width: $icon-width + $input-border-width;
-
-    font-size: $input-mini-font-size;
-
-    .#{$block}__clear,
-    .#{$block}__spinner {
-      right: $input-mini-padding-hoz + $border-width;
-    }
-
-    .#{$block}__icon {
-      left: $input-mini-padding-hoz + $input-border-width;
-    }
-
-    .#{$block}__button-icon {
-      padding: 0 $input-mini-padding-hoz;
-    }
-
-    &.isClearable .#{$block}__input,
-    &.isSearching .#{$block}__input {
-      padding-right: $icon-width;
-    }
-
-    &.hasIcon .#{$block}__input {
-      padding-left: $icon-width;
-    }
-
-    &.hasButton .#{$block} {
-      &__input {
-        padding-right: $button-width + $input-mini-padding-hoz;
-      }
-
-      &__clear {
-        right: $button-width + $input-mini-padding-hoz;
-      }
-    }
-
-    &.hasButton.isClearable .#{$block}__input {
-      padding-right: $icon-width + $button-width;
     }
   }
 
@@ -198,26 +83,28 @@ $block: 'aui-search';
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: $input-prefix-icon-color;
+    color: get-text-color(placeholder);
   }
 
   &__button {
     position: absolute;
     top: 0;
-    right: $input-border-width;
+    right: 1px;
     height: 100%;
     display: flex;
     align-items: center;
-    color: $input-suffix-icon-color;
   }
 
-  &:not(.isDisabled):not(.isSearching) &__button:hover {
-    color: $input-border-color-primary;
+  &:not(.isDisabled):not(.isSearching) &__button {
     cursor: pointer;
+
+    &:hover {
+      color: get-color(primary);
+    }
   }
 
   &__button-icon {
-    border-left: $input-border-style $input-border-color $input-border-width;
+    border-left: 1px solid get-color(n-7);
   }
 
   &__clear,
@@ -225,7 +112,6 @@ $block: 'aui-search';
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: $input-suffix-icon-color;
   }
 
   &__clear .aui-icon {
