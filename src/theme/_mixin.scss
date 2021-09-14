@@ -41,12 +41,6 @@
   }
 }
 
-@mixin default-margin($selector, $size: spacing-m) {
-  #{$selector}:not(:last-child):not(.no-spacing) {
-    margin: 0 get-size($size) 0 0;
-  }
-}
-
 // 使用 box-shadow 模拟带圆角的 outline
 @mixin outline-shadow($color: primary) {
   box-shadow: 0 0 0 2px get-rgba($color, 0.16);

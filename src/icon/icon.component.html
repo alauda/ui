@@ -52,20 +52,17 @@
 </svg>
 
 <ng-template #icons>
-  <ng-container
+  <svg
     *ngIf="
       getIconId(
         icon ? icon : ({ light: light, dark: dark } | auiTheme)
       ) as iconId
     "
+    [attr.class]="getClass(iconId)"
+    [style.fill]="color"
+    [style.width]="getWidth()"
+    [style.height]="getHeight()"
   >
-    <svg
-      [attr.class]="getClass(iconId)"
-      [style.fill]="color"
-      [style.width]="getWidth()"
-      [style.height]="getHeight()"
-    >
-      <use [attr.xlink:href]="link + '#' + iconId"></use>
-    </svg>
-  </ng-container>
+    <use [attr.xlink:href]="link + '#' + iconId"></use>
+  </svg>
 </ng-template>
