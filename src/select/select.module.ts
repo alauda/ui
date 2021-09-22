@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { I18nModule } from '../i18n/public-api';
 import { IconModule } from '../icon/public-api';
 import { InputModule } from '../input/public-api';
 import { TagModule } from '../tag/public-api';
@@ -18,7 +19,14 @@ import { SelectComponent } from './select.component';
 import { IncludesDirective } from './validators';
 
 @NgModule({
-  imports: [CommonModule, InputModule, IconModule, TooltipModule, TagModule],
+  imports: [
+    CommonModule,
+    InputModule,
+    I18nModule,
+    IconModule,
+    TooltipModule,
+    TagModule,
+  ],
   declarations: [
     SelectComponent,
     OptionComponent,
