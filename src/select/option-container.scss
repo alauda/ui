@@ -1,5 +1,6 @@
 @import '../theme/var';
 @import '../theme/mixin';
+@import './option-group/option-group-style.scss';
 
 @mixin option-container($block) {
   .#{$block} {
@@ -13,6 +14,10 @@
       position: relative;
       overflow: auto;
       @include scroll-bar;
+      .divider {
+        border: none;
+        @include option-group-divider;
+      }
     }
 
     &__placeholder {
