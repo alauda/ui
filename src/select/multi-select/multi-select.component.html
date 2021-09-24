@@ -74,6 +74,7 @@
       <ng-container
         *ngIf="
           allowSelectAll &&
+          (hasEnabledOptions$ | async) &&
           ((hasVisibleOption$ | async) ||
             (allowCreate && (customCreatedOptions$ | async).length) ||
             (allowCreate && filterString))
