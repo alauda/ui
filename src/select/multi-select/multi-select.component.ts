@@ -68,6 +68,7 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
   selectedOptions$: Observable<Array<SelectFilterOption<T>>>;
   selectAllStatus$: Observable<SelectAllStatus>;
   selectAllStatus: SelectAllStatus;
+  hasEnabledOptions$: Observable<boolean>;
 
   private _allowSelectAll = false;
   selectedValues: T[] = [];
@@ -206,28 +207,38 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
   ngAfterViewInit() {
     super.ngAfterViewInit();
     this.selectAllStatus$ = combineLatest([
-      this.allOptions$.pipe(startWith(this.contentOptions)),
-      this.value$,
+      this.allOptions$,
       this.filterString$,
     ]).pipe(
-      map(([allOptions]: [QueryList<OptionComponent<T>>, T[], string]) => {
-        const visibleOptions = allOptions.filter(({ visible }) => visible);
-        const checkedOptions = visibleOptions.filter(
-          ({ selected }) => selected,
-        );
-        return checkedOptions.length &&
-          checkedOptions.length !== visibleOptions.length
-          ? SelectAllStatus.Indeterminate
-          : checkedOptions.length === 0
+      switchMap(([allOptions]) =>
+        combineLatest([
+          ...allOptions
+            .filter(({ visible, disabled }) => visible && !disabled)
+            ?.map(({ selected$ }) => selected$),
+        ]),
+      ),
+      map(statuses => {
+        const selected = statuses.filter(i => i);
+        return selected.length === 0
           ? SelectAllStatus.Empty
+          : selected.length !== statuses.length
+          ? SelectAllStatus.Indeterminate
           : SelectAllStatus.Checked;
       }),
       startWith(SelectAllStatus.Empty),
-      tap(selectAllStatus => {
-        this.selectAllStatus = selectAllStatus;
-      }),
+      tap(selectAllStatus => (this.selectAllStatus = selectAllStatus)),
       publishReplay(1),
       refCount(),
+    );
+    this.hasEnabledOptions$ = combineLatest([
+      this.allOptions$,
+      this.filterString$,
+    ]).pipe(
+      map(
+        ([allOptions]) =>
+          !!allOptions.filter(({ visible, disabled }) => visible && !disabled)
+            .length,
+      ),
     );
   }
 
@@ -339,7 +350,7 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
       return;
     }
     const visibleOptionsValue = this.allOptions
-      .filter(({ visible }) => visible)
+      .filter(({ visible, disabled }) => visible && !disabled)
       .map(({ value }) => value);
     if (this.selectAllStatus === SelectAllStatus.Checked) {
       this.emitValueChange(
