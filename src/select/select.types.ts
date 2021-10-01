@@ -1,7 +1,5 @@
 import { TemplateRef } from '@angular/core';
 
-export type SelectPrimitiveValue = string | number | symbol | bigint;
-
 export interface SelectOption {
   label: string | TemplateRef<unknown>;
   labelContext?: unknown;
