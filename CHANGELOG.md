@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.7.6
+
+### Patch Changes
+
+- [#154](https://github.com/alauda/alauda-ui/pull/154) [`919cafc`](https://github.com/alauda/alauda-ui/commit/919cafce60aa339d03ba403798ce59b2f866e5d4) Thanks [@tunblr](https://github.com/tunblr)! - feat: select all AIT-8411
+
 ## 5.7.5
 
 ### Patch Changes
