@@ -33,7 +33,6 @@ import { OptionComponent } from '../option/option.component';
 import {
   SelectAllStatus,
   SelectFilterOption,
-  SelectPrimitiveValue,
   TagClassFn,
 } from '../select.types';
 
@@ -60,7 +59,7 @@ import {
     },
   ],
 })
-export class MultiSelectComponent<T = SelectPrimitiveValue>
+export class MultiSelectComponent<T = unknown>
   extends BaseSelect<T, T[]>
   implements AfterContentInit, AfterViewInit {
   bem: Bem = buildBem('aui-multi-select');

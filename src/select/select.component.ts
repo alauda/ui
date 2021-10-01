@@ -23,7 +23,7 @@ import { coerceString } from '../utils';
 
 import { BaseSelect } from './base-select';
 import { OptionComponent } from './option/option.component';
-import { SelectOption, SelectPrimitiveValue } from './select.types';
+import { SelectOption } from './select.types';
 
 @Component({
   selector: 'aui-select',
@@ -44,7 +44,7 @@ import { SelectOption, SelectPrimitiveValue } from './select.types';
     },
   ],
 })
-export class SelectComponent<T = SelectPrimitiveValue>
+export class SelectComponent<T = unknown>
   extends BaseSelect<T>
   implements AfterContentInit {
   @ViewChild('inputRef', { static: true })
