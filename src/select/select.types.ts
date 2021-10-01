@@ -1,7 +1,5 @@
 import { TemplateRef } from '@angular/core';
 
-export type SelectPrimitiveValue = string | number | symbol | bigint;
-
 export interface SelectOption {
   label: string | TemplateRef<unknown>;
   labelContext?: unknown;
@@ -26,3 +24,9 @@ export type TagClassFn<
   value: V,
 ) => // tslint:disable-next-line: max-union-size
 string | string[] | Set<string> | { [className: string]: unknown };
+
+export enum SelectAllStatus {
+  Empty = '',
+  Checked = 'checked',
+  Indeterminate = 'indeterminate',
+}

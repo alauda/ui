@@ -3,6 +3,8 @@
     max-width: none;
   }
 }
-aui-date-picker-trigger {
+
+:host {
   display: inline-block;
+  width: 260px;
 }

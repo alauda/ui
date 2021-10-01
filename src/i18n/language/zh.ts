@@ -20,5 +20,6 @@ export const zh: I18NInterface = {
     saturday: '六',
     sunday: '日',
     now: '此刻',
+    select_all: '全选',
   },
 };

@@ -14,7 +14,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { CommonFormControl } from '../form/public-api';
 import { InputComponent } from '../input/public-api';
-import { SelectPrimitiveValue, TrackFn } from '../select/select.types';
+import { TrackFn } from '../select/select.types';
 import { TooltipDirective } from '../tooltip/public-api';
 import { coerceAttrBoolean, coerceString } from '../utils';
 
@@ -36,9 +36,7 @@ import { TreeNode } from './tree-select.types';
     },
   ],
 })
-export class TreeSelectComponent<
-  T = SelectPrimitiveValue
-> extends CommonFormControl<T> {
+export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
   @Input()
   get nodesData() {
     return this._nodesData;

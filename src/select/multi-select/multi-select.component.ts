@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -21,16 +22,17 @@ import {
   startWith,
   switchMap,
   takeUntil,
+  tap,
 } from 'rxjs/operators';
 
 import { createWithMaxRowCount } from '../../input/tags-input/with-max-row-count';
 import { ComponentSize } from '../../types';
-import { Bem, buildBem, coerceString } from '../../utils';
+import { Bem, buildBem, coerceAttrBoolean, coerceString } from '../../utils';
 import { BaseSelect } from '../base-select';
 import { OptionComponent } from '../option/option.component';
 import {
+  SelectAllStatus,
   SelectFilterOption,
-  SelectPrimitiveValue,
   TagClassFn,
 } from '../select.types';
 
@@ -57,12 +59,17 @@ import {
     },
   ],
 })
-export class MultiSelectComponent<T = SelectPrimitiveValue>
+export class MultiSelectComponent<T = unknown>
   extends BaseSelect<T, T[]>
-  implements AfterContentInit {
+  implements AfterContentInit, AfterViewInit {
   bem: Bem = buildBem('aui-multi-select');
+  bemSelectAll: Bem = buildBem('aui-option');
   selectedOptions$: Observable<Array<SelectFilterOption<T>>>;
+  selectAllStatus$: Observable<SelectAllStatus>;
+  selectAllStatus: SelectAllStatus;
+  hasEnabledOptions$: Observable<boolean>;
 
+  private _allowSelectAll = false;
   selectedValues: T[] = [];
   values$ = this.value$$.asObservable();
 
@@ -74,6 +81,15 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
 
   @Input()
   customRowHeight = 0; // 0: use default style const value, > 1: for ```tagClassFn``` maybe affect lineHeight
+
+  @Input()
+  get allowSelectAll() {
+    return this._allowSelectAll;
+  }
+
+  set allowSelectAll(val: boolean | '') {
+    this._allowSelectAll = coerceAttrBoolean(val);
+  }
 
   @ViewChild('inputRef', { static: true })
   inputRef: ElementRef<HTMLInputElement>;
@@ -187,6 +203,44 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
     );
   }
 
+  ngAfterViewInit() {
+    super.ngAfterViewInit();
+    this.selectAllStatus$ = combineLatest([
+      this.allOptions$,
+      this.filterString$,
+    ]).pipe(
+      switchMap(([allOptions]) =>
+        combineLatest([
+          ...allOptions
+            .filter(({ visible, disabled }) => visible && !disabled)
+            ?.map(({ selected$ }) => selected$),
+        ]),
+      ),
+      map(statuses => {
+        const selected = statuses.filter(i => i);
+        return selected.length === 0
+          ? SelectAllStatus.Empty
+          : selected.length !== statuses.length
+          ? SelectAllStatus.Indeterminate
+          : SelectAllStatus.Checked;
+      }),
+      startWith(SelectAllStatus.Empty),
+      tap(selectAllStatus => (this.selectAllStatus = selectAllStatus)),
+      publishReplay(1),
+      refCount(),
+    );
+    this.hasEnabledOptions$ = combineLatest([
+      this.allOptions$,
+      this.filterString$,
+    ]).pipe(
+      map(
+        ([allOptions]) =>
+          !!allOptions.filter(({ visible, disabled }) => visible && !disabled)
+            .length,
+      ),
+    );
+  }
+
   onShowOptions() {
     super.onShowOptions();
     this.inputRef.nativeElement.focus();
@@ -288,6 +342,26 @@ export class MultiSelectComponent<T = SelectPrimitiveValue>
     this.emitValueChange([]);
     event.stopPropagation();
     event.preventDefault();
+  }
+
+  onSelectAllClick() {
+    if (this.disabled) {
+      return;
+    }
+    const visibleOptionsValue = this.allOptions
+      .filter(({ visible, disabled }) => visible && !disabled)
+      .map(({ value }) => value);
+    if (this.selectAllStatus === SelectAllStatus.Checked) {
+      this.emitValueChange(
+        this.snapshot.value.filter(
+          value => !visibleOptionsValue.includes(value),
+        ),
+      );
+    } else {
+      this.emitValueChange([
+        ...new Set(this.snapshot.value.concat(visibleOptionsValue)),
+      ]);
+    }
   }
 
   private resetInput() {

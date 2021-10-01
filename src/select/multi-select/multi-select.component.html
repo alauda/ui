@@ -71,6 +71,35 @@
     (mousedown)="$event.preventDefault()"
   >
     <div #optionListRef class="aui-option-container__content">
+      <ng-container
+        *ngIf="
+          allowSelectAll &&
+          (hasEnabledOptions$ | async) &&
+          ((hasVisibleOption$ | async) ||
+            (allowCreate && (customCreatedOptions$ | async).length) ||
+            (allowCreate && filterString))
+        "
+      >
+        <div
+          class="aui-option"
+          [class]="bemSelectAll.block(size$ | async)"
+          [class.isDisabled]="disabled"
+          [class.isSelected]="!!(selectAllStatus$ | async)"
+          [class.isMulti]="true"
+          (click)="onSelectAllClick()"
+        >
+          <i class="aui-option__pointer">
+            <aui-icon
+              [icon]="
+                (selectAllStatus$ | async) === 'checked' ? 'check_s' : 'minus_s'
+              "
+              [hidden]="!(selectAllStatus$ | async)"
+            ></aui-icon>
+          </i>
+          {{ 'select_all' | auiI18n }}
+        </div>
+        <hr class="divider" />
+      </ng-container>
       <aui-option
         #inputtingOption
         *ngIf="allowCreate && filterString && !(hasMatchedOption$ | async)"

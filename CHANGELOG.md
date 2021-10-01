@@ -1,5 +1,27 @@
 # Changelog
 
+## 5.7.6
+
+### Patch Changes
+
+- [#154](https://github.com/alauda/alauda-ui/pull/154) [`919cafc`](https://github.com/alauda/alauda-ui/commit/919cafce60aa339d03ba403798ce59b2f866e5d4) Thanks [@tunblr](https://github.com/tunblr)! - feat: select all AIT-8411
+
+## 5.7.5
+
+### Patch Changes
+
+- [#151](https://github.com/alauda/alauda-ui/pull/151) [`8cd83cc`](https://github.com/alauda/alauda-ui/commit/8cd83cc10030da727fc0605f22aea78173c6275d) Thanks [@JounQin](https://github.com/JounQin)! - feat: ignore filter case by default
+
+- [#151](https://github.com/alauda/alauda-ui/pull/151) [`8cd83cc`](https://github.com/alauda/alauda-ui/commit/8cd83cc10030da727fc0605f22aea78173c6275d) Thanks [@JounQin](https://github.com/JounQin)! - feat: support autocomplete for custom form item
+
+- [#151](https://github.com/alauda/alauda-ui/pull/151) [`8cd83cc`](https://github.com/alauda/alauda-ui/commit/8cd83cc10030da727fc0605f22aea78173c6275d) Thanks [@JounQin](https://github.com/JounQin)! - feat: add `auiAutocompleteSelected` output for `aui-search`
+
+## 5.7.4
+
+### Patch Changes
+
+- [#145](https://github.com/alauda/alauda-ui/pull/145) [`c0c2f82`](https://github.com/alauda/alauda-ui/commit/c0c2f829f46c3ea7aa046eb356b19289618e77a7) Thanks [@zangguodong](https://github.com/zangguodong)! - fix: date-picker style problem
+
 ## 5.7.3
 
 ### Patch Changes
