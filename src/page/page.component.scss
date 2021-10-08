@@ -3,7 +3,7 @@
 
 .aui-page {
   min-height: 100%;
-  background-color: $page-background;
+  background-color: get-color(n-9);
 
   &__header {
     position: fixed;
@@ -14,81 +14,89 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: $page-header-height;
-    padding: 0 $page-content-padding;
-    color: $color-white;
-    background-color: $page-header-background;
+    height: var(--aui-page-header-height);
+    padding: 0 var(--aui-page-padding-m) 0 var(--aui-page-padding-s);
+    background-color: get-color(n-10);
+    @include page-header-shadow;
   }
 
   &__toolbar {
     position: fixed;
-    top: $page-header-height;
+    top: var(--aui-page-header-height);
     left: 0;
     right: 0;
     z-index: 100;
     display: flex;
     align-items: center;
-    height: $page-toolbar-height;
-    padding: 0 $page-content-padding;
-    background-color: $color-white;
-    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    height: var(--aui-page-toolbar-height);
+    padding: 0 var(--aui-page-padding-m);
+    background-color: get-color(n-9);
   }
 
   &__snackbar {
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
+    left: var(--aui-page-padding-m);
+    right: var(--aui-page-padding-m);
     z-index: 100;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: $page-snackbar-height;
-    padding: 0 $page-content-padding;
-    background-color: $color-white;
-    box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.16);
+    height: var(--aui-page-snackbar-height);
+    padding: 0 var(--aui-page-padding-m);
+    background-color: get-color(n-10);
+    @include page-snackbar-shadow;
+
+    border-radius: var(--aui-border-radius-m);
   }
 
   &__sider {
     position: fixed;
-    top: $page-header-height;
+    top: var(--aui-page-header-height);
     bottom: 0;
     left: 0;
-    z-index: 101;
-    width: $page-sider-width;
+    z-index: 100;
+    width: var(--aui-page-sider-width);
     overflow: auto;
+    background-color: get-color(n-9);
+    padding: var(--aui-page-padding-m);
     @include scroll-bar;
   }
 
   &__content {
     min-height: 100vh;
-    padding: $page-content-padding;
+    position: relative;
+    z-index: 100;
+    padding: var(--aui-page-padding-m);
   }
 
   &.hasHeader &__content {
-    padding-top: $page-header-height + $page-content-padding;
+    padding-top: var(--aui-page-header-height);
   }
 
   &.hasToolbar &__content {
-    padding-top: $page-toolbar-height + $page-content-padding;
+    padding-top: var(--aui-page-toolbar-height);
   }
 
   &.hasHeader.hasToolbar &__content {
-    padding-top: $page-header-height + $page-toolbar-height +
-      $page-content-padding;
+    padding-top: calc(
+      var(--aui-page-header-height) + var(--aui-page-toolbar-height)
+    );
   }
 
   &.hasSnackbar &__content {
-    padding-bottom: $page-snackbar-height + $page-content-padding;
+    padding-bottom: calc(
+      var(--aui-page-snackbar-height) + var(--aui-page-padding-m)
+    );
   }
 
   &.hasSider & {
     &__toolbar,
     &__snackbar {
-      left: $page-sider-width;
+      left: var(--aui-page-sider-width);
     }
     &__content {
-      padding-left: $page-sider-width + $page-content-padding;
+      padding-left: var(--aui-page-sider-width);
     }
   }
 }
