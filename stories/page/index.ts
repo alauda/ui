@@ -1,4 +1,9 @@
-import { IconModule, PageModule, PlatformNavModule } from '@alauda/ui';
+import {
+  CardModule,
+  IconModule,
+  PageModule,
+  PlatformNavModule,
+} from '@alauda/ui';
 import { Component } from '@angular/core';
 import { withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/angular';
@@ -9,7 +14,7 @@ storiesOf('Page', module)
   .addDecorator(withKnobs)
   .add('page', () => ({
     moduleMetadata: {
-      imports: [PageModule, PlatformNavModule, IconModule],
+      imports: [PageModule, PlatformNavModule, IconModule, CardModule],
       declarations: [PlatformNavDemoComponent, DemoComponent],
     },
     component: DemoComponent,
@@ -19,7 +24,7 @@ storiesOf('Page', module)
   template: `
     <aui-page>
       <div *auiPageHeader>page header</div>
-      <div *auiPageContent>page content</div>
+      <div *auiPageContent><aui-card>page content</aui-card></div>
       <div *auiPageToolbar>toolbar</div>
       <div *auiPageSnackbar>snackbar</div>
       <!-- 临时占位，等nav完成 -->

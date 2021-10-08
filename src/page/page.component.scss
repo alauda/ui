@@ -36,7 +36,7 @@
   &__snackbar {
     position: fixed;
     bottom: 0;
-    left: 0;
+    left: var(--aui-page-padding-m);
     right: var(--aui-page-padding-m);
     z-index: 100;
     display: flex;
@@ -63,37 +63,28 @@
     @include scroll-bar;
   }
 
-  &__body {
-    min-height: 100vh;
-    padding: var(--aui-page-padding-m);
-  }
-
   &__content {
-    z-index: 100;
+    min-height: 100vh;
     position: relative;
+    z-index: 100;
     padding: var(--aui-page-padding-m);
-    background-color: get-color(n-10);
-    min-height: calc(100vh - 2 * var(--aui-page-padding-m));
-    @include card-shadow;
-
-    border-radius: var(--aui-border-radius-l);
   }
 
-  &.hasHeader &__body {
-    padding-top: calc(var(--aui-page-header-height));
+  &.hasHeader &__content {
+    padding-top: var(--aui-page-header-height);
   }
 
-  &.hasToolbar &__body {
-    padding-top: calc(var(--aui-page-toolbar-height));
+  &.hasToolbar &__content {
+    padding-top: var(--aui-page-toolbar-height);
   }
 
-  &.hasHeader.hasToolbar &__body {
+  &.hasHeader.hasToolbar &__content {
     padding-top: calc(
       var(--aui-page-header-height) + var(--aui-page-toolbar-height)
     );
   }
 
-  &.hasSnackbar &__body {
+  &.hasSnackbar &__content {
     padding-bottom: calc(
       var(--aui-page-snackbar-height) + var(--aui-page-padding-m)
     );
@@ -104,54 +95,8 @@
     &__snackbar {
       left: var(--aui-page-sider-width);
     }
-    &__body {
-      padding-left: calc(var(--aui-page-sider-width));
+    &__content {
+      padding-left: var(--aui-page-sider-width);
     }
-  }
-
-  &.hasHeader &__content {
-    min-height: calc(
-      100vh - 2 * var(--aui-page-padding-m) - var(--aui-page-header-height)
-    );
-  }
-
-  &.hasToolbar &__content {
-    min-height: calc(
-      100vh - var(--aui-page-padding-m) - var(--aui-page-toolbar-height)
-    );
-  }
-
-  &.hasSnackbar &__content {
-    min-height: calc(
-      100vh - var(--aui-page-padding-m) - var(--aui-page-toolbar-height) -
-        var(--aui-page-snackbar-height)
-    );
-  }
-
-  &.hasHeader.hasToolbar &__content {
-    min-height: calc(
-      100vh - 2 * var(--aui-page-padding-m) - var(--aui-page-header-height) -
-        var(--aui-page-toolbar-height)
-    );
-  }
-
-  &.hasToolbar.hasSnackbar &__content {
-    min-height: calc(
-      100vh - var(--aui-page-padding-m) - var(--aui-page-snackbar-height) -
-        var(--aui-page-toolbar-height)
-    );
-  }
-  &.hasHeader.hasSnackbar &__content {
-    min-height: calc(
-      100vh - var(--aui-page-padding-m) - var(--aui-page-snackbar-height) -
-        var(--aui-page-header-height)
-    );
-  }
-
-  &.hasHeader.hasToolbar.hasSnackbar &__content {
-    min-height: calc(
-      100vh - var(--aui-page-padding-m) - var(--aui-page-header-height) -
-        var(--aui-page-toolbar-height) - var(--aui-page-snackbar-height)
-    );
   }
 }
