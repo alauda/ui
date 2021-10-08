@@ -4,11 +4,11 @@
 .aui-breadcrumb {
   display: flex;
   align-content: center;
-  font-size: $font-size-regular;
-  color: $color-text-secondary;
+  font-size: get-size(font-size-m);
+  color: get-color(n-2);
 
   &__separator {
-    margin: 0 4px;
+    margin: 0 get-size(spacing-s);
   }
 
   aui-breadcrumb-item:last-child #{&}__separator {
