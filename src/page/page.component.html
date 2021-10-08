@@ -17,7 +17,9 @@
   <div class="aui-page__snackbar" *ngIf="pageSnackbars.length">
     <ng-container *ngTemplateOutlet="pageSnackbars.first"></ng-container>
   </div>
-  <div class="aui-page__content">
-    <ng-container *ngTemplateOutlet="pageContent"></ng-container>
+  <div class="aui-page__body">
+    <div class="aui-page__content">
+      <ng-container *ngTemplateOutlet="pageContent"></ng-container>
+    </div>
   </div>
 </div>

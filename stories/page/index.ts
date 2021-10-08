@@ -22,13 +22,15 @@ storiesOf('Page', module)
       <div *auiPageContent>page content</div>
       <div *auiPageToolbar>toolbar</div>
       <div *auiPageSnackbar>snackbar</div>
-      <platform-nav-demo *auiPageSider></platform-nav-demo>
+      <!-- 临时占位，等nav完成 -->
+      <div *auiPageSider>侧边栏</div>
+      <!-- <platform-nav-demo *auiPageSider></platform-nav-demo> -->
     </aui-page>
   `,
   styles: [
     `
       ::ng-deep body {
-        padding: 0;
+        padding: 0 !important;
       }
     `,
   ],

@@ -23,6 +23,12 @@
 @mixin modal-shadow() {
   box-shadow: 0 4px 16px 0 get-rgba(n-1, 0.2);
 }
+@mixin page-header-shadow() {
+  box-shadow: 0 1px 4px 0 get-rgba(n-1, 0.1);
+}
+@mixin page-snackbar-shadow() {
+  box-shadow: 0 -1px 4px 0 get-rgba(n-1, 0.1);
+}
 
 @mixin transition($target: all) {
   transition: $target $animation-duration $animation-interpolation;
