@@ -54,33 +54,13 @@ $sort-indicator-color-active: #2c2f36;
 $sort-indicator-size: 4px;
 $sort-indicator-margin: 4px;
 
-// Nav menu
-$nav-menu-main-panel-width: 48px;
-$nav-menu-main-panel-expanded-width: 200px;
-$nav-menu-color: $color-text-help;
-$nav-menu-color-hover: $color-white;
-$nav-menu-divider-color: #555;
-$nav-menu-bg-color-main: #333;
-$nav-menu-bg-color-secondary: mix(#000, $nav-menu-bg-color-main, 24%);
-$nav-menu-bg-color-tertiary: mix(#fff, $nav-menu-bg-color-main, 5%);
-
-$nav-item-selected-marker-width: 4px;
-$nav-item-selected-marker-color: $color-primary;
-$nav-item-padding-hoz: 12px;
-$nav-item-padding-ver: 7px;
-$nav-item-padding-ver-large: 13px;
-$nav-item-icon-size: 16px;
-$nav-item-icon-margin: 8px;
-$nav-item-font-size: $font-size-regular;
-$nav-item-line-height: 18px;
-
 // Page
 $page-background: #f2f2f2;
 $page-header-background: #262626;
 $page-header-height: 48px;
 $page-toolbar-height: 44px;
 $page-snackbar-height: 56px;
-$page-sider-width: $nav-menu-main-panel-expanded-width;
+$page-sider-width: 200px;
 $page-content-padding: 20px;
 
 // Code editor
