@@ -5,17 +5,24 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: $form-item-margin-vertical;
-  color: $color-text-main;
-  font-size: $font-size-regular;
+  color: get-color(n-1);
+  font-size: var(--aui-font-size-m);
 
   &--top {
     flex-direction: column;
+    .aui-form-item__label-wrapper {
+      line-height: var(--aui-line-height-m);
+      margin-bottom: 2px;
+      &.hasLabel:after {
+        content: ' ';
+      }
+    }
   }
 
   &__label-wrapper {
     display: flex;
     align-items: center;
-    line-height: $input-medium-height;
+    line-height: var(--aui-line-height-xxxl);
     flex-shrink: 0;
     padding-right: 8px;
     overflow: hidden;
@@ -51,7 +58,7 @@
 
   &__label {
     display: block;
-    line-height: 16px;
+    line-height: var(--aui-line-height-m);
   }
 
   &__container {
@@ -62,7 +69,7 @@
   &__content {
     display: flex;
     align-items: center;
-    min-height: $input-medium-height;
+    min-height: var(--aui-line-height-xxxl);
 
     aui-select,
     aui-multi-select {
@@ -79,16 +86,16 @@
 
   &__hint-wrapper,
   &__error-wrapper {
-    font-size: $font-size-small;
-    line-height: $line-height-small;
+    font-size: var(--aui-font-size-s);
+    line-height: var(--aui-line-height-s);
   }
 
   &__hint-wrapper {
-    color: $color-text-help;
+    color: get-color(n-4);
   }
 
   &__error-wrapper {
-    color: $color-error;
+    color: get-color(red);
   }
 
   &__addon-wrapper {
@@ -96,11 +103,11 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    height: $input-medium-height;
-    width: $input-medium-height;
+    height: var(--aui-line-height-xxxl);
+    width: var(--aui-line-height-xxxl);
     padding-left: 8px;
-    color: $color-text-help;
-    font-size: $font-size-regular;
+    color: get-color(n-4);
+    font-size: var(--aui-font-size-m);
   }
 }
 
@@ -110,9 +117,5 @@
   .aui-form-item {
     margin-bottom: 0;
     margin-right: 8px;
-
-    &__control-wrapper {
-      width: $select-width;
-    }
   }
 }
