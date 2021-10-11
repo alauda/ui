@@ -1,6 +1,6 @@
 <div [class]="bem.block(labelPosition)" [class.hasError]="hasError$ | async">
   <div
-    [class]="
+    [ngClass]="
       bem.element(
         'label-wrapper',
         { required: !!itemControl?.required },
