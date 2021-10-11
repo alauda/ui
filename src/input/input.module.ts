@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonModule } from '../button/public-api';
 import { IconModule } from '../icon/public-api';
+import { SharedModule } from '../shared/shared.module';
 import { TagModule } from '../tag/public-api';
 
 import { AutosizeDirective } from './autosize.directive';
@@ -27,6 +28,7 @@ import { TagsInputComponent } from './tags-input/tags-input.component';
     ReactiveFormsModule,
     IconModule,
     TagModule,
+    SharedModule,
   ],
   declarations: [
     AutosizeDirective,

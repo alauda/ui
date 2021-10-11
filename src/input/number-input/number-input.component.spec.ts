@@ -43,8 +43,7 @@ describe('InputNumberComponent', () => {
       '#aui-icon-plus',
     );
     expect(inputEl).not.toBeNull();
-    expect(inputEl.className).toContain('aui-input');
-    expect(inputEl.className).toContain('aui-input--medium');
+    expect(inputEl.className).toContain('aui-number-input__input');
     expect(inputEl.placeholder).toBe('placeholder');
   });
 
