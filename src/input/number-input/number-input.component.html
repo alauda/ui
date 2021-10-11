@@ -1,35 +1,39 @@
-<div [ngClass]="bem.block(size)">
+<div
+  [class]="bem.block(size)"
+  [ngClass]="{
+    'is-focus': isFocus,
+    'is-disabled': disabled
+  }"
+  auiClickOutside
+  (auiClickOutside)="isFocus = false"
+>
   <button
     *ngIf="controls"
     aui-button
     type="button"
     [ngClass]="bem.element('decrease')"
-    [square]="true"
-    [size]="size"
     [disabled]="disabled || (value$ | async) <= min"
-    (click)="takeOneStep(false)"
+    (click)="takeOneStep(false); isFocus = true"
   >
     <aui-icon icon="minus"></aui-icon>
   </button>
   <input
     #inputRef
-    aui-input
     autocomplete="off"
     (change)="inputChanged($any($event.target).value)"
     [disabled]="disabled"
     [ngClass]="bem.element('input')"
     [placeholder]="placeholder"
-    [size]="size"
+    (focus)="isFocus = true"
+    (blur)="isFocus = false"
   />
   <button
     *ngIf="controls"
     aui-button
     type="button"
     [ngClass]="bem.element('increase')"
-    [square]="true"
-    [size]="size"
     [disabled]="disabled || (value$ | async) >= max"
-    (click)="takeOneStep(true)"
+    (click)="takeOneStep(true); isFocus = true"
   >
     <aui-icon icon="plus"></aui-icon>
   </button>

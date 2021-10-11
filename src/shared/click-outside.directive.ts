@@ -14,7 +14,7 @@ export class ClickOutsideDirective {
   @Output()
   auiClickOutside = new EventEmitter<Event>();
 
-  @HostListener('body:click', ['$event'])
+  @HostListener('document:click', ['$event'])
   onBodyClick(event: Event) {
     if (!this.el.nativeElement.contains(event.target as Node)) {
       this.auiClickOutside.emit(event);
