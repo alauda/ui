@@ -61,6 +61,8 @@ export class NumberInputComponent
   @ViewChild('inputRef', { read: ElementRef })
   inputRef: ElementRef<HTMLInputElement>;
 
+  isFocus = false;
+
   ngAfterViewInit() {
     this.inputRef.nativeElement.value = (this.snapshot.value ?? '') + '';
   }

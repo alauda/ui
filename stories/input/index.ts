@@ -286,10 +286,8 @@ storiesOf('Input', module)
   })
   .add('number input', () => {
     const sizeOptions = {
-      [ComponentSize.Large]: ComponentSize.Large,
       [ComponentSize.Medium]: ComponentSize.Medium,
       [ComponentSize.Small]: ComponentSize.Small,
-      [ComponentSize.Mini]: ComponentSize.Mini,
     };
     const size = select('size', sizeOptions, ComponentSize.Medium);
     const min = number('min', 0);

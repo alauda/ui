@@ -4,67 +4,80 @@
 $block: 'aui-number-input';
 
 .#{$block} {
-  display: inline-flex;
-  position: relative;
-  width: 144px;
-
-  &--large {
-    width: 172px;
-  }
+  display: flex;
+  width: 140px;
+  padding: 3px;
+  border: 1px solid get-color(n-7);
+  border-radius: get-size(border-radius-m);
+  background-color: get-color(n-9);
+  color: get-text-color(main);
 
   &--small {
-    width: 140px;
+    .#{$block}__decrease.aui-button,
+    .#{$block}__increase.aui-button {
+      width: get-size(line-height-m);
+      height: get-size(line-height-m);
+    }
   }
 
-  &--mini {
-    width: 122px;
+  &:hover {
+    border-color: get-color(primary);
   }
 
-  &__decrease,
-  &__increase {
-    z-index: 1;
-    &:not([disabled]) {
-      &:hover,
-      &:active,
-      &.isActive,
-      &.cdk-keyboard-focused {
-        z-index: 3;
+  &.is-focus {
+    border-color: get-color(primary);
+    @include outline-shadow(primary);
+  }
+
+  &.is-disabled {
+    border: 1px solid get-color(n-7);
+    &:hover {
+      cursor: not-allowed;
+    }
+    .#{$block}__input {
+      color: get-color(n-6);
+      &:hover {
+        cursor: not-allowed;
       }
     }
   }
 
-  &__decrease.aui-button {
-    left: 1px;
-    border-radius: $border-radius 0 0 $border-radius;
-  }
-
+  &__decrease.aui-button,
   &__increase.aui-button {
-    right: 1px;
-    border-radius: 0 $border-radius $border-radius 0;
+    background-color: get-color(n-8);
+    border: unset;
+    width: get-size(icon-size-xl);
+    height: get-size(icon-size-xl);
+    aui-icon {
+      font-size: get-size(font-size-s);
+    }
+    .aui-button__content {
+      padding: unset;
+    }
+    &:not(:last-child) {
+      margin: unset;
+    }
   }
 
   &__input {
     min-width: 0;
-  }
-
-  .aui-input {
-    &:not(:first-child) {
-      border-radius: 0;
-    }
-
+    line-height: get-size(line-height-m);
+    border: unset;
+    padding: unset;
+    margin: 0 get-size(spacing-s);
+    background-color: get-color(n-9);
+    color: get-text-color(main);
     text-align: center;
-    &:hover,
-    &:active,
     &:focus {
-      z-index: 3;
+      border: unset;
+    }
+    &:focus-visible {
+      outline: unset;
     }
   }
 }
 
 aui-number-input.ng-invalid.ng-dirty,
 .ng-submitted aui-number-input.ng-invalid {
-  .aui-number-input__input {
-    border-color: $color-error;
-    z-index: 2;
-  }
+  border-color: get-color(red);
 }
