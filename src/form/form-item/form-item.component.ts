@@ -24,7 +24,7 @@ import {
 
 import { Bem, buildBem } from '../../utils';
 import { FormDirective } from '../form.directive';
-import { LabelPosition } from '../form.types';
+import { FormItemWidth, LabelPosition } from '../form.types';
 import {
   FormItemAddonDirective,
   FormItemControlDirective,
@@ -46,6 +46,9 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
 
   @Input()
   labelWidth = 'auto';
+
+  @Input()
+  width: FormItemWidth;
 
   @Input()
   labelPosition: LabelPosition = LabelPosition.Right;
@@ -77,6 +80,12 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
   parentForm: NgForm | FormGroupDirective;
 
   private readonly destroy$$ = new Subject<void>();
+
+  get formItemWidthClass() {
+    return this.width
+      ? this.bem.element('content', { [this.width]: true })
+      : '';
+  }
 
   constructor(
     private readonly cdr: ChangeDetectorRef,

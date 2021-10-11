@@ -13,7 +13,7 @@
     <ng-content select="label[auiFormItemLabel]"></ng-content>
   </div>
   <div class="aui-form-item__container">
-    <div class="aui-form-item__content">
+    <div class="aui-form-item__content" [ngClass]="formItemWidthClass">
       <ng-content></ng-content>
       <div
         *ngIf="emptyAddon || addons?.length"

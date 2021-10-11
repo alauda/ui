@@ -1,6 +1,7 @@
 import {
   ButtonModule,
   CheckboxModule,
+  FormItemWidth,
   FormModule,
   IconModule,
   InputModule,
@@ -22,11 +23,18 @@ storiesOf('Form', module)
       [LabelPosition.Left]: LabelPosition.Left,
       [LabelPosition.Top]: LabelPosition.Top,
     };
+    const contentWidthOptions = {
+      [FormItemWidth.Small]: FormItemWidth.Small,
+      [FormItemWidth.Medium]: FormItemWidth.Medium,
+      [FormItemWidth.Large]: FormItemWidth.Large,
+      默认: '',
+    };
     const labelPosition = select(
       'labelPosition',
       labelPositionOptions,
       LabelPosition.Right,
     );
+    const contentWidth = select('contentWidth', contentWidthOptions, '');
 
     const inline = boolean('inline', false);
 
@@ -53,7 +61,7 @@ storiesOf('Form', module)
           [auiFormEmptyAddon]="true"
           style="margin: auto; max-width: 960px;"
         >
-          <aui-form-item>
+          <aui-form-item [width]="contentWidth">
             <label auiFormItemLabel>姓名</label>
             <input
               auiFormItemControl
@@ -73,7 +81,7 @@ storiesOf('Form', module)
               <aui-icon icon="info_circle_s"></aui-icon>
             </div>
           </aui-form-item>
-          <aui-form-item>
+          <aui-form-item [width]="contentWidth">
             <label auiFormItemLabel>性别</label>
             <aui-select
               auiFormItemControl
@@ -153,7 +161,7 @@ storiesOf('Form', module)
               <aui-icon icon="info_circle_s"></aui-icon>
             </div>
           </aui-form-item>
-          <aui-form-item>
+          <aui-form-item [width]="contentWidth">
             <label auiFormItemLabel>描述</label>
             <textarea auiFormItemControl aui-input></textarea>
           </aui-form-item>
@@ -171,6 +179,7 @@ storiesOf('Form', module)
         labelWidth,
         labelPosition,
         inline,
+        contentWidth,
       },
     };
   });
