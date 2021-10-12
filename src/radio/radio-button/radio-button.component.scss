@@ -66,6 +66,9 @@ $block: 'aui-radio-button';
 
   &__pointer {
     color: $radio-border-color-primary;
+    &:not(:last-child) {
+      margin: 0;
+    }
     .aui-icon {
       position: absolute;
       right: 0;
