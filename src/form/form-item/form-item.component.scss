@@ -1,35 +1,55 @@
 @import '../../theme/var';
 @import '../../theme/mixin';
 
+$form-item-width: (
+  large: (
+    width: get-size(form-item-width-l),
+  ),
+  medium: (
+    width: get-size(form-item-width-m),
+  ),
+  small: (
+    width: get-size(form-item-width-s),
+  ),
+);
+
 .aui-form-item {
   display: flex;
   align-items: flex-start;
   margin-bottom: $form-item-margin-vertical;
-  color: $color-text-main;
-  font-size: $font-size-regular;
+  color: get-color(n-1);
+  font-size: get-size(font-size-m);
 
   &--top {
     flex-direction: column;
+    .aui-form-item__label-wrapper {
+      line-height: get-size(line-height-m);
+      margin-bottom: 2px;
+      &:after {
+        display: none;
+      }
+    }
   }
 
   &__label-wrapper {
     display: flex;
     align-items: center;
-    line-height: $input-medium-height;
+    line-height: get-size(line-height-xxxl);
     flex-shrink: 0;
     padding-right: 8px;
     overflow: hidden;
-
-    &.hasLabel:after {
-      content: ':';
-      align-self: flex-start;
-      margin-left: 2px;
-    }
 
     &--required .aui-form-item__label:before {
       content: '*';
       color: $color-error;
       margin-right: 4px;
+    }
+
+    &.hasLabel:after {
+      content: ':';
+      align-self: flex-start;
+      margin-left: 2px;
+      line-height: get-size(line-height-xxxl);
     }
 
     &--left {
@@ -51,7 +71,7 @@
 
   &__label {
     display: block;
-    line-height: 16px;
+    line-height: get-size(line-height-m);
   }
 
   &__container {
@@ -62,12 +82,27 @@
   &__content {
     display: flex;
     align-items: center;
-    min-height: $input-medium-height;
+    min-height: get-size(line-height-xxxl);
 
     aui-select,
     aui-multi-select {
       &.aui-form-item__control {
         width: 100%;
+      }
+    }
+
+    @each $key in large medium small {
+      $map: map-get($form-item-width, $key);
+      &--#{$key} {
+        .aui-form-item__control {
+          width: map-get($map, width);
+        }
+        aui-select,
+        aui-multi-select {
+          &.aui-form-item__control {
+            width: map-get($map, width);
+          }
+        }
       }
     }
   }
@@ -79,16 +114,16 @@
 
   &__hint-wrapper,
   &__error-wrapper {
-    font-size: $font-size-small;
-    line-height: $line-height-small;
+    font-size: get-size(font-size-s);
+    line-height: get-size(line-height-s);
   }
 
   &__hint-wrapper {
-    color: $color-text-help;
+    color: get-color(n-4);
   }
 
   &__error-wrapper {
-    color: $color-error;
+    color: get-color(red);
   }
 
   &__addon-wrapper {
@@ -96,11 +131,10 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    height: $input-medium-height;
-    width: $input-medium-height;
+    height: get-size(line-height-xxxl);
     padding-left: 8px;
-    color: $color-text-help;
-    font-size: $font-size-regular;
+    color: get-color(n-4);
+    font-size: get-size(font-size-m);
   }
 }
 
@@ -110,9 +144,5 @@
   .aui-form-item {
     margin-bottom: 0;
     margin-right: 8px;
-
-    &__control-wrapper {
-      width: $select-width;
-    }
   }
 }

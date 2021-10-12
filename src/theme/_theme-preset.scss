@@ -26,6 +26,7 @@
   --aui-font-size-l: 16px;
   --aui-font-size-m: 14px;
   --aui-font-size-s: 12px;
+  --aui-line-height-xxxl: 32px;
   --aui-line-height-xxl: 28px;
   --aui-line-height-xl: 24px;
   --aui-line-height-l: 22px;
@@ -44,6 +45,9 @@
   --aui-page-sider-width: 260px;
   --aui-page-padding-m: 20px;
   --aui-page-padding-s: 16px;
+  --aui-form-item-width-l: 732px;
+  --aui-form-item-width-m: 436px;
+  --aui-form-item-width-s: 140px;
 }
 
 @function rgb-string($color) {
