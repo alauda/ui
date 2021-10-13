@@ -14,7 +14,10 @@ $block: aui-time-picker;
     &.ng-submitted,
     &.ng-dirty {
       .#{$block}__container {
-        border-color: $color-error !important;
+        border-color: get-color(red) !important;
+        &.isFocused {
+          @include outline-shadow(red);
+        }
       }
     }
   }
@@ -22,11 +25,20 @@ $block: aui-time-picker;
 
 .#{$block} {
   &__container {
-    display: inline-flex;
-    border: $border-style $border-width $default-border-color;
-    &:hover,
-    &.focus {
-      border-color: $hover-border-color;
+    display: flex;
+    border-radius: get-size(border-radius-m);
+    border: $border-style $border-width get-color(n-7);
+    background-color: get-color(n-9);
+    &.disabled {
+      cursor: not-allowed;
+      background-color: get-color(n-8);
+    }
+    &:hover:not(.disabled) {
+      border-color: get-color(primary);
+    }
+    &.isFocused:not(.disabled) {
+      border-color: get-color(primary);
+      @include outline-shadow(primary);
     }
     > .aui-input {
       border: none;
@@ -34,8 +46,9 @@ $block: aui-time-picker;
         background-color: initial;
         cursor: pointer;
       }
-      &.disabled {
-        cursor: not-allowed;
+      &:focus {
+        outline: none;
+        box-shadow: none;
       }
     }
   }
@@ -44,6 +57,7 @@ $block: aui-time-picker;
     font-size: $time-picker-icon-size;
     width: $time-picker-icon-size;
     height: $time-picker-icon-size;
+    line-height: $time-picker-icon-size;
     align-self: center;
     margin-right: 6px;
     .clear {

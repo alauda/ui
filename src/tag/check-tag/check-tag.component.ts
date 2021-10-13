@@ -21,6 +21,7 @@ import { TagType } from '../tag.types';
 })
 export class CheckTagComponent {
   bem: Bem = buildBem('aui-tag');
+  hovered = false;
 
   @Input()
   checked = false;
@@ -37,7 +38,7 @@ export class CheckTagComponent {
   get rootClass() {
     return `aui-check-tag ${this.bem.block(
       this.size,
-      this.checked ? TagType.Primary : TagType.Info,
+      this.checked || this.hovered ? TagType.Primary : TagType.Info,
     )} ${this.round ? 'isRound' : ''}`;
   }
 }

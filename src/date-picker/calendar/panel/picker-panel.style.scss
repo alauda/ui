@@ -19,7 +19,6 @@ $left-mask-shadow: -12px 0 0 0 white;
     display: flex;
     flex-direction: column;
     margin: 12px 9px;
-    width: $range-picker-header-width;
     align-items: center;
     &.month-panel-container,
     &.year-panel-container {
@@ -33,8 +32,8 @@ $left-mask-shadow: -12px 0 0 0 white;
       padding: 0;
       margin: 0;
       button {
-        width: $date-picker-cell-size;
         height: $date-picker-cell-size !important;
+        width: $date-picker-cell-size !important;
       }
 
       .#{$block}__row + .#{$block}__row {
@@ -53,6 +52,7 @@ $left-mask-shadow: -12px 0 0 0 white;
     align-items: center;
     font-size: $font-size-regular;
     font-weight: normal;
+    width: 100%;
 
     &.week-header {
       span {
@@ -97,6 +97,10 @@ $left-mask-shadow: -12px 0 0 0 white;
     &.is-disabled {
       background-color: $color-disabled-bg;
       box-shadow: $left-disabled-shadow, $right-disabled-shadow;
+      button {
+        color: get-color(n-6) !important;
+        border-color: get-color(n-6) !important;
+      }
     }
 
     &.is-disabled + &:not(.is-disabled):not(.is-range-start) {
@@ -112,7 +116,9 @@ $left-mask-shadow: -12px 0 0 0 white;
     }
 
     &.is-today button {
-      border-color: #1890ff;
+      border: get-color(primary) 1px solid;
+      color: get-color(primary);
+      background-color: get-color(p-7);
     }
 
     &.is-active button {

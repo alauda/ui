@@ -49,8 +49,8 @@
     [clearable]="clearable"
     [clearText]="clearText"
     (clear)="clear.next()"
-    (confirm)="confirmValue()"
-    *ngIf="showFooter"
+    (confirm)="confirmValue(rangeValue)"
+    *ngIf="showFooter && showTime"
   >
     <div [class]="bem.element('footer-content')" *ngIf="showTime">
       <ng-container

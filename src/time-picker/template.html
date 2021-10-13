@@ -1,8 +1,9 @@
 <div
-  [class]="bem.element('container')"
+  [class]="rootClass"
   [class.focus]="focused"
-  (mouseenter)="hovered = true"
-  (mouseleave)="hovered = false"
+  [class.disabled]="disabled"
+  (mouseenter)="!disabled && (hovered = true)"
+  (mouseleave)="!disabled && (hovered = false)"
 >
   <input
     aui-input
@@ -15,7 +16,7 @@
     [auiTooltip]="template"
     [placeholder]="placeholder"
     [auiTooltipDisabled]="disabled"
-    [class.disabled]="disabled"
+    [disabled]="disabled"
     [auiTooltipPosition]="tooltipPosition"
     auiTooltipTrigger="manual"
     #tooltip="auiTooltip"
@@ -26,6 +27,7 @@
       *ngIf="clearable && timeFormatValue && hovered; else clock"
       class="clear"
       icon="close_small"
+      (mousedown)="$event.preventDefault()"
       (click)="clear()"
     ></aui-icon>
     <ng-template #clock>
@@ -36,6 +38,7 @@
 
 <ng-template #template>
   <aui-time-picker-panel
+    (mousedown)="$event.preventDefault()"
     (click)="$event.stopImmediatePropagation()"
     [(ngModel)]="timeValue"
     (ngModelChange)="changeFromPanel($event)"

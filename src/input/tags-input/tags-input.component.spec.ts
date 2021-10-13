@@ -38,12 +38,14 @@ describe('TagsInputComponent', () => {
     expect(tags.item(1).innerHTML).toContain('service');
   }));
 
-  it('should push new value when press Enter', () => {
+  it('should push new value when press Enter', fakeAsync(() => {
     inputEl.value = 'app';
     inputEl.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     fixture.detectChanges();
+    tick(20);
+    fixture.detectChanges();
     expect(ins.value).toEqual(['app']);
-  });
+  }));
 
   it('should last tag could be delete by press Backspace', fakeAsync(() => {
     ins.value = ['app'];

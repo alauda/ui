@@ -1,3 +1,9 @@
-<div [class]="rootClass" (click)="checkedChange.emit(!checked)">
+<div
+  [class]="rootClass"
+  (click)="checkedChange.emit(!checked)"
+  (mouseenter)="hovered = true"
+  (mouseleave)="hovered = false"
+  [class.isSolid]="checked"
+>
   <span class="aui-tag__content"><ng-content></ng-content></span>
 </div>
