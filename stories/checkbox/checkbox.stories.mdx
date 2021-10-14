@@ -23,7 +23,7 @@ import { CheckboxModule } from '@alauda/ui';
   <Story name="Basic" height="60px">
     {{
       template: /* HTML */ `
-        value: {{ model }}
+        value: {{ model | json }}
         <br />
         <aui-checkbox [(ngModel)]="model.a">选项A</aui-checkbox>
         <aui-checkbox [(ngModel)]="model.b">选项B</aui-checkbox>
