@@ -22,7 +22,7 @@
         icon="check_s"
         [hidden]="!(value$ | async) || indeterminate"
       ></aui-icon>
-      <aui-icon icon="minus_s" [hidden]="!indeterminate"></aui-icon>
+      <i class="aui-checkbox__icon-indeterminate" [hidden]="!indeterminate"></i>
     </i>
     <span class="aui-checkbox__content"><ng-content></ng-content></span>
   </label>
