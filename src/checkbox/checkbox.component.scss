@@ -5,11 +5,11 @@
 $block: 'aui-checkbox';
 
 .#{$block} {
-  margin-right: $checkbox-margin;
+  margin-right: get-size(spacing-xxxl);
   display: inline-block;
-  color: $checkbox-color;
-  font-size: $checkbox-font-size;
-  line-height: $checkbox-line-height;
+  color: get-color(n-1);
+  font-size: get-size(font-size-m);
+  line-height: get-size(inline-height-m);
   position: relative;
 
   &__label {
@@ -18,26 +18,27 @@ $block: 'aui-checkbox';
     cursor: pointer;
 
     &:hover .#{$block}__pointer {
-      border-color: $checkbox-border-color-primary;
+      border-color: get-color(primary);
     }
   }
 
   &.isTag {
-    margin-right: $tag-margin;
-    height: $tag-medium-height;
-    padding: 0 $tag-medium-padding + $tag-border-width;
-    line-height: $tag-medium-height;
-    background-color: $checkbox-tag-bg-color;
-    border-radius: $tag-medium-height / 2;
-    font-size: $tag-medium-font-size;
+    margin-right: get-size(spacing-m);
+    height: get-size(inline-height-s);
+    padding: 0 get-size(spacing-l);
+    line-height: get-size(inline-height-s);
+    background-color: get-color(n-8);
+    border-radius: calc(#{get-size(inline-height-s)} / 2);
+    font-size: get-size(font-size-m);
 
-    &:hover {
-      background-color: $checkbox-tag-bg-color-hover;
+    &:hover .#{$block}__pointer {
+      border-color: get-color(primary);
     }
 
+    &:hover,
     &.isChecked {
-      background-color: $checkbox-tag-bg-color-hover;
-      color: $color-primary;
+      background-color: get-color(p-6);
+      color: get-color(primary);
     }
   }
 
@@ -48,5 +49,26 @@ $block: 'aui-checkbox';
   }
 
   @include pointer('isChecked');
-  @include pointer('isIndeterminate');
+
+  &.isIndeterminate &__pointer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-color: get-color(primary);
+    background-color: get-color(n-9);
+  }
+
+  &__icon-indeterminate {
+    height: get-size(spacing-m);
+    width: get-size(spacing-m);
+    background-color: get-color(primary);
+  }
+
+  &.isIndeterminate.isDisabled &__pointer {
+    border-color: get-color(p-4);
+  }
+
+  &.isDisabled &__icon-indeterminate {
+    background-color: get-color(p-4);
+  }
 }

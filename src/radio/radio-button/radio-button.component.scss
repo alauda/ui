@@ -5,57 +5,72 @@ $block: 'aui-radio-button';
 
 .#{$block} {
   font-size: 0;
-  margin-left: -$radio-border-width;
+  margin-left: -1px;
   display: inline-block;
   vertical-align: middle;
   position: relative;
-  color: $radio-border-color-primary;
-  border: $radio-border-width $radio-border-style $radio-border-color-primary;
-  background-color: $color-white;
+  color: get-color(primary);
+  border: get-size(border-m) $border-style get-color(primary);
+  background-color: get-color(n-9);
   overflow: hidden;
   z-index: 1;
   @include transition;
 
-  &:hover:not(.isDisabled) {
-    z-index: 2;
-    background-color: $color-primary-ultra-light;
-  }
-
   &.cdk-keyboard-focused {
     z-index: 2;
-    border-color: $radio-border-color-primary;
-    @include outline-shadow($radio-outline-color);
+    @include outline-shadow(primary);
+  }
+
+  &:hover {
+    background-color: get-color(p-7);
   }
 
   &.isChecked:not(.isDisabled) {
     z-index: 2;
-    color: $color-white;
-    background-color: $radio-border-color-primary;
+    color: get-color(n-10);
+    background-color: get-color(primary);
+  }
+
+  &.isChecked.isDisabled {
+    color: get-color(n-10);
+    border-color: get-color(p-4);
+    background-color: get-color(p-4);
   }
 
   &.isPlain {
-    color: $radio-color;
-    border: $radio-border-width $radio-border-style $radio-border-color;
-    background-color: $color-white;
+    color: get-color(n-1);
+    border: 1px solid get-color(n-7);
+    background-color: get-color(n-9);
     &:hover,
     &.isChecked {
+      z-index: 2;
       &:not(.isDisabled) {
-        color: $radio-border-color-primary;
-        border-color: $radio-border-color-primary;
-        background-color: $color-white;
+        color: get-color(primary);
+        border-color: get-color(primary);
+        background-color: get-color(n-9);
       }
+    }
+    &.isDisabled {
+      color: get-color(n-6);
+      border-color: get-color(n-7);
+      background-color: get-color(n-8);
+    }
+    &.isDisabled.isChecked {
+      color: get-color(p-4);
+      border-color: get-color(p-4);
+      background-color: get-color(n-9);
     }
   }
 
   &.isDisabled {
     z-index: 0;
-    color: $radio-border-color;
-    border-color: $radio-border-color;
-    background-color: $radio-bg-color-disabled;
+    color: get-color(p-4);
+    border-color: get-color(p-4);
+    background-color: get-color(p-7);
 
     .#{$block} {
       &__pointer {
-        color: $radio-border-color;
+        color: get-color(p-4);
       }
 
       &__label {
@@ -65,7 +80,7 @@ $block: 'aui-radio-button';
   }
 
   &__pointer {
-    color: $radio-border-color-primary;
+    color: get-color(primary);
     &:not(:last-child) {
       margin: 0;
     }
@@ -85,18 +100,20 @@ $block: 'aui-radio-button';
   &__label {
     display: flex;
     align-items: center;
-    font-size: $radio-font-size;
+    font-size: get-size(font-size-m);
     cursor: pointer;
   }
 
   &--medium {
     .#{$block} {
       &__pointer {
-        font-size: $radio-button-medium-pointer-size;
+        .aui-icon {
+          font-size: get-size(font-size-l);
+        }
       }
       &__label {
-        height: $radio-button-medium-height - $radio-border-width * 2;
-        padding: 0 $radio-button-medium-padding-hoz;
+        height: calc(#{get-size(inline-height-m)} - 2px);
+        padding: 0 get-size(inline-padding-m);
       }
     }
   }
@@ -104,20 +121,13 @@ $block: 'aui-radio-button';
   &--small {
     .#{$block} {
       &__pointer {
-        font-size: $radio-button-small-pointer-size;
+        .aui-icon {
+          font-size: get-size(font-size-s);
+        }
       }
       &__label {
-        height: $radio-button-small-height - $radio-border-width * 2;
-        padding: 0 $radio-button-small-padding-hoz;
-      }
-    }
-  }
-
-  &--mini {
-    .#{$block} {
-      &__label {
-        height: $radio-button-mini-height - $radio-border-width * 2;
-        padding: 0 $radio-button-mini-padding-hoz;
+        height: calc(#{get-size(inline-height-s)} - 2px);
+        padding: 0 get-size(inline-padding-s);
       }
     }
   }
@@ -126,14 +136,14 @@ $block: 'aui-radio-button';
 #{$block}:first-child {
   .#{$block} {
     margin-left: 0;
-    border-top-left-radius: $radio-button-border-radius;
-    border-bottom-left-radius: $radio-button-border-radius;
+    border-top-left-radius: get-size(border-radius-m);
+    border-bottom-left-radius: get-size(border-radius-m);
   }
 }
 
 #{$block}:last-child {
   .#{$block} {
-    border-top-right-radius: $radio-button-border-radius;
-    border-bottom-right-radius: $radio-button-border-radius;
+    border-top-right-radius: get-size(border-radius-m);
+    border-bottom-right-radius: get-size(border-radius-m);
   }
 }

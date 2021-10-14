@@ -101,9 +101,17 @@ import { RadioModule } from '@alauda/ui';
           <aui-radio-button value="2">选项二</aui-radio-button>
           <aui-radio-button value="3">选项三</aui-radio-button>
         </aui-radio-group>
+        <p>disabled</p>
+        <aui-radio-group [(ngModel)]="model2" [plain]="false">
+          <aui-radio-button [disabled]="true" value="1"
+            >选项一</aui-radio-button
+          >
+          <aui-radio-button value="2">选项二</aui-radio-button>
+        </aui-radio-group>
       `,
       props: {
         model: '1',
+        model2: '1',
       },
     }}
   </Story>
@@ -125,11 +133,6 @@ import { RadioModule } from '@alauda/ui';
             <aui-radio-button value="2">选项二</aui-radio-button>
             <aui-radio-button value="3">选项三</aui-radio-button>
           </aui-radio-group><br/><br/>
-        <aui-radio-group [(ngModel)]="model" size="mini">
-            <aui-radio-button value="1">选项一</aui-radio-button>
-            <aui-radio-button value="2">选项二</aui-radio-button>
-            <aui-radio-button value="3">选项三</aui-radio-button>
-        </aui-radio-group>
       `,
       props: {
         model: '1',

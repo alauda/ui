@@ -4,11 +4,11 @@
 $block: 'aui-radio';
 
 .#{$block} {
-  margin-right: $radio-margin;
+  margin-right: get-size(spacing-xxxl);
   display: inline-block;
-  color: $radio-color;
-  font-size: $radio-font-size;
-  line-height: $radio-line-height;
+  color: get-color(n-1);
+  font-size: get-size(font-size-m);
+  line-height: get-size(inline-height-m);
   position: relative;
 
   &__input {
@@ -24,7 +24,8 @@ $block: 'aui-radio';
 
     &:hover {
       .#{$block}__pointer {
-        border-color: $radio-border-color-primary;
+        border-color: get-color(primary);
+        background-color: get-color(n-10);
       }
     }
   }
@@ -37,35 +38,35 @@ $block: 'aui-radio';
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: $radio-pointer-outer-radius * 2;
-    height: $radio-pointer-outer-radius * 2;
-    margin-right: $radio-label-margin;
+    width: get-size(icon-size-m);
+    height: get-size(icon-size-m);
+    margin-right: get-size(spacing-m);
     border-radius: 50%;
-    border: $radio-border-width $radio-border-style $radio-border-color;
-    background-color: $color-white;
+    border: get-size(border-m) $border-style get-color(n-7);
+    background-color: get-color(n-9);
     vertical-align: middle;
     @include transition;
 
     &:before {
       content: '';
       display: block;
-      width: $radio-pointer-inner-radius * 2;
-      height: $radio-pointer-inner-radius * 2;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
     }
   }
 
   &.cdk-keyboard-focused &__pointer {
-    border-color: $radio-border-color-primary;
-    @include outline-shadow($radio-outline-color);
+    border-color: get-color(primary);
+    @include outline-shadow(primary);
   }
 
   &.isChecked &__pointer {
-    border-color: $radio-border-color-primary;
-    background-color: $radio-border-color-primary;
+    border-color: get-color(primary);
+    background-color: get-color(primary);
 
     &:before {
-      background-color: $color-white;
+      background-color: get-color(n-10);
     }
   }
 
@@ -74,11 +75,12 @@ $block: 'aui-radio';
   }
 
   &.isDisabled &__pointer {
-    border-color: $radio-border-color;
-    background-color: $radio-bg-color-disabled;
+    border-color: get-color(n-7);
+    background-color: get-color(n-8);
   }
 
-  &.isDisabled.isChecked &__pointer:before {
-    background-color: $radio-border-color;
+  &.isDisabled.isChecked &__pointer {
+    border-color: get-color(p-4);
+    background-color: get-color(p-4);
   }
 }
