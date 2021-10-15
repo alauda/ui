@@ -2,11 +2,9 @@ import {
   AfterContentInit,
   ChangeDetectionStrategy,
   Component,
-  ContentChildren,
   EventEmitter,
   Input,
   Output,
-  QueryList,
   ViewEncapsulation,
 } from '@angular/core';
 import {
@@ -30,9 +28,7 @@ import {
   switchMap,
 } from 'rxjs/operators';
 
-import { NavItemGroupComponent } from './nav-item-group/nav-item-group.component';
-import { NavItemComponent } from './nav-item/nav-item.component';
-import { NavItemKey } from './nav-menu.types';
+import { NavGroupConfig, NavItemConfig, NavItemKey } from './nav-menu.types';
 
 @Component({
   selector: 'aui-nav-menu',
@@ -61,67 +57,41 @@ export class NavMenuComponent implements AfterContentInit {
 
   @Input() mainPanelCollapsed = false;
   @Input() secondaryPanelCollapsed = false;
-  @Input() hideMainPanelToggle = false;
+  @Input() hideMainPanelToggle = true;
   @Input() hideSecondaryPanelToggle = false;
   @Input() theme = 'dark';
+  @Input() items: NavItemConfig[];
+  @Input() groups: NavGroupConfig[];
 
   @Output() activatedKeyChange = new EventEmitter<NavItemKey>();
   @Output() mainPanelCollapsedChange = new EventEmitter<boolean>();
   @Output() secondaryPanelCollapsedChange = new EventEmitter<boolean>();
 
-  @ContentChildren(NavItemComponent)
-  private readonly items: QueryList<NavItemComponent>;
-
-  @ContentChildren(NavItemGroupComponent)
-  private readonly groups: QueryList<NavItemGroupComponent>;
-
-  @ContentChildren(NavItemComponent, { descendants: true })
-  flatItems: QueryList<NavItemComponent>;
-
-  items$: Observable<NavItemComponent[]>;
-  groups$: Observable<NavItemGroupComponent[]>;
   activeKeys$: Observable<NavItemKey[]>;
   expandedKeys$: Observable<NavItemKey[]>;
-  stickedItem$: Observable<NavItemComponent>;
+  stickedItem$: Observable<NavItemConfig>;
   hasFocusedItem$: Observable<boolean>;
 
+  paths: string[][] = [];
+
+  flatItems: NavItemConfig[] = [];
+
   ngAfterContentInit() {
-    this.items$ = this.items.changes.pipe(
-      startWith(this.items),
-      map((list: QueryList<NavItemComponent>) => list.toArray()),
+    const items =
+      this.items ||
+      this.groups.reduce((prev, cur) => [...prev, ...cur.items], []);
+    this.flatItems = this.flattenNav(items);
+    this.paths = this.getPaths(items);
+    this.activeKeys$ = this.activatedKey$$.pipe(
+      map(key => this.findPathByLastKey(key)),
       publishReplay(1),
       refCount(),
     );
-    this.groups$ = this.groups.changes.pipe(
-      startWith(this.groups),
-      map((list: QueryList<NavItemGroupComponent>) => list.toArray()),
+    this.expandedKeys$ = merge(this.activatedKey$$, this.expandedKey$$).pipe(
+      map((key: NavItemKey) => this.findPathByLastKey(key)),
       publishReplay(1),
       refCount(),
     );
-    this.activeKeys$ = combineLatest([
-      this.activatedKey$$,
-      this.flatItems.changes.pipe(startWith(this.flatItems)),
-    ]).pipe(
-      map(([key, items]: [NavItemKey, QueryList<NavItemComponent>]) =>
-        items.find(item => item.key === key),
-      ),
-      map(item => this.getItemPath(item)),
-      publishReplay(1),
-      refCount(),
-    );
-
-    this.expandedKeys$ = combineLatest([
-      merge(this.activatedKey$$, this.expandedKey$$),
-      this.flatItems.changes.pipe(startWith(this.flatItems)),
-    ]).pipe(
-      map(([key, items]: [NavItemKey, QueryList<NavItemComponent>]) =>
-        items.find(item => item.key === key),
-      ),
-      map(item => this.getItemPath(item)),
-      publishReplay(1),
-      refCount(),
-    );
-
     this.stickedItem$ = this.focusedItemKey$$
       .pipe(
         bufferCount(2, 1),
@@ -137,20 +107,14 @@ export class NavMenuComponent implements AfterContentInit {
         ),
       )
       .pipe(
-        switchMap(key =>
-          combineLatest([
-            of(key),
-            this.flatItems.changes.pipe(startWith(this.flatItems)),
-          ]),
-        ),
-        switchMap(([key, items]: [NavItemKey, QueryList<NavItemComponent>]) => {
-          const stickedItem = items.find(item => item.key === key);
+        switchMap((key: NavItemKey) => {
+          const stickedItem = this.flatItems.find(item => item.key === key);
           return stickedItem?.subItems.length > 0
             ? of(stickedItem)
             : this.expandedKeys$.pipe(
                 map(keys => keys[0]),
                 map(expandedKey =>
-                  items.find(item => item.key === expandedKey),
+                  this.flatItems.find(item => item.key === expandedKey),
                 ),
               );
         }),
@@ -159,23 +123,43 @@ export class NavMenuComponent implements AfterContentInit {
         publishReplay(1),
         refCount(),
       );
-
     this.hasFocusedItem$ = combineLatest([
-      this.flatItems.changes.pipe(startWith(this.flatItems)),
       this.focusedItemKey$$.pipe(distinctUntilChanged()),
       this.secondaryPanelHover$$,
     ]).pipe(
-      map(
-        ([items, key, hover]: [
-          QueryList<NavItemComponent>,
-          NavItemKey,
-          boolean,
-        ]) => {
-          const focusedItem = items.find(item => item.key === key);
-          return focusedItem?.subItems.length > 0 || hover;
-        },
-      ),
+      map(([key, hover]: [NavItemKey, boolean]) => {
+        const focusedItem = this.flatItems.find(item => item.key === key);
+        return focusedItem?.subItems.length > 0 || hover;
+      }),
       debounceTime(0),
+    );
+  }
+
+  private flattenNav(items: NavItemConfig[]): NavItemConfig[] {
+    if (!items?.length) {
+      return [];
+    }
+    return items.reduce(
+      (prev, cur) => [...prev, ...this.flattenNav(cur.children)],
+      items,
+    );
+  }
+
+  private findPathByLastKey(key: NavItemKey) {
+    return this.paths.find(path => [...path].pop() === key);
+  }
+
+  private getPaths(items: NavItemConfig[], parent?: string[]): string[][] {
+    if (!items?.length) {
+      return [];
+    }
+    const pre = parent ? [...parent] : [];
+    return items.reduce(
+      (prev, cur) => [
+        ...prev,
+        ...this.getPaths(cur.children, [...pre, cur.key]),
+      ],
+      items.map(item => [...pre, item.key]),
     );
   }
 
@@ -204,14 +188,5 @@ export class NavMenuComponent implements AfterContentInit {
 
   expandedKeyChanged(key: NavItemKey) {
     this.expandedKey$$.next(key);
-  }
-
-  private getItemPath(item: NavItemComponent): NavItemKey[] {
-    if (!item) {
-      return [];
-    }
-    return item.parentItem
-      ? [...this.getItemPath(item.parentItem), item.key]
-      : [item.key];
   }
 }

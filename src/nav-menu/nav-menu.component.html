@@ -6,8 +6,8 @@
   <div class="aui-nav-menu__main-panel">
     <div class="aui-nav-menu__main-panel-content" cdkScrollable>
       <aui-nav-item-ul
-        [items]="items$ | async"
-        [groups]="groups$ | async"
+        [items]="items"
+        [groups]="groups"
         [mainPanelCollapsed]="mainPanelCollapsed"
         (focusedItemChanged)="handleFocusedItemChanged($event)"
       ></aui-nav-item-ul>

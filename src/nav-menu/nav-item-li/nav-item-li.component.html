@@ -1,55 +1,87 @@
 <div
   class="aui-nav-item-li"
-  [class.isActive]="item.depth === 0 && (isActive$ | async)"
+  [class.isActive]="depth === 0 && (isActive$ | async)"
   [class.isExpanded]="isExpanded$ | async"
   [class.hasDivider]="item.divider"
 >
-  <div
+  <a
     class="aui-nav-item-li__content"
     [class.isActive]="isActive$ | async"
     [class.isExpanded]="isExpanded$ | async"
     [class.isSticked]="mainPanelCollapsed && (isSticked$ | async)"
     [class.hasSubItem]="hasSubItem"
+    [class.isLeaf]="depth === 1"
     [class.isMainPanelCollapsed]="mainPanelCollapsed"
-    [attr.data-set-depth]="item.depth"
+    [attr.data-set-depth]="depth"
+    (mouseenter)="handleContentFocused(true)"
+    (mouseleave)="handleContentFocused(false)"
+    [href]="item.href"
+    [target]="isExternal ? '_blank' : '_self'"
+    *ngIf="item.href"
+  >
+    <ng-container *ngTemplateOutlet="navItem"></ng-container>
+  </a>
+  <div
+    class="aui-nav-item-li__content"
+    [class.isActive]="(isActive$ | async) || popMenusDisplayed"
+    [class.isExpanded]="isExpanded$ | async"
+    [class.isSticked]="mainPanelCollapsed && (isSticked$ | async)"
+    [class.hasSubItem]="hasSubItem"
+    [class.isLeaf]="depth === 1"
+    [class.isMainPanelCollapsed]="mainPanelCollapsed"
+    [attr.data-set-depth]="depth"
     (click)="handleContentClicked()"
     (mouseenter)="handleContentFocused(true)"
     (mouseleave)="handleContentFocused(false)"
-    [auiTooltip]="tooltipTemplate"
-    [auiTooltipDisabled]="!mainPanelCollapsed || item.depth !== 0 || hasSubItem"
-    auiTooltipType="info"
+    *ngIf="!item.href"
+    [auiTooltip]="leafChildren"
     auiTooltipPosition="end"
-    auiTooltipClass="aui-nav-item-tooltip"
+    auiTooltipType="info"
+    auiTooltipClass="aui-nav-leaf"
+    [auiTooltipContext]="{ parent: item }"
+    [auiTooltipDisabled]="!(hasSubItem && isLeaf)"
+    (auiTooltipShow)="popMenusDisplayed = true"
+    (auiTooltipHide)="popMenusDisplayed = false"
   >
-    <div class="aui-nav-item">
-      <div class="aui-nav-item__icon">
-        <ng-container
-          *ngIf="item.icon"
-          [ngTemplateOutlet]="item.icon.template"
-        ></ng-container>
-      </div>
-      <div *ngIf="displayItemContent" class="aui-nav-item__content">
-        <ng-container [ngTemplateOutlet]="item.content.template"></ng-container>
-      </div>
-    </div>
-    <aui-icon
-      *ngIf="hasSubItem && displayItemContent"
-      class="aui-nav-item-li__expansion-indicator"
-      icon="angle_left"
-    ></aui-icon>
+    <ng-container *ngTemplateOutlet="navItem"></ng-container>
   </div>
-
   <div
-    *ngIf="hasSubItem && displayItemContent"
+    *ngIf="hasSubItem && displayItemContent && !isLeaf"
     class="aui-nav-item-li__sub-items"
   >
     <aui-nav-item-ul
       [hidden]="!(isExpanded$ | async)"
-      [items]="item.subItems"
+      [items]="item.children"
+      [mainPanelCollapsed]="mainPanelCollapsed"
     ></aui-nav-item-ul>
   </div>
 </div>
 
-<ng-template #tooltipTemplate>
-  <ng-container [ngTemplateOutlet]="item.content.template"></ng-container>
+<ng-template #navItem>
+  <div class="aui-nav-item">
+    <div class="aui-nav-item__icon" *ngIf="item.icon && depth === 0">
+      <aui-icon [icon]="item.icon"></aui-icon>
+    </div>
+    <div *ngIf="displayItemContent" class="aui-nav-item__content">
+      {{ item.label }}
+    </div>
+  </div>
+  <aui-icon
+    *ngIf="hasSubItem && displayItemContent && !isLeaf"
+    class="aui-nav-item-li__expansion-indicator"
+    icon="angle_right"
+  ></aui-icon>
+  <ng-container *ngIf="hasSubItem && displayItemContent && isLeaf">
+    <aui-icon
+      class="aui-nav-item-li__more"
+      [icon]="(isActive$ | async) || hovered ? 'more_active' : 'more_gray'"
+    ></aui-icon>
+  </ng-container>
+</ng-template>
+
+<ng-template #leafChildren let-parent="parent">
+  <div class="aui-nav-leaf__title">
+    {{ parent.label }}
+  </div>
+  <aui-nav-item-ul [items]="parent.children"></aui-nav-item-ul>
 </ng-template>
