@@ -66,33 +66,35 @@ import { SwitchModule } from '@alauda/ui';
 
 可以人为驱动 switch 的状态变化，实现更加精细的控制
 
-```typescript
-@Component({
-  template: `
-    <aui-switch
-      [value]="data"
-      [loading]="loading"
-      (valueChange)="toggle()"
-    ></aui-switch>
-  `,
-})
-export class LoadingSwitchComponent {
-  data = false;
-  loading = false;
-
-  toggle() {
-    this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
-      this.data = !this.data;
-    }, 500);
-  }
-}
-```
-
-<Story name="Manual" height="60px">
-  {{ component: LoadingSwitchComponent }}
-</Story>
+<Canvas>
+  <Story name="Manual" height="60px">
+    {{
+      code: `
+          @Component({
+            template:
+              <aui-switch
+                [value]="data"
+                [loading]="loading"
+                (valueChange)="toggle()"
+              ></aui-switch>
+            ,
+          })
+          export class LoadingSwitchComponent {
+            data = false;
+            loading = false;
+            toggle() {
+              this.loading = true;
+              setTimeout(() => {
+                this.loading = false;
+                this.data = !this.data;
+              }, 500);
+            }
+          }
+        `,
+      component: LoadingSwitchComponent,
+    }}
+  </Story>
+</Canvas>
 
 ## Switch Inputs
 
