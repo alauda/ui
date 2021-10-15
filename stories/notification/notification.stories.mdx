@@ -1,0 +1,158 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import * as Demo from './demos';
+
+import {
+  ButtonModule,
+  MessageType,
+  NOTIFICATION_CONFIG,
+  NotificationModule,
+} from '@alauda/ui';
+
+<Meta
+  title="Notification"
+  decorators={[
+    moduleMetadata({
+      imports: [NotificationModule, BrowserAnimationsModule, ButtonModule],
+      declarations: [Demo.BasicDemoComponent],
+      providers: [
+        {
+          provide: NOTIFICATION_CONFIG,
+          useValue: {
+            duration: {
+              [MessageType.Error]: 0,
+              [MessageType.Success]: 3333,
+              [MessageType.Warning]: 3333,
+              [MessageType.Info]: 3333,
+            },
+            maxStack: 3,
+          },
+        },
+      ],
+    }),
+  ]}
+/>
+
+# Notification
+
+通知
+
+## 基本样式
+
+<Canvas>
+  <Story name="Basic" height="500px">
+    {{
+      code: `
+        @Component({
+          template: 
+            <span>Notification:</span>
+            <button aui-button (click)="notificationService.success('success')">
+              success
+            </button>
+            <button aui-button (click)="notificationService.warning('warning')">
+              warning
+            </button>
+            <button
+              aui-button
+              (click)="
+                notificationService.error({
+                  content: 'error content',
+                  title: 'error title'
+                })
+              "
+            >
+              error
+            </button>
+            <button
+              aui-button
+              (click)="
+                notificationService.info({ content: 'info', duration: 0, id: 'test01' })
+              "
+            >
+              info
+            </button>
+            <button aui-button (click)="notify()">with template</button>
+            <button aui-button (click)="notify2()">with footer</button>
+            <button
+              aui-button
+              (click)="
+                notificationService.success({
+                  duration: 0,
+                  title: 'Custom Class',
+                  customClass: 'custom-class'
+                })
+              "
+            >
+              custom class
+            </button>
+            <ng-template #template>
+              <div>custom template</div>
+              <br />
+              <button aui-button="primary">inline template button</button>
+            </ng-template>
+            <ng-template #footer>
+              <div style="text-align: right">
+                <button aui-button="primary" size="small">primary</button>
+                <button aui-button size="small">default</button>
+              </div>
+            </ng-template>
+          ,
+        })
+        export class BasicDemoComponent implements OnDestroy {
+          @ViewChild('template', { static: true })
+          template: TemplateRef<any>;
+          @ViewChild('footer', { static: true })
+          footerTpl: TemplateRef<any>;
+          constructor(public notificationService: NotificationService) {}
+          notify() {
+            const notificationRef = this.notificationService.success({
+              title: 'With template',
+              contentRef: this.template,
+            });
+            notificationRef.instance.beforeClosed.subscribe(noop);
+            notificationRef.instance.afterClosed.subscribe(noop);
+          }
+          notify2() {
+            const notificationRef = this.notificationService.success({
+              title: 'With footer',
+              footerRef: this.footerTpl,
+              duration: 0,
+            });
+            notificationRef.instance.beforeClosed.subscribe(noop);
+            notificationRef.instance.afterClosed.subscribe(noop);
+          }
+          ngOnDestroy() {
+            this.notificationService.componentRefs.forEach(ref => {
+              ref.destroy();
+            });
+            this.notificationService.wrapperInstance.elementRef.nativeElement.remove();
+          }
+        }
+      `,
+      component: Demo.BasicDemoComponent,
+    }}
+  </Story>
+</Canvas>
+
+## Notification API
+
+### NotificationService Properties
+
+| 名称      | 类型                                      | 描述           |
+| --------- | ----------------------------------------- | -------------- |
+| info      | (config: string \| MessageConfig) => void | 弹出消息       |
+| success   | (config: string \| MessageConfig) => void | 弹出成功消息   |
+| warning   | (config: string \| MessageConfig) => void | 弹出警告消息   |
+| error     | (config: string \| MessageConfig) => void | 弹出错误消息   |
+| remove    | (id: string) => void                      | 移除指定消息框 |
+| removeAll | () => void                                | 移除所有消息框 |
+
+### NotificationConfig
+
+| 名称     | 类型   | 默认值 | 描述         |
+| -------- | ------ | ------ | ------------ |
+| content  | string | -      | 消息文本     |
+| duration | number | -      | 消息显示时长 |
+| id       | string | -      | 消息 ID      |
