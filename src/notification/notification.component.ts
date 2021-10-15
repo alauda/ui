@@ -46,6 +46,7 @@ export class NotificationComponent
   remains: number;
   childComponentInstance: unknown;
   customClass = '';
+  footerPortal: TemplatePortal<unknown>;
 
   @ViewChild(CdkPortalOutlet, { static: true })
   private readonly portalOutlet: CdkPortalOutlet;
@@ -102,6 +103,12 @@ export class NotificationComponent
           this.cfr.resolveComponentFactory(config.contentRef),
         );
       }
+    }
+
+    if (config.footerRef && config.footerRef instanceof TemplateRef) {
+      this.footerPortal = new TemplatePortal(config.footerRef, null, {
+        $implicit: config.context,
+      });
     }
   }
 

@@ -175,18 +175,6 @@ $checkbox-outline-color: $outline-color-primary;
 $checkbox-tag-bg-color: $color-disabled-bg;
 $checkbox-tag-bg-color-hover: $color-primary-extra-light;
 
-// Switch
-$switch-duration: 0.3s;
-$switch-background-color: #ccc;
-$switch-border-color: #ccc;
-$switch-checked-color: $color-primary;
-$switch-box-shadow-color: rgba(0, 0, 0, 0.4);
-$switch-disabled-bg-color: #f2f2f2;
-$switch-checked-disabled-bg-color: $color-primary-lighter;
-$switch-bar-width: 30px;
-$switch-bar-height: 16px;
-$switch-bar-focus-shadow: #b3d4ff;
-
 $default-border-color: #ccc;
 $disabled-border-color: #ccc;
 $hover-border-color: $color-primary;
@@ -318,21 +306,6 @@ $card-border-radius: $border-radius;
 $section-border-color: $card-border-color;
 $section-border-style: $border-style-dashed;
 $section-border-width: $border-width;
-
-// Notification
-$notification-margin: 0 20px 10px 0;
-$notification-padding: 16px 20px 16px 16px;
-$notification-border-left-width: 4px;
-$notification-content-max-height: 150px;
-$notification-content-padding-right: 4px;
-
-$notification-title-color: #4d4d4d;
-$notification-title-margin-bottom: 4px;
-$notification-body-width: 308px;
-$notification-body-margin: 0 16px 0 8px;
-$notification-close-right: 10px;
-$notification-close-width: 12px;
-$notification-close-hover-color: $color-primary;
 
 // Icon
 $icon-margin-hoz: 4px;

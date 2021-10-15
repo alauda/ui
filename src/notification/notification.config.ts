@@ -6,6 +6,7 @@ import { MessageConfig, MessageGlobalConfig } from '../message/public-api';
 export interface NotificationConfig extends MessageConfig {
   title?: string;
   contentRef?: TemplateRef<any> | ComponentType<void>;
+  footerRef?: TemplateRef<any>;
   context?: unknown;
   customClass?: string;
 }

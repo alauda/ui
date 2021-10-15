@@ -7,11 +7,13 @@
 }
 
 .aui-notification {
-  margin: $notification-margin;
+  margin: 0 20px 10px 0;
   display: flex;
+  flex-wrap: wrap;
+  width: 400px;
   position: relative;
   border-radius: 4px;
-  padding: $notification-padding;
+  padding: 20px 16px 20px 20px;
   align-items: flex-start;
   background-color: $color-white;
   @include modal-shadow;
@@ -24,7 +26,7 @@
 
   @each $status, $color in $status-color-map {
     &--#{$status} {
-      border-left: $notification-border-left-width solid $color;
+      border-left: 4px solid $color;
 
       .aui-notification__icon {
         color: $color;
@@ -33,42 +35,49 @@
   }
 
   &__body {
-    margin: $notification-body-margin;
-    width: $notification-body-width;
+    margin: 0 16px 0 8px;
+    width: 308px;
   }
   &__title {
-    margin-bottom: $notification-title-margin-bottom;
     font-size: $font-size-larger;
     text-align: left;
-    color: $notification-title-color;
+    color: get-color(n-1);
     line-height: $line-height-larger;
     word-break: break-word;
+    &:not(:only-child) {
+      margin-bottom: 6px;
+    }
   }
   &__content {
     font-size: $font-size-regular;
     line-height: $line-height-regular;
     text-align: left;
-    color: #4d4d4d;
-    max-height: $notification-content-max-height;
+    color: get-color(n-2);
+    max-height: 140px;
     overflow: auto;
     overflow-wrap: break-word;
-    padding-right: $notification-content-padding-right;
+    padding-right: 4px;
     margin-top: ($line-height-larger - $line-height-regular) / 2;
     @include scroll-bar;
   }
   &__close {
-    font-size: $font-size-small;
-    right: $notification-close-right;
-    width: $notification-close-width;
-    color: $color-text-help;
-    line-height: $line-height-larger;
+    font-size: get-size(font-size-s);
+    right: 10px;
+    width: 12px;
+    color: get-color(n-4);
+    line-height: get-size(line-height-l);
     cursor: pointer;
     &:hover {
-      color: $notification-close-hover-color;
+      color: get-color(n-2);
     }
   }
   &__svg {
     position: absolute;
     color: $toast-close-color;
+  }
+  &__footer {
+    width: 360px;
+    margin-top: 12px;
+    word-break: break-all;
   }
 }
