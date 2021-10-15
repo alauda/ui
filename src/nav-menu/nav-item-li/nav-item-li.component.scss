@@ -1,118 +1,78 @@
 @import '../../theme/var';
 @import '../../theme/mixin';
 
+@mixin nav-icon-size($size: m) {
+  width: get-size(icon-size-#{$size});
+  height: get-size(icon-size-#{$size});
+  line-height: get-size(icon-size-#{$size});
+  font-size: get-size(icon-size-#{$size});
+  display: inline-flex;
+}
+
 .aui-nav-item-li {
   position: relative;
-
-  &.isExpanded {
-    background-color: $nav-menu-bg-color-secondary;
-  }
-
-  &.isActive {
-    &:before {
-      content: '';
-      display: block;
-      width: $nav-item-selected-marker-width;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      background-color: $nav-item-selected-marker-color;
-    }
-  }
-
-  &.hasDivider {
-    $divider-height: $nav-item-selected-marker-width * 2 + $border-width;
-
-    margin-bottom: $divider-height;
-
-    &:after {
-      content: '';
-      display: block;
-      box-sizing: border-box;
-      position: absolute;
-      left: 0;
-      bottom: -$divider-height;
-      padding: $nav-item-selected-marker-width $nav-item-selected-marker-width *
-        2;
-      height: $divider-height;
-      width: 100%;
-      background-clip: content-box;
-      background-color: $nav-menu-divider-color;
-
-      @at-root .aui-nav-item-ul.isMainPanelCollapsed & {
-        padding: $nav-item-selected-marker-width;
-      }
-    }
-  }
-
   &__content {
-    padding: $nav-item-padding-ver $nav-item-padding-hoz $nav-item-padding-ver
-      $nav-item-padding-hoz + $nav-item-selected-marker-width;
+    padding: 6px get-size(spacing-xxl);
     display: flex;
     justify-content: space-between;
     position: relative;
     cursor: pointer;
+    border-radius: get-size(border-radius-m);
+    color: get-color(n-3);
+    align-items: center;
+    @include transition;
 
-    &:hover {
-      color: $nav-menu-color-hover;
-      background-color: $nav-menu-bg-color-tertiary;
+    aui-icon {
+      color: get-color(n-4);
     }
 
-    &.isActive:not(.hasSubItem) {
-      color: $nav-menu-color-hover;
+    &:link,
+    &:hover,
+    &:visited,
+    &:active {
+      color: get-color(n-3);
     }
 
-    &.isActive.hasSubItem:not(.isExpanded) {
-      color: $nav-menu-color-hover;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
     }
 
-    &[data-set-depth='0'] {
-      padding: $nav-item-padding-ver-large $nav-item-padding-hoz
-        $nav-item-padding-ver-large $nav-item-padding-hoz +
-        $nav-item-selected-marker-width;
+    &:hover,
+    &.isActive {
+      background-color: get-color(p-5);
+    }
 
-      &.isMainPanelCollapsed {
-        &.hasSubItem:after {
-          content: '';
-          position: absolute;
-          left: $nav-menu-main-panel-width - 12px;
-          bottom: 12px;
-          width: 0;
-          height: 0;
-          border-left: 4px solid transparent;
-          border-bottom: 4px solid currentColor;
-        }
-        &.isActive {
-          background-color: $nav-menu-bg-color-main;
-        }
-        &.isSticked {
-          color: $nav-menu-color-hover;
-          background-color: $nav-menu-bg-color-secondary;
-        }
-        &:hover {
-          color: $nav-menu-color-hover;
-        }
-        &.hasSubItem:hover {
-          background-color: $nav-menu-bg-color-secondary;
-        }
+    &.isActive {
+      color: get-color(primary);
+      aui-icon {
+        color: get-color(primary);
       }
     }
 
-    &[data-set-depth='2'] {
-      padding-left: $nav-item-padding-hoz * 2 + $nav-item-selected-marker-width;
+    &.isActive.hasSubItem:not(.isLeaf) {
+      background-color: transparent;
+    }
+
+    &[data-set-depth='0'] {
+      padding: 10px get-size(spacing-xxl);
+      font-weight: 500;
+    }
+
+    &[data-set-depth='1'] {
+      padding-left: 48px;
     }
   }
 
-  &__expansion-indicator {
-    margin-left: $nav-item-icon-margin;
-    font-size: $nav-item-icon-size;
-    line-height: $nav-item-line-height;
+  &__expansion-indicator,
+  &__more {
+    margin-left: get-size(spacing-xl);
+    @include nav-icon-size;
   }
 
   &__content.isExpanded &__expansion-indicator {
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
   }
 }
 
@@ -122,21 +82,31 @@
   width: 100%;
 
   &__icon {
-    margin-right: $nav-item-icon-margin;
-    width: $nav-item-icon-size;
-    height: $nav-item-line-height;
-    line-height: $nav-item-line-height;
-    font-size: $nav-item-icon-size;
+    margin-right: get-size(spacing-l);
+    @include nav-icon-size;
   }
 
   &__content {
     width: 100%;
-    font-size: $nav-item-font-size;
-    line-height: $nav-item-line-height;
+    line-height: 20px;
+    max-width: 120px;
+    font-size: get-size(font-size-m);
   }
 }
 
-.aui-tooltip.aui-nav-item-tooltip {
-  padding: 2px 6px;
-  color: $color-text-main;
+.aui-nav-leaf {
+  &__title {
+    font-size: get-size(font-size-l);
+    color: get-color(n-2);
+    padding-bottom: get-size(spacing-l);
+    border-bottom: 1px solid get-color(n-9);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .aui-nav-item-li__content {
+    padding: 6px get-size(spacing-xl);
+  }
+  .aui-nav-item {
+    min-width: 116px;
+  }
 }

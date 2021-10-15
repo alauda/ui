@@ -11,7 +11,7 @@
       *ngIf="!mainPanelCollapsed && group.title"
       class="aui-nav-item-group__title"
     >
-      <ng-container [ngTemplateOutlet]="group.title.template"></ng-container>
+      {{ group.title }}
     </div>
     <aui-nav-item-li
       *ngFor="let item of group.items; trackBy: trackByKey"

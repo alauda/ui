@@ -1,8 +1,9 @@
-export type NavItemKey = number | string;
+export type NavItemKey = string;
 
 export interface NavItemConfig {
   label: string;
-  key: string;
+  key: NavItemKey;
+  href?: string;
   icon?: string;
   stage?: 'Alpha' | 'Beta';
   divider?: boolean;
