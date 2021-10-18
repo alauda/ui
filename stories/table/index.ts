@@ -39,7 +39,7 @@ storiesOf('Table', module)
               No.
             </aui-table-header-cell>
             <aui-table-cell *auiTableCellDef="let item">
-              {{ item.id }}
+              <div>{{ item.id }}</div>
             </aui-table-cell>
           </ng-container>
           <ng-container auiTableColumnDef="name">

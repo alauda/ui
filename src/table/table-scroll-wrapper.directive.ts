@@ -5,7 +5,7 @@ import {
   ElementRef,
   OnDestroy,
 } from '@angular/core';
-import { fromEvent, Subject } from 'rxjs';
+import { Subject, fromEvent } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
 const CLASS_PREFIX = 'aui-table';
