@@ -4,10 +4,13 @@ import {
   EventEmitter,
   Input,
   Output,
+  QueryList,
   ViewEncapsulation,
 } from '@angular/core';
 
-import { NavGroupConfig, NavItemConfig, NavItemKey } from './../nav-menu.types';
+import { NavItemGroupComponent } from '../nav-item-group/nav-item-group.component';
+import { NavItemComponent } from '../nav-item/nav-item.component';
+import { NavItemKey } from '../nav-menu.types';
 
 @Component({
   selector: 'aui-nav-item-ul',
@@ -18,13 +21,13 @@ import { NavGroupConfig, NavItemConfig, NavItemKey } from './../nav-menu.types';
   preserveWhitespaces: false,
 })
 export class NavItemUlComponent {
-  @Input() items: NavItemConfig[];
-  @Input() groups: NavGroupConfig[];
+  @Input() items: QueryList<NavItemComponent> | NavItemComponent[];
+  @Input() groups: QueryList<NavItemGroupComponent>;
   @Input() mainPanelCollapsed = true;
 
   @Output() focusedItemChanged = new EventEmitter<NavItemKey>();
 
-  trackByKey(_: number, item: NavItemConfig) {
+  trackByKey(_: number, item: NavItemComponent) {
     return item.key;
   }
 }
