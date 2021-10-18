@@ -4,14 +4,16 @@
       <aui-table-header-cell *auiTableHeaderCellDef>
         No.
       </aui-table-header-cell>
-      <aui-table-cell *auiTableCellDef="let item">{{ item[0] }}</aui-table-cell>
+      <aui-table-cell *auiTableCellDef="let item"
+        >固定 {{ item[0] }}</aui-table-cell
+      >
     </ng-container>
-    <ng-container auiTableColumnDef="cell1">
+    <ng-container auiTableColumnDef="cell1" [sticky]="true">
       <aui-table-header-cell *auiTableHeaderCellDef>
         header cell
       </aui-table-header-cell>
       <aui-table-cell *auiTableCellDef="let item">
-        {{ item[1] }}
+        固定 {{ item[1] }}
       </aui-table-cell>
     </ng-container>
     <ng-container auiTableColumnDef="cell2">
@@ -30,12 +32,12 @@
         {{ item[3] }}
       </aui-table-cell>
     </ng-container>
-    <ng-container auiTableColumnDef="cell4">
+    <ng-container auiTableColumnDef="cell4" [sticky]="true">
       <aui-table-header-cell *auiTableHeaderCellDef>
         header cell
       </aui-table-header-cell>
       <aui-table-cell *auiTableCellDef="let item">
-        {{ item[4] }}
+        固定 {{ item[4] }}
       </aui-table-cell>
     </ng-container>
     <ng-container auiTableColumnDef="cell5">

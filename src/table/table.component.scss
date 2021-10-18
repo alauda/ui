@@ -3,23 +3,22 @@
 $stickyCssClass: 'aui-table-sticky';
 
 .aui-table {
-  font-size: $table-font-size-base;
+  display: block;
+  font-size: get-size(font-size-m);
+  background-color: get-color(n-9);
+  color: get-color(n-1);
+  padding: 0 get-size(table-margin);
 
   &__scroll-wrapper {
+    padding: 0 get-size(table-margin);
+    background-color: get-color(n-9);
     overflow: auto;
-    .aui-table__row {
+    .aui-table {
       padding: 0;
-      border: none;
-    }
-    .aui-table__header-cell {
-      background-color: $table-header-row-bg;
-      border: $table-border-width solid $table-header-row-border-color;
-      border-width: $table-border-width 0;
+      overflow: auto;
     }
     .aui-table__cell {
-      padding: $table-row-vertical-padding $table-cell-horizontal-padding;
-      border-bottom: $table-border-width solid $table-row-border-color;
-      background: $table-row-bg;
+      background: get-color(n-10);
     }
     &--has-scroll {
       .#{$stickyCssClass} {
@@ -73,7 +72,7 @@ $stickyCssClass: 'aui-table-sticky';
   &__row,
   &__header-row {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     box-sizing: border-box;
 
     // Workaround for https://goo.gl/pFmjJD in IE 11. Adds a pseudo
@@ -86,15 +85,53 @@ $stickyCssClass: 'aui-table-sticky';
     }
   }
   &__row {
-    padding: $table-row-vertical-padding 0;
-    border-top-width: 0;
-    border-bottom-width: $table-border-width;
-    border-left-width: 0;
-    border-right-width: 0;
-    border-style: solid;
-    border-color: $table-row-border-color;
-    background: $table-row-bg;
+    // padding: get-size(table-cell-padding-top) calc(var(--aui-table-cell-padding-left) / 2);
     position: relative;
+    .aui-table__cell {
+      border-width: get-size(table-border-width) 0;
+      border-style: solid;
+      border-color: $table-row-border-color;
+      &:first-of-type {
+        border-left-width: get-size(table-border-width);
+        padding-left: get-size(table-cell-padding-lr);
+        // margin-left:get-size(table-margin)
+      }
+      &:last-of-type {
+        border-right-width: get-size(table-border-width);
+        padding-right: get-size(table-cell-padding-lr);
+        // margin-right:get-size(table-margin)
+      }
+    }
+
+    &:first-of-type {
+      .aui-table__cell {
+        &:first-of-type {
+          border-top-left-radius: 4px;
+          // margin-left:get-size(table-margin)
+        }
+        &:last-of-type {
+          border-top-right-radius: 4px;
+          // margin-right:get-size(table-margin)
+        }
+      }
+    }
+    &:last-of-type {
+      .aui-table__cell {
+        margin-bottom: get-size(table-margin);
+        &:first-of-type {
+          border-bottom-left-radius: 4px;
+        }
+        &:last-of-type {
+          border-bottom-right-radius: 4px;
+        }
+      }
+    }
+
+    &:not(&:last-child) {
+      .aui-table__cell {
+        border-bottom: 0;
+      }
+    }
 
     &.isDisabled:before {
       content: '';
@@ -110,27 +147,36 @@ $stickyCssClass: 'aui-table-sticky';
     }
   }
   &__header-row {
-    height: $table-header-row-height;
     padding: 0;
-    background-color: $table-header-row-bg;
-    border-color: $table-header-row-border-color;
-    border-style: solid;
-    border-top-width: $table-border-width;
-    border-bottom-width: $table-border-width;
-    border-left-width: 0;
-    border-right-width: 0;
+
+    .aui-table__header-cell {
+      &:first-of-type {
+        padding-left: get-size(table-cell-padding-lr);
+      }
+      &:last-of-type {
+        padding-right: get-size(table-cell-padding-lr);
+      }
+    }
   }
   &__cell,
   &__header-cell {
     flex: 1;
     overflow: hidden;
     word-wrap: break-word;
-    padding: 0 $table-cell-horizontal-padding;
+    display: flex;
+    align-items: center;
+    left: 10px;
+  }
+  &__cell {
+    padding: get-size(table-cell-padding-tb)
+      calc(var(--aui-table-cell-padding-lr) / 2);
+    background-color: get-color(n-10);
   }
   &__header-cell {
-    color: $table-header-row-color;
+    padding: get-size(table-header-cell-padding-tb)
+      calc(var(--aui-table-cell-padding-lr) / 2);
     font-weight: 500;
-    height: $table-header-row-height;
-    line-height: $table-header-row-height;
+    line-height: get-size(line-height-m);
+    background-color: get-color(n-9);
   }
 }
