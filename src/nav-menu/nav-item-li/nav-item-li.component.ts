@@ -11,9 +11,9 @@ import { ReplaySubject, combineLatest } from 'rxjs';
 import { map, publishReplay, refCount, tap } from 'rxjs/operators';
 
 import { NavItemUlComponent } from '../nav-item-ul/nav-item-ul.component';
+import { NavItemComponent } from '../nav-item/nav-item.component';
 import { NavMenuComponent } from '../nav-menu.component';
-
-import { NavItemConfig, NavItemKey } from './../nav-menu.types';
+import { NavItemKey } from '../nav-menu.types';
 
 @Component({
   selector: 'aui-nav-item-li',
@@ -24,8 +24,8 @@ import { NavItemConfig, NavItemKey } from './../nav-menu.types';
   preserveWhitespaces: false,
 })
 export class NavItemLiComponent {
-  private _item: NavItemConfig;
-  private readonly item$$ = new ReplaySubject<NavItemConfig>(1);
+  private _item: NavItemComponent;
+  private readonly item$$ = new ReplaySubject<NavItemComponent>(1);
 
   @Input()
   get item() {
@@ -44,7 +44,7 @@ export class NavItemLiComponent {
   @ViewChild(NavItemUlComponent, { static: true }) subUl: NavItemUlComponent;
 
   isActive$ = combineLatest([this.navMenu.activeKeys$, this.item$$]).pipe(
-    map(([activeKeys, item]) => activeKeys?.includes(item.key)),
+    map(([activeKeys, item]) => activeKeys.includes(item.key)),
     tap(isActive => {
       this.snapshot.isActive = isActive;
     }),
@@ -55,7 +55,7 @@ export class NavItemLiComponent {
   isExpanded$ = combineLatest([this.navMenu.expandedKeys$, this.item$$]).pipe(
     map(
       ([expandedKeys, item]) =>
-        item.children?.length && expandedKeys?.includes(item.key),
+        item.subItems.length && expandedKeys.includes(item.key),
     ),
     tap(isExpanded => {
       this.snapshot.isExpanded = isExpanded;
@@ -68,7 +68,7 @@ export class NavItemLiComponent {
     this.navMenu.stickedItem$.pipe(map(item => item.key)),
     this.item$$,
   ]).pipe(
-    map(([stickedKey, item]) => this.depth === 0 && stickedKey === item.key),
+    map(([stickedKey, item]) => item.depth === 0 && stickedKey === item.key),
     publishReplay(1),
     refCount(),
   );
@@ -78,47 +78,26 @@ export class NavItemLiComponent {
     isExpanded: false,
   };
 
-  hovered = false;
-  popMenusDisplayed = false;
-
-  get depth() {
-    const path = this.navMenu.paths.find(
-      path => [...path].pop() === this.item.key,
-    );
-    return path.indexOf(this.item.key);
-  }
-
   get hasSubItem() {
-    return !!this.item.children?.length;
-  }
-
-  get isLeaf() {
-    return this.depth === 1;
+    return !!this.item.subItems.length;
   }
 
   get displayItemContent() {
-    return !this.mainPanelCollapsed || this.depth !== 0;
-  }
-
-  get isExternal() {
-    return this.item.href?.startsWith('http');
+    return !this.mainPanelCollapsed || this.item.depth !== 0;
   }
 
   constructor(private readonly navMenu: NavMenuComponent) {}
 
   handleContentClicked() {
-    if (!this.displayItemContent && this.snapshot.isExpanded && !this.isLeaf) {
+    if (!this.displayItemContent && this.snapshot.isExpanded) {
       return;
     }
     if (
-      (this.hasSubItem ||
-        (!this.displayItemContent && this.snapshot.isActive)) &&
-      !this.isLeaf
+      this.hasSubItem ||
+      (!this.displayItemContent && this.snapshot.isActive)
     ) {
       this.navMenu.expandedKeyChanged(
-        this.snapshot.isExpanded
-          ? this.findParentKey(this.item.key)
-          : this.item.key,
+        this.snapshot.isExpanded ? this.item.parentItem?.key : this.item.key,
       );
     } else {
       this.navMenu.activatedKeyChanged(this.item.key);
@@ -126,12 +105,6 @@ export class NavItemLiComponent {
   }
 
   handleContentFocused(hover: boolean) {
-    this.hovered = hover;
     this.itemFocused.emit(hover ? this.item.key : null);
-  }
-
-  private findParentKey(key: string) {
-    const path = this.navMenu.paths.find(path => new Set(path).has(key));
-    return path.slice(0, path.indexOf(key)).pop();
   }
 }

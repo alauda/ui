@@ -1,8 +1,8 @@
 import {
   IconModule,
   NavGroupConfig,
-  NavItemConfig,
   NavMenuModule,
+  PlatformNavModule,
 } from '@alauda/ui';
 import { Component } from '@angular/core';
 import { storiesOf } from '@storybook/angular';
@@ -15,130 +15,252 @@ storiesOf('Nav Menu', module)
     },
     component: NavMenuDemoComponent,
   }))
-  .add('grouped nav menu', () => ({
+  .add('platform nav', () => ({
     moduleMetadata: {
-      imports: [NavMenuModule, IconModule],
-      declarations: [NavMenuDemoComponent],
+      imports: [PlatformNavModule],
+      declarations: [PlatformNavDemoComponent],
     },
-    component: NavMenuGroupDemoComponent,
+    component: PlatformNavDemoComponent,
   }));
 
-const config = [
+@Component({
+  template: `
+    <aui-nav-menu
+      [(activatedKey)]="activatedKey"
+      [(mainPanelCollapsed)]="mainPanelCollapsed"
+      [(secondaryPanelCollapsed)]="secondaryPanelCollapsed"
+    >
+      <aui-nav-item-group>
+        <ng-template auiNavItemGroupTitle>group 1</ng-template>
+
+        <aui-nav-item key="0">
+          <ng-template auiNavItemIcon>
+            <aui-icon icon="search_s"></aui-icon>
+          </ng-template>
+          <ng-template auiNavItemContent>概览</ng-template>
+        </aui-nav-item>
+
+        <aui-nav-item key="1">
+          <ng-template auiNavItemIcon>
+            <aui-icon icon="search_s"></aui-icon>
+          </ng-template>
+          <ng-template auiNavItemContent>应用管理</ng-template>
+        </aui-nav-item>
+      </aui-nav-item-group>
+
+      <aui-nav-item-group>
+        <ng-template auiNavItemGroupTitle>group 2</ng-template>
+
+        <aui-nav-item>
+          <ng-template auiNavItemIcon>
+            <aui-icon icon="search_s"></aui-icon>
+          </ng-template>
+          <ng-template auiNavItemContent>DevOps</ng-template>
+          <aui-nav-item>
+            <ng-template auiNavItemContent>持续交付</ng-template>
+
+            <aui-nav-item key="2">
+              <ng-template auiNavItemContent>流水线</ng-template>
+            </aui-nav-item>
+            <aui-nav-item key="3">
+              <ng-template auiNavItemContent>生成镜像</ng-template>
+            </aui-nav-item>
+            <aui-nav-item key="4">
+              <ng-template auiNavItemContent>更新服务</ng-template>
+            </aui-nav-item>
+          </aui-nav-item>
+
+          <aui-nav-item>
+            <ng-template auiNavItemContent>工具链</ng-template>
+
+            <aui-nav-item key="5">
+              <ng-template auiNavItemContent>代码仓库</ng-template>
+            </aui-nav-item>
+            <aui-nav-item key="6">
+              <ng-template auiNavItemContent>制品仓库</ng-template>
+            </aui-nav-item>
+            <aui-nav-item key="7">
+              <ng-template auiNavItemContent>代码检查</ng-template>
+            </aui-nav-item>
+            <aui-nav-item key="8">
+              <ng-template auiNavItemContent>测试工具</ng-template>
+            </aui-nav-item>
+            <aui-nav-item key="9">
+              <ng-template auiNavItemContent>项目管理</ng-template>
+            </aui-nav-item>
+          </aui-nav-item>
+        </aui-nav-item>
+
+        <aui-nav-item>
+          <ng-template auiNavItemIcon>
+            <aui-icon icon="search_s"></aui-icon>
+          </ng-template>
+          <ng-template auiNavItemContent>微服务</ng-template>
+          <aui-nav-item key="10">
+            <ng-template auiNavItemContent>服务</ng-template>
+          </aui-nav-item>
+          <aui-nav-item key="11">
+            <ng-template auiNavItemContent>配置列表</ng-template>
+          </aui-nav-item>
+          <aui-nav-item key="12">
+            <ng-template auiNavItemContent>熔断监控</ng-template>
+          </aui-nav-item>
+          <aui-nav-item key="13">
+            <ng-template auiNavItemContent>调用链</ng-template>
+          </aui-nav-item>
+        </aui-nav-item>
+
+        <aui-nav-item>
+          <ng-template auiNavItemIcon>
+            <aui-icon icon="search_s"></aui-icon>
+          </ng-template>
+          <ng-template auiNavItemContent>Service Mesh</ng-template>
+          <aui-nav-item key="14">
+            <ng-template auiNavItemContent>调用链</ng-template>
+          </aui-nav-item>
+        </aui-nav-item>
+      </aui-nav-item-group>
+
+      <aui-nav-item-group>
+        <aui-nav-item key="15">
+          <ng-template auiNavItemIcon>
+            <aui-icon icon="search_s"></aui-icon>
+          </ng-template>
+          <ng-template auiNavItemContent>成员</ng-template>
+        </aui-nav-item>
+      </aui-nav-item-group>
+    </aui-nav-menu>
+  `,
+})
+class NavMenuDemoComponent {
+  activatedKey = '2';
+  mainPanelCollapsed = false;
+  secondaryPanelCollapsed = false;
+}
+
+const platformNavConfig: NavGroupConfig[] = [
   {
-    icon: 'copy',
-    label: '概览',
-    key: '0',
-  },
-  {
-    icon: 'copy',
-    label: '应用管理',
-    key: '1',
-  },
-  {
-    icon: 'copy',
-    label: '持续交付',
-    key: '2',
-    children: [
+    title: 'group 1',
+    items: [
       {
-        icon: 'copy',
-        label: '流水线',
-        key: '4',
+        icon: 'search_s',
+        label: '概览',
+        key: 'overview',
+        divider: true,
       },
       {
-        icon: 'copy',
-        label: '持续发布',
-        key: '5',
-      },
-      {
-        icon: 'copy',
-        label: '持续构建',
-        key: '6',
+        icon: 'search_s',
+        label: '应用管理',
+        key: 'application',
+        stage: 'Alpha',
       },
     ],
   },
   {
-    icon: 'copy',
-    label: '运维中心',
-    key: '3',
-    children: [
+    title: 'group 2',
+    items: [
       {
-        icon: 'copy',
-        label: '监控',
-        key: '7',
-        href: '/monitor',
-      },
-      {
-        icon: 'copy',
-        label: '日志',
-        key: '8',
+        icon: 'search_s',
+        label: 'Devops',
+        key: 'devops',
         children: [
           {
-            icon: 'copy',
-            label: '日志查询分析',
-            key: '10',
-            href: '/workspace',
+            label: '持续交付',
+            key: 'delivery',
+            children: [
+              {
+                label: '流水线',
+                key: 'pipeline',
+              },
+              {
+                label: '生成镜像',
+                key: 'image',
+              },
+              {
+                label: '更新服务',
+                key: 'service',
+              },
+            ],
           },
           {
-            icon: 'copy',
-            label: '策略管理',
-            key: '11',
-          },
-          {
-            icon: 'copy',
-            label: '导入记录',
-            key: '12',
+            label: '工具链',
+            key: 'tool_chain',
+            children: [
+              {
+                label: '代码仓库',
+                key: 'code_repo',
+              },
+              {
+                label: '制品仓库',
+                key: 'product_repo',
+              },
+              {
+                label: '代码检查',
+                key: 'code_check',
+              },
+              {
+                label: '测试工具',
+                key: 'test_util',
+              },
+              {
+                label: '项目管理',
+                key: 'project_management',
+              },
+            ],
           },
         ],
       },
       {
-        icon: 'copy',
-        label: '告警',
-        key: '9',
+        icon: 'search_s',
+        label: '微服务',
+        key: 'micro_service',
+        children: [
+          {
+            label: '服务',
+            key: 'service',
+          },
+          {
+            label: '配置列表',
+            key: 'config',
+          },
+          {
+            label: '熔断监控',
+            key: 'fusing',
+          },
+        ],
+      },
+      {
+        icon: 'search_s',
+        label: 'Service Mesh',
+        key: 'service_mesh',
+        children: [{ label: '调用链', stage: 'Beta', key: 'invoking_chain' }],
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        icon: 'search_s',
+        label: '成员',
+        key: 'member',
       },
     ],
   },
 ];
 
 @Component({
-  selector: 'aui-nav-demo',
+  // tslint:disable-next-line: component-selector
+  selector: 'platform-nav-demo',
   template: `
-    <aui-nav-menu
+    <aui-platform-nav
       [(activatedKey)]="activatedKey"
+      [groups]="navGroups"
       [(mainPanelCollapsed)]="mainPanelCollapsed"
       [(secondaryPanelCollapsed)]="secondaryPanelCollapsed"
-      [hideMainPanelToggle]="true"
-      [items]="navConfig"
-    >
-    </aui-nav-menu>
+    ></aui-platform-nav>
   `,
 })
-export class NavMenuDemoComponent {
-  activatedKey = '2';
-  mainPanelCollapsed = false;
-  secondaryPanelCollapsed = false;
-  navConfig: NavItemConfig[] = config;
-}
-
-@Component({
-  template: `
-    <aui-nav-menu
-      [(activatedKey)]="activatedKey"
-      [(mainPanelCollapsed)]="mainPanelCollapsed"
-      [(secondaryPanelCollapsed)]="secondaryPanelCollapsed"
-      [hideMainPanelToggle]="true"
-      [groups]="navConfig"
-    >
-    </aui-nav-menu>
-  `,
-})
-export class NavMenuGroupDemoComponent {
-  activatedKey = '2';
-  mainPanelCollapsed = false;
-  secondaryPanelCollapsed = false;
-  navConfig: NavGroupConfig[] = [
-    {
-      title: 'group',
-      items: config,
-    },
-  ];
+export class PlatformNavDemoComponent {
+  activatedKey = 'code_repo';
+  navGroups: NavGroupConfig[] = platformNavConfig;
 }
