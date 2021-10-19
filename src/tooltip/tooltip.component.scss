@@ -2,61 +2,56 @@
 @import '../theme/mixin';
 @import '~@angular/cdk/overlay-prebuilt';
 
-.aui-tooltip {
-  padding: $tooltip-padding-ver $tooltip-padding-hoz;
-  line-height: $tooltip-line-height;
-  font-size: $tooltip-font-size;
-  border-radius: $tooltip-border-radius;
-  border-width: $tooltip-border-width;
-  border-style: solid;
+$block: 'aui-tooltip';
+
+.#{$block} {
+  position: relative;
+  padding: get-size(spacing-m) get-size(spacing-xl);
+  line-height: get-size(line-height-s);
+  font-size: get-size(font-size-s);
+  border-radius: get-size(border-radius-m);
   @include popper-shadow;
 
-  max-width: $tooltip-max-width;
+  max-width: 400px;
   word-wrap: break-word; // do NOT add 'word-break: break-all;', design requirement
 
   &--default {
-    color: $tooltip-default-text;
-    background-color: $tooltip-default-bg;
-    border-color: $tooltip-default-border;
+    color: get-color(n-10);
+    background-color: get-rgba(n-0, 0.85);
   }
 
   &--primary {
-    color: $tooltip-primary-text;
-    background-color: $tooltip-primary-bg;
-    border-color: $tooltip-primary-border;
+    color: get-color(primary);
+    background-color: get-color(n-10);
   }
 
   &--success {
-    color: $tooltip-success-text;
-    background-color: $tooltip-success-bg;
-    border-color: $tooltip-success-border;
+    color: get-color(green);
+    background-color: get-color(n-10);
   }
 
   &--warning {
-    color: $tooltip-warning-text;
-    background-color: $tooltip-warning-bg;
-    border-color: $tooltip-warning-border;
+    color: get-color(yellow);
+    background-color: get-color(n-10);
   }
 
   &--error {
-    color: $tooltip-error-text;
-    background-color: $tooltip-error-bg;
-    border-color: $tooltip-error-border;
+    color: get-color(red);
+    background-color: get-color(n-10);
   }
 
   &--info {
-    padding: $tooltip-padding-hoz;
-    background-color: $tooltip-info-bg;
-    border-color: $tooltip-info-border;
-  }
-
-  &--start,
-  &--end {
-    margin: 0 $tooltip-offset;
+    color: get-color(n-0);
+    background-color: get-color(n-10);
   }
 
   &--top,
   &--bottom {
-    margin: $tooltip-offset 0;
+    margin: get-size(spacing-s) 0;
+  }
+
+  &--start,
+  &--end {
+    margin: 0 get-size(spacing-s);
   }
 }
