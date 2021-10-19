@@ -9,6 +9,8 @@ import {
 import { Observable, Subject, combineLatest } from 'rxjs';
 import { map, publishReplay, refCount, startWith } from 'rxjs/operators';
 
+import { Bem, buildBem } from '../utils';
+
 import { TooltipType } from './tooltip.types';
 
 @Component({
@@ -22,6 +24,7 @@ import { TooltipType } from './tooltip.types';
 export class TooltipComponent {
   text: string;
   template: TemplateRef<any>;
+  bem: Bem = buildBem('aui-tooltip');
 
   inputContent$: Observable<string | TemplateRef<any>>;
   inputType$: Observable<TooltipType>;
@@ -75,7 +78,7 @@ export class TooltipComponent {
       this.inputClass$.pipe(startWith('')),
     ]).pipe(
       map(([inputPosition, inputType, inputClass]) => {
-        const b = 'aui-tooltip';
+        const b = this.bem.block();
         const dir = inputPosition.split(' ')[0];
         return inputType === TooltipType.Plain
           ? `${b}--${dir} ${inputClass}`
