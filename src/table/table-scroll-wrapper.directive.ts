@@ -1,12 +1,15 @@
 import {
-  AfterViewChecked,
   AfterViewInit,
   Directive,
   ElementRef,
+  HostBinding,
+  Input,
   OnDestroy,
 } from '@angular/core';
-import { Subject, fromEvent } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { Subject, fromEvent, merge } from 'rxjs';
+import { startWith, takeUntil } from 'rxjs/operators';
+
+import { observeResizeOn } from '../utils';
 
 const CLASS_PREFIX = 'aui-table';
 const WRAPPER_CLASS = `${CLASS_PREFIX}__scroll-wrapper`;
@@ -17,43 +20,66 @@ const SCROLL_BEFORE_END_CLASS = `${WRAPPER_CLASS}--before-end`;
 @Directive({
   selector: '[auiTableScrollWrapper]',
   host: {
-    class: `${WRAPPER_CLASS} ${SCROLL_BEFORE_END_CLASS}`,
+    class: `${SCROLL_BEFORE_END_CLASS}`,
   },
 })
-export class TableScrollWrapperDirective
-  implements AfterViewChecked, AfterViewInit, OnDestroy {
-  scrollDis = 0;
+export class TableScrollWrapperDirective implements AfterViewInit, OnDestroy {
   destroy$$ = new Subject<void>();
   constructor(private readonly el: ElementRef<HTMLElement>) {}
 
-  ngAfterViewChecked() {
-    this.scrollDis =
-      this.el.nativeElement.scrollWidth - this.el.nativeElement.offsetWidth;
-    if (this.scrollDis > 0) {
-      this.el.nativeElement.classList.add(HAS_SCROLL_CLASS);
-    }
+  @HostBinding(`class.${WRAPPER_CLASS}`)
+  @Input('auiTableScrollWrapper')
+  auiTableScrollWrapper: boolean;
+
+  get containerEl() {
+    return this.el.nativeElement;
   }
 
   ngAfterViewInit() {
-    fromEvent(this.el.nativeElement, 'scroll')
-      .pipe(debounceTime(100), takeUntil(this.destroy$$))
+    requestAnimationFrame(() => {
+      this.viewMutation();
+    });
+  }
+
+  viewMutation() {
+    merge(
+      observeResizeOn(this.containerEl),
+      fromEvent(this.containerEl, 'scroll'),
+    )
+      .pipe(startWith(null as void), takeUntil(this.destroy$$))
       .subscribe(() => {
-        const scrollLeft = this.el.nativeElement.scrollLeft;
-        if (scrollLeft > 0) {
-          this.el.nativeElement.classList.add(SCROLLING_CLASS);
-        } else {
-          this.el.nativeElement.classList.remove(SCROLLING_CLASS);
-        }
-        if (scrollLeft === this.scrollDis) {
-          this.el.nativeElement.classList.remove(SCROLL_BEFORE_END_CLASS);
-        } else {
-          this.el.nativeElement.classList.add(SCROLL_BEFORE_END_CLASS);
-        }
+        const scrollDis =
+          this.containerEl.scrollWidth - this.containerEl.offsetWidth;
+
+        this.placeClassList(
+          this.containerEl.classList,
+          scrollDis > 0,
+          HAS_SCROLL_CLASS,
+        );
+
+        const scrollLeft = this.containerEl.scrollLeft;
+        this.placeClassList(
+          this.containerEl.classList,
+          scrollLeft > 0,
+          SCROLLING_CLASS,
+        );
+        this.placeClassList(
+          this.containerEl.classList,
+          scrollLeft !== scrollDis,
+          SCROLL_BEFORE_END_CLASS,
+        );
       });
+  }
+
+  placeClassList(
+    classList: DOMTokenList,
+    condition: boolean,
+    className: string,
+  ) {
+    classList[condition ? 'add' : 'remove'](className);
   }
 
   ngOnDestroy() {
     this.destroy$$.next();
-    this.destroy$$.complete();
   }
 }

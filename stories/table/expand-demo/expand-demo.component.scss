@@ -1,4 +1,5 @@
 @import '../../../src/theme/pattern';
+@import '../../../src/theme/mixin';
 
 :host {
   @include with-detail(detail);
