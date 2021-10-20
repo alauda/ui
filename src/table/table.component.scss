@@ -1,28 +1,117 @@
 @import '../theme/var';
+@import '../theme/mixin';
 
 $stickyCssClass: 'aui-table-sticky';
 
 .aui-table {
   display: block;
+  color: get-color(n-1);
   font-size: get-size(font-size-m);
   background-color: get-color(n-9);
-  color: get-color(n-1);
-  padding: 0 get-size(table-margin);
+  padding: 0 get-size(table-margin) get-size(table-margin);
+
+  &__header-row.#{$stickyCssClass} {
+    flex-wrap: wrap;
+    margin: 0 get-neg-size(table-margin);
+    padding: 0;
+    .aui-table__header-cell {
+      z-index: 1;
+      &:first-of-type {
+        padding-left: calc(
+          var(--aui-table-margin) + var(--aui-table-cell-padding-lr)
+        );
+      }
+      &:last-of-type {
+        padding-right: calc(
+          var(--aui-table-margin) + var(--aui-table-cell-padding-lr)
+        );
+      }
+    }
+    &:after {
+      // stylelint-disable-next-line plugin/no-low-performance-animation-properties
+      box-shadow: 0 4px 16px -4px get-rgba(n-1, 0.16);
+      position: sticky;
+      width: 100%;
+      height: 30px;
+      top: calc(var(--aui-table-header-height) - 30px);
+      margin-top: get-neg-size(table-header-height);
+    }
+  }
 
   &__scroll-wrapper {
-    padding: 0 get-size(table-margin);
-    background-color: get-color(n-9);
     overflow: auto;
+    @include scroll-bar;
+
     .aui-table {
-      padding: 0;
-      overflow: auto;
-    }
-    .aui-table__cell {
-      background: get-color(n-10);
+      padding-bottom: 0;
+      &__row {
+        border: none;
+        padding: 0;
+        align-items: stretch;
+        .aui-table__cell {
+          border-width: get-size(table-border-width) 0;
+          border-style: solid;
+          border-color: $table-row-border-color;
+          &:first-of-type {
+            border-left-width: get-size(table-border-width);
+            padding-left: get-size(table-cell-padding-lr);
+            // margin-left:get-size(table-margin)
+          }
+          &:last-of-type {
+            border-right-width: get-size(table-border-width);
+            padding-right: get-size(table-cell-padding-lr);
+            // margin-right:get-size(table-margin)
+          }
+        }
+
+        &:first-of-type {
+          .aui-table__cell {
+            &:first-of-type {
+              border-top-left-radius: get-size(border-radius-l);
+            }
+            &:last-of-type {
+              border-top-right-radius: get-size(border-radius-l);
+            }
+          }
+        }
+        &:last-of-type {
+          .aui-table__cell {
+            &:first-of-type {
+              border-bottom-left-radius: get-size(border-radius-l);
+            }
+            &:last-of-type {
+              border-bottom-right-radius: get-size(border-radius-l);
+            }
+          }
+        }
+
+        &:not(&:last-child) {
+          .aui-table__cell {
+            border-bottom: 0;
+          }
+        }
+      }
+
+      &__header-row {
+        padding: 0;
+        align-items: stretch;
+        .aui-table__header-cell {
+          &:first-of-type {
+            padding-left: get-size(table-cell-padding-lr);
+          }
+          &:last-of-type {
+            padding-right: get-size(table-cell-padding-lr);
+          }
+        }
+      }
+      &__cell {
+        padding: get-size(table-cell-padding-tb-m)
+          calc(var(--aui-table-cell-padding-lr) / 2);
+      }
     }
     &--has-scroll {
       .#{$stickyCssClass} {
-        &:after {
+        &:not(.aui-table__header-row):after {
           position: absolute;
           top: 0;
           bottom: -1px;
@@ -33,25 +122,42 @@ $stickyCssClass: 'aui-table-sticky';
           content: '';
           pointer-events: none;
         }
+        &:not(.aui-table__header-row):before {
+          position: absolute;
+          top: 0;
+          bottom: -1px;
+          content: ' ';
+          @include vertical-dashed-line(1px, 'n-7');
+        }
         &-border-elem-left {
+          padding-right: calc(var(--aui-table-cell-padding-lr) / 2 * 3);
           &:after {
             right: -50px;
           }
+          &:before {
+            right: 10px;
+          }
         }
         &-border-elem-right {
-          overflow: visible;
+          padding-left: calc(var(--aui-table-cell-padding-lr) / 2 * 3);
           &:after {
-            left: 0;
+            left: calc(var(--aui-table-cell-padding-lr) / 2);
+          }
+          &:before {
+            left: calc(var(--aui-table-cell-padding-lr) / 2);
           }
         }
       }
     }
     &--scrolling {
       .#{$stickyCssClass} {
-        &-border-elem-left {
+        &-border-elem-left:not(.aui-table__header-row) {
           &:after {
             // stylelint-disable-next-line plugin/no-low-performance-animation-properties
-            box-shadow: inset 10px 0 8px -8px rgb(0 0 0 / 15%);
+            box-shadow: inset 8px 0 4px -4px get-rgba(n-1, 0.16);
+          }
+          &:before {
+            @include vertical-dashed-line(1px, 'primary');
           }
         }
       }
@@ -59,10 +165,13 @@ $stickyCssClass: 'aui-table-sticky';
 
     &--before-end {
       .#{$stickyCssClass} {
-        &-border-elem-right {
+        &-border-elem-right:not(.aui-table__header-row) {
           &:after {
             // stylelint-disable-next-line plugin/no-low-performance-animation-properties
-            box-shadow: inset -10px 0 8px -8px rgb(0 0 0 / 15%);
+            box-shadow: inset -8px 0 4px -4px get-rgba(n-1, 0.16);
+          }
+          &:before {
+            @include vertical-dashed-line(1px, 'primary');
           }
         }
       }
@@ -72,8 +181,7 @@ $stickyCssClass: 'aui-table-sticky';
   &__row,
   &__header-row {
     display: flex;
-    align-items: stretch;
-    box-sizing: border-box;
+    align-items: center;
 
     // Workaround for https://goo.gl/pFmjJD in IE 11. Adds a pseudo
     // element that will stretch the row the correct height. See:
@@ -85,57 +193,28 @@ $stickyCssClass: 'aui-table-sticky';
     }
   }
   &__row {
-    // padding: get-size(table-cell-padding-top) calc(var(--aui-table-cell-padding-left) / 2);
     position: relative;
-    .aui-table__cell {
-      border-width: get-size(table-border-width) 0;
-      border-style: solid;
-      border-color: $table-row-border-color;
-      &:first-of-type {
-        border-left-width: get-size(table-border-width);
-        padding-left: get-size(table-cell-padding-lr);
-        // margin-left:get-size(table-margin)
-      }
-      &:last-of-type {
-        border-right-width: get-size(table-border-width);
-        padding-right: get-size(table-cell-padding-lr);
-        // margin-right:get-size(table-margin)
-      }
-    }
+    border-width: get-size(table-border-width);
+    border-bottom: 0;
+    border-style: solid;
+    border-color: $table-row-border-color;
+    background-color: get-color(n-10);
+    padding: get-size(table-cell-padding-tb-m)
+      calc(var(--aui-table-cell-padding-lr) / 2);
 
     &:first-of-type {
-      .aui-table__cell {
-        &:first-of-type {
-          border-top-left-radius: 4px;
-          // margin-left:get-size(table-margin)
-        }
-        &:last-of-type {
-          border-top-right-radius: 4px;
-          // margin-right:get-size(table-margin)
-        }
-      }
+      border-top-left-radius: get-size(border-radius-l);
+      border-top-right-radius: get-size(border-radius-l);
     }
     &:last-of-type {
-      .aui-table__cell {
-        margin-bottom: get-size(table-margin);
-        &:first-of-type {
-          border-bottom-left-radius: 4px;
-        }
-        &:last-of-type {
-          border-bottom-right-radius: 4px;
-        }
-      }
-    }
-
-    &:not(&:last-child) {
-      .aui-table__cell {
-        border-bottom: 0;
-      }
+      border-bottom-width: get-size(table-border-width);
+      border-bottom-left-radius: get-size(border-radius-l);
+      border-bottom-right-radius: get-size(border-radius-l);
     }
 
     &.isDisabled:before {
       content: '';
-      z-index: 10;
+      z-index: 2;
       position: absolute;
       top: 0;
       left: 0;
@@ -146,36 +225,24 @@ $stickyCssClass: 'aui-table-sticky';
       cursor: not-allowed;
     }
   }
-  &__header-row {
-    padding: 0;
 
-    .aui-table__header-cell {
-      &:first-of-type {
-        padding-left: get-size(table-cell-padding-lr);
-      }
-      &:last-of-type {
-        padding-right: get-size(table-cell-padding-lr);
-      }
-    }
+  &__header-row {
+    background-color: get-color(n-9);
+    padding: 0 calc(var(--aui-table-cell-padding-lr) / 2);
   }
   &__cell,
   &__header-cell {
     flex: 1;
-    overflow: hidden;
-    word-wrap: break-word;
-    display: flex;
-    align-items: center;
-    left: 10px;
   }
   &__cell {
-    padding: get-size(table-cell-padding-tb)
-      calc(var(--aui-table-cell-padding-lr) / 2);
+    padding: 0 calc(var(--aui-table-cell-padding-lr) / 2);
     background-color: get-color(n-10);
   }
   &__header-cell {
     padding: get-size(table-header-cell-padding-tb)
       calc(var(--aui-table-cell-padding-lr) / 2);
     font-weight: 500;
+    height: get-size(table__header-height);
     line-height: get-size(line-height-m);
     background-color: get-color(n-9);
   }

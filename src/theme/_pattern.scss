@@ -83,22 +83,3 @@
     max-width: 960px;
   }
 }
-
-@mixin with-detail($detailColumn: 'detail') {
-  ::ng-deep .aui-table {
-    &__row {
-      flex-wrap: wrap;
-    }
-    &__column-#{$detailColumn} {
-      &.aui-table__header-cell {
-        display: none;
-      }
-      &.aui-table__cell {
-        width: 100%;
-        flex-shrink: 0;
-        flex-basis: 100%;
-        margin: 12px 0 -12px 0;
-      }
-    }
-  }
-}
