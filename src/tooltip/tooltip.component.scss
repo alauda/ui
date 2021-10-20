@@ -54,4 +54,8 @@ $block: 'aui-tooltip';
   &--end {
     margin: 0 get-size(spacing-s);
   }
+
+  &.popover {
+    padding: get-size(spacing-xl);
+  }
 }

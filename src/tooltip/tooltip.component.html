@@ -1,5 +1,8 @@
 <div
   [class]="class$ | async"
+  [ngClass]="{
+    popover: template$ | async
+  }"
   (mouseenter)="hover$.next(true)"
   (mouseleave)="hover$.next(false)"
 >
