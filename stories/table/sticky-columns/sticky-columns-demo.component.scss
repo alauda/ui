@@ -1,7 +1,14 @@
-.aui-table__scroll-wrapper {
-  // height: 400px;
-  .aui-table__header-cell,
-  .aui-table__cell {
-    flex: 1 0 100px;
+@import '../../../src/theme/mixin';
+:host {
+  ::ng-deep {
+    .aui-table__scroll-wrapper {
+      .aui-table__header-cell,
+      .aui-table__cell {
+        flex: 1 0 100px;
+      }
+      .aui-table__header-cell {
+        @include text-overflow();
+      }
+    }
   }
 }
