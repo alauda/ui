@@ -47,7 +47,10 @@ storiesOf('Table', module)
               Name
             </aui-table-header-cell>
             <aui-table-cell *auiTableCellDef="let item">
-              {{ item.name }} ({{ item.displayName }})
+              <div>{{ item.name }}</div>
+              <div style="font-size: 12px;color: #96989b;line-height: 16px;">
+                {{ item.displayName }}
+              </div>
             </aui-table-cell>
           </ng-container>
           <ng-container auiTableColumnDef="value">

@@ -12,6 +12,7 @@ import {
 import {
   ChangeDetectionStrategy,
   Component,
+  Input,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -20,7 +21,12 @@ import {
   exportAs: 'auiTable',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['table.component.scss'],
-  template: CDK_TABLE_TEMPLATE,
+  template: `<div
+    class="aui-table__content"
+    [auiTableScrollWrapper]="enableScrollWrapper"
+  >
+    ${CDK_TABLE_TEMPLATE}
+  </div>`,
   host: {
     class: 'aui-table',
   },
@@ -42,6 +48,9 @@ import {
   ],
 })
 export class TableComponent<T> extends CdkTable<T> {
+  @Input()
+  enableScrollWrapper: boolean;
+
   // FIXME: workaround to override because it will break constructor if it is field, but why MatTable works?
   // @ts-expect-error
   protected get stickyCssClass() {

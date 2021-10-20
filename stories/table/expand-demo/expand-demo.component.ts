@@ -19,7 +19,7 @@ interface Dictionary<T> {
   animations: [
     trigger('expand', [
       state('*', style({ height: 0 })),
-      state('expanded', style({ height: '*' })),
+      state('expanded', style({ height: '*', 'margin-bottom': '0' })),
       transition('* => expanded', [animate(250)]),
       transition('expanded => *', [animate(250)]),
     ]),
