@@ -38,7 +38,7 @@ export class AccordionItemComponent
   extends CdkAccordionItem
   implements AfterContentInit {
   @Input()
-  hideToggle: false;
+  hideToggle = false;
 
   @Input()
   togglePosition: 'left' | 'right' = 'left';

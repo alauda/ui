@@ -1,0 +1,70 @@
+<ng-template #drawerTemplate>
+  <div
+    [class.drawer-mask-open]="visible"
+    class="drawer-mask"
+    (click)="maskClick()"
+    *ngIf="mask"
+  ></div>
+  <div
+    [style.marginTop.px]="offsetY"
+    [ngClass]="drawerClasses"
+    [class.drawer-open]="visible"
+    [ngStyle]="{
+      transform: transform,
+      width: width + 'px'
+    }"
+  >
+    <div
+      class="drawer-content"
+      [style.height]="'calc(100% - ' + offsetY + 'px)'"
+    >
+      <div class="drawer-body-wrapper">
+        <div class="drawer-header">
+          <div class="drawer-title">
+            <ng-container
+              *ngIf="!isTemplateRef(title || titleTemplate); else elseTemplate"
+            >
+              {{ title }}
+            </ng-container>
+            <ng-template #elseTemplate>
+              <ng-container
+                *ngIf="title || titleTemplate"
+                [ngTemplateOutlet]="$any(title || titleTemplate)"
+                [ngTemplateOutletContext]="templateContext"
+              ></ng-container>
+            </ng-template>
+          </div>
+          <div class="drawer-close" *ngIf="showClose" (click)="closure()">
+            <aui-icon icon="close"></aui-icon>
+          </div>
+        </div>
+
+        <div class="drawer-body">
+          <ng-template cdkPortalOutlet></ng-template>
+          <ng-container
+            *ngTemplateOutlet="
+              $any(content || contentTemplate);
+              context: templateContext
+            "
+          >
+          </ng-container>
+        </div>
+
+        <div class="drawer-footer" *ngIf="footer">
+          <ng-container
+            *ngIf="!isTemplateRef(footer || footerTemplate); else elseTemplate"
+          >
+            {{ footer }}
+          </ng-container>
+          <ng-template #elseTemplate>
+            <ng-container
+              *ngIf="footer || titleTemplate"
+              [ngTemplateOutlet]="$any(footer || titleTemplate)"
+              [ngTemplateOutletContext]="templateContext"
+            ></ng-container>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
