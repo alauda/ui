@@ -248,12 +248,15 @@ $tag-info-bg-color: $color-disabled-bg;
 $tag-large-height: $height-medium;
 $tag-large-font-size: $font-size-regular;
 $tag-large-padding: 16px - $tag-border-width;
+
 $tag-medium-height: $height-small;
 $tag-medium-font-size: $font-size-regular;
 $tag-medium-padding: 12px - $tag-border-width;
+
 $tag-small-height: $height-mini;
 $tag-small-font-size: $font-size-small;
 $tag-margin: 8px;
+
 $tag-mini-height: 20px;
 $tag-mini-margin: 6px;
 $tag-mini-padding: 8px - $tag-border-width;
@@ -311,7 +314,7 @@ $section-border-width: $border-width;
 $icon-margin-hoz: 4px;
 
 // Tabs
-$tab-label-content-max-width: 150px;
+$tab-label-content-max-width: 160px;
 $tab-label-padding-large: 16px 20px;
 $tab-label-padding-medium: 12px 20px;
 $tab-label-padding-small: 8px 16px;
@@ -356,6 +359,6 @@ $date-picker-icon-size: $font-size-large;
 $date-picker-body-size: 216px;
 $date-picker-seprator-gap: 20px;
 $date-picker-row-gap: 8px;
-$date-picker-cell-size: 22px;
+$date-picker-cell-size: 24px;
 $range-picker-body-width: 552px;
 $range-picker-header-width: 275px;

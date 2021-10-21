@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ComponentSize, TimePickerModule } from '@alauda/ui';
 
@@ -7,7 +8,7 @@ import { ComponentSize, TimePickerModule } from '@alauda/ui';
   title="TimePicker"
   decorators={[
     moduleMetadata({
-      imports: [TimePickerModule],
+      imports: [TimePickerModule, FormsModule, ReactiveFormsModule],
     }),
   ]}
 />
@@ -19,33 +20,73 @@ import { ComponentSize, TimePickerModule } from '@alauda/ui';
 ## 基本
 
 <Canvas>
-  <Story name="Basic" height="120px">
+  <Story name="Basic" height="400px">
+    {{
+      template: /* HTML */ `<aui-time-picker
+          [(ngModel)]="time"
+          [size]="csize.Small"
+          placeholder="select time"
+          required
+        ></aui-time-picker>
+        <br />
+        Form value: {{time|json}}`,
+      props: {
+        time: Date.now(),
+        csize: ComponentSize,
+      },
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Size" height="500px">
     {{
       template: /* HTML */ `
-        initData :{{timeClone|json}}
+        Small
         <br />
         <aui-time-picker
           [(ngModel)]="time"
           [size]="csize.Small"
+          placeholder="select time"
           required
         ></aui-time-picker>
-        <br />
-        Form value: {{time|json}}
-        <br />
-        <br />
-        initData: {{time2|json}}
+        Medium
+        <aui-time-picker
+          [(ngModel)]="time2"
+          [size]="csize.Medium"
+          placeholder="select time"
+        ></aui-time-picker>
+        Large
         <br />
         <aui-time-picker
           [(ngModel)]="time2"
-          [size]="csize.Small"
+          [size]="csize.Large"
+          placeholder="select time"
         ></aui-time-picker>
-        <br />
-        Form value: {{time2|json}}
       `,
       props: {
         time: Date.now(),
-        timeClone: Date.now(),
         time2: { hour: 2, minute: 10, second: 3 },
+        csize: ComponentSize,
+      },
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Disabled" height="120px">
+    {{
+      template: /* HTML */ `
+        <aui-time-picker
+          [formControl]="time"
+          [disabled]="true"
+          [size]="csize.Small"
+          placeholder="select time"
+          required
+        ></aui-time-picker>
+      `,
+      props: {
+        time: new FormControl(Date.now()),
         csize: ComponentSize,
       },
     }}

@@ -1,13 +1,28 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { moduleMetadata } from '@storybook/angular';
+import { FormsModule } from '@angular/forms';
 
-import { TagModule, SwitchModule } from '@alauda/ui';
+import {
+  TagModule,
+  SwitchModule,
+  RadioModule,
+  ComponentSize,
+  IconModule,
+  CheckboxModule,
+} from '@alauda/ui';
 
 <Meta
   title="Tag"
   decorators={[
     moduleMetadata({
-      imports: [TagModule, SwitchModule],
+      imports: [
+        TagModule,
+        SwitchModule,
+        RadioModule,
+        FormsModule,
+        IconModule,
+        CheckboxModule,
+      ],
     }),
   ]}
 />
@@ -22,17 +37,63 @@ import { TagModule, SwitchModule } from '@alauda/ui';
   <Story name="Basic" height="120px">
     {{
       template: /* HTML */ `
-        <div style="margin-bottom: 20px">
-          边框：<aui-switch [(ngModel)]="border"></aui-switch>
-        </div>
-        <aui-tag type="primary" [border]="border">primary</aui-tag>
-        <aui-tag type="success" [border]="border">success</aui-tag>
-        <aui-tag type="warning" [border]="border">warning</aui-tag>
-        <aui-tag type="error" [border]="border">error</aui-tag>
-        <aui-tag type="info" [border]="border">info</aui-tag>
+        <aui-tag type="primary">primary</aui-tag>
+        <aui-tag type="success">success</aui-tag>
+        <aui-tag type="warning">warning</aui-tag>
+        <aui-tag type="error">error</aui-tag>
+        <aui-tag type="info">info</aui-tag>
       `,
       props: {
         border: false,
+      },
+    }}
+  </Story>
+</Canvas>
+
+## 边框
+
+<Canvas>
+  <Story name="Borderd" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-tag type="primary" [border]="true" size="mini">primary</aui-tag>
+        <aui-tag type="success" [border]="true" size="mini">success</aui-tag>
+        <aui-tag type="warning" [border]="true" size="mini">warning</aui-tag>
+        <aui-tag type="error" [border]="true" size="mini">error</aui-tag>
+        <aui-tag type="info" [border]="true" size="mini">info</aui-tag>
+      `,
+    }}
+  </Story>
+</Canvas>
+
+## 大小
+
+<Canvas>
+  <Story name="Size" height="120px">
+    {{
+      template: /* HTML */ `
+        <aui-radio-group [(ngModel)]="size">
+          <aui-radio [value]="ComponentSize.Mini">小标签</aui-radio>
+          <aui-radio [value]="ComponentSize.Small">中标签</aui-radio>
+          <aui-radio [value]="ComponentSize.Medium">大标签</aui-radio>
+        </aui-radio-group>
+        <br />
+        <aui-tag type="primary" [border]="border" [size]="size"
+          >primary</aui-tag
+        >
+        <aui-tag type="success" [border]="border" [size]="size"
+          >success</aui-tag
+        >
+        <aui-tag type="warning" [border]="border" [size]="size"
+          >warning</aui-tag
+        >
+        <aui-tag type="error" [border]="border" [size]="size">error</aui-tag>
+        <aui-tag type="info" [border]="border" [size]="size">info</aui-tag>
+      `,
+      props: {
+        border: false,
+        size: ComponentSize.Mini,
+        ComponentSize: ComponentSize,
       },
     }}
   </Story>
@@ -44,11 +105,11 @@ import { TagModule, SwitchModule } from '@alauda/ui';
   <Story name="Solid" height="60px">
     {{
       template: /* HTML */ `
-        <aui-tag type="primary" [solid]="true">primary</aui-tag>
-        <aui-tag type="success" [solid]="true">success</aui-tag>
-        <aui-tag type="warning" [solid]="true">warning</aui-tag>
-        <aui-tag type="error" [solid]="true">erro</aui-tag>
-        <aui-tag type="info" [solid]="true">info</aui-tag>
+        <aui-tag type="primary" [solid]="true" size="mini">primary</aui-tag>
+        <aui-tag type="success" [solid]="true" size="mini">success</aui-tag>
+        <aui-tag type="warning" [solid]="true" size="mini">warning</aui-tag>
+        <aui-tag type="error" [solid]="true" size="mini">erro</aui-tag>
+        <aui-tag type="info" [solid]="true" size="mini">info</aui-tag>
       `,
     }}
   </Story>
@@ -60,11 +121,11 @@ import { TagModule, SwitchModule } from '@alauda/ui';
   <Story name="Closeable" height="60px">
     {{
       template: /* HTML */ `
-        <aui-tag type="primary" [closeable]="true">primary</aui-tag>
-        <aui-tag type="success" [closeable]="true">success</aui-tag>
-        <aui-tag type="warning" [closeable]="true">warning</aui-tag>
-        <aui-tag type="error" [closeable]="true">erro</aui-tag>
-        <aui-tag type="info" [closeable]="true">info</aui-tag>
+        <aui-tag type="primary" [closeable]="true" size="mini">primary</aui-tag>
+        <aui-tag type="success" [closeable]="true" size="mini">success</aui-tag>
+        <aui-tag type="warning" [closeable]="true" size="mini">warning</aui-tag>
+        <aui-tag type="error" [closeable]="true" size="mini">erro</aui-tag>
+        <aui-tag type="info" [closeable]="true" size="mini">info</aui-tag>
       `,
     }}
   </Story>
@@ -76,11 +137,11 @@ import { TagModule, SwitchModule } from '@alauda/ui';
   <Story name="Invalid" height="60px">
     {{
       template: /* HTML */ `
-        <aui-tag type="primary" [invalid]="true">primary</aui-tag>
-        <aui-tag type="success" [invalid]="true">success</aui-tag>
-        <aui-tag type="warning" [invalid]="true">warning</aui-tag>
-        <aui-tag type="error" [invalid]="true">erro</aui-tag>
-        <aui-tag type="info" [invalid]="true">info</aui-tag>
+        <aui-tag type="primary" [invalid]="true" size="mini">primary</aui-tag>
+        <aui-tag type="success" [invalid]="true" size="mini">success</aui-tag>
+        <aui-tag type="warning" [invalid]="true" size="mini">warning</aui-tag>
+        <aui-tag type="error" [invalid]="true" size="mini">erro</aui-tag>
+        <aui-tag type="info" [invalid]="true" size="mini">info</aui-tag>
       `,
     }}
   </Story>
@@ -92,11 +153,11 @@ import { TagModule, SwitchModule } from '@alauda/ui';
   <Story name="Square" height="60px">
     {{
       template: /* HTML */ `
-        <aui-tag type="primary" [round]="false">primary</aui-tag>
-        <aui-tag type="success" [round]="false">success</aui-tag>
-        <aui-tag type="warning" [round]="false">warning</aui-tag>
-        <aui-tag type="error" [round]="false">erro</aui-tag>
-        <aui-tag type="info" [round]="false">info</aui-tag>
+        <aui-tag type="primary" [round]="false" size="mini">primary</aui-tag>
+        <aui-tag type="success" [round]="false" size="mini">success</aui-tag>
+        <aui-tag type="warning" [round]="false" size="mini">warning</aui-tag>
+        <aui-tag type="error" [round]="false" size="mini">erro</aui-tag>
+        <aui-tag type="info" [round]="false" size="mini">info</aui-tag>
       `,
     }}
   </Story>
@@ -108,7 +169,7 @@ import { TagModule, SwitchModule } from '@alauda/ui';
   <Story name="Custom" height="60px">
     {{
       template: /* HTML */ `
-        <aui-tag [color]="'#7c70e2,#f2f1fd'">custom</aui-tag>
+        <aui-tag [color]="'#7c70e2,#f2f1fd'" size="mini">custom</aui-tag>
       `,
     }}
   </Story>
@@ -120,8 +181,68 @@ import { TagModule, SwitchModule } from '@alauda/ui';
   <Story name="Check" height="60px">
     {{
       template: /* HTML */ `
-        <aui-check-tag [(checked)]="model">check</aui-check-tag>
+        <aui-check-tag [(checked)]="model" size="mini">check</aui-check-tag>
         value: {{ model }}
+        <br />
+      `,
+      props: {
+        model: false,
+      },
+    }}
+  </Story>
+</Canvas>
+
+## 可点击
+
+<Canvas>
+  <Story name="Click" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-tag type="primary" [allowClick]="true" size="mini"
+          ><a>primary</a></aui-tag
+        >
+        <aui-tag type="success" [allowClick]="true" size="mini"
+          ><a>success</a></aui-tag
+        >
+        <aui-tag type="warning" [allowClick]="true" size="mini"
+          ><a>warning</a></aui-tag
+        >
+        <aui-tag type="error" [allowClick]="true" size="mini"
+          ><a>error</a></aui-tag
+        >
+        <aui-tag type="info" [allowClick]="true" size="mini"
+          ><a>info</a></aui-tag
+        >
+      `,
+      props: {
+        border: false,
+      },
+    }}
+  </Story>
+</Canvas>
+
+## Icon
+
+<Canvas>
+  <Story name="Icon" height="60px">
+    {{
+      template: /* HTML */ `
+        <aui-tag type="primary" [border]="true" size="mini">
+          <aui-icon icon="exclamation_circle_s"></aui-icon>
+          primary</aui-tag
+        >
+        <aui-tag type="success" [border]="true" size="mini"
+          ><aui-icon icon="exclamation_circle_s"></aui-icon> success</aui-tag
+        >
+        <aui-tag type="warning" [border]="true" size="mini"
+          ><aui-icon icon="exclamation_circle_s"></aui-icon> warning</aui-tag
+        >
+        <aui-tag type="error" [border]="true" size="mini"
+          ><aui-icon icon="exclamation_circle_s"></aui-icon> error</aui-tag
+        >
+        <aui-tag type="info" [border]="true" size="mini"
+          ><aui-icon icon="exclamation_circle_s"></aui-icon> info</aui-tag
+        >
       `,
     }}
   </Story>

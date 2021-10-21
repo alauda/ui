@@ -21,5 +21,6 @@ export const en: I18NInterface = {
     sunday: 'Sun',
     now: 'Now',
     select_all: 'Select All',
+    today: 'Today',
   },
 };

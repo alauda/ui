@@ -139,7 +139,7 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
       this.selectedTime,
     );
     if (this.type === this.currentNavType) {
-      this.emitValueChange(this.selectedDate);
+      this.confirmValue(this.selectedDate, !this.showTime);
     }
     const nextNavRange = nextNavRangeType(
       this.navRange,
@@ -161,5 +161,9 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
     }
     this.selectedDate = updateDateByTimeModel(this.selectedDate, time);
     this.emitValueChange(this.selectedDate);
+  }
+
+  setToday() {
+    this.confirmValue(dayjs(), true);
   }
 }

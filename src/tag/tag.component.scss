@@ -1,13 +1,40 @@
 @import '../theme/var';
 @import '../theme/mixin';
 
+@mixin colorful-tag($color) {
+  color: get-color($color);
+  background-color: get-color($color, 6);
+  &.hasBorder {
+    border-color: get-color($color, 2);
+    &.allowClick {
+      &:hover {
+        border-color: get-color($color, 1);
+      }
+      &:active {
+        border-color: get-color($color, 0);
+      }
+    }
+  }
+  &.allowClick {
+    &:hover {
+      background-color: get-color($color, 7);
+      cursor: pointer;
+    }
+
+    &:active {
+      color: get-color($color);
+      background-color: get-color($color, 6);
+    }
+  }
+}
+
 .aui-tag {
   display: inline-flex;
   border-radius: $tag-border-radius;
   border: $tag-border-width $tag-border-style transparent;
   max-width: $tag-max-width;
   vertical-align: middle;
-
+  @include transition(background-color);
   &__content {
     white-space: nowrap;
     overflow: hidden;
@@ -62,9 +89,7 @@
   }
 
   &--primary {
-    color: $tag-primary-color;
-    background-color: $tag-primary-bg-color;
-
+    @include colorful-tag(primary);
     .aui-tag__close .aui-icon:hover {
       color: $tag-primary-bg-color;
       background-color: $tag-primary-color;
@@ -72,9 +97,7 @@
   }
 
   &--success {
-    color: $tag-success-color;
-    background-color: $tag-success-bg-color;
-
+    @include colorful-tag(green);
     .aui-tag__close .aui-icon:hover {
       color: $tag-success-bg-color;
       background-color: $tag-success-color;
@@ -82,9 +105,7 @@
   }
 
   &--warning {
-    color: $tag-warning-color;
-    background-color: $tag-warning-bg-color;
-
+    @include colorful-tag(yellow);
     .aui-tag__close .aui-icon:hover {
       color: $tag-warning-bg-color;
       background-color: $tag-warning-color;
@@ -92,9 +113,7 @@
   }
 
   &--error {
-    color: $tag-error-color;
-    background-color: $tag-error-bg-color;
-
+    @include colorful-tag(red);
     .aui-tag__close .aui-icon:hover {
       color: $tag-error-bg-color;
       background-color: $tag-error-color;
@@ -102,12 +121,14 @@
   }
 
   &--info {
-    color: $tag-info-color;
-    background-color: $tag-info-bg-color;
-
+    background-color: get-color(n-9);
+    color: get-color(n-4);
+    &.hasBorder {
+      border-color: get-color(n-7);
+    }
     .aui-tag__close .aui-icon:hover {
       color: $tag-info-bg-color;
-      background-color: $tag-info-color;
+      background-color: get-color(n-4);
     }
   }
 
@@ -122,48 +143,34 @@
     }
   }
 
-  &.hasBorder#{&} {
+  &.isSolid#{&} {
     &--primary {
-      border-color: $tag-primary-color;
+      background-color: get-color(primary);
     }
 
     &--success {
-      border-color: $tag-success-color;
+      background-color: get-color(green);
     }
 
     &--warning {
-      border-color: $tag-warning-color;
+      background-color: get-color(yellow);
     }
 
     &--error {
-      border-color: $tag-error-color;
+      background-color: get-color(red);
     }
 
     &--info {
-      background-color: $color-info-extra-light;
-      border-color: $tag-info-border-color;
+      background-color: get-color(n);
     }
   }
 
-  &.isSolid#{&} {
-    &--primary {
-      background-color: $color-primary;
+  &.allowClick {
+    a {
+      color: inherit;
     }
-
-    &--success {
-      background-color: $color-success;
-    }
-
-    &--warning {
-      background-color: $color-warning;
-    }
-
-    &--error {
-      background-color: $color-error;
-    }
-
-    &--info {
-      background-color: $color-info;
+    &:hover {
+      cursor: pointer;
     }
   }
 }

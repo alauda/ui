@@ -132,14 +132,20 @@
   &:focus,
   &.isActive {
     outline: none;
+  }
 
-    &:not(.aui-tab-label--disabled) {
+  &:not(.aui-tab-label--disabled) {
+    &.isActive {
       opacity: 1;
+    }
+    &.isActive,
+    &:hover {
+      color: get-color(primary);
     }
   }
 
   &.aui-tab-label--disabled {
-    cursor: default;
+    cursor: not-allowed;
     opacity: 0.2;
   }
 

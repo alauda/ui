@@ -77,7 +77,7 @@ export class DatePickerTriggerComponent {
   }
 
   get showClear() {
-    return this.clearable && this.hasValue && this.hovered;
+    return !this.disabled && this.clearable && this.hasValue && this.hovered;
   }
 
   constructor() {

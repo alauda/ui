@@ -16,15 +16,17 @@ aui-date-picker {
     &.ng-submitted,
     &.ng-dirty {
       .#{$block}__container {
-        border-color: $color-error !important;
+        border-color: get-color(red) !important;
+        &.isFocused {
+          @include outline-shadow(red);
+        }
       }
     }
   }
 }
 
 :host {
-  display: inline-block;
-  width: 100%;
+  display: block;
 }
 
 .#{$block} {
@@ -33,14 +35,14 @@ aui-date-picker {
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
-    width: 100%;
     border: $input-border-width $input-border-style $input-border-color;
     position: relative;
-    cursor: pointer;
-    input[readonly] {
+    width: 100%;
+    background-color: get-color(n-9);
+    border-radius: get-size(border-radius-m);
+    &:hover:not(.disabled) {
+      border-color: get-color(primary);
       cursor: pointer;
-      border: none;
-      @include view-readonly;
     }
     // trigger有自己的border，隐藏了input的border，修正input由于border-box设定引起的高度差异
     @each $name, $height in $height-mapper {
@@ -48,15 +50,27 @@ aui-date-picker {
         height: $height - 2px;
       }
     }
-
-    &.is-focus,
-    &:hover {
-      border-color: $color-primary;
+    &.isFocused:not(.disabled) {
+      border-color: get-color(primary);
+      @include outline-shadow(primary);
     }
-    &.is-disabled {
-      input[readonly] {
+    .aui-input {
+      border: none;
+      background-color: transparent !important;
+      &:hover {
+        cursor: pointer;
+      }
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    &.disabled {
+      .aui-input {
         background: transparent;
         cursor: not-allowed;
+        color: get-color(n-7);
       }
 
       background: $color-disabled-bg;
@@ -72,7 +86,7 @@ aui-date-picker {
     display: flex;
     align-items: center;
     .placeholder {
-      color: $color-text-placeholder;
+      color: get-color(n-6);
     }
   }
 
@@ -82,7 +96,7 @@ aui-date-picker {
     font-size: $date-picker-icon-size;
     width: $date-picker-icon-size;
     height: $date-picker-icon-size;
-    line-height: 1em;
+    line-height: $date-picker-icon-size;
     .clear {
       @include clear-button;
     }

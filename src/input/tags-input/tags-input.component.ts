@@ -227,6 +227,12 @@ export class TagsInputComponent
         );
       }
     });
+    if (
+      this.controlContainer?.control?.errors?.[INPUT_ERROR_KEY] &&
+      Object.keys(this.controlContainer.control.errors).length === 1
+    ) {
+      this.controlContainer.control.setErrors(null);
+    }
   }
 
   onKeyDown(event: KeyboardEvent) {
@@ -236,9 +242,11 @@ export class TagsInputComponent
       event.stopPropagation();
       event.preventDefault();
     } else if (event.key === 'Enter') {
-      this.pushValue(inputEl.value);
       event.stopPropagation();
       event.preventDefault();
+      requestAnimationFrame(() => {
+        this.pushValue(inputEl.value);
+      });
     }
   }
 
