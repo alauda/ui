@@ -114,6 +114,30 @@
   }
 }
 
+@mixin with-expand($expandColumn: 'expand') {
+  ::ng-deep .aui-table {
+    &__cell,
+    &__header-cell {
+      &.aui-table__column-#{$expandColumn} {
+        max-width: calc(
+          var(--aui-table-cell-padding-lr) / 2 + var(--aui-font-size-l)
+        );
+        padding-right: 0;
+
+        .aui-table__cell-expand-button {
+          width: get-size(font-size-l);
+          height: get-size(font-size-l);
+          &.collapsed {
+            background-color: get-rgba(primary, 0.1);
+            border-color: get-rgba(primary, 0.1);
+            color: get-color(primary);
+          }
+        }
+      }
+    }
+  }
+}
+
 @mixin vertical-dashed-line($width: 1px, $color: 'n-7') {
   background: linear-gradient(
     to bottom,

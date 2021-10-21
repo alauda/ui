@@ -1,11 +1,16 @@
 <aui-table [dataSource]="dataSource">
+  <ng-container auiTableColumnDef="expand">
+    <aui-table-header-cell *auiTableHeaderCellDef></aui-table-header-cell>
+    <aui-table-cell
+      *auiTableCellDef="let item"
+      [expand]="rowExpanded.has(item.id)"
+      (expandChange)="toggleRow(item.id)"
+    >
+    </aui-table-cell>
+  </ng-container>
   <ng-container auiTableColumnDef="id">
     <aui-table-header-cell *auiTableHeaderCellDef>No.</aui-table-header-cell>
     <aui-table-cell *auiTableCellDef="let item">
-      <aui-icon
-        [icon]="this.rowExpanded[item.id] ? 'angle_down' : 'angle_right'"
-        (click)="toggleRow(item.id)"
-      ></aui-icon>
       {{ item.id }}
     </aui-table-cell>
   </ng-container>
@@ -25,12 +30,11 @@
     </aui-table-cell>
   </ng-container>
   <ng-container auiTableColumnDef="detail">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      You can't see this header
-    </aui-table-header-cell>
+    <aui-table-header-cell *auiTableHeaderCellDef></aui-table-header-cell>
     <aui-table-cell
       *auiTableCellDef="let item"
-      [@expand]="rowExpanded[item.id] ? 'expanded' : null"
+      [expand]="rowExpanded.has(item.id)"
+      [template]="true"
     >
       <pre>
           Empty your mind
@@ -44,10 +48,14 @@
       >
     </aui-table-cell>
   </ng-container>
+
   <aui-table-header-row
-    *auiTableHeaderRowDef="['id', 'name', 'value', 'detail']"
+    *auiTableHeaderRowDef="['expand', 'id', 'name', 'value', 'detail']"
   ></aui-table-header-row>
   <aui-table-row
-    *auiTableRowDef="let row; columns: ['id', 'name', 'value', 'detail']"
+    *auiTableRowDef="
+      let row;
+      columns: ['expand', 'id', 'name', 'value', 'detail']
+    "
   ></aui-table-row>
 </aui-table>
