@@ -1,9 +1,9 @@
 <div
   [class]="bem.element('container')"
   [ngClass]="{
-    'is-focus': isFocus,
+    isFocused: isFocus,
     'is-range': isRange,
-    'is-disabled': disabled
+    disabled: disabled
   }"
   (mouseenter)="hovered = true"
   (mouseleave)="hovered = false"

@@ -28,34 +28,50 @@
     [ngTemplateOutletContext]="{ context: this }"
   ></ng-container>
 
-  <aui-calendar-footer
-    (clear)="clear.next()"
-    (confirm)="confirmValue()"
-    [clearable]="clearable"
-    [clearText]="clearText"
-    *ngIf="showFooter"
-  >
-    <ng-container
-      *ngIf="footerTemplate; else default"
-      [ngTemplateOutlet]="footerTemplate"
-      [ngTemplateOutletContext]="{ context: this }"
-    ></ng-container>
+  <ng-container *ngIf="showFooter">
+    <aui-calendar-footer
+      (clear)="clear.next()"
+      (confirm)="confirmValue()"
+      [clearable]="clearable"
+      [clearText]="clearText"
+      *ngIf="showTime; else today"
+    >
+      <ng-container
+        *ngIf="footerTemplate; else default"
+        [ngTemplateOutlet]="footerTemplate"
+        [ngTemplateOutletContext]="{ context: this }"
+      ></ng-container>
 
-    <ng-template #default>
-      <aui-time-picker
-        *ngIf="currentNavType === DatePickerType.Day && showTime"
-        [showIcon]="false"
-        size="small"
-        [(ngModel)]="selectedTime"
-        [disableHours]="getDisabledTimeFn(selectedDate, 'hours')"
-        [disableMinutes]="getDisabledTimeFn(selectedDate, 'minutes')"
-        [disableSeconds]="getDisabledTimeFn(selectedDate, 'seconds')"
-        [style.width.px]="88"
-        [style.display]="'inline-block'"
-        tooltipPosition="top start"
-        (ngModelChange)="timeDateChange($event)"
-        [placeholder]="'select_time' | auiI18n"
-      ></aui-time-picker>
+      <ng-template #default>
+        <aui-time-picker
+          *ngIf="currentNavType === DatePickerType.Day && showTime"
+          [showIcon]="false"
+          size="small"
+          [(ngModel)]="selectedTime"
+          [disableHours]="getDisabledTimeFn(selectedDate, 'hours')"
+          [disableMinutes]="getDisabledTimeFn(selectedDate, 'minutes')"
+          [disableSeconds]="getDisabledTimeFn(selectedDate, 'seconds')"
+          [style.width.px]="88"
+          [style.display]="'inline-block'"
+          tooltipPosition="top start"
+          (ngModelChange)="timeDateChange($event)"
+          [placeholder]="'select_time' | auiI18n"
+        ></aui-time-picker>
+      </ng-template>
+    </aui-calendar-footer>
+
+    <ng-template #today>
+      <aui-calendar-footer
+        *ngIf="type === DatePickerType.Day"
+        [clearable]="false"
+        [customAction]="todayBtn"
+      >
+      </aui-calendar-footer>
+      <ng-template #todayBtn>
+        <button aui-button="inline" (click)="setToday()">
+          {{ 'today' | auiI18n }}
+        </button>
+      </ng-template>
     </ng-template>
-  </aui-calendar-footer>
+  </ng-container>
 </div>

@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   Output,
+  TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -20,6 +21,9 @@ export class CalendarFooterComponent {
 
   @Input()
   clearText: string;
+
+  @Input()
+  customAction: TemplateRef<any>;
 
   @Output()
   confirm = new EventEmitter<void>();

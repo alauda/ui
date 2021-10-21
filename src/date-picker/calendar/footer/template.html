@@ -3,16 +3,23 @@
     <ng-content></ng-content>
   </div>
   <div>
-    <button
-      aui-button="text"
-      *ngIf="clearable"
-      (click)="clear.emit()"
-      size="small"
+    <ng-container
+      *ngIf="customAction; else default"
+      [ngTemplateOutlet]="customAction"
     >
-      {{ clearText || ('clear' | auiI18n) }}
-    </button>
-    <button aui-button="primary" (click)="confirm.emit()" size="small">
-      {{ 'confirm' | auiI18n }}
-    </button>
+    </ng-container>
+    <ng-template #default>
+      <button
+        aui-button="text"
+        *ngIf="clearable"
+        (click)="clear.emit()"
+        size="small"
+      >
+        {{ clearText || ('clear' | auiI18n) }}
+      </button>
+      <button aui-button="primary" (click)="confirm.emit()" size="small">
+        {{ 'confirm' | auiI18n }}
+      </button>
+    </ng-template>
   </div>
 </div>

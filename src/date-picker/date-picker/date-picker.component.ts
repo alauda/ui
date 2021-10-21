@@ -77,6 +77,9 @@ export class DatePickerComponent
   @Input()
   extraFooter: TemplateRef<unknown>;
 
+  @Input()
+  placeholder: string;
+
   @Output()
   openChange = new EventEmitter<boolean>();
 

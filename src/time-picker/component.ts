@@ -96,6 +96,11 @@ export class TimePickerComponent extends CommonFormControl<
   focused = false;
   hovered = false;
   bem = bem;
+  get rootClass() {
+    return `${bem.element('container')} ${this.focused ? 'isFocused' : ''} ${
+      this.disabled ? 'disabled' : ''
+    }`;
+  }
 
   writeValue(value: TimePickerDataLike) {
     super.writeValue(value);
@@ -142,7 +147,7 @@ export class TimePickerComponent extends CommonFormControl<
     }
     // dateFormatValue may need reset
     this.setValue(this.timeValue);
-    this.openChange.next(false);
+    this.submit();
   }
 
   openTooltip() {
@@ -159,7 +164,10 @@ export class TimePickerComponent extends CommonFormControl<
   }
 
   submit(close = true, value?: Dayjs) {
-    close && this.tooltip.disposeTooltip();
+    if (close) {
+      this.tooltip.disposeTooltip();
+      this.openChange.next(false);
+    }
     const refer = value ?? this.timeValue;
     this.emitValue(
       refer
