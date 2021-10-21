@@ -1,0 +1,139 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ExpandDemoComponent } from './expand-demo/expand-demo.component';
+import { FixedSizeVirtualScrollDemoComponent } from './fixed-size-virtual-scroll-demo/fixed-size-virtual-scroll-demo.component';
+import { SortDemoComponent } from './sort-demo/sort-demo.component';
+import { StickyColumnsDemoComponent } from './sticky-columns/sticky-columns-demo.component';
+import { StickyHeadersDemoComponent } from './sticky-headers.components';
+import { DATA_SOURCE } from './data';
+
+import {
+  IconModule,
+  ScrollingModule,
+  SortModule,
+  TableModule,
+} from '@alauda/ui';
+
+<Meta
+  title="Table"
+  decorators={[
+    moduleMetadata({
+      imports: [
+        BrowserAnimationsModule,
+        SortModule,
+        IconModule,
+        ScrollingModule,
+        TableModule,
+      ],
+      decorators: [
+        SortDemoComponent,
+        ExpandDemoComponent,
+        FixedSizeVirtualScrollDemoComponent,
+        StickyColumnsDemoComponent,
+        StickyHeadersDemoComponent,
+      ],
+    }),
+  ]}
+/>
+
+# Table
+
+Table 组件基于 CdkTable 开发, 加了一些 alauda 自定义的表格样式
+
+## 基础使用
+
+<Canvas>
+  <Story name="Basic" height="600px">
+    {{
+      template: /* HTML */ `
+        <aui-table [dataSource]="dataSource">
+          <ng-container auiTableColumnDef="id">
+            <aui-table-header-cell *auiTableHeaderCellDef>
+              No.
+            </aui-table-header-cell>
+            <aui-table-cell *auiTableCellDef="let item">
+              <div>{{ item.id }}</div>
+            </aui-table-cell>
+          </ng-container>
+          <ng-container auiTableColumnDef="name">
+            <aui-table-header-cell *auiTableHeaderCellDef>
+              Name
+            </aui-table-header-cell>
+            <aui-table-cell *auiTableCellDef="let item">
+              <div>{{ item.name }}</div>
+              <div style="font-size: 12px;color: #96989b;line-height: 16px;">
+                {{ item.displayName }}
+              </div>
+            </aui-table-cell>
+          </ng-container>
+          <ng-container auiTableColumnDef="value">
+            <aui-table-header-cell *auiTableHeaderCellDef>
+              Value
+            </aui-table-header-cell>
+            <aui-table-cell *auiTableCellDef="let item">
+              {{ item.value }}
+            </aui-table-cell>
+          </ng-container>
+          <aui-table-header-row
+            *auiTableHeaderRowDef="['id', 'name', 'value']; sticky: sticky"
+          ></aui-table-header-row>
+          <aui-table-row
+            *auiTableRowDef="let row; columns: ['id', 'name', 'value'];"
+          ></aui-table-row>
+        </aui-table>
+      `,
+      props: {
+        dataSource: DATA_SOURCE,
+      },
+    }}
+  </Story>
+</Canvas>
+
+## Sort 排序
+
+<Canvas>
+  <Story name="Sort" height="540px">
+    {{
+      component: SortDemoComponent,
+    }}
+  </Story>
+</Canvas>
+
+## expand 展开
+
+<Canvas>
+  <Story name="Expand" height="600px">
+    {{
+      component: ExpandDemoComponent,
+    }}
+  </Story>
+</Canvas>
+
+## Header 固定
+
+<Canvas>
+  <Story name="Sticky Header" height="600px">
+    {{
+      component: StickyHeadersDemoComponent,
+    }}
+  </Story>
+</Canvas>
+
+## Sticky Columns 固定
+
+<Canvas>
+  <Story name="Sticky Columns" height="500px">
+    {{
+      component: StickyColumnsDemoComponent,
+    }}
+  </Story>
+</Canvas>
+
+## aui-table Inputs
+
+| 名称                | 类型    | 默认值 | 描述                                                                                                                    |
+| ------------------- | ------- | ------ | ----------------------------------------------------------------------------------------------------------------------- |
+| dataSource          | array   | -      | table 数据                                                                                                              |
+| enableScrollWrapper | boolean | -      | sticky columns 需要开启才会有左右侧虚线和阴影效果, 开启之后 table row 的 align-items 会变成 stretch，这里需要单独注意下 |
