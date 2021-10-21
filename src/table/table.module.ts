@@ -2,7 +2,11 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { ButtonModule } from '../button/button.module';
+import { IconModule } from '../icon/icon.module';
+
 import { TableCellDefDirective } from './table-cell-def.directive';
+import { TableCellComponent } from './table-cell.component';
 import { TableCellDirective } from './table-cell.directive';
 import { TableColumnDefDirective } from './table-column-def.directive';
 import { TableHeaderCellDefDirective } from './table-header-cell-def.directive';
@@ -15,11 +19,12 @@ import { TableScrollWrapperDirective } from './table-scroll-wrapper.directive';
 import { TableComponent } from './table.component';
 
 @NgModule({
-  imports: [CommonModule, CdkTableModule],
+  imports: [CommonModule, ButtonModule, IconModule, CdkTableModule],
   declarations: [
     TableComponent,
     TableRowComponent,
     TableHeaderRowComponent,
+    TableCellComponent,
     TableCellDirective,
     TableHeaderCellDirective,
     TableRowDefDirective,
@@ -33,6 +38,7 @@ import { TableComponent } from './table.component';
     TableComponent,
     TableRowComponent,
     TableHeaderRowComponent,
+    TableCellComponent,
     TableCellDirective,
     TableHeaderCellDirective,
     TableRowDefDirective,

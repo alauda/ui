@@ -9,6 +9,7 @@ $stickyCssClass: 'aui-table-sticky';
   font-size: get-size(font-size-m);
   background-color: get-color(n-9);
   padding: 0 get-size(table-margin) get-size(table-margin);
+  border-radius: get-size(border-radius-m);
 
   &__header-row.#{$stickyCssClass} {
     flex-wrap: wrap;

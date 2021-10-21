@@ -9,10 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { DATA_SOURCE } from '../data';
 
-interface Dictionary<T> {
-  [key: string]: T;
-}
-
 @Component({
   templateUrl: 'expand-demo.component.html',
   styleUrls: ['expand-demo.component.scss'],
@@ -29,12 +25,13 @@ interface Dictionary<T> {
 export class ExpandDemoComponent {
   dataSource = DATA_SOURCE.slice();
 
-  rowExpanded: Dictionary<boolean> = {};
+  rowExpanded = new Set<number>();
 
   toggleRow(id: number) {
-    this.rowExpanded = {
-      ...this.rowExpanded,
-      [id]: !this.rowExpanded[id],
-    };
+    if (this.rowExpanded.has(id)) {
+      this.rowExpanded.delete(id);
+    } else {
+      this.rowExpanded.add(id);
+    }
   }
 }
