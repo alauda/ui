@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { Sort } from '../../../src/sort/public-api';
-
-import { DATA_SOURCE, Element } from '..';
+import { DATA_SOURCE, Element } from '../data';
 
 @Component({
   templateUrl: 'sort-demo.component.html',

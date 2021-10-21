@@ -115,8 +115,7 @@ $stickyCssClass: 'aui-table-sticky';
           position: absolute;
           top: 0;
           bottom: -1px;
-          width: 30px;
-          transform: translateX(-100%);
+          width: 20px;
           // stylelint-disable-next-line plugin/no-low-performance-animation-properties
           transition: box-shadow 0.3s;
           content: '';
@@ -132,16 +131,16 @@ $stickyCssClass: 'aui-table-sticky';
         &-border-elem-left {
           padding-right: calc(var(--aui-table-cell-padding-lr) / 2 * 3);
           &:after {
-            right: -50px;
+            right: calc((var(--aui-table-cell-padding-lr) / 2) * -1);
           }
           &:before {
-            right: 10px;
+            right: calc(var(--aui-table-cell-padding-lr) / 2);
           }
         }
         &-border-elem-right {
           padding-left: calc(var(--aui-table-cell-padding-lr) / 2 * 3);
           &:after {
-            left: calc(var(--aui-table-cell-padding-lr) / 2);
+            left: calc((var(--aui-table-cell-padding-lr) / 2) * -1);
           }
           &:before {
             left: calc(var(--aui-table-cell-padding-lr) / 2);

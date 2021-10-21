@@ -10,7 +10,7 @@ export class StickyColumnsDemoComponent {
     Array.from({ length: 10 }).map((_, index) => `cell${index + 1}`),
   );
 
-  dataSource = Array.from({ length: 20 }).map((_, i) =>
+  dataSource = Array.from({ length: 6 }).map((_, i) =>
     ['1'].concat(Array.from({ length: 10 }).map((_, j) => `cell${i}${j}`)),
   );
 }
