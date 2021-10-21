@@ -215,6 +215,7 @@ storiesOf('Input', module)
           [size]="size"
           [formControl]="control"
           [inputValidator]="checkFn"
+          [maxRowCount]="3"
           [clearable]="true"
           [readonlyTags]="['service']"
           [allowRepeat]="allowRepeat"

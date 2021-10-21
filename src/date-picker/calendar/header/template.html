@@ -1,5 +1,5 @@
 <div [class]="bem.element('container')">
-  <div [class]="bem.element('nav-action')">
+  <div>
     <ng-container
       *ngIf="dateNavRange !== DateNavRange.Decade"
       [ngTemplateOutlet]="yearControl"
@@ -38,7 +38,7 @@
     *ngIf="dateNavRange === DateNavRange.Decade"
     [class]="bem.element('nav-content')"
   >
-    {{ headerRange?.start.year() }}-{{ headerRange?.end?.year() }}
+    {{ headerRange?.start.year() }} - {{ headerRange?.end?.year() }}
   </span>
 
   <div [class]="bem.element('nav-action')">
@@ -58,8 +58,8 @@
 
 <ng-template #yearControl let-side="side">
   <span style="display: flex">
-    <a
-      href="javascript:;"
+    <button
+      aui-button="text"
       *ngIf="
         dateNavRange === DateNavRange.Month &&
         side === 'right' &&
@@ -68,18 +68,18 @@
       (click)="navHead(DateNavRange.Month, 1)"
     >
       <aui-icon icon="angle_right"></aui-icon>
-    </a>
-    <a
-      href="javascript:;"
+    </button>
+    <button
+      aui-button="text"
       (click)="navHead(DateNavRange.Year, side === 'left' ? -1 : 1)"
       *ngIf="shouldShowNav(DateNavRange.Year, side)"
     >
       <aui-icon
         [icon]="side === 'left' ? 'angle_double_left' : 'angle_double_right'"
       ></aui-icon>
-    </a>
-    <a
-      href="javascript:;"
+    </button>
+    <button
+      aui-button="text"
       *ngIf="
         dateNavRange === DateNavRange.Month &&
         side === 'left' &&
@@ -88,18 +88,18 @@
       (click)="navHead(DateNavRange.Month, -1)"
     >
       <aui-icon icon="angle_left"></aui-icon>
-    </a>
+    </button>
   </span>
 </ng-template>
 
 <ng-template #decadeControl let-side="side">
-  <a
-    href="javascript:;"
+  <button
+    aui-button="text"
     (click)="navHead(DateNavRange.Decade, side === 'left' ? -10 : 10)"
     *ngIf="shouldShowNav(DateNavRange.Decade, side)"
   >
     <aui-icon
       [icon]="side === 'left' ? 'angle_double_left' : 'angle_double_right'"
     ></aui-icon>
-  </a>
+  </button>
 </ng-template>

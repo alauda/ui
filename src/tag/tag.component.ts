@@ -47,6 +47,9 @@ export class TagComponent {
   @Input()
   color = '';
 
+  @Input()
+  allowClick = false;
+
   @Output()
   close = new EventEmitter<void>();
 
@@ -56,7 +59,14 @@ export class TagComponent {
       this.size || ComponentSize.Medium,
     )} ${this.solid ? 'isSolid' : ''} ${this.border ? 'hasBorder' : ''} ${
       this.invalid ? 'isInvalid' : ''
-    } ${this.round ? 'isRound' : ''}`;
+    } ${this.round ? 'isRound' : ''} ${
+      this.allowClick && this.isNormalTag ? 'allowClick' : ''
+    }`;
+  }
+
+  // 只有常规标签支持单击样式
+  get isNormalTag() {
+    return !this.solid && !this.closeable && !this.invalid;
   }
 
   get customStyle() {

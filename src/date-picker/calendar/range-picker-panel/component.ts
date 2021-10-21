@@ -199,7 +199,7 @@ export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {
     this.syncTime();
     if (this.rangeValue.length === 2) {
       this.reorder(this.rangeValue);
-      this.emitValueChange(this.rangeValue);
+      this.confirmValue(this.rangeValue, !this.showTime);
     }
   }
 
@@ -224,9 +224,9 @@ export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {
     }
   }
 
-  confirmValue() {
-    this.emitValueChange(this.rangeValue);
-    this.confirm.next();
+  confirmValue(value: Dayjs[], closeThen = true) {
+    this.emitValueChange(value);
+    closeThen && this.confirm.next();
   }
 
   timeChange(time: TimePickerModel) {
