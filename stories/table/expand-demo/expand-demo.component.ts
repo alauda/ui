@@ -7,7 +7,7 @@ import {
 } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { DATA_SOURCE } from '..';
+import { DATA_SOURCE } from '../data';
 
 interface Dictionary<T> {
   [key: string]: T;
