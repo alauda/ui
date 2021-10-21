@@ -3,4 +3,5 @@
 
 :host {
   @include with-detail(detail);
+  @include with-expand(expand);
 }
