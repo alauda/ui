@@ -4,13 +4,13 @@
 $b: aui-section;
 
 .#{$b} {
-  padding: 16px 0;
-  font-size: $font-size-regular;
+  padding: get-size(spacing-xl) 0;
+  font-size: get-size(font-size-m);
 
   &__title {
-    margin-bottom: 16px;
-    font-size: $font-size-large;
-    font-weight: $font-weight-bold;
+    margin-bottom: get-size(spacing-xl);
+    font-size: get-size(font-size-l);
+    font-weight: get-size(font-weight-bold);
   }
 }
 
@@ -23,5 +23,5 @@ $b: aui-section;
 }
 
 #{$b} + #{$b} > .#{$b} {
-  border-top: $section-border-width $section-border-style $section-border-color;
+  border-top: 1px dashed get-color(n-8);
 }
