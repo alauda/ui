@@ -6,25 +6,25 @@
 
   &--large #{&} {
     &__trigger .aui-button__content {
-      padding: 0 8px - $button-border-width;
+      padding: 0 7px;
     }
   }
 
   &--medium #{&} {
     &__trigger .aui-button__content {
-      padding: 0 6px - $button-border-width;
+      padding: 0 5px;
     }
   }
 
   &--small #{&} {
     &__trigger .aui-button__content {
-      padding: 0 4px - $button-border-width;
+      padding: 0 3px;
     }
   }
 
   &--mini #{&} {
     &__trigger .aui-button__content {
-      padding: 0 4px - $button-border-width;
+      padding: 0 3px;
     }
   }
 
@@ -57,10 +57,10 @@
   }
 
   &__content.aui-button + &__trigger.aui-button {
-    margin-left: $button-border-width;
+    margin-left: get-size(border-m);
 
     &.isPlain {
-      margin-left: -$button-border-width;
+      margin-left: -1px;
     }
   }
 }
@@ -68,5 +68,5 @@
 aui-dropdown-button + aui-dropdown-button > .aui-dropdown-button,
 aui-dropdown-button + .aui-button,
 .aui-button + aui-dropdown-button > .aui-dropdown-button {
-  margin-left: $button-margin;
+  margin-left: get-size(spacing-m);
 }

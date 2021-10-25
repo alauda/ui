@@ -4,17 +4,17 @@
 .aui-menu-group {
   &__title {
     display: inline-block;
-    margin: 0 0 $menu-group-title-padding 0;
-    padding: $menu-group-title-padding 0;
-    font-size: $font-size-small;
-    line-height: $line-height-small;
-    color: $color-text-help;
+    margin: 0 0 get-size(spacing-s) 0;
+    padding: get-size(spacing-s) 0;
+    font-size: get-size(font-size-s);
+    line-height: get-size(line-height-s);
+    color: get-color(n-4);
+    font-weight: get-size(font-weight-bold);
   }
 }
 
 aui-menu-group:not(:first-child) .aui-menu-group {
-  margin-top: $menu-padding;
-  padding-top: $menu-padding;
-  border-top: $menu-group-divide-width $menu-group-divide-style
-    $menu-group-divide-color;
+  margin-top: get-size(spacing-m);
+  padding-top: get-size(spacing-m);
+  border-top: 1px solid get-color(n-8);
 }
