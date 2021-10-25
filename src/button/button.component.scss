@@ -301,8 +301,8 @@ $button-size: (
   }
 }
 
-.aui-button:not(:last-child) {
-  margin: 0 get-size(spacing-m) 0 0;
+.aui-button + .aui-button {
+  margin-left: get-size(spacing-m);
 }
 
 .aui-button--text:not(:last-child) {

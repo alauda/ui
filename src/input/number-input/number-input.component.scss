@@ -54,9 +54,6 @@ $block: 'aui-number-input';
     .aui-button__content {
       padding: unset;
     }
-    &:not(:last-child) {
-      margin: unset;
-    }
   }
 
   &__input {

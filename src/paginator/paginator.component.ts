@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { ComponentSize } from '../types';
+import { Bem, buildBem } from '../utils';
 
 import { PaginatorIntl } from './paginator-intl';
 
@@ -44,6 +44,8 @@ export class PageEvent {
   preserveWhitespaces: false,
 })
 export class PaginatorComponent implements OnDestroy {
+  bem: Bem = buildBem('aui-paginator');
+
   @Input()
   get pageIndex() {
     return this.currentPage - 1;
@@ -79,9 +81,6 @@ export class PaginatorComponent implements OnDestroy {
 
   @Input()
   layout: string | string[] = 'total,pager,sizes';
-
-  @Input()
-  size = ComponentSize.Small;
 
   @Input()
   disabled = false;
