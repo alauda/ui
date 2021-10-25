@@ -6,7 +6,7 @@
   align-items: center;
   flex-shrink: 0;
   position: relative;
-  background-color: $color-white;
+  background-color: get-color(n-10);
 
   // Size modifiers:
   &--large {
@@ -64,7 +64,7 @@
 
     &:hover {
       opacity: 1;
-      color: $color-primary;
+      color: get-color(primary);
     }
 
     &:first-of-type {
@@ -124,9 +124,9 @@
   justify-content: center;
   align-items: center;
   white-space: nowrap;
-  color: $color-text-main;
+  color: get-color(n-2);
+  font-weight: $font-weight-normal;
   z-index: $tab-label-z-index;
-  opacity: 0.6;
   transition: opacity 0.3s;
 
   &:focus,
@@ -136,7 +136,7 @@
 
   &:not(.aui-tab-label--disabled) {
     &.isActive {
-      opacity: 1;
+      font-weight: $font-weight-bold;
     }
     &.isActive,
     &:hover {
@@ -163,11 +163,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: $tab-header-close-icon-color;
-
+    color: get-color(n-4);
+    @include transition;
     &:hover {
-      color: $tab-header-close-icon-color-hover;
-      background-color: $tab-header-close-icon-color;
+      color: get-color(n-9);
+      background-color: get-color(n-4);
     }
   }
 
@@ -211,7 +211,7 @@ aui-tab-header-active-indicator {
     border: $tab-border;
     border-top: none;
     border-bottom: none;
-    background: $color-white;
+    background: get-color(n-10);
     &:after {
       width: calc(100% + 2px);
       top: 0;
