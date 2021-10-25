@@ -27,7 +27,7 @@ export class SubmenuComponent extends MenuItemComponent {
   trigger = TooltipTrigger.Hover;
 
   @Input()
-  size: ComponentSize = ComponentSize.Medium;
+  size: ComponentSize = ComponentSize.Small;
 
   @Input()
   get disabled() {

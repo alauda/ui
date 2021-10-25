@@ -1,10 +1,9 @@
-import { ComponentSize, PaginatorIntl, PaginatorModule } from '@alauda/ui';
+import { PaginatorIntl, PaginatorModule } from '@alauda/ui';
 import { Injectable } from '@angular/core';
 import {
   array,
   boolean,
   number,
-  select,
   text,
   withKnobs,
 } from '@storybook/addon-knobs';
@@ -15,12 +14,6 @@ storiesOf('Paginator', module)
   .addDecorator(withKnobs)
   .add('chinese', () => {
     const layout = text('layout', 'total,pager,sizes,jumper,content');
-    const sizeOptions = {
-      [ComponentSize.Medium]: ComponentSize.Medium,
-      [ComponentSize.Small]: ComponentSize.Small,
-      [ComponentSize.Mini]: ComponentSize.Mini,
-    };
-    const size = select('size', sizeOptions, ComponentSize.Medium);
     const currentPage = number('currentPage', 1);
     const pageSize = number('pageSize', 20);
     const total = number('total', 350);
@@ -40,7 +33,6 @@ storiesOf('Paginator', module)
       template: /* HTML */ `
         <aui-paginator
           [layout]="layout"
-          [size]="size"
           [(currentPage)]="currentPage"
           [(pageSize)]="pageSize"
           [total]="total"
@@ -52,7 +44,6 @@ storiesOf('Paginator', module)
       `,
       props: {
         layout,
-        size,
         currentPage,
         pageSize,
         total,

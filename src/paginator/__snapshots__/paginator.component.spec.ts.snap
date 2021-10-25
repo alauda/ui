@@ -14,7 +14,7 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
 >
   <aui-paginator>
     <div
-      class="aui-paginator aui-paginator--small"
+      class="aui-paginator"
     >
       
       <div
@@ -38,103 +38,97 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
         <div
           class="aui-paginator__pager"
         >
-          <aui-button-group>
-            <div
-              class="aui-button-group"
+          <button
+            aui-button=""
+            class="aui-button aui-button--default aui-button--medium aui-paginator__navigator"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
             >
-              <button
-                aui-button=""
-                class="aui-paginator__navigator aui-button aui-button--default aui-button--small isPlain isSquare"
-                disabled=""
+              <aui-icon
+                icon="angle_left"
               >
-                <span
-                  class="aui-button__content"
-                >
-                  <aui-icon
-                    icon="angle_left"
-                  >
-                    
-                    <svg
-                      class="aui-icon aui-icon-angle_left"
-                    >
-                      <use
-                        xlink:href="#aui-icon-angle_left"
-                      />
-                    </svg>
-                    
-                  </aui-icon>
-                </span>
                 
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--primary aui-button--small"
+                <svg
+                  class="aui-icon aui-icon-angle_left"
+                >
+                  <use
+                    xlink:href="#aui-icon-angle_left"
+                  />
+                </svg>
+                
+              </aui-icon>
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--medium aui-paginator__page aui-button--primary"
+          >
+            <span
+              class="aui-button__content"
+            >
+               1 
+            </span>
+            
+          </button>
+          
+          
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+          >
+            <span
+              class="aui-button__content"
+            >
+               2 
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+          >
+            <span
+              class="aui-button__content"
+            >
+               3 
+            </span>
+            
+          </button>
+          
+          
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+          >
+            <span
+              class="aui-button__content"
+            >
+               4 
+            </span>
+            
+          </button>
+          <button
+            aui-button=""
+            class="aui-button aui-button--default aui-button--medium aui-paginator__navigator"
+          >
+            <span
+              class="aui-button__content"
+            >
+              <aui-icon
+                icon="angle_right"
               >
-                <span
-                  class="aui-button__content"
-                >
-                   1 
-                </span>
                 
-              </button>
-              
-              
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-              >
-                <span
-                  class="aui-button__content"
+                <svg
+                  class="aui-icon aui-icon-angle_right"
                 >
-                   2 
-                </span>
+                  <use
+                    xlink:href="#aui-icon-angle_right"
+                  />
+                </svg>
                 
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-              >
-                <span
-                  class="aui-button__content"
-                >
-                   3 
-                </span>
-                
-              </button>
-              
-              
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-              >
-                <span
-                  class="aui-button__content"
-                >
-                   4 
-                </span>
-                
-              </button>
-              <button
-                aui-button=""
-                class="aui-paginator__navigator aui-button aui-button--default aui-button--small isPlain isSquare"
-              >
-                <span
-                  class="aui-button__content"
-                >
-                  <aui-icon
-                    icon="angle_right"
-                  >
-                    
-                    <svg
-                      class="aui-icon aui-icon-angle_right"
-                    >
-                      <use
-                        xlink:href="#aui-icon-angle_right"
-                      />
-                    </svg>
-                    
-                  </aui-icon>
-                </span>
-                
-              </button>
-            </div>
-          </aui-button-group>
+              </aui-icon>
+            </span>
+            
+          </button>
         </div>
         
         
@@ -155,11 +149,11 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
               auitooltipposition="bottom start"
               auitooltiptrigger="click"
               auitooltiptype="plain"
-              class="aui-select aui-select--small"
+              class="aui-select aui-select--medium"
             >
               <aui-input-group>
                 <div
-                  class="aui-input-group aui-input-group--small hasSuffix"
+                  class="aui-input-group aui-input-group--medium hasSuffix"
                 >
                   <div
                     class="aui-input-group__inner-wrapper"
@@ -172,13 +166,13 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                       <input
                         aui-input=""
                         autocomplete="off"
-                        class="aui-select__input aui-input aui-input--small"
+                        class="aui-select__input aui-input aui-input--medium"
                         placeholder=""
                         readonly=""
                       />
                       
                       <div
-                        class="aui-select__label-container aui-input aui-input--small"
+                        class="aui-select__label-container aui-input aui-input--medium"
                       >
                         <div
                           class="aui-select__label"
@@ -241,7 +235,7 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
           </span>
           <input
             aui-input=""
-            class="aui-input aui-input--small"
+            class="aui-input aui-input--medium"
             max="4"
             min="1"
             type="number"
@@ -278,7 +272,7 @@ exports[`PaginatorComponent should render current template 1`] = `
 >
   <aui-paginator>
     <div
-      class="aui-paginator aui-paginator--small"
+      class="aui-paginator"
     >
       
       <div
@@ -302,169 +296,163 @@ exports[`PaginatorComponent should render current template 1`] = `
         <div
           class="aui-paginator__pager"
         >
-          <aui-button-group>
-            <div
-              class="aui-button-group"
+          <button
+            aui-button=""
+            class="aui-button aui-button--default aui-button--medium aui-paginator__navigator"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
             >
-              <button
-                aui-button=""
-                class="aui-paginator__navigator aui-button aui-button--default aui-button--small isPlain isSquare"
-                disabled=""
+              <aui-icon
+                icon="angle_left"
               >
-                <span
-                  class="aui-button__content"
-                >
-                  <aui-icon
-                    icon="angle_left"
-                  >
-                    
-                    <svg
-                      class="aui-icon aui-icon-angle_left"
-                    >
-                      <use
-                        xlink:href="#aui-icon-angle_left"
-                      />
-                    </svg>
-                    
-                  </aui-icon>
-                </span>
                 
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--primary aui-button--small"
+                <svg
+                  class="aui-icon aui-icon-angle_left"
+                >
+                  <use
+                    xlink:href="#aui-icon-angle_left"
+                  />
+                </svg>
+                
+              </aui-icon>
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--medium aui-paginator__page aui-button--primary"
+          >
+            <span
+              class="aui-button__content"
+            >
+               1 
+            </span>
+            
+          </button>
+          
+          
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+          >
+            <span
+              class="aui-button__content"
+            >
+               2 
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+          >
+            <span
+              class="aui-button__content"
+            >
+               3 
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+          >
+            <span
+              class="aui-button__content"
+            >
+               4 
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+          >
+            <span
+              class="aui-button__content"
+            >
+               5 
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+          >
+            <span
+              class="aui-button__content"
+            >
+               6 
+            </span>
+            
+          </button>
+          
+          <button
+            aui-button=""
+            class="aui-button aui-button--default aui-button--medium aui-paginator__fast-navigator"
+          >
+            <span
+              class="aui-button__content"
+            >
+              <aui-icon
+                icon="ellipsis_h_s"
               >
-                <span
-                  class="aui-button__content"
-                >
-                   1 
-                </span>
                 
-              </button>
-              
-              
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
+                <svg
+                  class="aui-icon aui-icon-ellipsis_h_s"
+                >
+                  <use
+                    xlink:href="#aui-icon-ellipsis_h_s"
+                  />
+                </svg>
+                
+              </aui-icon>
+              <aui-icon
+                icon="angle_double_right"
               >
-                <span
-                  class="aui-button__content"
-                >
-                   2 
-                </span>
                 
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
+                <svg
+                  class="aui-icon aui-icon-angle_double_right"
+                >
+                  <use
+                    xlink:href="#aui-icon-angle_double_right"
+                  />
+                </svg>
+                
+              </aui-icon>
+            </span>
+            
+          </button>
+          
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+          >
+            <span
+              class="aui-button__content"
+            >
+               18 
+            </span>
+            
+          </button>
+          <button
+            aui-button=""
+            class="aui-button aui-button--default aui-button--medium aui-paginator__navigator"
+          >
+            <span
+              class="aui-button__content"
+            >
+              <aui-icon
+                icon="angle_right"
               >
-                <span
-                  class="aui-button__content"
-                >
-                   3 
-                </span>
                 
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-              >
-                <span
-                  class="aui-button__content"
+                <svg
+                  class="aui-icon aui-icon-angle_right"
                 >
-                   4 
-                </span>
+                  <use
+                    xlink:href="#aui-icon-angle_right"
+                  />
+                </svg>
                 
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-              >
-                <span
-                  class="aui-button__content"
-                >
-                   5 
-                </span>
-                
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-              >
-                <span
-                  class="aui-button__content"
-                >
-                   6 
-                </span>
-                
-              </button>
-              
-              <button
-                aui-button=""
-                class="aui-paginator__fast-navigator aui-button aui-button--default aui-button--small isPlain isSquare"
-              >
-                <span
-                  class="aui-button__content"
-                >
-                  <aui-icon
-                    icon="ellipsis_h_s"
-                  >
-                    
-                    <svg
-                      class="aui-icon aui-icon-ellipsis_h_s"
-                    >
-                      <use
-                        xlink:href="#aui-icon-ellipsis_h_s"
-                      />
-                    </svg>
-                    
-                  </aui-icon>
-                  <aui-icon
-                    icon="angle_double_right"
-                  >
-                    
-                    <svg
-                      class="aui-icon aui-icon-angle_double_right"
-                    >
-                      <use
-                        xlink:href="#aui-icon-angle_double_right"
-                      />
-                    </svg>
-                    
-                  </aui-icon>
-                </span>
-                
-              </button>
-              
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-              >
-                <span
-                  class="aui-button__content"
-                >
-                   18 
-                </span>
-                
-              </button>
-              <button
-                aui-button=""
-                class="aui-paginator__navigator aui-button aui-button--default aui-button--small isPlain isSquare"
-              >
-                <span
-                  class="aui-button__content"
-                >
-                  <aui-icon
-                    icon="angle_right"
-                  >
-                    
-                    <svg
-                      class="aui-icon aui-icon-angle_right"
-                    >
-                      <use
-                        xlink:href="#aui-icon-angle_right"
-                      />
-                    </svg>
-                    
-                  </aui-icon>
-                </span>
-                
-              </button>
-            </div>
-          </aui-button-group>
+              </aui-icon>
+            </span>
+            
+          </button>
         </div>
         
         
@@ -485,11 +473,11 @@ exports[`PaginatorComponent should render current template 1`] = `
               auitooltipposition="bottom start"
               auitooltiptrigger="click"
               auitooltiptype="plain"
-              class="aui-select aui-select--small"
+              class="aui-select aui-select--medium"
             >
               <aui-input-group>
                 <div
-                  class="aui-input-group aui-input-group--small hasSuffix"
+                  class="aui-input-group aui-input-group--medium hasSuffix"
                 >
                   <div
                     class="aui-input-group__inner-wrapper"
@@ -502,13 +490,13 @@ exports[`PaginatorComponent should render current template 1`] = `
                       <input
                         aui-input=""
                         autocomplete="off"
-                        class="aui-select__input aui-input aui-input--small"
+                        class="aui-select__input aui-input aui-input--medium"
                         placeholder=""
                         readonly=""
                       />
                       
                       <div
-                        class="aui-select__label-container aui-input aui-input--small"
+                        class="aui-select__label-container aui-input aui-input--medium"
                       >
                         <div
                           class="aui-select__label"
@@ -571,7 +559,7 @@ exports[`PaginatorComponent should render current template 1`] = `
           </span>
           <input
             aui-input=""
-            class="aui-input aui-input--small"
+            class="aui-input aui-input--medium"
             max="18"
             min="1"
             type="number"
@@ -608,7 +596,7 @@ exports[`PaginatorComponent should render current template 2`] = `
 >
   <aui-paginator>
     <div
-      class="aui-paginator aui-paginator--small"
+      class="aui-paginator"
     >
       
       <div
@@ -632,178 +620,172 @@ exports[`PaginatorComponent should render current template 2`] = `
         <div
           class="aui-paginator__pager"
         >
-          <aui-button-group>
-            <div
-              class="aui-button-group"
+          <button
+            aui-button=""
+            class="aui-button aui-button--default aui-button--medium aui-paginator__navigator"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
             >
-              <button
-                aui-button=""
-                class="aui-paginator__navigator aui-button aui-button--default aui-button--small isPlain isSquare"
-                disabled=""
+              <aui-icon
+                icon="angle_left"
               >
-                <span
-                  class="aui-button__content"
-                >
-                  <aui-icon
-                    icon="angle_left"
-                  >
-                    
-                    <svg
-                      class="aui-icon aui-icon-angle_left"
-                    >
-                      <use
-                        xlink:href="#aui-icon-angle_left"
-                      />
-                    </svg>
-                    
-                  </aui-icon>
-                </span>
                 
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--primary aui-button--small"
-                disabled=""
+                <svg
+                  class="aui-icon aui-icon-angle_left"
+                >
+                  <use
+                    xlink:href="#aui-icon-angle_left"
+                  />
+                </svg>
+                
+              </aui-icon>
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--medium aui-paginator__page aui-button--primary"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
+            >
+               1 
+            </span>
+            
+          </button>
+          
+          
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
+            >
+               2 
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
+            >
+               3 
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
+            >
+               4 
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
+            >
+               5 
+            </span>
+            
+          </button>
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
+            >
+               6 
+            </span>
+            
+          </button>
+          
+          <button
+            aui-button=""
+            class="aui-button aui-button--default aui-button--medium aui-paginator__fast-navigator"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
+            >
+              <aui-icon
+                icon="ellipsis_h_s"
               >
-                <span
-                  class="aui-button__content"
-                >
-                   1 
-                </span>
                 
-              </button>
-              
-              
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-                disabled=""
+                <svg
+                  class="aui-icon aui-icon-ellipsis_h_s"
+                >
+                  <use
+                    xlink:href="#aui-icon-ellipsis_h_s"
+                  />
+                </svg>
+                
+              </aui-icon>
+              <aui-icon
+                icon="angle_double_right"
               >
-                <span
-                  class="aui-button__content"
-                >
-                   2 
-                </span>
                 
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-                disabled=""
+                <svg
+                  class="aui-icon aui-icon-angle_double_right"
+                >
+                  <use
+                    xlink:href="#aui-icon-angle_double_right"
+                  />
+                </svg>
+                
+              </aui-icon>
+            </span>
+            
+          </button>
+          
+          <button
+            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
+            >
+               18 
+            </span>
+            
+          </button>
+          <button
+            aui-button=""
+            class="aui-button aui-button--default aui-button--medium aui-paginator__navigator"
+            disabled=""
+          >
+            <span
+              class="aui-button__content"
+            >
+              <aui-icon
+                icon="angle_right"
               >
-                <span
-                  class="aui-button__content"
-                >
-                   3 
-                </span>
                 
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-                disabled=""
-              >
-                <span
-                  class="aui-button__content"
+                <svg
+                  class="aui-icon aui-icon-angle_right"
                 >
-                   4 
-                </span>
+                  <use
+                    xlink:href="#aui-icon-angle_right"
+                  />
+                </svg>
                 
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-                disabled=""
-              >
-                <span
-                  class="aui-button__content"
-                >
-                   5 
-                </span>
-                
-              </button>
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-                disabled=""
-              >
-                <span
-                  class="aui-button__content"
-                >
-                   6 
-                </span>
-                
-              </button>
-              
-              <button
-                aui-button=""
-                class="aui-paginator__fast-navigator aui-button aui-button--default aui-button--small isPlain isSquare"
-                disabled=""
-              >
-                <span
-                  class="aui-button__content"
-                >
-                  <aui-icon
-                    icon="ellipsis_h_s"
-                  >
-                    
-                    <svg
-                      class="aui-icon aui-icon-ellipsis_h_s"
-                    >
-                      <use
-                        xlink:href="#aui-icon-ellipsis_h_s"
-                      />
-                    </svg>
-                    
-                  </aui-icon>
-                  <aui-icon
-                    icon="angle_double_right"
-                  >
-                    
-                    <svg
-                      class="aui-icon aui-icon-angle_double_right"
-                    >
-                      <use
-                        xlink:href="#aui-icon-angle_double_right"
-                      />
-                    </svg>
-                    
-                  </aui-icon>
-                </span>
-                
-              </button>
-              
-              <button
-                class="aui-paginator__page aui-button aui-button--default aui-button--small isPlain"
-                disabled=""
-              >
-                <span
-                  class="aui-button__content"
-                >
-                   18 
-                </span>
-                
-              </button>
-              <button
-                aui-button=""
-                class="aui-paginator__navigator aui-button aui-button--default aui-button--small isPlain isSquare"
-                disabled=""
-              >
-                <span
-                  class="aui-button__content"
-                >
-                  <aui-icon
-                    icon="angle_right"
-                  >
-                    
-                    <svg
-                      class="aui-icon aui-icon-angle_right"
-                    >
-                      <use
-                        xlink:href="#aui-icon-angle_right"
-                      />
-                    </svg>
-                    
-                  </aui-icon>
-                </span>
-                
-              </button>
-            </div>
-          </aui-button-group>
+              </aui-icon>
+            </span>
+            
+          </button>
         </div>
         
         
@@ -824,11 +806,11 @@ exports[`PaginatorComponent should render current template 2`] = `
               auitooltipposition="bottom start"
               auitooltiptrigger="click"
               auitooltiptype="plain"
-              class="aui-select aui-select--small isDisabled"
+              class="aui-select aui-select--medium isDisabled"
             >
               <aui-input-group>
                 <div
-                  class="aui-input-group aui-input-group--small hasSuffix isDisabled"
+                  class="aui-input-group aui-input-group--medium hasSuffix isDisabled"
                 >
                   <div
                     class="aui-input-group__inner-wrapper"
@@ -841,14 +823,14 @@ exports[`PaginatorComponent should render current template 2`] = `
                       <input
                         aui-input=""
                         autocomplete="off"
-                        class="aui-select__input aui-input aui-input--small"
+                        class="aui-select__input aui-input aui-input--medium"
                         disabled=""
                         placeholder=""
                         readonly=""
                       />
                       
                       <div
-                        class="aui-select__label-container aui-input aui-input--small"
+                        class="aui-select__label-container aui-input aui-input--medium"
                         disabled="true"
                       >
                         <div
@@ -912,7 +894,7 @@ exports[`PaginatorComponent should render current template 2`] = `
           </span>
           <input
             aui-input=""
-            class="aui-input aui-input--small"
+            class="aui-input aui-input--medium"
             disabled=""
             max="18"
             min="1"

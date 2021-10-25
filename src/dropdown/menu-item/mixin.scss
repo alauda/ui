@@ -10,12 +10,12 @@
     outline: none;
     width: 100%;
     text-align: left;
-    padding: $menu-item-padding;
-    height: $menu-item-medium-height;
-    font-size: $menu-item-medium-font-size;
-    color: $color-text-main;
-    background-color: $color-white;
-    border-radius: $menu-item-radius;
+    padding: 0 get-size(spacing-l);
+    height: get-size(inline-height-m);
+    font-size: get-size(font-size-m);
+    color: get-color(n-1);
+    background-color: get-color(n-10);
+    border-radius: get-size(border-radius-m);
     position: relative;
     overflow: hidden;
     white-space: nowrap;
@@ -23,71 +23,73 @@
     cursor: pointer;
 
     &--default {
-      &:hover,
+      &:hover {
+        background-color: get-color(p-6);
+      }
       &.isActive {
-        color: $menu-item-primary-color;
-        background-color: $menu-item-primary-bg;
+        color: get-color(primary);
+        background-color: get-color(p-6);
       }
     }
 
     &--primary {
-      color: $menu-item-primary-color;
+      color: get-color(primary);
       &:hover,
       &.isActive {
-        background-color: $menu-item-primary-bg;
+        background-color: get-color(p-6);
       }
     }
 
     &--success {
-      color: $menu-item-success-color;
+      color: get-color(green);
 
       &:hover,
       &.isActive {
-        background-color: $menu-item-primary-bg;
+        background-color: get-color(p-6);
       }
     }
 
     &--warning {
-      color: $menu-item-warning-color;
+      color: get-color(yellow);
       &:hover,
       &.isActive {
-        background-color: $menu-item-warning-bg;
+        background-color: get-color(y-6);
       }
     }
 
     &--danger {
-      color: $menu-item-danger-color;
+      color: get-color(red);
       &:hover,
       &.isActive {
-        background-color: $menu-item-danger-bg;
+        background-color: get-color(r-6);
       }
     }
 
     &[disabled],
     &[disabled]:hover {
-      color: $color-text-placeholder;
-      background-color: $color-white;
+      color: get-color(n-6);
+      background-color: get-color(n-10);
       cursor: not-allowed;
     }
 
     aui-icon:first-child {
-      margin-right: 8px;
+      margin-right: get-size(spacing-m);
     }
   }
 
   #{$block} {
     &:not(:first-child) .hasDivider {
       overflow: visible;
-      margin-top: $menu-padding * 2;
+      margin-top: get-size(spacing-xl);
       &:before {
         content: '';
         position: absolute;
         display: block;
         left: 0;
         right: 0;
-        top: -$menu-padding;
-        height: $menu-group-divide-width;
-        background: $menu-group-divide-color;
+        top: calc(0px - #{get-size(spacing-m)});
+        height: 1px;
+        background: get-color(n-8);
         pointer-events: none;
       }
     }

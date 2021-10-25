@@ -1,44 +1,20 @@
 @import '../theme/var';
 @import '../theme/mixin';
 
-.aui-paginator {
+$block: 'aui-paginator';
+$input-width: 80px;
+
+.#{$block} {
   display: inline-flex;
   align-items: center;
-  color: $color-text-main;
+  color: get-color(n-1);
 
-  &__page.aui-button .aui-button__content {
-    padding: 0 $text-button-padding-hoz;
-  }
-
-  &--large {
-    font-size: $button-large-font-size;
-
-    .aui-paginator__page {
-      min-width: $button-large-height;
-    }
-  }
-
-  &--medium {
-    font-size: $button-medium-font-size;
-
-    .aui-paginator__page {
-      min-width: $button-medium-height;
-    }
-  }
-
-  &--small {
-    font-size: $button-small-font-size;
-
-    .aui-paginator__page {
-      min-width: $button-small-height;
-    }
-  }
-
-  &--mini {
-    font-size: $button-mini-font-size;
-
-    .aui-paginator__page {
-      min-width: $button-mini-height;
+  .aui-button {
+    width: get-size(line-height-xl);
+    height: get-size(line-height-xl);
+    border: unset;
+    .aui-button__content {
+      padding: unset;
     }
   }
 
@@ -70,31 +46,51 @@
     align-items: center;
 
     .aui-select {
-      width: 68px;
-      margin-right: 4px;
+      width: $input-width;
+      margin-right: get-size(spacing-s);
     }
   }
 
   &__jumper {
     .aui-input {
-      width: 60px;
+      width: $input-width;
     }
 
-    span + input,
+    span + input {
+      margin-left: get-size(spacing-m);
+    }
     input + span {
-      margin-left: 4px;
+      margin-left: get-size(spacing-s);
     }
   }
 
-  .aui-button-group .aui-button--primary {
-    z-index: 2;
+  &__total {
+    font-size: get-size(font-size-m);
+  }
+
+  &__navigator.aui-button {
+    background-color: get-color(n-8);
+    aui-icon {
+      font-size: get-size(font-size-l);
+    }
+  }
+
+  &__pager {
+    border: 1px solid get-color(n-7);
+    padding: 3px;
+    border-radius: get-size(border-radius-m);
+    background-color: get-color(n-9);
+  }
+
+  &__page {
+    margin: 0 get-size(spacing-s);
   }
 
   &__layout {
     display: inline-block;
 
-    + .aui-paginator__layout {
-      margin-left: 12px;
+    + .#{$block}__layout {
+      margin-left: get-size(spacing-l);
     }
   }
 }
