@@ -20,7 +20,7 @@ $b: aui-card;
     font-weight: get-size(font-weight-bold);
 
     + .#{$b}__content {
-      margin-top: get-size(spacing-xxl);
+      margin-top: get-size(spacing-xl);
     }
   }
 
@@ -28,7 +28,7 @@ $b: aui-card;
     padding: 0;
 
     + .#{$b}__footer {
-      margin-top: get-size(spacing-xxl);
+      margin-top: get-size(spacing-xl);
     }
   }
 
@@ -39,7 +39,7 @@ $b: aui-card;
   &.hasDivider {
     > .#{$b} {
       &__header {
-        padding-bottom: get-size(spacing-xxl);
+        padding-bottom: get-size(spacing-xl);
         border-bottom: $default-border;
 
         + .#{$b}__content {
@@ -49,12 +49,12 @@ $b: aui-card;
 
       &__content {
         + .#{$b}__footer {
-          margin-top: get-size(spacing-xxl);
+          margin-top: get-size(spacing-xl);
         }
       }
 
       &__footer {
-        padding-top: get-size(spacing-xxl);
+        padding-top: get-size(spacing-xl);
         border-top: $default-border;
       }
     }
