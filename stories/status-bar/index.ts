@@ -36,6 +36,24 @@ storiesOf('Status Bar', module).add('status bar', () => {
     },
   ];
 
+  const status3: Status[] = [
+    {
+      scale: 0.2,
+      type: StatusType.Primary,
+    },
+    {
+      scale: 0.2,
+      type: StatusType.Warning,
+    },
+  ];
+
+  const status4: Status[] = [
+    {
+      scale: 0.2,
+      type: StatusType.Primary,
+    },
+  ];
+
   return {
     moduleMetadata: {
       imports: [StatusBarModule],
@@ -62,6 +80,14 @@ storiesOf('Status Bar', module).add('status bar', () => {
         size="small"
         (statusClick)="onChunkClick($event)"
       ></aui-status-bar>
+      <aui-status-bar
+        [status]="status3"
+        (statusClick)="onChunkClick($event)"
+      ></aui-status-bar>
+      <aui-status-bar
+        [status]="status4"
+        (statusClick)="onChunkClick($event)"
+      ></aui-status-bar>
       <ng-template #ref let-type="type" let-value="scale">
         <div>{{ type }}: {{value}}</div>
       </ng-template>
@@ -69,6 +95,8 @@ storiesOf('Status Bar', module).add('status bar', () => {
     props: {
       status1,
       status2,
+      status3,
+      status4,
       onChunkClick: action('chunk clicked'),
     },
   };
