@@ -61,7 +61,7 @@
 
 <ng-template #templateRef>
   <div
-    class="aui-option-container"
+    [class]="containerClass"
     [style.minWidth]="containerWidth"
     (mousedown)="$event.preventDefault()"
   >

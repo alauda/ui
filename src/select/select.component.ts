@@ -60,6 +60,10 @@ export class SelectComponent<T = unknown>
     return `aui-select aui-select--${this.size}`;
   }
 
+  get containerClass() {
+    return `aui-option-container aui-option-container--${this.size}`;
+  }
+
   isClearable = (hasSelected: boolean) =>
     !this.disabled && this.clearable && hasSelected;
 

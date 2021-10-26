@@ -35,7 +35,7 @@ import { SelectModule, IconModule } from '@alauda/ui';
         value: {{ value }}
       `,
       props: {
-        arr: Array.from({ length: 5 })
+        arr: Array.from({ length: 11 })
           .fill(null)
           .map((_, i) => `option${i + 1}`),
         value: '',
@@ -186,7 +186,7 @@ import { SelectModule, IconModule } from '@alauda/ui';
       template: /* HTML */ `
         <aui-multi-select
           [(ngModel)]="value"
-          [maxRowCount]="3"
+          [maxRowCount]="6"
           [allowSelectAll]="true"
         >
           <aui-option *ngFor="let option of arr" [value]="option">
@@ -226,9 +226,10 @@ import { SelectModule, IconModule } from '@alauda/ui';
 
 ## MultiSelect Inputs
 
-| 名称       | 类型       | 默认值 | 描述                |
-| ---------- | ---------- | ------ | ------------------- |
-| tagClassFn | TagClassFn | -      | 选中项的 class 定义 |
+| 名称        | 类型       | 默认值 | 描述                 |
+| ----------- | ---------- | ------ | -------------------- |
+| tagClassFn  | TagClassFn | -      | 选中项的 class 定义  |
+| maxRowCount | number     | -      | 多选输入框的最大行数 |
 
 ## Select & MultiSelect Outputs
 

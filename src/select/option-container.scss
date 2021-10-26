@@ -10,7 +10,7 @@
     @include popper-shadow;
 
     &__content {
-      max-height: calc(#{get-size(inline-height-m)} * 8);
+      max-height: calc(#{get-size(inline-height-m)} * 10);
       position: relative;
       overflow: auto;
       @include scroll-bar;
@@ -24,6 +24,15 @@
       color: get-color(n-4);
       font-size: get-size(font-size-m);
       text-align: center;
+    }
+  }
+
+  .#{$block}--small {
+    .#{$block}__content {
+      max-height: calc(#{get-size(inline-height-s)} * 10);
+    }
+    .#{$block}__placeholder {
+      font-size: get-size(font-size-s);
     }
   }
 }
