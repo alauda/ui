@@ -4,13 +4,13 @@
 
 @mixin option-container($block) {
   .#{$block} {
-    padding: $select-options-padding 0;
-    border-radius: $border-radius;
-    background-color: $color-white;
+    padding: get-size(select-options-padding) 0;
+    border-radius: get-size(border-radius-m);
+    background-color: get-color(n-10);
     @include popper-shadow;
 
     &__content {
-      max-height: $select-options-max-height;
+      max-height: calc(#{get-size(inline-height-m)} * 8);
       position: relative;
       overflow: auto;
       @include scroll-bar;
@@ -21,9 +21,17 @@
     }
 
     &__placeholder {
-      color: $color-text-placeholder;
-      font-size: $font-size-regular;
+      color: get-color(n-4);
+      font-size: get-size(font-size-m);
       text-align: center;
     }
   }
+}
+
+@function get-select-padding-variables($size: m, $clearable: false) {
+  @return calc(
+    #{get-size(font-size-#{$size})} * #{if($clearable == false, 1, 2)} + #{get-size(
+        inline-padding-xs
+      )} + #{get-size(spacing-m)} * #{if($clearable == false, 1, 2)}
+  );
 }

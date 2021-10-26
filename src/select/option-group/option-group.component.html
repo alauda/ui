@@ -1,4 +1,6 @@
 <div [hidden]="!(hasVisibleOption$ | async)" class="aui-option-group">
-  <ng-content select="[auiOptionGroupTitle]"></ng-content>
+  <div class="aui-option-group__title-wrapper">
+    <ng-content select="[auiOptionGroupTitle]"></ng-content>
+  </div>
   <div class="aui-option-group__content"><ng-content></ng-content></div>
 </div>

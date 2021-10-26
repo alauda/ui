@@ -7,14 +7,14 @@
 .aui-tree-select {
   display: inline-block;
   position: relative;
-  width: $select-width;
+  width: get-size(select-width);
 
   &:not(.isDisabled) {
     &:hover .aui-input {
-      border-color: $input-border-color-primary;
+      border-color: get-color(primary);
     }
     .aui-icon-caret_down_s {
-      fill: $input-color;
+      fill: get-text-color(main);
     }
   }
 
@@ -24,13 +24,12 @@
 
   &.isClearable .aui-input-group .aui-tree-select__input.aui-input {
     &--medium {
-      padding-right: $input-padding-hoz * 2 + $input-medium-font-size * 2 +
-        $icon-margin-hoz;
+      padding-right: get-select-padding-variables(m, true);
     }
   }
 
   &__input.aui-input[readonly]:not([disabled]) {
-    background-color: $input-bg-color;
+    background-color: get-color(n-9);
     cursor: text;
   }
 }
@@ -38,6 +37,6 @@
 aui-tree-select.ng-invalid.ng-dirty,
 .ng-submitted aui-tree-select.ng-invalid {
   .aui-input {
-    border-color: $color-error !important;
+    border-color: get-color(red) !important;
   }
 }

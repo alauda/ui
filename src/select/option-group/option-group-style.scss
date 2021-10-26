@@ -2,23 +2,49 @@
 @import '../../theme/mixin';
 
 @mixin option-group-divider {
-  border-top: $menu-group-divide-width $menu-group-divide-style
-    $menu-group-divide-color;
+  border-top: get-size(border-m) solid get-color(n-8);
 }
 
 @mixin option-group($block) {
+  $title-height: calc(
+    #{get-size(line-height-s)} + #{get-size(select-options-padding)}
+  );
   .#{$block} {
     &__title {
-      font-size: $font-size-small;
-      line-height: $line-height-small;
-      padding: $menu-group-title-padding $select-options-padding;
-      color: $color-text-help;
+      font-size: get-size(font-size-s);
+      line-height: get-size(line-height-s);
+      padding: calc(#{get-size(select-options-padding)} / 2)
+        get-size(select-options-padding);
+      color: get-text-color(help);
+      width: 100%;
+      background-color: get-color(n-10);
+      position: relative;
+      z-index: 1;
+    }
+
+    &__title-wrapper {
+      position: sticky;
+      top: 0;
+      margin-top: get-size(border-m);
+      height: calc(#{$title-height} + #{get-size(border-m)});
+      &:after {
+        position: sticky;
+        content: ' ';
+        width: 100%;
+        height: get-size(border-m);
+        display: block;
+        background-color: get-color(n-8);
+        top: $title-height;
+        margin-top: -1px;
+      }
     }
   }
 
   #{$block}:not(:first-child) .#{$block} {
-    margin-top: $menu-padding;
-    padding-top: $menu-padding;
+    padding-top: get-size(select-options-padding);
     @include option-group-divider;
+  }
+  #{$block}:not(:last-child) .#{$block} {
+    padding-bottom: get-size(select-options-padding);
   }
 }
