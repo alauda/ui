@@ -2,74 +2,99 @@
 @import '../theme/mixin';
 
 $block: aui-status-bar;
+$bar-border-radius: 5px;
+$small-bar-border-radius: 4px;
 
 .#{$block} {
   display: inline-flex;
   overflow: hidden;
   width: 100%;
-  border-radius: $status-bar-border-radius;
   vertical-align: middle;
+  border-radius: $bar-border-radius;
 
   &--medium {
-    height: $status-bar-medium-height;
+    height: 10px;
   }
 
   &--small {
-    height: $status-bar-small-height;
+    height: 8px;
+    border-radius: $small-bar-border-radius;
+    .#{$block}__chunk {
+      &:first-child {
+        border-top-left-radius: $small-bar-border-radius;
+        border-bottom-left-radius: $small-bar-border-radius;
+      }
+
+      &:last-child {
+        border-top-right-radius: $small-bar-border-radius;
+        border-bottom-right-radius: $small-bar-border-radius;
+      }
+    }
   }
 
   &__chunk {
     min-width: 2px;
     height: 100%;
     flex: 1 1 1;
+    border-radius: get-size(border-radius-m);
+
+    &:first-child {
+      border-top-left-radius: $bar-border-radius;
+      border-bottom-left-radius: $bar-border-radius;
+    }
+
+    &:last-child {
+      border-top-right-radius: $bar-border-radius;
+      border-bottom-right-radius: $bar-border-radius;
+    }
 
     &--primary {
-      background-color: #338bff;
+      background-color: get-color(primary);
     }
     &--success {
-      background-color: #3bcc7c;
+      background-color: get-color(green);
     }
     &--warning {
-      background-color: #ffb133;
+      background-color: get-color(yellow);
     }
     &--error {
-      background-color: #ea6a6a;
+      background-color: get-color(red);
     }
     &--info {
-      background-color: #d6d6d6;
+      background-color: get-color(n-4);
     }
     &--pending {
-      height: $status-bar-pending-gradient-width * 8;
+      height: get-size(inline-height-m);
       animation: pending 0.5s linear infinite;
       background: repeating-linear-gradient(
         -60deg,
-        $status-bar-pending-color,
-        $status-bar-pending-color $status-bar-pending-gradient-width,
-        $status-bar-pending-color-light $status-bar-pending-gradient-width,
-        $status-bar-pending-color-light $status-bar-pending-gradient-width * 2
+        get-color(b-5),
+        get-color(b-5) get-size(spacing-s),
+        get-color(b-6) get-size(spacing-s),
+        get-color(b-6) get-size(spacing-m)
       );
     }
   }
 
   &__chunk + &__chunk {
-    margin-left: 1px;
+    margin-left: get-size(spacing-xs);
   }
 
   &:hover {
     .#{$block}__chunk--primary {
-      background-color: $color-primary;
+      background-color: get-color(primary);
     }
     .#{$block}__chunk--success {
-      background-color: $color-success;
+      background-color: get-color(green);
     }
     .#{$block}__chunk--warning {
-      background-color: $color-warning;
+      background-color: get-color(yellow);
     }
     .#{$block}__chunk--error {
-      background-color: $color-error;
+      background-color: get-color(red);
     }
     .#{$block}__chunk--info {
-      background-color: $color-info;
+      background-color: get-color(n-4);
     }
   }
 }
