@@ -24,7 +24,11 @@ import { SelectModule, IconModule } from '@alauda/ui';
       template: /* HTML */ `
         <aui-select [(ngModel)]="value" placeholder="select a value">
           <ng-container *auiOptionContent>
-            <aui-option *ngFor="let option of arr" [value]="option">
+            <aui-option
+              *ngFor="let option of arr"
+              [value]="option"
+              [disabled]="option === 'option5'"
+            >
               {{ option }}
             </aui-option>
           </ng-container>
@@ -188,8 +192,13 @@ import { SelectModule, IconModule } from '@alauda/ui';
           [(ngModel)]="value"
           [maxRowCount]="6"
           [allowSelectAll]="true"
+          [clearable]="true"
         >
-          <aui-option *ngFor="let option of arr" [value]="option">
+          <aui-option
+            *ngFor="let option of arr"
+            [value]="option"
+            [disabled]="option === 'option5'"
+          >
             {{ option }}
           </aui-option>
           <aui-option-placeholder>Empty</aui-option-placeholder>

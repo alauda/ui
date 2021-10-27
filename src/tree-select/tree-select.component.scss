@@ -2,7 +2,7 @@
 @import '../theme/mixin';
 @import '../select/option-container';
 
-@include option-container(aui-tree-node-container);
+@include option-container(aui-tree-node-container, s);
 
 .aui-tree-select {
   display: inline-block;

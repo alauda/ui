@@ -2,7 +2,7 @@
 @import '../theme/mixin';
 @import './option-group/option-group-style.scss';
 
-@mixin option-container($block) {
+@mixin option-container($block, $size: m) {
   .#{$block} {
     padding: get-size(select-options-padding) 0;
     border-radius: get-size(border-radius-m);
@@ -10,7 +10,7 @@
     @include popper-shadow;
 
     &__content {
-      max-height: calc(#{get-size(inline-height-m)} * 10);
+      max-height: calc(#{get-size(inline-height-#{$size})} * 10);
       position: relative;
       overflow: auto;
       @include scroll-bar;
