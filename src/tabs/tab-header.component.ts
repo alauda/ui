@@ -25,6 +25,7 @@ import { Bem, buildBem, coerceNumber } from '../utils';
 import {
   TabHeaderAddonDirective,
   TabLabelWrapperDirective,
+  TabTitleDirective,
 } from './tab-directives';
 import { TabHeaderActiveIndicatorComponent } from './tab-header-active-indicator.component';
 import { TabSize, TabType } from './tabs.types';
@@ -119,6 +120,9 @@ export class TabHeaderComponent
 
   @ContentChild(TabHeaderAddonDirective, { static: false })
   _headerAddon: TabHeaderAddonDirective;
+
+  @ContentChild(TabTitleDirective, { static: false })
+  _title: TabTitleDirective;
 
   @ContentChildren(TabLabelWrapperDirective)
   /**

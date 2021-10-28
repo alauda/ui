@@ -14,6 +14,7 @@ import {
   Output,
   QueryList,
   SimpleChanges,
+  TemplateRef,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
@@ -21,7 +22,7 @@ import { Subject, Subscription, merge } from 'rxjs';
 
 import { Bem, buildBem, coerceNumber } from '../utils';
 
-import { TabHeaderAddonDirective } from './tab-directives';
+import { TabHeaderAddonDirective, TabTitleDirective } from './tab-directives';
 import { TabHeaderComponent } from './tab-header.component';
 import { TabComponent } from './tab.component';
 import { TabSize, TabType } from './tabs.types';
@@ -55,6 +56,9 @@ export class TabGroupComponent
 
   @ViewChild(TabHeaderComponent, { static: false })
   _tabHeader: TabHeaderComponent;
+
+  @ContentChild(TabTitleDirective, { static: false })
+  _tabTitle: TabTitleDirective;
 
   /** The tab index that should be selected after the content has been checked. */
   private _indexToSelect: number | null = 0;
@@ -100,6 +104,9 @@ export class TabGroupComponent
   set type(type: TabType) {
     this._type = type;
   }
+
+  @Input()
+  title: string | TemplateRef<unknown>;
 
   @Input()
   get size() {
