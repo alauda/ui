@@ -15,6 +15,7 @@ import {
   TabHeaderAddonDirective,
   TabLabelDirective,
   TabLabelWrapperDirective,
+  TabTitleDirective,
 } from './tab-directives';
 import { TabGroupComponent } from './tab-group.component';
 import { TabHeaderActiveIndicatorComponent } from './tab-header-active-indicator.component';
@@ -37,10 +38,9 @@ import { TabComponent } from './tab.component';
     TabLabelDirective,
     TabContentDirective,
     TabHeaderAddonDirective,
-
+    TabTitleDirective,
     TabHeaderComponent,
     TabBodyComponent,
-
     TabBodyPortalDirective,
     TabLabelWrapperDirective,
     TabHeaderActiveIndicatorComponent,
@@ -51,7 +51,7 @@ import { TabComponent } from './tab.component';
     TabLabelDirective,
     TabContentDirective,
     TabHeaderAddonDirective,
-
+    TabTitleDirective,
     TabLabelWrapperDirective,
     TabHeaderComponent,
   ],
