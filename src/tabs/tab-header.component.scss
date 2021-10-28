@@ -3,16 +3,17 @@
 
 .aui-tab-header {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   flex-shrink: 0;
   position: relative;
-  background-color: $color-white;
+  background-color: get-color(n-10);
 
   // Size modifiers:
   &--large {
     .aui-tab-label {
       font-size: $tab-label-font-size-large;
       padding: $tab-label-padding-large;
+      line-height: $line-height-larger;
     }
   }
 
@@ -20,6 +21,7 @@
     .aui-tab-label {
       font-size: $tab-label-font-size-medium;
       padding: $tab-label-padding-medium;
+      line-height: $line-height-large;
     }
   }
 
@@ -27,16 +29,36 @@
     .aui-tab-label {
       font-size: $tab-label-font-size-small;
       padding: $tab-label-padding-small;
+      line-height: $line-height-regular;
     }
+  }
+
+  &__header-wrapper {
+    display: flex;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    color: get-color(n-1);
+    font-size: $tab-header-title-font-size;
+    margin-inline: $tab-header-title-spacing;
+    padding-block: $tab-header-title-spacing;
+    font-weight: $font-weight-bold;
+    border-bottom: 1px get-color(n-8) solid;
+    line-height: 32px;
   }
 
   &--card {
     background-color: $tab-header-type-card-bg-color;
-    border: $tab-border;
   }
 
   &--line {
-    border-bottom: $tab-border;
+    border-radius: 4px;
+    box-shadow: 0 0 4px 0 rgba(50, 52, 55, 0.1);
+    background-color: get-color(n-10);
   }
 
   &__pagination-wrapper {
@@ -45,7 +67,6 @@
     flex-grow: 1;
     align-items: center;
     position: relative;
-    margin: -1px;
   }
 
   &__pagination-button {
@@ -64,7 +85,7 @@
 
     &:hover {
       opacity: 1;
-      color: $color-primary;
+      color: get-color(primary);
     }
 
     &:first-of-type {
@@ -124,9 +145,9 @@
   justify-content: center;
   align-items: center;
   white-space: nowrap;
-  color: $color-text-main;
+  color: get-color(n-2);
+  font-weight: $font-weight-normal;
   z-index: $tab-label-z-index;
-  opacity: 0.6;
   transition: opacity 0.3s;
 
   &:focus,
@@ -136,7 +157,7 @@
 
   &:not(.aui-tab-label--disabled) {
     &.isActive {
-      opacity: 1;
+      font-weight: $font-weight-bold;
     }
     &.isActive,
     &:hover {
@@ -163,11 +184,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: $tab-header-close-icon-color;
-
+    color: get-color(n-4);
+    @include transition;
     &:hover {
-      color: $tab-header-close-icon-color-hover;
-      background-color: $tab-header-close-icon-color;
+      color: get-color(n-9);
+      background-color: get-color(n-4);
     }
   }
 
@@ -208,10 +229,7 @@ aui-tab-header-active-indicator {
   }
 
   &--card {
-    border: $tab-border;
-    border-top: none;
-    border-bottom: none;
-    background: $color-white;
+    background-color: get-color(n-10);
     &:after {
       width: calc(100% + 2px);
       top: 0;

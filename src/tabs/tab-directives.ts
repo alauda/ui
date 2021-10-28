@@ -92,6 +92,19 @@ export class TabLabelWrapperDirective {
   constructor(public elementRef: ElementRef<HTMLElement>) {}
 }
 
+@Directive({
+  selector: '[auiTabTitle]',
+})
+export class TabTitleDirective extends CdkPortal {
+  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+  constructor(
+    templateRef: TemplateRef<any>,
+    viewContainerRef: ViewContainerRef,
+  ) {
+    super(templateRef, viewContainerRef);
+  }
+}
+
 /**
  * The portal host directive for the contents of the tab.
  */

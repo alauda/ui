@@ -6,6 +6,11 @@
     (indexFocused)="_focusChanged($event)"
     (selectFocusedIndex)="selectedIndex = $event"
   >
+    <ng-container *ngIf="_tabTitle">
+      <ng-container *auiTabTitle>
+        <ng-template [cdkPortalOutlet]="_tabTitle"></ng-template>
+      </ng-container>
+    </ng-container>
     <div
       role="tab"
       *ngFor="let tab of _tabs; let i = index"
