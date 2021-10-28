@@ -4,51 +4,50 @@
 
 @mixin option($block) {
   .#{$block} {
-    padding: 0 $select-options-padding;
-    color: $color-text-main;
-    background-color: $color-white;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    padding: 0 get-size(inline-padding-xs);
+    color: get-text-color(main);
+    background-color: get-color(n-10);
+    @include text-overflow;
+
     cursor: pointer;
 
     &--large {
-      height: $input-large-height;
-      line-height: $input-large-height;
-      font-size: $input-large-font-size;
+      height: get-size(inline-height-l);
+      line-height: get-size(inline-height-l);
+      font-size: get-size(font-size-l);
     }
 
     &--medium {
-      height: $input-medium-height;
-      line-height: $input-medium-height;
-      font-size: $input-medium-font-size;
+      height: get-size(inline-height-m);
+      line-height: get-size(inline-height-m);
+      font-size: get-size(font-size-m);
     }
 
     &--small {
-      height: $input-small-height;
-      line-height: $input-small-height;
-      font-size: $input-small-font-size;
+      height: get-size(inline-height-s);
+      line-height: get-size(inline-height-s);
+      font-size: get-size(font-size-m);
     }
 
     &--mini {
-      height: $input-mini-height;
-      line-height: $input-mini-height;
-      font-size: $input-mini-font-size;
+      height: get-size(inline-height-xs);
+      line-height: get-size(inline-height-xs);
+      font-size: get-size(font-size-s);
     }
 
     &:not(.isMulti).isSelected {
-      color: $color-primary;
-      background-color: $color-primary-extra-light;
+      color: get-color(primary);
+      background-color: get-color(p-6);
     }
 
     &:hover,
     &.isFocused {
-      background-color: $color-primary-ultra-light;
+      background-color: get-color(p-6);
     }
 
     &.isDisabled {
-      color: $color-text-placeholder;
-      background-color: $color-white;
+      color: get-color(n-6);
+      background-color: get-color(n-10);
       cursor: not-allowed;
     }
 
@@ -56,7 +55,7 @@
 
     &:not(.isDisabled):hover &__pointer,
     &:not(.isDisabled).isFocused &__pointer {
-      border-color: $checkbox-border-color-primary;
+      border-color: get-color(primary);
     }
   }
 }
