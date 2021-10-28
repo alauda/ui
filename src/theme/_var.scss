@@ -322,7 +322,7 @@ $tab-label-font-size-large: $font-size-larger;
 $tab-label-font-size-medium: $font-size-large;
 $tab-label-font-size-small: $font-size-regular;
 $tab-border: $border-width $border-style #ededed;
-$tab-header-type-card-bg-color: #fafafa;
+$tab-header-type-card-bg-color: get-color(n-9);
 $tab-header-indicator-color: $color-primary;
 $tab-scroll-transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
 $tab-pagination-button-z-index: 3;
@@ -330,6 +330,8 @@ $tab-label-z-index: 2;
 $tab-active-indicator-z-index: 1;
 $tab-label-focus-box-shadow: inset 0 0 0 3px rgba($color-primary, 0.3);
 $tab-header-close-icon-size: 16px;
+$tab-header-title-font-size: $font-size-extra-large;
+$tab-header-title-spacing: 20px;
 
 // Status bar
 $status-bar-border-radius: $border-radius;

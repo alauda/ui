@@ -12,13 +12,21 @@ import {
   TabSize,
   TabType,
   TabsModule,
+  CardModule,
 } from '@alauda/ui';
 
 <Meta
   title="Tabs"
   decorators={[
     moduleMetadata({
-      imports: [ButtonModule, IconModule, FormModule, RadioModule, TabsModule],
+      imports: [
+        ButtonModule,
+        IconModule,
+        FormModule,
+        RadioModule,
+        TabsModule,
+        CardModule,
+      ],
       declarations: [ActiveTestComponent, LazyTestComponent],
     }),
   ]}
@@ -35,9 +43,9 @@ import {
     {{
       template: /* HTML */ `
         <aui-tab-group>
-          <aui-tab label="Tab 0">Content 1</aui-tab>
-          <aui-tab label="Tab 1">Content 2</aui-tab>
-          <aui-tab label="Tab 2">Content 3</aui-tab>
+          <aui-tab label="Tab 0"><aui-card> Content 1 </aui-card></aui-tab>
+          <aui-tab label="Tab 1"><aui-card> Content 2 </aui-card></aui-tab>
+          <aui-tab label="Tab 2"><aui-card> Content 3 </aui-card></aui-tab>
         </aui-tab-group>
       `,
     }}
@@ -51,9 +59,9 @@ import {
     {{
       template: /* HTML */ `
         <aui-tab-group [type]="type">
-          <aui-tab label="Tab 0">Content 1</aui-tab>
-          <aui-tab label="Tab 1">Content 2</aui-tab>
-          <aui-tab label="Tab 2">Content 3</aui-tab>
+          <aui-tab label="Tab 0"><aui-card> Content 1 </aui-card></aui-tab>
+          <aui-tab label="Tab 1"><aui-card> Content 2 </aui-card></aui-tab>
+          <aui-tab label="Tab 2"><aui-card> Content 3 </aui-card></aui-tab>
         </aui-tab-group>
       `,
       props: {
@@ -82,9 +90,9 @@ import {
           </aui-radio-group>
         </aui-form-item>
         <aui-tab-group [size]="size">
-          <aui-tab label="Tab 0">Content 1</aui-tab>
-          <aui-tab label="Tab 1">Content 2</aui-tab>
-          <aui-tab label="Tab 2">Content 3</aui-tab>
+          <aui-tab label="Tab 0"><aui-card> Content 1 </aui-card></aui-tab>
+          <aui-tab label="Tab 1"><aui-card> Content 2 </aui-card></aui-tab>
+          <aui-tab label="Tab 2"><aui-card> Content 3 </aui-card></aui-tab>
         </aui-tab-group>
       `,
       props: {
@@ -97,26 +105,26 @@ import {
 ## 自定义 Label
 
 <Canvas>
-  <Story name="CustomLabel" height="100px">
+  <Story name="CustomLabel" height="200px">
     {{
-      template: /* HTML */ `
-        <aui-tab-group>
-          <aui-tab>
-            <ng-container *auiTabLabel>
-              <aui-icon icon="sun"></aui-icon>
-              Custom Label
-            </ng-container>
-          </aui-tab>
-          <aui-tab label="Tab 1">Content 2</aui-tab>
-          <aui-tab>
-            <ng-container *auiTabLabel>
-              <aui-icon icon="moon"></aui-icon>
-              Custom Label
-            </ng-container>
-            Content 3
-          </aui-tab>
-        </aui-tab-group>
-      `,
+      template: /* HTML */ `<aui-tab-group>
+        <ng-container *auiTabTitle>aa2</ng-container>
+        <aui-tab>
+          <ng-container *auiTabLabel>
+            <aui-icon icon="sun"></aui-icon>
+            Custom Label
+          </ng-container>
+          <aui-card> Content 1 </aui-card>
+        </aui-tab>
+        <aui-tab label="Tab 1"><aui-card>Content 2</aui-card></aui-tab>
+        <aui-tab>
+          <ng-container *auiTabLabel>
+            <aui-icon icon="moon"></aui-icon>
+            Custom Label
+          </ng-container>
+          <aui-card> Content 3 </aui-card>
+        </aui-tab>
+      </aui-tab-group>`,
       props: {
         tabs: Array.from({ length: 3 }).fill(),
       },
@@ -139,7 +147,7 @@ import {
             [label]="'tab' + tab"
             (close)="remove(i)"
           >
-            content {{ i }}
+            <aui-card> content {{ i }} </aui-card>
           </aui-tab>
           <button
             *auiTabHeaderAddon
@@ -176,10 +184,14 @@ import {
     {{
       template: /* HTML */ `
         <aui-tab-group>
-          <aui-tab label="Tab 0">Content 1</aui-tab>
-          <aui-tab label="Tab 1" [disabled]="true">Content 2</aui-tab>
-          <aui-tab label="Tab 2">Content 3</aui-tab>
-          <aui-tab label="Tab 3" [disabled]="true">Content 4</aui-tab>
+          <aui-tab label="Tab 0"> <aui-card> Content 1 </aui-card> </aui-tab>
+          <aui-tab label="Tab 1" [disabled]="true"
+            ><aui-card> Content 2 </aui-card></aui-tab
+          >
+          <aui-tab label="Tab 2"><aui-card> Content 3 </aui-card></aui-tab>
+          <aui-tab label="Tab 3" [disabled]="true"
+            ><aui-card> Content 4 </aui-card></aui-tab
+          >
         </aui-tab-group>
       `,
       props: {
@@ -210,13 +222,19 @@ import {
         </aui-form-item>
         <aui-tab-group [lazy]="lazy">
           <aui-tab label="Tab 1">
-            <tabs-lazy-test *auiTabContent>Content 1</tabs-lazy-test>
+            <tabs-lazy-test *auiTabContent
+              ><aui-card> Content 1 </aui-card></tabs-lazy-test
+            >
           </aui-tab>
           <aui-tab label="Tab 2">
-            <tabs-lazy-test *auiTabContent>Content 2</tabs-lazy-test>
+            <tabs-lazy-test *auiTabContent
+              ><aui-card> Content 2 </aui-card></tabs-lazy-test
+            >
           </aui-tab>
           <aui-tab label="Tab 3">
-            <tabs-lazy-test *auiTabContent>Content 3</tabs-lazy-test>
+            <tabs-lazy-test *auiTabContent
+              ><aui-card> Content 3 </aui-card></tabs-lazy-test
+            >
           </aui-tab>
         </aui-tab-group>
       `,
@@ -246,19 +264,21 @@ import {
         </aui-form-item>
         <aui-tab-group [lazy]="lazy">
           <aui-tab label="Tab 1">
-            <tabs-active-test *auiTabContent>Content 1</tabs-active-test>
+            <tabs-active-test *auiTabContent
+              ><aui-card>Content 1</aui-card></tabs-active-test
+            >
           </aui-tab>
           <aui-tab label="Tab 2">
             <tabs-active-test *auiTabContent>
               <aui-tab-group [lazy]="true">
                 <aui-tab label="Tab 2-1">
                   <tabs-active-test *auiTabContent>
-                    Content 2-1
+                    <aui-card> Content 2-1 </aui-card>
                   </tabs-active-test>
                 </aui-tab>
                 <aui-tab label="Tab 2-2">
                   <tabs-active-test *auiTabContent>
-                    Content 2-2
+                    <aui-card> Content 2-2 </aui-card>
                   </tabs-active-test>
                 </aui-tab>
               </aui-tab-group>
