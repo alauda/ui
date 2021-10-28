@@ -202,6 +202,18 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
     }
   }
 
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.closeOption();
+      event.stopPropagation();
+      event.preventDefault();
+    }
+  }
+
+  closeOption() {
+    this.tooltipRef.disposeTooltip();
+  }
+
   updateSelectDisplay(value: any) {
     const pickedNode = this.flattedNodes.find(
       node => this.trackFn(node.value) === this.trackFn(value),

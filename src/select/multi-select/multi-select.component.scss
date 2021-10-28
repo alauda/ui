@@ -12,73 +12,35 @@ $block: aui-multi-select;
 
 @include component-style($block);
 
+@mixin multi-select-style($size: m) {
+  padding-right: get-select-padding-variables(#{$size}, false);
+
+  .#{$block} {
+    &__suffix {
+      right: calc(#{get-size(border-m)} + #{get-size(inline-padding-xs)});
+    }
+  }
+
+  &.isClearable {
+    padding-right: get-select-padding-variables(#{$size}, true);
+  }
+}
+
 .#{$block} {
   &--large {
-    $paddingRight: $input-large-padding-hoz * 2 + $input-large-font-size +
-      $input-border-width;
-
-    padding-right: $paddingRight;
-
-    .#{$block} {
-      &__suffix {
-        right: $input-large-padding-hoz + $input-border-width;
-      }
-    }
-
-    &.isClearable {
-      padding-right: $paddingRight + $input-large-font-size + $icon-margin-hoz;
-    }
+    @include multi-select-style(m);
   }
 
   &--medium {
-    $paddingRight: $input-medium-padding-hoz * 2 + $input-medium-font-size +
-      $input-border-width;
-
-    padding-right: $paddingRight;
-
-    .#{$block} {
-      &__suffix {
-        right: $input-medium-padding-hoz + $input-border-width;
-      }
-    }
-
-    &.isClearable {
-      padding-right: $paddingRight + $input-medium-font-size + $icon-margin-hoz;
-    }
+    @include multi-select-style(m);
   }
 
   &--small {
-    $paddingRight: $input-small-padding-hoz * 2 + $input-small-font-size +
-      $input-border-width;
-
-    padding-right: $paddingRight;
-
-    .#{$block} {
-      &__suffix {
-        right: $input-small-padding-hoz + $input-border-width;
-      }
-    }
-
-    &.isClearable {
-      padding-right: $paddingRight + $input-small-font-size + $icon-margin-hoz;
-    }
+    @include multi-select-style(s);
   }
 
   &--mini {
-    $paddingRight: $input-mini-padding-hoz * 2 + $input-mini-font-size +
-      $input-border-width;
-
-    padding-right: $paddingRight;
-
-    .#{$block} {
-      &__suffix {
-        right: $input-mini-padding-hoz + $input-border-width;
-      }
-    }
-
-    &.isClearable {
-      padding-right: $paddingRight + $input-mini-font-size + $icon-margin-hoz;
-    }
+    @include multi-select-style(s);
   }
 
   &__suffix {
@@ -92,7 +54,7 @@ $block: aui-multi-select;
   }
 
   &__indicator {
-    color: $input-suffix-icon-color;
+    color: get-text-color(help);
     cursor: default;
   }
 
@@ -101,6 +63,10 @@ $block: aui-multi-select;
   }
 
   &:not(.isDisabled) .aui-icon-caret_down_s {
-    fill: $input-color;
+    fill: get-color(n-2);
+  }
+
+  .aui-tag--info {
+    background-color: get-color(n-10);
   }
 }
