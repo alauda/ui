@@ -91,7 +91,9 @@
           <i class="aui-option__pointer">
             <aui-icon
               [icon]="
-                (selectAllStatus$ | async) === 'checked' ? 'check_s' : 'minus_s'
+                (selectAllStatus$ | async) === 'checked'
+                  ? 'check_s'
+                  : 'square_s'
               "
               [hidden]="!(selectAllStatus$ | async)"
             ></aui-icon>

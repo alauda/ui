@@ -23,6 +23,7 @@
       [readonly]="inputReadonly"
       (input)="onInput($event)"
       (blur)="closeNodes()"
+      (keydown)="onKeyDown($event)"
     />
     <aui-icon
       *ngIf="displayClearable()"
