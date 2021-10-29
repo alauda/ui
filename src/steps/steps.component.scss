@@ -1,0 +1,137 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.aui-step {
+  display: flex;
+  align-items: center;
+  &__indicator {
+    margin-right: get-size(spacing-m);
+    width: 24px;
+    height: 24px;
+    color: get-color(n-4);
+    &-number {
+      border-radius: 50%;
+      border: 1px solid get-color(n-7);
+      background-color: get-color(n-8);
+      font-weight: 500;
+      font-size: get-size(font-size-l);
+      display: flex;
+      justify-content: center;
+      width: get-size(icon-size-xl);
+      height: get-size(icon-size-xl);
+      &.selected {
+        border-color: get-color(primary);
+        background-color: get-color(primary);
+        color: #fff;
+      }
+    }
+    &-icon {
+      font-size: get-size(icon-size-xl);
+      display: inline-flex;
+      border-radius: 50%;
+      &--done,
+      &--pending {
+        background-color: get-color(p-6);
+        color: get-color(primary);
+        &.selected {
+          background-color: #fff;
+        }
+      }
+      &--error {
+        background-color: get-color(r-6);
+        color: get-color(red);
+        &.selected {
+          background-color: #fff;
+        }
+      }
+      &--pending {
+        transform-origin: center;
+        animation: spin 4s infinite linear;
+      }
+    }
+  }
+  &__name {
+    font-size: get-size(font-size-l);
+    max-width: 128px;
+  }
+  &__description {
+    font-size: get-size(font-size-s);
+    margin-top: get-size(spacing-s);
+    line-height: get-size(line-height-s);
+  }
+  &__info {
+    color: get-color(n-4);
+    &--selected,
+    &--done,
+    &--error {
+      .aui-step__name {
+        color: get-color(n-1);
+      }
+    }
+  }
+}
+
+.aui-steps {
+  &__horizontal-line {
+    height: 1px;
+    background-color: get-color(n-7);
+    flex: 1;
+    max-width: 240px;
+    margin: 0 get-size(spacing-l);
+  }
+  &__vertical-line {
+    min-height: 12px;
+    width: 1px;
+    background-color: get-color(n-7);
+    margin-top: get-size(spacing-s);
+    flex: 1;
+    &--done {
+      background-color: get-color(green);
+    }
+    &--error {
+      background-color: get-color(red);
+    }
+  }
+  &--horizontal {
+    padding: 0 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &--vertical {
+    max-width: 200px;
+    .aui-step {
+      align-items: stretch;
+      &:not(:last-child) {
+        margin-bottom: get-size(spacing-s);
+      }
+      &__indicator {
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        &-icon {
+          &--done {
+            color: get-color(green);
+            background-color: get-color(g-6);
+          }
+        }
+      }
+      &__info {
+        padding-bottom: 13px;
+      }
+      &.isLastActive .aui-stepper__vertical-line {
+        background-color: get-color(n-7);
+      }
+    }
+  }
+}

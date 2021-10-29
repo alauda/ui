@@ -37,3 +37,4 @@ export * from './i18n/public-api';
 export * from './time-picker/public-api';
 export * from './date-picker/public-api';
 export * from './drawer/public-api';
+export * from './steps/public-api';
