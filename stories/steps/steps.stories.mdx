@@ -1,0 +1,187 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import * as Demo from './demos';
+
+import { StepsModule, ButtonModule } from '@alauda/ui';
+
+<Meta
+  title="Steps"
+  decorators={[
+    moduleMetadata({
+      imports: [StepsModule, ButtonModule],
+    }),
+  ]}
+/>
+
+# Steps
+
+Steps
+
+<Canvas>
+  <Story name="Horizontal" height="200px">
+    {{
+      code: `
+      @Component({
+        template: 
+          <aui-steps
+            [linear]="true"
+            [selectedIndex]="selectedIndex"
+            [orientation]="orientation"
+            [steps]="steps"
+            (selectionChange)="selectionChange($event)"
+          ></aui-steps>
+          <div style="margin-top: 50px">
+            <button aui-button="primary" (click)="prev()">Previous</button>
+            <button aui-button="primary" (click)="complete()">Complete</button>
+            <button aui-button="primary" (click)="next()">Next</button>
+          </div>
+        ,
+        changeDetection: ChangeDetectionStrategy.OnPush,
+      })
+      export class BasicHorizontalDemoComponent {
+        selectedIndex = 3;
+        steps = [
+          {
+            label: 'Step 1',
+            state: 'done',
+          },
+          {
+            label: 'Step 2',
+            state: 'done',
+          },
+          {
+            label: 'Step 3',
+          },
+          {
+            label: 'Step 4',
+          },
+        ];
+        prev() {
+          this.selectedIndex = Math.max(this.selectedIndex - 1, 0);
+        }
+        complete() {
+          this.steps[this.selectedIndex].state = StepState.Done;
+          this.steps = [...this.steps];
+        }
+        next() {
+          this.selectedIndex = Math.min(
+            this.selectedIndex + 1,
+            this.steps.length - 1,
+          );
+        }
+        selectionChange(ret: StepsSelection) {
+          this.selectedIndex = ret.selectedIndex;
+          console.log(ret);
+        }
+      }
+      `,
+      component: Demo.BasicHorizontalDemoComponent,
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Vertical" height="300px">
+    {{
+      code: `
+        @Component({
+          template: 
+            <aui-steps
+              [linear]="true"
+              [orientation]="orientation"
+              [selectedIndex]="selectedIndex"
+              [steps]="steps"
+              (selectionChange)="selectionChange($event)"
+            ></aui-steps>
+            <div style="margin-top: 50px">
+              <button aui-button="primary" (click)="prev()">Previous</button>
+              <button aui-button="primary" (click)="start()">Start</button>
+              <button aui-button="primary" (click)="complete()">Complete</button>
+              <button aui-button="primary" (click)="next()">Next</button>
+            </div>
+          ,
+        })
+        export class BasicVerticalDemoComponent {
+          orientation = 'vertical';
+          selectedIndex = 3;
+          steps = [
+            {
+              label: 'Step 1',
+              state: 'done',
+            },
+            {
+              label: 'Step 2',
+              state: 'done',
+            },
+            {
+              label: 'Step 3',
+            },
+            {
+              label: 'Step 4',
+            },
+          ];
+          prev() {
+            this.selectedIndex = Math.max(this.selectedIndex - 1, 0);
+          }
+          start() {
+            this.steps[this.selectedIndex].state = StepState.Pending;
+            this.steps = [...this.steps];
+          }
+          complete() {
+            this.steps[this.selectedIndex].state = StepState.Done;
+            this.steps = [...this.steps];
+          }
+          next() {
+            this.selectedIndex = Math.min(
+              this.selectedIndex + 1,
+              this.steps.length - 1,
+            );
+          }
+          selectionChange(ret: StepsSelection) {
+            this.selectedIndex = ret.selectedIndex;
+            console.log(ret);
+          }
+        }
+      `,
+      component: Demo.BasicVerticalDemoComponent,
+    }}
+  </Story>
+</Canvas>
+
+## Steps API
+
+### Steps Properties
+
+| 名称          | 类型       | 描述                                                                                                    |
+| ------------- | ---------- | ------------------------------------------------------------------------------------------------------- | ---- |
+| linear        | boolean    | 是否按顺序执行，默认为 false。如果为 true，当前步骤非可选及未完成时后面步骤无法的点击                   |
+| orientation   | 'vertical' | 'horizontal'                                                                                            | 方向 |
+| selectedIndex | number     | 当前选中的步骤。当 linear 为 true 时，如果 selectedIndex 设置为非第一个待完成的步骤，则自动设置为第一个 |
+| steps         | StepItem[] | 步骤                                                                                                    |
+
+### Steps Output
+
+| 名称            | 返回值类型     | 描述                     |
+| --------------- | -------------- | ------------------------ |
+| selectionChange | StepsSelection | selectedIndex 变化时触发 |
+
+```typescript
+// StepSelection
+{
+  selectedIndex: number;
+  previousSelectedIndex: number;
+  selectedStep: StepItem;
+  previousSelectedStep: StepItem;
+}
+```
+
+### StepItem Definition
+
+| 名称        | 类型      | 可选  | 描述                                  |
+| ----------- | --------- | ----- | ------------------------------------- |
+| label       | string    | false | 步骤名称                              |
+| description | string    | true  | 步骤描述                              |
+| editable    | boolean   | true  | 完成后是否可以选择该步骤。默认为 true |
+| state       | StepState | true  | 状态。'done' 'pending' 'error'        |
+| optional    | boolean   | true  | 是否可跳过。默认为 false              |
