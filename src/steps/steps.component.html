@@ -1,0 +1,52 @@
+<div class="aui-steps aui-steps--{{ orientation || 'horizontal' }}">
+  <ng-container *ngFor="let step of steps; let i = index; let isLast = last">
+    <div
+      class="aui-step"
+      (click)="select(i, step)"
+      [class.isLastActive]="isLastActive(i, steps)"
+    >
+      <div class="aui-step__indicator">
+        <ng-container [ngSwitch]="getIcon(i, step)">
+          <span
+            class="aui-step__indicator-number aui-step__indicator-number--{{
+              step.state
+            }}"
+            *ngSwitchCase="'number'"
+            [class.selected]="validSelectedIndex === i"
+          >
+            {{ i + 1 }}
+          </span>
+          <aui-icon
+            class="aui-step__indicator-icon aui-step__indicator-icon--{{
+              step.state
+            }}"
+            [class.selected]="validSelectedIndex === i"
+            *ngSwitchDefault
+            [icon]="getIcon(i, step)"
+          ></aui-icon>
+          <div
+            *ngIf="!isLast && isVertical"
+            class="aui-steps__vertical-line aui-steps__vertical-line--{{
+              step.state
+            }}"
+          ></div>
+        </ng-container>
+      </div>
+      <div
+        class="aui-step__info aui-step__info--{{ step.state }}"
+        [class.aui-step__info--selected]="validSelectedIndex === i"
+      >
+        <div class="aui-step__name">
+          {{ step.label }}
+        </div>
+        <div class="aui-step__description" *ngIf="step.description">
+          {{ step.description }}
+        </div>
+      </div>
+    </div>
+    <div
+      *ngIf="!isLast && !isVertical"
+      class="aui-steps__horizontal-line"
+    ></div>
+  </ng-container>
+</div>
