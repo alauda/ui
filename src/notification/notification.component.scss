@@ -36,7 +36,7 @@
 
   &__body {
     margin: 0 16px 0 8px;
-    width: 308px;
+    width: 304px;
   }
   &__title {
     font-size: $font-size-larger;
@@ -61,15 +61,20 @@
     @include scroll-bar;
   }
   &__close {
-    font-size: get-size(font-size-s);
     right: 10px;
-    width: 12px;
+    width: 16px;
     color: get-color(n-4);
     line-height: get-size(line-height-l);
     cursor: pointer;
     &:hover {
       color: get-color(n-2);
     }
+  }
+  &__remove {
+    font-size: get-size(font-size-l);
+  }
+  &__duration {
+    font-size: get-size(font-size-m);
   }
   &__svg {
     position: absolute;
