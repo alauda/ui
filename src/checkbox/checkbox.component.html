@@ -19,10 +19,9 @@
   <label class="aui-checkbox__label" [for]="id">
     <i class="aui-checkbox__pointer">
       <aui-icon
-        icon="check_s"
-        [hidden]="!(value$ | async) || indeterminate"
+        [icon]="indeterminate ? 'square_s' : 'check_s'"
+        [hidden]="!(value$ | async) && !indeterminate"
       ></aui-icon>
-      <i class="aui-checkbox__icon-indeterminate" [hidden]="!indeterminate"></i>
     </i>
     <span class="aui-checkbox__content"><ng-content></ng-content></span>
   </label>
