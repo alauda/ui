@@ -11,10 +11,16 @@
     <ng-template #modalComponent></ng-template>
   </div>
   <div [class]="bem.element('close')">
-    <div *ngIf="duration <= 0 || isHover" (click)="remove()">
+    <div
+      *ngIf="duration <= 0 || isHover"
+      [class]="bem.element('remove')"
+      (click)="remove()"
+    >
       <aui-icon icon="close"></aui-icon>
     </div>
-    <div *ngIf="duration > 0 && !isHover">{{ remains > 0 ? remains : 1 }}s</div>
+    <div *ngIf="duration > 0 && !isHover" [class]="bem.element('duration')">
+      {{ remains > 0 ? remains : 1 }}s
+    </div>
   </div>
   <div *ngIf="footerPortal" [class]="bem.element('footer')">
     <ng-template [cdkPortalOutlet]="footerPortal"></ng-template>
