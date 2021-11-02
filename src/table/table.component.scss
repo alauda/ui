@@ -36,6 +36,7 @@ $stickyCssClass: 'aui-table-sticky';
       height: 30px;
       top: calc(var(--aui-table-header-height) - 30px);
       margin-top: get-neg-size(table-header-height);
+      content: '';
     }
   }
 
@@ -56,12 +57,10 @@ $stickyCssClass: 'aui-table-sticky';
           &:first-of-type {
             border-left-width: get-size(table-border-width);
             padding-left: get-size(table-cell-padding-lr);
-            // margin-left:get-size(table-margin)
           }
           &:last-of-type {
             border-right-width: get-size(table-border-width);
             padding-right: get-size(table-cell-padding-lr);
-            // margin-right:get-size(table-margin)
           }
         }
 
@@ -88,7 +87,7 @@ $stickyCssClass: 'aui-table-sticky';
 
         &:not(&:last-child) {
           .aui-table__cell {
-            border-bottom: 0;
+            border-bottom-width: 0;
           }
         }
       }
@@ -182,25 +181,19 @@ $stickyCssClass: 'aui-table-sticky';
   &__header-row {
     display: flex;
     align-items: center;
-
-    // Workaround for https://goo.gl/pFmjJD in IE 11. Adds a pseudo
-    // element that will stretch the row the correct height. See:
-    // https://connect.microsoft.com/IE/feedback/details/802625
-    &:after {
-      display: inline-block;
-      min-height: inherit;
-      content: '';
-    }
   }
   &__row {
     position: relative;
     border-width: get-size(table-border-width);
-    border-bottom: 0;
     border-style: solid;
     border-color: $table-row-border-color;
+    border-bottom-width: 0;
     background-color: get-color(n-10);
     padding: get-size(table-cell-padding-tb-m)
       calc(var(--aui-table-cell-padding-lr) / 2);
+    min-height: calc(
+      #{get-size(table-border-width)} + #{get-size(table-row-min-height-m)}
+    );
 
     &:first-of-type {
       border-top-left-radius: get-size(border-radius-l);
@@ -208,6 +201,9 @@ $stickyCssClass: 'aui-table-sticky';
     }
     &:last-of-type {
       border-bottom-width: get-size(table-border-width);
+      min-height: calc(
+        #{get-size(table-border-width)} + #{get-size(table-row-min-height-m)}
+      );
       border-bottom-left-radius: get-size(border-radius-l);
       border-bottom-right-radius: get-size(border-radius-l);
     }
@@ -237,13 +233,16 @@ $stickyCssClass: 'aui-table-sticky';
   &__cell {
     padding: 0 calc(var(--aui-table-cell-padding-lr) / 2);
     background-color: get-color(n-10);
+    overflow: hidden;
+    word-wrap: break-word;
   }
   &__header-cell {
     padding: get-size(table-header-cell-padding-tb)
       calc(var(--aui-table-cell-padding-lr) / 2);
     font-weight: 500;
-    height: get-size(table__header-height);
+    height: get-size(table-header-height);
     line-height: get-size(line-height-m);
     background-color: get-color(n-9);
+    @include text-overflow;
   }
 }
