@@ -1,5 +1,5 @@
 ---
-"@alauda/ui": patch
+"@alauda/ui": major
 ---
 
-feat: new notification, switch
+new design and color system
