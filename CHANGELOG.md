@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.0
+
+### Major Changes
+
+- [#144](https://github.com/alauda/alauda-ui/pull/144) [`b04b11e`](https://github.com/alauda/alauda-ui/commit/b04b11e8112eed174958a58af3b6ab263a62f005) Thanks [@fengtianze](https://github.com/fengtianze)! - new design and color system
+
 ## 5.7.6
 
 ### Patch Changes
