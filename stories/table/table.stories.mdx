@@ -7,6 +7,7 @@ import { FixedSizeVirtualScrollDemoComponent } from './fixed-size-virtual-scroll
 import { SortDemoComponent } from './sort-demo/sort-demo.component';
 import { StickyColumnsDemoComponent } from './sticky-columns/sticky-columns-demo.component';
 import { StickyHeadersDemoComponent } from './sticky-headers.components';
+import { PlaceholderComponent } from './placeholder/placeholder.component';
 import { DATA_SOURCE } from './data';
 
 import {
@@ -87,6 +88,16 @@ Table 组件基于 CdkTable 开发, 加了一些 alauda 自定义的表格样式
       props: {
         dataSource: DATA_SOURCE,
       },
+    }}
+  </Story>
+</Canvas>
+
+## Placeholder 使用
+
+<Canvas>
+  <Story name="Placeholder" height="600px">
+    {{
+      component: PlaceholderComponent,
     }}
   </Story>
 </Canvas>
