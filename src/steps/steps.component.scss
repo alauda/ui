@@ -71,6 +71,7 @@
   &__info {
     color: get-color(n-4);
     &--selected,
+    &--pending,
     &--done,
     &--error {
       .aui-step__name {
@@ -100,6 +101,9 @@
     &--error {
       background-color: get-color(red);
     }
+    &--pending {
+      background-color: get-color(primary);
+    }
   }
   &--horizontal {
     padding: 0 120px;
@@ -123,13 +127,16 @@
           &--done {
             color: get-color(green);
             background-color: get-color(g-6);
+            &.selected {
+              background-color: #fff;
+            }
           }
         }
       }
       &__info {
         padding-bottom: 13px;
       }
-      &.isLastActive .aui-stepper__vertical-line {
+      &.isLastActive .aui-steps__vertical-line {
         background-color: get-color(n-7);
       }
     }

@@ -3,13 +3,13 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
+  OnInit,
   Output,
-  SimpleChange,
   ViewEncapsulation,
 } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
-import { StepItem, StepState, StepsOrientation, StepsSelection } from './types';
+import { StepItem, StepState, StepsOrientation, StepsType } from './types';
 
 const StepDefaultIcon = {
   [StepState.Default]: 'number',
@@ -33,55 +33,99 @@ const StepSelectedIcon = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class StepsComponent implements OnChanges {
+export class StepsComponent implements OnInit {
+  _currentIndex: number;
+  private _steps: StepItem[] = [];
   @Input()
-  steps: StepItem[];
+  get steps() {
+    return this._steps;
+  }
+
+  set steps(val: StepItem[]) {
+    this._steps = val;
+    this.stepsChange$$.next(val);
+  }
 
   @Input()
   linear = false;
 
   @Input()
-  selectedIndex = 0;
+  get currentIndex() {
+    return this._currentIndex;
+  }
+
+  set currentIndex(index: number) {
+    this.currentIndexChange$$.next(index);
+  }
 
   @Input()
   orientation: StepsOrientation = 'horizontal';
 
+  @Input()
+  type: StepsType = 'step';
+
   @Output()
-  selectionChange = new EventEmitter<StepsSelection>();
+  currentIndexChange = new EventEmitter<number>();
 
-  validSelectedIndex = 0;
+  @Output()
+  selectedIndexChange = new EventEmitter<number>();
 
-  // If linear is true and input selectedIndex is larger than the index of last done step,
-  // then set the selectedIndex with the index of last done step.
-  ngOnChanges(changes: {
-    steps: SimpleChange;
-    linear: SimpleChange;
-    selectedIndex: SimpleChange;
-  }) {
-    const steps: StepItem[] = changes.steps?.currentValue || this.steps;
-    const linear = changes.linear?.currentValue ?? this.linear;
-    const selectedIndex =
-      changes.selectedIndex?.currentValue || this.selectedIndex;
-    if (!linear) {
-      this.validSelectedIndex = selectedIndex;
-    } else {
-      if (steps?.length) {
-        const ret = Math.min(Math.max(0, selectedIndex), steps.length - 1);
-        const reversedPrevSteps = steps.slice(0, ret).reverse();
+  currentIndexChange$$ = new BehaviorSubject<number>(0);
+  stepsChange$$ = new BehaviorSubject<StepItem[]>([]);
+
+  selectedIndex: number;
+
+  ngOnInit() {
+    this.currentIndexChange$$.subscribe(index => {
+      if (this.type === 'step') {
+        this.setCurrentIndex(index);
+      }
+    });
+    this.stepsChange$$.subscribe(steps => {
+      if (this.type === 'progress') {
+        this.getProgressCurrentIndex(steps);
+      }
+    });
+  }
+
+  private setCurrentIndex(index: number) {
+    if (this.linear) {
+      if (this.steps?.length) {
+        const ret = Math.min(Math.max(0, index), this.steps.length - 1);
+        const reversedPrevSteps = this.steps.slice(0, ret).reverse();
         const lastDoneStepIndex =
           reversedPrevSteps.length -
           reversedPrevSteps.findIndex(
             step => step.state === StepState.Done || step.optional,
           );
-        this.validSelectedIndex = Math.min(lastDoneStepIndex, ret);
-        if (this.validSelectedIndex !== this.selectedIndex) {
-          this.selectionChange.emit({
-            selectedIndex: this.validSelectedIndex,
-            previousSelectedIndex: null,
-            selectedStep: steps[this.validSelectedIndex],
-            previousSelectedStep: null,
-          });
-        }
+        this._currentIndex = Math.min(lastDoneStepIndex, ret);
+      }
+    } else {
+      this._currentIndex = index;
+    }
+  }
+
+  private getProgressCurrentIndex(steps: StepItem[]) {
+    if (!steps?.length) {
+      if (this._currentIndex !== 0) {
+        this.currentIndexChange.emit(0);
+      }
+      this._currentIndex = 0;
+    } else {
+      const reversedSteps = this.steps.slice(0).reverse();
+      const doneStepIndex = reversedSteps.findIndex(
+        step => step.state === StepState.Done,
+      );
+      const lastDoneStepIndex =
+        doneStepIndex > -1 ? reversedSteps.length - doneStepIndex : 0;
+      const newIndex = Math.min(lastDoneStepIndex, steps.length - 1);
+      if (this._currentIndex !== newIndex) {
+        this.currentIndexChange.emit(newIndex);
+      }
+      if (this._currentIndex === this.selectedIndex) {
+        this._currentIndex = this.selectedIndex = newIndex;
+      } else {
+        this._currentIndex = newIndex;
       }
     }
   }
@@ -90,41 +134,55 @@ export class StepsComponent implements OnChanges {
     return this.orientation === 'vertical';
   }
 
-  getIcon(i: number, step: StepItem): string {
-    if (!step.state) {
+  get isProgress() {
+    return this.type === 'progress';
+  }
+
+  getIcon(i: number, state: StepState): string {
+    if (!state) {
       return StepDefaultIcon.default;
     }
-    return this.validSelectedIndex === i
-      ? StepSelectedIcon[step.state]
-      : StepDefaultIcon[step.state];
+    return this.getActiveIndex() === i
+      ? StepSelectedIcon[state]
+      : StepDefaultIcon[state];
   }
 
   select(i: number, step: StepItem) {
-    const currentStep = this.steps[this.validSelectedIndex];
+    const currentStep = this.steps[this._currentIndex];
     if (
       this.linear &&
       currentStep.state !== StepState.Done &&
       !currentStep.optional &&
-      i > this.validSelectedIndex
+      i > this._currentIndex
     ) {
       return;
     }
-    if (i < this.validSelectedIndex && !(step.editable ?? true)) {
+    if (i < this._currentIndex && !(step.editable ?? true)) {
       return;
     }
-    this.selectionChange.emit({
-      selectedIndex: i,
-      previousSelectedIndex: this.validSelectedIndex,
-      selectedStep: step,
-      previousSelectedStep: currentStep,
-    });
-    this.validSelectedIndex = i;
+    if (this.isProgress) {
+      this.selectedIndexChange.emit(i);
+      this.selectedIndex = i;
+    } else {
+      this.currentIndexChange.emit(i);
+      this._currentIndex = i;
+    }
+  }
+
+  getActiveIndex() {
+    return this.selectedIndex !== undefined
+      ? this.selectedIndex
+      : this._currentIndex;
   }
 
   isLastActive(i: number, steps: StepItem[]) {
     const firstDefaultIndex = steps.findIndex(
-      step => step.state === StepState.Default,
+      step => !step.state || step.state === StepState.Default,
     );
-    return firstDefaultIndex === 0 ? false : firstDefaultIndex - 1 === i;
+    return i === this.selectedIndex
+      ? true
+      : firstDefaultIndex === 0
+      ? false
+      : firstDefaultIndex === i;
   }
 }
