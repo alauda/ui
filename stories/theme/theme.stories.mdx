@@ -1,0 +1,26 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { moduleMetadata } from '@storybook/angular';
+
+import { PaletteComponent } from './palette/palette.component';
+
+import { TooltipModule } from '@alauda/ui';
+
+<Meta
+  title="Theme"
+  decorators={[
+    moduleMetadata({
+      imports: [TooltipModule],
+      declarations: [PaletteComponent],
+    }),
+  ]}
+/>
+
+# Theme
+
+## Palette
+
+<Canvas>
+  <Story name="Palette" height="800px">
+    {{ component: PaletteComponent }}
+  </Story>
+</Canvas>

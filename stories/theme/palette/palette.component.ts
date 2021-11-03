@@ -1,41 +1,34 @@
-import { Component, Directive, ElementRef, OnInit } from '@angular/core';
-
-@Directive({
-  // tslint:disable-next-line: directive-selector
-  selector: '.palette__card',
-})
-export class PaletteCardDirective implements OnInit {
-  constructor(private readonly el: ElementRef<HTMLElement>) {}
-
-  ngOnInit() {
-    const element = this.el.nativeElement;
-    const styleString = this.rgbToHex(
-      getComputedStyle(element, null).backgroundColor,
-    );
-    element.innerHTML = `<div>${element.innerHTML}<br />${styleString}</div>`;
-  }
-
-  componentToHex(c: number) {
-    const hex = c.toString(16);
-    return hex.length === 1 ? '0' + hex : hex;
-  }
-
-  rgbToHex(rgb: string) {
-    const arr = /(\d+), (\d+), (\d+)/g.exec(rgb);
-    if (arr.length === 4) {
-      return (
-        '#' +
-        this.componentToHex(parseInt(arr[1], 10)) +
-        this.componentToHex(parseInt(arr[2], 10)) +
-        this.componentToHex(parseInt(arr[3], 10))
-      );
-    }
-    return '';
-  }
-}
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   templateUrl: './palette.component.html',
   styleUrls: ['./palette.component.scss'],
 })
-export class PaletteComponent {}
+export class PaletteComponent implements AfterViewInit {
+  @ViewChild('ref')
+  private readonly ref: ElementRef<HTMLDivElement>;
+
+  ngAfterViewInit() {
+    Array.from(this.ref.nativeElement.querySelectorAll('.indicator'))
+      .map(el => {
+        const bgColor = getComputedStyle(el).backgroundColor;
+        if (bgColor === 'rgba(0, 0, 0, 0)') {
+          return () => {
+            // do nothing
+          };
+        }
+        const color =
+          '#' +
+          bgColor
+            .slice(4, -1)
+            .split(',')
+            .map(v => parseInt(v.trim()).toString(16).padStart(2, '0'))
+            .join('');
+        const slot = el.querySelector('.value');
+        return () => {
+          slot.innerHTML = color;
+        };
+      })
+      .forEach(fn => fn());
+  }
+}
