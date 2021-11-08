@@ -34,6 +34,7 @@ $block: 'aui-checkbox';
     background-color: get-color(n-8);
     border-radius: calc(#{get-size(inline-height-s)} / 2);
     font-size: get-size(font-size-m);
+    display: inline-flex;
 
     &:hover .#{$block}__pointer {
       border-color: get-color(primary);
