@@ -19,36 +19,35 @@ import { StepsModule, ButtonModule } from '@alauda/ui';
 Steps
 
 <Canvas>
-  <Story name="Horizontal" height="200px">
+  <Story name="Step" height="200px">
     {{
       code: `
       @Component({
         template: 
           <aui-steps
-            [linear]="true"
-            [selectedIndex]="selectedIndex"
+            [currentIndex]="currentIndex"
             [orientation]="orientation"
             [steps]="steps"
-            (selectionChange)="selectionChange($event)"
+            (currentIndexChange)="currentIndexChange($event)"
           ></aui-steps>
           <div style="margin-top: 50px">
             <button aui-button="primary" (click)="prev()">Previous</button>
-            <button aui-button="primary" (click)="complete()">Complete</button>
             <button aui-button="primary" (click)="next()">Next</button>
+          </div>
+          <div>
+            Current index: {{ currentIndex }}
           </div>
         ,
         changeDetection: ChangeDetectionStrategy.OnPush,
       })
       export class BasicHorizontalDemoComponent {
-        selectedIndex = 3;
-        steps = [
+        currentIndex = 0;
+        steps: StepItem[] = [
           {
             label: 'Step 1',
-            state: 'done',
           },
           {
             label: 'Step 2',
-            state: 'done',
           },
           {
             label: 'Step 3',
@@ -58,21 +57,16 @@ Steps
           },
         ];
         prev() {
-          this.selectedIndex = Math.max(this.selectedIndex - 1, 0);
-        }
-        complete() {
-          this.steps[this.selectedIndex].state = StepState.Done;
-          this.steps = [...this.steps];
+          this.currentIndex = Math.max(this.currentIndex - 1, 0);
         }
         next() {
-          this.selectedIndex = Math.min(
-            this.selectedIndex + 1,
+          this.currentIndex = Math.min(
+            this.currentIndex + 1,
             this.steps.length - 1,
           );
         }
-        selectionChange(ret: StepsSelection) {
-          this.selectedIndex = ret.selectedIndex;
-          console.log(ret);
+        currentIndexChange(index: number) {
+          this.currentIndex = index;
         }
       }
       `,
@@ -82,7 +76,7 @@ Steps
 </Canvas>
 
 <Canvas>
-  <Story name="Vertical" height="300px">
+  <Story name="Progress" height="300px">
     {{
       code: `
         @Component({
@@ -90,29 +84,32 @@ Steps
             <aui-steps
               [linear]="true"
               [orientation]="orientation"
-              [selectedIndex]="selectedIndex"
+              [type]="'progress'"
               [steps]="steps"
-              (selectionChange)="selectionChange($event)"
+              (currentIndexChange)="currentIndexChange($event)"
+              (selectedIndexChange)="selectedIndexChange($event)"
             ></aui-steps>
             <div style="margin-top: 50px">
-              <button aui-button="primary" (click)="prev()">Previous</button>
               <button aui-button="primary" (click)="start()">Start</button>
               <button aui-button="primary" (click)="complete()">Complete</button>
-              <button aui-button="primary" (click)="next()">Next</button>
+              <button aui-button="primary" (click)="error()">Set Error</button>
+            </div>
+            <div>
+              Selected Index: {{ selectedIndex }},
+              Current index: {{ currentIndex }}
             </div>
           ,
         })
         export class BasicVerticalDemoComponent {
-          orientation = 'vertical';
-          selectedIndex = 3;
-          steps = [
+          orientation: StepsOrientation = 'vertical';
+          currentIndex = 0;
+          selectedIndex: number;
+          steps: StepItem[] = [
             {
               label: 'Step 1',
-              state: 'done',
             },
             {
               label: 'Step 2',
-              state: 'done',
             },
             {
               label: 'Step 3',
@@ -121,26 +118,24 @@ Steps
               label: 'Step 4',
             },
           ];
-          prev() {
-            this.selectedIndex = Math.max(this.selectedIndex - 1, 0);
+          currentIndexChange(index: number) {
+            this.currentIndex = index;
+          }
+          selectedIndexChange(index: number) {
+            this.selectedIndex = index;
           }
           start() {
-            this.steps[this.selectedIndex].state = StepState.Pending;
-            this.steps = [...this.steps];
+            this.setState(StepState.Pending);
           }
           complete() {
-            this.steps[this.selectedIndex].state = StepState.Done;
+            this.setState(StepState.Done);
+          }
+          error() {
+            this.setState(StepState.Error);
+          }
+          private setState(state: StepState) {
+            this.steps[this.currentIndex].state = state;
             this.steps = [...this.steps];
-          }
-          next() {
-            this.selectedIndex = Math.min(
-              this.selectedIndex + 1,
-              this.steps.length - 1,
-            );
-          }
-          selectionChange(ret: StepsSelection) {
-            this.selectedIndex = ret.selectedIndex;
-            console.log(ret);
           }
         }
       `,
@@ -153,28 +148,20 @@ Steps
 
 ### Steps Properties
 
-| 名称          | 类型       | 描述                                                                                                    |
-| ------------- | ---------- | ------------------------------------------------------------------------------------------------------- | ---- |
-| linear        | boolean    | 是否按顺序执行，默认为 false。如果为 true，当前步骤非可选及未完成时后面步骤无法的点击                   |
-| orientation   | 'vertical' | 'horizontal'                                                                                            | 方向 |
-| selectedIndex | number     | 当前选中的步骤。当 linear 为 true 时，如果 selectedIndex 设置为非第一个待完成的步骤，则自动设置为第一个 |
-| steps         | StepItem[] | 步骤                                                                                                    |
+| 名称         | 类型                       | 描述                                                                                  |
+| ------------ | -------------------------- | ------------------------------------------------------------------------------------- |
+| linear       | boolean                    | 是否按顺序执行，默认为 false。如果为 true，当前步骤非可选及未完成时后面步骤无法的点击 |
+| orientation  | 'vertical' or 'horizontal' | 方向                                                                                  |
+| currentIndex | number                     | 当前的步骤。当 type 为 progress 时，无需传入，组件会根据 steps 的状态自动设置         |
+| steps        | StepItem[]                 | 步骤                                                                                  |
+| type         | 'step' or 'progress'       | 默认为 step                                                                           |
 
 ### Steps Output
 
-| 名称            | 返回值类型     | 描述                     |
-| --------------- | -------------- | ------------------------ |
-| selectionChange | StepsSelection | selectedIndex 变化时触发 |
-
-```typescript
-// StepSelection
-{
-  selectedIndex: number;
-  previousSelectedIndex: number;
-  selectedStep: StepItem;
-  previousSelectedStep: StepItem;
-}
-```
+| 名称                | 返回值类型 | 描述                                                              |
+| ------------------- | ---------- | ----------------------------------------------------------------- |
+| currentIndexChange  | number     | 当前步骤变化时触发                                                |
+| selectedIndexChange | number     | 选中的步骤变化时触发。type 为 step 时当前值与选中值相同，无需监听 |
 
 ### StepItem Definition
 
@@ -183,5 +170,5 @@ Steps
 | label       | string    | false | 步骤名称                              |
 | description | string    | true  | 步骤描述                              |
 | editable    | boolean   | true  | 完成后是否可以选择该步骤。默认为 true |
-| state       | StepState | true  | 状态。'done' 'pending' 'error'        |
+| state       | StepState | true  | 状态。'done', 'pending' or 'error'    |
 | optional    | boolean   | true  | 是否可跳过。默认为 false              |

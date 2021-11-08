@@ -1,40 +1,68 @@
-<div class="aui-steps aui-steps--{{ orientation || 'horizontal' }}">
+<div
+  class="aui-steps aui-steps--{{ orientation || 'horizontal' }} aui-steps--{{
+    type || 'step'
+  }}"
+>
   <ng-container *ngFor="let step of steps; let i = index; let isLast = last">
     <div
       class="aui-step"
       (click)="select(i, step)"
       [class.isLastActive]="isLastActive(i, steps)"
+      [class.clickable]="isSelectable(i, step)"
     >
       <div class="aui-step__indicator">
-        <ng-container [ngSwitch]="getIcon(i, step)">
+        <ng-container *ngIf="isProgress">
+          <ng-container [ngSwitch]="getIcon(i, step.state)">
+            <span
+              class="aui-step__indicator-number aui-step__indicator-number--{{
+                step.state
+              }}"
+              *ngSwitchCase="'number'"
+              [class.selected]="getActiveIndex() === i"
+            >
+              {{ i + 1 }}
+            </span>
+            <aui-icon
+              class="aui-step__indicator-icon aui-step__indicator-icon--{{
+                step.state
+              }}"
+              *ngSwitchDefault
+              [class.selected]="getActiveIndex() === i"
+              [icon]="getIcon(i, step.state)"
+            ></aui-icon>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!isProgress">
           <span
-            class="aui-step__indicator-number aui-step__indicator-number--{{
-              step.state
-            }}"
-            *ngSwitchCase="'number'"
-            [class.selected]="validSelectedIndex === i"
+            class="aui-step__indicator-number"
+            [class.selected]="_currentIndex === i"
+            *ngIf="i >= _currentIndex"
           >
             {{ i + 1 }}
           </span>
           <aui-icon
-            class="aui-step__indicator-icon aui-step__indicator-icon--{{
-              step.state
-            }}"
-            [class.selected]="validSelectedIndex === i"
-            *ngSwitchDefault
-            [icon]="getIcon(i, step)"
+            class="aui-step__indicator-icon aui-step__indicator-icon--done"
+            [class.selected]="_currentIndex === i"
+            *ngIf="i < _currentIndex"
+            [icon]="getIcon(i, 'done')"
           ></aui-icon>
-          <div
-            *ngIf="!isLast && isVertical"
-            class="aui-steps__vertical-line aui-steps__vertical-line--{{
-              step.state
-            }}"
-          ></div>
         </ng-container>
+        <div
+          *ngIf="!isLast && isVertical"
+          class="aui-steps__vertical-line aui-steps__vertical-line--{{
+            step.state
+          }}"
+        ></div>
       </div>
       <div
-        class="aui-step__info aui-step__info--{{ step.state }}"
-        [class.aui-step__info--selected]="validSelectedIndex === i"
+        class="aui-step__info aui-step__info--{{
+          isProgress
+            ? step.state || 'default'
+            : i < _currentIndex
+            ? 'done'
+            : 'default'
+        }}"
+        [class.aui-step__info--selected]="getActiveIndex() === i"
       >
         <div class="aui-step__name">
           {{ step.label }}

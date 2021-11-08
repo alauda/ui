@@ -71,16 +71,29 @@
   &__info {
     color: get-color(n-4);
     &--selected,
+    &--pending,
     &--done,
     &--error {
-      .aui-step__name {
-        color: get-color(n-1);
-      }
+      color: get-color(n-1);
     }
+  }
+  &.clickable {
+    cursor: pointer;
   }
 }
 
 .aui-steps {
+  &--progress {
+    .aui-step {
+      &.clickable {
+        .aui-step__info {
+          &:hover {
+            color: get-color(primary);
+          }
+        }
+      }
+    }
+  }
   &__horizontal-line {
     height: 1px;
     background-color: get-color(n-7);
@@ -99,6 +112,9 @@
     }
     &--error {
       background-color: get-color(red);
+    }
+    &--pending {
+      background-color: get-color(primary);
     }
   }
   &--horizontal {
@@ -123,13 +139,16 @@
           &--done {
             color: get-color(green);
             background-color: get-color(g-6);
+            &.selected {
+              background-color: #fff;
+            }
           }
         }
       }
       &__info {
         padding-bottom: 13px;
       }
-      &.isLastActive .aui-stepper__vertical-line {
+      &.isLastActive .aui-steps__vertical-line {
         background-color: get-color(n-7);
       }
     }
