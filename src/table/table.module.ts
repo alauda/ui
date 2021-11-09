@@ -13,6 +13,10 @@ import { TableHeaderCellDefDirective } from './table-header-cell-def.directive';
 import { TableHeaderCellDirective } from './table-header-cell.directive';
 import { TableHeaderRowDefDirective } from './table-header-row-def.directive';
 import { TableHeaderRowComponent } from './table-header-row.component';
+import {
+  TablePlaceholderDefDirective,
+  TablePlaceholderOutlet,
+} from './table-placeholder.directive';
 import { TableRowDefDirective } from './table-row-def.directive';
 import { TableRowComponent } from './table-row.component';
 import { TableScrollWrapperDirective } from './table-scroll-wrapper.directive';
@@ -26,13 +30,15 @@ import { TableComponent } from './table.component';
     TableHeaderRowComponent,
     TableCellComponent,
     TableCellDirective,
+    TableCellDefDirective,
     TableHeaderCellDirective,
     TableRowDefDirective,
     TableHeaderRowDefDirective,
-    TableCellDefDirective,
     TableHeaderCellDefDirective,
     TableColumnDefDirective,
     TableScrollWrapperDirective,
+    TablePlaceholderOutlet,
+    TablePlaceholderDefDirective,
   ],
   exports: [
     TableComponent,
@@ -40,13 +46,15 @@ import { TableComponent } from './table.component';
     TableHeaderRowComponent,
     TableCellComponent,
     TableCellDirective,
+    TableCellDefDirective,
     TableHeaderCellDirective,
     TableRowDefDirective,
     TableHeaderRowDefDirective,
-    TableCellDefDirective,
     TableHeaderCellDefDirective,
     TableColumnDefDirective,
     TableScrollWrapperDirective,
+    TablePlaceholderOutlet,
+    TablePlaceholderDefDirective,
   ],
 })
 export class TableModule {}
