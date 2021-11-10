@@ -45,7 +45,7 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
   bem: Bem = buildBem('aui-form-item');
 
   @Input()
-  labelWidth = 'auto';
+  labelWidth: string = null;
 
   @Input()
   width: FormItemWidth;

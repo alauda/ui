@@ -20,7 +20,7 @@ export class FormDirective {
       .submitted;
   }
 
-  private readonly labelWidth$$ = new BehaviorSubject<string>('auto');
+  private readonly labelWidth$$ = new BehaviorSubject<string>(null);
   private readonly labelPosition$$ = new BehaviorSubject<LabelPosition>(
     LabelPosition.Right,
   );

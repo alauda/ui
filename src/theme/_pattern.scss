@@ -66,14 +66,14 @@
 }
 
 @mixin zh-form-label-width($parent) {
-  #{$parent} .aui-form-item__label-wrapper {
-    width: 114px !important;
+  #{$parent} .aui-form-item .aui-form-item__label-wrapper {
+    width: 114px;
   }
 }
 
 @mixin en-form-label-width($parent) {
-  #{$parent} .aui-form-item__label-wrapper {
-    width: 144px !important;
+  #{$parent} .aui-form-item .aui-form-item__label-wrapper {
+    width: 144px;
   }
 }
 
