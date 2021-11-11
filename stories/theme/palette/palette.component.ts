@@ -18,7 +18,8 @@ export class PaletteComponent implements AfterViewInit {
           };
         }
         const color =
-          '#' +
+          bgColor +
+          ', #' +
           bgColor
             .slice(4, -1)
             .split(',')

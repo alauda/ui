@@ -1,23 +1,22 @@
-export enum StepState {
-  Default = 'default',
-  Done = 'done',
-  Error = 'error',
-  Pending = 'pending',
-}
+import { ValueOf } from '../types';
+
+export const StepState = {
+  Default: 'default',
+  Done: 'done',
+  Error: 'error',
+  Pending: 'pending',
+} as const;
+
+export type StepState = ValueOf<typeof StepState>;
 
 export interface StepItem {
   label: string;
   description?: string;
-  state: StepState;
+  state?: StepState;
   optional?: boolean;
   editable?: boolean;
 }
 
 export type StepsOrientation = 'horizontal' | 'vertical';
 
-export class StepsSelection {
-  selectedIndex: number;
-  previousSelectedIndex: number;
-  selectedStep: StepItem;
-  previousSelectedStep: StepItem;
-}
+export type StepsType = 'step' | 'progress';

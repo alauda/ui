@@ -7,6 +7,7 @@ $block: 'aui-checkbox';
 .#{$block} {
   margin-right: get-size(spacing-xxxl);
   display: inline-block;
+  width: fit-content;
   color: get-color(n-1);
   font-size: get-size(font-size-m);
   line-height: get-size(inline-height-m);
@@ -34,6 +35,7 @@ $block: 'aui-checkbox';
     background-color: get-color(n-8);
     border-radius: calc(#{get-size(inline-height-s)} / 2);
     font-size: get-size(font-size-m);
+    display: inline-flex;
 
     &:hover .#{$block}__pointer {
       border-color: get-color(primary);
