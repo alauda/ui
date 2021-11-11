@@ -95,12 +95,12 @@ $form-item-width: (
       $map: map-get($form-item-width, $key);
       &--#{$key} {
         .aui-form-item__control {
-          width: map-get($map, width);
+          max-width: map-get($map, width);
         }
         aui-select,
         aui-multi-select {
           &.aui-form-item__control {
-            width: map-get($map, width);
+            max-width: map-get($map, width);
           }
         }
       }
