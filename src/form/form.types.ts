@@ -6,10 +6,12 @@ export const LabelPosition = {
   Right: 'right',
 } as const;
 
-export enum FormItemWidth {
-  Small = 'small',
-  Medium = 'medium',
-  Large = 'large',
-}
+export const FormItemWidth = {
+  Small: 'small',
+  Medium: 'medium',
+  Large: 'large',
+} as const;
 
 export type LabelPosition = ValueOf<typeof LabelPosition>;
+
+export type FormItemWidth = ValueOf<typeof FormItemWidth>;
