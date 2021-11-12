@@ -10,11 +10,16 @@
 }
 
 @mixin table-placeholder {
-  padding: $table-row-vertical-padding $table-cell-horizontal-padding;
-  border-bottom: $table-border-width $border-style $table-row-border-color;
+  padding: get-size(spacing-xxl) 0;
   text-align: center;
-  font-size: $font-size-regular;
-  color: $color-text-help;
+  font-size: get-size(font-size-m);
+  color: get-color(n-4);
+  background: get-color(n-10);
+  border: solid 1px get-color(n-8);
+  border-radius: get-size(border-radius-m);
+  aui-icon {
+    margin-right: get-size(spacing-m);
+  }
 }
 
 @mixin shadow-0 {
