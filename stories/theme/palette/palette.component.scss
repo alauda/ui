@@ -23,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
 
-    @each $color in b-0 blue b-1 b-2 b-3 {
+    @each $color in b-0 'blue' b-1 b-2 b-3 {
       &.#{$color} {
         color: get-color(n-10);
         background-color: get-color($color);
@@ -37,7 +37,7 @@
       }
     }
 
-    @each $color in g-0 green g-1 g-2 g-3 {
+    @each $color in g-0 'green' g-1 g-2 g-3 {
       &.#{$color} {
         color: get-color(n-10);
         background-color: get-color($color);
@@ -51,7 +51,7 @@
       }
     }
 
-    @each $color in y-0 yellow y-1 y-2 y-3 {
+    @each $color in y-0 'yellow' y-1 y-2 y-3 {
       &.#{$color} {
         color: get-color(n-10);
         background-color: get-color($color);
@@ -65,7 +65,7 @@
       }
     }
 
-    @each $color in r-0 red r-1 r-2 r-3 {
+    @each $color in r-0 'red' r-1 r-2 r-3 {
       &.#{$color} {
         color: get-color(n-10);
         background-color: get-color($color);
