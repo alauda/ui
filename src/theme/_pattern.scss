@@ -10,7 +10,7 @@
 }
 
 @mixin table-placeholder {
-  padding: get-size(spacing-xxl) 0;
+  padding: calc(#{get-size(spacing-xxl)} - 1px) 0;
   text-align: center;
   font-size: get-size(font-size-m);
   color: get-color(n-4);
