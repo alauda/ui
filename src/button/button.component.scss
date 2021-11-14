@@ -194,6 +194,9 @@ $button-size: (
 
     &.isPlain {
       color: get-text-color(main);
+      &[disabled] {
+        color: get-color(n-6);
+      }
     }
 
     &:hover {
@@ -230,6 +233,9 @@ $button-size: (
 
     &.isPlain {
       color: get-text-color(main);
+      &[disabled] {
+        color: get-color(n-6);
+      }
     }
 
     &:hover {
