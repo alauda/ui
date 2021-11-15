@@ -45,10 +45,9 @@ import {
   preserveWhitespaces: false,
   animations: [
     trigger('expand', [
-      state('*', style({ height: 0 })),
-      state('expanded', style({ height: '*' })),
-      transition('* => expanded', [animate(250)]),
-      transition('expanded => *', [animate(250)]),
+      state('*', style({ height: 0, padding: '0 16px' })),
+      state('expanded', style({ height: '*', padding: '16px' })),
+      transition('* <=> expanded', [animate(250)]),
     ]),
   ],
 })
