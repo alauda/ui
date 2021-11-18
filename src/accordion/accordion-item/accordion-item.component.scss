@@ -1,4 +1,6 @@
 @import '../../theme/var';
+@import '../../theme/mixin';
+
 $b: aui-accordion-item;
 
 .#{$b} {
@@ -18,7 +20,7 @@ $b: aui-accordion-item;
     &-toggle {
       color: $accordion-item-header-color;
       background: transparent;
-      font-size: $nav-item-icon-size;
+      font-size: get-size(font-size-l);
       &--expanded {
         transform: rotate(90deg);
       }
