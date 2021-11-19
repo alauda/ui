@@ -292,6 +292,24 @@ import {
   </Story>
 </Canvas>
 
+## 自定义 Title
+
+<Canvas>
+  <Story name="Title" height="100px">
+    {{
+      template: /* HTML */ `
+        <aui-tab-group size="large">
+          <ng-container *auiTabTitle>Title</ng-container>
+          <aui-tab label="Tab 0"> <aui-card> Content 1 </aui-card> </aui-tab>
+          <aui-tab label="Tab 1"><aui-card> Content 2 </aui-card></aui-tab>
+          <aui-tab label="Tab 2"><aui-card> Content 3 </aui-card></aui-tab>
+          <aui-tab label="Tab 3"><aui-card> Content 4 </aui-card></aui-tab>
+        </aui-tab-group>
+      `,
+    }}
+  </Story>
+</Canvas>
+
 ## TabGroupComponent Inputs
 
 | 名称          | 类型    | 默认值         | 描述            |
