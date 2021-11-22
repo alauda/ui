@@ -4,7 +4,12 @@ import { DATA_SOURCE } from './data';
 
 @Component({
   template: `
-    <aui-table [dataSource]="dataSource">
+    <aui-table
+      style="max-height: 300px;overflow: auto;"
+      auiTableVerticalShadow
+      cdkScrollable
+      [dataSource]="dataSource"
+    >
       <ng-container auiTableColumnDef="id">
         <aui-table-header-cell *auiTableHeaderCellDef>
           No.
@@ -40,5 +45,5 @@ import { DATA_SOURCE } from './data';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StickyHeadersDemoComponent {
-  dataSource = [...DATA_SOURCE, ...DATA_SOURCE];
+  dataSource = [...DATA_SOURCE];
 }

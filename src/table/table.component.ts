@@ -30,13 +30,10 @@ import {
   exportAs: 'auiTable',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['table.component.scss'],
-  template: `<div
-    class="aui-table__content"
-    [auiTableScrollWrapper]="enableScrollWrapper"
-  >
+  template: `
     ${CDK_TABLE_TEMPLATE}
     <ng-container auiTablePlaceholderOutlet></ng-container>
-  </div>`,
+  `,
   host: {
     class: 'aui-table',
   },

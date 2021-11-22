@@ -1,14 +1,21 @@
 @import '../../../src/theme/mixin';
 :host {
   ::ng-deep {
-    .aui-table__scroll-wrapper {
-      .aui-table__header-cell,
-      .aui-table__cell {
-        flex: 1 0 100px;
-      }
-      .aui-table__header-cell {
-        @include text-overflow();
-      }
+    .aui-table__header-cell,
+    .aui-table__cell {
+      flex: 1 0 100px;
     }
+    .aui-table__header-cell {
+      @include text-overflow;
+    }
+  }
+  // }
+  aui-table {
+    max-height: 300px;
+    overflow-x: auto;
+  }
+  .wrapper {
+    padding: 0 12px 12px;
+    background-color: get-color(n-9);
   }
 }
