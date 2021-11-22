@@ -1,9 +1,5 @@
-<div class="wrapper">
-  <aui-table
-    [dataSource]="dataSource"
-    auiTableVerticalShadow
-    [auiTableScrollWrapper]="true"
-  >
+<div class="aui-table__scroll-wrapper">
+  <aui-table [dataSource]="dataSource" auiTableScrollShadow>
     <ng-container auiTableColumnDef="no" [sticky]="true">
       <aui-table-header-cell *auiTableHeaderCellDef>
         No.

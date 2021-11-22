@@ -6,8 +6,7 @@ import { DATA_SOURCE } from './data';
   template: `
     <aui-table
       style="max-height: 300px;overflow: auto;"
-      auiTableVerticalShadow
-      cdkScrollable
+      auiTableScrollShadow
       [dataSource]="dataSource"
     >
       <ng-container auiTableColumnDef="id">

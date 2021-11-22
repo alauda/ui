@@ -1,8 +1,5 @@
 @import '../theme/var';
 @import '../theme/mixin';
-@import './table-scroll-wrapper';
-
-$stickyCssClass: 'aui-table-sticky';
 
 .aui-table {
   display: block;
