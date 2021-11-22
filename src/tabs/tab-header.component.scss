@@ -45,7 +45,7 @@
     color: get-color(n-1);
     font-size: $tab-header-title-font-size;
     margin-inline: $tab-header-title-spacing;
-    padding-block: $tab-header-title-spacing;
+    padding: $tab-header-title-padding;
     font-weight: $font-weight-bold;
     border-bottom: 1px get-color(n-8) solid;
     line-height: 32px;
