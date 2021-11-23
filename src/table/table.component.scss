@@ -1,8 +1,6 @@
 @import '../theme/var';
 @import '../theme/mixin';
 
-$stickyCssClass: 'aui-table-sticky';
-
 .aui-table {
   display: block;
   color: get-color(n-1);
@@ -10,177 +8,16 @@ $stickyCssClass: 'aui-table-sticky';
   background-color: get-color(n-9);
   padding: 0 get-size(table-margin) get-size(table-margin);
   border-radius: get-size(border-radius-m);
-
-  &__header-row.#{$stickyCssClass} {
-    flex-wrap: wrap;
-    margin: 0 get-neg-size(table-margin);
-    padding: 0;
-    .aui-table__header-cell {
-      z-index: 1;
-      &:first-of-type {
-        padding-left: calc(
-          var(--aui-table-margin) + var(--aui-table-cell-padding-lr)
-        );
-      }
-      &:last-of-type {
-        padding-right: calc(
-          var(--aui-table-margin) + var(--aui-table-cell-padding-lr)
-        );
-      }
-    }
-    &:after {
-      // stylelint-disable-next-line plugin/no-low-performance-animation-properties
-      box-shadow: 0 4px 16px -4px get-rgba(n-1, 0.16);
-      position: sticky;
-      width: 100%;
-      height: 30px;
-      top: calc(var(--aui-table-header-height) - 30px);
-      margin-top: get-neg-size(table-header-height);
-      content: '';
-    }
-  }
-
-  &__scroll-wrapper {
-    overflow: auto;
-    @include scroll-bar;
-
-    .aui-table {
-      padding-bottom: 0;
-      &__row {
-        border: none;
-        padding: 0;
-        align-items: stretch;
-        .aui-table__cell {
-          border-width: get-size(table-border-width) 0;
-          border-style: solid;
-          border-color: $table-row-border-color;
-          &:first-of-type {
-            border-left-width: get-size(table-border-width);
-            padding-left: get-size(table-cell-padding-lr);
-          }
-          &:last-of-type {
-            border-right-width: get-size(table-border-width);
-            padding-right: get-size(table-cell-padding-lr);
-          }
-        }
-
-        &:first-of-type {
-          .aui-table__cell {
-            &:first-of-type {
-              border-top-left-radius: get-size(border-radius-l);
-            }
-            &:last-of-type {
-              border-top-right-radius: get-size(border-radius-l);
-            }
-          }
-        }
-        &:last-of-type {
-          .aui-table__cell {
-            &:first-of-type {
-              border-bottom-left-radius: get-size(border-radius-l);
-            }
-            &:last-of-type {
-              border-bottom-right-radius: get-size(border-radius-l);
-            }
-          }
-        }
-
-        &:not(&:last-child) {
-          .aui-table__cell {
-            border-bottom-width: 0;
-          }
-        }
-      }
-
-      &__header-row {
-        padding: 0;
-        align-items: stretch;
-        .aui-table__header-cell {
-          &:first-of-type {
-            padding-left: get-size(table-cell-padding-lr);
-          }
-          &:last-of-type {
-            padding-right: get-size(table-cell-padding-lr);
-          }
-        }
-      }
-      &__cell {
-        padding: get-size(table-cell-padding-tb-m)
-          calc(var(--aui-table-cell-padding-lr) / 2);
-      }
-    }
-    &--has-scroll {
-      .#{$stickyCssClass} {
-        &:not(.aui-table__header-row):after {
-          position: absolute;
-          top: 0;
-          bottom: -1px;
-          width: 20px;
-          // stylelint-disable-next-line plugin/no-low-performance-animation-properties
-          transition: box-shadow 0.3s;
-          content: '';
-          pointer-events: none;
-        }
-        &:not(.aui-table__header-row):before {
-          position: absolute;
-          top: 0;
-          bottom: -1px;
-          content: ' ';
-          @include vertical-dashed-line(1px, 'n-7');
-        }
-        &-border-elem-left {
-          padding-right: calc(var(--aui-table-cell-padding-lr) / 2 * 3);
-          &:after {
-            right: calc((var(--aui-table-cell-padding-lr) / 2) * -1);
-          }
-          &:before {
-            right: calc(var(--aui-table-cell-padding-lr) / 2);
-          }
-        }
-        &-border-elem-right {
-          padding-left: calc(var(--aui-table-cell-padding-lr) / 2 * 3);
-          &:after {
-            left: calc((var(--aui-table-cell-padding-lr) / 2) * -1);
-          }
-          &:before {
-            left: calc(var(--aui-table-cell-padding-lr) / 2);
-          }
-        }
-      }
-    }
-    &--scrolling {
-      .#{$stickyCssClass} {
-        &-border-elem-left:not(.aui-table__header-row) {
-          &:after {
-            // stylelint-disable-next-line plugin/no-low-performance-animation-properties
-            box-shadow: inset 8px 0 4px -4px get-rgba(n-1, 0.16);
-          }
-          &:before {
-            @include vertical-dashed-line(1px, 'primary');
-          }
-        }
-      }
-    }
-
-    &--before-end {
-      .#{$stickyCssClass} {
-        &-border-elem-right:not(.aui-table__header-row) {
-          &:after {
-            // stylelint-disable-next-line plugin/no-low-performance-animation-properties
-            box-shadow: inset -8px 0 4px -4px get-rgba(n-1, 0.16);
-          }
-          &:before {
-            @include vertical-dashed-line(1px, 'primary');
-          }
-        }
-      }
-    }
-  }
+  @include scroll-bar;
 
   &__row,
   &__header-row {
     display: flex;
     align-items: center;
+  }
+  &__header-row + &__row {
+    border-top-left-radius: get-size(border-radius-l);
+    border-top-right-radius: get-size(border-radius-l);
   }
   &__row {
     position: relative;
@@ -189,17 +26,17 @@ $stickyCssClass: 'aui-table-sticky';
     border-color: $table-row-border-color;
     border-bottom-width: 0;
     background-color: get-color(n-10);
-    padding: get-size(table-cell-padding-tb-m)
-      calc(var(--aui-table-cell-padding-lr) / 2);
+    padding: 0 calc(var(--aui-table-cell-padding-lr) / 2);
     min-height: calc(
       #{get-size(table-border-width)} + #{get-size(table-row-min-height-m)}
     );
 
-    &:first-of-type {
+    &:first-child {
       border-top-left-radius: get-size(border-radius-l);
       border-top-right-radius: get-size(border-radius-l);
     }
-    &:last-of-type {
+
+    &:last-child {
       border-bottom-width: get-size(table-border-width);
       min-height: calc(
         #{get-size(table-border-width)} + #{get-size(table-row-min-height-m)}
@@ -231,7 +68,8 @@ $stickyCssClass: 'aui-table-sticky';
     flex: 1;
   }
   &__cell {
-    padding: 0 calc(var(--aui-table-cell-padding-lr) / 2);
+    padding: get-size(table-cell-padding-tb-m)
+      calc(var(--aui-table-cell-padding-lr) / 2);
     background-color: get-color(n-10);
     overflow: hidden;
     word-wrap: break-word;

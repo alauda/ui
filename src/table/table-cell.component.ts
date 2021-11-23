@@ -46,7 +46,10 @@ import {
   animations: [
     trigger('expand', [
       state('*', style({ height: 0, padding: '0 16px' })),
-      state('expanded', style({ height: '*', padding: '16px' })),
+      state(
+        'expanded',
+        style({ height: '*', 'margin-bottom': '15px', padding: '16px' }),
+      ),
       transition('* <=> expanded', [animate(250)]),
     ]),
   ],

@@ -7,5 +7,5 @@ import { DATA_SOURCE } from '../data';
   styleUrls: ['./placeholder.component.scss'],
 })
 export class PlaceholderComponent {
-  dataSource = DATA_SOURCE.slice();
+  dataSource = DATA_SOURCE.slice(0, 3);
 }

@@ -9,4 +9,4 @@ export * from './table-header-row-def.directive';
 export * from './table-cell-def.directive';
 export * from './table-header-cell-def.directive';
 export * from './table-column-def.directive';
-export * from './table-scroll-wrapper.directive';
+export * from './table-scroll.directive';

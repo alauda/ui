@@ -1,88 +1,95 @@
-<aui-table [dataSource]="dataSource" [enableScrollWrapper]="true" #scrollTable>
-  <ng-container auiTableColumnDef="no" [sticky]="true">
-    <aui-table-header-cell *auiTableHeaderCellDef> No. </aui-table-header-cell>
-    <aui-table-cell *auiTableCellDef="let item">{{ item[0] }}</aui-table-cell>
-  </ng-container>
-  <ng-container auiTableColumnDef="cell1">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      header cell
-    </aui-table-header-cell>
-    <aui-table-cell *auiTableCellDef="let item">
-      {{ item[1] }}
-    </aui-table-cell>
-  </ng-container>
-  <ng-container auiTableColumnDef="cell2">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      header cell
-    </aui-table-header-cell>
-    <aui-table-cell *auiTableCellDef="let item">
-      {{ item[2] }}
-    </aui-table-cell>
-  </ng-container>
-  <ng-container auiTableColumnDef="cell3">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      header cell
-    </aui-table-header-cell>
-    <aui-table-cell *auiTableCellDef="let item">
-      {{ item[3] }}
-    </aui-table-cell>
-  </ng-container>
-  <ng-container auiTableColumnDef="cell4">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      header cell
-    </aui-table-header-cell>
-    <aui-table-cell *auiTableCellDef="let item">
-      {{ item[4] }}
-    </aui-table-cell>
-  </ng-container>
-  <ng-container auiTableColumnDef="cell5">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      header cell
-    </aui-table-header-cell>
-    <aui-table-cell *auiTableCellDef="let item">
-      {{ item[5] }}
-    </aui-table-cell>
-  </ng-container>
-  <ng-container auiTableColumnDef="cell6">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      header cell
-    </aui-table-header-cell>
-    <aui-table-cell *auiTableCellDef="let item">
-      {{ item[6] }}
-    </aui-table-cell>
-  </ng-container>
-  <ng-container auiTableColumnDef="cell7">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      header cell
-    </aui-table-header-cell>
-    <aui-table-cell *auiTableCellDef="let item">
-      {{ item[7] }}
-    </aui-table-cell>
-  </ng-container>
-  <ng-container auiTableColumnDef="cell8">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      header cell
-    </aui-table-header-cell>
-    <aui-table-cell *auiTableCellDef="let item">
-      {{ item[8] }}
-    </aui-table-cell>
-  </ng-container>
-  <ng-container auiTableColumnDef="cell9">
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      header cell
-    </aui-table-header-cell>
-    <aui-table-cell *auiTableCellDef="let item">
-      {{ item[9] }}
-    </aui-table-cell>
-  </ng-container>
-  <ng-container auiTableColumnDef="cell10" stickyEnd>
-    <aui-table-header-cell *auiTableHeaderCellDef>
-      header cell
-    </aui-table-header-cell>
-    <aui-table-cell *auiTableCellDef="let item">
-      {{ item[10] }}
-    </aui-table-cell>
-  </ng-container>
-  <aui-table-header-row *auiTableHeaderRowDef="columns"></aui-table-header-row>
-  <aui-table-row *auiTableRowDef="let row; columns: columns"></aui-table-row>
-</aui-table>
+<h1>固定header & 列</h1>
+<div auiTableScrollWrapper>
+  <aui-table [dataSource]="dataSource" auiTableScrollShadow>
+    <ng-container auiTableColumnDef="no" [sticky]="true">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        No.
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">{{ item[0] }}</aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="cell1">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[1] }}
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="cell2">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[2] }}
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="cell3">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[3] }}
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="cell4">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[4] }}
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="cell5">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[5] }}
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="cell6">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[6] }}
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="cell7">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[7] }}
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="cell8">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[8] }}
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="cell9">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[9] }}
+      </aui-table-cell>
+    </ng-container>
+    <ng-container auiTableColumnDef="cell10" stickyEnd>
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[10] }}
+      </aui-table-cell>
+    </ng-container>
+    <aui-table-header-row
+      *auiTableHeaderRowDef="columns; sticky: true"
+    ></aui-table-header-row>
+    <aui-table-row *auiTableRowDef="let row; columns: columns"></aui-table-row>
+  </aui-table>
+</div>
