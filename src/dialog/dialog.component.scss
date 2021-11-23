@@ -23,7 +23,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
   display: flex;
   flex-direction: column;
   background-color: get-color(n-10);
-  border-radius: get-size(border-radius-m);
+  border-radius: get-size(border-radius-l);
   @include modal-shadow;
   @include text-set(m, main);
 
@@ -56,7 +56,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
       width: 100%;
       @include text-set(xxl, main);
 
-      aui-icon:first-child {
+      > aui-icon:first-child {
         font-size: get-size(icon-size-xl);
         margin-right: get-size(spacing-m);
 
