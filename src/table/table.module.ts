@@ -19,7 +19,10 @@ import {
 } from './table-placeholder.directive';
 import { TableRowDefDirective } from './table-row-def.directive';
 import { TableRowComponent } from './table-row.component';
-import { TableScrollShadowDirective } from './table-scroll-wrapper.directive';
+import {
+  TableScrollShadowDirective,
+  TableScrollWrapperDirective,
+} from './table-scroll.directive';
 import { TableComponent } from './table.component';
 
 @NgModule({
@@ -39,6 +42,7 @@ import { TableComponent } from './table.component';
     TableScrollShadowDirective,
     TablePlaceholderOutlet,
     TablePlaceholderDefDirective,
+    TableScrollWrapperDirective,
   ],
   exports: [
     TableComponent,
@@ -55,6 +59,7 @@ import { TableComponent } from './table.component';
     TableScrollShadowDirective,
     TablePlaceholderOutlet,
     TablePlaceholderDefDirective,
+    TableScrollWrapperDirective,
   ],
 })
 export class TableModule {}

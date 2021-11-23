@@ -37,6 +37,7 @@ $stickyCssClass: 'aui-table-sticky';
 .aui-table__scroll-wrapper {
   background-color: get-color(n-9);
   padding: 0 get-size(table-margin) get-size(table-margin);
+  border-radius: get-size(border-radius-m);
   @include scroll-bar;
   .aui-table {
     padding: 0;

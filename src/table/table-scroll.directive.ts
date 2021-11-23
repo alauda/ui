@@ -21,6 +21,13 @@ const HAS_TABLE_BOTTOM_SHADOW = 'hasTableBottomShadow';
 const HAS_TABLE_VERTICAL_SCROLL = 'hasTableVerticalScroll';
 
 @Directive({
+  selector: '[auiTableScrollWrapper]',
+  host: {
+    class: 'aui-table__scroll-wrapper',
+  },
+})
+export class TableScrollWrapperDirective {}
+@Directive({
   selector: '[auiTableScrollShadow]',
 })
 export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {

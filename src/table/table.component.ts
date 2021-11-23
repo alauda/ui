@@ -29,7 +29,7 @@ import {
   selector: 'aui-table',
   exportAs: 'auiTable',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['table.component.scss', 'table-scroll-wrapper.scss'],
+  styleUrls: ['table.component.scss', 'table-scroll.scss'],
   template: `
     ${CDK_TABLE_TEMPLATE}
     <ng-container auiTablePlaceholderOutlet></ng-container>
