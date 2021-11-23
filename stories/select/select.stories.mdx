@@ -56,7 +56,7 @@ import { SelectModule, IconModule } from '@alauda/ui';
       template: /* HTML */ `
         <aui-select [(ngModel)]="value" [labelFn]="labelFn" [trackFn]="trackFn">
           <aui-option-group *ngFor="let i of arr">
-            <div auiOptionGroupTitle>group {{ i }}</div>
+            <div auiOptionGroupTitle *ngIf="i !== 1">group {{ i }}</div>
             <aui-option
               *ngFor="let j of arr"
               [label]="'option' + (arr.length * i + j)"
