@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.0.1
+
+### Patch Changes
+
+- [#202](https://github.com/alauda/alauda-ui/pull/202) [`fd5ab24`](https://github.com/alauda/alauda-ui/commit/fd5ab241d1ddf28fc1e7e3ccf7f5eefdcfacd949) Thanks [@zangguodong](https://github.com/zangguodong)! - fix: info tag color,tag padding block
+
+- [#194](https://github.com/alauda/alauda-ui/pull/194) [`1b9757e`](https://github.com/alauda/alauda-ui/commit/1b9757e177380e15e35ddc2ce4c65acce6d19ff4) Thanks [@mario-mui](https://github.com/mario-mui)! - fix: form label width default value null
+
+- [#196](https://github.com/alauda/alauda-ui/pull/196) [`7a5fd77`](https://github.com/alauda/alauda-ui/commit/7a5fd774b23019fd667c4e8cc91b7ddd955136f3) Thanks [@yinshuxun](https://github.com/yinshuxun)! - feat: String input support for the form item with 'large' | 'small' | 'medium'
+
 ## 6.0.0
 
 ### Major Changes
