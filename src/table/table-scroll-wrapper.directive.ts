@@ -27,8 +27,11 @@ export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {
   destroy$$ = new Subject<void>();
   constructor(private readonly el: ElementRef<HTMLElement>) {}
 
-  @HostBinding('class')
-  class = `${SCROLL_BEFORE_END_CLASS} ${SHADOW_CLASS}`;
+  @HostBinding(`class.${SCROLL_BEFORE_END_CLASS}`)
+  SCROLL_BEFORE_END_CLASS = true;
+
+  @HostBinding(`class.${SHADOW_CLASS}`)
+  SHADOW_CLASS = true;
 
   get containerEl() {
     return this.el.nativeElement;
