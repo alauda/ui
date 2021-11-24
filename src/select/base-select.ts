@@ -20,6 +20,7 @@ import {
   refCount,
   startWith,
   switchMap,
+  takeUntil,
 } from 'rxjs/operators';
 
 import { CommonFormControl } from '../form/public-api';
@@ -238,6 +239,15 @@ export abstract class BaseSelect<T, V = T>
       publishReplay(1),
       refCount(),
     );
+
+    // support dynamic options loading on filtering
+    this.allOptions$.pipe(takeUntil(this.destroy$$)).subscribe(() => {
+      if (this.opened) {
+        requestAnimationFrame(() => {
+          this.autoFocusFirstOption();
+        });
+      }
+    });
 
     this.hasMatchedOption$ = combineLatest([
       this.allOptions$.pipe(
