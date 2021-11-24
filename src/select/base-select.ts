@@ -243,7 +243,9 @@ export abstract class BaseSelect<T, V = T>
     // support dynamic options loading on filtering
     this.allOptions$.pipe(takeUntil(this.destroy$$)).subscribe(() => {
       if (this.opened) {
-        this.autoFocusFirstOption();
+        requestAnimationFrame(() => {
+          this.autoFocusFirstOption();
+        });
       }
     });
 
