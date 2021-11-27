@@ -41,12 +41,14 @@
 
         <div class="drawer-body">
           <ng-template cdkPortalOutlet></ng-template>
-          <ng-container
-            *ngTemplateOutlet="
-              $any(content || contentTemplate);
-              context: templateContext
-            "
-          >
+          <ng-container *ngIf="isTemplateRef(content || contentTemplate)">
+            <ng-container
+              *ngTemplateOutlet="
+                $any(content || contentTemplate);
+                context: templateContext
+              "
+            >
+            </ng-container>
           </ng-container>
         </div>
 

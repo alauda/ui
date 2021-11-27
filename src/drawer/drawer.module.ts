@@ -1,4 +1,5 @@
 import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -19,7 +20,7 @@ const COMMON = [
   DrawerFooterDirective,
 ];
 @NgModule({
-  imports: [CommonModule, IconModule, IconModule, OverlayModule],
+  imports: [CommonModule, IconModule, IconModule, OverlayModule, PortalModule],
   declarations: COMMON,
   exports: COMMON,
   providers: [DrawerService],

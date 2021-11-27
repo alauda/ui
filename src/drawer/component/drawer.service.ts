@@ -6,12 +6,11 @@ import { takeUntil } from 'rxjs/operators';
 
 import { DrawerComponent } from './drawer.component';
 
-interface DrawerOptions<T = any> {
+interface DrawerOptions<T = any, D = any> {
   title?: string | TemplateRef<unknown>;
+  width?: number;
   content?: ComponentType<T> | TemplateRef<T>;
-  contentParams?: {
-    [key: string]: string;
-  };
+  contentParams?: D;
   footer?: string | TemplateRef<unknown>;
   offsetY?: number;
 }
