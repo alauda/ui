@@ -5,7 +5,7 @@ import {
   DrawerService,
   InputModule,
 } from '@alauda/ui';
-import { Component, TemplateRef } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { storiesOf } from '@storybook/angular';
 
@@ -30,6 +30,14 @@ storiesOf('Drawer', module)
       declarations: [ServiceDrawerComponent],
     },
     component: ServiceDrawerComponent,
+  }))
+  .add('service create component drawer', () => ({
+    moduleMetadata: {
+      imports: [ButtonModule, DrawerModule],
+      declarations: [ServiceDrawerCptComponent, DrawerContentComponent],
+      entryComponents: [DrawerContentComponent],
+    },
+    component: ServiceDrawerCptComponent,
   }));
 
 @Component({
@@ -141,4 +149,42 @@ export class ServiceDrawerComponent {
   close() {
     this.drawerRef.closure('on close');
   }
+}
+
+@Component({
+  template: `
+    <button aui-button="primary" (click)="open()">打开component抽屉</button>
+    <button aui-button (click)="close()">关闭</button>
+  `,
+})
+export class ServiceDrawerCptComponent {
+  drawerRef: DrawerRef;
+  constructor(private readonly drawerService: DrawerService) {}
+
+  open() {
+    this.drawerRef = this.drawerService.open({
+      title: 'title',
+      width: 500,
+      content: DrawerContentComponent,
+      contentParams: { data: 111 },
+      footer: 'footer',
+    });
+    this.drawerRef.afterClosed.subscribe(res => {
+      console.log(res);
+    });
+    this.drawerRef.afterOpen.subscribe(() => {
+      console.log('open');
+    });
+  }
+
+  close() {
+    this.drawerRef.closure('on close');
+  }
+}
+
+@Component({
+  template: ` component {{ data }}`,
+})
+export class DrawerContentComponent {
+  @Input() data: string;
 }

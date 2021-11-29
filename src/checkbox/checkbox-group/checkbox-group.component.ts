@@ -12,6 +12,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CommonFormControl } from '../../form/public-api';
 import { TrackFn } from '../../select/public-api';
 import { CheckboxComponent } from '../checkbox.component';
+
 @Component({
   selector: 'aui-checkbox-group',
   templateUrl: './checkbox-group.component.html',
@@ -44,7 +45,9 @@ export class CheckboxGroupComponent<T> extends CommonFormControl<T[]> {
     }
   }
 
-  @ContentChildren(forwardRef(() => CheckboxComponent))
+  @ContentChildren(forwardRef(() => CheckboxComponent), {
+    descendants: true,
+  })
   checkboxes: QueryList<CheckboxComponent<T>>;
 
   writeValue(val: T[]) {

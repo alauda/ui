@@ -36,6 +36,9 @@
     right: 0;
     width: 100%;
   }
+  &-title {
+    flex: 1;
+  }
   &-header {
     margin: 20px 20px 0 20px;
     background: get-color(n-10);
