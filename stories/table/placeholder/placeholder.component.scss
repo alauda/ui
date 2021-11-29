@@ -1,7 +1,9 @@
-@import '../../../src/theme/theme-preset';
-.placeholder {
-  justify-content: center;
+@import '../../../src/theme/pattern';
+
+:host::ng-deep {
+  @include table-placeholder('.placeholder');
 }
+
 aui-table {
   margin-bottom: 20px;
 }

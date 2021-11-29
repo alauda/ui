@@ -10,6 +10,7 @@ $block: 'aui-checkbox';
   width: fit-content;
   height: get-size(inline-height-m);
   position: relative;
+  vertical-align: bottom;
 
   &__label {
     display: flex;

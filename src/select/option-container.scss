@@ -4,7 +4,7 @@
 
 @mixin option-container($block, $size: m) {
   .#{$block} {
-    padding: get-size(select-options-padding) 0;
+    padding: $select-options-padding 0;
     border-radius: get-size(border-radius-m);
     background-color: get-color(n-10);
     @include popper-shadow;
@@ -16,7 +16,7 @@
       @include scroll-bar;
       .divider {
         border: none;
-        @include option-group-divider;
+        border-top: 1px solid get-color(n-8);
       }
     }
 

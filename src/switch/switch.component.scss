@@ -11,8 +11,9 @@ $switch-bar-width: 28px;
 $switch-bar-height: 14px;
 
 .#{$block} {
-  display: inline-block;
+  display: inline-flex;
   position: relative;
+  vertical-align: text-bottom;
   &__input {
     position: absolute;
     width: 0;

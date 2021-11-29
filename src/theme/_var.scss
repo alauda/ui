@@ -35,18 +35,10 @@ $text-button-mini-height: 16px;
 $text-button-mini-font-size: 12px;
 
 // Table
-$table-border-width: 1px;
-$table-header-row-height: 42px;
-$table-cell-horizontal-padding: 8px;
-$table-row-vertical-padding: 12px;
-
-$table-header-row-bg: #fafafa;
-$table-header-row-border-color: #eee;
-$table-header-row-color: #333;
-$table-row-border-color: #eee;
-$table-row-bg: #fff;
-$table-row-color: #333;
-$table-font-size-base: 14px;
+$table-padding: 12px;
+$table-row-min-height: 60px;
+$table-cell-padding-v: 15px;
+$table-cell-padding-h: 10px;
 
 // Sort
 $sort-indicator-color: #ccc;
@@ -193,8 +185,7 @@ $input-mini-height: $height-mini;
 $input-mini-font-size: $font-size-small;
 
 // Select
-$select-width: 100%;
-$select-options-padding: $input-padding-hoz;
+$select-options-padding: 8px;
 $select-options-max-height: $input-medium-height * 8;
 
 // Tag

@@ -57,7 +57,7 @@
   }
 
   &__content.aui-button + &__trigger.aui-button {
-    margin-left: get-size(border-m);
+    margin-left: 1px;
 
     &.isPlain {
       margin-left: -1px;

@@ -20,10 +20,12 @@ import {
   template: `
     <ng-container *ngIf="!template">
       <button
+        type="button"
         (click)="expandChange.next()"
         class="aui-table__cell-expand-button"
         [class.expanded]="expand"
         [class.collapsed]="!expand"
+        [disabled]="disabled"
         aui-button="primary"
         size="mini"
         [square]="true"
@@ -56,7 +58,10 @@ import {
 })
 export class TableCellComponent extends CdkCell {
   @Input()
-  expand: boolean;
+  expand = false;
+
+  @Input()
+  disabled = false;
 
   @Input()
   template: boolean;

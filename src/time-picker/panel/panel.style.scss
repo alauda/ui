@@ -7,7 +7,7 @@ $total_height: $cell_height * 9;
 
 .#{$block} {
   &__wrapper {
-    @include shadow-8;
+    @include popper-shadow;
 
     display: flex;
     flex-direction: column;

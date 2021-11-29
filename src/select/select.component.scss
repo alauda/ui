@@ -9,7 +9,7 @@
 .aui-select {
   display: inline-block;
   position: relative;
-  width: get-size(select-width);
+  width: 100%;
 
   &__clear .aui-icon {
     @include clear-button;

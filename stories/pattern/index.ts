@@ -1,15 +1,8 @@
-import {
-  CardModule,
-  IconModule,
-  InputModule,
-  TableModule,
-  TooltipModule,
-} from '@alauda/ui';
+import { IconModule, TooltipModule } from '@alauda/ui';
 import { storiesOf } from '@storybook/angular';
 
 import { GlobalStyleComponent } from './global-style/global-style.component';
 import { ShadowComponent } from './shadow/shadow.component';
-import { TableCardComponent } from './table-card/table-card.component';
 
 storiesOf('Pattern', module)
   .add('global style', () => ({
@@ -18,13 +11,6 @@ storiesOf('Pattern', module)
       declarations: [GlobalStyleComponent],
     },
     component: GlobalStyleComponent,
-  }))
-  .add('table card', () => ({
-    moduleMetadata: {
-      imports: [TableModule, CardModule, InputModule],
-      declarations: [TableCardComponent],
-    },
-    component: TableCardComponent,
   }))
   .add('shadow', () => ({
     moduleMetadata: {
