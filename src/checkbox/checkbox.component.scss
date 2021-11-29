@@ -6,11 +6,9 @@ $block: 'aui-checkbox';
 
 .#{$block} {
   margin-right: get-size(spacing-xxxl);
-  display: inline-block;
+  display: inline-flex;
   width: fit-content;
-  color: get-color(n-1);
-  font-size: get-size(font-size-m);
-  line-height: get-size(inline-height-m);
+  height: get-size(inline-height-m);
   position: relative;
 
   &__label {
@@ -24,7 +22,7 @@ $block: 'aui-checkbox';
   }
 
   &__content {
-    line-height: get-size(font-size-m);
+    @include text-set(m, main);
   }
 
   &.isTag {
