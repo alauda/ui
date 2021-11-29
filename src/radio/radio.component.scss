@@ -42,7 +42,7 @@ $block: 'aui-radio';
     height: get-size(icon-size-m);
     margin-right: get-size(spacing-m);
     border-radius: 50%;
-    border: get-size(border-m) $border-style get-color(n-7);
+    border: 1px $border-style get-color(n-7);
     background-color: get-color(n-9);
     vertical-align: middle;
     @include transition;

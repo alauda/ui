@@ -3,11 +3,12 @@
 
 .aui-table {
   display: block;
-  color: get-color(n-1);
-  font-size: get-size(font-size-m);
+  padding: 0 $table-padding $table-padding;
+  @include text-set(m, main);
+
   background-color: get-color(n-9);
-  padding: 0 get-size(table-margin) get-size(table-margin);
-  border-radius: get-size(border-radius-m);
+  border-radius: get-size(border-radius-l);
+  overflow: auto;
   @include scroll-bar;
 
   &__row,
@@ -21,15 +22,13 @@
   }
   &__row {
     position: relative;
-    border-width: get-size(table-border-width);
+    border-width: 1px;
     border-style: solid;
-    border-color: $table-row-border-color;
+    border-color: get-color(n-8);
     border-bottom-width: 0;
     background-color: get-color(n-10);
-    padding: 0 calc(var(--aui-table-cell-padding-lr) / 2);
-    min-height: calc(
-      #{get-size(table-border-width)} + #{get-size(table-row-min-height-m)}
-    );
+    padding: 0 $table-cell-padding-h;
+    min-height: $table-row-min-height;
 
     &:first-child {
       border-top-left-radius: get-size(border-radius-l);
@@ -37,10 +36,8 @@
     }
 
     &:last-child {
-      border-bottom-width: get-size(table-border-width);
-      min-height: calc(
-        #{get-size(table-border-width)} + #{get-size(table-row-min-height-m)}
-      );
+      border-bottom-width: 1px;
+      min-height: $table-row-min-height;
       border-bottom-left-radius: get-size(border-radius-l);
       border-bottom-right-radius: get-size(border-radius-l);
     }
@@ -53,7 +50,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: $color-white;
+      background-color: get-color(n-10);
       opacity: 0.7;
       cursor: not-allowed;
     }
@@ -61,25 +58,21 @@
 
   &__header-row {
     background-color: get-color(n-9);
-    padding: 0 calc(var(--aui-table-cell-padding-lr) / 2);
+    padding: 0 $table-cell-padding-h;
   }
   &__cell,
   &__header-cell {
     flex: 1;
   }
   &__cell {
-    padding: get-size(table-cell-padding-tb-m)
-      calc(var(--aui-table-cell-padding-lr) / 2);
+    padding: $table-cell-padding-v $table-cell-padding-h;
     background-color: get-color(n-10);
     overflow: hidden;
     word-wrap: break-word;
   }
   &__header-cell {
-    padding: get-size(table-header-cell-padding-tb)
-      calc(var(--aui-table-cell-padding-lr) / 2);
-    font-weight: 500;
-    height: get-size(table-header-height);
-    line-height: get-size(line-height-m);
+    padding: $table-padding $table-cell-padding-h;
+    font-weight: get-size(font-weight-bold);
     background-color: get-color(n-9);
     @include text-overflow;
   }

@@ -16,7 +16,7 @@ $form-item-width: (
 .aui-form-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: $form-item-margin-vertical;
+  margin-bottom: get-size(spacing-xl);
   color: get-color(n-1);
   font-size: get-size(font-size-m);
 
@@ -24,7 +24,7 @@ $form-item-width: (
     flex-direction: column;
     .aui-form-item__label-wrapper {
       line-height: get-size(line-height-m);
-      margin-bottom: 2px;
+      margin-bottom: get-size(spacing-xs);
       &:after {
         display: none;
       }
@@ -34,22 +34,22 @@ $form-item-width: (
   &__label-wrapper {
     display: flex;
     align-items: center;
-    line-height: get-size(line-height-xxxl);
+    line-height: get-size(inline-height-m);
     flex-shrink: 0;
-    padding-right: 8px;
+    padding-right: get-size(spacing-m);
     overflow: hidden;
 
     &--required .aui-form-item__label:before {
       content: '*';
-      color: $color-error;
-      margin-right: 4px;
+      color: get-color(red);
+      margin-right: get-size(spacing-s);
     }
 
     &.hasLabel:after {
       content: ':';
       align-self: flex-start;
-      margin-left: 2px;
-      line-height: get-size(line-height-xxxl);
+      margin-left: get-size(spacing-xs);
+      line-height: get-size(inline-height-m);
     }
 
     &--left {
@@ -82,7 +82,7 @@ $form-item-width: (
   &__content {
     display: flex;
     align-items: center;
-    min-height: get-size(line-height-xxxl);
+    min-height: get-size(inline-height-m);
 
     aui-select,
     aui-multi-select {
@@ -109,7 +109,7 @@ $form-item-width: (
 
   &__content + &__hint-wrapper,
   &__content + &__error-wrapper {
-    margin-top: 4px;
+    margin-top: get-size(spacing-s);
   }
 
   &__hint-wrapper,
@@ -131,8 +131,9 @@ $form-item-width: (
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    height: get-size(line-height-xxxl);
-    padding-left: 8px;
+    height: get-size(inline-height-m);
+    width: get-size(inline-height-m);
+    padding-left: get-size(spacing-m);
     color: get-color(n-4);
     font-size: get-size(font-size-m);
   }
@@ -143,6 +144,6 @@ $form-item-width: (
 
   .aui-form-item {
     margin-bottom: 0;
-    margin-right: 8px;
+    margin-right: get-size(spacing-m);
   }
 }

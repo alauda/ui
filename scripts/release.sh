@@ -28,4 +28,4 @@ if [ "$PUBLISH_BRANCH" != "" ]; then
   git push --follow-tags origin "$PUBLISH_BRANCH"
 fi
 
-npm publish release --tag "$NPM_TAG"
+npm publish ./release --tag "$NPM_TAG"

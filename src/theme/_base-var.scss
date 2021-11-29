@@ -29,10 +29,6 @@
   @return rgba(var(--aui-color-#{$name}), $opacity);
 }
 
-@function get-neg-size($name) {
-  @return calc(var(--aui-#{$name}) * -1);
-}
-
 $divider-line: 1px solid get-color(n-8);
 
 /**

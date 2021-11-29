@@ -17,7 +17,7 @@ $block: aui-multi-select;
 
   .#{$block} {
     &__suffix {
-      right: calc(#{get-size(border-m)} + #{get-size(inline-padding-xs)});
+      right: calc(1px + #{get-size(inline-padding-xs)});
     }
   }
 

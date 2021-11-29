@@ -14,8 +14,8 @@
 
   &__title {
     display: inline-block;
-    margin-left: calc(#{get-size(select-options-padding)} / 2);
-    padding: 0 calc(#{get-size(select-options-padding)} / 2);
+    margin-left: 4px;
+    padding: 0 4px;
     width: 100%;
     height: 100%;
     @include text-overflow;
@@ -41,15 +41,13 @@
   }
 
   &__indicator {
-    margin-left: get-size(select-options-padding);
+    margin-left: 4px;
     &:hover {
       color: get-color(primary);
     }
   }
 
   &__children {
-    margin-left: calc(
-      #{get-size(select-options-padding)} + #{get-size(font-size-m)}
-    );
+    margin-left: calc(#{get-size(font-size-m)} + 4px);
   }
 }

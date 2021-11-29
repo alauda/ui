@@ -298,16 +298,16 @@ $button-size: (
     @include colorful-button(red);
   }
 
+  &__spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   &.isLoading {
     .aui-button__content {
       opacity: 0;
-    }
-
-    aui-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
     }
   }
 }

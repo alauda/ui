@@ -7,7 +7,7 @@
 .aui-tree-select {
   display: inline-block;
   position: relative;
-  width: get-size(select-width);
+  width: 100%;
 
   &:not(.isDisabled) {
     &:hover .aui-input {

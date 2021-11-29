@@ -2,7 +2,8 @@
   <ng-container auiTableColumnDef="expand">
     <aui-table-header-cell *auiTableHeaderCellDef></aui-table-header-cell>
     <aui-table-cell
-      *auiTableCellDef="let item"
+      *auiTableCellDef="let item; let i = index"
+      [disabled]="i === 0"
       [expand]="rowExpanded.has(item.id)"
       (expandChange)="toggleRow(item.id)"
     >

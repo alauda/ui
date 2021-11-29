@@ -2,7 +2,6 @@ import {
   AfterContentInit,
   ChangeDetectionStrategy,
   Component,
-  ContentChild,
   ContentChildren,
   QueryList,
   ViewEncapsulation,
@@ -17,7 +16,6 @@ import {
   switchMap,
 } from 'rxjs/operators';
 
-import { OptionGroupTitleDirective } from '../helper-directives';
 import { OptionComponent } from '../option/option.component';
 
 @Component({
@@ -31,9 +29,6 @@ import { OptionComponent } from '../option/option.component';
 export class OptionGroupComponent<T> implements AfterContentInit {
   @ContentChildren(forwardRef(() => OptionComponent))
   options: QueryList<OptionComponent<T>>;
-
-  @ContentChild(forwardRef(() => OptionGroupTitleDirective))
-  groupTitle: OptionGroupTitleDirective;
 
   hasVisibleOption$: Observable<boolean>;
 

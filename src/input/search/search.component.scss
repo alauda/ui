@@ -38,11 +38,11 @@ $component-size: (
 
       .#{$block}__clear,
       .#{$block}__spinner {
-        right: calc(#{get-size(inline-padding-xs)} + #{get-size(border-m)});
+        right: calc(#{get-size(inline-padding-xs)} + 1px);
       }
 
       .#{$block}__icon {
-        left: calc(#{get-size(inline-padding-xs)} + #{get-size(border-m)});
+        left: calc(#{get-size(inline-padding-xs)} + 1px);
       }
 
       .#{$block}__button-icon {
@@ -56,10 +56,7 @@ $component-size: (
 
       &.hasIcon .#{$block}__input {
         padding-left: calc(
-          #{map-get($map, icon-size)} +
-            #{get-size(inline-padding-xs)} *
-            2 +
-            #{get-size(border-m)}
+          #{map-get($map, icon-size)} + #{get-size(inline-padding-xs)} * 2 + 1px
         );
       }
 
@@ -75,7 +72,7 @@ $component-size: (
             #{map-get($map, icon-size)} +
               #{get-size(inline-padding-xs)} *
               3 +
-              #{get-size(border-m)} *
+              1px *
               2
           );
         }
@@ -97,7 +94,7 @@ $component-size: (
   &__button {
     position: absolute;
     top: 0;
-    right: get-size(border-m);
+    right: 1px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -112,7 +109,7 @@ $component-size: (
   }
 
   &__button-icon {
-    border-left: get-size(border-m) solid get-color(n-7);
+    border-left: 1px solid get-color(n-7);
   }
 
   &__clear,

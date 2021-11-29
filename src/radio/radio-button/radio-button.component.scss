@@ -10,7 +10,7 @@ $block: 'aui-radio-button';
   vertical-align: middle;
   position: relative;
   color: get-color(primary);
-  border: get-size(border-m) $border-style get-color(primary);
+  border: 1px $border-style get-color(primary);
   background-color: get-color(n-9);
   overflow: hidden;
   z-index: 1;
