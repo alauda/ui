@@ -34,8 +34,12 @@ storiesOf('Drawer', module)
   .add('service create component drawer', () => ({
     moduleMetadata: {
       imports: [ButtonModule, DrawerModule],
-      declarations: [ServiceDrawerCptComponent, DrawerContentComponent],
-      entryComponents: [DrawerContentComponent],
+      declarations: [
+        ServiceDrawerCptComponent,
+        DrawerContentComponent,
+        DrawerContent1Component,
+      ],
+      entryComponents: [DrawerContentComponent, DrawerContent1Component],
     },
     component: ServiceDrawerCptComponent,
   }));
@@ -154,6 +158,7 @@ export class ServiceDrawerComponent {
 @Component({
   template: `
     <button aui-button="primary" (click)="open()">打开component抽屉</button>
+    <button aui-button="primary" (click)="openTwo()">打开component2抽屉</button>
     <button aui-button (click)="close()">关闭</button>
   `,
 })
@@ -177,6 +182,16 @@ export class ServiceDrawerCptComponent {
     });
   }
 
+  openTwo() {
+    this.drawerService.open({
+      title: 'title',
+      width: 500,
+      content: DrawerContent1Component,
+      contentParams: { data: 222 },
+      footer: 'footer',
+    });
+  }
+
   close() {
     this.drawerRef.closure('on close');
   }
@@ -186,5 +201,12 @@ export class ServiceDrawerCptComponent {
   template: ` component {{ data }}`,
 })
 export class DrawerContentComponent {
+  @Input() data: string;
+}
+
+@Component({
+  template: `component {{ data }}`,
+})
+export class DrawerContent1Component {
   @Input() data: string;
 }
