@@ -1,5 +1,17 @@
 # Changelog
 
+## 6.0.2
+
+### Patch Changes
+
+- [#213](https://github.com/alauda/alauda-ui/pull/213) [`4eb27c8`](https://github.com/alauda/alauda-ui/commit/4eb27c85edc0080544fed27656cb22b069c39e64) Thanks [@zChanges](https://github.com/zChanges)! - fix: drawer content component error
+
+- [#212](https://github.com/alauda/alauda-ui/pull/212) [`0755c21`](https://github.com/alauda/alauda-ui/commit/0755c2101ce037b4d11be206c8c00c61ad518505) Thanks [@JounQin](https://github.com/JounQin)! - feat: support dynamic options loading on filtering
+
+- [#218](https://github.com/alauda/alauda-ui/pull/218) [`37d87cd`](https://github.com/alauda/alauda-ui/commit/37d87cdf17851160f82b77350d8993cebc4406b6) Thanks [@zChanges](https://github.com/zChanges)! - repeat drawer fix
+
+- [#210](https://github.com/alauda/alauda-ui/pull/210) [`3c369a4`](https://github.com/alauda/alauda-ui/commit/3c369a49a167a9fae824699d3b1c42c15d1598a4) Thanks [@JounQin](https://github.com/JounQin)! - feat: support nested aui-checkbox in group for custom UI
+
 ## 6.0.1
 
 ### Patch Changes
