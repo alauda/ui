@@ -6,9 +6,9 @@
   <ng-container *ngFor="let step of steps; let i = index; let isLast = last">
     <div
       class="aui-step"
-      (click)="select(i, step)"
+      (click)="select(i)"
       [class.isLastActive]="isLastActive(i, steps)"
-      [class.clickable]="isSelectable(i, step)"
+      [class.clickable]="isSelectable(i)"
     >
       <div class="aui-step__indicator">
         <ng-container *ngIf="isProgress">
