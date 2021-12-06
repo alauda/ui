@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.3
+
+### Patch Changes
+
+- [#221](https://github.com/alauda/alauda-ui/pull/221) [`7f72eb4`](https://github.com/alauda/alauda-ui/commit/7f72eb4654816fce90f9e82c1dcd40abdbcdbf28) Thanks [@2eron](https://github.com/2eron)! - feat: add selectable input param, deprecate linear param and editable property of StepItem
+
 ## 6.0.2
 
 ### Patch Changes
