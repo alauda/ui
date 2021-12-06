@@ -131,11 +131,16 @@ $form-item-width: (
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    box-sizing: content-box;
     height: get-size(inline-height-m);
-    width: get-size(inline-height-m);
+    min-width: get-size(icon-size-m);
     padding-left: get-size(spacing-m);
     color: get-color(n-4);
     font-size: get-size(font-size-m);
+
+    aui-icon {
+      font-size: get-size(icon-size-m);
+    }
   }
 }
 
