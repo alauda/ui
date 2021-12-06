@@ -48,6 +48,9 @@ export class StepsComponent implements OnInit, OnDestroy {
     this.stepsChange$$.next(val);
   }
 
+  /**
+   * @deprecated type 为 step 时一般在使用上下文中控制是否可以进行下一步；type 为 progress 时强制按顺序执行
+   */
   @Input()
   linear = false;
 
@@ -65,6 +68,9 @@ export class StepsComponent implements OnInit, OnDestroy {
 
   @Input()
   type: StepsType = 'step';
+
+  @Input()
+  selectable = false;
 
   @Output()
   currentIndexChange = new EventEmitter<number>();
@@ -99,15 +105,18 @@ export class StepsComponent implements OnInit, OnDestroy {
       if (this.steps?.length) {
         const ret = Math.min(Math.max(0, index), this.steps.length - 1);
         const reversedPrevSteps = this.steps.slice(0, ret).reverse();
+        const doneIndex = reversedPrevSteps.findIndex(
+          step => step.state === StepState.Done || step.optional,
+        );
         const lastDoneStepIndex =
-          reversedPrevSteps.length -
-          reversedPrevSteps.findIndex(
-            step => step.state === StepState.Done || step.optional,
-          );
-        this._currentIndex = Math.min(lastDoneStepIndex, ret);
+          doneIndex > -1 ? reversedPrevSteps.length - doneIndex : 0;
+        this._currentIndex = this.selectedIndex = Math.min(
+          lastDoneStepIndex,
+          ret,
+        );
       }
     } else {
-      this._currentIndex = index;
+      this._currentIndex = this.selectedIndex = index;
     }
   }
 
@@ -153,29 +162,34 @@ export class StepsComponent implements OnInit, OnDestroy {
       : StepDefaultIcon[state];
   }
 
-  select(i: number, step: StepItem) {
-    if (this.isSelectable(i, step)) {
+  select(i: number) {
+    if (this.isSelectable(i)) {
       if (this.isProgress) {
         this.selectedIndexChange.emit(i);
         this.selectedIndex = i;
       } else {
         this.currentIndexChange.emit(i);
         this._currentIndex = i;
+        this.selectedIndex = i;
       }
     }
   }
 
-  isSelectable(i: number, step: StepItem) {
+  isSelectable(i: number) {
     const currentStep = this.steps[this._currentIndex];
+    if (!this.selectable || this.selectedIndex === i) {
+      return false;
+    }
+    const isLinear = this.isProgress ? true : this.linear;
     if (
-      this.linear &&
-      currentStep.state !== StepState.Done &&
+      isLinear &&
       !currentStep.optional &&
-      i > this._currentIndex
+      ((currentStep.state === StepState.Done && i > this._currentIndex + 1) ||
+        (currentStep.state !== StepState.Done && i > this._currentIndex))
     ) {
       return false;
     }
-    if (i < this._currentIndex && !(step.editable ?? true)) {
+    if (i < this._currentIndex && !this.selectable) {
       return false;
     }
     return true;

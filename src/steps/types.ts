@@ -14,6 +14,9 @@ export interface StepItem {
   description?: string;
   state?: StepState;
   optional?: boolean;
+  /**
+   * @deprecated 每个步骤不再需要单独控制。通过组件参数 selectable 统一控制
+   */
   editable?: boolean;
 }
 
