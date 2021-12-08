@@ -6,7 +6,7 @@ $block: 'aui-tooltip';
 
 .#{$block} {
   position: relative;
-  padding: get-size(spacing-m) get-size(spacing-xl);
+  padding: get-size(spacing-xl);
   line-height: get-size(line-height-s);
   font-size: get-size(font-size-s);
   border-radius: get-size(border-radius-m);
@@ -16,6 +16,7 @@ $block: 'aui-tooltip';
   word-wrap: break-word; // do NOT add 'word-break: break-all;', design requirement
 
   &--default {
+    padding: get-size(spacing-m) get-size(spacing-xl);
     color: get-color(n-10);
     background-color: get-rgba(n-0, 0.85);
   }
