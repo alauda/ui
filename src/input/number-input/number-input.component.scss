@@ -24,12 +24,12 @@ $block: 'aui-number-input';
     border-color: get-color(primary);
   }
 
-  &.is-focus {
+  &.isFocus {
     border-color: get-color(primary);
     @include outline-shadow(primary);
   }
 
-  &.is-disabled {
+  &.isDisabled {
     border: 1px solid get-color(n-7);
     &:hover {
       cursor: not-allowed;

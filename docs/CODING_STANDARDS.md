@@ -36,7 +36,7 @@ getter 不可产生副作用。
 export class ButtonComponent {}
 ```
 
-使用 BEM 命名方法论。在严格遵守 [BEM](http://getbem.com/) 规范的基础上，可以使用以 `is-` 为前缀的类名表示状态。
+使用 BEM 命名方法论。在严格遵守 [BEM](http://getbem.com/) 规范的基础上，可以使用以 `is` 为前缀的类名表示状态。
 
 ```scss
 .aui-button {
@@ -50,7 +50,7 @@ export class ButtonComponent {}
     // ...
   }
 
-  &.is-disabled {
+  &.isDisabled {
     // ...
   }
 }

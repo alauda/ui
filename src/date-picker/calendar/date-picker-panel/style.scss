@@ -1,8 +1,8 @@
-@import '../../../theme/pattern';
+@import '../../../theme/var';
+@import '../../../theme/mixin';
 
 .aui-date-picker-panel__wrapper {
   display: flex;
   flex-direction: column;
-  font-size: $font-size-regular;
-  font-weight: $font-weight-normal;
+  @include text-set(m);
 }

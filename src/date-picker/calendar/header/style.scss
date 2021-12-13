@@ -1,4 +1,5 @@
 @import '../../../theme/var';
+
 $block: aui-calendar-header;
 
 .#{$block} {
@@ -14,15 +15,17 @@ $block: aui-calendar-header;
     justify-content: center;
     align-items: center;
     font-size: 16px;
-    color: $color-text-main;
-    font-weight: $font-weight-bold;
+    color: get-text-color(main);
+    font-weight: get-size(font-weight-bold);
+
     a {
-      color: $color-text-main;
+      color: get-text-color(main);
       &:hover {
-        color: #006eff;
+        color: get-color(primary);
         text-decoration: none !important;
       }
     }
+
     a + a {
       margin-left: 5px;
     }
