@@ -43,7 +43,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
 
   &__header {
     margin: 0 $spacing;
-    padding: $spacing 0;
+    padding: $spacing 0 16px;
     display: flex;
     justify-content: space-between;
 
@@ -54,7 +54,9 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
 
     &-title {
       width: 100%;
-      @include text-set(xxl, main);
+      @include text-set(xl, main);
+
+      font-weight: get-size(font-weight-bold);
 
       > aui-icon:first-child {
         font-size: get-size(icon-size-xl);
@@ -77,7 +79,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
 
     &-close {
       margin-left: get-size(spacing-xl);
-      line-height: get-size(line-height-xxl);
+      line-height: get-size(line-height-xl);
       font-size: get-size(font-size-l);
       color: get-color(n-4);
       cursor: pointer;
@@ -94,7 +96,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
   }
 
   &__footer {
-    padding: $spacing;
+    padding: 16px $spacing $spacing $spacing;
     display: flex;
     justify-content: flex-end;
   }
@@ -133,7 +135,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
     .aui-dialog {
       &__header {
         margin: 0;
-        padding: $spacing;
+        padding: $spacing $spacing 16px $spacing;
         border-bottom: $divider-line;
       }
       &__footer {

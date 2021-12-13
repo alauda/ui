@@ -14,9 +14,8 @@ $b: aui-card;
 
   &__header {
     padding: 0;
-    font-size: get-size(font-size-xxl);
-    line-height: normal;
-    color: get-color(n-1);
+    @include text-set(xxl, main);
+
     font-weight: get-size(font-weight-bold);
 
     + .#{$b}__content {

@@ -18,6 +18,7 @@ $icon-margin: get-size(spacing-m);
     margin-bottom: get-size(spacing-m);
     @include text-set(xl, main);
 
+    font-weight: get-size(font-weight-bold);
     display: flex;
     word-wrap: break-word;
     word-break: break-all;
