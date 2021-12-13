@@ -13,6 +13,7 @@
 .aui-step {
   display: flex;
   align-items: center;
+  font-weight: get-size(font-weight-normal);
   &__indicator {
     margin-right: get-size(spacing-m);
     width: 24px;
@@ -22,12 +23,13 @@
       border-radius: 50%;
       border: 1px solid get-color(n-7);
       background-color: get-color(n-8);
-      font-weight: 500;
+      font-weight: get-size(font-weight-bold);
       font-size: get-size(font-size-l);
       display: flex;
       justify-content: center;
       width: get-size(icon-size-xl);
       height: get-size(icon-size-xl);
+      line-height: get-size(line-height-l);
       &.selected {
         border-color: get-color(primary);
         background-color: get-color(primary);
@@ -75,6 +77,11 @@
     &--done,
     &--error {
       color: get-color(n-1);
+    }
+    &--selected {
+      .aui-step__name {
+        font-weight: get-size(font-weight-bold);
+      }
     }
   }
   &.clickable {
