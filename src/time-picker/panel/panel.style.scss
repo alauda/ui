@@ -7,12 +7,12 @@ $total_height: $cell_height * 9;
 
 .#{$block} {
   &__wrapper {
-    @include popper-shadow;
-
     display: flex;
     flex-direction: column;
-    font-size: $font-size-regular;
-    font-weight: $font-weight-normal;
+    background-color: get-color(n-10);
+    @include text-set(m);
+    @include popper-shadow;
+
     ul,
     li {
       border: none;
@@ -22,7 +22,7 @@ $total_height: $cell_height * 9;
     display: flex;
     flex-direction: row;
     height: $total_height;
-    border-bottom: $border-width $border-style $default-border-color;
+    border-bottom: 1px solid get-color(n-8);
   }
   &__footer {
     display: flex;
@@ -53,30 +53,30 @@ $total_height: $cell_height * 9;
     }
   }
   &__column + .#{$block}__column {
-    border-left: 1px solid #e8e8e8;
+    border-left: 1px solid get-color(n-8);
   }
   &__cell {
     flex: none;
     height: $cell_height;
     line-height: $cell_height;
     width: 100%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: get-color(p-6);
+      color: get-color(primary);
+    }
 
     &.selected {
-      background-color: #e6f1ff;
-      color: $color-primary;
-      font-weight: $font-weight-bold;
+      background-color: get-color(p-7);
+      color: get-color(primary);
+      font-weight: get-size(font-weight-bold);
     }
 
     &.disabled {
-      cursor: not-allowed !important;
       background-color: $color-disabled-bg;
       color: $color-info;
-    }
-
-    &:not(.disabled):not(.selected):hover {
-      background-color: $color-primary-ultra-light;
-      color: $color-primary;
-      cursor: pointer;
+      cursor: not-allowed;
     }
   }
 }

@@ -22,13 +22,13 @@
       *ngFor="let item of row; trackBy: trackByFn"
       [class]="bem.element('cell')"
       [ngClass]="{
-        'in-range': item.inRange && !item.isDisabled,
-        'is-active': match(item.value),
-        'is-background': item.isBackground && !item.isDisabled,
-        'is-range-start': item.isRangeStart,
-        'is-range-end': item.isRangeEnd,
-        'is-today': matchToday(item.value) && !item.isBackground,
-        'is-disabled': item.isDisabled
+        inRange: item.inRange && !item.isDisabled,
+        isActive: match(item.value),
+        isBackground: item.isBackground && !item.isDisabled,
+        isRangeStart: item.isRangeStart,
+        isRangeEnd: item.isRangeEnd,
+        isToday: matchToday(item.value) && !item.isBackground,
+        isDisabled: item.isDisabled
       }"
       ><button
         aui-button="text"

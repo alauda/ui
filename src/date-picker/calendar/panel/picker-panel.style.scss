@@ -2,14 +2,14 @@
 @import '../../../theme/mixin';
 
 $block: aui-picker-panel;
-$in-range-bgcolor: #edf4ff;
+$in-range-bgcolor: get-color(n-6);
 $left-in-range-shadow: -6px 0 0 0 $in-range-bgcolor;
 $right-in-range-shadow: 6px 0 0 0 $in-range-bgcolor;
 
 $left-disabled-shadow: -6px 0 0 0 $color-disabled-bg;
 $right-disabled-shadow: 6px 0 0 0 $color-disabled-bg;
 
-$left-mask-shadow: -12px 0 0 0 white;
+$left-mask-shadow: -12px 0 0 0 get-color(n-10);
 
 .#{$block} {
   &__container {
@@ -50,8 +50,8 @@ $left-mask-shadow: -12px 0 0 0 white;
     flex: 1;
     display: flex;
     align-items: center;
-    font-size: $font-size-regular;
-    font-weight: normal;
+    @include text-set(m);
+
     width: 100%;
 
     &.week-header {
@@ -62,7 +62,7 @@ $left-mask-shadow: -12px 0 0 0 white;
         text-align: center;
       }
 
-      color: $color-text-help;
+      color: get-text-color(help);
       margin-bottom: 8px;
     }
   }
@@ -81,53 +81,53 @@ $left-mask-shadow: -12px 0 0 0 white;
         background-color $animation-duration $animation-interpolation;
     }
 
-    &.in-range {
+    &.inRange {
       background-color: $in-range-bgcolor;
       box-shadow: $left-in-range-shadow, $right-in-range-shadow;
     }
 
-    &.is-range-end {
+    &.isRangeEnd {
       box-shadow: $left-in-range-shadow;
     }
 
-    &.is-range-start {
+    &.isRangeStart {
       box-shadow: $right-in-range-shadow;
     }
 
-    &.is-disabled {
-      background-color: $color-disabled-bg;
+    &.isDisabled {
+      background-color: get-color(n-8);
       box-shadow: $left-disabled-shadow, $right-disabled-shadow;
       button {
-        color: get-color(n-6) !important;
-        border-color: get-color(n-6) !important;
+        color: get-text-color(disabled) !important;
+        border-color: get-text-color(disabled) !important;
       }
     }
 
-    &.is-disabled + &:not(.is-disabled):not(.is-range-start) {
+    &.isDisabled + &:not(.isDisabled):not(.isRangeStart) {
       box-shadow: $left-mask-shadow;
     }
 
-    &.is-disabled + &:not(.is-disabled).is-range-start {
+    &.isDisabled + &:not(.isDisabled).isRangeStart {
       box-shadow: $left-mask-shadow, $right-in-range-shadow;
     }
 
-    &:not(.is-disabled) + &.is-disabled {
+    &:not(.isDisabled) + &.isDisabled {
       box-shadow: $right-disabled-shadow;
     }
 
-    &.is-today button {
+    &.isToday button {
       border: get-color(primary) 1px solid;
       color: get-color(primary);
       background-color: get-color(p-7);
     }
 
-    &.is-active button {
-      background-color: $color-primary;
-      color: #fff;
+    &.isActive button {
+      background-color: get-color(primary);
+      color: get-color(n-10);
     }
-    &.is-background button {
+    &.isBackground button {
       background-color: initial !important;
-      color: rgba(0, 0, 0, 0.25);
+      color: get-text-color(disabled);
     }
   }
 }

@@ -1,8 +1,8 @@
 <div
   [class]="bem.block(size)"
   [ngClass]="{
-    'is-focus': isFocus,
-    'is-disabled': disabled
+    isFocus: isFocus,
+    isDisabled: disabled
   }"
   auiClickOutside
   (auiClickOutside)="isFocus = false"
