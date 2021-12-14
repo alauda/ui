@@ -69,6 +69,8 @@ export class TabGroupComponent
   /** Subscription to changes in the tab labels. */
   private _tabLabelSubscription = Subscription.EMPTY;
 
+  private _selectedIndex: number | null = null;
+  private _tab: string = null;
   private _type: TabType = TabType.Line;
   private _size: TabSize = TabSize.Medium;
 
@@ -94,7 +96,17 @@ export class TabGroupComponent
     this._changeActivatedTabs();
   }
 
-  private _selectedIndex: number | null = null;
+  @Input()
+  get tab(): string {
+    return this._tab;
+  }
+
+  set tab(value: string) {
+    this._tab = value;
+    if (this._tabs) {
+      this.selectedIndex = this._findIndexByTab(value);
+    }
+  }
 
   @Input()
   get type() {
@@ -140,6 +152,9 @@ export class TabGroupComponent
   /** Output to enable support for two-way binding on `[(selectedIndex)]` */
   @Output()
   readonly selectedIndexChange = new EventEmitter<number>();
+
+  @Output()
+  readonly tabChange = new EventEmitter<string>();
 
   /** Event emitted when the tab selection has changed. */
   @Output()
@@ -189,9 +204,10 @@ export class TabGroupComponent
       this.selectedTabChange.emit(tabChangeEvent);
       // Emitting this value after change detection has run
       // since the checked content may contain this variable'
-      Promise.resolve().then(() =>
-        this.selectedIndexChange.emit(indexToSelect),
-      );
+      Promise.resolve().then(() => {
+        this.selectedIndexChange.emit(indexToSelect);
+        this.tabChange.emit(this._tabs.get(indexToSelect).name);
+      });
     }
 
     // Setup the position for each tab and optionally setup an origin on the next selected tab.
@@ -217,6 +233,10 @@ export class TabGroupComponent
   }
 
   ngAfterContentInit() {
+    if (this.tab) {
+      this._indexToSelect = this._findIndexByTab(this.tab);
+    }
+
     this._changeActivatedTabs();
     this._subscribeToTabLabels();
     // Subscribe to changes in the amount of tabs, in order to be
@@ -295,6 +315,13 @@ export class TabGroupComponent
     // and which would otherwise throw the component into an infinite loop
     // (since Math.max(NaN, 0) === NaN).
     return Math.min(this._tabs.length - 1, Math.max(index || 0, 0));
+  }
+
+  private _findIndexByTab(name: string) {
+    return Math.max(
+      this._tabs.toArray().findIndex(tab => tab.name === name),
+      0,
+    );
   }
 
   private _createChangeEvent(index: number): TabChangeEvent {
