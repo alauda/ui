@@ -33,6 +33,9 @@ import { TabContentDirective, TabLabelDirective } from './tab-directives';
   providers: [TabContextService],
 })
 export class TabComponent implements AfterContentInit, OnDestroy, OnChanges {
+  @Input()
+  name: string;
+
   /** Plain text label for the tab, used when there is no template label. */
   @Input('label')
   textLabel = '';
