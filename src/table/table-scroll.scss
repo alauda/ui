@@ -3,44 +3,45 @@
 
 $stickyCssClass: 'aui-table-sticky';
 
-.aui-table {
-  &__header-row.#{$stickyCssClass} {
-    margin: 0 #{-$table-padding};
-    padding: 0;
-  }
-  &.hasTableTopShadow:before {
-    content: '';
-    position: sticky;
-    display: block;
-    width: calc(100% + #{$table-padding * 2});
-    height: 16px;
-    margin-top: -16px;
-    transform: translate3d(-12px, 0, 0);
-    z-index: 99;
-    top: 28px;
-    box-shadow: 0 10px 10px -4px get-rgba(n-1, 0.16);
-  }
-  &.hasTableBottomShadow:after {
-    content: '';
-    position: sticky;
-    display: block;
-    width: calc(100% + #{$table-padding * 2});
-    height: 16px;
-    transform: translate3d(-12px, 12px, 0);
-    z-index: 99;
-    bottom: 0;
-    margin-top: -16px;
-    box-shadow: 0 -10px 10px -4px get-rgba(n-1, 0.16) inset;
-  }
-}
-
 .aui-table__scroll-wrapper {
   background-color: get-color(n-9);
   padding: 0 $table-padding $table-padding;
   border-radius: get-size(border-radius-l);
   @include scroll-bar;
+
   .aui-table {
     padding: 0;
+
+    &__header-row.#{$stickyCssClass} {
+      margin: 0 #{-$table-padding};
+      padding: 0;
+    }
+
+    &.hasTableTopShadow:before {
+      content: '';
+      position: sticky;
+      display: block;
+      width: calc(100% + #{$table-padding * 2});
+      height: 16px;
+      margin-top: -16px;
+      transform: translate3d(-12px, 0, 0);
+      z-index: 99;
+      top: 28px;
+      box-shadow: 0 10px 10px -4px get-rgba(n-1, 0.16);
+    }
+
+    &.hasTableBottomShadow:after {
+      content: '';
+      position: sticky;
+      display: block;
+      width: calc(100% + #{$table-padding * 2});
+      height: 16px;
+      transform: translate3d(-12px, 12px, 0);
+      z-index: 99;
+      bottom: 0;
+      margin-top: -16px;
+      box-shadow: 0 -10px 10px -4px get-rgba(n-1, 0.16) inset;
+    }
   }
 
   .aui-table__scroll-shadow {
