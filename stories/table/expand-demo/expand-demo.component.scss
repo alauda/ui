@@ -1,6 +1,0 @@
-@import '../../../src/theme/pattern';
-
-:host::ng-deep {
-  @include table-with-detail(detail);
-  @include table-with-expand(expand);
-}

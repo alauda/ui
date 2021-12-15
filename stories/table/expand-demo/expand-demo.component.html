@@ -1,8 +1,9 @@
 <aui-table [dataSource]="dataSource">
-  <ng-container auiTableColumnDef="expand">
+  <ng-container auiTableColumnDef="expand-button">
     <aui-table-header-cell *auiTableHeaderCellDef></aui-table-header-cell>
     <aui-table-cell
       *auiTableCellDef="let item; let i = index"
+      auiExpandButton
       [disabled]="i === 0"
       [expand]="rowExpanded.has(item.id)"
       (expandChange)="toggleRow(item.id)"
@@ -30,24 +31,30 @@
       {{ item.value }}
     </aui-table-cell>
   </ng-container>
-  <ng-container auiTableColumnDef="detail">
+  <ng-container auiTableColumnDef="expand-panel">
     <aui-table-header-cell *auiTableHeaderCellDef></aui-table-header-cell>
     <aui-table-cell
       *auiTableCellDef="let item"
+      auiExpandPanel
       [expand]="rowExpanded.has(item.id)"
-      [template]="true"
     >
       <span>展开的内容</span>
     </aui-table-cell>
   </ng-container>
 
   <aui-table-header-row
-    *auiTableHeaderRowDef="['expand', 'id', 'name', 'value', 'detail']"
+    *auiTableHeaderRowDef="[
+      'expand-button',
+      'id',
+      'name',
+      'value',
+      'expand-panel'
+    ]"
   ></aui-table-header-row>
   <aui-table-row
     *auiTableRowDef="
       let row;
-      columns: ['expand', 'id', 'name', 'value', 'detail']
+      columns: ['expand-button', 'id', 'name', 'value', 'expand-panel']
     "
   ></aui-table-row>
 </aui-table>

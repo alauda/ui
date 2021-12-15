@@ -4,7 +4,6 @@ import { DATA_SOURCE } from '../data';
 
 @Component({
   templateUrl: 'expand-demo.component.html',
-  styleUrls: ['expand-demo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpandDemoComponent {

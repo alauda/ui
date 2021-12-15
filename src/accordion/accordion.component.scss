@@ -1,0 +1,11 @@
+@import '../theme/var';
+
+.aui-accordion.hasBg {
+  padding: $table-padding;
+  border-radius: get-size(border-radius-l);
+  background-color: get-color(n-9);
+}
+
+aui-accordion + aui-accordion .aui-accordion {
+  margin-top: get-size(spacing-xl);
+}

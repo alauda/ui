@@ -19,7 +19,7 @@ describe('AccordionComponent', () => {
   it('should render correct construction', () => {
     fixture.detectChanges();
     const accordionItemHeaderEl = fixture.debugElement.query(
-      By.css('.aui-accordion-item__header-toggle'),
+      By.css('.aui-accordion-item__expand-button'),
     ).nativeElement as HTMLElement;
     expect(accordionItemHeaderEl).not.toBeNull();
     expect(
@@ -35,10 +35,10 @@ describe('AccordionComponent', () => {
     accordionItemHeaderEl.dispatchEvent(new Event('click'));
 
     fixture.detectChanges();
-    const accordionContentBodyEl = fixture.debugElement.query(
-      By.css('.aui-accordion-item__content-body'),
-    ).nativeElement as HTMLElement;
-    expect(accordionContentBodyEl.hidden).toBeFalsy();
+    const accordionContentBody = fixture.debugElement.query(
+      By.css('.aui-accordion-item__content'),
+    );
+    expect(accordionContentBody).toBeFalsy();
   });
 });
 

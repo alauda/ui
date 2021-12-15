@@ -15,6 +15,7 @@
   &__header-row {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
   }
   &__header-row + &__row {
     border-top-left-radius: get-size(border-radius-l);
@@ -29,6 +30,7 @@
     background-color: get-color(n-10);
     padding: 0 $table-cell-padding-h;
     min-height: $table-row-min-height;
+    box-sizing: content-box;
 
     &:first-child {
       border-top-left-radius: get-size(border-radius-l);
@@ -75,5 +77,47 @@
     font-weight: get-size(font-weight-bold);
     background-color: get-color(n-9);
     @include text-overflow;
+  }
+
+  &__column-expand-button {
+    display: flex;
+    align-items: center;
+    max-width: calc(#{$table-cell-padding-h} * 2 + #{get-size(icon-size-m)});
+
+    &.aui-table__cell {
+      height: $table-row-min-height;
+    }
+
+    .aui-expand-button {
+      @include expand-button;
+    }
+  }
+
+  &__column-expand-panel {
+    margin-top: -6px;
+
+    &.aui-table__header-cell {
+      display: none;
+    }
+
+    &.aui-table__cell {
+      width: 100%;
+      flex-shrink: 0;
+      flex-basis: 100%;
+      padding: 0 $table-cell-padding-h;
+      overflow: hidden;
+
+      .aui-table__cell-expand-panel {
+        border-radius: get-size(border-radius-l);
+        overflow: hidden;
+
+        &-content {
+          &.hasBackground {
+            padding: 16px;
+            background-color: get-color(n-9);
+          }
+        }
+      }
+    }
   }
 }

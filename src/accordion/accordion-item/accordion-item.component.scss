@@ -1,33 +1,56 @@
 @import '../../theme/var';
 @import '../../theme/mixin';
 
-$b: aui-accordion-item;
-
-.#{$b} {
+.aui-accordion-item {
   display: block;
-  border-top: 1px solid $card-border-color;
-  box-sizing: content-box;
+  padding: 20px;
+  border: 1px solid get-color(n-8);
+  border-radius: get-size(border-radius-l);
+  background-color: get-color(n-10);
 
-  &__header {
-    width: 100%;
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    overflow: hidden;
-    padding: $accordion-item-header-padding;
-    cursor: pointer;
+  &__expand-button {
+    @include expand-button;
 
-    &-toggle {
-      color: $accordion-item-header-color;
-      background: transparent;
-      font-size: get-size(font-size-l);
-      &--expanded {
-        transform: rotate(90deg);
-      }
-      &--right {
-        flex-direction: row-reverse;
-        justify-content: space-between;
-      }
+    &:first-child {
+      margin-right: 20px;
+    }
+
+    &:last-child {
+      margin-left: 20px;
     }
   }
+
+  &__header {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    @include text-set(m);
+
+    color: get-text-color(main);
+
+    &-content {
+      max-width: 100%;
+      @include text-overflow;
+    }
+  }
+
+  &__body {
+    border-radius: get-size(border-radius-l);
+    overflow: hidden;
+  }
+
+  &__content {
+    margin-top: 16px;
+    border-radius: get-size(border-radius-l);
+    overflow: hidden;
+
+    &.hasBackground {
+      padding: 16px;
+      background-color: get-color(n-9);
+    }
+  }
+}
+
+aui-accordion-item + aui-accordion-item .aui-accordion-item {
+  margin-top: get-size(spacing-m);
 }

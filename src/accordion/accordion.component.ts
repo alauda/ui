@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   HostBinding,
+  Input,
   Optional,
   SkipSelf,
   ViewEncapsulation,
@@ -10,12 +11,16 @@ import {
 
 @Component({
   selector: 'aui-accordion',
-  template: `<ng-content></ng-content>`,
+  templateUrl: './accordion.component.html',
+  styleUrls: ['./accordion.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
 export class AccordionComponent extends CdkAccordion {
+  @Input()
+  background = true;
+
   @HostBinding('attr.accordion-depth')
   depth: number;
 

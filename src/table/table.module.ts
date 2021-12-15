@@ -2,11 +2,13 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ButtonModule } from '../button/button.module';
 import { IconModule } from '../icon/icon.module';
 
 import { TableCellDefDirective } from './table-cell-def.directive';
-import { TableCellComponent } from './table-cell.component';
+import {
+  TableExpandButtonCellComponent,
+  TableExpandPanelCellComponent,
+} from './table-cell.component';
 import { TableCellDirective } from './table-cell.directive';
 import { TableColumnDefDirective } from './table-column-def.directive';
 import { TableHeaderCellDefDirective } from './table-header-cell-def.directive';
@@ -26,12 +28,13 @@ import {
 import { TableComponent } from './table.component';
 
 @NgModule({
-  imports: [CommonModule, ButtonModule, IconModule, CdkTableModule],
+  imports: [CommonModule, IconModule, CdkTableModule],
   declarations: [
     TableComponent,
     TableRowComponent,
     TableHeaderRowComponent,
-    TableCellComponent,
+    TableExpandButtonCellComponent,
+    TableExpandPanelCellComponent,
     TableCellDirective,
     TableCellDefDirective,
     TableHeaderCellDirective,
@@ -48,7 +51,8 @@ import { TableComponent } from './table.component';
     TableComponent,
     TableRowComponent,
     TableHeaderRowComponent,
-    TableCellComponent,
+    TableExpandButtonCellComponent,
+    TableExpandPanelCellComponent,
     TableCellDirective,
     TableCellDefDirective,
     TableHeaderCellDirective,
