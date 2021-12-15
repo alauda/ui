@@ -24,6 +24,11 @@ $block: aui-date-range-picker-panel;
       margin-right: 8px;
       width: 82px;
     }
+    .panel__wrapper {
+      width: $range-picker-header-width;
+      display: flex;
+      justify-content: center;
+    }
   }
   &__header {
     display: flex;

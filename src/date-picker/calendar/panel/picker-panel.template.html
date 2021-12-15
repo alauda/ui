@@ -33,15 +33,15 @@
       ><button
         aui-button="text"
         [plain]="true"
-        size="small"
+        [size]="navRange === DateNavRange.Month ? 'mini' : 'small'"
         [disabled]="item.isDisabled"
         (click)="selectValue(item.value)"
         (mouseenter)="hovered.next(item.value)"
       >
         {{ item.label
-        }}<ng-container *ngIf="navRange === DateNavRange.Year"
-          >{{ 'month_suffix' | auiI18n }}
-        </ng-container>
+        }}<ng-container *ngIf="navRange === DateNavRange.Year">{{
+          'month_suffix' | auiI18n
+        }}</ng-container>
       </button>
     </span>
   </div>

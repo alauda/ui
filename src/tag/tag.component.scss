@@ -61,7 +61,7 @@
   &--medium {
     height: $tag-medium-height;
     line-height: $tag-medium-height - $tag-border-width * 2;
-    font-size: $tag-medium-font-size;
+    font-size: get-size(font-size-m);
     padding: 0 $tag-medium-padding;
     &.isRound {
       border-radius: $tag-medium-height / 2;
@@ -121,10 +121,11 @@
   }
 
   &--info {
-    background-color: get-color(n-9);
     color: get-color(n-2);
+    background-color: get-color(n-8);
     &.hasBorder {
       border-color: get-color(n-7);
+      background-color: get-color(n-9);
     }
     .aui-tag__close .aui-icon:hover {
       color: $tag-info-bg-color;

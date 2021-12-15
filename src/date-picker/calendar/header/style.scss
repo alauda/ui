@@ -31,3 +31,12 @@ $block: aui-calendar-header;
     }
   }
 }
+.action-bar {
+  width: 52px;
+  display: flex;
+  // 使用 hidden 保留button的位置，宽度
+  .hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
