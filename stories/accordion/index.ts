@@ -1,39 +1,36 @@
 import { AccordionModule } from '@alauda/ui';
-import { boolean, select, withKnobs } from '@storybook/addon-knobs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/angular';
 
 storiesOf('Accordion', module)
   .addDecorator(withKnobs)
   .add('accordion', () => {
     const multi = boolean('multi', false);
-    const togglePosition = select(
-      'position',
-      { left: 'left', right: 'right' },
-      'left',
-    );
+    const background = boolean('background', true);
     return {
       moduleMetadata: {
-        imports: [AccordionModule],
+        imports: [BrowserAnimationsModule, AccordionModule],
       },
       template: /* HTML */ `
-        <aui-accordion [multi]="multi">
-          <aui-accordion-item [togglePosition]="togglePosition">
+        <aui-accordion [multi]="multi" [background]="background">
+          <aui-accordion-item [disabled]="true">
             <div auiAccordionItemHeader>header1</div>
-            <h3>accordion item content1</h3>
+            <div>accordion item content1</div>
           </aui-accordion-item>
-          <aui-accordion-item [togglePosition]="togglePosition">
+          <aui-accordion-item>
             <div auiAccordionItemHeader>header2</div>
-            <h3>accordion item content2</h3>
+            <div>accordion item content2</div>
           </aui-accordion-item>
-          <aui-accordion-item [togglePosition]="togglePosition">
+          <aui-accordion-item>
             <div auiAccordionItemHeader>header3</div>
-            <h3>accordion item content3</h3>
+            <div>accordion item content3</div>
           </aui-accordion-item>
         </aui-accordion>
       `,
       props: {
         multi,
-        togglePosition,
+        background,
       },
     };
   });

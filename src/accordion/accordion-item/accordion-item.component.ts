@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { CdkAccordionItem } from '@angular/cdk/accordion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import {
@@ -7,9 +14,7 @@ import {
   Component,
   ContentChild,
   Directive,
-  EventEmitter,
   Input,
-  Output,
   TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
@@ -32,19 +37,20 @@ export class AccordionItemContentDirective {}
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  animations: [
+    trigger('expand', [
+      state('*', style({ height: 0 })),
+      state('expanded', style({ height: '*' })),
+      transition('* <=> expanded', [animate('0.1s ease-in-out')]),
+    ]),
+  ],
   viewProviders: [AccordionItemComponent],
 })
 export class AccordionItemComponent
   extends CdkAccordionItem
   implements AfterContentInit {
   @Input()
-  hideToggle = false;
-
-  @Input()
-  togglePosition: 'left' | 'right' = 'left';
-
-  @Output()
-  expandedChange = new EventEmitter<boolean>();
+  background = true;
 
   @ContentChild(AccordionItemContentDirective, {
     read: TemplateRef,
@@ -76,10 +82,5 @@ export class AccordionItemComponent
           this.lazyContentTpl = this._lazyContentTpl;
         });
     }
-  }
-
-  toggle() {
-    super.toggle();
-    this.expandedChange.emit(this.expanded);
   }
 }
