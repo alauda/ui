@@ -6,6 +6,8 @@
 
 - [#232](https://github.com/alauda/alauda-ui/pull/232) [`6f82358`](https://github.com/alauda/alauda-ui/commit/6f823583055a93eacdb826914ac18e43ed4b72a4) Thanks [@fengtianze](https://github.com/fengtianze)! - feat: new accordion design
 
+- [#230](https://github.com/alauda/alauda-ui/pull/230) [`6f82358`](https://github.com/alauda/alauda-ui/commit/763ad5fb7d7702162e8647b06a3e1b34efbdb50d) Thanks [@fengtianze](https://github.com/fengtianze)! - feat: tab group supports switch by tab name. #141
+
 ## 6.0.3
 
 ### Patch Changes
