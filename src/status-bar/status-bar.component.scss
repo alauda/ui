@@ -5,6 +5,29 @@ $block: aui-status-bar;
 $bar-border-radius: 5px;
 $small-bar-border-radius: 4px;
 
+$bar-type: (
+  primary: (
+    background: get-color(primary),
+    hover-background: get-color(p-2),
+  ),
+  success: (
+    background: get-color(green),
+    hover-background: get-color(g-2),
+  ),
+  warning: (
+    background: get-color(yellow),
+    hover-background: get-color(y-2),
+  ),
+  error: (
+    background: get-color(red),
+    hover-background: get-color(r-2),
+  ),
+  info: (
+    background: get-color(n-4),
+    hover-background: get-color(n-6),
+  ),
+);
+
 .#{$block} {
   display: inline-flex;
   overflow: hidden;
@@ -48,21 +71,16 @@ $small-bar-border-radius: 4px;
       border-bottom-right-radius: $bar-border-radius;
     }
 
-    &--primary {
-      background-color: get-color(primary);
+    @each $type in primary, success, warning, error, info {
+      $map: map-get($bar-type, $type);
+      &--#{$type} {
+        background-color: map-get($map, background);
+        &:hover {
+          background-color: map-get($map, hover-background);
+        }
+      }
     }
-    &--success {
-      background-color: get-color(green);
-    }
-    &--warning {
-      background-color: get-color(yellow);
-    }
-    &--error {
-      background-color: get-color(red);
-    }
-    &--info {
-      background-color: get-color(n-4);
-    }
+
     &--pending {
       height: get-size(inline-height-m);
       animation: pending 0.5s linear infinite;
@@ -78,24 +96,6 @@ $small-bar-border-radius: 4px;
 
   &__chunk + &__chunk {
     margin-left: get-size(spacing-xs);
-  }
-
-  &:hover {
-    .#{$block}__chunk--primary {
-      background-color: get-color(primary);
-    }
-    .#{$block}__chunk--success {
-      background-color: get-color(green);
-    }
-    .#{$block}__chunk--warning {
-      background-color: get-color(yellow);
-    }
-    .#{$block}__chunk--error {
-      background-color: get-color(red);
-    }
-    .#{$block}__chunk--info {
-      background-color: get-color(n-4);
-    }
   }
 }
 
