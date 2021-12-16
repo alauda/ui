@@ -1,7 +1,9 @@
 import { CDK_ROW_TEMPLATE, CdkRow } from '@angular/cdk/table';
 import {
+  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   HostBinding,
   Input,
   ViewEncapsulation,
@@ -20,8 +22,22 @@ import {
   exportAs: 'auiTableRow',
   preserveWhitespaces: false,
 })
-export class TableRowComponent extends CdkRow {
+export class TableRowComponent extends CdkRow implements AfterContentInit {
   @Input()
   @HostBinding('class.isDisabled')
   disabled = false;
+
+  @HostBinding('class.hasPanel')
+  hasPanel = false;
+
+  constructor(private readonly elRef: ElementRef<HTMLElement>) {
+    super();
+  }
+
+  ngAfterContentInit() {
+    const panel = this.elRef.nativeElement.querySelector(
+      'aui-table-cell[auiExpandPanel]',
+    );
+    this.hasPanel = !!panel;
+  }
 }

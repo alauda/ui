@@ -15,7 +15,9 @@
   &__header-row {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    &.hasPanel {
+      flex-wrap: wrap;
+    }
   }
   &__header-row + &__row {
     border-top-left-radius: get-size(border-radius-l);
