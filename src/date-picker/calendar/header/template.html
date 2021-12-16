@@ -57,13 +57,13 @@
 </div>
 
 <ng-template #yearControl let-side="side">
-  <span style="display: flex">
+  <span class="action-bar">
     <button
       aui-button="text"
-      *ngIf="
-        dateNavRange === DateNavRange.Month &&
-        side === 'right' &&
-        shouldShowNav(DateNavRange.Month, side)
+      *ngIf="side === 'right'"
+      [class.hidden]="
+        !shouldShowNav(DateNavRange.Month, side) ||
+        dateNavRange !== DateNavRange.Month
       "
       (click)="navHead(DateNavRange.Month, 1)"
     >
@@ -72,7 +72,7 @@
     <button
       aui-button="text"
       (click)="navHead(DateNavRange.Year, side === 'left' ? -1 : 1)"
-      *ngIf="shouldShowNav(DateNavRange.Year, side)"
+      [class.hidden]="!shouldShowNav(DateNavRange.Year, side)"
     >
       <aui-icon
         [icon]="side === 'left' ? 'angle_double_left' : 'angle_double_right'"
@@ -80,10 +80,10 @@
     </button>
     <button
       aui-button="text"
-      *ngIf="
-        dateNavRange === DateNavRange.Month &&
-        side === 'left' &&
-        shouldShowNav(DateNavRange.Month, side)
+      *ngIf="side === 'left'"
+      [class.hidden]="
+        !shouldShowNav(DateNavRange.Month, side) ||
+        dateNavRange !== DateNavRange.Month
       "
       (click)="navHead(DateNavRange.Month, -1)"
     >
@@ -96,7 +96,7 @@
   <button
     aui-button="text"
     (click)="navHead(DateNavRange.Decade, side === 'left' ? -10 : 10)"
-    *ngIf="shouldShowNav(DateNavRange.Decade, side)"
+    [class.hidden]="!shouldShowNav(DateNavRange.Decade, side)"
   >
     <aui-icon
       [icon]="side === 'left' ? 'angle_double_left' : 'angle_double_right'"

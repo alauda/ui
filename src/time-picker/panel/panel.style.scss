@@ -3,7 +3,9 @@
 
 $block: aui-time-picker-panel;
 $cell_height: 28px;
-$total_height: $cell_height * 9;
+$col_reveal_items: 9;
+$total_height: $cell_height * $col_reveal_items;
+$strut_height: $cell_height * ($col_reveal_items - 1);
 
 .#{$block} {
   &__wrapper {
@@ -47,7 +49,7 @@ $total_height: $cell_height * 9;
       margin: 0;
     }
     &-strut {
-      height: $total_height;
+      height: $strut_height;
       width: 1px;
       visibility: hidden;
     }

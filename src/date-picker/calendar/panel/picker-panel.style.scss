@@ -2,7 +2,7 @@
 @import '../../../theme/mixin';
 
 $block: aui-picker-panel;
-$in-range-bgcolor: get-color(n-6);
+$in-range-bgcolor: get-color(p-6);
 $left-in-range-shadow: -6px 0 0 0 $in-range-bgcolor;
 $right-in-range-shadow: 6px 0 0 0 $in-range-bgcolor;
 
@@ -20,6 +20,9 @@ $left-mask-shadow: -12px 0 0 0 get-color(n-10);
     flex-direction: column;
     margin: 12px 9px;
     align-items: center;
+    .aui-button {
+      box-sizing: border-box;
+    }
     &.month-panel-container,
     &.year-panel-container {
       button {

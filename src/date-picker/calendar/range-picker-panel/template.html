@@ -19,6 +19,7 @@
   </div>
   <div [class]="bem.element('body')">
     <aui-picker-panel
+      class="panel__wrapper"
       [navRange]="leftDateRange"
       [type]="DatePickerType.Day"
       [anchor]="leftAnchor"
@@ -31,6 +32,7 @@
       (select)="selectPickerPanel($event, Side.Left)"
     ></aui-picker-panel>
     <aui-picker-panel
+      class="panel__wrapper"
       [navRange]="rightDateRange"
       [type]="DatePickerType.Day"
       [anchor]="rightAnchor"

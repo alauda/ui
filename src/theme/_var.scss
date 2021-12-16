@@ -212,7 +212,6 @@ $tag-large-font-size: $font-size-regular;
 $tag-large-padding: 16px - $tag-border-width;
 
 $tag-medium-height: $height-small;
-$tag-medium-font-size: $font-size-regular;
 $tag-medium-padding: 12px - $tag-border-width;
 
 $tag-small-height: $height-mini;
@@ -323,5 +322,8 @@ $date-picker-body-size: 216px;
 $date-picker-seprator-gap: 20px;
 $date-picker-row-gap: 8px;
 $date-picker-cell-size: 24px;
-$range-picker-body-width: 552px;
-$range-picker-header-width: 275px;
+$range-picker-body-width: 524px;
+$range-picker-panel-spacing: 32px;
+$range-picker-header-width: (
+    $range-picker-body-width - $range-picker-panel-spacing
+  ) / 2;
