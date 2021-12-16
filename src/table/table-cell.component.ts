@@ -68,7 +68,7 @@ export class TableExpandButtonCellComponent extends CdkCell {
   animations: [
     trigger('expand', [
       state('*', style({ height: 0 })),
-      state('expanded', style({ height: '*', 'margin-bottom': '16px' })),
+      state('expanded', style({ height: '*', 'margin-bottom': '15px' })),
       transition('* <=> expanded', [animate('0.1s ease-in-out')]),
     ]),
   ],
