@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.1.0
+
+### Minor Changes
+
+- [#232](https://github.com/alauda/alauda-ui/pull/232) [`6f82358`](https://github.com/alauda/alauda-ui/commit/6f823583055a93eacdb826914ac18e43ed4b72a4) Thanks [@fengtianze](https://github.com/fengtianze)! - feat: new accordion design
+
 ## 6.0.3
 
 ### Patch Changes
