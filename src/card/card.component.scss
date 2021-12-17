@@ -19,7 +19,7 @@ $b: aui-card;
     font-weight: get-size(font-weight-bold);
 
     + .#{$b}__content {
-      margin-top: get-size(spacing-xxl);
+      margin-top: get-size(spacing-xl);
     }
   }
 
@@ -27,7 +27,7 @@ $b: aui-card;
     padding: 0;
 
     + .#{$b}__footer {
-      margin-top: get-size(spacing-xxl);
+      margin-top: get-size(spacing-xl);
     }
   }
 
