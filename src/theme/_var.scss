@@ -157,6 +157,33 @@ $alerts-wrapper-top: 20px;
 $alerts-wrapper-right: 0;
 
 // Input
+$input-size: (
+  large: (
+    height: get-size(inline-height-l),
+    font-size: get-size(font-size-l),
+    line-height: get-size(line-height-l),
+    icon-size: get-size(icon-size-l),
+  ),
+  medium: (
+    height: get-size(inline-height-m),
+    font-size: get-size(font-size-m),
+    line-height: get-size(line-height-m),
+    icon-size: get-size(icon-size-m),
+  ),
+  small: (
+    height: get-size(inline-height-s),
+    font-size: get-size(font-size-m),
+    line-height: get-size(line-height-m),
+    icon-size: get-size(icon-size-m),
+  ),
+  mini: (
+    height: get-size(inline-height-xs),
+    font-size: get-size(font-size-s),
+    line-height: get-size(line-height-s),
+    icon-size: get-size(icon-size-s),
+  ),
+);
+
 $input-border-radius: $border-radius;
 $input-border-width: $border-width;
 $input-border-style: $border-style;

@@ -1,33 +1,6 @@
 @import '../../theme/var';
 @import '../../theme/mixin';
 
-$input-size: (
-  large: (
-    height: get-size(inline-height-l),
-    font-size: get-size(font-size-l),
-    line-height: get-size(line-height-l),
-    icon-size: get-size(icon-size-l),
-  ),
-  medium: (
-    height: get-size(inline-height-m),
-    font-size: get-size(font-size-m),
-    line-height: get-size(line-height-m),
-    icon-size: get-size(icon-size-m),
-  ),
-  small: (
-    height: get-size(inline-height-s),
-    font-size: get-size(font-size-m),
-    line-height: get-size(line-height-m),
-    icon-size: get-size(icon-size-m),
-  ),
-  mini: (
-    height: get-size(inline-height-xs),
-    font-size: get-size(font-size-s),
-    line-height: get-size(line-height-s),
-    icon-size: get-size(icon-size-s),
-  ),
-);
-
 .aui-input-group {
   display: inline-block;
   width: 100%;
@@ -41,7 +14,7 @@ $input-size: (
   @each $key in large medium small mini {
     $map: map-get($input-size, $key);
     $padding: calc(
-      #{get-size(inline-padding-xs)} * 2 + #{map-get($map, icon-size)}
+      #{get-size(inline-padding-xs)} * 2 + #{map-get($map, icon-size)} + 1px
     );
 
     &--#{$key} {
@@ -104,7 +77,7 @@ $input-size: (
   &__prefix {
     position: absolute;
     top: 50%;
-    left: get-size(inline-padding-xs);
+    left: calc(#{get-size(inline-padding-xs)} + 1px);
     transform: translateY(-50%);
     color: get-text-color(placeholder);
   }
@@ -112,7 +85,7 @@ $input-size: (
   &__suffix {
     position: absolute;
     top: 50%;
-    right: get-size(inline-padding-xs);
+    right: calc(#{get-size(inline-padding-xs)} + 1px);
     transform: translateY(-50%);
     color: get-text-color(placeholder);
   }

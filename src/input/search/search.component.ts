@@ -21,6 +21,7 @@ import { Bem, buildBem } from '../../utils';
 export class SearchComponent {
   bem: Bem = buildBem('aui-search');
 
+  @Input()
   size: ComponentSize = ComponentSize.Medium;
 
   @Input()

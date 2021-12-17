@@ -236,6 +236,11 @@ storiesOf('Input', module)
     };
   })
   .add('search input', () => {
+    const sizeOptions = {
+      [ComponentSize.Medium]: ComponentSize.Medium,
+      [ComponentSize.Small]: ComponentSize.Small,
+    };
+    const size = select('size', sizeOptions, ComponentSize.Medium);
     const searchButton = boolean('searchButton', false);
     const searching = boolean('searching', false);
     const clearable = boolean('clearable', false);
@@ -252,6 +257,7 @@ storiesOf('Input', module)
       },
       template: /* HTML */ `
         <aui-search
+          [size]="size"
           [searchButton]="searchButton"
           [searching]="searching"
           [clearable]="clearable"
@@ -270,6 +276,7 @@ storiesOf('Input', module)
         clearable,
         disabled,
         keyword,
+        size,
         onChangeHandler,
         onSearchHandler,
         onClearHandler,
