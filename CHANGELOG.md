@@ -1,5 +1,17 @@
 # Changelog
 
+## 6.1.1
+
+### Patch Changes
+
+- [#240](https://github.com/alauda/alauda-ui/pull/240) [`441198a`](https://github.com/alauda/alauda-ui/commit/441198a747c95f55e5e59c7aa021e014d94fd9b9) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: search input supports size property
+
+- [#237](https://github.com/alauda/alauda-ui/pull/237) [`1bc629b`](https://github.com/alauda/alauda-ui/commit/1bc629b62769e0e5e67d6dd264a8c0b0ad6e7342) Thanks [@mario-mui](https://github.com/mario-mui)! - fix: status bar hover
+
+- [#239](https://github.com/alauda/alauda-ui/pull/239) [`0a7b808`](https://github.com/alauda/alauda-ui/commit/0a7b8081087ee10b20d4d32799ceaa950362ec9b) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: form item width is not working with input group
+
+- [#235](https://github.com/alauda/alauda-ui/pull/235) [`c3426e5`](https://github.com/alauda/alauda-ui/commit/c3426e58dd0215ab1cb64e2d12231757aa48ee06) Thanks [@yinshuxun](https://github.com/yinshuxun)! - fix: fix table wrap
+
 ## 6.1.0
 
 ### Minor Changes
