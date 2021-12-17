@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.1.2
+
+### Patch Changes
+
+- [#241](https://github.com/alauda/alauda-ui/pull/241) [`c8bf374`](https://github.com/alauda/alauda-ui/commit/c8bf374f96fa6da62e9bc57e74b297e97dd9fbcf) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: card content margin
+
 ## 6.1.1
 
 ### Patch Changes
