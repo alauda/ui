@@ -73,6 +73,9 @@ $input-width: 80px;
     aui-icon {
       font-size: get-size(font-size-l);
     }
+    &:hover {
+      background-color: get-color(p-6);
+    }
   }
 
   &__pager {
