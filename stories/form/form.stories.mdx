@@ -84,14 +84,12 @@ import {
           </aui-form-item>
           <aui-form-item width="large">
             <label auiFormItemLabel>input width large</label>
-            <input
-              aui-input
-              auiFormItemControl
-              name="large"
-              [(ngModel)]="value1"
-            />
+            <aui-input-group auiFormItemControl>
+              <input aui-input name="large" [(ngModel)]="value1" />
+              <span auiInputAddonAfter>GB</span>
+            </aui-input-group>
           </aui-form-item>
-          <aui-form-item>
+          <aui-form-item width="medium">
             <label auiFormItemLabel>性别</label>
             <aui-select
               auiFormItemControl

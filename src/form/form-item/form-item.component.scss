@@ -84,24 +84,12 @@ $form-item-width: (
     align-items: center;
     min-height: get-size(inline-height-m);
 
-    aui-select,
-    aui-multi-select {
-      &.aui-form-item__control {
-        width: 100%;
-      }
-    }
-
     @each $key in large medium small {
       $map: map-get($form-item-width, $key);
       &--#{$key} {
         .aui-form-item__control {
+          flex: 1;
           max-width: map-get($map, width);
-        }
-        aui-select,
-        aui-multi-select {
-          &.aui-form-item__control {
-            max-width: map-get($map, width);
-          }
         }
       }
     }
