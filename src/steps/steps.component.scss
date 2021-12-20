@@ -18,6 +18,7 @@
     margin-right: get-size(spacing-m);
     width: 24px;
     height: 24px;
+    display: inline-flex;
     color: get-color(n-4);
     &-number {
       border-radius: 50%;
