@@ -6,7 +6,6 @@ import { NgModule } from '@angular/core';
 import { IconModule } from '../icon/public-api';
 
 import { DrawerComponent } from './component/drawer.component';
-import { DrawerService } from './component/drawer.service';
 import {
   DrawerContentDirective,
   DrawerFooterDirective,
@@ -19,11 +18,11 @@ const COMMON = [
   DrawerContentDirective,
   DrawerFooterDirective,
 ];
+
 @NgModule({
   imports: [CommonModule, IconModule, IconModule, OverlayModule, PortalModule],
   declarations: COMMON,
   exports: COMMON,
-  providers: [DrawerService],
   entryComponents: [DrawerComponent],
 })
 export class DrawerModule {}

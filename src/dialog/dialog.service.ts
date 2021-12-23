@@ -26,7 +26,7 @@ import { DialogSize } from './dialog.types';
 
 export const DIALOG_DATA = new InjectionToken<any>('aui-dialog-data');
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DialogService {
   static readonly DIALOG_OVERLAY_PANE_CLASS = 'aui-dialog-overlay-pane';
   static readonly DIALOG_BACKDROP_CLASS = 'aui-dialog-backdrop';

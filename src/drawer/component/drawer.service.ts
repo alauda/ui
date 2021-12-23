@@ -24,8 +24,8 @@ export class DrawerService {
 
   constructor(private readonly overlay: Overlay) {}
 
-  open<T = any>(options: DrawerOptions<T>) {
-    this.drawerRef?.instance?.closure();
+  open<T = unknown>(options: DrawerOptions<T>) {
+    this.drawerRef?.instance?.dispose();
     this.createDrawer();
     this.updateOptions(options);
     return this.drawerRef?.instance;

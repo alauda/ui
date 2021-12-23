@@ -1,26 +1,23 @@
 <ng-template #drawerTemplate>
   <div
-    [class.drawer-mask-open]="visible"
-    class="drawer-mask"
-    (click)="maskClick()"
     *ngIf="mask"
+    class="aui-drawer-mask"
+    [class.isOpen]="visible"
+    (click)="maskClick()"
   ></div>
   <div
-    [style.marginTop.px]="offsetY"
+    [style.marginTop]="offsetY"
     [ngClass]="drawerClasses"
-    [class.drawer-open]="visible"
+    [class.isOpen]="visible"
     [ngStyle]="{
       transform: transform,
       width: width + 'px'
     }"
   >
-    <div
-      class="drawer-content"
-      [style.height]="'calc(100% - ' + offsetY + 'px)'"
-    >
-      <div class="drawer-body-wrapper">
-        <div class="drawer-header">
-          <div class="drawer-title">
+    <div class="aui-drawer__content">
+      <div class="aui-drawer__body-wrapper">
+        <div class="aui-drawer__header">
+          <div class="aui-drawer__title">
             <ng-container
               *ngIf="!isTemplateRef(title || titleTemplate); else elseTemplate"
             >
@@ -29,22 +26,22 @@
             <ng-template #elseTemplate>
               <ng-container
                 *ngIf="title || titleTemplate"
-                [ngTemplateOutlet]="$any(title || titleTemplate)"
+                [ngTemplateOutlet]="title || titleTemplate"
                 [ngTemplateOutletContext]="templateContext"
               ></ng-container>
             </ng-template>
           </div>
-          <div class="drawer-close" *ngIf="showClose" (click)="closure()">
+          <div class="aui-drawer__close" *ngIf="showClose" (click)="dispose()">
             <aui-icon icon="close"></aui-icon>
           </div>
         </div>
 
-        <div class="drawer-body">
+        <div class="aui-drawer__body">
           <ng-template cdkPortalOutlet></ng-template>
           <ng-container *ngIf="isTemplateRef(content || contentTemplate)">
             <ng-container
               *ngTemplateOutlet="
-                $any(content || contentTemplate);
+                content || contentTemplate;
                 context: templateContext
               "
             >
@@ -52,7 +49,7 @@
           </ng-container>
         </div>
 
-        <div class="drawer-footer" *ngIf="footer">
+        <div *ngIf="footer || footerTemplate" class="aui-drawer__footer">
           <ng-container
             *ngIf="!isTemplateRef(footer || footerTemplate); else elseTemplate"
           >
@@ -61,7 +58,7 @@
           <ng-template #elseTemplate>
             <ng-container
               *ngIf="footer || titleTemplate"
-              [ngTemplateOutlet]="$any(footer || titleTemplate)"
+              [ngTemplateOutlet]="footer || titleTemplate"
               [ngTemplateOutletContext]="templateContext"
             ></ng-container>
           </ng-template>

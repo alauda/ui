@@ -20,7 +20,7 @@
   <input
     #inputRef
     autocomplete="off"
-    (change)="inputChanged($any($event.target).value)"
+    (change)="inputChanged($event.target.value)"
     [disabled]="disabled"
     [ngClass]="bem.element('input')"
     [placeholder]="placeholder"
