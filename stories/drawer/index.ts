@@ -151,7 +151,7 @@ export class ServiceDrawerComponent {
   }
 
   close() {
-    this.drawerRef.closure('on close');
+    this.drawerRef.dispose('on close');
   }
 }
 
@@ -193,7 +193,7 @@ export class ServiceDrawerCptComponent {
   }
 
   close() {
-    this.drawerRef.closure('on close');
+    this.drawerRef.dispose('on close');
   }
 }
 

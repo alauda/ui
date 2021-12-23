@@ -12,7 +12,6 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
 import { DialogFooterComponent } from './dialog-content/dialog-footer.component';
 import { DialogHeaderComponent } from './dialog-content/dialog-header.component';
 import { DialogComponent } from './dialog.component';
-import { DialogService } from './dialog.service';
 
 @NgModule({
   imports: [
@@ -38,6 +37,5 @@ import { DialogService } from './dialog.service';
     DialogCloseDirective,
   ],
   entryComponents: [DialogComponent, ConfirmDialogComponent],
-  providers: [DialogService],
 })
 export class DialogModule {}
