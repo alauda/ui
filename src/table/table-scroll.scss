@@ -114,7 +114,8 @@ $stickyCssClass: 'aui-table-sticky';
 
   &--has-scroll {
     .#{$stickyCssClass} {
-      &:not(.aui-table__header-row):after {
+      &-border-elem-left:after,
+      &-border-elem-right:after {
         position: absolute;
         top: 0;
         bottom: -1px;
@@ -124,7 +125,8 @@ $stickyCssClass: 'aui-table-sticky';
         content: '';
         pointer-events: none;
       }
-      &:not(.aui-table__header-row):before {
+      &-border-elem-left:before,
+      &-border-elem-right:before {
         position: absolute;
         top: 0;
         bottom: -1px;

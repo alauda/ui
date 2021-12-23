@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
+  Host,
   HostBinding,
   OnDestroy,
 } from '@angular/core';
@@ -9,6 +10,7 @@ import { Subject, fromEvent, merge } from 'rxjs';
 import { startWith, takeUntil } from 'rxjs/operators';
 
 import { observeResizeOn } from '../utils';
+import { TableComponent } from './table.component';
 
 const CLASS_PREFIX = 'aui-table';
 const SHADOW_CLASS = `${CLASS_PREFIX}__scroll-shadow`;
@@ -32,7 +34,10 @@ export class TableScrollWrapperDirective {}
 })
 export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {
   destroy$$ = new Subject<void>();
-  constructor(private readonly el: ElementRef<HTMLElement>) {}
+  constructor(
+    private readonly el: ElementRef<HTMLElement>,
+    @Host() private readonly table: TableComponent<unknown>,
+  ) {}
 
   @HostBinding(`class.${SCROLL_BEFORE_END_CLASS}`)
   SCROLL_BEFORE_END_CLASS = true;
@@ -83,6 +88,9 @@ export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {
       scrollTop < scrollDis,
       HAS_TABLE_BOTTOM_SHADOW,
     );
+
+    // 兼容屏幕缩放是 sticky多列的样式问题
+    this.table.updateStickyColumnStyles();
   }
 
   mutateHorizontalScroll() {

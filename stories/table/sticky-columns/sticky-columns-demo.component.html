@@ -7,7 +7,7 @@
       </aui-table-header-cell>
       <aui-table-cell *auiTableCellDef="let item">{{ item[0] }}</aui-table-cell>
     </ng-container>
-    <ng-container auiTableColumnDef="cell1">
+    <ng-container auiTableColumnDef="cell1" [sticky]="true">
       <aui-table-header-cell *auiTableHeaderCellDef>
         header cell
       </aui-table-header-cell>
