@@ -19,7 +19,7 @@ import {
   NotificationGlobalConfig,
 } from './notification.config';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class NotificationService extends BaseMessage<
   NotificationWrapperComponent,
   NotificationComponent,

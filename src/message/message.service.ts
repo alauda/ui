@@ -18,7 +18,7 @@ import {
   MessageGlobalConfig,
 } from './message.config';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class MessageService extends BaseMessage<
   MessageWrapperComponent,
   MessageComponent,
