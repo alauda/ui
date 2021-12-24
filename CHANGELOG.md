@@ -1,5 +1,12 @@
 # Changelog
 
+## 6.1.4
+
+### Patch Changes
+
+- [#251](https://github.com/alauda/alauda-ui/pull/251) [`ead91ba`](https://github.com/alauda/alauda-ui/commit/ead91ba4a9696563c88c62365876d942a5b0c5f5) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: drawer content padding
+  fix: message, drawer critical imports
+
 ## 6.1.3
 
 ### Patch Changes
