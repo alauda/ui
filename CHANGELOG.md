@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.1.3
+
+### Patch Changes
+
+- [#243](https://github.com/alauda/alauda-ui/pull/243) [`8305e37`](https://github.com/alauda/alauda-ui/commit/8305e370675378b6a8a5fe7e44d2122bf87f7084) Thanks [@2eron](https://github.com/2eron)! - fix: steps icon align issue
+
 ## 6.1.2
 
 ### Patch Changes
