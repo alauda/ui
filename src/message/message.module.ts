@@ -6,10 +6,12 @@ import { IconModule } from '../icon/icon.module';
 
 import { MessageWrapperComponent } from './message-wrapper.component';
 import { MessageComponent } from './message.component';
+import { MessageService } from './public-api';
 
 @NgModule({
   imports: [CommonModule, OverlayModule, IconModule],
   declarations: [MessageWrapperComponent, MessageComponent],
   entryComponents: [MessageWrapperComponent, MessageComponent],
+  providers: [MessageService],
 })
 export class MessageModule {}

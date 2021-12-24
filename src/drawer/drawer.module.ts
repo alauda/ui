@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { IconModule } from '../icon/public-api';
+import { DrawerService } from '../public-api';
 
 import { DrawerComponent } from './component/drawer.component';
 import {
@@ -24,5 +25,6 @@ const COMMON = [
   declarations: COMMON,
   exports: COMMON,
   entryComponents: [DrawerComponent],
+  providers: [DrawerService],
 })
 export class DrawerModule {}

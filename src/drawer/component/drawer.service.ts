@@ -14,9 +14,7 @@ interface DrawerOptions<T = any, D = any> {
   footer?: string | TemplateRef<unknown>;
   offsetY?: number;
 }
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class DrawerService {
   private drawerRef: ComponentRef<DrawerComponent>;
   private overlayRef: OverlayRef;
