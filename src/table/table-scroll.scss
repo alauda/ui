@@ -3,6 +3,7 @@
 
 $stickyCssClass: 'aui-table-sticky';
 
+// style for column shadow
 .aui-table__scroll-wrapper {
   background-color: get-color(n-9);
   padding: 0 $table-padding $table-padding;
@@ -11,37 +12,6 @@ $stickyCssClass: 'aui-table-sticky';
 
   .aui-table {
     padding: 0;
-
-    &__header-row.#{$stickyCssClass} {
-      margin: 0 #{-$table-padding};
-      padding: 0;
-    }
-
-    &.hasTableTopShadow:before {
-      content: '';
-      position: sticky;
-      display: block;
-      width: calc(100% + #{$table-padding * 2});
-      height: 16px;
-      margin-top: -16px;
-      transform: translate3d(-12px, 0, 0);
-      z-index: 99;
-      top: 28px;
-      box-shadow: 0 10px 10px -4px get-rgba(n-1, 0.16);
-    }
-
-    &.hasTableBottomShadow:after {
-      content: '';
-      position: sticky;
-      display: block;
-      width: calc(100% + #{$table-padding * 2});
-      height: 16px;
-      transform: translate3d(-12px, 12px, 0);
-      z-index: 99;
-      bottom: 0;
-      margin-top: -16px;
-      box-shadow: 0 -10px 10px -4px get-rgba(n-1, 0.16) inset;
-    }
   }
 
   .aui-table__scroll-shadow {
@@ -54,9 +24,56 @@ $stickyCssClass: 'aui-table-sticky';
   }
 }
 
+// style for vertical shadow
 .aui-table__scroll-shadow {
-  .aui-table__header-row.#{$stickyCssClass} {
+  &.hasTableTopShadow:before {
+    content: '';
+    position: sticky;
+    display: block;
+    width: calc(100% + #{$table-padding * 2});
+    height: 16px;
+    margin-top: -16px;
+    transform: translate3d(-12px, 0, 0);
+    z-index: 99;
+    top: 28px;
+    box-shadow: 0 10px 10px -4px get-rgba(n-1, 0.16);
+  }
+  &.hasTableBottomShadow:after {
+    content: '';
+    position: sticky;
+    display: block;
+    width: calc(100% + #{$table-padding * 2});
+    height: 16px;
+    transform: translate3d(-12px, 12px, 0);
+    z-index: 99;
+    bottom: 0;
+    margin-top: -16px;
+    box-shadow: 0 -10px 10px -4px get-rgba(n-1, 0.16) inset;
+  }
+
+  .aui-table__header-row {
     margin: 0;
+    padding: 0;
+    align-items: stretch;
+    .aui-table__header-cell {
+      &:first-of-type {
+        padding-left: $table-cell-padding-h * 2;
+      }
+      &:last-of-type {
+        padding-right: $table-cell-padding-h * 2;
+      }
+    }
+
+    + .aui-table__row {
+      .aui-table__cell {
+        &:first-of-type {
+          border-top-left-radius: get-size(border-radius-l);
+        }
+        &:last-of-type {
+          border-top-right-radius: get-size(border-radius-l);
+        }
+      }
+    }
   }
 
   .aui-table__row {
@@ -69,24 +86,14 @@ $stickyCssClass: 'aui-table-sticky';
       border-color: get-color(n-8);
       &:first-of-type {
         border-left-width: 1px;
-        padding-left: $table-cell-padding-h * 2;
+        padding-left: $table-cell-padding-h * 2 - 1;
       }
       &:last-of-type {
         border-right-width: 1px;
-        padding-right: $table-cell-padding-h * 2;
+        padding-right: $table-cell-padding-h * 2 - 1;
       }
     }
 
-    &:first-child:not(.aui-table__header-row) {
-      .aui-table__cell {
-        &:first-of-type {
-          border-top-left-radius: get-size(border-radius-l);
-        }
-        &:last-of-type {
-          border-top-right-radius: get-size(border-radius-l);
-        }
-      }
-    }
     &:last-child {
       .aui-table__cell {
         &:first-of-type {
@@ -105,22 +112,10 @@ $stickyCssClass: 'aui-table-sticky';
     }
   }
 
-  .aui-table__header-row {
-    padding: 0;
-    align-items: stretch;
-    .aui-table__header-cell {
-      &:first-of-type {
-        padding-left: $table-cell-padding-h * 2;
-      }
-      &:last-of-type {
-        padding-right: $table-cell-padding-h * 2;
-      }
-    }
-  }
-
   &--has-scroll {
     .#{$stickyCssClass} {
-      &:not(.aui-table__header-row):after {
+      &-border-elem-left:after,
+      &-border-elem-right:after {
         position: absolute;
         top: 0;
         bottom: -1px;
@@ -130,7 +125,8 @@ $stickyCssClass: 'aui-table-sticky';
         content: '';
         pointer-events: none;
       }
-      &:not(.aui-table__header-row):before {
+      &-border-elem-left:before,
+      &-border-elem-right:before {
         position: absolute;
         top: 0;
         bottom: -1px;

@@ -30,7 +30,7 @@
     border-color: get-color(n-8);
     border-bottom-width: 0;
     background-color: get-color(n-10);
-    padding: 0 $table-cell-padding-h;
+    padding: 0 ($table-cell-padding-h - 1);
     min-height: $table-row-min-height;
     box-sizing: content-box;
 
