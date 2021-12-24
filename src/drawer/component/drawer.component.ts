@@ -4,40 +4,28 @@ import {
   OverlayConfig,
   OverlayRef,
 } from '@angular/cdk/overlay';
+import { CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 import {
-  CdkPortalOutlet,
-  ComponentPortal,
-  TemplatePortal,
-} from '@angular/cdk/portal';
-import {
-  AfterViewInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ContentChild,
   EventEmitter,
   InjectionToken,
-  Injector,
   Input,
-  OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges,
   TemplateRef,
-  Type,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { isTemplateRef } from '../../utils';
+import { DrawerSize } from '../drawer.types';
 
-import { DrawerRef, DrawerSize } from './drawer-ref';
 import {
-  DrawerContentDirective,
   DrawerFooterDirective,
   DrawerHeaderDirective,
 } from './helper-directives';
@@ -46,32 +34,16 @@ export const DATA = new InjectionToken('drawer-data');
 
 const DRAWER_OVERLAY_CLASS = 'aui-drawer-overlay';
 
-const SIZE_MAPPER = {
-  [DrawerSize.Small]: 400,
-  [DrawerSize.Medium]: 600,
-  [DrawerSize.Big]: 800,
-};
-
 @Component({
   selector: 'aui-drawer',
   templateUrl: './drawer.component.html',
   styleUrls: ['./drawer.component.scss'],
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
 })
-export class DrawerComponent<
-    T = ComponentType<unknown>,
-    R = unknown,
-    D = unknown
-  >
-  extends DrawerRef<T, R>
-  implements OnInit, AfterViewInit, OnChanges, OnDestroy {
-  @Input()
-  title: string | TemplateRef<unknown>;
-
-  @Input()
-  footer: string | TemplateRef<unknown>;
-
+export class DrawerComponent<T = ComponentType<unknown>, D = unknown>
+  implements OnInit, OnDestroy {
   @Input()
   size: DrawerSize = DrawerSize.Medium;
 
@@ -79,9 +51,6 @@ export class DrawerComponent<
   offsetY = '0px';
 
   @Input() visible: boolean;
-
-  @Input()
-  content: TemplateRef<T> | ComponentType<T>;
 
   @Input()
   hideOnClickOutside = false;
@@ -93,44 +62,27 @@ export class DrawerComponent<
   drawerClass: string;
 
   @Input()
+  divider = true;
+
+  @Input()
   mask: boolean;
 
   @Input()
   maskClosable: boolean;
 
-  private _value = SIZE_MAPPER[DrawerSize.Medium];
   @Input()
-  set width(value: number) {
-    this._value = value;
-  }
-
-  get width() {
-    return this._value;
-  }
+  width: string = DrawerSize.Medium;
 
   get drawerClasses(): Record<string, boolean> {
     return {
       'aui-drawer': true,
-      ...(!this.drawerClass ? null : { [this.drawerClass]: true }),
+      hasDivider: this.divider,
+      isOpen: this.visible,
+      ...(this.drawerClass ? { [this.drawerClass]: true } : null),
     };
   }
 
-  private readonly afterClosed$ = new Subject<R>();
-
-  get afterClosed(): Observable<R> {
-    return this.afterClosed$.asObservable();
-  }
-
-  private readonly afterOpen$ = new Subject<void>();
-
-  get afterOpen(): Observable<void> {
-    return this.afterOpen$.asObservable();
-  }
-
-  @Output()
-  drawerViewInit = new EventEmitter<void>();
-
-  @Output() readonly close = new EventEmitter<MouseEvent>();
+  @Output() readonly visibleChange = new EventEmitter<boolean>();
 
   @ViewChild('drawerTemplate', { static: true })
   drawerTemplate: TemplateRef<void>;
@@ -139,24 +91,18 @@ export class DrawerComponent<
   bodyPortalOutlet: CdkPortalOutlet;
 
   @ContentChild(DrawerHeaderDirective, { read: TemplateRef })
-  titleTemplate: TemplateRef<T>;
-
-  @ContentChild(DrawerContentDirective, { read: TemplateRef })
-  contentTemplate: TemplateRef<T> | ComponentType<T>;
+  headerRef: TemplateRef<T>;
 
   @ContentChild(DrawerFooterDirective, { read: TemplateRef })
-  footerTemplate: TemplateRef<T>;
+  footerRef: TemplateRef<T>;
 
-  onDestroy$ = new Subject<void>();
-
-  isTemplateRef = isTemplateRef;
-
-  componentInstance: T | null = null;
+  destroy$ = new Subject<void>();
 
   contentParams: D;
   overlayRef: OverlayRef;
   portal: TemplatePortal;
   templateContext: unknown = {};
+
   get transform() {
     return `translateX(${this.visible ? 0 : '100%'})`;
   }
@@ -164,36 +110,34 @@ export class DrawerComponent<
   constructor(
     private readonly viewContainerRef: ViewContainerRef,
     private readonly overlay: Overlay,
-    private readonly injector: Injector,
-    private readonly cdr: ChangeDetectorRef,
-  ) {
-    super();
-  }
+  ) {}
 
   ngOnInit() {
     this.attachOverlay();
     this.updateBodyOverflow();
     this.templateContext = { $implicit: this.contentParams };
-    this.cdr.detectChanges();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    const { visible } = changes;
-    if (visible) {
-      const value = visible.currentValue;
-      if (value) {
-        this.open();
-      } else {
-        this.dispose();
-      }
+  open() {
+    this.visibleChange.emit(true);
+    this.updateBodyOverflow();
+  }
+
+  close() {
+    this.visibleChange.emit(false);
+    this.updateBodyOverflow();
+  }
+
+  maskClick() {
+    if (this.maskClosable && this.mask) {
+      this.close();
     }
   }
 
-  ngAfterViewInit() {
-    this.attachBodyContent();
-    setTimeout(() => {
-      this.drawerViewInit.emit();
-    }, 0);
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.disposeOverlay();
   }
 
   private attachOverlay() {
@@ -208,7 +152,7 @@ export class DrawerComponent<
       this.overlayRef.attach(this.portal);
       this.overlayRef
         .outsidePointerEvents()
-        .pipe(takeUntil(this.onDestroy$))
+        .pipe(takeUntil(this.destroy$))
         .subscribe(event => {
           // 判断鼠标点击事件的 target 是否为 overlay-container 的子节点，如果是，则不关闭 drawer。
           // 为了避免点击 drawer 里的 tooltip 后 drawer 被关闭。
@@ -220,7 +164,7 @@ export class DrawerComponent<
           ) {
             event.stopPropagation();
             event.preventDefault();
-            this.dispose();
+            this.close();
           }
         });
     }
@@ -234,33 +178,7 @@ export class DrawerComponent<
     });
   }
 
-  private attachBodyContent(): void {
-    this.bodyPortalOutlet?.dispose();
-    const content = this.content || this.contentTemplate;
-    if (content instanceof Type) {
-      const componentPortal = new ComponentPortal<T>(
-        content,
-        null,
-        Injector.create({
-          providers: [
-            {
-              provide: DATA,
-              useValue: this.contentParams,
-            },
-          ],
-          parent: this.injector,
-        }),
-      );
-      const componentRef = this.bodyPortalOutlet?.attachComponentPortal(
-        componentPortal,
-      );
-      this.componentInstance = componentRef.instance;
-      Object.assign(componentRef.instance, this.contentParams);
-      componentRef.changeDetectorRef.detectChanges();
-    }
-  }
-
-  private updateBodyOverflow(): void {
+  private updateBodyOverflow() {
     if (this.overlayRef) {
       if (this.visible) {
         this.overlayRef.getConfig().scrollStrategy.enable();
@@ -270,38 +188,10 @@ export class DrawerComponent<
     }
   }
 
-  open() {
-    this.visible = true;
-    this.afterOpen$.next();
-    this.afterOpen$.complete();
-    this.updateBodyOverflow();
-    this.cdr.markForCheck();
-  }
-
-  dispose(result: R = null) {
-    this.visible = false;
-    this.close.emit();
-    this.afterClosed$.next(result);
-    this.afterClosed$.complete();
-    this.updateBodyOverflow();
-    this.cdr.markForCheck();
-  }
-
-  private disposeOverlay(): void {
+  private disposeOverlay() {
     if (this.overlayRef) {
       this.overlayRef.dispose();
     }
     this.overlayRef = null;
-  }
-
-  maskClick() {
-    if (this.maskClosable && this.mask) {
-      this.dispose();
-    }
-  }
-
-  ngOnDestroy(): void {
-    this.onDestroy$.next();
-    this.disposeOverlay();
   }
 }

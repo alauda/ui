@@ -6,64 +6,28 @@
     (click)="maskClick()"
   ></div>
   <div
-    [style.marginTop]="offsetY"
     [ngClass]="drawerClasses"
-    [class.isOpen]="visible"
     [ngStyle]="{
       transform: transform,
-      width: width + 'px'
+      width: width,
+      marginTop: offsetY
     }"
   >
-    <div class="aui-drawer__content">
-      <div class="aui-drawer__body-wrapper">
-        <div class="aui-drawer__header">
-          <div class="aui-drawer__title">
-            <ng-container
-              *ngIf="!isTemplateRef(title || titleTemplate); else elseTemplate"
-            >
-              {{ title }}
-            </ng-container>
-            <ng-template #elseTemplate>
-              <ng-container
-                *ngIf="title || titleTemplate"
-                [ngTemplateOutlet]="title || titleTemplate"
-                [ngTemplateOutletContext]="templateContext"
-              ></ng-container>
-            </ng-template>
-          </div>
-          <div class="aui-drawer__close" *ngIf="showClose" (click)="dispose()">
-            <aui-icon icon="close"></aui-icon>
-          </div>
-        </div>
-
-        <div class="aui-drawer__body">
-          <ng-template cdkPortalOutlet></ng-template>
-          <ng-container *ngIf="isTemplateRef(content || contentTemplate)">
-            <ng-container
-              *ngTemplateOutlet="
-                content || contentTemplate;
-                context: templateContext
-              "
-            >
-            </ng-container>
-          </ng-container>
-        </div>
-
-        <div *ngIf="footer || footerTemplate" class="aui-drawer__footer">
-          <ng-container
-            *ngIf="!isTemplateRef(footer || footerTemplate); else elseTemplate"
-          >
-            {{ footer }}
-          </ng-container>
-          <ng-template #elseTemplate>
-            <ng-container
-              *ngIf="footer || titleTemplate"
-              [ngTemplateOutlet]="footer || titleTemplate"
-              [ngTemplateOutletContext]="templateContext"
-            ></ng-container>
-          </ng-template>
-        </div>
+    <div *ngIf="headerRef || showClose" class="aui-drawer__header-wrapper">
+      <div class="aui-drawer__header">
+        <ng-content select="[auiDrawerHeader]"></ng-content>
       </div>
+      <div *ngIf="showClose" class="aui-drawer__close" (click)="close()">
+        <aui-icon icon="close"></aui-icon>
+      </div>
+    </div>
+
+    <div class="aui-drawer__content">
+      <ng-content></ng-content>
+    </div>
+
+    <div class="aui-drawer__footer">
+      <ng-content select="[auiDrawerFooter]"></ng-content>
     </div>
   </div>
 </ng-template>

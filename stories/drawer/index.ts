@@ -1,11 +1,5 @@
-import {
-  ButtonModule,
-  DrawerModule,
-  DrawerRef,
-  DrawerService,
-  InputModule,
-} from '@alauda/ui';
-import { Component, Input, TemplateRef } from '@angular/core';
+import { ButtonModule, DrawerModule, InputModule } from '@alauda/ui';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { storiesOf } from '@storybook/angular';
 
@@ -52,16 +46,17 @@ storiesOf('Drawer', module)
       offsetY:
       <aui-number-input [step]="20" [(ngModel)]="offsetY"></aui-number-input>
     </div>
-    <aui-drawer [offsetY]="offsetY" [visible]="visible" (close)="close()">
-      <div *auiDrawerHeader>header</div>
-      <ng-container *auiDrawerContent> content </ng-container>
-      <div *auiDrawerFoot>foot</div>
+    <aui-drawer [offsetY]="offsetY" [(visible)]="visible">
+      <div auiDrawerHeader>header</div>
+      <ng-container>content</ng-container>
+      <div auiDrawerFooter>footer</div>
     </aui-drawer>
   `,
 })
 class DemoComponent {
   offsetY = 0;
   visible = false;
+
   open() {
     this.visible = true;
   }
@@ -133,26 +128,24 @@ export class MaskDrawerComponent {
   `,
 })
 export class ServiceDrawerComponent {
-  drawerRef: DrawerRef;
-  constructor(private readonly drawerService: DrawerService) {}
-
-  open(template: TemplateRef<unknown>) {
-    this.drawerRef = this.drawerService.open({
-      title: 'title',
-      content: template,
-      footer: 'footer',
-    });
-    this.drawerRef.afterClosed.subscribe(res => {
-      console.log(res);
-    });
-    this.drawerRef.afterOpen.subscribe(() => {
-      console.log('open');
-    });
-  }
-
-  close() {
-    this.drawerRef.dispose('on close');
-  }
+  // drawerRef: DrawerRef;
+  // constructor(private readonly drawerService: DrawerService) {}
+  // open(template: TemplateRef<unknown>) {
+  //   this.drawerRef = this.drawerService.open({
+  //     title: 'title',
+  //     content: template,
+  //     footer: 'footer',
+  //   });
+  //   this.drawerRef.afterClosed.subscribe(res => {
+  //     console.log(res);
+  //   });
+  //   this.drawerRef.afterOpen.subscribe(() => {
+  //     console.log('open');
+  //   });
+  // }
+  // close() {
+  //   this.drawerRef.dispose('on close');
+  // }
 }
 
 @Component({
@@ -163,38 +156,35 @@ export class ServiceDrawerComponent {
   `,
 })
 export class ServiceDrawerCptComponent {
-  drawerRef: DrawerRef;
-  constructor(private readonly drawerService: DrawerService) {}
-
-  open() {
-    this.drawerRef = this.drawerService.open({
-      title: 'title',
-      width: 500,
-      content: DrawerContentComponent,
-      contentParams: { data: 111 },
-      footer: 'footer',
-    });
-    this.drawerRef.afterClosed.subscribe(res => {
-      console.log(res);
-    });
-    this.drawerRef.afterOpen.subscribe(() => {
-      console.log('open');
-    });
-  }
-
-  openTwo() {
-    this.drawerService.open({
-      title: 'title',
-      width: 500,
-      content: DrawerContent1Component,
-      contentParams: { data: 222 },
-      footer: 'footer',
-    });
-  }
-
-  close() {
-    this.drawerRef.dispose('on close');
-  }
+  // drawerRef: DrawerRef;
+  // constructor(private readonly drawerService: DrawerService) {}
+  // open() {
+  //   this.drawerRef = this.drawerService.open({
+  //     title: 'title',
+  //     width: 500,
+  //     content: DrawerContentComponent,
+  //     contentParams: { data: 111 },
+  //     footer: 'footer',
+  //   });
+  //   this.drawerRef.afterClosed.subscribe(res => {
+  //     console.log(res);
+  //   });
+  //   this.drawerRef.afterOpen.subscribe(() => {
+  //     console.log('open');
+  //   });
+  // }
+  // openTwo() {
+  //   this.drawerService.open({
+  //     title: 'title',
+  //     width: 500,
+  //     content: DrawerContent1Component,
+  //     contentParams: { data: 222 },
+  //     footer: 'footer',
+  //   });
+  // }
+  // close() {
+  //   this.drawerRef.dispose('on close');
+  // }
 }
 
 @Component({
