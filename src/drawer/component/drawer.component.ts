@@ -59,7 +59,11 @@ const SIZE_MAPPER = {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DrawerComponent<T = ComponentType<any>, R = any, D = any>
+export class DrawerComponent<
+    T = ComponentType<unknown>,
+    R = unknown,
+    D = unknown
+  >
   extends DrawerRef<T, R>
   implements OnInit, AfterViewInit, OnChanges, OnDestroy {
   @Input()
@@ -72,7 +76,7 @@ export class DrawerComponent<T = ComponentType<any>, R = any, D = any>
   size: DrawerSize = DrawerSize.Medium;
 
   @Input()
-  offsetY = 0;
+  offsetY = '0px';
 
   @Input() visible: boolean;
 
@@ -106,7 +110,7 @@ export class DrawerComponent<T = ComponentType<any>, R = any, D = any>
 
   get drawerClasses(): Record<string, boolean> {
     return {
-      drawer: true,
+      'aui-drawer': true,
       ...(!this.drawerClass ? null : { [this.drawerClass]: true }),
     };
   }
@@ -180,7 +184,7 @@ export class DrawerComponent<T = ComponentType<any>, R = any, D = any>
       if (value) {
         this.open();
       } else {
-        this.closure();
+        this.dispose();
       }
     }
   }
@@ -214,7 +218,9 @@ export class DrawerComponent<T = ComponentType<any>, R = any, D = any>
             event.target instanceof Node &&
             !this.overlayRef.hostElement?.parentNode?.contains(event.target)
           ) {
-            this.closure();
+            event.stopPropagation();
+            event.preventDefault();
+            this.dispose();
           }
         });
     }
@@ -272,9 +278,9 @@ export class DrawerComponent<T = ComponentType<any>, R = any, D = any>
     this.cdr.markForCheck();
   }
 
-  closure(result: R = null) {
+  dispose(result: R = null) {
     this.visible = false;
-    this.close.next();
+    this.close.emit();
     this.afterClosed$.next(result);
     this.afterClosed$.complete();
     this.updateBodyOverflow();
@@ -290,7 +296,7 @@ export class DrawerComponent<T = ComponentType<any>, R = any, D = any>
 
   maskClick() {
     if (this.maskClosable && this.mask) {
-      this.closure();
+      this.dispose();
     }
   }
 
