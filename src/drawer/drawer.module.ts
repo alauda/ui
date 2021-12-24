@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { IconModule } from '../icon/public-api';
-import { DrawerService } from '../public-api';
 
 import { DrawerComponent } from './component/drawer.component';
 import {
@@ -12,6 +11,7 @@ import {
   DrawerFooterDirective,
   DrawerHeaderDirective,
 } from './component/helper-directives';
+import { DrawerService } from './drawer.service';
 
 const COMMON = [
   DrawerComponent,
