@@ -4,7 +4,7 @@ import { ComponentRef, Injectable, TemplateRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { DrawerComponent } from './drawer.component';
+import { DrawerComponent } from './component/drawer.component';
 
 interface DrawerOptions<T = any, D = any> {
   title?: string | TemplateRef<unknown>;
