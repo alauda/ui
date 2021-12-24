@@ -37,7 +37,7 @@
   }
 
   &__header {
-    margin: 20px 20px 0 20px;
+    margin: 20px 20px -4px 20px;
     padding-bottom: 16px;
     display: flex;
     justify-content: space-between;
@@ -77,14 +77,14 @@
   }
 
   &__body {
-    margin: 16px 20px;
+    margin: 20px;
     overflow: hidden;
     overflow-y: auto;
     height: 100%;
   }
 
   &__footer {
-    margin: 0 20px 20px 20px;
+    margin: -4px 20px 20px 20px;
     padding-top: 16px;
     border-top: 1px solid get-color(n-8);
   }

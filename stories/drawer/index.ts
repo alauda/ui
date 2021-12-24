@@ -55,7 +55,7 @@ storiesOf('Drawer', module)
     <aui-drawer [offsetY]="offsetY" [visible]="visible" (close)="close()">
       <div *auiDrawerHeader>header</div>
       <ng-container *auiDrawerContent> content </ng-container>
-      <div *auiDrawerFoot>foot</div>
+      <div *auiDrawerFooter>footer</div>
     </aui-drawer>
   `,
 })
@@ -82,7 +82,7 @@ class DemoComponent {
     >
       <div *auiDrawerHeader>header</div>
       <ng-container *auiDrawerContent> content </ng-container>
-      <div *auiDrawerFoot>foot</div>
+      <div *auiDrawerFooter>footer</div>
     </aui-drawer>
   `,
 })
