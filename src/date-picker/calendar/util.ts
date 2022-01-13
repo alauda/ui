@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from 'dayjs';
+import { Dayjs, UnitType } from 'dayjs';
 
 import { TimePickerModel } from '../../time-picker/time-picker.type';
 import { DateNavRange, DisabledDateFn } from '../date-picker.type';
@@ -183,10 +183,10 @@ export const composeDisabledDateFn = (...fns: DisabledDateFn[]) => (
   navRange: DateNavRange,
 ) => !fns.filter(i => !!i).every(fn => !fn(date, navRange));
 
-export function minDate(a: Dayjs, b: Dayjs, unit: dayjs.UnitType = 'date') {
+export function minDate(a: Dayjs, b: Dayjs, unit: UnitType = 'date') {
   return !a ? b : !b ? a : a.isBefore(b, unit) ? a : b;
 }
 
-export function maxDate(a: Dayjs, b: Dayjs, unit: dayjs.UnitType = 'date') {
+export function maxDate(a: Dayjs, b: Dayjs, unit: UnitType = 'date') {
   return !a ? b : !b ? a : a.isAfter(b, unit) ? a : b;
 }

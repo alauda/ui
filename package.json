@@ -39,12 +39,12 @@
     "test:watch": "jest --watch"
   },
   "peerDependencies": {
-    "@angular/animations": "^10.0.0 || ^11.0.0",
-    "@angular/cdk": "^10.2.2 || ^11.0.0",
-    "@angular/common": "^10.0.0 || ^11.0.0",
-    "@angular/core": "^10.0.0 || ^11.0.0",
-    "@angular/forms": "^10.0.0 || ^11.0.0",
-    "@angular/platform-browser": "^10.0.0 || ^11.0.0",
+    "@angular/animations": ">=11.0.0",
+    "@angular/cdk": ">=11.2.0",
+    "@angular/common": ">=11.0.0",
+    "@angular/core": ">=11.0.0",
+    "@angular/forms": ">=11.0.0",
+    "@angular/platform-browser": ">=11.0.0",
     "clipboard-polyfill": "^3.0.0",
     "dayjs": "^1.0.0",
     "rxjs": "^6.0.0"

@@ -15,14 +15,15 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import { updateDateByTimeModel } from '../date-picker/calendar/util';
 import { CommonFormControl } from '../form/common-form';
+import { TooltipDirective } from '../tooltip/public-api';
+import { ComponentSize } from '../types';
+import { buildBem } from '../utils';
+
 import {
   TimePickerDataLike,
   TimePickerModel,
-  TooltipDirective,
   isTimePickerModel,
-} from '../public-api';
-import { ComponentSize } from '../types';
-import { buildBem } from '../utils';
+} from './time-picker.type';
 
 dayjs.extend(customParseFormat);
 
