@@ -66,15 +66,7 @@ export class TableComponent<T>
   @ContentChild(TablePlaceholderDefDirective, { static: true })
   _placeholderDef: TablePlaceholderDefDirective;
 
-  // FIXME: workaround to override because it will break constructor if it is field, but why MatTable works?
-  // @ts-expect-error
-  protected get stickyCssClass() {
-    return 'aui-table-sticky';
-  }
-
-  protected set stickyCssClass(_stickyCssClass: string) {
-    //
-  }
+  protected stickyCssClass = 'aui-table-sticky';
 
   ngAfterContentInit() {
     this._createPlaceholder();

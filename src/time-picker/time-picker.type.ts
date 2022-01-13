@@ -9,9 +9,9 @@ export enum TimePickerControlType {
 }
 
 export interface TimePickerModel {
-  hour: number;
-  minute: number;
-  second: number;
+  hour?: number;
+  minute?: number;
+  second?: number;
 }
 
 export type TimePickerDataLike = ConfigType | TimePickerModel;
