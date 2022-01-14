@@ -192,23 +192,42 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                       <span
                         class="aui-input-group__suffix"
                       >
-                        
-                        <aui-icon
+                        <span
                           auiinputsuffix=""
-                          class="aui-select__indicator"
+                          class="aui-select__icon-container"
                         >
-                          
-                          
-                          <svg
-                            class="aui-icon aui-icon-caret_down_s"
+                          <aui-icon
+                            class="aui-select__indicator"
                           >
-                            <use
-                              xlink:href="#aui-icon-caret_down_s"
-                            />
-                          </svg>
-                          
-                          
-                        </aui-icon>
+                            
+                            
+                            <svg
+                              class="aui-icon aui-icon-caret_down_s"
+                            >
+                              <use
+                                xlink:href="#aui-icon-caret_down_s"
+                              />
+                            </svg>
+                            
+                            
+                          </aui-icon>
+                          <aui-icon
+                            class="aui-select__clear"
+                            icon="close_small"
+                          >
+                            
+                            
+                            <svg
+                              class="aui-icon aui-icon-close_small"
+                            >
+                              <use
+                                xlink:href="#aui-icon-close_small"
+                              />
+                            </svg>
+                            
+                            
+                          </aui-icon>
+                        </span>
                       </span>
                     </div>
                     
@@ -526,23 +545,42 @@ exports[`PaginatorComponent should render current template 1`] = `
                       <span
                         class="aui-input-group__suffix"
                       >
-                        
-                        <aui-icon
+                        <span
                           auiinputsuffix=""
-                          class="aui-select__indicator"
+                          class="aui-select__icon-container"
                         >
-                          
-                          
-                          <svg
-                            class="aui-icon aui-icon-caret_down_s"
+                          <aui-icon
+                            class="aui-select__indicator"
                           >
-                            <use
-                              xlink:href="#aui-icon-caret_down_s"
-                            />
-                          </svg>
-                          
-                          
-                        </aui-icon>
+                            
+                            
+                            <svg
+                              class="aui-icon aui-icon-caret_down_s"
+                            >
+                              <use
+                                xlink:href="#aui-icon-caret_down_s"
+                              />
+                            </svg>
+                            
+                            
+                          </aui-icon>
+                          <aui-icon
+                            class="aui-select__clear"
+                            icon="close_small"
+                          >
+                            
+                            
+                            <svg
+                              class="aui-icon aui-icon-close_small"
+                            >
+                              <use
+                                xlink:href="#aui-icon-close_small"
+                              />
+                            </svg>
+                            
+                            
+                          </aui-icon>
+                        </span>
                       </span>
                     </div>
                     
@@ -871,23 +909,42 @@ exports[`PaginatorComponent should render current template 2`] = `
                       <span
                         class="aui-input-group__suffix"
                       >
-                        
-                        <aui-icon
+                        <span
                           auiinputsuffix=""
-                          class="aui-select__indicator"
+                          class="aui-select__icon-container"
                         >
-                          
-                          
-                          <svg
-                            class="aui-icon aui-icon-caret_down_s"
+                          <aui-icon
+                            class="aui-select__indicator"
                           >
-                            <use
-                              xlink:href="#aui-icon-caret_down_s"
-                            />
-                          </svg>
-                          
-                          
-                        </aui-icon>
+                            
+                            
+                            <svg
+                              class="aui-icon aui-icon-caret_down_s"
+                            >
+                              <use
+                                xlink:href="#aui-icon-caret_down_s"
+                              />
+                            </svg>
+                            
+                            
+                          </aui-icon>
+                          <aui-icon
+                            class="aui-select__clear"
+                            icon="close_small"
+                          >
+                            
+                            
+                            <svg
+                              class="aui-icon aui-icon-close_small"
+                            >
+                              <use
+                                xlink:href="#aui-icon-close_small"
+                              />
+                            </svg>
+                            
+                            
+                          </aui-icon>
+                        </span>
                       </span>
                     </div>
                     

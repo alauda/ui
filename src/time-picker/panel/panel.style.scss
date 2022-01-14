@@ -8,24 +8,26 @@ $total_height: $cell_height * $col_reveal_items;
 $strut_height: $cell_height * ($col_reveal_items - 1);
 
 .#{$block} {
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    background-color: get-color(n-10);
-    @include text-set(m);
-    @include popper-shadow;
+  display: flex;
+  flex-direction: column;
+  background-color: get-color(n-10);
+  border-radius: get-size(border-radius-m);
+  overflow: hidden;
+  @include text-set(m);
+  @include popper-shadow;
 
-    ul,
-    li {
-      border: none;
-    }
+  ul,
+  li {
+    border: none;
   }
+
   &__content {
     display: flex;
     flex-direction: row;
     height: $total_height;
     border-bottom: 1px solid get-color(n-8);
   }
+
   &__footer {
     display: flex;
     flex-direction: row;
@@ -33,6 +35,7 @@ $strut_height: $cell_height * ($col_reveal_items - 1);
     align-items: center;
     padding: 9px;
   }
+
   &__column {
     overflow: hidden;
     flex: 1;
@@ -54,9 +57,11 @@ $strut_height: $cell_height * ($col_reveal_items - 1);
       visibility: hidden;
     }
   }
+
   &__column + .#{$block}__column {
     border-left: 1px solid get-color(n-8);
   }
+
   &__cell {
     flex: none;
     height: $cell_height;

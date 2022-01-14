@@ -16,10 +16,7 @@ aui-date-picker {
     &.ng-submitted,
     &.ng-dirty {
       .#{$block}__container {
-        border-color: get-color(red) !important;
-        &.isFocused {
-          @include outline-shadow(red);
-        }
+        @include input-error;
       }
     }
   }

@@ -72,7 +72,6 @@
         [disableSeconds]="leftDisabledTimeFn(rangeValue[0], 'seconds')"
         [placeholder]="'select_time' | auiI18n"
         tooltipPosition="top start"
-        class="time-picker"
       ></aui-time-picker>
 
       <span class="placeholder separator">{{ 'to' | auiI18n }}</span>
@@ -93,7 +92,6 @@
         (ngModelChange)="timeChange($event)"
         [placeholder]="'select_time' | auiI18n"
         tooltipPosition="top start"
-        class="time-picker"
       ></aui-time-picker>
     </div>
   </aui-calendar-footer>

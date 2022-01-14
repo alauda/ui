@@ -174,7 +174,7 @@ export class PickerPanelComponent implements OnChanges {
 
   match(value: Dayjs) {
     if (
-      !this.matchDates?.length ||
+      !this.matchDates?.filter(v => !!v)?.length ||
       getNavRangeByType(this.type) !== this.navRange
     ) {
       return false;

@@ -1,67 +1,17 @@
+@import '../theme/var';
 @import '../theme/mixin';
 
-$block: aui-time-picker;
+.aui-time-picker {
+  display: inline-block;
+  position: relative;
+  width: get-size(form-item-width-s);
 
-::ng-deep {
-  .aui-input-group__addon.aui-input-group__addon--after {
-    background-color: initial;
-    border: none;
-  }
+  @include input-field-indicator;
 }
 
-#{$block} {
-  &.ng-invalid {
-    &.ng-submitted,
-    &.ng-dirty {
-      .#{$block}__container {
-        border-color: get-color(red) !important;
-        &.isFocused {
-          @include outline-shadow(red);
-        }
-      }
-    }
-  }
-}
-
-.#{$block} {
-  &__container {
-    display: flex;
-    border-radius: get-size(border-radius-m);
-    border: $border-style $border-width get-color(n-7);
-    background-color: get-color(n-9);
-    &.disabled {
-      cursor: not-allowed;
-      background-color: get-color(n-8);
-    }
-    &:hover:not(.disabled) {
-      border-color: get-color(primary);
-    }
-    &.isFocused:not(.disabled) {
-      border-color: get-color(primary);
-      @include outline-shadow(primary);
-    }
-    > .aui-input {
-      border: none;
-      &[readonly] {
-        background-color: initial;
-        cursor: pointer;
-      }
-      &:focus {
-        outline: none;
-        box-shadow: none;
-      }
-    }
-  }
-  &__icon {
-    color: $color-text-help;
-    font-size: $time-picker-icon-size;
-    width: $time-picker-icon-size;
-    height: $time-picker-icon-size;
-    line-height: $time-picker-icon-size;
-    align-self: center;
-    margin-right: 6px;
-    .clear {
-      @include clear-button;
-    }
+aui-time-picker.ng-invalid.ng-dirty,
+.ng-submitted aui-time-picker.ng-invalid {
+  .aui-input {
+    @include input-error;
   }
 }

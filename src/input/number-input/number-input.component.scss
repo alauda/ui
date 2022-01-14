@@ -5,8 +5,8 @@ $block: 'aui-number-input';
 
 .#{$block} {
   display: flex;
-  width: 140px;
   padding: 3px;
+  width: get-size(form-item-width-s);
   border: 1px solid get-color(n-7);
   border-radius: get-size(border-radius-m);
   background-color: get-color(n-9);

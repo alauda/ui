@@ -103,10 +103,5 @@ textarea.aui-input {
 
 .aui-input.ng-invalid.ng-dirty,
 .ng-submitted .aui-input.ng-invalid {
-  border-color: get-color(red) !important;
-
-  &:focus,
-  &.isFocused {
-    @include outline-shadow(red);
-  }
+  @include input-error;
 }

@@ -1,8 +1,4 @@
-<div
-  *ngIf="enabledColumns"
-  [class]="bem.element('wrapper')"
-  [style.width.px]="totalWidth"
->
+<div *ngIf="enabledColumns" [class]="bem.block()" [style.width.px]="totalWidth">
   <div [class]="bem.element('content')">
     <div [class]="bem.element('column')" #hourRef *ngIf="hourEnabled">
       <ul>

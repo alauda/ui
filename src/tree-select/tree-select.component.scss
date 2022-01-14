@@ -9,22 +9,11 @@
   position: relative;
   width: 100%;
 
+  @include input-field-indicator;
+
   &:not(.isDisabled) {
     &:hover .aui-input {
       border-color: get-color(primary);
-    }
-    .aui-icon-caret_down_s {
-      fill: get-color(n-2);
-    }
-  }
-
-  &__clear .aui-icon {
-    @include clear-button;
-  }
-
-  &.isClearable .aui-input-group .aui-tree-select__input.aui-input {
-    &--medium {
-      padding-right: get-select-padding-variables(m, true);
     }
   }
 
@@ -37,6 +26,6 @@
 aui-tree-select.ng-invalid.ng-dirty,
 .ng-submitted aui-tree-select.ng-invalid {
   .aui-input {
-    border-color: get-color(red) !important;
+    @include input-error;
   }
 }

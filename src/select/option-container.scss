@@ -36,11 +36,3 @@
     }
   }
 }
-
-@function get-select-padding-variables($size: m, $clearable: false) {
-  @return calc(
-    #{get-size(font-size-#{$size})} * #{if($clearable == false, 1, 2)} + #{get-size(
-        inline-padding-xs
-      )} + #{get-size(spacing-m)} * #{if($clearable == false, 1, 2)}
-  );
-}
