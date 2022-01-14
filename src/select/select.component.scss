@@ -11,9 +11,7 @@
   position: relative;
   width: 100%;
 
-  &__clear .aui-icon {
-    @include clear-button;
-  }
+  @include input-field-indicator;
 
   &__label-container.aui-input {
     position: absolute;
@@ -32,25 +30,6 @@
 
   &__label {
     @include text-overflow;
-  }
-
-  &.isClearable .aui-input-group .aui-input {
-    &--large {
-      padding-right: get-select-padding-variables(l, true);
-    }
-    &--medium {
-      padding-right: get-select-padding-variables(m, true);
-    }
-    &--small {
-      padding-right: get-select-padding-variables(m, true);
-    }
-    &--mini {
-      padding-right: get-select-padding-variables(s, true);
-    }
-  }
-
-  &:not(.isDisabled) .aui-icon-caret_down_s {
-    fill: get-color(n-2);
   }
 
   &__input.aui-input[readonly] {
@@ -72,6 +51,6 @@
 aui-select.ng-invalid.ng-dirty,
 .ng-submitted aui-select.ng-invalid {
   .aui-input {
-    border-color: get-color(red) !important;
+    @include input-error;
   }
 }

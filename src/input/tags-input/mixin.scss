@@ -142,12 +142,10 @@
   .ng-submitted #{$block}.ng-invalid {
     .aui-input,
     .aui-tags-input {
-      border-color: get-color(red) !important;
+      @include input-error;
+
       .aui-tags-input__input {
         color: get-color(red);
-      }
-      &.isFocused {
-        @include outline-shadow(red);
       }
     }
   }

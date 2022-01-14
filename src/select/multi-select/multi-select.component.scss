@@ -12,35 +12,26 @@ $block: aui-multi-select;
 
 @include component-style($block);
 
-@mixin multi-select-style($size: m) {
-  padding-right: get-select-padding-variables(#{$size}, false);
-
-  .#{$block} {
-    &__suffix {
-      right: calc(1px + #{get-size(inline-padding-xs)});
-    }
-  }
-
-  &.isClearable {
-    padding-right: get-select-padding-variables(#{$size}, true);
-  }
-}
-
 .#{$block} {
-  &--large {
-    @include multi-select-style(m);
-  }
+  @each $key in large medium small mini {
+    $map: map-get($input-size, $key);
+    $padding: calc(
+      #{get-size(inline-padding-xs)} * 2 + #{map-get($map, icon-size)} + 1px
+    );
 
-  &--medium {
-    @include multi-select-style(m);
-  }
+    &--#{$key} {
+      height: map-get($map, height);
+      font-size: map-get($map, font-size);
+      line-height: map-get($map, line-height);
+      padding-right: calc(
+        #{get-size(inline-padding-xs)} * 2 + #{map-get($map, icon-size)} + 1px
+      );
 
-  &--small {
-    @include multi-select-style(s);
-  }
-
-  &--mini {
-    @include multi-select-style(s);
+      .#{$block}__suffix {
+        right: calc(#{get-size(inline-padding-xs)} + 1px);
+        font-size: map-get($map, icon-size);
+      }
+    }
   }
 
   &__suffix {
@@ -49,21 +40,10 @@ $block: aui-multi-select;
     transform: translateY(-50%);
   }
 
-  &__clear .aui-icon {
-    @include clear-button;
-  }
-
-  &__indicator {
-    color: get-text-color(help);
-    cursor: default;
-  }
+  @include input-field-indicator;
 
   &.withHeightLimit {
     @include with-height-limit;
-  }
-
-  &:not(.isDisabled) .aui-icon-caret_down_s {
-    fill: get-color(n-2);
   }
 
   .aui-tag--info {

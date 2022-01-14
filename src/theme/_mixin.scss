@@ -98,6 +98,41 @@
   }
 }
 
+@mixin input-field-indicator() {
+  &__icon-container {
+    display: block;
+    position: relative;
+    color: get-color(n-4);
+  }
+
+  &__clear {
+    display: none;
+
+    .aui-icon {
+      @include clear-button;
+    }
+  }
+
+  &.isClearable:not(.isDisabled):hover & {
+    &__indicator {
+      display: none;
+    }
+
+    &__clear {
+      display: flex;
+    }
+  }
+}
+
+@mixin input-error() {
+  border-color: get-color(red) !important;
+
+  &:focus,
+  &.isFocused {
+    @include outline-shadow(red);
+  }
+}
+
 @mixin expand-button() {
   display: inline-flex;
   justify-content: center;

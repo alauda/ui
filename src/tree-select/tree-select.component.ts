@@ -127,6 +127,10 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
   displayText = '';
   flattedNodes: Array<TreeNode<T>> = [];
 
+  get isClearable() {
+    return !this.disabled && this.clearable && this.getInputValue();
+  }
+
   get opened() {
     return this.tooltipRef.isCreated;
   }
@@ -145,10 +149,6 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
       this.filterString$$.next(val);
       this.filterChange.emit(val);
     }
-  }
-
-  get rootClass() {
-    return `aui-tree-select ${this.displayClearable() ? 'isClearable' : ''}`;
   }
 
   openNodes() {
@@ -243,10 +243,6 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
 
   getInputValue() {
     return this.filterable && this.opened ? '' : this.displayText;
-  }
-
-  displayClearable() {
-    return !this.disabled && this.clearable && this.getInputValue();
   }
 
   // `this` is not available in `trackBy`...

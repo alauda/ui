@@ -17,7 +17,6 @@ import { updateDateByTimeModel } from '../date-picker/calendar/util';
 import { CommonFormControl } from '../form/common-form';
 import { TooltipDirective } from '../tooltip/public-api';
 import { ComponentSize } from '../types';
-import { buildBem } from '../utils';
 
 import {
   TimePickerDataLike,
@@ -26,8 +25,6 @@ import {
 } from './time-picker.type';
 
 dayjs.extend(customParseFormat);
-
-const bem = buildBem('aui-time-picker');
 
 @Component({
   selector: 'aui-time-picker',
@@ -83,25 +80,17 @@ export class TimePickerComponent extends CommonFormControl<
   @Input()
   footerTemplate: TemplateRef<void>;
 
-  @Input()
-  tooltipPosition = 'bottom start';
+  @Output()
+  readonly open = new EventEmitter<void>();
 
   @Output()
-  openChange = new EventEmitter<boolean>();
+  readonly close = new EventEmitter<void>();
 
-  @ViewChild('tooltip', { static: false })
-  tooltip: TooltipDirective;
+  @ViewChild('tooltipRef')
+  tooltipRef: TooltipDirective;
 
   timeValue: Dayjs = null;
   timeFormatValue = '';
-  focused = false;
-  hovered = false;
-  bem = bem;
-  get rootClass() {
-    return `${bem.element('container')} ${this.focused ? 'isFocused' : ''} ${
-      this.disabled ? 'disabled' : ''
-    }`;
-  }
 
   writeValue(value: TimePickerDataLike) {
     super.writeValue(value);
@@ -125,13 +114,10 @@ export class TimePickerComponent extends CommonFormControl<
   }
 
   changeFromPanel(value: Dayjs) {
-    // sync input value
     this.timeFormatValue = value?.format(this.format);
-    this.cdr.markForCheck();
   }
 
   changeFromInput(source: string) {
-    // sync panel value
     if (!source) {
       this.timeValue = null;
     } else {
@@ -142,33 +128,53 @@ export class TimePickerComponent extends CommonFormControl<
     }
   }
 
-  blur() {
+  onKeyDown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Enter':
+        this.openPanel();
+        event.stopPropagation();
+        event.preventDefault();
+        break;
+      case 'Escape':
+        this.closePanel();
+        event.stopPropagation();
+        event.preventDefault();
+        break;
+    }
+  }
+
+  onBlur() {
     if (this.onTouched) {
       this.onTouched();
     }
-    // dateFormatValue may need reset
     this.setValue(this.timeValue);
     this.submit();
   }
 
-  openTooltip() {
-    if (this.tooltip.isCreated) {
+  openPanel() {
+    if (this.tooltipRef.isCreated) {
       return;
     }
-    this.tooltip.createTooltip();
-    this.openChange.next(true);
+    this.tooltipRef.createTooltip();
+    this.open.next();
   }
 
-  clear() {
+  closePanel() {
+    if (!this.tooltipRef.isCreated) {
+      return;
+    }
+    this.tooltipRef.disposeTooltip();
+    this.close.next();
+  }
+
+  clearValue(event: Event) {
     this.setValue(null);
     this.submit();
+    event.stopPropagation();
+    event.preventDefault();
   }
 
   submit(close = true, value?: Dayjs) {
-    if (close) {
-      this.tooltip.disposeTooltip();
-      this.openChange.next(false);
-    }
     const refer = value ?? this.timeValue;
     this.emitValue(
       refer
@@ -179,5 +185,8 @@ export class TimePickerComponent extends CommonFormControl<
           }
         : null,
     );
+    if (close) {
+      this.closePanel();
+    }
   }
 }

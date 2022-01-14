@@ -51,8 +51,6 @@
           [disableHours]="getDisabledTimeFn(selectedDate, 'hours')"
           [disableMinutes]="getDisabledTimeFn(selectedDate, 'minutes')"
           [disableSeconds]="getDisabledTimeFn(selectedDate, 'seconds')"
-          [style.width.px]="88"
-          [style.display]="'inline-block'"
           tooltipPosition="top start"
           (ngModelChange)="timeDateChange($event)"
           [placeholder]="'select_time' | auiI18n"

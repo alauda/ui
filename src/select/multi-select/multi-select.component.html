@@ -13,16 +13,17 @@
   [style.max-height]="maxHeight"
 >
   <div class="aui-multi-select__suffix">
-    <aui-icon
-      *ngIf="displayClearBtn"
-      class="aui-multi-select__clear"
-      (click)="clearValue($event)"
-      icon="close_small"
-    ></aui-icon>
-    <aui-icon
-      class="aui-multi-select__indicator"
-      [icon]="loading ? 'spinner' : 'caret_down_s'"
-    ></aui-icon>
+    <span class="aui-multi-select__icon-container">
+      <aui-icon
+        class="aui-multi-select__indicator"
+        [icon]="loading ? 'spinner' : 'caret_down_s'"
+      ></aui-icon>
+      <aui-icon
+        class="aui-multi-select__clear"
+        icon="close_small"
+        (click)="clearValue($event)"
+      ></aui-icon>
+    </span>
   </div>
   <span
     [hidden]="selectedValues.length || inputRef.value.length"
