@@ -4,17 +4,17 @@
 .aui-input-group {
   display: inline-block;
   width: 100%;
-  color: get-text-color(main);
+  color: use-text-color(main);
 
   &.isDisabled {
-    color: get-text-color(disabled);
+    color: use-text-color(disabled);
     cursor: not-allowed;
   }
 
   @each $key in large medium small mini {
     $map: map-get($input-size, $key);
     $padding: calc(
-      #{get-size(inline-padding-xs)} * 2 + #{map-get($map, icon-size)} + 1px
+      #{use-var(inline-padding-xs)} * 2 + #{map-get($map, icon-size)} + 1px
     );
 
     &--#{$key} {
@@ -50,7 +50,7 @@
 
     &:hover {
       .aui-input {
-        border-color: get-color(primary);
+        border-color: use-rgb(primary);
       }
     }
   }
@@ -60,34 +60,34 @@
     align-items: center;
     flex-shrink: 0;
     height: 100%;
-    padding: 0 get-size(inline-padding-xs);
-    border: 1px solid get-color(n-7);
-    background-color: get-color(n-8);
+    padding: 0 use-var(inline-padding-xs);
+    border: 1px solid use-rgb(n-7);
+    background-color: use-rgb(n-8);
 
     &--before {
       border-right: none;
-      border-radius: get-size(border-radius-m) 0 0 get-size(border-radius-m);
+      border-radius: use-var(border-radius-m) 0 0 use-var(border-radius-m);
     }
     &--after {
       border-left: none;
-      border-radius: 0 get-size(border-radius-m) get-size(border-radius-m) 0;
+      border-radius: 0 use-var(border-radius-m) use-var(border-radius-m) 0;
     }
   }
 
   &__prefix {
     position: absolute;
     top: 50%;
-    left: calc(#{get-size(inline-padding-xs)} + 1px);
+    left: calc(#{use-var(inline-padding-xs)} + 1px);
     transform: translateY(-50%);
-    color: get-text-color(placeholder);
+    color: use-text-color(placeholder);
   }
 
   &__suffix {
     position: absolute;
     top: 50%;
-    right: calc(#{get-size(inline-padding-xs)} + 1px);
+    right: calc(#{use-var(inline-padding-xs)} + 1px);
     transform: translateY(-50%);
-    color: get-text-color(placeholder);
+    color: use-text-color(placeholder);
   }
 
   &.hasAddonBefore {

@@ -11,13 +11,13 @@ $block: aui-date-range-picker-panel;
     @include text-set(m);
 
     .placeholder {
-      color: get-text-color(placeholder);
+      color: use-text-color(placeholder);
       &.separator {
         margin-inline: 12px;
       }
     }
     .date-value {
-      color: get-text-color(main);
+      color: use-text-color(main);
     }
     .date-holder {
       display: inline-block;

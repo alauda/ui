@@ -11,10 +11,10 @@
     align-self: center;
   }
   &.aui-tag--info {
-    color: get-color(n-1);
+    color: use-rgb(n-1);
   }
   &.aui-tag--medium {
-    font-size: get-size(font-size-m);
+    font-size: use-var(font-size-m);
     margin: 0 8px;
     &.isRound {
       border-radius: $tag-medium-height / 2;

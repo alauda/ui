@@ -4,7 +4,7 @@
 .aui-time-picker {
   display: inline-block;
   position: relative;
-  width: get-size(form-item-width-s);
+  width: use-var(form-item-width-s);
 
   @include input-field-indicator;
 }

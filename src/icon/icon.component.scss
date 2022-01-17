@@ -12,11 +12,11 @@ aui-icon {
   fill: currentColor;
 
   &--left {
-    margin-left: get-size(spacing-s);
+    margin-left: use-var(spacing-s);
   }
 
   &--right {
-    margin-right: get-size(spacing-s);
+    margin-right: use-var(spacing-s);
   }
 }
 
@@ -25,7 +25,7 @@ aui-icon {
 }
 
 aui-icon + aui-icon > .aui-icon {
-  margin-left: get-size(spacing-s);
+  margin-left: use-var(spacing-s);
 }
 
 @keyframes rotating {

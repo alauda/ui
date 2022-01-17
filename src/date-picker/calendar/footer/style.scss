@@ -4,6 +4,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-top: 1px solid get-color(n-8);
+  border-top: 1px solid use-rgb(n-8);
   padding: 8px 0 0;
 }

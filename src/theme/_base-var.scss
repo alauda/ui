@@ -1,35 +1,35 @@
 @use "sass:string";
 
-@function get-size($name) {
+@function use-var($name) {
   @return var(--aui-#{$name});
 }
 
-@function get-color($name: primary, $level: none) {
+@function use-rgb($name: primary, $level: none) {
   @if $level != none {
     @return rgb(var(--aui-color-#{string.slice('#{$name}', 1, 1)}-#{$level}));
   }
   @return rgb(var(--aui-color-#{$name}));
 }
 
-@function get-text-color($level: main) {
-  @if $level == main {
-    @return get-color(n-1);
-  } @else if $level == secondary {
-    @return get-color(n-2);
-  } @else if $level == help {
-    @return get-color(n-4);
-  } @else if $level == disabled or $level == placeholder {
-    @return get-color(n-6);
-  } @else {
-    @return get-color($level);
-  }
-}
-
-@function get-rgba($name, $opacity) {
+@function use-rgba($name, $opacity) {
   @return rgba(var(--aui-color-#{$name}), $opacity);
 }
 
-$divider-line: 1px solid get-color(n-8);
+@function use-text-color($level: main) {
+  @if $level == main {
+    @return use-rgb(n-1);
+  } @else if $level == secondary {
+    @return use-rgb(n-2);
+  } @else if $level == help {
+    @return use-rgb(n-4);
+  } @else if $level == disabled or $level == placeholder {
+    @return use-rgb(n-6);
+  } @else {
+    @return use-rgb($level);
+  }
+}
+
+$divider-line: 1px solid use-rgb(n-8);
 
 /**
  ******************************
@@ -97,13 +97,13 @@ $color-danger-darker: mix($color-black, $color-primary, 20%);
 $color-error-darker: $color-danger-dark;
 $color-info-darker: mix($color-black, $color-primary, 20%);
 
-$color-text-main: get-text-color(main);
-$color-text-secondary: get-text-color(secondary);
-$color-text-help: get-text-color(help);
-$color-text-disabled: get-text-color(disabled);
-$color-text-placeholder: get-text-color(placeholder);
+$color-text-main: use-text-color(main);
+$color-text-secondary: use-text-color(secondary);
+$color-text-help: use-text-color(help);
+$color-text-disabled: use-text-color(disabled);
+$color-text-placeholder: use-text-color(placeholder);
 
-$color-disabled-bg: get-color(n-8);
+$color-disabled-bg: use-rgb(n-8);
 
 // Font
 $font-size-extra-large: 20px;

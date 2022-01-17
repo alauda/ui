@@ -7,10 +7,10 @@ $block: 'aui-search';
   display: inline-block;
   width: 100%;
   position: relative;
-  color: get-color(n-4);
+  color: use-rgb(n-4);
 
   &.isDisabled {
-    color: get-text-color(disabled);
+    color: use-text-color(disabled);
     cursor: not-allowed;
   }
 
@@ -27,25 +27,25 @@ $block: 'aui-search';
 
       .#{$block}__clear,
       .#{$block}__spinner {
-        right: calc(#{get-size(inline-padding-xs)} + 1px);
+        right: calc(#{use-var(inline-padding-xs)} + 1px);
       }
 
       .#{$block}__icon {
-        left: calc(#{get-size(inline-padding-xs)} + 1px);
+        left: calc(#{use-var(inline-padding-xs)} + 1px);
       }
 
       .#{$block}__button-icon {
-        padding: 0 get-size(inline-padding-xs);
+        padding: 0 use-var(inline-padding-xs);
       }
 
       &.isClearable .#{$block}__input,
       &.isSearching .#{$block}__input {
-        padding-right: get-size(inline-padding-xs);
+        padding-right: use-var(inline-padding-xs);
       }
 
       &.hasIcon .#{$block}__input {
         padding-left: calc(
-          #{map-get($map, icon-size)} + #{get-size(inline-padding-xs)} * 2 + 1px
+          #{map-get($map, icon-size)} + #{use-var(inline-padding-xs)} * 2 + 1px
         );
       }
 
@@ -53,7 +53,7 @@ $block: 'aui-search';
         &__input {
           padding-right: calc(
             #{map-get($map, icon-size)} +
-              #{get-size(inline-padding-xs)} *
+              #{use-var(inline-padding-xs)} *
               3 +
               1px
           );
@@ -62,7 +62,7 @@ $block: 'aui-search';
         &__clear {
           right: calc(
             #{map-get($map, icon-size)} +
-              #{get-size(inline-padding-xs)} *
+              #{use-var(inline-padding-xs)} *
               3 +
               1px *
               2
@@ -80,7 +80,7 @@ $block: 'aui-search';
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: get-text-color(placeholder);
+    color: use-text-color(placeholder);
   }
 
   &__button {
@@ -96,12 +96,12 @@ $block: 'aui-search';
     cursor: pointer;
 
     &:hover {
-      color: get-color(primary);
+      color: use-rgb(primary);
     }
   }
 
   &__button-icon {
-    border-left: 1px solid get-color(n-7);
+    border-left: 1px solid use-rgb(n-7);
   }
 
   &__clear,

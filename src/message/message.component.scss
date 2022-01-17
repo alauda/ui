@@ -15,23 +15,23 @@ $color-map: (
 
 .aui-message {
   display: flex;
-  margin-bottom: get-size(spacing-xxl);
+  margin-bottom: use-var(spacing-xxl);
   padding: 8px 16px;
   min-width: 100px;
   max-width: 800px;
-  border-radius: get-size(border-radius-m);
-  background-color: get-color(n-10);
+  border-radius: use-var(border-radius-m);
+  background-color: use-rgb(popper-bg);
   @include text-set(m, main);
   @include modal-shadow;
 
   &__icon {
-    font-size: get-size(icon-size-m);
+    font-size: use-var(icon-size-m);
   }
 
   @each $status, $color in $color-map {
     &__icon--#{$status} {
-      margin-right: get-size(spacing-m);
-      color: get-color($color);
+      margin-right: use-var(spacing-m);
+      color: use-rgb($color);
     }
   }
 }

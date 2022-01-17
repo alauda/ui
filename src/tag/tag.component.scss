@@ -2,28 +2,28 @@
 @import '../theme/mixin';
 
 @mixin colorful-tag($color) {
-  color: get-color($color);
-  background-color: get-color($color, 6);
+  color: use-rgb($color);
+  background-color: use-rgb($color, 6);
   &.hasBorder {
-    border-color: get-color($color, 2);
+    border-color: use-rgb($color, 2);
     &.allowClick {
       &:hover {
-        border-color: get-color($color, 1);
+        border-color: use-rgb($color, 1);
       }
       &:active {
-        border-color: get-color($color, 0);
+        border-color: use-rgb($color, 0);
       }
     }
   }
   &.allowClick {
     &:hover {
-      background-color: get-color($color, 7);
+      background-color: use-rgb($color, 7);
       cursor: pointer;
     }
 
     &:active {
-      color: get-color($color);
-      background-color: get-color($color, 6);
+      color: use-rgb($color);
+      background-color: use-rgb($color, 6);
     }
   }
 }
@@ -61,7 +61,7 @@
   &--medium {
     height: $tag-medium-height;
     line-height: $tag-medium-height - $tag-border-width * 2;
-    font-size: get-size(font-size-m);
+    font-size: use-var(font-size-m);
     padding: 0 $tag-medium-padding;
     &.isRound {
       border-radius: $tag-medium-height / 2;
@@ -121,15 +121,15 @@
   }
 
   &--info {
-    color: get-color(n-2);
-    background-color: get-color(n-8);
+    color: use-rgb(n-2);
+    background-color: use-rgb(n-8);
     &.hasBorder {
-      border-color: get-color(n-7);
-      background-color: get-color(n-9);
+      border-color: use-rgb(n-7);
+      background-color: use-rgb(n-9);
     }
     .aui-tag__close .aui-icon:hover {
       color: $tag-info-bg-color;
-      background-color: get-color(n-4);
+      background-color: use-rgb(n-4);
     }
   }
 
@@ -146,23 +146,23 @@
 
   &.isSolid#{&} {
     &--primary {
-      background-color: get-color(primary);
+      background-color: use-rgb(primary);
     }
 
     &--success {
-      background-color: get-color(green);
+      background-color: use-rgb(green);
     }
 
     &--warning {
-      background-color: get-color(yellow);
+      background-color: use-rgb(yellow);
     }
 
     &--error {
-      background-color: get-color(red);
+      background-color: use-rgb(red);
     }
 
     &--info {
-      background-color: get-color(n);
+      background-color: use-rgb(n);
     }
   }
 

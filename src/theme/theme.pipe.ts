@@ -10,13 +10,13 @@ import { takeUntil } from 'rxjs/operators';
 import { ThemeService } from './theme.service';
 import { Theme, ThemeSet } from './theme.types';
 
-@Pipe({ name: 'auiTheme', pure: false })
-export class ThemePipe<T> implements PipeTransform, OnDestroy {
+@Pipe({ name: 'auiThemePicker', pure: false })
+export class ThemePickerPipe<T> implements PipeTransform, OnDestroy {
   private currentTheme: Theme;
   private readonly destroy$$ = new Subject<void>();
 
   constructor(themeService: ThemeService, cdr: ChangeDetectorRef) {
-    themeService.currentAppTheme$
+    themeService.currentTheme$
       .pipe(takeUntil(this.destroy$$))
       .subscribe(theme => {
         this.currentTheme = theme;

@@ -6,53 +6,59 @@ $block: 'aui-tooltip';
 
 .#{$block} {
   position: relative;
-  padding: get-size(spacing-xl);
-  line-height: get-size(line-height-s);
-  font-size: get-size(font-size-s);
-  border-radius: get-size(border-radius-m);
+  padding: use-var(spacing-xl);
+  line-height: use-var(line-height-s);
+  font-size: use-var(font-size-s);
+  border-radius: use-var(border-radius-m);
   @include popper-shadow;
 
   max-width: 400px;
   word-wrap: break-word; // do NOT add 'word-break: break-all;', design requirement
 
   &--default {
-    padding: get-size(spacing-m) get-size(spacing-xl);
-    color: get-color(n-10);
-    background-color: get-rgba(n-0, 0.85);
+    padding: use-var(spacing-m) use-var(spacing-xl);
+    @include theme-light {
+      color: use-rgb(n-10);
+      background-color: use-rgb(n-1);
+    }
+    @include theme-dark {
+      color: use-rgb(n-1);
+      background-color: use-rgb(main-bg);
+    }
   }
 
   &--primary {
-    color: get-color(primary);
-    background-color: get-color(n-10);
+    color: use-rgb(primary);
+    background-color: use-rgb(popper-bg);
   }
 
   &--success {
-    color: get-color(green);
-    background-color: get-color(n-10);
+    color: use-rgb(green);
+    background-color: use-rgb(popper-bg);
   }
 
   &--warning {
-    color: get-color(yellow);
-    background-color: get-color(n-10);
+    color: use-rgb(yellow);
+    background-color: use-rgb(popper-bg);
   }
 
   &--error {
-    color: get-color(red);
-    background-color: get-color(n-10);
+    color: use-rgb(red);
+    background-color: use-rgb(popper-bg);
   }
 
   &--info {
-    color: get-color(n-0);
-    background-color: get-color(n-10);
+    color: use-rgb(n-1);
+    background-color: use-rgb(popper-bg);
   }
 
   &--top,
   &--bottom {
-    margin: get-size(spacing-s) 0;
+    margin: use-var(spacing-s) 0;
   }
 
   &--start,
   &--end {
-    margin: 0 get-size(spacing-s);
+    margin: 0 use-var(spacing-s);
   }
 }

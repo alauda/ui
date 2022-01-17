@@ -7,12 +7,14 @@ $input-width: 80px;
 .#{$block} {
   display: inline-flex;
   align-items: center;
-  color: get-color(n-1);
+  color: use-rgb(n-1);
 
   .aui-button {
-    width: get-size(line-height-xl);
-    height: get-size(line-height-xl);
+    width: use-var(line-height-xl);
+    height: use-var(line-height-xl);
     border: unset;
+    background-color: transparent;
+
     .aui-button__content {
       padding: unset;
     }
@@ -47,7 +49,7 @@ $input-width: 80px;
 
     .aui-select {
       width: $input-width;
-      margin-right: get-size(spacing-s);
+      margin-right: use-var(spacing-s);
     }
   }
 
@@ -57,39 +59,39 @@ $input-width: 80px;
     }
 
     span + input {
-      margin-left: get-size(spacing-m);
+      margin-left: use-var(spacing-m);
     }
     input + span {
-      margin-left: get-size(spacing-s);
+      margin-left: use-var(spacing-s);
     }
   }
 
   &__total {
-    font-size: get-size(font-size-m);
+    font-size: use-var(font-size-m);
   }
 
   &__navigator.aui-button {
-    background-color: get-color(n-8);
+    background-color: use-rgb(n-8);
     aui-icon {
-      font-size: get-size(font-size-l);
+      font-size: use-var(font-size-l);
     }
     &:hover {
-      background-color: get-color(p-6);
+      background-color: use-rgb(p-6);
     }
   }
 
   &__pager {
-    border: 1px solid get-color(n-7);
+    border: 1px solid use-rgb(n-7);
     padding: 3px;
-    border-radius: get-size(border-radius-m);
-    background-color: get-color(n-9);
+    border-radius: use-var(border-radius-m);
+    background-color: use-rgb(main-bg);
   }
 
   &__layout {
     display: inline-block;
 
     + .#{$block}__layout {
-      margin-left: get-size(spacing-l);
+      margin-left: use-var(spacing-l);
     }
   }
 }

@@ -55,7 +55,7 @@
   <svg
     *ngIf="
       getIconId(
-        icon ? icon : ({ light: light, dark: dark } | auiTheme)
+        icon ? icon : ({ light: light, dark: dark } | auiThemePicker)
       ) as iconId
     "
     [attr.class]="getClass(iconId)"

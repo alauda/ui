@@ -3,8 +3,12 @@
 @import '~@angular/cdk/overlay-prebuilt';
 
 .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.aui-dialog-backdrop {
-  background-color: get-color(n-1);
-  opacity: 0.4;
+  @include theme-light {
+    background-color: use-rgba(origin-shadow, 0.4);
+  }
+  @include theme-dark {
+    background-color: use-rgba(origin-shadow, 0.65);
+  }
 }
 
 .cdk-overlay-pane.aui-dialog-overlay-pane {
@@ -22,8 +26,8 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
   margin: 18vh auto 20px;
   display: flex;
   flex-direction: column;
-  background-color: get-color(n-10);
-  border-radius: get-size(border-radius-l);
+  background-color: use-rgb(n-10);
+  border-radius: use-var(border-radius-l);
   @include modal-shadow;
   @include text-set(m, main);
 
@@ -56,36 +60,36 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
       width: 100%;
       @include text-set(xl, main);
 
-      font-weight: get-size(font-weight-bold);
+      font-weight: use-var(font-weight-bold);
 
       > aui-icon:first-child {
-        font-size: get-size(icon-size-xl);
-        margin-right: get-size(spacing-m);
+        font-size: use-var(icon-size-xl);
+        margin-right: use-var(spacing-m);
 
         &[icon='info_circle_s'] {
-          color: get-color(primary);
+          color: use-rgb(primary);
         }
         &[icon='check_circle_s'] {
-          color: get-color(green);
+          color: use-rgb(green);
         }
         &[icon='exclamation_circle_s'] {
-          color: get-color(yellow);
+          color: use-rgb(yellow);
         }
         &[icon='exclamation_triangle_s'] {
-          color: get-color(red);
+          color: use-rgb(red);
         }
       }
     }
 
     &-close {
-      margin-left: get-size(spacing-xl);
-      line-height: get-size(line-height-xl);
-      font-size: get-size(font-size-l);
-      color: get-color(n-4);
+      margin-left: use-var(spacing-xl);
+      line-height: use-var(line-height-xl);
+      font-size: use-var(font-size-l);
+      color: use-rgb(n-4);
       cursor: pointer;
 
       &:hover {
-        color: get-color(primary);
+        color: use-rgb(primary);
       }
     }
   }

@@ -4,13 +4,13 @@
 $b: aui-section;
 
 .#{$b} {
-  padding: get-size(spacing-xl) 0;
-  font-size: get-size(font-size-m);
+  padding: use-var(spacing-xl) 0;
+  font-size: use-var(font-size-m);
 
   &__title {
-    margin-bottom: get-size(spacing-l);
-    font-size: get-size(font-size-l);
-    font-weight: get-size(font-weight-bold);
+    margin-bottom: use-var(spacing-l);
+    font-size: use-var(font-size-l);
+    font-weight: use-var(font-weight-bold);
   }
 }
 

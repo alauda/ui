@@ -25,7 +25,7 @@
   }
 
   &.isFilterable.isOpened &__label-container.aui-input {
-    color: get-color(n-4);
+    color: use-rgb(n-4);
   }
 
   &__label {
@@ -33,18 +33,18 @@
   }
 
   &__input.aui-input[readonly] {
-    background-color: get-color(n-9);
-    border-color: get-color(n-7) !important;
+    background-color: use-rgb(main-bg);
+    border-color: use-rgb(n-7) !important;
     cursor: text;
 
     &:focus {
-      border-color: get-color(primary);
+      border-color: use-rgb(primary);
     }
   }
 
   &__input.aui-input[disabled] {
-    background-color: get-color(n-8);
-    border-color: get-color(n-7);
+    background-color: use-rgb(n-8);
+    border-color: use-rgb(n-7);
   }
 }
 

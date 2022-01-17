@@ -17,20 +17,26 @@ $padding-v: 12px - 1px;
 
   @each $name, $value in $types {
     &--#{$name} {
-      background-color: get-color(#{string.slice('#{$value}', 1, 1)}-7);
-      border-color: get-color($value);
+      @include theme-light {
+        background-color: use-rgb(#{string.slice('#{$value}', 1, 1)}-7);
+      }
+      @include theme-dark {
+        background-color: use-rgb(#{string.slice('#{$value}', 1, 1)}-6);
+      }
+
+      border-color: use-rgb($value);
     }
     &--#{$name} &__icon {
-      color: get-color($value);
+      color: use-rgb($value);
     }
   }
 }
 
 .aui-inline-alert {
   display: flex;
-  margin: 0 0 get-size(spacing-xl);
+  margin: 0 0 use-var(spacing-xl);
   padding: $padding-v $padding-h;
-  border-radius: get-size(border-radius-m);
+  border-radius: use-var(border-radius-m);
   border-width: 1px;
   border-style: solid;
 
@@ -40,12 +46,12 @@ $padding-v: 12px - 1px;
     display: flex;
     margin: 0 8px 0 0;
     align-items: center;
-    height: get-size(line-height-m);
-    font-size: get-size(icon-size-m);
+    height: use-var(line-height-m);
+    font-size: use-var(icon-size-m);
   }
 
   &.hasTitle &__icon {
-    height: get-size(line-height-xl);
+    height: use-var(line-height-xl);
   }
 
   &__body {
@@ -59,12 +65,12 @@ $padding-v: 12px - 1px;
     margin: 4px 0 0 $padding-h;
     height: 1em;
     line-height: 1em;
-    font-size: get-size(font-size-s);
-    color: get-color(n-4);
+    font-size: use-var(font-size-s);
+    color: use-rgb(n-4);
     cursor: pointer;
 
     &:hover {
-      color: get-color(n-2);
+      color: use-rgb(n-2);
     }
   }
 
@@ -78,7 +84,7 @@ $padding-v: 12px - 1px;
   }
 
   &.hasTitle &__content {
-    color: get-text-color(secondary);
+    color: use-text-color(secondary);
   }
 
   &__title + &__content {
