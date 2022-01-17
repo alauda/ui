@@ -13,45 +13,45 @@
 .aui-step {
   display: flex;
   align-items: center;
-  font-weight: get-size(font-weight-normal);
+  font-weight: use-var(font-weight-normal);
   &__indicator {
-    margin-right: get-size(spacing-m);
+    margin-right: use-var(spacing-m);
     width: 24px;
     height: 24px;
     display: inline-flex;
-    color: get-color(n-4);
+    color: use-rgb(n-4);
     &-number {
       border-radius: 50%;
-      border: 1px solid get-color(n-7);
-      background-color: get-color(n-8);
-      font-weight: get-size(font-weight-bold);
-      font-size: get-size(font-size-l);
+      border: 1px solid use-rgb(n-7);
+      background-color: use-rgb(n-8);
+      font-weight: use-var(font-weight-bold);
+      font-size: use-var(font-size-l);
       display: flex;
       justify-content: center;
-      width: get-size(icon-size-xl);
-      height: get-size(icon-size-xl);
-      line-height: get-size(line-height-l);
+      width: use-var(icon-size-xl);
+      height: use-var(icon-size-xl);
+      line-height: use-var(line-height-l);
       &.selected {
-        border-color: get-color(primary);
-        background-color: get-color(primary);
+        border-color: use-rgb(primary);
+        background-color: use-rgb(primary);
         color: #fff;
       }
     }
     &-icon {
-      font-size: get-size(icon-size-xl);
+      font-size: use-var(icon-size-xl);
       display: inline-flex;
       border-radius: 50%;
       &--done,
       &--pending {
-        background-color: get-color(p-6);
-        color: get-color(primary);
+        background-color: use-rgb(p-6);
+        color: use-rgb(primary);
         &.selected {
           background-color: #fff;
         }
       }
       &--error {
-        background-color: get-color(r-6);
-        color: get-color(red);
+        background-color: use-rgb(r-6);
+        color: use-rgb(red);
         &.selected {
           background-color: #fff;
         }
@@ -63,25 +63,25 @@
     }
   }
   &__name {
-    font-size: get-size(font-size-l);
+    font-size: use-var(font-size-l);
     max-width: 128px;
   }
   &__description {
-    font-size: get-size(font-size-s);
-    margin-top: get-size(spacing-s);
-    line-height: get-size(line-height-s);
+    font-size: use-var(font-size-s);
+    margin-top: use-var(spacing-s);
+    line-height: use-var(line-height-s);
   }
   &__info {
-    color: get-color(n-4);
+    color: use-rgb(n-4);
     &--selected,
     &--pending,
     &--done,
     &--error {
-      color: get-color(n-1);
+      color: use-rgb(n-1);
     }
     &--selected {
       .aui-step__name {
-        font-weight: get-size(font-weight-bold);
+        font-weight: use-var(font-weight-bold);
       }
     }
   }
@@ -96,7 +96,7 @@
       &.clickable {
         .aui-step__info {
           &:hover {
-            color: get-color(primary);
+            color: use-rgb(primary);
           }
         }
       }
@@ -104,25 +104,25 @@
   }
   &__horizontal-line {
     height: 1px;
-    background-color: get-color(n-7);
+    background-color: use-rgb(n-7);
     flex: 1;
     max-width: 240px;
-    margin: 0 get-size(spacing-l);
+    margin: 0 use-var(spacing-l);
   }
   &__vertical-line {
     min-height: 12px;
     width: 1px;
-    background-color: get-color(n-7);
-    margin-top: get-size(spacing-s);
+    background-color: use-rgb(n-7);
+    margin-top: use-var(spacing-s);
     flex: 1;
     &--done {
-      background-color: get-color(green);
+      background-color: use-rgb(green);
     }
     &--error {
-      background-color: get-color(red);
+      background-color: use-rgb(red);
     }
     &--pending {
-      background-color: get-color(primary);
+      background-color: use-rgb(primary);
     }
   }
   &--horizontal {
@@ -136,7 +136,7 @@
     .aui-step {
       align-items: stretch;
       &:not(:last-child) {
-        margin-bottom: get-size(spacing-s);
+        margin-bottom: use-var(spacing-s);
       }
       &__indicator {
         height: auto;
@@ -145,8 +145,8 @@
         flex-direction: column;
         &-icon {
           &--done {
-            color: get-color(green);
-            background-color: get-color(g-6);
+            color: use-rgb(green);
+            background-color: use-rgb(g-6);
             &.selected {
               background-color: #fff;
             }
@@ -157,7 +157,7 @@
         padding-bottom: 13px;
       }
       &.isLastActive .aui-steps__vertical-line {
-        background-color: get-color(n-7);
+        background-color: use-rgb(n-7);
       }
     }
   }

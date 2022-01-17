@@ -4,50 +4,50 @@
 
 @mixin option($block) {
   .#{$block} {
-    padding: 0 get-size(inline-padding-xs);
-    color: get-text-color(main);
-    background-color: get-color(n-10);
+    padding: 0 use-var(inline-padding-xs);
+    color: use-text-color(main);
+    background-color: use-rgb(n-10);
     @include text-overflow;
 
     cursor: pointer;
 
     &--large {
-      height: get-size(inline-height-l);
-      line-height: get-size(inline-height-l);
-      font-size: get-size(font-size-l);
+      height: use-var(inline-height-l);
+      line-height: use-var(inline-height-l);
+      font-size: use-var(font-size-l);
     }
 
     &--medium {
-      height: get-size(inline-height-m);
-      line-height: get-size(inline-height-m);
-      font-size: get-size(font-size-m);
+      height: use-var(inline-height-m);
+      line-height: use-var(inline-height-m);
+      font-size: use-var(font-size-m);
     }
 
     &--small {
-      height: get-size(inline-height-s);
-      line-height: get-size(inline-height-s);
-      font-size: get-size(font-size-m);
+      height: use-var(inline-height-s);
+      line-height: use-var(inline-height-s);
+      font-size: use-var(font-size-m);
     }
 
     &--mini {
-      height: get-size(inline-height-xs);
-      line-height: get-size(inline-height-xs);
-      font-size: get-size(font-size-s);
+      height: use-var(inline-height-xs);
+      line-height: use-var(inline-height-xs);
+      font-size: use-var(font-size-s);
     }
 
     &:not(.isMulti).isSelected {
-      color: get-color(primary);
-      background-color: get-color(p-6);
+      color: use-rgb(primary);
+      background-color: use-rgb(p-6);
     }
 
     &:hover,
     &.isFocused {
-      background-color: get-color(p-6);
+      background-color: use-rgb(p-6);
     }
 
     &.isDisabled {
-      color: get-color(n-6);
-      background-color: get-color(n-10);
+      color: use-rgb(n-6);
+      background-color: use-rgb(n-10);
       cursor: not-allowed;
     }
 
@@ -55,7 +55,7 @@
 
     &:not(.isDisabled):hover &__pointer,
     &:not(.isDisabled).isFocused &__pointer {
-      border-color: get-color(primary);
+      border-color: use-rgb(primary);
     }
   }
 }

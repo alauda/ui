@@ -9,9 +9,9 @@ $block: 'aui-radio-button';
   display: inline-block;
   vertical-align: middle;
   position: relative;
-  color: get-color(primary);
-  border: 1px $border-style get-color(primary);
-  background-color: get-color(n-9);
+  color: use-rgb(primary);
+  border: 1px $border-style use-rgb(primary);
+  background-color: use-rgb(main-bg);
   overflow: hidden;
   z-index: 1;
   @include transition;
@@ -22,55 +22,54 @@ $block: 'aui-radio-button';
   }
 
   &:hover {
-    background-color: get-color(p-7);
+    background-color: use-rgb(p-7);
   }
 
   &.isChecked:not(.isDisabled) {
     z-index: 2;
-    color: get-color(n-10);
-    background-color: get-color(primary);
+    color: use-rgb(n-10);
+    background-color: use-rgb(primary);
   }
 
   &.isChecked.isDisabled {
-    color: get-color(n-10);
-    border-color: get-color(p-4);
-    background-color: get-color(p-4);
+    color: use-rgb(n-10);
+    border-color: use-rgb(p-4);
+    background-color: use-rgb(p-4);
   }
 
   &.isPlain {
-    color: get-color(n-1);
-    border: 1px solid get-color(n-7);
-    background-color: get-color(n-9);
+    color: use-rgb(n-1);
+    border: 1px solid use-rgb(n-7);
+
     &:hover,
     &.isChecked {
       z-index: 2;
       &:not(.isDisabled) {
-        color: get-color(primary);
-        border-color: get-color(primary);
-        background-color: get-color(n-9);
+        color: use-rgb(primary);
+        border-color: use-rgb(primary);
+        background-color: use-rgb(main-bg);
       }
     }
     &.isDisabled {
-      color: get-color(n-6);
-      border-color: get-color(n-7);
-      background-color: get-color(n-8);
+      color: use-rgb(n-6);
+      border-color: use-rgb(n-7);
+      background-color: use-rgb(n-8);
     }
     &.isDisabled.isChecked {
-      color: get-color(p-4);
-      border-color: get-color(p-4);
-      background-color: get-color(n-9);
+      color: use-rgb(p-4);
+      border-color: use-rgb(p-4);
     }
   }
 
   &.isDisabled {
     z-index: 0;
-    color: get-color(p-4);
-    border-color: get-color(p-4);
-    background-color: get-color(p-7);
+    color: use-rgb(p-4);
+    border-color: use-rgb(p-4);
+    background-color: use-rgb(p-7);
 
     .#{$block} {
       &__pointer {
-        color: get-color(p-4);
+        color: use-rgb(p-4);
       }
 
       &__label {
@@ -80,7 +79,7 @@ $block: 'aui-radio-button';
   }
 
   &__pointer {
-    color: get-color(primary);
+    color: use-rgb(primary);
     &:not(:last-child) {
       margin: 0;
     }
@@ -88,6 +87,11 @@ $block: 'aui-radio-button';
       position: absolute;
       right: 0;
       bottom: 0;
+      background-image: linear-gradient(
+        to bottom right,
+        transparent 51%,
+        white 51%
+      );
     }
   }
 
@@ -100,7 +104,7 @@ $block: 'aui-radio-button';
   &__label {
     display: flex;
     align-items: center;
-    font-size: get-size(font-size-m);
+    font-size: use-var(font-size-m);
     cursor: pointer;
   }
 
@@ -108,12 +112,12 @@ $block: 'aui-radio-button';
     .#{$block} {
       &__pointer {
         .aui-icon {
-          font-size: get-size(font-size-l);
+          font-size: use-var(font-size-l);
         }
       }
       &__label {
-        height: calc(#{get-size(inline-height-m)} - 2px);
-        padding: 0 get-size(inline-padding-m);
+        height: calc(#{use-var(inline-height-m)} - 2px);
+        padding: 0 use-var(inline-padding-m);
       }
     }
   }
@@ -122,12 +126,12 @@ $block: 'aui-radio-button';
     .#{$block} {
       &__pointer {
         .aui-icon {
-          font-size: get-size(font-size-s);
+          font-size: use-var(font-size-s);
         }
       }
       &__label {
-        height: calc(#{get-size(inline-height-s)} - 2px);
-        padding: 0 get-size(inline-padding-s);
+        height: calc(#{use-var(inline-height-s)} - 2px);
+        padding: 0 use-var(inline-padding-s);
       }
     }
   }
@@ -136,14 +140,14 @@ $block: 'aui-radio-button';
 #{$block}:first-child {
   .#{$block} {
     margin-left: 0;
-    border-top-left-radius: get-size(border-radius-m);
-    border-bottom-left-radius: get-size(border-radius-m);
+    border-top-left-radius: use-var(border-radius-m);
+    border-bottom-left-radius: use-var(border-radius-m);
   }
 }
 
 #{$block}:last-child {
   .#{$block} {
-    border-top-right-radius: get-size(border-radius-m);
-    border-bottom-right-radius: get-size(border-radius-m);
+    border-top-right-radius: use-var(border-radius-m);
+    border-bottom-right-radius: use-var(border-radius-m);
   }
 }

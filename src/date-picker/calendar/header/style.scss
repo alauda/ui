@@ -15,13 +15,13 @@ $block: aui-calendar-header;
     justify-content: center;
     align-items: center;
     font-size: 16px;
-    color: get-text-color(main);
-    font-weight: get-size(font-weight-bold);
+    color: use-text-color(main);
+    font-weight: use-var(font-weight-bold);
 
     a {
-      color: get-text-color(main);
+      color: use-text-color(main);
       &:hover {
-        color: get-color(primary);
+        color: use-rgb(primary);
         text-decoration: none !important;
       }
     }

@@ -7,24 +7,24 @@ $small-bar-border-radius: 4px;
 
 $bar-type: (
   primary: (
-    background: get-color(primary),
-    hover-background: get-color(p-2),
+    background: use-rgb(primary),
+    hover-background: use-rgb(p-2),
   ),
   success: (
-    background: get-color(green),
-    hover-background: get-color(g-2),
+    background: use-rgb(green),
+    hover-background: use-rgb(g-2),
   ),
   warning: (
-    background: get-color(yellow),
-    hover-background: get-color(y-2),
+    background: use-rgb(yellow),
+    hover-background: use-rgb(y-2),
   ),
   error: (
-    background: get-color(red),
-    hover-background: get-color(r-2),
+    background: use-rgb(red),
+    hover-background: use-rgb(r-2),
   ),
   info: (
-    background: get-color(n-4),
-    hover-background: get-color(n-6),
+    background: use-rgb(n-4),
+    hover-background: use-rgb(n-6),
   ),
 );
 
@@ -59,7 +59,7 @@ $bar-type: (
     min-width: 2px;
     height: 100%;
     flex: 1 1 1;
-    border-radius: get-size(border-radius-m);
+    border-radius: use-var(border-radius-m);
 
     &:first-child {
       border-top-left-radius: $bar-border-radius;
@@ -82,20 +82,20 @@ $bar-type: (
     }
 
     &--pending {
-      height: get-size(inline-height-m);
+      height: use-var(inline-height-m);
       animation: pending 0.5s linear infinite;
       background: repeating-linear-gradient(
         -60deg,
-        get-color(b-5),
-        get-color(b-5) get-size(spacing-s),
-        get-color(b-6) get-size(spacing-s),
-        get-color(b-6) get-size(spacing-m)
+        use-rgb(b-5),
+        use-rgb(b-5) use-var(spacing-s),
+        use-rgb(b-6) use-var(spacing-s),
+        use-rgb(b-6) use-var(spacing-m)
       );
     }
   }
 
   &__chunk + &__chunk {
-    margin-left: get-size(spacing-xs);
+    margin-left: use-var(spacing-xs);
   }
 }
 

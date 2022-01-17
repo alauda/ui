@@ -4,13 +4,13 @@
 @mixin pointer($checkedStatus) {
   &__pointer {
     display: inline-block;
-    width: get-size(icon-size-m);
-    height: get-size(icon-size-m);
-    margin-right: get-size(spacing-m);
-    border-radius: get-size(border-radius-m);
-    border: 1px $border-style get-color(n-7);
-    color: get-color(n-10);
-    background-color: get-color(n-9);
+    width: use-var(icon-size-m);
+    height: use-var(icon-size-m);
+    margin-right: use-var(spacing-m);
+    border-radius: use-var(border-radius-m);
+    border: 1px $border-style use-rgb(n-7);
+    color: white;
+    background-color: use-rgb(main-bg);
     position: relative;
     vertical-align: middle;
     @include transition;
@@ -25,18 +25,18 @@
   }
 
   &.cdk-keyboard-focused &__pointer {
-    border-color: get-color(primary);
+    border-color: use-rgb(primary);
     @include outline-shadow(primary);
   }
 
   &.#{$checkedStatus} &__pointer {
-    border-color: get-color(primary);
-    background-color: get-color(primary);
+    border-color: use-rgb(primary);
+    background-color: use-rgb(primary);
   }
 
   &.#{$checkedStatus}.isDisabled &__pointer {
-    border-color: get-color(p-4);
-    background-color: get-color(p-4);
+    border-color: use-rgb(p-4);
+    background-color: use-rgb(p-4);
   }
 
   &.isDisabled &__label {
@@ -44,7 +44,7 @@
   }
 
   &.isDisabled &__pointer {
-    border-color: get-color(n-7);
-    background-color: get-color(n-8);
+    border-color: use-rgb(n-7);
+    background-color: use-rgb(n-8);
   }
 }

@@ -12,6 +12,6 @@
   #{$block}:not(:first-child) .#{$block} {
     margin-top: 8px;
     padding-top: 8px;
-    border-top: 1px solid get-color(n-8);
+    border-top: 1px solid use-rgb(n-8);
   }
 }

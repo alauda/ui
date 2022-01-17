@@ -6,5 +6,5 @@ const channel = addons.getChannel();
 channel.addListener('DARK_MODE', (isDark: boolean) => {
   document
     .querySelector('html')
-    .setAttribute('aui-color-mode', isDark ? 'dark' : 'light');
+    .setAttribute('aui-theme-mode', isDark ? 'dark' : 'light');
 });

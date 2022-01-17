@@ -3,10 +3,10 @@
 @import '../theme/var';
 
 $block: 'aui-switch';
-$switch-border-color: get-color(n-4);
-$switch-checked-color: get-color(primary);
-$switch-disabled-bg-color: get-color(n-7);
-$switch-checked-disabled-bg-color: get-color(p-4);
+$switch-border-color: use-rgb(n-4);
+$switch-checked-color: use-rgb(primary);
+$switch-disabled-bg-color: use-rgb(n-7);
+$switch-checked-disabled-bg-color: use-rgb(p-4);
 $switch-bar-width: 28px;
 $switch-bar-height: 14px;
 
@@ -25,7 +25,7 @@ $switch-bar-height: 14px;
     }
   }
   &__bar {
-    background-color: get-color(n-4);
+    background-color: use-rgb(n-4);
     border: 1px solid $switch-border-color;
     border-radius: $switch-bar-height * 3 / 4;
     box-shadow: $switch-border-color 0 0 0 0 inset;

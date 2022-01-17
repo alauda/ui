@@ -145,7 +145,7 @@
       @include input-error;
 
       .aui-tags-input__input {
-        color: get-color(red);
+        color: use-rgb(red);
       }
     }
   }

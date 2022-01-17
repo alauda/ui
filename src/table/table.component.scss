@@ -6,8 +6,8 @@
   padding: 0 $table-padding $table-padding;
   @include text-set(m, main);
 
-  background-color: get-color(n-9);
-  border-radius: get-size(border-radius-l);
+  background-color: use-rgb(n-9);
+  border-radius: use-var(border-radius-l);
   overflow: auto;
   @include scroll-bar;
 
@@ -20,30 +20,30 @@
     }
   }
   &__header-row + &__row {
-    border-top-left-radius: get-size(border-radius-l);
-    border-top-right-radius: get-size(border-radius-l);
+    border-top-left-radius: use-var(border-radius-l);
+    border-top-right-radius: use-var(border-radius-l);
   }
   &__row {
     position: relative;
     border-width: 1px;
     border-style: solid;
-    border-color: get-color(n-8);
+    border-color: use-rgb(n-8);
     border-bottom-width: 0;
-    background-color: get-color(n-10);
+    background-color: use-rgb(n-10);
     padding: 0 ($table-cell-padding-h - 1);
     min-height: $table-row-min-height;
     box-sizing: content-box;
 
     &:first-child {
-      border-top-left-radius: get-size(border-radius-l);
-      border-top-right-radius: get-size(border-radius-l);
+      border-top-left-radius: use-var(border-radius-l);
+      border-top-right-radius: use-var(border-radius-l);
     }
 
     &:last-child {
       border-bottom-width: 1px;
       min-height: $table-row-min-height;
-      border-bottom-left-radius: get-size(border-radius-l);
-      border-bottom-right-radius: get-size(border-radius-l);
+      border-bottom-left-radius: use-var(border-radius-l);
+      border-bottom-right-radius: use-var(border-radius-l);
     }
 
     &.isDisabled:before {
@@ -54,14 +54,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: get-color(n-10);
+      background-color: use-rgb(n-10);
       opacity: 0.7;
       cursor: not-allowed;
     }
   }
 
   &__header-row {
-    background-color: get-color(n-9);
+    background-color: use-rgb(n-9);
     padding: 0 $table-cell-padding-h;
   }
   &__cell,
@@ -70,21 +70,21 @@
   }
   &__cell {
     padding: $table-cell-padding-v $table-cell-padding-h;
-    background-color: get-color(n-10);
+    background-color: use-rgb(n-10);
     overflow: hidden;
     word-wrap: break-word;
   }
   &__header-cell {
     padding: $table-padding $table-cell-padding-h;
-    font-weight: get-size(font-weight-bold);
-    background-color: get-color(n-9);
+    font-weight: use-var(font-weight-bold);
+    background-color: use-rgb(n-9);
     @include text-overflow;
   }
 
   &__column-expand-button {
     display: flex;
     align-items: center;
-    max-width: calc(#{$table-cell-padding-h} * 2 + #{get-size(icon-size-m)});
+    max-width: calc(#{$table-cell-padding-h} * 2 + #{use-var(icon-size-m)});
 
     &.aui-table__cell {
       height: $table-row-min-height;
@@ -110,13 +110,13 @@
       overflow: hidden;
 
       .aui-table__cell-expand-panel {
-        border-radius: get-size(border-radius-l);
+        border-radius: use-var(border-radius-l);
         overflow: hidden;
 
         &-content {
           &.hasBackground {
             padding: 16px;
-            background-color: get-color(n-9);
+            background-color: use-rgb(n-9);
           }
         }
       }

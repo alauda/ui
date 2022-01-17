@@ -34,17 +34,17 @@ body {
 }
 
 a {
-  color: get-color(primary);
+  color: use-rgb(primary);
   text-decoration: none;
 
   &:hover {
-    color: get-color(p-1);
+    color: use-rgb(p-1);
     text-decoration: underline;
   }
 
   &:active,
   &:focus {
-    color: get-color(p-0);
+    color: use-rgb(p-0);
     text-decoration: underline;
   }
 }
@@ -64,14 +64,14 @@ a {
 
 aui-icon.aui-tooltip-copy {
   span + & {
-    margin-left: get-size(spacing-s);
+    margin-left: use-var(spacing-s);
   }
 
   &:hover {
-    color: get-color(primary);
+    color: use-rgb(primary);
   }
 }
 
 .aui-tab-label__content aui-icon:first-child .aui-icon {
-  margin-right: get-size(spacing-s);
+  margin-right: use-var(spacing-s);
 }

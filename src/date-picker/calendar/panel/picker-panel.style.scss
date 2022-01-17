@@ -2,14 +2,14 @@
 @import '../../../theme/mixin';
 
 $block: aui-picker-panel;
-$in-range-bgcolor: get-color(p-6);
+$in-range-bgcolor: use-rgb(p-6);
 $left-in-range-shadow: -6px 0 0 0 $in-range-bgcolor;
 $right-in-range-shadow: 6px 0 0 0 $in-range-bgcolor;
 
 $left-disabled-shadow: -6px 0 0 0 $color-disabled-bg;
 $right-disabled-shadow: 6px 0 0 0 $color-disabled-bg;
 
-$left-mask-shadow: -12px 0 0 0 get-color(n-10);
+$left-mask-shadow: -12px 0 0 0 use-rgb(n-10);
 
 .#{$block} {
   &__container {
@@ -65,7 +65,7 @@ $left-mask-shadow: -12px 0 0 0 get-color(n-10);
         text-align: center;
       }
 
-      color: get-text-color(help);
+      color: use-text-color(help);
       margin-bottom: 8px;
     }
   }
@@ -98,11 +98,11 @@ $left-mask-shadow: -12px 0 0 0 get-color(n-10);
     }
 
     &.isDisabled {
-      background-color: get-color(n-8);
+      background-color: use-rgb(n-8);
       box-shadow: $left-disabled-shadow, $right-disabled-shadow;
       button {
-        color: get-text-color(disabled) !important;
-        border-color: get-text-color(disabled) !important;
+        color: use-text-color(disabled) !important;
+        border-color: use-text-color(disabled) !important;
       }
     }
 
@@ -119,18 +119,18 @@ $left-mask-shadow: -12px 0 0 0 get-color(n-10);
     }
 
     &.isToday button {
-      border: get-color(primary) 1px solid;
-      color: get-color(primary);
-      background-color: get-color(p-7);
+      border: use-rgb(primary) 1px solid;
+      color: use-rgb(primary);
+      background-color: use-rgb(p-7);
     }
 
     &.isActive button {
-      background-color: get-color(primary);
-      color: get-color(n-10);
+      background-color: use-rgb(primary);
+      color: use-rgb(n-10);
     }
     &.isBackground button {
       background-color: initial !important;
-      color: get-text-color(disabled);
+      color: use-text-color(disabled);
     }
   }
 }

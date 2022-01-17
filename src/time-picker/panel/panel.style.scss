@@ -10,8 +10,8 @@ $strut_height: $cell_height * ($col_reveal_items - 1);
 .#{$block} {
   display: flex;
   flex-direction: column;
-  background-color: get-color(n-10);
-  border-radius: get-size(border-radius-m);
+  background-color: use-rgb(n-10);
+  border-radius: use-var(border-radius-m);
   overflow: hidden;
   @include text-set(m);
   @include popper-shadow;
@@ -25,7 +25,7 @@ $strut_height: $cell_height * ($col_reveal_items - 1);
     display: flex;
     flex-direction: row;
     height: $total_height;
-    border-bottom: 1px solid get-color(n-8);
+    border-bottom: 1px solid use-rgb(n-8);
   }
 
   &__footer {
@@ -59,25 +59,26 @@ $strut_height: $cell_height * ($col_reveal_items - 1);
   }
 
   &__column + .#{$block}__column {
-    border-left: 1px solid get-color(n-8);
+    border-left: 1px solid use-rgb(n-8);
   }
 
   &__cell {
     flex: none;
-    height: $cell_height;
-    line-height: $cell_height;
     width: 100%;
+    height: $cell_height;
+    color: use-text-color(main);
+    line-height: $cell_height;
     cursor: pointer;
 
     &:hover {
-      background-color: get-color(p-6);
-      color: get-color(primary);
+      background-color: use-rgb(p-6);
+      color: use-rgb(primary);
     }
 
     &.selected {
-      background-color: get-color(p-7);
-      color: get-color(primary);
-      font-weight: get-size(font-weight-bold);
+      background-color: use-rgb(p-7);
+      color: use-rgb(primary);
+      font-weight: use-var(font-weight-bold);
     }
 
     &.disabled {

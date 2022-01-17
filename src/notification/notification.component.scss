@@ -15,7 +15,7 @@
   border-radius: 4px;
   padding: 20px 16px 20px 20px;
   align-items: flex-start;
-  background-color: $color-white;
+  background-color: use-rgb(popper-bg);
   @include modal-shadow;
 
   &__icon {
@@ -41,7 +41,7 @@
   &__title {
     font-size: $font-size-larger;
     text-align: left;
-    color: get-color(n-1);
+    color: use-rgb(n-1);
     line-height: $line-height-larger;
     word-break: break-word;
     &:not(:only-child) {
@@ -52,7 +52,7 @@
     font-size: $font-size-regular;
     line-height: $line-height-regular;
     text-align: left;
-    color: get-color(n-2);
+    color: use-rgb(n-2);
     max-height: 140px;
     overflow: auto;
     overflow-wrap: break-word;
@@ -63,18 +63,18 @@
   &__close {
     right: 10px;
     width: 16px;
-    color: get-color(n-4);
-    line-height: get-size(line-height-l);
+    color: use-rgb(n-4);
+    line-height: use-var(line-height-l);
     cursor: pointer;
     &:hover {
-      color: get-color(n-2);
+      color: use-rgb(n-2);
     }
   }
   &__remove {
-    font-size: get-size(font-size-l);
+    font-size: use-var(font-size-l);
   }
   &__duration {
-    font-size: get-size(font-size-m);
+    font-size: use-var(font-size-m);
   }
   &__svg {
     position: absolute;

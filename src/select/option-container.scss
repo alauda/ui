@@ -5,34 +5,34 @@
 @mixin option-container($block, $size: m) {
   .#{$block} {
     padding: $select-options-padding 0;
-    border-radius: get-size(border-radius-m);
-    background-color: get-color(n-10);
+    border-radius: use-var(border-radius-m);
+    background-color: use-rgb(n-10);
     @include popper-shadow;
 
     &__content {
-      max-height: calc(#{get-size(inline-height-#{$size})} * 10);
+      max-height: calc(#{use-var(inline-height-#{$size})} * 10);
       position: relative;
       overflow: auto;
       @include scroll-bar;
       .divider {
         border: none;
-        border-top: 1px solid get-color(n-8);
+        border-top: 1px solid use-rgb(n-8);
       }
     }
 
     &__placeholder {
-      color: get-color(n-4);
-      font-size: get-size(font-size-m);
+      color: use-rgb(n-4);
+      font-size: use-var(font-size-m);
       text-align: center;
     }
   }
 
   .#{$block}--small {
     .#{$block}__content {
-      max-height: calc(#{get-size(inline-height-s)} * 10);
+      max-height: calc(#{use-var(inline-height-s)} * 10);
     }
     .#{$block}__placeholder {
-      font-size: get-size(font-size-s);
+      font-size: use-var(font-size-s);
     }
   }
 }

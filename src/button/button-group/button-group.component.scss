@@ -9,13 +9,13 @@
     z-index: 1;
 
     &:first-child {
-      border-top-left-radius: get-size(border-radius-m);
-      border-bottom-left-radius: get-size(border-radius-m);
+      border-top-left-radius: use-var(border-radius-m);
+      border-bottom-left-radius: use-var(border-radius-m);
     }
 
     &:last-child {
-      border-top-right-radius: get-size(border-radius-m);
-      border-bottom-right-radius: get-size(border-radius-m);
+      border-top-right-radius: use-var(border-radius-m);
+      border-bottom-right-radius: use-var(border-radius-m);
     }
 
     &:hover,
@@ -42,5 +42,5 @@
 aui-button-group + aui-button-group > .aui-button-group,
 aui-button-group + .aui-button,
 .aui-button + aui-button-group > .aui-button-group {
-  margin-left: get-size(spacing-m);
+  margin-left: use-var(spacing-m);
 }

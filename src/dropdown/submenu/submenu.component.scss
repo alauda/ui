@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: get-size(spacing-s);
+  padding-right: use-var(spacing-s);
 
   &__title {
     display: inline-block;
@@ -18,7 +18,7 @@
   }
 
   &__arrow {
-    margin-left: get-size(spacing-l);
+    margin-left: use-var(spacing-l);
   }
 
   &--default {
@@ -32,7 +32,7 @@
   &.aui-tooltip {
     &--start,
     &--end {
-      margin: calc(0px - #{get-size(spacing-m)}) get-size(spacing-m);
+      margin: calc(0px - #{use-var(spacing-m)}) use-var(spacing-m);
     }
   }
 }

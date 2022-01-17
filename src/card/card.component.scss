@@ -1,25 +1,25 @@
 @import '../theme/var';
 @import '../theme/mixin';
 
-$default-border: 1px solid get-color(n-8);
+$default-border: 1px solid use-rgb(n-8);
 
 $b: aui-card;
 
 .#{$b} {
   padding: 20px;
-  border-radius: get-size(border-radius-l);
-  background-color: get-color(n-10);
-  font-size: get-size(font-size-m);
+  border-radius: use-var(border-radius-l);
+  background-color: use-rgb(n-10);
+  font-size: use-var(font-size-m);
   @include card-shadow;
 
   &__header {
     padding: 0;
     @include text-set(xxl, main);
 
-    font-weight: get-size(font-weight-bold);
+    font-weight: use-var(font-weight-bold);
 
     + .#{$b}__content {
-      margin-top: get-size(spacing-xl);
+      margin-top: use-var(spacing-xl);
     }
   }
 
@@ -27,7 +27,7 @@ $b: aui-card;
     padding: 0;
 
     + .#{$b}__footer {
-      margin-top: get-size(spacing-xl);
+      margin-top: use-var(spacing-xl);
     }
   }
 
@@ -38,22 +38,22 @@ $b: aui-card;
   &.hasDivider {
     > .#{$b} {
       &__header {
-        padding-bottom: get-size(spacing-xl);
+        padding-bottom: use-var(spacing-xl);
         border-bottom: $default-border;
 
         + .#{$b}__content {
-          margin-top: get-size(spacing-xl);
+          margin-top: use-var(spacing-xl);
         }
       }
 
       &__content {
         + .#{$b}__footer {
-          margin-top: get-size(spacing-xl);
+          margin-top: use-var(spacing-xl);
         }
       }
 
       &__footer {
-        padding-top: get-size(spacing-xl);
+        padding-top: use-var(spacing-xl);
         border-top: $default-border;
       }
     }
@@ -61,5 +61,5 @@ $b: aui-card;
 }
 
 #{$b} + #{$b} > .#{$b} {
-  margin-top: get-size(spacing-xl);
+  margin-top: use-var(spacing-xl);
 }

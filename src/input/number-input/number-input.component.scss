@@ -6,36 +6,36 @@ $block: 'aui-number-input';
 .#{$block} {
   display: flex;
   padding: 3px;
-  width: get-size(form-item-width-s);
-  border: 1px solid get-color(n-7);
-  border-radius: get-size(border-radius-m);
-  background-color: get-color(n-9);
-  color: get-text-color(main);
+  width: use-var(form-item-width-s);
+  border: 1px solid use-rgb(n-7);
+  border-radius: use-var(border-radius-m);
+  background-color: use-rgb(main-bg);
+  color: use-text-color(main);
 
   &--small {
     .#{$block}__decrease.aui-button,
     .#{$block}__increase.aui-button {
-      width: get-size(line-height-m);
-      height: get-size(line-height-m);
+      width: use-var(line-height-m);
+      height: use-var(line-height-m);
     }
   }
 
   &:hover {
-    border-color: get-color(primary);
+    border-color: use-rgb(primary);
   }
 
   &.isFocus {
-    border-color: get-color(primary);
+    border-color: use-rgb(primary);
     @include outline-shadow(primary);
   }
 
   &.isDisabled {
-    border: 1px solid get-color(n-7);
+    border: 1px solid use-rgb(n-7);
     &:hover {
       cursor: not-allowed;
     }
     .#{$block}__input {
-      color: get-color(n-6);
+      color: use-rgb(n-6);
       &:hover {
         cursor: not-allowed;
       }
@@ -44,12 +44,12 @@ $block: 'aui-number-input';
 
   &__decrease.aui-button,
   &__increase.aui-button {
-    background-color: get-color(n-8);
+    background-color: use-rgb(n-8);
     border: unset;
-    width: get-size(icon-size-xl);
-    height: get-size(icon-size-xl);
+    width: use-var(icon-size-xl);
+    height: use-var(icon-size-xl);
     aui-icon {
-      font-size: get-size(font-size-s);
+      font-size: use-var(font-size-s);
     }
     .aui-button__content {
       padding: unset;
@@ -58,12 +58,12 @@ $block: 'aui-number-input';
 
   &__input {
     min-width: 0;
-    line-height: get-size(line-height-m);
+    line-height: use-var(line-height-m);
     border: unset;
     padding: unset;
-    margin: 0 get-size(spacing-s);
-    background-color: get-color(n-9);
-    color: get-text-color(main);
+    margin: 0 use-var(spacing-s);
+    background-color: transparent;
+    color: use-text-color(main);
     text-align: center;
     &:focus {
       border: unset;
@@ -76,5 +76,5 @@ $block: 'aui-number-input';
 
 aui-number-input.ng-invalid.ng-dirty,
 .ng-submitted aui-number-input.ng-invalid {
-  border-color: get-color(red);
+  border-color: use-rgb(red);
 }

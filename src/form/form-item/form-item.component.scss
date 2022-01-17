@@ -3,28 +3,28 @@
 
 $form-item-width: (
   large: (
-    width: get-size(form-item-width-l),
+    width: use-var(form-item-width-l),
   ),
   medium: (
-    width: get-size(form-item-width-m),
+    width: use-var(form-item-width-m),
   ),
   small: (
-    width: get-size(form-item-width-s),
+    width: use-var(form-item-width-s),
   ),
 );
 
 .aui-form-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: get-size(spacing-xl);
-  color: get-color(n-1);
-  font-size: get-size(font-size-m);
+  margin-bottom: use-var(spacing-xl);
+  color: use-rgb(n-1);
+  font-size: use-var(font-size-m);
 
   &--top {
     flex-direction: column;
     .aui-form-item__label-wrapper {
-      line-height: get-size(line-height-m);
-      margin-bottom: get-size(spacing-xs);
+      line-height: use-var(line-height-m);
+      margin-bottom: use-var(spacing-xs);
       &:after {
         display: none;
       }
@@ -34,22 +34,22 @@ $form-item-width: (
   &__label-wrapper {
     display: flex;
     align-items: center;
-    line-height: get-size(inline-height-m);
+    line-height: use-var(inline-height-m);
     flex-shrink: 0;
-    padding-right: get-size(spacing-m);
+    padding-right: use-var(spacing-m);
     overflow: hidden;
 
     &--required .aui-form-item__label:before {
       content: '*';
-      color: get-color(red);
-      margin-right: get-size(spacing-s);
+      color: use-rgb(red);
+      margin-right: use-var(spacing-s);
     }
 
     &.hasLabel:after {
       content: ':';
       align-self: flex-start;
-      margin-left: get-size(spacing-xs);
-      line-height: get-size(inline-height-m);
+      margin-left: use-var(spacing-xs);
+      line-height: use-var(inline-height-m);
     }
 
     &--left {
@@ -71,7 +71,7 @@ $form-item-width: (
 
   &__label {
     display: block;
-    line-height: get-size(line-height-s);
+    line-height: use-var(line-height-s);
   }
 
   &__container {
@@ -82,7 +82,7 @@ $form-item-width: (
   &__content {
     display: flex;
     align-items: center;
-    min-height: get-size(inline-height-m);
+    min-height: use-var(inline-height-m);
 
     @each $key in large medium small {
       $map: map-get($form-item-width, $key);
@@ -97,21 +97,21 @@ $form-item-width: (
 
   &__content + &__hint-wrapper,
   &__content + &__error-wrapper {
-    margin-top: get-size(spacing-s);
+    margin-top: use-var(spacing-s);
   }
 
   &__hint-wrapper,
   &__error-wrapper {
-    font-size: get-size(font-size-s);
-    line-height: get-size(line-height-s);
+    font-size: use-var(font-size-s);
+    line-height: use-var(line-height-s);
   }
 
   &__hint-wrapper {
-    color: get-color(n-4);
+    color: use-rgb(n-4);
   }
 
   &__error-wrapper {
-    color: get-color(red);
+    color: use-rgb(red);
   }
 
   &__addon-wrapper {
@@ -120,14 +120,14 @@ $form-item-width: (
     align-items: center;
     flex-shrink: 0;
     box-sizing: content-box;
-    height: get-size(inline-height-m);
-    min-width: get-size(icon-size-m);
-    padding-left: get-size(spacing-m);
-    color: get-color(n-4);
-    font-size: get-size(font-size-m);
+    height: use-var(inline-height-m);
+    min-width: use-var(icon-size-m);
+    padding-left: use-var(spacing-m);
+    color: use-rgb(n-4);
+    font-size: use-var(font-size-m);
 
     aui-icon {
-      font-size: get-size(icon-size-m);
+      font-size: use-var(icon-size-m);
     }
   }
 }
@@ -137,6 +137,6 @@ $form-item-width: (
 
   .aui-form-item {
     margin-bottom: 0;
-    margin-right: get-size(spacing-m);
+    margin-right: use-var(spacing-m);
   }
 }

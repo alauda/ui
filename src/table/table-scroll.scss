@@ -5,9 +5,9 @@ $stickyCssClass: 'aui-table-sticky';
 
 // style for column shadow
 .aui-table__scroll-wrapper {
-  background-color: get-color(n-9);
+  background-color: use-rgb(n-9);
   padding: 0 $table-padding $table-padding;
-  border-radius: get-size(border-radius-l);
+  border-radius: use-var(border-radius-l);
   @include scroll-bar;
 
   .aui-table {
@@ -36,7 +36,7 @@ $stickyCssClass: 'aui-table-sticky';
     transform: translate3d(-12px, 0, 0);
     z-index: 99;
     top: 28px;
-    box-shadow: 0 10px 10px -4px get-rgba(n-1, 0.16);
+    box-shadow: 0 10px 10px -4px use-rgba(n-1, 0.16);
   }
   &.hasTableBottomShadow:after {
     content: '';
@@ -48,7 +48,7 @@ $stickyCssClass: 'aui-table-sticky';
     z-index: 99;
     bottom: 0;
     margin-top: -16px;
-    box-shadow: 0 -10px 10px -4px get-rgba(n-1, 0.16) inset;
+    box-shadow: 0 -10px 10px -4px use-rgba(n-1, 0.16) inset;
   }
 
   .aui-table__header-row {
@@ -67,10 +67,10 @@ $stickyCssClass: 'aui-table-sticky';
     + .aui-table__row {
       .aui-table__cell {
         &:first-of-type {
-          border-top-left-radius: get-size(border-radius-l);
+          border-top-left-radius: use-var(border-radius-l);
         }
         &:last-of-type {
-          border-top-right-radius: get-size(border-radius-l);
+          border-top-right-radius: use-var(border-radius-l);
         }
       }
     }
@@ -83,7 +83,7 @@ $stickyCssClass: 'aui-table-sticky';
     .aui-table__cell {
       border-width: 1px 0;
       border-style: solid;
-      border-color: get-color(n-8);
+      border-color: use-rgb(n-8);
       &:first-of-type {
         border-left-width: 1px;
         padding-left: $table-cell-padding-h * 2 - 1;
@@ -97,10 +97,10 @@ $stickyCssClass: 'aui-table-sticky';
     &:last-child {
       .aui-table__cell {
         &:first-of-type {
-          border-bottom-left-radius: get-size(border-radius-l);
+          border-bottom-left-radius: use-var(border-radius-l);
         }
         &:last-of-type {
-          border-bottom-right-radius: get-size(border-radius-l);
+          border-bottom-right-radius: use-var(border-radius-l);
         }
       }
     }
@@ -158,7 +158,7 @@ $stickyCssClass: 'aui-table-sticky';
       &-border-elem-left:not(.aui-table__header-row) {
         &:after {
           // stylelint-disable-next-line plugin/no-low-performance-animation-properties
-          box-shadow: inset 8px 0 4px -4px get-rgba(n-1, 0.16);
+          box-shadow: inset 8px 0 4px -4px use-rgba(n-1, 0.16);
         }
         &:before {
           @include vertical-dashed-line(1px, 'primary');
@@ -172,7 +172,7 @@ $stickyCssClass: 'aui-table-sticky';
       &-border-elem-right:not(.aui-table__header-row) {
         &:after {
           // stylelint-disable-next-line plugin/no-low-performance-animation-properties
-          box-shadow: inset -8px 0 4px -4px get-rgba(n-1, 0.16);
+          box-shadow: inset -8px 0 4px -4px use-rgba(n-1, 0.16);
         }
         &:before {
           @include vertical-dashed-line(1px, 'primary');

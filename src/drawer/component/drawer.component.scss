@@ -9,8 +9,13 @@ $drawer: aui-drawer;
   left: 0;
   width: 100%;
   height: 0;
-  opacity: 0.4;
-  background-color: get-color(n-0);
+
+  @include theme-light {
+    background-color: use-rgba(origin-shadow, 0.4);
+  }
+  @include theme-dark {
+    background-color: use-rgba(origin-shadow, 0.65);
+  }
 
   &.isOpen {
     height: 100%;
@@ -31,7 +36,7 @@ $drawer: aui-drawer;
   }
 
   &__content {
-    background-color: get-color(n-10);
+    background-color: use-rgb(n-10);
     position: absolute;
     height: 100%;
     right: 0;
@@ -48,7 +53,7 @@ $drawer: aui-drawer;
     .#{$drawer}__header {
       margin: 20px 20px -4px 20px;
       padding-bottom: 16px;
-      border-bottom: 1px solid get-color(n-8);
+      border-bottom: 1px solid use-rgb(n-8);
     }
   }
 
@@ -56,7 +61,7 @@ $drawer: aui-drawer;
     flex: 1;
     @include text-set(xxl, main);
 
-    font-weight: get-size(font-weight-bold);
+    font-weight: use-var(font-weight-bold);
     @include text-overflow;
   }
 
@@ -65,12 +70,12 @@ $drawer: aui-drawer;
     margin-left: 16px;
     display: flex;
     align-items: center;
-    font-size: get-size(icon-size-m);
-    color: get-color(n-4);
+    font-size: use-var(icon-size-m);
+    color: use-rgb(n-4);
     cursor: pointer;
 
     &:hover {
-      color: get-color(primary);
+      color: use-rgb(primary);
     }
   }
 
@@ -94,6 +99,6 @@ $drawer: aui-drawer;
   &__footer {
     margin: -4px 20px 20px 20px;
     padding-top: 16px;
-    border-top: 1px solid get-color(n-8);
+    border-top: 1px solid use-rgb(n-8);
   }
 }

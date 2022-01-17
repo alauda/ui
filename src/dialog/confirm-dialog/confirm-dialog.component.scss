@@ -3,22 +3,22 @@
 
 $padding: 32px;
 $action-padding: 20px;
-$icon-size: get-size(icon-size-xl);
-$icon-margin: get-size(spacing-m);
+$icon-size: use-var(icon-size-xl);
+$icon-margin: use-var(spacing-m);
 
 .aui-confirm-dialog {
   margin: auto;
   padding: $padding $padding $action-padding;
-  border-radius: get-size(border-radius-m);
+  border-radius: use-var(border-radius-m);
   min-width: 400px;
   max-width: 600px;
-  background-color: get-color(n-10);
+  background-color: use-rgb(n-10);
 
   &__title {
-    margin-bottom: get-size(spacing-m);
+    margin-bottom: use-var(spacing-m);
     @include text-set(xl, main);
 
-    font-weight: get-size(font-weight-bold);
+    font-weight: use-var(font-weight-bold);
     display: flex;
     word-wrap: break-word;
     word-break: break-all;
@@ -30,13 +30,13 @@ $icon-margin: get-size(spacing-m);
 
     &--primary,
     &--warning {
-      color: get-color(yellow);
+      color: use-rgb(yellow);
     }
     &--success {
-      color: get-color(green);
+      color: use-rgb(green);
     }
     &--danger {
-      color: get-color(red);
+      color: use-rgb(red);
     }
   }
 

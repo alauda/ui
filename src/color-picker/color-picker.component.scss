@@ -4,12 +4,12 @@
 .aui-color-picker {
   display: inline-block;
   padding: 3px;
-  width: $input-medium-height;
-  height: $input-medium-height;
-  border: $input-border-style $input-border-width $input-border-color;
-  border-radius: $input-border-radius;
-  background-color: $input-bg-color;
-  color: $input-color;
+  width: use-var(inline-height-m);
+  height: use-var(inline-height-m);
+  border: 1px solid use-rgb(n-7);
+  border-radius: use-var(border-radius-m);
+  background-color: use-rgb(main-bg);
+  color: use-text-color(main);
   outline: none;
   cursor: pointer;
 
@@ -21,22 +21,22 @@
   }
   &::-webkit-color-swatch {
     border: none;
-    border-radius: $input-border-radius;
+    border-radius: use-var(border-radius-m);
   }
   &::-moz-color-swatch {
     border: none;
-    border-radius: $input-border-radius;
+    border-radius: use-var(border-radius-m);
   }
 
   &:hover,
   &:focus {
-    border-color: $input-border-color-primary;
+    border-color: use-rgb(primary);
   }
 
   &[disabled] {
-    color: $input-placeholder-color;
-    background-color: $input-bg-color-disabled;
-    border-color: $input-border-color;
+    background-color: use-rgb(n-8);
+    border-color: use-rgb(n-7) !important;
+    color: use-text-color(disabled);
     cursor: not-allowed;
   }
 }

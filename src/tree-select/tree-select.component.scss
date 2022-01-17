@@ -13,12 +13,12 @@
 
   &:not(.isDisabled) {
     &:hover .aui-input {
-      border-color: get-color(primary);
+      border-color: use-rgb(primary);
     }
   }
 
   &__input.aui-input[readonly]:not([disabled]) {
-    background-color: get-color(n-9);
+    background-color: use-rgb(n-9);
     cursor: text;
   }
 }

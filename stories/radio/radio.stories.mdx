@@ -40,7 +40,7 @@ import { RadioModule } from '@alauda/ui';
     {{
       template: /* HTML */ `
         <aui-radio-group [(ngModel)]="model">
-          <aui-radio value="1">选项一</aui-radio>
+          <aui-radio value="1" [disabled]="true">选项一</aui-radio>
           <aui-radio value="2">选项二</aui-radio>
           <aui-radio value="3" [disabled]="true">选项三</aui-radio>
         </aui-radio-group>
@@ -129,7 +129,7 @@ import { RadioModule } from '@alauda/ui';
             <aui-radio-button value="3">选项三</aui-radio-button>
           </aui-radio-group><br/><br/>
         <aui-radio-group [(ngModel)]="model" size="small">
-            <aui-radio-button value="1">选项一</aui-radio-button>
+            <aui-radio-button value="1" [disabled]="true">选项一</aui-radio-button>
             <aui-radio-button value="2">选项二</aui-radio-button>
             <aui-radio-button value="3">选项三</aui-radio-button>
           </aui-radio-group><br/><br/>

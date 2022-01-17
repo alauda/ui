@@ -32,13 +32,13 @@ aui-date-picker {
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
-    border: $input-border-width $input-border-style $input-border-color;
+    border: 1px solid use-rgb(n-7);
     position: relative;
     width: 100%;
-    background-color: get-color(n-9);
-    border-radius: get-size(border-radius-m);
+    background-color: use-rgb(n-9);
+    border-radius: use-var(border-radius-m);
     &:hover:not(.disabled) {
-      border-color: get-color(primary);
+      border-color: use-rgb(primary);
       cursor: pointer;
     }
     // trigger有自己的border，隐藏了input的border，修正input由于border-box设定引起的高度差异
@@ -48,7 +48,7 @@ aui-date-picker {
       }
     }
     &.isFocused:not(.disabled) {
-      border-color: get-color(primary);
+      border-color: use-rgb(primary);
       @include outline-shadow(primary);
     }
     .aui-input {
@@ -67,11 +67,11 @@ aui-date-picker {
       .aui-input {
         background: transparent;
         cursor: not-allowed;
-        color: get-color(n-7);
+        color: use-rgb(n-7);
       }
 
-      background: $color-disabled-bg;
-      border: $input-border-width $input-border-style $input-border-color !important;
+      background: use-rgb(n-8);
+      border: 1px solid use-rgb(n-7) !important;
       &:hover {
         cursor: not-allowed;
       }
@@ -83,7 +83,7 @@ aui-date-picker {
     display: flex;
     align-items: center;
     .placeholder {
-      color: get-color(n-6);
+      color: use-rgb(n-6);
     }
   }
 

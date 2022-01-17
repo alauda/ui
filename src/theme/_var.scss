@@ -159,28 +159,28 @@ $alerts-wrapper-right: 0;
 // Input
 $input-size: (
   large: (
-    height: get-size(inline-height-l),
-    font-size: get-size(font-size-l),
-    line-height: get-size(line-height-l),
-    icon-size: get-size(icon-size-l),
+    height: use-var(inline-height-l),
+    font-size: use-var(font-size-l),
+    line-height: use-var(line-height-l),
+    icon-size: use-var(icon-size-l),
   ),
   medium: (
-    height: get-size(inline-height-m),
-    font-size: get-size(font-size-m),
-    line-height: get-size(line-height-m),
-    icon-size: get-size(icon-size-m),
+    height: use-var(inline-height-m),
+    font-size: use-var(font-size-m),
+    line-height: use-var(line-height-m),
+    icon-size: use-var(icon-size-m),
   ),
   small: (
-    height: get-size(inline-height-s),
-    font-size: get-size(font-size-m),
-    line-height: get-size(line-height-m),
-    icon-size: get-size(icon-size-m),
+    height: use-var(inline-height-s),
+    font-size: use-var(font-size-m),
+    line-height: use-var(line-height-m),
+    icon-size: use-var(icon-size-m),
   ),
   mini: (
-    height: get-size(inline-height-xs),
-    font-size: get-size(font-size-s),
-    line-height: get-size(line-height-s),
-    icon-size: get-size(icon-size-s),
+    height: use-var(inline-height-xs),
+    font-size: use-var(font-size-s),
+    line-height: use-var(line-height-s),
+    icon-size: use-var(icon-size-s),
   ),
 );
 
@@ -310,7 +310,7 @@ $tab-label-font-size-large: $font-size-larger;
 $tab-label-font-size-medium: $font-size-large;
 $tab-label-font-size-small: $font-size-regular;
 $tab-border: $border-width $border-style #ededed;
-$tab-header-type-card-bg-color: get-color(n-9);
+$tab-header-type-card-bg-color: use-rgb(n-9);
 $tab-header-indicator-color: $color-primary;
 $tab-scroll-transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
 $tab-pagination-button-z-index: 3;

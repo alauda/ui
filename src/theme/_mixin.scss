@@ -2,66 +2,83 @@
 @import 'var';
 
 @mixin theme-light {
-  :root {
-    @content;
-  }
+  $host: &;
 
-  html[aui-color-mode='light'] {
-    @content;
+  @at-root {
+    :root #{$host} {
+      @content;
+    }
+
+    html[aui-theme-mode='light'] #{$host} {
+      @content;
+    }
   }
 }
 
 @mixin theme-dark {
-  @media (prefers-color-scheme: dark) {
-    html[aui-color-mode='auto'] {
+  $host: &;
+
+  @at-root {
+    @media (prefers-color-scheme: dark) {
+      html[aui-theme-mode='system'] #{$host} {
+        @content;
+      }
+    }
+
+    html[aui-theme-mode='dark'] #{$host} {
       @content;
     }
-  }
-
-  html[aui-color-mode='dark'] {
-    @content;
   }
 }
 
 @mixin text-set($size: m, $color: none) {
-  font-size: get-size(font-size-#{$size});
-  line-height: get-size(line-height-#{$size});
+  font-size: use-var(font-size-#{$size});
+  line-height: use-var(line-height-#{$size});
   @if $color != none {
-    color: get-text-color($color);
+    color: use-text-color($color);
   }
 }
 
 @mixin icon-set($size: m, $color: none) {
   display: inline-flex;
   align-items: center;
-  height: get-size(line-height-#{$size});
-  font-size: get-size(font-size-#{$size});
+  height: use-var(line-height-#{$size});
+  font-size: use-var(font-size-#{$size});
   @if $color != none {
-    color: get-text-color($color);
+    color: use-text-color($color);
   }
 }
 
 // 使用 box-shadow 模拟带圆角的 outline
 @mixin outline-shadow($color: primary) {
-  box-shadow: 0 0 0 2px get-rgba($color, 0.16);
+  box-shadow: 0 0 0 2px use-rgba($color, 0.16);
 }
 
 @mixin card-shadow() {
-  box-shadow: 0 0 4px 0 get-rgba(n-1, 0.1);
+  @include theme-light {
+    box-shadow: 0 0 4px 0 use-rgba(origin-shadow, 0.1);
+  }
+  @include theme-dark {
+    box-shadow: 0 0 4px 0 use-rgba(origin-shadow, 0.75);
+  }
 }
 
 @mixin popper-shadow() {
-  box-shadow: 0 2px 8px 0 get-rgba(n-1, 0.2);
+  @include theme-light {
+    box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.2);
+  }
+  @include theme-dark {
+    box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.75);
+  }
 }
 
 @mixin modal-shadow() {
-  box-shadow: 0 4px 16px 0 get-rgba(n-1, 0.2);
-}
-@mixin page-header-shadow() {
-  box-shadow: 0 1px 4px 0 get-rgba(n-1, 0.1);
-}
-@mixin page-snackbar-shadow() {
-  box-shadow: 0 -1px 4px 0 get-rgba(n-1, 0.1);
+  @include theme-light {
+    box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.2);
+  }
+  @include theme-dark {
+    box-shadow: 0 4px 16px 0 use-rgba(origin-shadow, 0.75);
+  }
 }
 
 @mixin transition($target: all) {
@@ -102,7 +119,7 @@
   &__icon-container {
     display: block;
     position: relative;
-    color: get-color(n-4);
+    color: use-rgb(n-4);
   }
 
   &__clear {
@@ -125,7 +142,7 @@
 }
 
 @mixin input-error() {
-  border-color: get-color(red) !important;
+  border-color: use-rgb(red) !important;
 
   &:focus,
   &.isFocused {
@@ -137,12 +154,12 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: get-size(icon-size-m);
-  height: get-size(icon-size-m);
-  font-size: get-size(icon-size-m);
-  line-height: get-size(icon-size-m);
-  color: get-color(primary);
-  background-color: get-color(p-6);
+  width: use-var(icon-size-m);
+  height: use-var(icon-size-m);
+  font-size: use-var(icon-size-m);
+  line-height: use-var(icon-size-m);
+  color: use-rgb(primary);
+  background-color: use-rgb(p-6);
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -150,36 +167,36 @@
 
   aui-icon {
     display: block;
-    width: get-size(icon-size-m);
-    height: get-size(icon-size-m);
+    width: use-var(icon-size-m);
+    height: use-var(icon-size-m);
   }
 
   &:hover {
-    background-color: get-color(p-7);
+    background-color: use-rgb(p-7);
   }
 
   &:active {
-    background-color: get-color(p-5);
+    background-color: use-rgb(p-5);
   }
 
   &.isExpanded {
     transform: rotate(90deg);
-    color: get-color(n-10);
-    background-color: get-color(primary);
+    color: use-rgb(n-10);
+    background-color: use-rgb(primary);
 
     &:hover {
-      background-color: get-color(p-1);
+      background-color: use-rgb(p-1);
     }
 
     &:active {
-      background-color: get-color(p-0);
+      background-color: use-rgb(p-0);
     }
   }
 
   &[disabled],
   &.isExpanded[disabled] {
-    background-color: get-color(n-8);
-    color: get-color(n-6);
+    background-color: use-rgb(n-8);
+    color: use-rgb(n-6);
     cursor: not-allowed;
   }
 }
@@ -211,8 +228,8 @@
 @mixin vertical-dashed-line($width: 1px, $color: 'n-7') {
   background: linear-gradient(
     to bottom,
-    get-color($color),
-    get-color($color) 8px,
+    use-rgb($color),
+    use-rgb($color) 8px,
     transparent 6px,
     transparent
   );

@@ -12,22 +12,22 @@ export class ThemeService {
 
   private readonly currentAppTheme$$ = new ReplaySubject<Theme>(1);
 
-  currentAppTheme$ = this.currentAppTheme$$
+  readonly currentTheme$ = this.currentAppTheme$$
     .asObservable()
     .pipe(distinctUntilChanged());
 
   constructor() {
     this.htmlEl = document.querySelector('html');
 
-    switch (this.htmlEl.getAttribute('aui-color-mode')) {
+    switch (this.htmlEl.getAttribute('aui-theme-mode')) {
       case 'dark':
         this.themeMode = 'dark';
         break;
       case 'light':
         this.themeMode = 'light';
         break;
-      case 'auto':
-        this.themeMode = 'auto';
+      case 'system':
+        this.themeMode = 'system';
         break;
       default:
         this.themeMode = 'light';
@@ -38,7 +38,7 @@ export class ThemeService {
 
     darkModeQuery.addEventListener('change', ({ matches }) => {
       this.browserTheme = matches ? 'dark' : 'light';
-      if (this.themeMode === 'auto') {
+      if (this.themeMode === 'system') {
         this.themeChanged();
       }
     });
@@ -47,16 +47,16 @@ export class ThemeService {
   }
 
   setThemeMode(mode: ThemeMode) {
-    this.htmlEl.setAttribute('aui-color-mode', mode);
+    this.htmlEl.setAttribute('aui-theme-mode', mode);
     this.themeMode = mode;
     this.themeChanged();
   }
 
-  getAppTheme() {
-    return this.themeMode === 'auto' ? this.browserTheme : this.themeMode;
+  currentTheme() {
+    return this.themeMode === 'system' ? this.browserTheme : this.themeMode;
   }
 
   private themeChanged() {
-    this.currentAppTheme$$.next(this.getAppTheme());
+    this.currentAppTheme$$.next(this.currentTheme());
   }
 }

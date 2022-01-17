@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
-  templateUrl: './palette.component.html',
-  styleUrls: ['./palette.component.scss'],
+  templateUrl: './template.html',
+  styleUrls: ['./style.scss'],
 })
 export class PaletteComponent implements AfterViewInit {
   @ViewChild('ref')

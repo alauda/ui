@@ -8,41 +8,41 @@ aui-menu {
 $max-width: 280px;
 
 .aui-menu {
-  padding: get-size(spacing-m);
+  padding: use-var(spacing-m);
   max-width: $max-width;
-  border-radius: get-size(border-radius-m);
-  background-color: get-color(n-10);
-  box-shadow: 0 2px 8px 0 get-rgba(n-1, 0.16);
+  border-radius: use-var(border-radius-m);
+  background-color: use-rgb(popper-bg);
+  @include popper-shadow;
 
   &--large {
     .aui-menu-item,
     .aui-submenu {
-      height: get-size(inline-height-l);
-      font-size: get-size(font-size-l);
+      height: use-var(inline-height-l);
+      font-size: use-var(font-size-l);
     }
   }
 
   &--medium {
     .aui-menu-item,
     .aui-submenu {
-      height: get-size(inline-height-m);
-      font-size: get-size(font-size-l);
+      height: use-var(inline-height-m);
+      font-size: use-var(font-size-l);
     }
   }
 
   &--small {
     .aui-menu-item,
     .aui-submenu {
-      height: get-size(inline-height-s);
-      font-size: get-size(font-size-m);
+      height: use-var(inline-height-s);
+      font-size: use-var(font-size-m);
     }
   }
 
   &--mini {
     .aui-menu-item,
     .aui-submenu {
-      height: get-size(inline-height-xs);
-      font-size: get-size(font-size-s);
+      height: use-var(inline-height-xs);
+      font-size: use-var(font-size-s);
     }
   }
 }

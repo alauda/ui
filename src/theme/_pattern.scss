@@ -2,26 +2,26 @@
 @import 'mixin';
 
 @mixin shadow-0 {
-  border-radius: get-size(border-radius-m);
-  background-color: get-color(n-10);
+  border-radius: use-var(border-radius-m);
+  background-color: use-rgb(n-10);
 }
 
 @mixin shadow-2 {
-  border-radius: get-size(border-radius-m);
-  background-color: get-color(n-10);
-  box-shadow: 0 0 2px 0 get-rgba(n-1, 0.24);
+  border-radius: use-var(border-radius-m);
+  background-color: use-rgb(n-10);
+  box-shadow: 0 0 2px 0 use-rgba(n-1, 0.24);
 }
 
 @mixin shadow-8 {
-  border-radius: get-size(border-radius-m);
-  background-color: get-color(n-10);
-  box-shadow: 0 2px 8px 0 get-rgba(n-1, 0.16);
+  border-radius: use-var(border-radius-m);
+  background-color: use-rgb(n-10);
+  box-shadow: 0 2px 8px 0 use-rgba(n-1, 0.16);
 }
 
 @mixin shadow-16 {
-  border-radius: get-size(border-radius-m);
-  background-color: get-color(n-10);
-  box-shadow: 0 4px 16px 0 get-rgba(n-1, 0.16);
+  border-radius: use-var(border-radius-m);
+  background-color: use-rgb(n-10);
+  box-shadow: 0 4px 16px 0 use-rgba(n-1, 0.16);
 }
 
 @mixin zh-form-label-width($parent) {
@@ -46,12 +46,12 @@
     min-height: $table-row-min-height + 2px;
     @include text-set(m, placeholder);
 
-    background-color: get-color(n-10);
-    border: solid 1px get-color(n-8);
-    border-radius: get-size(border-radius-l);
+    background-color: use-rgb(n-10);
+    border: solid 1px use-rgb(n-8);
+    border-radius: use-var(border-radius-l);
 
     > aui-icon:first-child {
-      margin-right: get-size(spacing-m);
+      margin-right: use-var(spacing-m);
     }
   }
 

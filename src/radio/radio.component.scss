@@ -4,11 +4,11 @@
 $block: 'aui-radio';
 
 .#{$block} {
-  margin-right: get-size(spacing-xxxl);
+  margin-right: use-var(spacing-xxxl);
   display: inline-block;
-  color: get-color(n-1);
-  font-size: get-size(font-size-m);
-  line-height: get-size(inline-height-m);
+  color: use-rgb(n-1);
+  font-size: use-var(font-size-m);
+  line-height: use-var(inline-height-m);
   position: relative;
 
   &__input {
@@ -24,8 +24,8 @@ $block: 'aui-radio';
 
     &:hover {
       .#{$block}__pointer {
-        border-color: get-color(primary);
-        background-color: get-color(n-10);
+        border-color: use-rgb(primary);
+        background-color: use-rgb(n-10);
       }
     }
   }
@@ -38,12 +38,12 @@ $block: 'aui-radio';
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: get-size(icon-size-m);
-    height: get-size(icon-size-m);
-    margin-right: get-size(spacing-m);
+    width: use-var(icon-size-m);
+    height: use-var(icon-size-m);
+    margin-right: use-var(spacing-m);
     border-radius: 50%;
-    border: 1px $border-style get-color(n-7);
-    background-color: get-color(n-9);
+    border: 1px $border-style use-rgb(n-7);
+    background-color: use-rgb(main-bg);
     vertical-align: middle;
     @include transition;
 
@@ -57,16 +57,16 @@ $block: 'aui-radio';
   }
 
   &.cdk-keyboard-focused &__pointer {
-    border-color: get-color(primary);
+    border-color: use-rgb(primary);
     @include outline-shadow(primary);
   }
 
   &.isChecked &__pointer {
-    border-color: get-color(primary);
-    background-color: get-color(primary);
+    border-color: use-rgb(primary);
+    background-color: use-rgb(primary);
 
     &:before {
-      background-color: get-color(n-10);
+      background-color: white;
     }
   }
 
@@ -75,12 +75,12 @@ $block: 'aui-radio';
   }
 
   &.isDisabled &__pointer {
-    border-color: get-color(n-7);
-    background-color: get-color(n-8);
+    border-color: use-rgb(n-7);
+    background-color: use-rgb(n-8);
   }
 
   &.isDisabled.isChecked &__pointer {
-    border-color: get-color(p-4);
-    background-color: get-color(p-4);
+    border-color: use-rgb(p-4);
+    background-color: use-rgb(p-4);
   }
 }
