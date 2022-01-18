@@ -5,14 +5,23 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { DrawerComponent } from './component/drawer.component';
+import { DrawerSize } from './public-api';
 
-interface DrawerOptions<T = any, D = any> {
+export interface DrawerOptions<T = any, D = any> {
   title?: string | TemplateRef<unknown>;
   width?: number;
   content?: ComponentType<T> | TemplateRef<T>;
   contentParams?: D;
   footer?: string | TemplateRef<unknown>;
-  offsetY?: number;
+  offsetY?: string;
+  divider?: boolean;
+  drawerClass?: string;
+  size?: DrawerSize;
+  visible?: boolean;
+  hideOnClickOutside?: boolean;
+  showClose?: boolean;
+  mask?: boolean;
+  maskClosable?: boolean;
 }
 @Injectable()
 export class DrawerService {
