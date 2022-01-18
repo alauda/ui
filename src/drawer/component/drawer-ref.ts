@@ -26,4 +26,5 @@ export abstract class DrawerRef<T = ComponentType<any>, R = any> {
   abstract mask?: boolean;
   abstract maskClosable?: boolean;
   abstract width?: number;
+  abstract divider?: boolean;
 }

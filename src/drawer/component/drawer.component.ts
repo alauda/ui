@@ -98,6 +98,9 @@ export class DrawerComponent<
   @Input()
   maskClosable: boolean;
 
+  @Input()
+  divider = true;
+
   private _value = SIZE_MAPPER[DrawerSize.Medium];
   @Input()
   set width(value: number) {
@@ -111,6 +114,7 @@ export class DrawerComponent<
   get drawerClasses(): Record<string, boolean> {
     return {
       'aui-drawer': true,
+      hasDivider: this.divider,
       ...(!this.drawerClass ? null : { [this.drawerClass]: true }),
     };
   }
