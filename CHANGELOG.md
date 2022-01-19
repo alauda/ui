@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.1.5
+
+### Patch Changes
+
+- [#260](https://github.com/alauda/alauda-ui/pull/260) [`a9a18b3`](https://github.com/alauda/alauda-ui/commit/a9a18b357d5b30f1c86d44e67f549ffe9e96c731) Thanks [@zChanges](https://github.com/zChanges)! - drawer add divider
+
 ## 6.1.4
 
 ### Patch Changes
