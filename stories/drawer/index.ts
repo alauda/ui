@@ -4,6 +4,7 @@ import {
   DrawerRef,
   DrawerService,
   InputModule,
+  SwitchModule,
 } from '@alauda/ui';
 import { Component, Input, TemplateRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +13,13 @@ import { storiesOf } from '@storybook/angular';
 storiesOf('Drawer', module)
   .add('drawer', () => ({
     moduleMetadata: {
-      imports: [ButtonModule, DrawerModule, InputModule, FormsModule],
+      imports: [
+        ButtonModule,
+        DrawerModule,
+        InputModule,
+        FormsModule,
+        SwitchModule,
+      ],
       declarations: [DemoComponent],
     },
     component: DemoComponent,
@@ -52,7 +59,16 @@ storiesOf('Drawer', module)
       offsetY:
       <aui-number-input [step]="20" [(ngModel)]="offsetY"></aui-number-input>
     </div>
-    <aui-drawer [offsetY]="offsetY" [visible]="visible" (close)="close()">
+    <div>
+      divider:
+      <aui-switch [(ngModel)]="divider"></aui-switch>
+    </div>
+    <aui-drawer
+      [divider]="divider"
+      [offsetY]="offsetY + 'px'"
+      [visible]="visible"
+      (close)="close()"
+    >
       <div *auiDrawerHeader>header</div>
       <ng-container *auiDrawerContent> content </ng-container>
       <div *auiDrawerFooter>footer</div>
@@ -62,6 +78,7 @@ storiesOf('Drawer', module)
 class DemoComponent {
   offsetY = 0;
   visible = false;
+  divider = true;
   open() {
     this.visible = true;
   }
