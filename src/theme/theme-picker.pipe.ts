@@ -28,6 +28,9 @@ export class ThemePickerPipe<T> implements PipeTransform, OnDestroy {
     if (v instanceof Function) {
       return v(this.currentTheme);
     }
+    if (Array.isArray(v)) {
+      return v[this.currentTheme === 'light' ? 0 : 1];
+    }
     return v[this.currentTheme];
   }
 

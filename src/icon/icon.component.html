@@ -53,11 +53,7 @@
 
 <ng-template #icons>
   <svg
-    *ngIf="
-      getIconId(
-        icon ? icon : ({ light: light, dark: dark } | auiThemePicker)
-      ) as iconId
-    "
+    *ngIf="getIconId(icon ? icon : ([light, dark] | auiThemePicker)) as iconId"
     [attr.class]="getClass(iconId)"
     [style.fill]="color"
     [style.width]="getWidth()"
