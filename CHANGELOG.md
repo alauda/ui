@@ -1,5 +1,19 @@
 # Changelog
 
+## 6.2.0
+
+### Minor Changes
+
+- [#259](https://github.com/alauda/alauda-ui/pull/259) [`6212b5f`](https://github.com/alauda/alauda-ui/commit/6212b5fddff8fb3fe5abbc321f7da18bd211a37a) Thanks [@fengtianze](https://github.com/fengtianze)! - [BREAKING CHANGE]
+  refactor: rename sass function name
+  get-size -> use-var
+  get-color -> use-rgb
+  get-rgba -> use-rgba
+  get-text-color -> use-text-color
+
+  feat: support dark theme
+  feat: support export custom theme
+
 ## 6.1.5
 
 ### Patch Changes
