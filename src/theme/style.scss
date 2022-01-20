@@ -75,8 +75,3 @@ aui-icon.aui-tooltip-copy {
 .aui-tab-label__content aui-icon:first-child .aui-icon {
   margin-right: get-size(spacing-s);
 }
-
-.aui-dialog aui-form-item:last-child > .aui-form-item,
-.aui-section__content aui-form-item:last-child > .aui-form-item {
-  margin-bottom: 0;
-}
