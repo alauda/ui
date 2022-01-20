@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Directive,
   ElementRef,
+  HostBinding,
   Input,
   OnDestroy,
   OnInit,
@@ -32,6 +33,11 @@ export class BaseRadio implements OnInit, AfterViewInit, OnDestroy {
   set value(val) {
     this._value = val;
     this.value$$.next(val);
+  }
+
+  @HostBinding('attr.data-test')
+  get _testId() {
+    return 'AUI-RADIO/' + this.value;
   }
 
   @ViewChild('elRef', { static: true })

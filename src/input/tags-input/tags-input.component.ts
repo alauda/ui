@@ -163,9 +163,10 @@ export class TagsInputComponent
     private readonly fb: FormBuilder,
     private readonly renderer: Renderer2,
     private readonly injector: Injector,
+    elementRef: ElementRef,
   ) {
-    super(cdr);
     this.inputControl = this.fb.control('');
+    super(cdr, elementRef);
   }
 
   ngOnChanges({

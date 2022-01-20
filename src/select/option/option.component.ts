@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostBinding,
   Inject,
   Input,
   TemplateRef,
@@ -54,6 +55,11 @@ export class OptionComponent<T> {
   set label(val) {
     this._label = val;
     this.label$$.next(val);
+  }
+
+  @HostBinding('attr.data-test')
+  get testId() {
+    return 'AUI-OPTION/' + (this.label || this.value);
   }
 
   @Input()

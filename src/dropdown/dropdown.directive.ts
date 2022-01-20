@@ -5,6 +5,7 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
+  HostBinding,
   Input,
   NgZone,
   OnInit,
@@ -19,6 +20,7 @@ import {
   TooltipTrigger,
   TooltipType,
 } from '../tooltip/public-api';
+import { simplifyStringToTestId } from '../utils';
 
 import { DropdownActiveDirective } from './dropdown-active.directive';
 import { MenuComponent } from './menu/menu.component';
@@ -40,6 +42,14 @@ import { MenuComponent } from './menu/menu.component';
   ],
 })
 export class DropdownDirective extends BaseTooltip implements OnInit {
+  @HostBinding('attr.data-test')
+  get testId() {
+    return (
+      'AUI-DROPDOWN/' +
+      simplifyStringToTestId(this.elRef.nativeElement.textContent)
+    );
+  }
+
   @Input('auiDropdown')
   get menu() {
     return this._menu;

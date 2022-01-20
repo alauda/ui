@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  HostBinding,
   Input,
   OnDestroy,
   Renderer2,
@@ -10,6 +11,7 @@ import {
 } from '@angular/core';
 
 import { ComponentSize } from '../types';
+import { simplifyStringToTestId } from '../utils';
 
 import { ButtonType } from './button.types';
 
@@ -25,6 +27,13 @@ const prefix = 'aui-button--';
   preserveWhitespaces: false,
 })
 export class ButtonComponent implements OnDestroy {
+  @HostBinding('attr.data-test')
+  get testId() {
+    return (
+      'AUI-BUTTON/' + simplifyStringToTestId(this.el.nativeElement.textContent)
+    );
+  }
+
   @Input('aui-button')
   get type() {
     return this._type;

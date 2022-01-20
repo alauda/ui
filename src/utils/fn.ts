@@ -12,3 +12,12 @@ export const isTemplateRef = (
 
 export const handlePixel = (value: number | string) =>
   Number.isNaN(+value) ? (value as string) : value + 'px';
+
+export const simplifyStringToTestId = (input: string) => {
+  if (!input) return '';
+  return input
+    .replaceAll('\r', '')
+    .replaceAll('\n', '')
+    .replaceAll('\\s', '')
+    .replaceAll(' ', '');
+};

@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  HostBinding,
   Input,
   Renderer2,
   ViewEncapsulation,
@@ -22,6 +23,16 @@ import { coerceAttrBoolean } from '../utils';
   preserveWhitespaces: false,
 })
 export class InputComponent {
+  @HostBinding('attr.data-test')
+  get testId() {
+    return (
+      'AUI-INPUT/' +
+      (this.elementRef.nativeElement.getAttribute('formcontrolname') ||
+        this.elementRef.nativeElement.getAttribute('name') ||
+        '')
+    );
+  }
+
   @Input()
   get size() {
     return this._size;
