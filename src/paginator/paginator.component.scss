@@ -13,7 +13,10 @@ $input-width: 80px;
     width: use-var(line-height-xl);
     height: use-var(line-height-xl);
     border: unset;
-    background-color: transparent;
+
+    &--default {
+      background-color: transparent;
+    }
 
     .aui-button__content {
       padding: unset;
