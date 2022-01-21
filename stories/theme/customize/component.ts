@@ -46,7 +46,7 @@ export class CustomizeComponent {
     const script = `(() => {
   const themeDefinition = \`html[aui-theme-mode=custom] { ${this.schema.toString()} }\`;
   
-  window.__NAV_ICON_COLOR_REPLACEMENTS = {
+  window.__NAV_ICON_CUSTOM_COLORS = {
     main_active: '${this.schema.get('primary')}',
     secondary_active: '${this.schema.get('p-3')}',
     background_active: '${this.schema.get('p-5')}',
