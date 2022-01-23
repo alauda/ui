@@ -5,3 +5,4 @@ export * from './fn';
 export * from './observe-dom';
 export * from './scroll-into-view';
 export * from './watch-content-exist';
+export * from './e2e-attribute-binding.directive';

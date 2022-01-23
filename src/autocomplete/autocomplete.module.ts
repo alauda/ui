@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { TooltipModule } from '../tooltip/public-api';
+import { E2eAttributeBindingDirective } from '../utils';
 
 import { AutocompletePlaceholderComponent } from './autocomplete-placeholder.component';
 import { AutocompleteComponent } from './autocomplete.component';
@@ -24,6 +25,7 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
     AutocompletePlaceholderComponent,
     SuggestionGroupComponent,
     SuggestionGroupTitleDirective,
+    E2eAttributeBindingDirective,
   ],
   exports: [
     AutoCompleteDirective,
