@@ -3,7 +3,12 @@
   (@inOut.done)="onAnimationEnd($event)"
   [class]="bem.block(type) + ' ' + uniqueId + ' ' + customClass"
 >
-  <div [class]="bem.element('icon')"><aui-icon [icon]="icon"></aui-icon></div>
+  <div [class]="bem.element('icon')">
+    <aui-icon
+      [icon]="icon"
+      [background]="icon.endsWith('_triangle_s') ? 'triangle' : 'circle'"
+    ></aui-icon>
+  </div>
   <div [class]="bem.element('body')">
     <div *ngIf="title" [class]="bem.element('title')">{{ title }}</div>
     <div *ngIf="content" [class]="bem.element('content')">{{ content }}</div>

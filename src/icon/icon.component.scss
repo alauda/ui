@@ -11,6 +11,24 @@ aui-icon {
   vertical-align: -0.125em;
   fill: currentColor;
 
+  &__background {
+    width: 1em;
+    height: 1em;
+    fill: white;
+
+    &.circle {
+      clip-path: circle(calc(0.5em - 1px));
+    }
+
+    &.triangle {
+      clip-path: polygon(
+        0.5em 1px,
+        calc(1em - 1px) calc(1em - 1px),
+        1px calc(1em - 1px)
+      );
+    }
+  }
+
   &--left {
     margin-left: use-var(spacing-s);
   }

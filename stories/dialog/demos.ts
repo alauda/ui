@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
     <button aui-button="primary" (click)="open(dialog)">打开对话框</button>
     <ng-template #dialog>
       <aui-dialog-header>
-        <aui-icon icon="exclamation_circle_s"></aui-icon>
+        <aui-icon icon="exclamation_circle_s" background="circle"></aui-icon>
         <span>What can Kubernetes do for you?</span>
       </aui-dialog-header>
       <aui-dialog-content>

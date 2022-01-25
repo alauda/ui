@@ -4,7 +4,10 @@
   [class]="bem.block(type) + ' ' + uniqueId"
 >
   <div [class]="bem.element('icon', type)">
-    <aui-icon [icon]="icon"></aui-icon>
+    <aui-icon
+      [icon]="icon"
+      [background]="icon.endsWith('_triangle_s') ? 'triangle' : 'circle'"
+    ></aui-icon>
   </div>
   <div [class]="bem.element('content')">{{ content }}</div>
 </div>

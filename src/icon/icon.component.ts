@@ -41,6 +41,12 @@ export class IconComponent {
   @Input()
   color: string;
 
+  @Input()
+  background: 'circle' | 'triangle';
+
+  @Input()
+  backgroundColor: string;
+
   bem: Bem = buildBem('aui-icon');
 
   id = id++;

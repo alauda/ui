@@ -54,11 +54,19 @@
 <ng-template #icons>
   <svg
     *ngIf="getIconId(icon ? icon : ([light, dark] | auiThemePicker)) as iconId"
-    [attr.class]="getClass(iconId)"
+    [ngClass]="getClass(iconId)"
     [style.fill]="color"
     [style.width]="getWidth()"
     [style.height]="getHeight()"
   >
+    <rect
+      *ngIf="background"
+      class="aui-icon__background"
+      [ngClass]="background"
+      [attr.fill]="backgroundColor"
+      x="0"
+      y="0"
+    ></rect>
     <use [attr.xlink:href]="link + '#' + iconId"></use>
   </svg>
 </ng-template>

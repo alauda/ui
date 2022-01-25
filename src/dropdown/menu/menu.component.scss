@@ -7,6 +7,37 @@ aui-menu {
 
 $max-width: 280px;
 
+$button-size: (
+  large: (
+    height: use-var(inline-height-l),
+    padding-hoz: use-var(inline-padding-l),
+    font-size: use-var(font-size-l),
+    line-height: use-var(line-height-l),
+    icon-size: use-var(icon-size-l),
+  ),
+  medium: (
+    height: use-var(inline-height-m),
+    padding-hoz: use-var(inline-padding-m),
+    font-size: use-var(font-size-m),
+    line-height: use-var(line-height-m),
+    icon-size: use-var(icon-size-m),
+  ),
+  small: (
+    height: use-var(inline-height-s),
+    padding-hoz: use-var(inline-padding-s),
+    font-size: use-var(font-size-m),
+    line-height: use-var(line-height-m),
+    icon-size: use-var(icon-size-m),
+  ),
+  mini: (
+    height: use-var(inline-height-xs),
+    padding-hoz: use-var(inline-padding-xs),
+    font-size: use-var(font-size-s),
+    line-height: use-var(line-height-s),
+    icon-size: use-var(icon-size-s),
+  ),
+);
+
 .aui-menu {
   padding: use-var(spacing-m);
   max-width: $max-width;
@@ -14,35 +45,21 @@ $max-width: 280px;
   background-color: use-rgb(popper-bg);
   @include popper-shadow;
 
-  &--large {
-    .aui-menu-item,
-    .aui-submenu {
-      height: use-var(inline-height-l);
-      font-size: use-var(font-size-l);
-    }
-  }
+  @each $key in large medium small mini {
+    $map: map-get($button-size, $key);
 
-  &--medium {
-    .aui-menu-item,
-    .aui-submenu {
-      height: use-var(inline-height-m);
-      font-size: use-var(font-size-l);
-    }
-  }
+    &--#{$key} {
+      .aui-menu-item,
+      .aui-submenu {
+        height: map-get($map, height);
+        font-size: map-get($map, font-size);
+        line-height: map-get($map, line-height);
 
-  &--small {
-    .aui-menu-item,
-    .aui-submenu {
-      height: use-var(inline-height-s);
-      font-size: use-var(font-size-m);
-    }
-  }
-
-  &--mini {
-    .aui-menu-item,
-    .aui-submenu {
-      height: use-var(inline-height-xs);
-      font-size: use-var(font-size-s);
+        aui-icon {
+          height: map-get($map, line-height);
+          font-size: map-get($map, icon-size);
+        }
+      }
     }
   }
 }

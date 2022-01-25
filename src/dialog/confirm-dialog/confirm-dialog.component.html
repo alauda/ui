@@ -1,7 +1,14 @@
 <div [class]="bem.block()">
   <div [class]="bem.element('title')">
     <span [class]="bem.element('icon', config.confirmType + '')">
-      <aui-icon [icon]="iconMap(config.confirmType)"></aui-icon>
+      <aui-icon
+        [icon]="iconMap(config.confirmType)"
+        [background]="
+          iconMap(config.confirmType).endsWith('_triangle_s')
+            ? 'triangle'
+            : 'circle'
+        "
+      ></aui-icon>
     </span>
     <span>{{ config.title }}</span>
   </div>
