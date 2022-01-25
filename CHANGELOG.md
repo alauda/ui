@@ -1,5 +1,16 @@
 # Changelog
 
+## 6.2.1
+
+### Patch Changes
+
+- [#271](https://github.com/alauda/alauda-ui/pull/271) [`b0c1e7c`](https://github.com/alauda/alauda-ui/commit/b0c1e7c0930000dd2d5d8fb31bd1faa5f1605eb1) Thanks [@fengtianze](https://github.com/fengtianze)! - feat: solid icon background
+  feat: support rgbColor, rgbaColor, cssVar pipes
+
+- [#268](https://github.com/alauda/alauda-ui/pull/268) [`0e13f60`](https://github.com/alauda/alauda-ui/commit/0e13f606ddf06de371e9d978304e839b9d35687d) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: paginator button background color
+
+- [#266](https://github.com/alauda/alauda-ui/pull/266) [`06f3d00`](https://github.com/alauda/alauda-ui/commit/06f3d00ae5642dadd7467d5695cf9927baad8405) Thanks [@fengtianze](https://github.com/fengtianze)! - feat: theme picker pipe support array
+
 ## 6.2.0
 
 ### Minor Changes
