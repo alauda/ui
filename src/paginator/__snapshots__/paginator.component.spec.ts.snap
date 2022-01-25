@@ -54,6 +54,7 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                 <svg
                   class="aui-icon aui-icon-angle_left"
                 >
+                  
                   <use
                     xlink:href="#aui-icon-angle_left"
                   />
@@ -123,6 +124,7 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                 <svg
                   class="aui-icon aui-icon-angle_right"
                 >
+                  
                   <use
                     xlink:href="#aui-icon-angle_right"
                   />
@@ -204,6 +206,7 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                             <svg
                               class="aui-icon aui-icon-caret_down_s"
                             >
+                              
                               <use
                                 xlink:href="#aui-icon-caret_down_s"
                               />
@@ -220,6 +223,7 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                             <svg
                               class="aui-icon aui-icon-close_small"
                             >
+                              
                               <use
                                 xlink:href="#aui-icon-close_small"
                               />
@@ -337,6 +341,7 @@ exports[`PaginatorComponent should render current template 1`] = `
                 <svg
                   class="aui-icon aui-icon-angle_left"
                 >
+                  
                   <use
                     xlink:href="#aui-icon-angle_left"
                   />
@@ -425,6 +430,7 @@ exports[`PaginatorComponent should render current template 1`] = `
                 <svg
                   class="aui-icon aui-icon-ellipsis_h_s"
                 >
+                  
                   <use
                     xlink:href="#aui-icon-ellipsis_h_s"
                   />
@@ -440,6 +446,7 @@ exports[`PaginatorComponent should render current template 1`] = `
                 <svg
                   class="aui-icon aui-icon-angle_double_right"
                 >
+                  
                   <use
                     xlink:href="#aui-icon-angle_double_right"
                   />
@@ -476,6 +483,7 @@ exports[`PaginatorComponent should render current template 1`] = `
                 <svg
                   class="aui-icon aui-icon-angle_right"
                 >
+                  
                   <use
                     xlink:href="#aui-icon-angle_right"
                   />
@@ -557,6 +565,7 @@ exports[`PaginatorComponent should render current template 1`] = `
                             <svg
                               class="aui-icon aui-icon-caret_down_s"
                             >
+                              
                               <use
                                 xlink:href="#aui-icon-caret_down_s"
                               />
@@ -573,6 +582,7 @@ exports[`PaginatorComponent should render current template 1`] = `
                             <svg
                               class="aui-icon aui-icon-close_small"
                             >
+                              
                               <use
                                 xlink:href="#aui-icon-close_small"
                               />
@@ -690,6 +700,7 @@ exports[`PaginatorComponent should render current template 2`] = `
                 <svg
                   class="aui-icon aui-icon-angle_left"
                 >
+                  
                   <use
                     xlink:href="#aui-icon-angle_left"
                   />
@@ -785,6 +796,7 @@ exports[`PaginatorComponent should render current template 2`] = `
                 <svg
                   class="aui-icon aui-icon-ellipsis_h_s"
                 >
+                  
                   <use
                     xlink:href="#aui-icon-ellipsis_h_s"
                   />
@@ -800,6 +812,7 @@ exports[`PaginatorComponent should render current template 2`] = `
                 <svg
                   class="aui-icon aui-icon-angle_double_right"
                 >
+                  
                   <use
                     xlink:href="#aui-icon-angle_double_right"
                   />
@@ -838,6 +851,7 @@ exports[`PaginatorComponent should render current template 2`] = `
                 <svg
                   class="aui-icon aui-icon-angle_right"
                 >
+                  
                   <use
                     xlink:href="#aui-icon-angle_right"
                   />
@@ -921,6 +935,7 @@ exports[`PaginatorComponent should render current template 2`] = `
                             <svg
                               class="aui-icon aui-icon-caret_down_s"
                             >
+                              
                               <use
                                 xlink:href="#aui-icon-caret_down_s"
                               />
@@ -937,6 +952,7 @@ exports[`PaginatorComponent should render current template 2`] = `
                             <svg
                               class="aui-icon aui-icon-close_small"
                             >
+                              
                               <use
                                 xlink:href="#aui-icon-close_small"
                               />

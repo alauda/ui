@@ -34,7 +34,7 @@
       &.selected {
         border-color: use-rgb(primary);
         background-color: use-rgb(primary);
-        color: #fff;
+        color: white;
       }
     }
     &-icon {
@@ -46,19 +46,19 @@
         background-color: use-rgb(p-6);
         color: use-rgb(primary);
         &.selected {
-          background-color: #fff;
+          background-color: white;
         }
       }
       &--error {
         background-color: use-rgb(r-6);
         color: use-rgb(red);
         &.selected {
-          background-color: #fff;
+          background-color: white;
         }
       }
       &--pending {
         transform-origin: center;
-        animation: spin 4s infinite linear;
+        animation: spin 2s infinite linear;
       }
     }
   }
@@ -148,7 +148,7 @@
             color: use-rgb(green);
             background-color: use-rgb(g-6);
             &.selected {
-              background-color: #fff;
+              background-color: white;
             }
           }
         }

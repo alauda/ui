@@ -100,7 +100,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
   }
 
   &__footer {
-    padding: 16px $spacing $spacing $spacing;
+    padding: $spacing;
     display: flex;
     justify-content: flex-end;
   }
@@ -143,6 +143,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
         border-bottom: $divider-line;
       }
       &__footer {
+        padding-top: 16px;
         border-top: $divider-line;
       }
     }
