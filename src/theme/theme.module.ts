@@ -1,8 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { CssVarPipe, RgbColorPipe, RgbaColorPipe } from './color.pipe';
-import { ThemePickerPipe } from './theme-picker.pipe';
+import {
+  CssVarPipe,
+  RgbColorPipe,
+  RgbaColorPipe,
+  ThemePickerPipe,
+} from './theme.pipe';
 
 @NgModule({
   imports: [CommonModule],
