@@ -181,7 +181,7 @@
 
   &.isExpanded {
     transform: rotate(90deg);
-    color: use-rgb(n-10);
+    color: white;
     background-color: use-rgb(primary);
 
     &:hover {

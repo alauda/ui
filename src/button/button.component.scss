@@ -259,7 +259,7 @@ $button-size: (
   &--default {
     color: use-text-color(main);
     border-color: use-rgb(n-7);
-    background-color: use-rgb(n-9);
+    background-color: use-rgb(button-bg);
 
     &:hover {
       color: use-rgb(primary);
