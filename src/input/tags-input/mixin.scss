@@ -117,16 +117,16 @@
     }
 
     .aui-tag#{&}__input {
-      width: 1em;
+      margin-right: 0;
       padding: 0;
+      width: 1em;
+      max-width: 100%;
       border: none;
       outline: none;
       background: none;
       color: $input-color;
       font-family: inherit;
       font-size: inherit;
-      // 字体纵轴偏移量
-      margin-top: -2px;
 
       &--hidden {
         opacity: 0;
