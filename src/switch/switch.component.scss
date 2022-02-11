@@ -3,17 +3,18 @@
 @import '../theme/var';
 
 $block: 'aui-switch';
-$switch-border-color: use-rgb(n-4);
-$switch-checked-color: use-rgb(primary);
-$switch-disabled-bg-color: use-rgb(n-7);
-$switch-checked-disabled-bg-color: use-rgb(p-4);
-$switch-bar-width: 28px;
-$switch-bar-height: 14px;
+$switch-width: 30px;
+$switch-height: 16px;
+$switch-border-width: 2px;
+$switch-dot-with: $switch-height - ($switch-border-width * 2);
 
 .#{$block} {
   display: inline-flex;
   position: relative;
   vertical-align: text-bottom;
+  color: use-rgb(n-4);
+  cursor: pointer;
+
   &__input {
     position: absolute;
     width: 0;
@@ -24,90 +25,65 @@ $switch-bar-height: 14px;
       @include outline-shadow(primary);
     }
   }
+
   &__bar {
-    background-color: use-rgb(n-4);
-    border: 1px solid $switch-border-color;
-    border-radius: $switch-bar-height * 3 / 4;
-    box-shadow: $switch-border-color 0 0 0 0 inset;
-    transition: border $animation-duration, box-shadow $animation-duration;
-    cursor: pointer;
     display: inline-block;
-    width: $switch-bar-width;
-    height: $switch-bar-height;
+    width: $switch-width;
+    height: $switch-height;
+    border-radius: $switch-height / 2;
+    background-color: currentColor;
+    transition: background-color $animation-duration;
     position: relative;
     vertical-align: middle;
     user-select: none;
-    box-sizing: content-box;
-    background-clip: content-box;
   }
+
   &__dot {
-    background: $color-white;
+    background-color: white;
     border-radius: 50%;
-    width: $switch-bar-height - 2px;
-    height: $switch-bar-height - 2px;
+    width: $switch-dot-with;
+    height: $switch-dot-with;
     position: absolute;
-    top: 1px;
-    left: 1px;
-    transition: background-color $animation-duration, left $animation-duration;
+    top: $switch-border-width;
+    left: $switch-border-width;
+    transition: left $animation-duration;
+  }
+
+  &.isDisabled {
+    color: use-rgb(n-7);
+    cursor: not-allowed;
+
+    .#{$block}__dot {
+      @include theme-dark {
+        background-color: use-rgb(n-4);
+      }
+    }
   }
 
   &.isChecked {
-    .#{$block}__bar {
-      background-color: $switch-checked-color;
-      border-color: $switch-checked-color;
-      box-shadow: $switch-checked-color 0 0 0 11px inset;
-      transition: border $animation-duration, box-shadow $animation-duration,
-        background-color $animation-duration;
+    color: use-rgb(primary);
+
+    &.isDisabled {
+      color: use-rgb(p-4);
     }
+
     .#{$block}__dot {
-      left: $switch-bar-width - $switch-bar-height + 1px;
+      left: $switch-width - $switch-dot-with - $switch-border-width;
     }
   }
-  &.isDisabled {
-    .#{$block}__bar {
-      background-color: $switch-disabled-bg-color;
-      border-color: $switch-disabled-bg-color;
-      cursor: not-allowed;
-    }
-  }
-  &.isDisabled.isChecked {
-    .#{$block}__bar {
-      background-color: $switch-checked-disabled-bg-color;
-      border-color: $switch-checked-disabled-bg-color;
-      box-shadow: none;
-    }
-  }
+
   &.isLoading {
-    .#{$block}__bar {
-      background-color: $switch-disabled-bg-color;
-      border-color: $switch-disabled-bg-color;
-    }
     .#{$block}__dot:after {
-      position: absolute;
-      top: 2px;
-      left: 2px;
       content: '';
-      box-sizing: content-box;
+      position: absolute;
+      top: $switch-border-width;
+      bottom: $switch-border-width;
+      left: $switch-border-width;
+      right: $switch-border-width;
+      border: 1px solid currentColor;
+      border-top-color: transparent;
       border-radius: 50%;
-      width: 6px;
-      height: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-top-color: $switch-border-color;
-      border-left-color: $switch-border-color;
-      border-right-color: $switch-border-color;
       animation: spin 1s infinite linear;
-    }
-  }
-  &.isLoading.isChecked {
-    .#{$block}__bar {
-      background-color: $switch-checked-disabled-bg-color;
-      border-color: $switch-checked-disabled-bg-color;
-      box-shadow: none;
-    }
-    .#{$block}__dot:after {
-      border-top-color: $switch-checked-color;
-      border-left-color: $switch-checked-color;
-      border-right-color: $switch-checked-color;
     }
   }
 }

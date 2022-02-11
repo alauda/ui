@@ -11,7 +11,7 @@ $block: 'aui-radio-button';
   position: relative;
   color: use-rgb(primary);
   border: 1px $border-style use-rgb(primary);
-  background-color: use-rgb(main-bg);
+  background-color: use-rgb(button-bg);
   overflow: hidden;
   z-index: 1;
   @include transition;
@@ -25,16 +25,48 @@ $block: 'aui-radio-button';
     background-color: use-rgb(p-7);
   }
 
-  &.isChecked:not(.isDisabled) {
-    z-index: 2;
-    color: use-rgb(n-10);
-    background-color: use-rgb(primary);
+  &.isDisabled {
+    z-index: 0;
+    color: use-rgb(p-4);
+    border-color: use-rgb(p-4);
+    background-color: use-rgb(p-7);
+
+    .#{$block} {
+      &__pointer {
+        color: use-rgb(p-4);
+
+        @include theme-dark {
+          .aui-icon {
+            background-image: linear-gradient(
+              to bottom right,
+              transparent 51%,
+              #{use-rgb(n-4)} 51%
+            );
+          }
+        }
+      }
+
+      &__label {
+        cursor: not-allowed;
+      }
+    }
   }
 
-  &.isChecked.isDisabled {
-    color: use-rgb(n-10);
-    border-color: use-rgb(p-4);
-    background-color: use-rgb(p-4);
+  &:not(.isPlain) {
+    &.isChecked {
+      z-index: 2;
+      color: white;
+      background-color: use-rgb(primary);
+    }
+
+    &.isChecked.isDisabled {
+      @include theme-dark {
+        color: use-rgb(n-4);
+      }
+
+      border-color: use-rgb(p-4);
+      background-color: use-rgb(p-4);
+    }
   }
 
   &.isPlain {
@@ -47,7 +79,7 @@ $block: 'aui-radio-button';
       &:not(.isDisabled) {
         color: use-rgb(primary);
         border-color: use-rgb(primary);
-        background-color: use-rgb(main-bg);
+        background-color: use-rgb(button-bg);
       }
     }
     &.isDisabled {
@@ -58,23 +90,6 @@ $block: 'aui-radio-button';
     &.isDisabled.isChecked {
       color: use-rgb(p-4);
       border-color: use-rgb(p-4);
-    }
-  }
-
-  &.isDisabled {
-    z-index: 0;
-    color: use-rgb(p-4);
-    border-color: use-rgb(p-4);
-    background-color: use-rgb(p-7);
-
-    .#{$block} {
-      &__pointer {
-        color: use-rgb(p-4);
-      }
-
-      &__label {
-        cursor: not-allowed;
-      }
     }
   }
 
