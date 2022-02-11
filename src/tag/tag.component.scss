@@ -125,7 +125,7 @@
     background-color: use-rgb(n-8);
     &.hasBorder {
       border-color: use-rgb(n-7);
-      background-color: use-rgb(n-9);
+      background-color: use-rgb(button-bg);
     }
     .aui-tag__close .aui-icon:hover {
       color: $tag-info-bg-color;

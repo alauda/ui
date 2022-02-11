@@ -17,15 +17,11 @@ aui-icon {
     fill: white;
 
     &.circle {
-      clip-path: circle(calc(0.5em - 1px));
+      clip-path: circle(45%);
     }
 
     &.triangle {
-      clip-path: polygon(
-        0.5em 1px,
-        calc(1em - 1px) calc(1em - 1px),
-        1px calc(1em - 1px)
-      );
+      clip-path: polygon(50% 10%, 90% 90%, 10% 90%);
     }
   }
 
