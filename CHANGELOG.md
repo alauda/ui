@@ -1,5 +1,14 @@
 # Changelog
 
+## 6.2.2
+
+### Patch Changes
+
+- [#279](https://github.com/alauda/alauda-ui/pull/279) [`ab14ff7`](https://github.com/alauda/alauda-ui/commit/ab14ff7d697b34c2bf026980d6dc0daa63a02359) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: select option height
+
+- [#283](https://github.com/alauda/alauda-ui/pull/283) [`b26097e`](https://github.com/alauda/alauda-ui/commit/b26097ec1bde2d3be7c76497fd467eedd0a4c7a3) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: dark mode issues
+  fix: multi-select height
+
 ## 6.2.1
 
 ### Patch Changes
