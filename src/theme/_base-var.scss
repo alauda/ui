@@ -16,17 +16,7 @@
 }
 
 @function use-text-color($level: main) {
-  @if $level == main {
-    @return use-rgb(n-1);
-  } @else if $level == secondary {
-    @return use-rgb(n-2);
-  } @else if $level == help {
-    @return use-rgb(n-4);
-  } @else if $level == disabled or $level == placeholder {
-    @return use-rgb(n-6);
-  } @else {
-    @return use-rgb($level);
-  }
+  @return use-rgb(#{$level}-text);
 }
 
 $divider-line: 1px solid use-rgb(n-8);
