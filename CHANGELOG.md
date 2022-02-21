@@ -1,5 +1,12 @@
 # Changelog
 
+## 6.3.0
+
+### Minor Changes
+
+- [#291](https://github.com/alauda/alauda-ui/pull/291) [`af7ef00`](https://github.com/alauda/alauda-ui/commit/af7ef00295e875c97cfac9c32159b2e3e4d30e26) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: backtop button style
+  feat: upgrade to angular 13
+
 ## 6.2.2
 
 ### Patch Changes
