@@ -22,7 +22,7 @@ import { Subject, Subscription, merge } from 'rxjs';
 
 import { Bem, buildBem, coerceNumber } from '../utils';
 
-import { TabHeaderAddonDirective, TabTitleDirective } from './tab-directives';
+import { TabHeaderAddonDirective, TabTitleDirective } from './tab-body.component';
 import { TabHeaderComponent } from './tab-header.component';
 import { TabComponent } from './tab.component';
 import { TabSize, TabType } from './tabs.types';

@@ -8,3 +8,4 @@ export * from './calendar/range-picker-panel/component';
 export * from './calendar/date-picker-panel/component';
 export * from './calendar/constant';
 export * from './trigger/trigger.component';
+export * from './date-picker/date-picker.component';

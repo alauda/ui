@@ -24,7 +24,7 @@ import { CommonFormControl } from '../form/public-api';
   ],
 })
 export class ColorPickerComponent extends CommonFormControl<string> {
-  writeValue(val: string) {
+  override writeValue(val: string) {
     this.value$$.next(val);
   }
 

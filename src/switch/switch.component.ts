@@ -33,7 +33,7 @@ export class SwitchComponent extends CommonFormControl<boolean> {
   @Input()
   loading = false;
 
-  writeValue(value: boolean) {
+  override writeValue(value: boolean) {
     this.value$$.next(value);
   }
 

@@ -50,7 +50,7 @@ export class CheckboxGroupComponent<T> extends CommonFormControl<T[]> {
   })
   checkboxes: QueryList<CheckboxComponent<T>>;
 
-  writeValue(val: T[]) {
+  override writeValue(val: T[]) {
     this.value$$.next(val);
   }
 

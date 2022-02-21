@@ -4,3 +4,4 @@ release
 CHANGELOG.md
 /tslint-rules
 !/.*.js
+jest.setup.ts

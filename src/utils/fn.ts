@@ -7,7 +7,7 @@ export function isUndefined(val: unknown): boolean {
 export const last = <T>(values: T[]) => values?.[values.length - 1];
 
 export const isTemplateRef = (
-  label: string | TemplateRef<unknown>,
+  label: any,
 ): label is TemplateRef<unknown> => label instanceof TemplateRef;
 
 export const handlePixel = (value: number | string) =>

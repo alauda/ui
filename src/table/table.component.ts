@@ -56,7 +56,8 @@ import {
 })
 export class TableComponent<T>
   extends CdkTable<T>
-  implements AfterContentInit, OnDestroy {
+  implements AfterContentInit, OnDestroy
+{
   @Input()
   enableScrollWrapper: boolean;
 
@@ -72,7 +73,7 @@ export class TableComponent<T>
     return 'aui-table-sticky';
   }
 
-  protected set stickyCssClass(_: string) {
+  protected override set stickyCssClass(_: string) {
     // nothing
   }
 
@@ -94,7 +95,7 @@ export class TableComponent<T>
     this._placeholderOutlet.viewContainer.clear();
   }
 
-  ngOnDestroy() {
+  override ngOnDestroy() {
     super.ngOnDestroy();
     this._clearPlaceholder();
   }

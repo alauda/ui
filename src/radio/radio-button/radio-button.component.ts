@@ -42,7 +42,7 @@ export class RadioButtonComponent extends BaseRadio implements OnInit {
     super(radioGroup, focusMonitor, cdr);
   }
 
-  ngOnInit() {
+  override ngOnInit() {
     super.ngOnInit();
     this.radioGroup.size$.pipe(takeUntil(this.destroy$$)).subscribe(size => {
       this.size = size;

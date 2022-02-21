@@ -67,14 +67,14 @@ export class NumberInputComponent
     this.inputRef.nativeElement.value = (this.snapshot.value ?? '') + '';
   }
 
-  valueIn(v: number) {
+  override valueIn(v: number) {
     if (this.inputRef) {
       this.inputRef.nativeElement.value = (v ?? '') + '';
     }
     return v;
   }
 
-  valueOut(value: number) {
+  override valueOut(value: number) {
     return Math.max(
       coerceNumber(this.min, Number.MIN_SAFE_INTEGER),
       Math.min(

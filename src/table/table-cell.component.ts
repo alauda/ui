@@ -23,7 +23,7 @@ import {
       class="aui-expand-button"
       [class.isExpanded]="expand"
       [disabled]="disabled"
-      (click)="expandChange.next()"
+      (click)="expandChange.next(null)"
     >
       <aui-icon icon="angle_right"></aui-icon>
     </button>

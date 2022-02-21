@@ -10,3 +10,5 @@ export * from './table-cell-def.directive';
 export * from './table-header-cell-def.directive';
 export * from './table-column-def.directive';
 export * from './table-scroll.directive';
+export * from './table-placeholder.directive';
+export * from './table-cell.component';

@@ -108,7 +108,7 @@ export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {
   startTime: TimePickerModel;
   endTime: TimePickerModel;
 
-  writeValue(obj: Dayjs[]) {
+  override writeValue(obj: Dayjs[]) {
     super.writeValue(obj);
     this.rangeValue = obj || [];
     this.matchValues = [...this.rangeValue];

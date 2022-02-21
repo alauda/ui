@@ -16,7 +16,7 @@ import { MessageWrapperComponent } from '../message/message-wrapper.component';
   preserveWhitespaces: false,
 })
 export class NotificationWrapperComponent extends MessageWrapperComponent {
-  constructor(public elementRef: ElementRef) {
+  constructor(public override elementRef: ElementRef) {
     super(elementRef);
   }
 }

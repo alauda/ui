@@ -92,7 +92,7 @@ export class TimePickerComponent extends CommonFormControl<
   timeValue: Dayjs = null;
   timeFormatValue = '';
 
-  writeValue(value: TimePickerDataLike) {
+  override writeValue(value: TimePickerDataLike) {
     super.writeValue(value);
     if (!value) {
       return this.setValue(null);

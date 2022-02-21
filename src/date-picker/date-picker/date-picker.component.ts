@@ -93,11 +93,11 @@ export class DatePickerComponent
     }
   }
 
-  valueIn(obj: ConfigType) {
+  override valueIn(obj: ConfigType) {
     return obj ? dayjs(obj) : null;
   }
 
-  writeValue(obj: Dayjs) {
+  override writeValue(obj: Dayjs) {
     super.writeValue(obj);
     this.value = obj;
     this.cdr.markForCheck();

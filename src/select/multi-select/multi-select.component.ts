@@ -61,7 +61,8 @@ import {
 })
 export class MultiSelectComponent<T = unknown>
   extends BaseSelect<T, T[]>
-  implements AfterContentInit, AfterViewInit {
+  implements AfterContentInit, AfterViewInit
+{
   bem: Bem = buildBem('aui-multi-select');
   bemSelectAll: Bem = buildBem('aui-option');
   selectedOptions$: Observable<Array<SelectFilterOption<T>>>;
@@ -70,6 +71,7 @@ export class MultiSelectComponent<T = unknown>
   hasEnabledOptions$: Observable<boolean>;
 
   private _allowSelectAll = false;
+  override isMulti = true;
   selectedValues: T[] = [];
   values$ = this.value$$.asObservable();
 
@@ -152,7 +154,7 @@ export class MultiSelectComponent<T = unknown>
     });
   }
 
-  ngAfterContentInit() {
+  override ngAfterContentInit() {
     super.ngAfterContentInit();
 
     this.selectedOptions$ = combineLatest([
@@ -203,7 +205,7 @@ export class MultiSelectComponent<T = unknown>
     );
   }
 
-  ngAfterViewInit() {
+  override ngAfterViewInit() {
     super.ngAfterViewInit();
     this.selectAllStatus$ = combineLatest([
       this.allOptions$,
@@ -211,9 +213,9 @@ export class MultiSelectComponent<T = unknown>
     ]).pipe(
       switchMap(([allOptions]) =>
         combineLatest([
-          ...allOptions
+          ...(allOptions ?? [])
             .filter(({ visible, disabled }) => visible && !disabled)
-            ?.map(({ selected$ }) => selected$),
+            .map(({ selected$ }) => selected$),
         ]),
       ),
       map(statuses => {
@@ -241,18 +243,18 @@ export class MultiSelectComponent<T = unknown>
     );
   }
 
-  onShowOptions() {
+  override onShowOptions() {
     super.onShowOptions();
     this.inputRef.nativeElement.focus();
   }
 
-  onHideOptions() {
+  override onHideOptions() {
     super.onHideOptions();
     this.inputRef.nativeElement.value = '';
     this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
   }
 
-  onInput(event: Event) {
+  override onInput(event: Event) {
     super.onInput(event);
     this.setInputWidth();
     this.tooltipRef.updatePosition();
@@ -267,7 +269,7 @@ export class MultiSelectComponent<T = unknown>
     this.closeOption();
   }
 
-  onKeyDown(event: KeyboardEvent) {
+  override onKeyDown(event: KeyboardEvent) {
     if (
       event.key === 'Backspace' &&
       this.filterString === '' &&
@@ -292,7 +294,7 @@ export class MultiSelectComponent<T = unknown>
     }
   }
 
-  writeValue(val: T[]) {
+  override writeValue(val: T[]) {
     this.value$$.next(val || []);
     this.resetInput();
     requestAnimationFrame(() => {

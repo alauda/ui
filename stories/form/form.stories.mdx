@@ -1,4 +1,5 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { FormsModule } from '@angular/forms';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
 import {
@@ -17,6 +18,7 @@ import {
   decorators={[
     moduleMetadata({
       imports: [
+        FormsModule,
         FormModule,
         InputModule,
         IconModule,

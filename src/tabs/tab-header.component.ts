@@ -26,7 +26,7 @@ import {
   TabHeaderAddonDirective,
   TabLabelWrapperDirective,
   TabTitleDirective,
-} from './tab-directives';
+} from './tab-body.component';
 import { TabHeaderActiveIndicatorComponent } from './tab-header-active-indicator.component';
 import { TabSize, TabType } from './tabs.types';
 
@@ -51,7 +51,8 @@ const EXAGGERATED_OVERSCROLL = 60;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabHeaderComponent
-  implements OnDestroy, AfterContentChecked, AfterContentInit {
+  implements OnDestroy, AfterContentChecked, AfterContentInit
+{
   bem: Bem = buildBem('aui-tab-header');
 
   _showAddon = false;
