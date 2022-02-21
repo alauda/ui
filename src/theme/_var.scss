@@ -71,7 +71,7 @@ $tooltip-padding-ver: 8px - $tooltip-border-width;
 $tooltip-offset: 4px;
 $tooltip-max-width: 416px;
 
-$tooltip-default-bg: rgba(0, 0, 0, 0.85);
+$tooltip-default-bg: rgb(0 0 0 / 85%);
 $tooltip-default-border: $tooltip-default-bg;
 $tooltip-default-text: $color-white;
 
@@ -335,11 +335,6 @@ $status-bar-pending-gradient-width: 4px;
 //accordion
 $accordion-item-header-padding: 12px 0;
 $accordion-item-header-color: #666;
-
-//Back Top
-$back-top-box-size: 36px;
-$back-top-position-offset: 10px;
-$back-top-border-radius: 2px;
 
 // timepicker
 $time-picker-icon-size: $font-size-large;
