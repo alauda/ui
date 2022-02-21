@@ -153,7 +153,7 @@ export class StepsComponent implements OnInit, OnDestroy {
     return this.type === 'progress';
   }
 
-  getIcon(i: number, state: StepState): string {
+  getIcon(i: number, state?: StepState): string {
     if (!state) {
       return StepDefaultIcon.default;
     }

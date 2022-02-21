@@ -2,6 +2,7 @@
 
 exports[`Status Bar should match snapshot 1`] = `
 <ng-component
+  __ngContext__={[Function LRootView]}
   status1={[Function Array]}
   status2={[Function Array]}
 >
@@ -11,47 +12,26 @@ exports[`Status Bar should match snapshot 1`] = `
     <div
       class="aui-status-bar aui-status-bar--medium"
     >
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--info custom-class"
         style="width: 10%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--error"
         style="width: 30%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--warning"
         style="width: 20%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--success"
         style="width: 20%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--primary"
         style="width: 20%;"
       />
-      
-      
     </div>
   </aui-status-bar><aui-status-bar
     size="small"
@@ -59,47 +39,26 @@ exports[`Status Bar should match snapshot 1`] = `
     <div
       class="aui-status-bar aui-status-bar--small"
     >
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--info custom-class"
         style="width: 10%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--error"
         style="width: 30%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--warning"
         style="width: 20%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--success"
         style="width: 20%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--primary"
         style="width: 20%;"
       />
-      
-      
     </div>
   </aui-status-bar><aui-status-bar
     size="medium"
@@ -107,15 +66,10 @@ exports[`Status Bar should match snapshot 1`] = `
     <div
       class="aui-status-bar aui-status-bar--medium"
     >
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--pending"
         style="width: 100%;"
       />
-      
-      
     </div>
   </aui-status-bar><aui-status-bar
     size="small"
@@ -123,15 +77,10 @@ exports[`Status Bar should match snapshot 1`] = `
     <div
       class="aui-status-bar aui-status-bar--small"
     >
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--pending"
         style="width: 100%;"
       />
-      
-      
     </div>
   </aui-status-bar>
 </ng-component>
@@ -139,6 +88,7 @@ exports[`Status Bar should match snapshot 1`] = `
 
 exports[`Status Bar should match snapshot 2`] = `
 <ng-component
+  __ngContext__={[Function LRootView]}
   status1={[Function Array]}
   status2={[Function Array]}
 >
@@ -148,47 +98,26 @@ exports[`Status Bar should match snapshot 2`] = `
     <div
       class="aui-status-bar aui-status-bar--medium"
     >
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--info custom-class"
         style="width: 10%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--error"
         style="width: 30%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--warning"
         style="width: 20%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--success"
         style="width: 20%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--primary"
         style="width: 20%;"
       />
-      
-      
     </div>
   </aui-status-bar><aui-status-bar
     size="small"
@@ -196,47 +125,26 @@ exports[`Status Bar should match snapshot 2`] = `
     <div
       class="aui-status-bar aui-status-bar--small"
     >
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--info custom-class"
         style="width: 10%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--error"
         style="width: 30%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--warning"
         style="width: 20%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--success"
         style="width: 20%;"
       />
-      
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--primary"
         style="width: 20%;"
       />
-      
-      
     </div>
   </aui-status-bar><aui-status-bar
     size="medium"
@@ -244,15 +152,10 @@ exports[`Status Bar should match snapshot 2`] = `
     <div
       class="aui-status-bar aui-status-bar--medium"
     >
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--pending"
         style="width: 100%;"
       />
-      
-      
     </div>
   </aui-status-bar><aui-status-bar
     size="small"
@@ -260,15 +163,10 @@ exports[`Status Bar should match snapshot 2`] = `
     <div
       class="aui-status-bar aui-status-bar--small"
     >
-      
-      
-      
       <div
         class="aui-status-bar__chunk aui-status-bar__chunk--pending"
         style="width: 100%;"
       />
-      
-      
     </div>
   </aui-status-bar>
 </ng-component>
@@ -290,14 +188,13 @@ exports[`Status Bar should match snapshot 3`] = `
     >
       <aui-tooltip>
         <div
-          class="aui-tooltip aui-tooltip--default aui-tooltip--top "
+          class="aui-tooltip aui-tooltip--default aui-tooltip--top"
         >
             
-          
-          
           <div>
             info: 0.1
           </div>
+          
           
         </div>
       </aui-tooltip>

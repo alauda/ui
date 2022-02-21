@@ -7,7 +7,7 @@ import { BaseTooltip } from './base-tooltip';
 })
 export class TooltipActiveDirective {
   @Input('auiTooltipActive')
-  customClass: string | string[];
+  customClass: string | string[] = '';
 
   constructor(
     tooltipDirective: BaseTooltip,

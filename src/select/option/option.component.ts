@@ -22,7 +22,6 @@ import {
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, coerceAttrBoolean } from '../../utils';
 import { BaseSelect } from '../base-select';
-import { MultiSelectComponent } from '../multi-select/multi-select.component';
 
 @Component({
   selector: 'aui-option',
@@ -108,7 +107,7 @@ export class OptionComponent<T> {
     @Inject(forwardRef(() => BaseSelect))
     select: any, // FIXME: workaround temporarily
   ) {
-    this.isMulti = select instanceof MultiSelectComponent;
+    this.isMulti = select.isMulti;
     this.select = select;
     this.selected$ = combineLatest([this.select.values$, this.value$$]).pipe(
       map(([selectValue, selfValue]) =>

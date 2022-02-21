@@ -56,7 +56,7 @@ export class BackTopComponent {
     this.visibilityHeight,
   );
 
-  private _target: Element | Window | string;
+  private _target: TargetType;
   private _scrollTarget: Element | Window;
 
   constructor(@Optional() private readonly cdkScrollable: CdkScrollable) {}
@@ -90,17 +90,12 @@ export class BackTopComponent {
     this.click.emit(event);
   }
 
-  getTarget(target: TargetType) {
-    if (typeof target === 'string') {
-      target = document.querySelector(target);
-    }
-    // set default value for _target,if no input or selector fail
-    if (!target) {
-      target = this.cdkScrollable
-        ? this.cdkScrollable.getElementRef().nativeElement
-        : window;
-    }
-    this._scrollTarget = target;
-    return target;
+  getTarget(target: TargetType): Element | Window {
+    const scrollTarget =
+      (typeof target === 'string' && document.querySelector(target)) ||
+      this.cdkScrollable?.getElementRef().nativeElement ||
+      window;
+    this._scrollTarget = scrollTarget;
+    return scrollTarget;
   }
 }

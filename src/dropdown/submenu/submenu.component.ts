@@ -21,7 +21,7 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
   preserveWhitespaces: false,
 })
 export class SubmenuComponent extends MenuItemComponent {
-  bem: Bem = buildBem('aui-submenu');
+  override bem: Bem = buildBem('aui-submenu');
 
   @Input()
   trigger = TooltipTrigger.Hover;
@@ -30,7 +30,7 @@ export class SubmenuComponent extends MenuItemComponent {
   size: ComponentSize = ComponentSize.Small;
 
   @Input()
-  get disabled() {
+  override get disabled() {
     return this._disabled || !this.hasEnabledItem;
   }
 

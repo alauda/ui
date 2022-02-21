@@ -93,14 +93,17 @@ describe('TabGroupComponent', () => {
       const component = fixture.componentInstance;
       const tabComponent = fixture.debugElement.query(By.css('aui-tab-group'))
         .componentInstance as TabGroupComponent;
-      // eslint-disable-next-line jest/no-jasmine-globals
-      spyOn(component, 'handleSelection').and.callThrough();
+      const spy = jest.spyOn(component, 'handleSelection');
+
       checkSelectedIndex(0, fixture);
       tabComponent.selectedIndex = 2;
       checkSelectedIndex(2, fixture);
       tick();
       expect(component.handleSelection).toHaveBeenCalledTimes(1);
       expect(component.selectEvent.index).toBe(2);
+      expect(spy).toHaveBeenCalled();
+      
+      spy.mockRestore();
     }));
 
     it('should handle auiTabContent correctly for lazy loaded tabs', fakeAsync(() => {

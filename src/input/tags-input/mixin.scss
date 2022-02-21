@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import '../../theme/var';
 @import '../../theme/mixin';
 
@@ -54,9 +56,10 @@
     }
 
     &--large {
-      $ver-margin: (
-          $input-large-height - $tag-medium-height - $input-border-width * 2
-        ) / 2;
+      $ver-margin: math.div(
+        ($input-large-height - $tag-medium-height - $input-border-width * 2),
+        2
+      );
 
       min-height: $input-large-height;
       font-size: $input-large-font-size;
@@ -68,9 +71,10 @@
     }
 
     &--medium {
-      $ver-margin: (
-          $input-medium-height - $tag-mini-height - $input-border-width * 2
-        ) / 2;
+      $ver-margin: math.div(
+        ($input-medium-height - $tag-mini-height - $input-border-width * 2),
+        2
+      );
 
       min-height: $input-medium-height;
       font-size: $input-medium-font-size;
@@ -82,9 +86,10 @@
     }
 
     &--small {
-      $ver-margin: (
-          $input-small-height - $tag-mini-height - $input-border-width * 2
-        ) / 2;
+      $ver-margin: math.div(
+        ($input-small-height - $tag-mini-height - $input-border-width * 2),
+        2
+      );
 
       min-height: $input-small-height;
       font-size: $input-small-font-size;
@@ -96,9 +101,10 @@
     }
 
     &--mini {
-      $ver-margin: (
-          $input-mini-height - $tag-mini-height - $input-border-width * 2
-        ) / 2;
+      $ver-margin: math.div(
+        ($input-mini-height - $tag-mini-height - $input-border-width * 2),
+        2
+      );
 
       min-height: $input-mini-height;
       font-size: $input-mini-font-size;

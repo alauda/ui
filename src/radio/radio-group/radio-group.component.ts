@@ -70,7 +70,7 @@ export class RadioGroupComponent extends CommonFormControl<any> {
     .asObservable()
     .pipe(distinctUntilChanged());
 
-  writeValue(value: any) {
+  override writeValue(value: any) {
     this.value$$.next(value);
   }
 

@@ -26,7 +26,7 @@
             <ng-template #elseTemplate>
               <ng-container
                 *ngIf="title || titleTemplate"
-                [ngTemplateOutlet]="title || titleTemplate"
+                [ngTemplateOutlet]="$any(title || titleTemplate)"
                 [ngTemplateOutletContext]="templateContext"
               ></ng-container>
             </ng-template>
@@ -41,7 +41,7 @@
           <ng-container *ngIf="isTemplateRef(content || contentTemplate)">
             <ng-container
               *ngTemplateOutlet="
-                content || contentTemplate;
+                $any(content || contentTemplate);
                 context: templateContext
               "
             >
@@ -58,7 +58,7 @@
           <ng-template #elseTemplate>
             <ng-container
               *ngIf="footer || footerTemplate"
-              [ngTemplateOutlet]="footer || footerTemplate"
+              [ngTemplateOutlet]="$any(footer || footerTemplate)"
               [ngTemplateOutletContext]="templateContext"
             ></ng-container>
           </ng-template>

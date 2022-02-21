@@ -46,7 +46,8 @@ import { SelectOption } from './select.types';
 })
 export class SelectComponent<T = unknown>
   extends BaseSelect<T>
-  implements AfterContentInit {
+  implements AfterContentInit
+{
   @ViewChild('inputRef', { static: true })
   inputRef: InputComponent;
 
@@ -67,7 +68,7 @@ export class SelectComponent<T = unknown>
   isClearable = (hasSelected: boolean) =>
     !this.disabled && this.clearable && hasSelected;
 
-  ngAfterContentInit() {
+    override ngAfterContentInit() {
     super.ngAfterContentInit();
 
     this.selectedOption$ = combineLatest([
@@ -125,16 +126,16 @@ export class SelectComponent<T = unknown>
     );
   }
 
-  onShowOptions() {
+  override onShowOptions() {
     super.onShowOptions();
   }
 
-  onHideOptions() {
+  override onHideOptions() {
     super.onHideOptions();
     this.inputRef.elementRef.nativeElement.value = '';
   }
 
-  writeValue(val: T) {
+  override writeValue(val: T) {
     this.value$$.next(val);
     this.closeOption();
   }

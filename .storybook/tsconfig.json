@@ -1,12 +1,4 @@
 {
-  "extends": "../tsconfig.base",
-  "include": ["../stories"],
-  // For vscode-ng-language-service
-  "angularCompilerOptions": {
-    "disableTypeScriptVersionCheck": true,
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "strictTemplates": true,
-    "trace": true
-  }
+  "extends": "../tsconfig",
+  "include": ["../stories"]
 }

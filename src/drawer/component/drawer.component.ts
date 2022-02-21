@@ -62,10 +62,11 @@ const SIZE_MAPPER = {
 export class DrawerComponent<
     T = ComponentType<unknown>,
     R = unknown,
-    D = unknown
+    D = unknown,
   >
   extends DrawerRef<T, R>
-  implements OnInit, AfterViewInit, OnChanges, OnDestroy {
+  implements OnInit, AfterViewInit, OnChanges, OnDestroy
+{
   @Input()
   title: string | TemplateRef<unknown>;
 
@@ -160,7 +161,7 @@ export class DrawerComponent<
   contentParams: D;
   overlayRef: OverlayRef;
   portal: TemplatePortal;
-  templateContext: unknown = {};
+  templateContext = {};
   get transform() {
     return `translateX(${this.visible ? 0 : '100%'})`;
   }
@@ -255,9 +256,8 @@ export class DrawerComponent<
           parent: this.injector,
         }),
       );
-      const componentRef = this.bodyPortalOutlet?.attachComponentPortal(
-        componentPortal,
-      );
+      const componentRef =
+        this.bodyPortalOutlet?.attachComponentPortal(componentPortal);
       this.componentInstance = componentRef.instance;
       Object.assign(componentRef.instance, this.contentParams);
       componentRef.changeDetectorRef.detectChanges();

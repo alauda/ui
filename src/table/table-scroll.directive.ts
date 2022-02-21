@@ -60,7 +60,7 @@ export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {
       observeResizeOn(this.containerEl),
       fromEvent(this.containerEl, 'scroll'),
     )
-      .pipe(startWith(null as void), takeUntil(this.destroy$$))
+      .pipe(startWith(null), takeUntil(this.destroy$$))
       .subscribe(() => {
         this.mutateVerticalScroll();
         this.mutateHorizontalScroll();

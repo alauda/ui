@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import 'base-var';
 
 // Button
@@ -351,6 +353,7 @@ $date-picker-row-gap: 8px;
 $date-picker-cell-size: 24px;
 $range-picker-body-width: 524px;
 $range-picker-panel-spacing: 32px;
-$range-picker-header-width: (
-    $range-picker-body-width - $range-picker-panel-spacing
-  ) / 2;
+$range-picker-header-width: math.div(
+  ($range-picker-body-width - $range-picker-panel-spacing),
+  2
+);

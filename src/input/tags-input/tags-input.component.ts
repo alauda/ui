@@ -21,6 +21,7 @@ import {
   NgControl,
   ValidatorFn,
   Validators,
+  FormControl,
 } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, publishReplay, refCount, take, tap } from 'rxjs/operators';
@@ -54,7 +55,8 @@ export const INPUT_ERROR_KEY = 'input_data_error';
 })
 export class TagsInputComponent
   extends CommonFormControl<string[]>
-  implements AfterViewInit, OnChanges {
+  implements AfterViewInit, OnChanges
+{
   bem: Bem = buildBem('aui-tags-input');
 
   @Input()
@@ -127,11 +129,11 @@ export class TagsInputComponent
 
   private readonly withMaxRowCount = createWithMaxRowCount(this);
 
-  snapshot = {
+  override snapshot = {
     value: [] as string[],
   };
 
-  value$: Observable<string[]> = this.value$$.asObservable().pipe(
+  override value$: Observable<string[]> = this.value$$.asObservable().pipe(
     map(value => this.sortByReadonly(value)),
     tap(value => {
       this.snapshot.value = value;
@@ -144,7 +146,7 @@ export class TagsInputComponent
   focused = false;
 
   // 内置form control，仅作校验使用
-  readonly inputControl = this.fb.control('');
+  readonly inputControl: FormControl;
   // 外层 FormControl，所有的校验逻辑针对输入数据
   controlContainer: NgControl;
 
@@ -177,6 +179,7 @@ export class TagsInputComponent
     private readonly injector: Injector,
   ) {
     super(cdr);
+    this.inputControl = this.fb.control('');
   }
 
   ngOnChanges({
@@ -201,7 +204,7 @@ export class TagsInputComponent
     this.controlContainer = this.injector.get(NgControl, null);
   }
 
-  writeValue(val: string[]) {
+  override writeValue(val: string[]) {
     this.value$$.next(val || []);
   }
 

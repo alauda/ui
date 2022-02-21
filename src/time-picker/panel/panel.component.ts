@@ -49,7 +49,8 @@ const bem = buildBem('aui-time-picker-panel');
 })
 export class TimePickerPanelComponent
   extends CommonFormControl<Dayjs>
-  implements OnChanges {
+  implements OnChanges
+{
   @Input()
   set format(value: string) {
     if (value != null) {
@@ -127,7 +128,7 @@ export class TimePickerPanelComponent
   // 用于控制初次滚动，是否展示滚动动画效果
   firstScrolled = false;
 
-  constructor(protected cdr: ChangeDetectorRef) {
+  constructor(protected override cdr: ChangeDetectorRef) {
     super(cdr);
     this.value$.subscribe(_ => {
       this.cdr.markForCheck();
@@ -143,15 +144,15 @@ export class TimePickerPanelComponent
       return (!this.disableHours ? [] : this.disableHours()).includes(value);
     }
     if (type === TimePickerControlType.Minute) {
-      return (!this.disableMinutes
-        ? []
-        : this.disableMinutes(currentValue?.hour())
+      return (
+        !this.disableMinutes ? [] : this.disableMinutes(currentValue?.hour())
       ).includes(value);
     }
     if (type === TimePickerControlType.Second) {
-      return (!this.disableSeconds
-        ? []
-        : this.disableSeconds(currentValue?.hour(), currentValue?.minute())
+      return (
+        !this.disableSeconds
+          ? []
+          : this.disableSeconds(currentValue?.hour(), currentValue?.minute())
       ).includes(value);
     }
   }
@@ -175,7 +176,7 @@ export class TimePickerPanelComponent
     this.cdr.markForCheck();
   }
 
-  writeValue(value: Dayjs) {
+  override writeValue(value: Dayjs) {
     super.writeValue(value);
     this.syncScrollOffset(!this.firstScrolled ? 0 : 120, value);
   }

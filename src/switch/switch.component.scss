@@ -1,4 +1,6 @@
 // stylelint-disable plugin/no-low-performance-animation-properties
+@use 'sass:math';
+
 @import '../theme/mixin';
 @import '../theme/var';
 
@@ -30,7 +32,7 @@ $switch-dot-with: $switch-height - ($switch-border-width * 2);
     display: inline-block;
     width: $switch-width;
     height: $switch-height;
-    border-radius: $switch-height / 2;
+    border-radius: math.div($switch-height, 2);
     background-color: currentColor;
     transition: background-color $animation-duration;
     position: relative;

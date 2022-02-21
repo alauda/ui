@@ -29,7 +29,8 @@ const bem = buildBem('aui-anchor');
 })
 export class AnchorTreeComponent
   extends AnchorDirectiveChild
-  implements OnDestroy {
+  implements OnDestroy
+{
   @Input()
   set treeItems(treeItems) {
     this._treeItems = treeItems;
@@ -99,7 +100,7 @@ export class AnchorTreeComponent
     this.activeIdChange.emit(item.id);
   }
 
-  trackById(_index: number, item: AnchorItem) {
+  trackById(_index: number, item: AnchorTreeItem) {
     return item.id;
   }
 }
@@ -113,7 +114,8 @@ export class AnchorTreeComponent
 })
 export class AnchorComponent
   extends AnchorDirectiveChild
-  implements AfterViewInit, OnDestroy {
+  implements AfterViewInit, OnDestroy
+{
   @Input()
   get items() {
     return this._items;
@@ -147,7 +149,7 @@ export class AnchorComponent
   private readonly destroy$$ = new Subject<void>();
 
   constructor(
-    protected injector: Injector,
+    protected override injector: Injector,
     private readonly cdr: ChangeDetectorRef,
   ) {
     super(injector);

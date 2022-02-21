@@ -161,6 +161,7 @@ export abstract class BaseSelect<T, V = T>
   contentOptions: QueryList<OptionComponent<T>>;
 
   isTemplateRef = isTemplateRef;
+  isMulti = false
 
   /**
    * Utility field to make sure the users always see the value as type array

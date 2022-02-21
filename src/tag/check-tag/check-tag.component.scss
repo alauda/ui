@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import '../../theme/var';
 @import '../../theme/mixin';
 
@@ -17,7 +19,7 @@
     font-size: use-var(font-size-m);
     margin: 0 8px;
     &.isRound {
-      border-radius: $tag-medium-height / 2;
+      border-radius: math.div($tag-medium-height, 2);
     }
   }
 }

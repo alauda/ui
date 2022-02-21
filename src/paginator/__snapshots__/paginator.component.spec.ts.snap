@@ -2,6 +2,7 @@
 
 exports[`PaginatorComponent should change page size correctly 1`] = `
 <ng-component
+  __ngContext__={[Function LRootView]}
   currentPage={[Function Number]}
   disabled="false"
   layout={[Function Array]}
@@ -16,25 +17,18 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
     <div
       class="aui-paginator"
     >
-      
       <div
         class="aui-paginator__layout"
       >
-        
-        
         <div
           class="aui-paginator__total"
         >
            Total 350 
         </div>
-        
-        
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
         <div
           class="aui-paginator__pager"
         >
@@ -49,65 +43,51 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
               <aui-icon
                 icon="angle_left"
               >
-                
-                
                 <svg
                   class="aui-icon aui-icon-angle_left"
                 >
-                  
                   <use
                     xlink:href="#aui-icon-angle_left"
                   />
                 </svg>
-                
-                
               </aui-icon>
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--medium aui-paginator__page aui-button--primary"
+            class="aui-button aui-button--medium aui-button--primary aui-paginator__page"
           >
             <span
               class="aui-button__content"
             >
                1 
             </span>
-            
           </button>
-          
-          
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
           >
             <span
               class="aui-button__content"
             >
                2 
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
           >
             <span
               class="aui-button__content"
             >
                3 
             </span>
-            
           </button>
-          
-          
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
           >
             <span
               class="aui-button__content"
             >
                4 
             </span>
-            
           </button>
           <button
             aui-button=""
@@ -119,34 +99,21 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
               <aui-icon
                 icon="angle_right"
               >
-                
-                
                 <svg
                   class="aui-icon aui-icon-angle_right"
                 >
-                  
                   <use
                     xlink:href="#aui-icon-angle_right"
                   />
                 </svg>
-                
-                
               </aui-icon>
             </span>
-            
           </button>
         </div>
-        
-        
-        
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
-        
-        
         <div
           class="aui-paginator__sizes"
         >
@@ -159,16 +126,14 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
             >
               <aui-input-group>
                 <div
-                  class="aui-input-group aui-input-group--medium hasSuffix"
+                  class="hasSuffix aui-input-group aui-input-group--medium"
                 >
                   <div
                     class="aui-input-group__inner-wrapper"
                   >
-                    
                     <div
                       class="aui-input-group__input-wrapper"
                     >
-                      
                       <input
                         aui-input=""
                         autocomplete="off"
@@ -176,21 +141,15 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                         placeholder=""
                         readonly=""
                       />
-                      
                       <div
-                        class="aui-select__label-container aui-input aui-input--medium"
+                        class="aui-input aui-input--medium aui-select__label-container"
                       >
                         <div
                           class="aui-select__label"
                         >
-                          
-                          
-                          
                           100
-                          
                         </div>
                       </div>
-                      
                       <span
                         class="aui-input-group__suffix"
                       >
@@ -201,64 +160,45 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                           <aui-icon
                             class="aui-select__indicator"
                           >
-                            
-                            
                             <svg
                               class="aui-icon aui-icon-caret_down_s"
                             >
-                              
                               <use
                                 xlink:href="#aui-icon-caret_down_s"
                               />
                             </svg>
-                            
-                            
                           </aui-icon>
                           <aui-icon
                             class="aui-select__clear"
                             icon="close_small"
                           >
-                            
-                            
                             <svg
                               class="aui-icon aui-icon-close_small"
                             >
-                              
                               <use
                                 xlink:href="#aui-icon-close_small"
                               />
                             </svg>
-                            
-                            
                           </aui-icon>
                         </span>
                       </span>
                     </div>
-                    
                   </div>
                 </div>
               </aui-input-group>
             </div>
-            
           </aui-select>
           <span>
             perPage
           </span>
         </div>
-        
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
-        
-        
-        
         <div
           class="aui-paginator__jumper"
         >
-          
           <span>
             Goto
           </span>
@@ -269,18 +209,11 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
             min="1"
             type="number"
           />
-          
         </div>
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
-        
-        
-        
-        
       </div>
     </div>
   </aui-paginator>
@@ -289,6 +222,7 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
 
 exports[`PaginatorComponent should render current template 1`] = `
 <ng-component
+  __ngContext__={[Function LRootView]}
   currentPage={[Function Number]}
   disabled="false"
   layout={[Function Array]}
@@ -303,25 +237,18 @@ exports[`PaginatorComponent should render current template 1`] = `
     <div
       class="aui-paginator"
     >
-      
       <div
         class="aui-paginator__layout"
       >
-        
-        
         <div
           class="aui-paginator__total"
         >
            Total 350 
         </div>
-        
-        
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
         <div
           class="aui-paginator__pager"
         >
@@ -336,85 +263,70 @@ exports[`PaginatorComponent should render current template 1`] = `
               <aui-icon
                 icon="angle_left"
               >
-                
-                
                 <svg
                   class="aui-icon aui-icon-angle_left"
                 >
-                  
                   <use
                     xlink:href="#aui-icon-angle_left"
                   />
                 </svg>
-                
-                
               </aui-icon>
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--medium aui-paginator__page aui-button--primary"
+            class="aui-button aui-button--medium aui-button--primary aui-paginator__page"
           >
             <span
               class="aui-button__content"
             >
                1 
             </span>
-            
           </button>
-          
-          
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
           >
             <span
               class="aui-button__content"
             >
                2 
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
           >
             <span
               class="aui-button__content"
             >
                3 
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
           >
             <span
               class="aui-button__content"
             >
                4 
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
           >
             <span
               class="aui-button__content"
             >
                5 
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
           >
             <span
               class="aui-button__content"
             >
                6 
             </span>
-            
           </button>
-          
           <button
             aui-button=""
             class="aui-button aui-button--default aui-button--medium aui-paginator__fast-navigator"
@@ -425,48 +337,35 @@ exports[`PaginatorComponent should render current template 1`] = `
               <aui-icon
                 icon="ellipsis_h_s"
               >
-                
-                
                 <svg
                   class="aui-icon aui-icon-ellipsis_h_s"
                 >
-                  
                   <use
                     xlink:href="#aui-icon-ellipsis_h_s"
                   />
                 </svg>
-                
-                
               </aui-icon>
               <aui-icon
                 icon="angle_double_right"
               >
-                
-                
                 <svg
                   class="aui-icon aui-icon-angle_double_right"
                 >
-                  
                   <use
                     xlink:href="#aui-icon-angle_double_right"
                   />
                 </svg>
-                
-                
               </aui-icon>
             </span>
-            
           </button>
-          
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
           >
             <span
               class="aui-button__content"
             >
                18 
             </span>
-            
           </button>
           <button
             aui-button=""
@@ -478,34 +377,21 @@ exports[`PaginatorComponent should render current template 1`] = `
               <aui-icon
                 icon="angle_right"
               >
-                
-                
                 <svg
                   class="aui-icon aui-icon-angle_right"
                 >
-                  
                   <use
                     xlink:href="#aui-icon-angle_right"
                   />
                 </svg>
-                
-                
               </aui-icon>
             </span>
-            
           </button>
         </div>
-        
-        
-        
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
-        
-        
         <div
           class="aui-paginator__sizes"
         >
@@ -518,16 +404,14 @@ exports[`PaginatorComponent should render current template 1`] = `
             >
               <aui-input-group>
                 <div
-                  class="aui-input-group aui-input-group--medium hasSuffix"
+                  class="hasSuffix aui-input-group aui-input-group--medium"
                 >
                   <div
                     class="aui-input-group__inner-wrapper"
                   >
-                    
                     <div
                       class="aui-input-group__input-wrapper"
                     >
-                      
                       <input
                         aui-input=""
                         autocomplete="off"
@@ -535,21 +419,15 @@ exports[`PaginatorComponent should render current template 1`] = `
                         placeholder=""
                         readonly=""
                       />
-                      
                       <div
-                        class="aui-select__label-container aui-input aui-input--medium"
+                        class="aui-input aui-input--medium aui-select__label-container"
                       >
                         <div
                           class="aui-select__label"
                         >
-                          
-                          
-                          
                           20
-                          
                         </div>
                       </div>
-                      
                       <span
                         class="aui-input-group__suffix"
                       >
@@ -560,64 +438,45 @@ exports[`PaginatorComponent should render current template 1`] = `
                           <aui-icon
                             class="aui-select__indicator"
                           >
-                            
-                            
                             <svg
                               class="aui-icon aui-icon-caret_down_s"
                             >
-                              
                               <use
                                 xlink:href="#aui-icon-caret_down_s"
                               />
                             </svg>
-                            
-                            
                           </aui-icon>
                           <aui-icon
                             class="aui-select__clear"
                             icon="close_small"
                           >
-                            
-                            
                             <svg
                               class="aui-icon aui-icon-close_small"
                             >
-                              
                               <use
                                 xlink:href="#aui-icon-close_small"
                               />
                             </svg>
-                            
-                            
                           </aui-icon>
                         </span>
                       </span>
                     </div>
-                    
                   </div>
                 </div>
               </aui-input-group>
             </div>
-            
           </aui-select>
           <span>
             perPage
           </span>
         </div>
-        
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
-        
-        
-        
         <div
           class="aui-paginator__jumper"
         >
-          
           <span>
             Goto
           </span>
@@ -628,18 +487,11 @@ exports[`PaginatorComponent should render current template 1`] = `
             min="1"
             type="number"
           />
-          
         </div>
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
-        
-        
-        
-        
       </div>
     </div>
   </aui-paginator>
@@ -648,6 +500,7 @@ exports[`PaginatorComponent should render current template 1`] = `
 
 exports[`PaginatorComponent should render current template 2`] = `
 <ng-component
+  __ngContext__={[Function LRootView]}
   currentPage={[Function Number]}
   disabled={[Function Boolean]}
   layout={[Function Array]}
@@ -662,25 +515,18 @@ exports[`PaginatorComponent should render current template 2`] = `
     <div
       class="aui-paginator"
     >
-      
       <div
         class="aui-paginator__layout"
       >
-        
-        
         <div
           class="aui-paginator__total"
         >
            Total 350 
         </div>
-        
-        
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
         <div
           class="aui-paginator__pager"
         >
@@ -695,24 +541,18 @@ exports[`PaginatorComponent should render current template 2`] = `
               <aui-icon
                 icon="angle_left"
               >
-                
-                
                 <svg
                   class="aui-icon aui-icon-angle_left"
                 >
-                  
                   <use
                     xlink:href="#aui-icon-angle_left"
                   />
                 </svg>
-                
-                
               </aui-icon>
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--medium aui-paginator__page aui-button--primary"
+            class="aui-button aui-button--medium aui-button--primary aui-paginator__page"
             disabled=""
           >
             <span
@@ -720,12 +560,9 @@ exports[`PaginatorComponent should render current template 2`] = `
             >
                1 
             </span>
-            
           </button>
-          
-          
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
             disabled=""
           >
             <span
@@ -733,10 +570,9 @@ exports[`PaginatorComponent should render current template 2`] = `
             >
                2 
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
             disabled=""
           >
             <span
@@ -744,10 +580,9 @@ exports[`PaginatorComponent should render current template 2`] = `
             >
                3 
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
             disabled=""
           >
             <span
@@ -755,10 +590,9 @@ exports[`PaginatorComponent should render current template 2`] = `
             >
                4 
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
             disabled=""
           >
             <span
@@ -766,10 +600,9 @@ exports[`PaginatorComponent should render current template 2`] = `
             >
                5 
             </span>
-            
           </button>
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
             disabled=""
           >
             <span
@@ -777,9 +610,7 @@ exports[`PaginatorComponent should render current template 2`] = `
             >
                6 
             </span>
-            
           </button>
-          
           <button
             aui-button=""
             class="aui-button aui-button--default aui-button--medium aui-paginator__fast-navigator"
@@ -791,41 +622,29 @@ exports[`PaginatorComponent should render current template 2`] = `
               <aui-icon
                 icon="ellipsis_h_s"
               >
-                
-                
                 <svg
                   class="aui-icon aui-icon-ellipsis_h_s"
                 >
-                  
                   <use
                     xlink:href="#aui-icon-ellipsis_h_s"
                   />
                 </svg>
-                
-                
               </aui-icon>
               <aui-icon
                 icon="angle_double_right"
               >
-                
-                
                 <svg
                   class="aui-icon aui-icon-angle_double_right"
                 >
-                  
                   <use
                     xlink:href="#aui-icon-angle_double_right"
                   />
                 </svg>
-                
-                
               </aui-icon>
             </span>
-            
           </button>
-          
           <button
-            class="aui-button aui-button--default aui-button--medium aui-paginator__page isPlain"
+            class="aui-button aui-button--default aui-button--medium isPlain aui-paginator__page"
             disabled=""
           >
             <span
@@ -833,7 +652,6 @@ exports[`PaginatorComponent should render current template 2`] = `
             >
                18 
             </span>
-            
           </button>
           <button
             aui-button=""
@@ -846,34 +664,21 @@ exports[`PaginatorComponent should render current template 2`] = `
               <aui-icon
                 icon="angle_right"
               >
-                
-                
                 <svg
                   class="aui-icon aui-icon-angle_right"
                 >
-                  
                   <use
                     xlink:href="#aui-icon-angle_right"
                   />
                 </svg>
-                
-                
               </aui-icon>
             </span>
-            
           </button>
         </div>
-        
-        
-        
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
-        
-        
         <div
           class="aui-paginator__sizes"
         >
@@ -886,16 +691,14 @@ exports[`PaginatorComponent should render current template 2`] = `
             >
               <aui-input-group>
                 <div
-                  class="aui-input-group aui-input-group--medium hasSuffix isDisabled"
+                  class="hasSuffix aui-input-group aui-input-group--medium isDisabled"
                 >
                   <div
                     class="aui-input-group__inner-wrapper"
                   >
-                    
                     <div
                       class="aui-input-group__input-wrapper"
                     >
-                      
                       <input
                         aui-input=""
                         autocomplete="off"
@@ -904,22 +707,16 @@ exports[`PaginatorComponent should render current template 2`] = `
                         placeholder=""
                         readonly=""
                       />
-                      
                       <div
-                        class="aui-select__label-container aui-input aui-input--medium"
+                        class="aui-input aui-input--medium aui-select__label-container"
                         disabled="true"
                       >
                         <div
                           class="aui-select__label"
                         >
-                          
-                          
-                          
                           20
-                          
                         </div>
                       </div>
-                      
                       <span
                         class="aui-input-group__suffix"
                       >
@@ -930,64 +727,45 @@ exports[`PaginatorComponent should render current template 2`] = `
                           <aui-icon
                             class="aui-select__indicator"
                           >
-                            
-                            
                             <svg
                               class="aui-icon aui-icon-caret_down_s"
                             >
-                              
                               <use
                                 xlink:href="#aui-icon-caret_down_s"
                               />
                             </svg>
-                            
-                            
                           </aui-icon>
                           <aui-icon
                             class="aui-select__clear"
                             icon="close_small"
                           >
-                            
-                            
                             <svg
                               class="aui-icon aui-icon-close_small"
                             >
-                              
                               <use
                                 xlink:href="#aui-icon-close_small"
                               />
                             </svg>
-                            
-                            
                           </aui-icon>
                         </span>
                       </span>
                     </div>
-                    
                   </div>
                 </div>
               </aui-input-group>
             </div>
-            
           </aui-select>
           <span>
             perPage
           </span>
         </div>
-        
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
-        
-        
-        
         <div
           class="aui-paginator__jumper"
         >
-          
           <span>
             Goto
           </span>
@@ -999,18 +777,11 @@ exports[`PaginatorComponent should render current template 2`] = `
             min="1"
             type="number"
           />
-          
         </div>
-        
       </div>
       <div
         class="aui-paginator__layout"
       >
-        
-        
-        
-        
-        
       </div>
     </div>
   </aui-paginator>

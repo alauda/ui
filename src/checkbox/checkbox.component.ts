@@ -113,7 +113,7 @@ export class CheckboxComponent<T>
     this.focusMonitor.stopMonitoring(this.elRef.nativeElement);
   }
 
-  writeValue(value: boolean) {
+  override writeValue(value: boolean) {
     this.value$$.next(value);
   }
 

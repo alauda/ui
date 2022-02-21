@@ -4,22 +4,16 @@ on: pull_request
 
 jobs:
   run_unit_test:
-    name: Unit test
-    strategy:
-      matrix:
-        node:
-          - 12
-          - 14
-          # - 16 # https://github.com/angular/angular/pull/41544#issuecomment-840655866
+    name: Unit Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      - name: Setup Node.js ${{ matrix.node }}
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 16
 
       - name: Link Yarn global binaries into PATH
         run: echo "$(yarn global bin)" >> $GITHUB_PATH
