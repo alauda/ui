@@ -106,7 +106,13 @@ $button-size: (
     }
 
     &[disabled] {
-      color: use-rgb($color, 4);
+      @include theme-light {
+        color: use-rgb($color, 4);
+      }
+      @include theme-dark {
+        color: use-rgb($color, 0);
+      }
+
       border-color: use-rgb($color, 4);
       background-color: use-rgb($color, 7);
     }

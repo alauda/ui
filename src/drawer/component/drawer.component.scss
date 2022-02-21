@@ -32,7 +32,12 @@ $drawer: aui-drawer;
   @include text-set(m, main);
 
   &.isOpen &__content {
-    @include modal-shadow;
+    @include theme-light {
+      box-shadow: -2px 0 8px 0 use-rgba(origin-shadow, 0.2);
+    }
+    @include theme-dark {
+      box-shadow: -2px 0 8px 0 use-rgba(origin-shadow, 0.75);
+    }
   }
 
   &__content {
