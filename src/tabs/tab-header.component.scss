@@ -52,7 +52,7 @@
   }
 
   &--card {
-    background-color: $tab-header-type-card-bg-color;
+    background-color: use-rgb(button-bg);
   }
 
   &--line {

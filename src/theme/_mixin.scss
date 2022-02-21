@@ -51,7 +51,12 @@
 
 // 使用 box-shadow 模拟带圆角的 outline
 @mixin outline-shadow($color: primary) {
-  box-shadow: 0 0 0 2px use-rgba($color, 0.16);
+  @include theme-light {
+    box-shadow: 0 0 0 2px use-rgba($color, 0.16);
+  }
+  @include theme-dark {
+    box-shadow: 0 0 0 2px use-rgba($color, 0.3);
+  }
 }
 
 @mixin card-shadow() {

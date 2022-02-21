@@ -55,7 +55,14 @@ $block: 'aui-checkbox';
 
   @include pointer('isChecked');
 
+  &.isDisabled &__pointer {
+    @include theme-dark {
+      color: use-rgb(n-4);
+    }
+  }
+
   &.isIndeterminate &__pointer {
+    color: use-rgb(main-bg);
     border-color: use-rgb(primary);
     background-color: use-rgb(primary);
   }

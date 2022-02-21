@@ -9,7 +9,7 @@ $right-in-range-shadow: 6px 0 0 0 $in-range-bgcolor;
 $left-disabled-shadow: -6px 0 0 0 $color-disabled-bg;
 $right-disabled-shadow: 6px 0 0 0 $color-disabled-bg;
 
-$left-mask-shadow: -12px 0 0 0 use-rgb(n-10);
+$left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
 
 .#{$block} {
   &__container {
@@ -125,8 +125,8 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(n-10);
     }
 
     &.isActive button {
+      color: white;
       background-color: use-rgb(primary);
-      color: use-rgb(n-10);
     }
     &.isBackground button {
       background-color: initial !important;
