@@ -1,5 +1,5 @@
 ---
-"@alauda/ui": patch
+"@alauda/ui": minor
 ---
 
 fix: backtop button style
