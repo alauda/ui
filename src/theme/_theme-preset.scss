@@ -1,4 +1,4 @@
-@use "sass:color";
+@use 'sass:color';
 
 @mixin component-size {
   --aui-inline-height-l: 40px;
@@ -133,7 +133,7 @@
   --aui-color-r-4: #{rgb-string(#792b3f)};
   --aui-color-r-6: #{rgb-string(#532939)};
   --aui-color-r-7: #{rgb-string(#652a3c)};
-  --aui-color-n-1: #{rgb-string(#f3f4f8)};
+  --aui-color-n-1: #{rgb-string(#eeeff3)};
   --aui-color-n-2: #{rgb-string(#c8c9cd)};
   --aui-color-n-3: #{rgb-string(#b8bac2)};
   --aui-color-n-4: #{rgb-string(#989aa2)};
