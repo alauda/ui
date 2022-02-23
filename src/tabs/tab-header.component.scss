@@ -58,7 +58,7 @@
   &--line {
     border-radius: use-var(border-radius-l);
     overflow: hidden;
-    box-shadow: 0 0 4px 0 rgba(50, 52, 55, 0.1);
+    box-shadow: 0 0 4px 0 rgb(50 52 55 / 10%);
     background-color: use-rgb(n-10);
   }
 
@@ -120,6 +120,7 @@
 
   &__labels {
     display: flex;
+
     &:focus {
       outline: none;
     }
@@ -160,6 +161,7 @@
     &.isActive {
       font-weight: $font-weight-bold;
     }
+
     &.isActive,
     &:hover {
       color: use-rgb(primary);
@@ -187,6 +189,7 @@
     justify-content: center;
     color: use-rgb(n-4);
     @include transition;
+
     &:hover {
       color: use-rgb(n-9);
       background-color: use-rgb(n-4);
@@ -217,7 +220,7 @@ aui-tab-header-active-indicator {
     content: '';
     position: absolute;
     display: block;
-    background: $tab-header-indicator-color;
+    background: use-rgb(primary);
     height: 2px;
   }
 
@@ -231,6 +234,7 @@ aui-tab-header-active-indicator {
 
   &--card {
     background-color: use-rgb(n-10);
+
     &:after {
       width: calc(100% + 2px);
       top: 0;
