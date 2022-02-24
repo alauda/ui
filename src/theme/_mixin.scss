@@ -1,31 +1,39 @@
 @import 'base-var';
 @import 'var';
 
+@function theme-selector($theme, $scope) {
+  @if ($scope) {
+    @return selector-nest($theme, $scope);
+  } @else {
+    @return $theme;
+  }
+}
+
 @mixin theme-light {
-  $host: &;
+  $scope: &;
 
   @at-root {
-    :root #{$host} {
+    #{theme-selector(':root', $scope)} {
       @content;
     }
 
-    html[aui-theme-mode='light'] #{$host} {
+    #{theme-selector('html[aui-theme-mode=light]', $scope)} {
       @content;
     }
   }
 }
 
 @mixin theme-dark {
-  $host: &;
+  $scope: &;
 
   @at-root {
     @media (prefers-color-scheme: dark) {
-      html[aui-theme-mode='system'] #{$host} {
+      #{theme-selector('html[aui-theme-mode=system]', $scope)} {
         @content;
       }
     }
 
-    html[aui-theme-mode='dark'] #{$host} {
+    #{theme-selector('html[aui-theme-mode=dark]', $scope)} {
       @content;
     }
   }
@@ -103,6 +111,7 @@
     width: 4px;
     height: 4px;
   }
+
   &::-webkit-scrollbar-thumb {
     background-color: $color;
   }
