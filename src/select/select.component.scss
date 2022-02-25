@@ -1,5 +1,3 @@
-@use "sass:meta";
-
 @import '../theme/var';
 @import '../theme/mixin';
 @import './option-container';
@@ -29,6 +27,7 @@
   }
 
   &__label {
+    width: 100%;
     @include text-overflow;
   }
 
