@@ -159,24 +159,38 @@ export class MultiSelectComponent<T = unknown>
 
     this.selectedOptions$ = combineLatest([
       this.value$,
-      this.contentOptions.changes.pipe(
+      (
+        this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
+      ).pipe(
         startWith(this.contentOptions),
         switchMap((options: QueryList<OptionComponent<T>>) =>
           options.length > 0
             ? combineLatest(
-                options.map(option =>
-                  combineLatest([
-                    option.value$,
-                    option.label$,
-                    option.labelContext$,
-                  ]).pipe(
-                    map(([value, label, labelContext]) => ({
-                      value,
-                      label,
-                      labelContext,
-                    })),
+                [...options]
+                  .sort((a, b) => {
+                    if (a.selected && a.disabled) {
+                      return -1;
+                    }
+
+                    if (b.selected && b.disabled) {
+                      return 1;
+                    }
+
+                    return 0;
+                  })
+                  .map(option =>
+                    combineLatest([
+                      option.value$,
+                      option.label$,
+                      option.labelContext$,
+                    ]).pipe(
+                      map(([value, label, labelContext]) => ({
+                        value,
+                        label,
+                        labelContext,
+                      })),
+                    ),
                   ),
-                ),
               )
             : of([] as Array<SelectFilterOption<T>>),
         ),
@@ -300,6 +314,13 @@ export class MultiSelectComponent<T = unknown>
     requestAnimationFrame(() => {
       this.tooltipRef.updatePosition();
     });
+  }
+
+  isOptionRemovable(option: SelectFilterOption<T>) {
+    const currOption = this.contentOptions.find(
+      opt => this.trackFn(opt.value) === this.trackFn(option.value),
+    );
+    return !this.disabled && !currOption.disabled;
   }
 
   selectOption(option: OptionComponent<T>) {

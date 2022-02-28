@@ -41,7 +41,8 @@ import { OptionFilterFn, SelectFilterOption, TrackFn } from './select.types';
 // tslint:disable-next-line: directive-class-suffix
 export abstract class BaseSelect<T, V = T>
   extends CommonFormControl<V>
-  implements AfterContentInit, AfterViewInit, OnDestroy {
+  implements AfterContentInit, AfterViewInit, OnDestroy
+{
   @Input()
   get size() {
     return this._size;
@@ -146,7 +147,7 @@ export abstract class BaseSelect<T, V = T>
   protected tooltipRef: TooltipDirective;
 
   @ViewChild('optionListRef', { static: false })
-  protected optionListRef: ElementRef;
+  protected optionListRef: ElementRef<HTMLDivElement>;
 
   @ViewChild('inputtingOption', { static: false })
   protected inputtingOption: OptionComponent<T>;
@@ -161,7 +162,7 @@ export abstract class BaseSelect<T, V = T>
   contentOptions: QueryList<OptionComponent<T>>;
 
   isTemplateRef = isTemplateRef;
-  isMulti = false
+  isMulti = false;
 
   /**
    * Utility field to make sure the users always see the value as type array
@@ -194,7 +195,9 @@ export abstract class BaseSelect<T, V = T>
   ngAfterContentInit() {
     this.customCreatedOptions$ = combineLatest([
       this.values$,
-      this.contentOptions.changes.pipe(
+      (
+        this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
+      ).pipe(
         startWith(this.contentOptions),
         switchMap((options: QueryList<OptionComponent<T>>) =>
           options.length > 0
@@ -271,7 +274,9 @@ export abstract class BaseSelect<T, V = T>
       refCount(),
     );
 
-    this.hasVisibleOption$ = this.contentOptions.changes.pipe(
+    this.hasVisibleOption$ = (
+      this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
+    ).pipe(
       startWith(this.contentOptions),
       switchMap((options: QueryList<OptionComponent<T>>) =>
         options.length > 0

@@ -86,7 +86,7 @@ export class OptionComponent<T> {
   isMulti = false;
 
   @ViewChild('elRef', { static: true })
-  elRef: ElementRef;
+  elRef: ElementRef<HTMLDivElement>;
 
   private readonly select: BaseSelect<T>;
   selected = false;
