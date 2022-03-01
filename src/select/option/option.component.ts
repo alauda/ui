@@ -44,6 +44,8 @@ export class OptionComponent<T> {
 
   private readonly value$$ = new BehaviorSubject(this.value);
 
+  private readonly disabled$$ = new BehaviorSubject(this.disabled);
+
   @Input()
   get label() {
     return this._label;
@@ -75,12 +77,13 @@ export class OptionComponent<T> {
   }
 
   @Input()
-  get disabled() {
+  get disabled(): boolean {
     return this._disabled;
   }
 
   set disabled(val: boolean | '') {
     this._disabled = coerceAttrBoolean(val);
+    this.disabled$$.next(this._disabled);
   }
 
   isMulti = false;
@@ -97,6 +100,7 @@ export class OptionComponent<T> {
   value$ = this.value$$.asObservable();
   label$ = this.label$$.asObservable();
   labelContext$ = this.labelContext$$.asObservable();
+  disabled$ = this.disabled$$.asObservable();
 
   selected$: Observable<boolean>;
   size$: Observable<ComponentSize>;

@@ -68,13 +68,15 @@ export class SelectComponent<T = unknown>
   isClearable = (hasSelected: boolean) =>
     !this.disabled && this.clearable && hasSelected;
 
-    override ngAfterContentInit() {
+  override ngAfterContentInit() {
     super.ngAfterContentInit();
 
     this.selectedOption$ = combineLatest([
-      this.contentOptions.changes.pipe(
+      (
+        this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
+      ).pipe(
         startWith(this.contentOptions),
-        switchMap((options: QueryList<OptionComponent<T>>) =>
+        switchMap(options =>
           combineLatest(options.map(option => option.selected$)).pipe(
             startWith(null as void),
             map(() => options.find(option => option.selected)),

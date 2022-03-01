@@ -37,7 +37,7 @@
     [round]="true"
     [border]="true"
     [size]="tagSize"
-    [closeable]="isOptionRemovable(option)"
+    [closeable]="!disabled && !option.disabled"
     (close)="removeValue(option.value)"
     [ngClass]="tagClassFn && tagClassFn(option.label, option.value)"
   >

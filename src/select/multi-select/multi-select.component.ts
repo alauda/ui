@@ -166,53 +166,58 @@ export class MultiSelectComponent<T = unknown>
         switchMap((options: QueryList<OptionComponent<T>>) =>
           options.length > 0
             ? combineLatest(
-                [...options]
-                  .sort((a, b) => {
-                    if (a.selected && a.disabled) {
-                      return -1;
-                    }
-
-                    if (b.selected && b.disabled) {
-                      return 1;
-                    }
-
-                    return 0;
-                  })
-                  .map(option =>
-                    combineLatest([
-                      option.value$,
-                      option.label$,
-                      option.labelContext$,
-                    ]).pipe(
-                      map(([value, label, labelContext]) => ({
-                        value,
-                        label,
-                        labelContext,
-                      })),
-                    ),
+                options.map(option =>
+                  combineLatest([
+                    option.value$,
+                    option.label$,
+                    option.labelContext$,
+                    option.disabled$,
+                  ]).pipe(
+                    map(([value, label, labelContext, disabled]) => ({
+                      value,
+                      label,
+                      labelContext,
+                      disabled,
+                    })),
                   ),
+                ),
               )
             : of([] as Array<SelectFilterOption<T>>),
         ),
       ),
     ]).pipe(
       map(([values, options]) =>
-        values.map(value => {
-          const option = options.find(
-            option => this.trackFn(option.value) === this.trackFn(value),
-          );
-          return option
-            ? {
-                label: option.label || coerceString(this.trackFn(option.value)),
-                labelContext: option.labelContext,
-                value: option.value,
-              }
-            : {
-                label:
-                  this.labelFn?.(value) || coerceString(this.trackFn(value)),
-                value,
-              };
-        }),
+        values
+          .map(value => {
+            const option = options.find(
+              option => this.trackFn(option.value) === this.trackFn(value),
+            );
+            return option
+              ? {
+                  label:
+                    option.label || coerceString(this.trackFn(option.value)),
+                  labelContext: option.labelContext,
+                  value: option.value,
+                  disabled: option.disabled,
+                }
+              : {
+                  label:
+                    this.labelFn?.(value) || coerceString(this.trackFn(value)),
+                  value,
+                };
+          })
+          // sort disabled options as first
+          .sort((a, b) => {
+            if (a.disabled) {
+              return -1;
+            }
+
+            if (b.disabled) {
+              return 1;
+            }
+
+            return 0;
+          }),
       ),
       publishReplay(1),
       refCount(),
@@ -314,13 +319,6 @@ export class MultiSelectComponent<T = unknown>
     requestAnimationFrame(() => {
       this.tooltipRef.updatePosition();
     });
-  }
-
-  isOptionRemovable(option: SelectFilterOption<T>) {
-    const currOption = this.contentOptions.find(
-      opt => this.trackFn(opt.value) === this.trackFn(option.value),
-    );
-    return !this.disabled && !currOption.disabled;
   }
 
   selectOption(option: OptionComponent<T>) {
