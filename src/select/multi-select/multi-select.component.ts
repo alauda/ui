@@ -159,7 +159,9 @@ export class MultiSelectComponent<T = unknown>
 
     this.selectedOptions$ = combineLatest([
       this.value$,
-      this.contentOptions.changes.pipe(
+      (
+        this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
+      ).pipe(
         startWith(this.contentOptions),
         switchMap((options: QueryList<OptionComponent<T>>) =>
           options.length > 0
@@ -169,11 +171,13 @@ export class MultiSelectComponent<T = unknown>
                     option.value$,
                     option.label$,
                     option.labelContext$,
+                    option.disabled$,
                   ]).pipe(
-                    map(([value, label, labelContext]) => ({
+                    map(([value, label, labelContext, disabled]) => ({
                       value,
                       label,
                       labelContext,
+                      disabled,
                     })),
                   ),
                 ),
@@ -183,22 +187,37 @@ export class MultiSelectComponent<T = unknown>
       ),
     ]).pipe(
       map(([values, options]) =>
-        values.map(value => {
-          const option = options.find(
-            option => this.trackFn(option.value) === this.trackFn(value),
-          );
-          return option
-            ? {
-                label: option.label || coerceString(this.trackFn(option.value)),
-                labelContext: option.labelContext,
-                value: option.value,
-              }
-            : {
-                label:
-                  this.labelFn?.(value) || coerceString(this.trackFn(value)),
-                value,
-              };
-        }),
+        values
+          .map(value => {
+            const option = options.find(
+              option => this.trackFn(option.value) === this.trackFn(value),
+            );
+            return option
+              ? {
+                  label:
+                    option.label || coerceString(this.trackFn(option.value)),
+                  labelContext: option.labelContext,
+                  value: option.value,
+                  disabled: option.disabled,
+                }
+              : {
+                  label:
+                    this.labelFn?.(value) || coerceString(this.trackFn(value)),
+                  value,
+                };
+          })
+          // sort disabled options as first
+          .sort((a, b) => {
+            if (a.disabled) {
+              return -1;
+            }
+
+            if (b.disabled) {
+              return 1;
+            }
+
+            return 0;
+          }),
       ),
       publishReplay(1),
       refCount(),
