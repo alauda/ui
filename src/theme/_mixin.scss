@@ -94,6 +94,15 @@
   }
 }
 
+@mixin modal-backdrop() {
+  @include theme-light {
+    background-color: use-rgba(origin-shadow, 0.4);
+  }
+  @include theme-dark {
+    background-color: use-rgba(origin-shadow, 0.75);
+  }
+}
+
 @mixin transition($target: all) {
   transition: $target $animation-duration $animation-interpolation;
 }
@@ -106,13 +115,14 @@
   transform: translate(-50%, -50%);
 }
 
-@mixin scroll-bar($color: rgba(0, 0, 0, 0.3)) {
+@mixin scroll-bar($color: #{use-rgba(n-1, 0.2)}) {
   &::-webkit-scrollbar {
     width: 4px;
     height: 4px;
   }
 
   &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
     background-color: $color;
   }
 }
