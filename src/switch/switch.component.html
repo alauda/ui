@@ -2,7 +2,7 @@
   class="aui-switch"
   [class.isLoading]="loading"
   [class.isDisabled]="disabled"
-  [class.isChecked]="value$ | async"
+  [class.isChecked]="model"
   (click)="onSwitch()"
 >
   <input
@@ -10,7 +10,7 @@
     [ngClass]="bem.element('input')"
     type="checkbox"
     [disabled]="disabled"
-    [checked]="value$ | async"
+    [checked]="model"
     (blur)="onBlur()"
   />
   <span [ngClass]="bem.element('bar')">

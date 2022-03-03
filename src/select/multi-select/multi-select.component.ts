@@ -21,7 +21,6 @@ import {
   refCount,
   startWith,
   switchMap,
-  takeUntil,
   tap,
 } from 'rxjs/operators';
 
@@ -72,8 +71,9 @@ export class MultiSelectComponent<T = unknown>
 
   private _allowSelectAll = false;
   override isMulti = true;
-  selectedValues: T[] = [];
-  values$ = this.value$$.asObservable();
+  override model: T[] = [];
+
+  values$ = this.model$;
 
   @Input()
   tagClassFn: TagClassFn<T>;
@@ -133,7 +133,7 @@ export class MultiSelectComponent<T = unknown>
   }
 
   get displayClearBtn() {
-    return !this.disabled && this.clearable && this.selectedValues.length;
+    return !this.disabled && this.clearable && this.model.length;
   }
 
   get maxHeight() {
@@ -149,16 +149,13 @@ export class MultiSelectComponent<T = unknown>
 
   constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {
     super(cdr);
-    this.values$.pipe(takeUntil(this.destroy$$)).subscribe(values => {
-      this.selectedValues = values;
-    });
   }
 
   override ngAfterContentInit() {
     super.ngAfterContentInit();
 
     this.selectedOptions$ = combineLatest([
-      this.value$,
+      this.model$,
       (
         this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
       ).pipe(
@@ -292,14 +289,14 @@ export class MultiSelectComponent<T = unknown>
     if (
       event.key === 'Backspace' &&
       this.filterString === '' &&
-      this.selectedValues.length > 0
+      this.model.length > 0
     ) {
-      this.removeValue(this.selectedValues[this.selectedValues.length - 1]);
+      this.removeValue(this.model[this.model.length - 1]);
       event.stopPropagation();
       event.preventDefault();
     } else if (event.key === 'Enter') {
       if (
-        this.selectedValues
+        this.model
           .map(value => this.trackFn(value))
           .includes((event.target as HTMLInputElement).value)
       ) {
@@ -311,14 +308,6 @@ export class MultiSelectComponent<T = unknown>
     } else {
       super.onKeyDown(event);
     }
-  }
-
-  override writeValue(val: T[]) {
-    this.value$$.next(val || []);
-    this.resetInput();
-    requestAnimationFrame(() => {
-      this.tooltipRef.updatePosition();
-    });
   }
 
   selectOption(option: OptionComponent<T>) {
@@ -336,8 +325,8 @@ export class MultiSelectComponent<T = unknown>
   }
 
   addValue(value: T) {
-    const values = this.selectedValues.concat(value);
-    this.emitValueChange(values);
+    const values = this.model.concat(value);
+    this.emitValue(values);
     if (this.onChange) {
       this.resetInput();
       requestAnimationFrame(() => {
@@ -347,10 +336,10 @@ export class MultiSelectComponent<T = unknown>
   }
 
   removeValue(value: T) {
-    const values = this.selectedValues.filter(
+    const values = this.model.filter(
       item => this.trackFn(item) !== this.trackFn(value),
     );
-    this.emitValueChange(values);
+    this.emitValue(values);
     if (this.onChange) {
       this.resetInput();
       requestAnimationFrame(() => {
@@ -360,7 +349,7 @@ export class MultiSelectComponent<T = unknown>
   }
 
   clearValue(event: Event) {
-    this.emitValueChange([]);
+    this.emitValue([]);
     event.stopPropagation();
     event.preventDefault();
   }
@@ -373,16 +362,20 @@ export class MultiSelectComponent<T = unknown>
       .filter(({ visible, disabled }) => visible && !disabled)
       .map(({ value }) => value);
     if (this.selectAllStatus === SelectAllStatus.Checked) {
-      this.emitValueChange(
-        this.snapshot.value.filter(
-          value => !visibleOptionsValue.includes(value),
-        ),
+      this.emitValue(
+        this.model.filter(value => !visibleOptionsValue.includes(value)),
       );
     } else {
-      this.emitValueChange([
-        ...new Set(this.snapshot.value.concat(visibleOptionsValue)),
-      ]);
+      this.emitValue([...new Set(this.model.concat(visibleOptionsValue))]);
     }
+  }
+
+  protected override valueIn(v: T[]): T[] {
+    this.resetInput();
+    requestAnimationFrame(() => {
+      this.tooltipRef.updatePosition();
+    });
+    return v ?? [];
   }
 
   private resetInput() {

@@ -56,7 +56,7 @@ export class BaseRadio implements OnInit, AfterViewInit, OnDestroy {
       this.cdr.markForCheck();
     });
 
-    combineLatest([this.radioGroup.value$, this.value$$])
+    combineLatest([this.radioGroup.model$, this.value$$])
       .pipe(
         takeUntil(this.destroy$$),
         map(([groupValue, selfValue]) => groupValue === selfValue),

@@ -87,6 +87,6 @@ export class RangePickerComponent extends CommonFormControl<
 
   clearValue() {
     this.value = null;
-    this.emitValueChange(null);
+    this.emitValue(null);
   }
 }

@@ -33,15 +33,11 @@ export class SwitchComponent extends CommonFormControl<boolean> {
   @Input()
   loading = false;
 
-  override writeValue(value: boolean) {
-    this.value$$.next(value);
-  }
-
   onSwitch() {
     if (this.disabled) {
       return;
     }
-    this.emitValueChange(!this.snapshot.value);
+    this.emitValue(!this.model);
   }
 
   onBlur() {

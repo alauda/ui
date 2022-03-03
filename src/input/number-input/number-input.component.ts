@@ -64,7 +64,7 @@ export class NumberInputComponent
   isFocus = false;
 
   ngAfterViewInit() {
-    this.inputRef.nativeElement.value = (this.snapshot.value ?? '') + '';
+    this.inputRef.nativeElement.value = (this.model ?? '') + '';
   }
 
   override valueIn(v: number) {
@@ -74,7 +74,7 @@ export class NumberInputComponent
     return v;
   }
 
-  override valueOut(value: number) {
+  override modelOut(value: number) {
     return Math.max(
       coerceNumber(this.min, Number.MIN_SAFE_INTEGER),
       Math.min(
@@ -85,14 +85,14 @@ export class NumberInputComponent
   }
 
   inputChanged(value: string) {
-    this.emitValue(coerceNumber(value, this.snapshot.value));
+    this.emitModel(coerceNumber(value, this.model));
   }
 
   takeOneStep(positive: boolean) {
     if (positive) {
-      this.emitValue((this.snapshot.value ?? 0) + this.step);
+      this.emitModel((this.model ?? 0) + this.step);
     } else {
-      this.emitValue((this.snapshot.value ?? 0) - this.step);
+      this.emitModel((this.model ?? 0) - this.step);
     }
   }
 
