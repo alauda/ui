@@ -51,7 +51,7 @@ export class SelectComponent<T = unknown>
   @ViewChild('inputRef', { static: true })
   inputRef: InputComponent;
 
-  values$ = this.value$$.asObservable().pipe(map(val => [val]));
+  values$ = this.model$.asObservable().pipe(map(val => [val]));
 
   selectedOption$: Observable<SelectOption>;
 
@@ -99,7 +99,7 @@ export class SelectComponent<T = unknown>
           ),
         ),
       ),
-      this.value$,
+      this.model$,
     ]).pipe(
       map(([option, value]) =>
         option
@@ -137,18 +137,18 @@ export class SelectComponent<T = unknown>
     this.inputRef.elementRef.nativeElement.value = '';
   }
 
-  override writeValue(val: T) {
-    this.value$$.next(val);
+  protected override valueIn(v: T): T {
     this.closeOption();
+    return v;
   }
 
   selectOption(option: OptionComponent<T>) {
-    this.emitValueChange(option.value);
+    this.emitValue(option.value);
     this.closeOption();
   }
 
   clearValue(event: Event) {
-    this.emitValueChange(null);
+    this.emitValue(null);
     event.stopPropagation();
     event.preventDefault();
   }

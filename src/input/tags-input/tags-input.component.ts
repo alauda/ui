@@ -23,8 +23,7 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, publishReplay, refCount, take, tap } from 'rxjs/operators';
+import { take } from 'rxjs';
 
 import { CommonFormControl } from '../../form/public-api';
 import { ComponentSize } from '../../types';
@@ -91,7 +90,6 @@ export class TagsInputComponent
   set inputValidator(fn: ValidatorFn | ValidatorFn[]) {
     this._inputValidator = Array.isArray(fn) ? Validators.compose(fn) : fn;
   }
-
   get inputValidator() {
     return this._inputValidator;
   }
@@ -102,7 +100,6 @@ export class TagsInputComponent
       ? Validators.composeAsync(fn)
       : fn;
   }
-
   get inputAsyncValidator() {
     return this._inputAsyncValidator;
   }
@@ -129,21 +126,8 @@ export class TagsInputComponent
 
   private readonly withMaxRowCount = createWithMaxRowCount(this);
 
-  override snapshot = {
-    value: [] as string[],
-  };
-
-  override value$: Observable<string[]> = this.value$$.asObservable().pipe(
-    map(value => this.sortByReadonly(value)),
-    tap(value => {
-      this.snapshot.value = value;
-      this.clearInput();
-    }),
-    publishReplay(1),
-    refCount(),
-  );
-
   focused = false;
+  override model: string[] = [];
 
   // 内置form control，仅作校验使用
   readonly inputControl: FormControl;
@@ -204,16 +188,12 @@ export class TagsInputComponent
     this.controlContainer = this.injector.get(NgControl, null);
   }
 
-  override writeValue(val: string[]) {
-    this.value$$.next(val || []);
-  }
-
   onRemove(index: number) {
-    const target = this.snapshot.value[index];
+    const target = this.model[index];
     if (target && this.readonlyTags.includes(target)) {
       return;
     }
-    this.emitValueChange(this.snapshot.value.filter((_, i) => i !== index));
+    this.emitValue(this.model.filter((_, i) => i !== index));
   }
 
   onInput() {
@@ -241,7 +221,7 @@ export class TagsInputComponent
   onKeyDown(event: KeyboardEvent) {
     const inputEl = event.target as HTMLInputElement;
     if (event.key === 'Backspace' && inputEl.value === '') {
-      this.onRemove(this.snapshot.value.length - 1);
+      this.onRemove(this.model.length - 1);
       event.stopPropagation();
       event.preventDefault();
     } else if (event.key === 'Enter') {
@@ -269,6 +249,11 @@ export class TagsInputComponent
     return value;
   }
 
+  protected override valueIn(v: string[]): string[] {
+    this.clearInput();
+    return this.sortByReadonly(v ?? []);
+  }
+
   private sortByReadonly(items: string[]) {
     return this.readonlyTags.length
       ? [
@@ -285,20 +270,20 @@ export class TagsInputComponent
       this.removeInputControlError();
       return;
     }
-    if (!this.allowRepeat && this.snapshot.value.includes(value)) {
+    if (!this.allowRepeat && this.model.includes(value)) {
       return;
     }
     this.inputControl.setValue(this.inputRef.nativeElement.value);
     // inputControl 自身的状态为同步计算
     this.syncControlStatus();
     if (this.inputControl.valid) {
-      this.emitValueChange(this.snapshot.value.concat(value));
+      this.emitValue(this.model.concat(value));
     } else if (this.inputControl.pending) {
       // PENDING 后只会变为 VALID 或 INVALID 的决议状态
       this.inputControl.statusChanges.pipe(take(1)).subscribe(_ => {
         this.syncControlStatus();
         if (this.inputControl.valid) {
-          this.emitValueChange(this.snapshot.value.concat(value));
+          this.emitValue(this.model.concat(value));
         }
       });
     }

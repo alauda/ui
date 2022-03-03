@@ -2,7 +2,7 @@
   #elRef
   class="aui-checkbox"
   [class.isDisabled]="disabled"
-  [class.isChecked]="value$ | async"
+  [class.isChecked]="model"
   [class.isIndeterminate]="indeterminate"
   [class.isTag]="type === 'tag'"
 >
@@ -11,7 +11,7 @@
     [id]="id"
     class="aui-checkbox__input"
     type="checkbox"
-    [checked]="value$ | async"
+    [checked]="model"
     [disabled]="disabled"
     (click)="onClick()"
     (blur)="onBlur()"
@@ -20,7 +20,7 @@
     <i class="aui-checkbox__pointer">
       <aui-icon
         [icon]="indeterminate ? 'square_s' : 'check_s'"
-        [hidden]="!(value$ | async) && !indeterminate"
+        [hidden]="!model && !indeterminate"
       ></aui-icon>
     </i>
     <span class="aui-checkbox__content"><ng-content></ng-content></span>

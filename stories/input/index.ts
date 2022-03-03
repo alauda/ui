@@ -172,7 +172,7 @@ storiesOf('Input', module)
     const checkArrFn: ValidatorFn = control => {
       const value = control.value as string[];
       if (value.includes('b')) {
-        return { patternA: true };
+        return { patternB: true };
       }
       return null;
     };
@@ -205,7 +205,7 @@ storiesOf('Input', module)
           placeholder="placeholder"
           [maxRowCount]="3"
         ></aui-tags-input>
-        {{ value | json }} status:{{control.status}}
+        {{ control.value | json }} status:{{control.status}}
         <br />
         <button (click)="printStatus()">submit</button>
         <br />

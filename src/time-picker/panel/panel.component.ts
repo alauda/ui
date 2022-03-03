@@ -130,13 +130,13 @@ export class TimePickerPanelComponent
 
   constructor(protected override cdr: ChangeDetectorRef) {
     super(cdr);
-    this.value$.subscribe(_ => {
+    this.model$.subscribe(_ => {
       this.cdr.markForCheck();
     });
   }
 
   isDisabled(value: number, type: TimePickerControlType) {
-    const currentValue = this.snapshot.value;
+    const currentValue = this.model;
     if (this.disabled) {
       return true;
     }
@@ -186,7 +186,7 @@ export class TimePickerPanelComponent
       return;
     }
     this.firstScrolled = true;
-    const result = this.syncValue(value, type, this.snapshot.value);
+    const result = this.syncValue(value, type, this.model);
     this.syncScrollOffset(120, result);
   }
 
@@ -195,7 +195,7 @@ export class TimePickerPanelComponent
       return;
     }
     const result = (currentValue || dayjs()).set(type, value);
-    this.emitValue(result);
+    this.emitModel(result);
     return result;
   }
 
@@ -283,7 +283,7 @@ export class TimePickerPanelComponent
 
   selectNow() {
     this.firstScrolled = true;
-    this.emitValue(dayjs());
+    this.emitModel(dayjs());
   }
 
   trackBy(_index: number, content: number) {

@@ -218,7 +218,7 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
 
   selectNode(node: TreeNodeComponent<T>) {
     if (!node.selected) {
-      this.emitValueChange(node.nodeData.value);
+      this.emitValue(node.nodeData.value);
       if (this.onChange) {
         this.closeNodes();
       }
@@ -249,15 +249,15 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
   }
 
   clearValue(event: Event) {
-    this.emitValueChange(null);
+    this.emitValue(null);
     event.stopPropagation();
     event.preventDefault();
   }
 
-  override writeValue(value: T) {
-    this.value$$.next(value);
-    this.updateSelectDisplay(value);
+  protected override valueIn(v: T): T {
+    this.updateSelectDisplay(v);
     this.closeNodes();
+    return v;
   }
 
   getPlaceholder() {
@@ -355,7 +355,7 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
   ) {
     this.select = select;
     this.selected$ = combineLatest([
-      this.select.value$,
+      this.select.model$,
       this.nodeData$$.pipe(map(data => data.value)),
     ]).pipe(
       map(

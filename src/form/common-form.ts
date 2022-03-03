@@ -6,8 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
-import { Observable, ReplaySubject } from 'rxjs';
-import { publishReplay, refCount, tap } from 'rxjs/operators';
+import { ReplaySubject } from 'rxjs';
 
 import { coerceAttrBoolean } from '../utils';
 
@@ -17,7 +16,7 @@ import { coerceAttrBoolean } from '../utils';
  */
 @Directive()
 // tslint:disable-next-line:directive-class-suffix
-export class CommonFormControl<T, V = T> implements ControlValueAccessor {
+export class CommonFormControl<V, M = V> implements ControlValueAccessor {
   @Input()
   get disabled() {
     return this._disabled;
@@ -50,27 +49,24 @@ export class CommonFormControl<T, V = T> implements ControlValueAccessor {
   }
 
   @Output()
-  valueChange = new EventEmitter<T>();
+  valueChange = new EventEmitter<V>();
 
-  protected onChange: (_: T) => void;
+  protected onChange: (_: V) => void;
   protected onTouched: () => void;
-  protected value$$ = new ReplaySubject<V>(1);
-  private _propValue: T;
+  private _propValue: V;
   private _disabled = false;
 
-  snapshot: { value: V } = { value: null };
+  model: M = null;
+  model$ = new ReplaySubject<M>(1);
 
-  value$: Observable<V> = this.value$$.asObservable().pipe(
-    tap(value => {
-      this.snapshot.value = value;
-    }),
-    publishReplay(1),
-    refCount(),
-  );
+  constructor(protected cdr: ChangeDetectorRef) {
+    this.model$.subscribe(model => {
+      this.model = model;
+      this.cdr.markForCheck();
+    });
+  }
 
-  constructor(protected cdr: ChangeDetectorRef) {}
-
-  registerOnChange(fn: (_: T) => void) {
+  registerOnChange(fn: (_: V) => void) {
     this.onChange = fn;
   }
 
@@ -83,15 +79,15 @@ export class CommonFormControl<T, V = T> implements ControlValueAccessor {
     this.cdr.markForCheck();
   }
 
-  writeValue(value: T) {
-    this.value$$.next(this.valueIn(value));
+  writeValue(value: V) {
+    this.model$.next(this.valueIn(value));
+  }
+
+  emitModel(model: M) {
+    this.emitValue(this.modelOut(model));
   }
 
   emitValue(value: V) {
-    this.emitValueChange(this.valueOut(value));
-  }
-
-  emitValueChange(value: T) {
     if (this.onChange) {
       this.onChange(value);
       this.writeValue(value);
@@ -99,12 +95,12 @@ export class CommonFormControl<T, V = T> implements ControlValueAccessor {
     this.valueChange.emit(value);
   }
 
-  protected valueIn(v: T): V {
-    return v as any;
+  protected valueIn(value: V): M {
+    return value as any;
   }
 
-  protected valueOut(v: V): T {
-    return v as any;
+  protected modelOut(model: M): V {
+    return model as any;
   }
 }
 

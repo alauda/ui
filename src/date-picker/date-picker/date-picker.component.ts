@@ -115,6 +115,6 @@ export class DatePickerComponent
 
   clearValue() {
     this.value = null;
-    this.emitValueChange(null);
+    this.emitValue(null);
   }
 }

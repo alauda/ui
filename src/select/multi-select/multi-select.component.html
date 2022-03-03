@@ -26,7 +26,7 @@
     </span>
   </div>
   <span
-    [hidden]="selectedValues.length || inputRef.value.length"
+    [hidden]="model.length || inputRef.value.length"
     [class]="bem.element('placeholder')"
   >
     {{ placeholder }}

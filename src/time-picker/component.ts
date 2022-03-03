@@ -176,7 +176,7 @@ export class TimePickerComponent extends CommonFormControl<
 
   submit(close = true, value?: Dayjs) {
     const refer = value ?? this.timeValue;
-    this.emitValue(
+    this.emitModel(
       refer
         ? {
             second: refer.second(),
