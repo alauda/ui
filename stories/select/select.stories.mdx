@@ -200,7 +200,7 @@ import { SelectModule, IconModule } from '@alauda/ui';
             *ngFor="let option of arr"
             [label]="option.value"
             [value]="option"
-            [disabled]="option === 'option5'"
+            [disabled]="option.value === 'option5'"
           >
             {{ option.value }}
           </aui-option>
