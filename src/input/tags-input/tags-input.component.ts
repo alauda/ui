@@ -90,6 +90,7 @@ export class TagsInputComponent
   set inputValidator(fn: ValidatorFn | ValidatorFn[]) {
     this._inputValidator = Array.isArray(fn) ? Validators.compose(fn) : fn;
   }
+
   get inputValidator() {
     return this._inputValidator;
   }
@@ -100,6 +101,7 @@ export class TagsInputComponent
       ? Validators.composeAsync(fn)
       : fn;
   }
+
   get inputAsyncValidator() {
     return this._inputAsyncValidator;
   }
@@ -251,7 +253,7 @@ export class TagsInputComponent
 
   protected override valueIn(v: string[]): string[] {
     this.clearInput();
-    return this.sortByReadonly(v ?? []);
+    return this.sortByReadonly(v || []);
   }
 
   private sortByReadonly(items: string[]) {
@@ -299,7 +301,7 @@ export class TagsInputComponent
     } else if (invalid) {
       this.controlContainer?.control.markAsDirty();
       this.controlContainer?.control.setErrors({
-        ...(this.controlContainer?.control?.errors || {}),
+        ...this.controlContainer?.control?.errors,
         [INPUT_ERROR_KEY]: errors,
       });
     } else if (disabled) {
