@@ -387,7 +387,7 @@ export class MultiSelectComponent<T = unknown>
     requestAnimationFrame(() => {
       this.tooltipRef.updatePosition();
     });
-    return v ?? [];
+    return v || [];
   }
 
   private resetInput() {
