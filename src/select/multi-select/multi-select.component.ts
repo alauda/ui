@@ -361,13 +361,25 @@ export class MultiSelectComponent<T = unknown>
     const visibleOptionsValue = this.allOptions
       .filter(({ visible, disabled }) => visible && !disabled)
       .map(({ value }) => value);
+
     if (this.selectAllStatus === SelectAllStatus.Checked) {
       this.emitValue(
-        this.model.filter(value => !visibleOptionsValue.includes(value)),
+        this.model.filter(value => !this.includes(visibleOptionsValue, value)),
       );
     } else {
-      this.emitValue([...new Set(this.model.concat(visibleOptionsValue))]);
+      this.emitValue(
+        this.model.concat(visibleOptionsValue).reduce<T[]>((acc, curr) => {
+          if (!this.includes(acc, curr)) {
+            acc.push(curr);
+          }
+          return acc;
+        }, []),
+      );
     }
+  }
+
+  private includes(values: T[], value: T) {
+    return values.some(v => this.trackFn(v) === this.trackFn(value));
   }
 
   protected override valueIn(v: T[]): T[] {
