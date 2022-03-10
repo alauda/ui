@@ -8,7 +8,7 @@
     display: inline-block;
     position: relative;
     width: 100%;
-    color: $input-color;
+    color: use-text-color(main);
     vertical-align: middle;
 
     &:hover {
@@ -20,20 +20,20 @@
     }
 
     &.isDisabled {
-      background-color: $input-bg-color-disabled;
-      border-color: $input-border-color;
+      background-color: use-rgb(n-8);
+      border-color: use-rgb(n-7);
       cursor: not-allowed;
 
       .aui-tag {
-        color: $input-border-color;
-        background-color: $input-bg-color-disabled;
+        color: use-text-color(disabled);
+        background-color: use-rgb(n-8);
       }
     }
 
     &__placeholder {
       display: inline-block;
       width: 100%;
-      color: $input-placeholder-color;
+      color: use-text-color(placeholder);
       vertical-align: middle;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -56,14 +56,11 @@
     }
 
     &--large {
-      $ver-margin: math.div(
-        ($input-large-height - $tag-medium-height - $input-border-width * 2),
-        2
-      );
+      $ver-margin: calc((#{use-var(inline-height-l)} - 20px) / 2 - 1px);
 
-      min-height: $input-large-height;
-      font-size: $input-large-font-size;
-      padding: $ver-margin $input-large-padding-hoz 0;
+      min-height: use-var(inline-height-l);
+      padding: $ver-margin use-var(inline-padding-xs) 0;
+      @include text-set(l);
 
       .aui-tag {
         margin: 0 4px $ver-margin 0;
@@ -71,14 +68,11 @@
     }
 
     &--medium {
-      $ver-margin: math.div(
-        ($input-medium-height - $tag-mini-height - $input-border-width * 2),
-        2
-      );
+      $ver-margin: calc((#{use-var(inline-height-m)} - 20px) / 2 - 1px);
 
-      min-height: $input-medium-height;
-      font-size: $input-medium-font-size;
-      padding: $ver-margin $input-medium-padding-hoz 0;
+      min-height: use-var(inline-height-m);
+      padding: $ver-margin use-var(inline-padding-xs) 0;
+      @include text-set(m);
 
       .aui-tag {
         margin: 0 4px $ver-margin 0;
@@ -86,14 +80,11 @@
     }
 
     &--small {
-      $ver-margin: math.div(
-        ($input-small-height - $tag-mini-height - $input-border-width * 2),
-        2
-      );
+      $ver-margin: calc((#{use-var(inline-height-s)} - 20px) / 2 - 1px);
 
-      min-height: $input-small-height;
-      font-size: $input-small-font-size;
-      padding: $ver-margin $input-small-padding-hoz 0;
+      min-height: use-var(inline-height-s);
+      padding: $ver-margin use-var(inline-padding-xs) 0;
+      @include text-set(s);
 
       .aui-tag {
         margin: 0 4px $ver-margin 0;
@@ -101,14 +92,11 @@
     }
 
     &--mini {
-      $ver-margin: math.div(
-        ($input-mini-height - $tag-mini-height - $input-border-width * 2),
-        2
-      );
+      $ver-margin: calc((#{use-var(inline-height-xs)} - 20px) / 2 - 1px);
 
-      min-height: $input-mini-height;
-      font-size: $input-mini-font-size;
-      padding: $ver-margin $input-mini-padding-hoz 0;
+      min-height: use-var(inline-height-xs);
+      padding: $ver-margin use-var(inline-padding-xs) 0;
+      @include text-set(s);
 
       .aui-tag {
         margin: 0 4px $ver-margin 0;
@@ -118,7 +106,7 @@
     &__suffix {
       position: absolute;
       top: 50%;
-      right: $input-padding-hoz;
+      right: use-var(inline-padding-xs);
       transform: translateY(-50%);
     }
 
@@ -130,7 +118,7 @@
       border: none;
       outline: none;
       background: none;
-      color: $input-color;
+      color: use-text-color(main);
       font-family: inherit;
       font-size: inherit;
 
