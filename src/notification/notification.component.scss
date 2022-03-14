@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import '../theme/var';
 @import '../theme/mixin';
 @import '~@angular/cdk/overlay-prebuilt';
@@ -57,7 +59,7 @@
     overflow: auto;
     overflow-wrap: break-word;
     padding-right: 4px;
-    margin-top: ($line-height-larger - $line-height-regular) / 2;
+    margin-top: math.div(($line-height-larger - $line-height-regular), 2);
     @include scroll-bar;
   }
   &__close {

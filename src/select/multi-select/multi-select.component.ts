@@ -21,7 +21,6 @@ import {
   refCount,
   startWith,
   switchMap,
-  takeUntil,
   tap,
 } from 'rxjs/operators';
 
@@ -61,7 +60,8 @@ import {
 })
 export class MultiSelectComponent<T = unknown>
   extends BaseSelect<T, T[]>
-  implements AfterContentInit, AfterViewInit {
+  implements AfterContentInit, AfterViewInit
+{
   bem: Bem = buildBem('aui-multi-select');
   bemSelectAll: Bem = buildBem('aui-option');
   selectedOptions$: Observable<Array<SelectFilterOption<T>>>;
@@ -70,8 +70,10 @@ export class MultiSelectComponent<T = unknown>
   hasEnabledOptions$: Observable<boolean>;
 
   private _allowSelectAll = false;
-  selectedValues: T[] = [];
-  values$ = this.value$$.asObservable();
+  override isMulti = true;
+  override model: T[] = [];
+
+  values$ = this.model$;
 
   @Input()
   tagClassFn: TagClassFn<T>;
@@ -131,7 +133,7 @@ export class MultiSelectComponent<T = unknown>
   }
 
   get displayClearBtn() {
-    return !this.disabled && this.clearable && this.selectedValues.length;
+    return !this.disabled && this.clearable && this.model.length;
   }
 
   get maxHeight() {
@@ -147,17 +149,16 @@ export class MultiSelectComponent<T = unknown>
 
   constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {
     super(cdr);
-    this.values$.pipe(takeUntil(this.destroy$$)).subscribe(values => {
-      this.selectedValues = values;
-    });
   }
 
-  ngAfterContentInit() {
+  override ngAfterContentInit() {
     super.ngAfterContentInit();
 
     this.selectedOptions$ = combineLatest([
-      this.value$,
-      this.contentOptions.changes.pipe(
+      this.model$,
+      (
+        this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
+      ).pipe(
         startWith(this.contentOptions),
         switchMap((options: QueryList<OptionComponent<T>>) =>
           options.length > 0
@@ -167,11 +168,13 @@ export class MultiSelectComponent<T = unknown>
                     option.value$,
                     option.label$,
                     option.labelContext$,
+                    option.disabled$,
                   ]).pipe(
-                    map(([value, label, labelContext]) => ({
+                    map(([value, label, labelContext, disabled]) => ({
                       value,
                       label,
                       labelContext,
+                      disabled,
                     })),
                   ),
                 ),
@@ -181,29 +184,44 @@ export class MultiSelectComponent<T = unknown>
       ),
     ]).pipe(
       map(([values, options]) =>
-        values.map(value => {
-          const option = options.find(
-            option => this.trackFn(option.value) === this.trackFn(value),
-          );
-          return option
-            ? {
-                label: option.label || coerceString(this.trackFn(option.value)),
-                labelContext: option.labelContext,
-                value: option.value,
-              }
-            : {
-                label:
-                  this.labelFn?.(value) || coerceString(this.trackFn(value)),
-                value,
-              };
-        }),
+        values
+          .map(value => {
+            const option = options.find(
+              option => this.trackFn(option.value) === this.trackFn(value),
+            );
+            return option
+              ? {
+                  label:
+                    option.label || coerceString(this.trackFn(option.value)),
+                  labelContext: option.labelContext,
+                  value: option.value,
+                  disabled: option.disabled,
+                }
+              : {
+                  label:
+                    this.labelFn?.(value) || coerceString(this.trackFn(value)),
+                  value,
+                };
+          })
+          // sort disabled options as first
+          .sort((a, b) => {
+            if (a.disabled) {
+              return -1;
+            }
+
+            if (b.disabled) {
+              return 1;
+            }
+
+            return 0;
+          }),
       ),
       publishReplay(1),
       refCount(),
     );
   }
 
-  ngAfterViewInit() {
+  override ngAfterViewInit() {
     super.ngAfterViewInit();
     this.selectAllStatus$ = combineLatest([
       this.allOptions$,
@@ -211,9 +229,9 @@ export class MultiSelectComponent<T = unknown>
     ]).pipe(
       switchMap(([allOptions]) =>
         combineLatest([
-          ...allOptions
+          ...(allOptions ?? [])
             .filter(({ visible, disabled }) => visible && !disabled)
-            ?.map(({ selected$ }) => selected$),
+            .map(({ selected$ }) => selected$),
         ]),
       ),
       map(statuses => {
@@ -241,18 +259,18 @@ export class MultiSelectComponent<T = unknown>
     );
   }
 
-  onShowOptions() {
+  override onShowOptions() {
     super.onShowOptions();
     this.inputRef.nativeElement.focus();
   }
 
-  onHideOptions() {
+  override onHideOptions() {
     super.onHideOptions();
     this.inputRef.nativeElement.value = '';
     this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
   }
 
-  onInput(event: Event) {
+  override onInput(event: Event) {
     super.onInput(event);
     this.setInputWidth();
     this.tooltipRef.updatePosition();
@@ -267,18 +285,18 @@ export class MultiSelectComponent<T = unknown>
     this.closeOption();
   }
 
-  onKeyDown(event: KeyboardEvent) {
+  override onKeyDown(event: KeyboardEvent) {
     if (
       event.key === 'Backspace' &&
       this.filterString === '' &&
-      this.selectedValues.length > 0
+      this.model.length > 0
     ) {
-      this.removeValue(this.selectedValues[this.selectedValues.length - 1]);
+      this.removeValue(this.model[this.model.length - 1]);
       event.stopPropagation();
       event.preventDefault();
     } else if (event.key === 'Enter') {
       if (
-        this.selectedValues
+        this.model
           .map(value => this.trackFn(value))
           .includes((event.target as HTMLInputElement).value)
       ) {
@@ -290,14 +308,6 @@ export class MultiSelectComponent<T = unknown>
     } else {
       super.onKeyDown(event);
     }
-  }
-
-  writeValue(val: T[]) {
-    this.value$$.next(val || []);
-    this.resetInput();
-    requestAnimationFrame(() => {
-      this.tooltipRef.updatePosition();
-    });
   }
 
   selectOption(option: OptionComponent<T>) {
@@ -315,8 +325,8 @@ export class MultiSelectComponent<T = unknown>
   }
 
   addValue(value: T) {
-    const values = this.selectedValues.concat(value);
-    this.emitValueChange(values);
+    const values = this.model.concat(value);
+    this.emitValue(values);
     if (this.onChange) {
       this.resetInput();
       requestAnimationFrame(() => {
@@ -326,10 +336,10 @@ export class MultiSelectComponent<T = unknown>
   }
 
   removeValue(value: T) {
-    const values = this.selectedValues.filter(
+    const values = this.model.filter(
       item => this.trackFn(item) !== this.trackFn(value),
     );
-    this.emitValueChange(values);
+    this.emitValue(values);
     if (this.onChange) {
       this.resetInput();
       requestAnimationFrame(() => {
@@ -339,7 +349,7 @@ export class MultiSelectComponent<T = unknown>
   }
 
   clearValue(event: Event) {
-    this.emitValueChange([]);
+    this.emitValue([]);
     event.stopPropagation();
     event.preventDefault();
   }
@@ -351,17 +361,33 @@ export class MultiSelectComponent<T = unknown>
     const visibleOptionsValue = this.allOptions
       .filter(({ visible, disabled }) => visible && !disabled)
       .map(({ value }) => value);
+
     if (this.selectAllStatus === SelectAllStatus.Checked) {
-      this.emitValueChange(
-        this.snapshot.value.filter(
-          value => !visibleOptionsValue.includes(value),
-        ),
+      this.emitValue(
+        this.model.filter(value => !this.includes(visibleOptionsValue, value)),
       );
     } else {
-      this.emitValueChange([
-        ...new Set(this.snapshot.value.concat(visibleOptionsValue)),
-      ]);
+      this.emitValue(
+        this.model.concat(visibleOptionsValue).reduce<T[]>((acc, curr) => {
+          if (!this.includes(acc, curr)) {
+            acc.push(curr);
+          }
+          return acc;
+        }, []),
+      );
     }
+  }
+
+  private includes(values: T[], value: T) {
+    return values.some(v => this.trackFn(v) === this.trackFn(value));
+  }
+
+  protected override valueIn(v: T[]): T[] {
+    this.resetInput();
+    requestAnimationFrame(() => {
+      this.tooltipRef.updatePosition();
+    });
+    return v || [];
   }
 
   private resetInput() {

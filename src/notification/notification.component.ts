@@ -1,14 +1,16 @@
-import { CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
+import {
+  CdkPortalOutlet,
+  TemplatePortal,
+} from '@angular/cdk/portal';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ComponentFactory,
-  ComponentFactoryResolver,
   EmbeddedViewRef,
   HostListener,
   TemplateRef,
+  Type,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
@@ -33,13 +35,14 @@ let uniqueId = 0;
 })
 export class NotificationComponent
   extends MessageComponent
-  implements AfterViewInit {
-  protected readonly animateStartState = 'flyLeft';
-  protected readonly animateStartEnd = 'flyUp';
+  implements AfterViewInit
+{
+  protected override readonly animateStartState = 'flyLeft';
+  protected override readonly animateStartEnd = 'flyUp';
 
-  bem: Bem = buildBem('aui-notification');
-  animateState = this.animateStartState;
-  uniqueId = `aui-notification-${uniqueId++}`;
+  override bem: Bem = buildBem('aui-notification');
+  override animateState = this.animateStartState;
+  override uniqueId = `aui-notification-${uniqueId++}`;
   isHover = false;
 
   title: string;
@@ -57,7 +60,6 @@ export class NotificationComponent
   constructor(
     viewContainerRef: ViewContainerRef,
     cdr: ChangeDetectorRef,
-    private readonly cfr: ComponentFactoryResolver,
   ) {
     super(viewContainerRef, cdr);
   }
@@ -80,13 +82,13 @@ export class NotificationComponent
     this.countDown();
   }
 
-  ngAfterViewInit() {
+  override ngAfterViewInit() {
     if (this.remains > 0) {
       this.countDown();
     }
   }
 
-  setConfig(config: NotificationConfig) {
+  override setConfig(config: NotificationConfig) {
     super.setConfig(config);
     this.title = config.title;
     this.remains = Math.ceil(this.duration / 1000);
@@ -99,9 +101,7 @@ export class NotificationComponent
         });
         this.attachTemplatePortal(portal);
       } else {
-        this.attachComponentRef(
-          this.cfr.resolveComponentFactory(config.contentRef),
-        );
+        this.attachComponentRef(config.contentRef);
       }
     }
 
@@ -122,12 +122,10 @@ export class NotificationComponent
     return this.portalOutlet.attachTemplatePortal(portal);
   }
 
-  private attachComponentRef(componentRef: ComponentFactory<unknown>) {
-    this.childComponentInstance = this.modalEl.createComponent(
-      componentRef,
-      null,
-      this.viewContainerRef.injector,
-    ).instance;
+  private attachComponentRef(componentRef: Type<unknown>) {
+    this.childComponentInstance = this.modalEl.createComponent(componentRef, {
+      injector: this.viewContainerRef.injector,
+    }).instance;
     return this.childComponentInstance;
   }
 

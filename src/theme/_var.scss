@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @import 'base-var';
 
 // Button
@@ -69,7 +71,7 @@ $tooltip-padding-ver: 8px - $tooltip-border-width;
 $tooltip-offset: 4px;
 $tooltip-max-width: 416px;
 
-$tooltip-default-bg: rgba(0, 0, 0, 0.85);
+$tooltip-default-bg: rgb(0 0 0 / 85%);
 $tooltip-default-border: $tooltip-default-bg;
 $tooltip-default-text: $color-white;
 
@@ -311,7 +313,6 @@ $tab-label-font-size-medium: $font-size-large;
 $tab-label-font-size-small: $font-size-regular;
 $tab-border: $border-width $border-style #ededed;
 $tab-header-type-card-bg-color: use-rgb(n-9);
-$tab-header-indicator-color: $color-primary;
 $tab-scroll-transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
 $tab-pagination-button-z-index: 3;
 $tab-label-z-index: 2;
@@ -334,11 +335,6 @@ $status-bar-pending-gradient-width: 4px;
 $accordion-item-header-padding: 12px 0;
 $accordion-item-header-color: #666;
 
-//Back Top
-$back-top-box-size: 36px;
-$back-top-position-offset: 10px;
-$back-top-border-radius: 2px;
-
 // timepicker
 $time-picker-icon-size: $font-size-large;
 $time-picker-body-small-width: 278px;
@@ -351,6 +347,7 @@ $date-picker-row-gap: 8px;
 $date-picker-cell-size: 24px;
 $range-picker-body-width: 524px;
 $range-picker-panel-spacing: 32px;
-$range-picker-header-width: (
-    $range-picker-body-width - $range-picker-panel-spacing
-  ) / 2;
+$range-picker-header-width: math.div(
+  ($range-picker-body-width - $range-picker-panel-spacing),
+  2
+);

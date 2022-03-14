@@ -1,3 +1,7 @@
+import { Component, Input, TemplateRef } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { storiesOf } from '@storybook/angular';
+
 import {
   ButtonModule,
   DrawerModule,
@@ -6,9 +10,6 @@ import {
   InputModule,
   SwitchModule,
 } from '@alauda/ui';
-import { Component, Input, TemplateRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { storiesOf } from '@storybook/angular';
 
 storiesOf('Drawer', module)
   .add('drawer', () => ({

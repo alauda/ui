@@ -17,7 +17,7 @@ export class ThemeService {
     .pipe(distinctUntilChanged());
 
   constructor() {
-    this.htmlEl = document.querySelector('html');
+    this.htmlEl = document.querySelector('html')!;
 
     switch (this.htmlEl.getAttribute('aui-theme-mode')) {
       case 'dark':

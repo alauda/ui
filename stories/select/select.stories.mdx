@@ -1,4 +1,5 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { FormsModule } from '@angular/forms';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
 import { SelectModule, IconModule } from '@alauda/ui';
@@ -7,7 +8,7 @@ import { SelectModule, IconModule } from '@alauda/ui';
   title="Select"
   decorators={[
     moduleMetadata({
-      imports: [SelectModule, IconModule],
+      imports: [FormsModule, SelectModule, IconModule],
     }),
   ]}
 />
@@ -193,25 +194,27 @@ import { SelectModule, IconModule } from '@alauda/ui';
           [maxRowCount]="6"
           [allowSelectAll]="true"
           [clearable]="true"
+          [trackFn]="trackFn"
         >
           <aui-option
             *ngFor="let option of arr"
+            [label]="option.value"
             [value]="option"
-            [disabled]="option === 'option5'"
+            [disabled]="option.value === 'option5'"
           >
-            {{ option }}
+            {{ option.value }}
           </aui-option>
           <aui-option-placeholder>Empty</aui-option-placeholder>
         </aui-multi-select>
-        <br />
         <br />
         value: {{ value | json }}
       `,
       props: {
         arr: Array.from({ length: 50 })
           .fill(null)
-          .map((_, i) => `option${i + 1}`),
-        value: ['option1'],
+          .map((_, i) => ({ value: `option${i + 1}` })),
+        value: [{ value: 'option1' }, { value: 'option5' }],
+        trackFn: ({ value }) => value,
       },
     }}
   </Story>

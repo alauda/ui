@@ -4,27 +4,28 @@
 $block: 'aui-back-top';
 
 .#{$block} {
-  @include transition;
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
   @include flex-center;
 
-  right: $back-top-position-offset;
-  bottom: $back-top-position-offset;
-  height: $back-top-box-size;
-  width: $back-top-box-size;
-  border-color: transparent;
-  border-width: $border-width;
-  border-style: $border-style;
-  border-radius: $back-top-border-radius;
-  background-color: $color-white;
-  cursor: pointer;
+  height: use-var(inline-height-m);
+  width: use-var(inline-height-m);
+  color: use-rgb(n-4);
+  font-size: 16px;
+  border: 1px solid transparent;
+  border-radius: use-var(border-radius-m);
   overflow: hidden;
   visibility: hidden;
-  position: fixed;
-  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 16%);
+  cursor: pointer;
+  @include popper-shadow;
+  @include transition;
 
-  .aui-back-top__icon {
-    font-size: 18px;
-    color: $color-text-help;
+  @include theme-light {
+    background-color: use-rgb(n-10);
+  }
+  @include theme-dark {
+    background-color: use-rgb(n-8);
   }
 
   &.show {
@@ -32,11 +33,9 @@ $block: 'aui-back-top';
   }
 
   &:hover {
-    border-color: $color-primary;
-    background-color: $color-primary-ultra-light;
+    color: use-rgb(primary);
+    border-color: use-rgb(primary);
+    background-color: use-rgb(p-6);
     box-shadow: none;
-    .aui-back-top__icon {
-      color: $color-primary;
-    }
   }
 }

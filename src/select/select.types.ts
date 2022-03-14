@@ -6,6 +6,7 @@ export interface SelectOption {
 }
 
 export interface SelectFilterOption<T> extends SelectOption {
+  disabled?: boolean;
   value: T;
 }
 
@@ -18,7 +19,7 @@ export type TrackFn<T, R = unknown> = (value: T) => R;
 
 export type TagClassFn<
   V,
-  T extends string | TemplateRef<unknown> = string | TemplateRef<unknown>
+  T extends string | TemplateRef<unknown> = string | TemplateRef<unknown>,
 > = (
   label: T,
   value: V,

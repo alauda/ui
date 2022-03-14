@@ -1,4 +1,5 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { FormsModule } from '@angular/forms';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
 import { RadioModule } from '@alauda/ui';
@@ -7,7 +8,7 @@ import { RadioModule } from '@alauda/ui';
   title="Radio"
   decorators={[
     moduleMetadata({
-      imports: [RadioModule],
+      imports: [FormsModule, RadioModule],
     }),
   ]}
 />
@@ -71,16 +72,28 @@ import { RadioModule } from '@alauda/ui';
   </Story>
 </Canvas>
 
-## 按钮样式组合
+## 按钮样式组合 实色填底
 
 <Canvas>
   <Story name="Button" height="60px">
     {{
       template: /* HTML */ `
-        <aui-radio-group [(ngModel)]="model">
+        <aui-radio-group [(ngModel)]="model" [plain]="false">
           <aui-radio-button value="1">选项一</aui-radio-button>
           <aui-radio-button value="2">选项二</aui-radio-button>
           <aui-radio-button value="3">选项三</aui-radio-button>
+        </aui-radio-group>
+        <p>disabled</p>
+        <aui-radio-group [(ngModel)]="model" [plain]="false">
+          <aui-radio-button value="1" [disabled]="true"
+            >选项一</aui-radio-button
+          >
+          <aui-radio-button value="2" [disabled]="true"
+            >选项二</aui-radio-button
+          >
+          <aui-radio-button value="3" [disabled]="true"
+            >选项三</aui-radio-button
+          >
         </aui-radio-group>
       `,
       props: {
@@ -90,28 +103,32 @@ import { RadioModule } from '@alauda/ui';
   </Story>
 </Canvas>
 
-## 按钮样式组合 实色填底
+## 按钮样式组合
 
 <Canvas>
   <Story name="Button Plain" height="60px">
     {{
       template: /* HTML */ `
-        <aui-radio-group [(ngModel)]="model" [plain]="false">
+        <aui-radio-group [(ngModel)]="model">
           <aui-radio-button value="1">选项一</aui-radio-button>
           <aui-radio-button value="2">选项二</aui-radio-button>
           <aui-radio-button value="3">选项三</aui-radio-button>
         </aui-radio-group>
         <p>disabled</p>
-        <aui-radio-group [(ngModel)]="model2" [plain]="false">
-          <aui-radio-button [disabled]="true" value="1"
+        <aui-radio-group [(ngModel)]="model">
+          <aui-radio-button value="1" [disabled]="true"
             >选项一</aui-radio-button
           >
-          <aui-radio-button value="2">选项二</aui-radio-button>
+          <aui-radio-button value="2" [disabled]="true"
+            >选项二</aui-radio-button
+          >
+          <aui-radio-button value="3" [disabled]="true"
+            >选项三</aui-radio-button
+          >
         </aui-radio-group>
       `,
       props: {
         model: '1',
-        model2: '1',
       },
     }}
   </Story>

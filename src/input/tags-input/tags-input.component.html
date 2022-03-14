@@ -5,13 +5,13 @@
   [style.max-height]="maxHeight"
 >
   <span
-    [hidden]="(value$ | async)?.length || inputRef.value.length"
+    [hidden]="model.length || inputRef.value.length"
     [class]="bem.element('placeholder')"
   >
     {{ placeholder }}
   </span>
   <aui-tag
-    *ngFor="let tag of value$ | async; let index = index; trackBy: trackByValue"
+    *ngFor="let tag of model; let index = index; trackBy: trackByValue"
     type="info"
     [title]="tag"
     [size]="tagSize"

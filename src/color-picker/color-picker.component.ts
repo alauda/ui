@@ -24,11 +24,7 @@ import { CommonFormControl } from '../form/public-api';
   ],
 })
 export class ColorPickerComponent extends CommonFormControl<string> {
-  writeValue(val: string) {
-    this.value$$.next(val);
-  }
-
   onInput(event: Event) {
-    this.emitValueChange((event.target as HTMLInputElement).value);
+    this.emitValue((event.target as HTMLInputElement).value);
   }
 }

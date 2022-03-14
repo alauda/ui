@@ -23,7 +23,7 @@ $block: 'aui-tooltip';
     }
     @include theme-dark {
       color: use-rgb(n-1);
-      background-color: use-rgb(main-bg);
+      background-color: use-rgb(popper-bg);
     }
   }
 

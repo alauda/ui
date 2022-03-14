@@ -57,13 +57,13 @@ export class DropdownDirective extends BaseTooltip implements OnInit {
   lazyContentContext: any;
 
   @Input('auiDropdownHideOnClick')
-  hideOnClick = true;
+  override hideOnClick = true;
 
   @Output('auiDropdownShow')
-  show: EventEmitter<void>;
+  override show = new EventEmitter<void>();
 
   @Output('auiDropdownHide')
-  hide: EventEmitter<void>;
+  override hide = new EventEmitter<void>();
 
   private _menu: MenuComponent;
 

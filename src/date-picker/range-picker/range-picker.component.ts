@@ -75,11 +75,11 @@ export class RangePickerComponent extends CommonFormControl<
 
   value: [Dayjs, Dayjs];
 
-  valueIn(obj: [ConfigType, ConfigType]) {
+  override valueIn(obj: [ConfigType, ConfigType]) {
     return obj?.map(i => dayjs(i));
   }
 
-  writeValue(obj: [Dayjs, Dayjs]) {
+  override writeValue(obj: [Dayjs, Dayjs]) {
     super.writeValue(obj);
     this.value = obj;
     this.cdr.markForCheck();
@@ -87,6 +87,6 @@ export class RangePickerComponent extends CommonFormControl<
 
   clearValue() {
     this.value = null;
-    this.emitValueChange(null);
+    this.emitValue(null);
   }
 }

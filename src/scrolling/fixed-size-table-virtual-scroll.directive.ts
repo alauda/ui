@@ -44,7 +44,8 @@ const defaults = {
   ],
 })
 export class FixedSizeTableVirtualScrollDirective<T = unknown>
-  implements AfterContentInit, OnChanges, OnDestroy {
+  implements AfterContentInit, OnChanges, OnDestroy
+{
   private readonly onDestroy$ = new Subject();
   private readonly _dataSource$$ = new BehaviorSubject<T[]>([]);
 
@@ -109,7 +110,7 @@ export class FixedSizeTableVirtualScrollDirective<T = unknown>
   }
 
   ngOnDestroy() {
-    this.onDestroy$.next();
+    this.onDestroy$.next(null);
     this.onDestroy$.complete();
   }
 
@@ -137,8 +138,8 @@ export class FixedSizeTableVirtualScrollDirective<T = unknown>
 
   private setSticky(offset: number) {
     this.scrollStrategy.viewport.elementRef.nativeElement
-      .querySelectorAll(stickyHeaderSelector)
-      .forEach((el: HTMLElement) => {
+      .querySelectorAll<HTMLElement>(stickyHeaderSelector)
+      .forEach(el => {
         const parent = el.parentElement;
         let baseOffset = 0;
         if (this.stickyPositions.has(parent)) {

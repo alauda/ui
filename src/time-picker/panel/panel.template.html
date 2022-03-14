@@ -11,7 +11,7 @@
             selected: matchValue(
               item,
               TimePickerControlType.Hour,
-              snapshot.value
+              model
             )
           }"
           (click)="selectValue(item, TimePickerControlType.Hour)"
@@ -35,7 +35,7 @@
             selected: matchValue(
               item,
               TimePickerControlType.Minute,
-              snapshot.value
+              model
             )
           }"
           (click)="selectValue(item, TimePickerControlType.Minute)"
@@ -58,7 +58,7 @@
             selected: matchValue(
               item,
               TimePickerControlType.Second,
-              snapshot.value
+              model
             )
           }"
           (click)="selectValue(item, TimePickerControlType.Second)"

@@ -6,7 +6,7 @@
   .#{$block} {
     padding: $select-options-padding 0;
     border-radius: use-var(border-radius-m);
-    background-color: use-rgb(n-10);
+    background-color: use-rgb(popper-bg);
     @include popper-shadow;
 
     &__content {

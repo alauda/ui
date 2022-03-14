@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../theme/var';
 @import '../theme/mixin';
 
@@ -54,7 +55,7 @@
     font-size: $tag-large-font-size;
     padding: 0 $tag-large-padding;
     &.isRound {
-      border-radius: $tag-large-height / 2;
+      border-radius: math.div($tag-large-height, 2);
     }
   }
 
@@ -64,7 +65,7 @@
     font-size: use-var(font-size-m);
     padding: 0 $tag-medium-padding;
     &.isRound {
-      border-radius: $tag-medium-height / 2;
+      border-radius: math.div($tag-medium-height, 2);
     }
   }
 
@@ -74,7 +75,7 @@
     font-size: $tag-small-font-size;
     padding: 0 $tag-mini-padding;
     &.isRound {
-      border-radius: $tag-small-height / 2;
+      border-radius: math.div($tag-small-height, 2);
     }
   }
 
@@ -84,7 +85,7 @@
     font-size: $tag-mini-font-size;
     padding: 0 $tag-mini-padding;
     &.isRound {
-      border-radius: $tag-mini-height / 2;
+      border-radius: math.div($tag-mini-height, 2);
     }
   }
 
@@ -125,7 +126,7 @@
     background-color: use-rgb(n-8);
     &.hasBorder {
       border-color: use-rgb(n-7);
-      background-color: use-rgb(n-9);
+      background-color: use-rgb(button-bg);
     }
     .aui-tag__close .aui-icon:hover {
       color: $tag-info-bg-color;
@@ -162,7 +163,7 @@
     }
 
     &--info {
-      background-color: use-rgb(n);
+      background-color: use-rgb(button-bg);
     }
   }
 

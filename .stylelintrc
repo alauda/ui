@@ -1,9 +1,11 @@
 {
-  "extends": "@1stg/stylelint-config/scss/loose",
+  "extends": "@1stg/stylelint-config/loose",
   "rules": {
     "no-descending-specificity": null,
     "plugin/no-unsupported-browser-features": null,
     "scss/no-duplicate-dollar-variables": null,
+    "no-invalid-position-at-import-rule": null,
+    "selector-class-pattern": null,
     "selector-type-no-unknown": [
       true,
       {

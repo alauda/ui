@@ -70,12 +70,8 @@ export class RadioGroupComponent extends CommonFormControl<any> {
     .asObservable()
     .pipe(distinctUntilChanged());
 
-  writeValue(value: any) {
-    this.value$$.next(value);
-  }
-
   onRadioChange(value: any) {
-    this.emitValueChange(value);
+    this.emitValue(value);
   }
 
   onRadioBlur() {

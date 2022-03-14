@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BreadcrumbComponent should render correct template 1`] = `
-<ng-component>
+<ng-component
+  __ngContext__={[Function LRootView]}
+>
   <aui-breadcrumb>
     <div
       class="aui-breadcrumb"
@@ -22,10 +24,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            
-            
             /
-            
           </span>
         </div>
       </aui-breadcrumb-item>
@@ -45,10 +44,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            
-            
             /
-            
           </span>
         </div>
       </aui-breadcrumb-item>
@@ -64,10 +60,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            
-            
             /
-            
           </span>
         </div>
       </aui-breadcrumb-item>
@@ -94,10 +87,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            
-            
             |
-            
           </span>
         </div>
       </aui-breadcrumb-item>
@@ -117,10 +107,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            
-            
             |
-            
           </span>
         </div>
       </aui-breadcrumb-item>
@@ -136,10 +123,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            
-            
             |
-            
           </span>
         </div>
       </aui-breadcrumb-item>
@@ -166,21 +150,14 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            
-            
             <aui-icon>
-              
-              
               <svg
                 class="aui-icon aui-icon-angle_right"
               >
-                
                 <use
                   xlink:href="#aui-icon-angle_right"
                 />
               </svg>
-              
-              
             </aui-icon>
           </span>
         </div>
@@ -201,21 +178,14 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            
-            
             <aui-icon>
-              
-              
               <svg
                 class="aui-icon aui-icon-angle_right"
               >
-                
                 <use
                   xlink:href="#aui-icon-angle_right"
                 />
               </svg>
-              
-              
             </aui-icon>
           </span>
         </div>
@@ -232,21 +202,14 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            
-            
             <aui-icon>
-              
-              
               <svg
                 class="aui-icon aui-icon-angle_right"
               >
-                
                 <use
                   xlink:href="#aui-icon-angle_right"
                 />
               </svg>
-              
-              
             </aui-icon>
           </span>
         </div>

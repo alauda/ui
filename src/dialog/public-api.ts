@@ -8,3 +8,4 @@ export * from './dialog-content/dialog-close.directive';
 export * from './dialog-content/dialog-content.component';
 export * from './dialog-content/dialog-footer.component';
 export * from './dialog-content/dialog-header.component';
+export * from './dialog.component';

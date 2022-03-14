@@ -82,5 +82,11 @@ $block: 'aui-radio';
   &.isDisabled.isChecked &__pointer {
     border-color: use-rgb(p-4);
     background-color: use-rgb(p-4);
+
+    &:before {
+      @include theme-dark {
+        background-color: use-rgb(n-4);
+      }
+    }
   }
 }

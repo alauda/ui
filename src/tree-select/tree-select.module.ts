@@ -6,8 +6,7 @@ import { InputModule } from '../input/public-api';
 import { TooltipModule } from '../tooltip/public-api';
 
 import { TreeNodePlaceholderComponent } from './tree-node-placeholder.component';
-import { TreeNodeComponent } from './tree-node/tree-node.component';
-import { TreeSelectComponent } from './tree-select.component';
+import { TreeNodeComponent, TreeSelectComponent } from './tree-select.component';
 
 @NgModule({
   imports: [CommonModule, TooltipModule, IconModule, InputModule],

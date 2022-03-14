@@ -17,16 +17,19 @@ export class TabContextService {
     this.active$$.next(isActive);
   }
 
-  readonly active$: Observable<boolean> = (this._parent
-    ? combineLatest([this._parent.active$, this.active$$]).pipe(
-        map(([a, b]) => a && b),
-      )
-    : this.active$$
-  ).pipe(distinctUntilChanged());
+  readonly active$: Observable<boolean>;
 
   constructor(
     @Optional()
     @SkipSelf()
-    private readonly _parent: TabContextService,
-  ) {}
+    readonly _parent: TabContextService,
+  ) {
+    this.active$ = (
+      _parent
+        ? combineLatest([_parent.active$, this.active$$]).pipe(
+            map(([a, b]) => a && b),
+          )
+        : this.active$$
+    ).pipe(distinctUntilChanged());
+  }
 }

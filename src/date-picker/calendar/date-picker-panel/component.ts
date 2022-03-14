@@ -119,7 +119,7 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
   DateNavRange = DateNavRange;
   DatePickerType = DatePickerType;
 
-  writeValue(obj: Dayjs) {
+  override writeValue(obj: Dayjs) {
     super.writeValue(obj);
     this.selectedDate = obj;
     this.selectedTime = getTimePickerModel(obj);
@@ -151,8 +151,8 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
   }
 
   confirmValue(value?: ConfigType, closeAfterConfirm = true) {
-    this.emitValueChange(value ? dayjs(value) : this.selectedDate);
-    closeAfterConfirm && this.confirm.next();
+    this.emitValue(value ? dayjs(value) : this.selectedDate);
+    closeAfterConfirm && this.confirm.next(null);
   }
 
   timeDateChange(time: TimePickerModel) {
@@ -160,7 +160,7 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
       return;
     }
     this.selectedDate = updateDateByTimeModel(this.selectedDate, time);
-    this.emitValueChange(this.selectedDate);
+    this.emitValue(this.selectedDate);
   }
 
   setToday() {

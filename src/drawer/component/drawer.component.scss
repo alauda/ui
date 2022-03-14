@@ -9,13 +9,7 @@ $drawer: aui-drawer;
   left: 0;
   width: 100%;
   height: 0;
-
-  @include theme-light {
-    background-color: use-rgba(origin-shadow, 0.4);
-  }
-  @include theme-dark {
-    background-color: use-rgba(origin-shadow, 0.65);
-  }
+  @include modal-backdrop;
 
   &.isOpen {
     height: 100%;
@@ -32,7 +26,12 @@ $drawer: aui-drawer;
   @include text-set(m, main);
 
   &.isOpen &__content {
-    @include modal-shadow;
+    @include theme-light {
+      box-shadow: -2px 0 8px 0 use-rgba(origin-shadow, 0.2);
+    }
+    @include theme-dark {
+      box-shadow: -2px 0 8px 0 use-rgba(origin-shadow, 0.75);
+    }
   }
 
   &__content {
@@ -44,14 +43,14 @@ $drawer: aui-drawer;
   }
 
   &__header {
-    margin: 20px 20px 0 20px;
+    margin: 20px 20px 0;
     display: flex;
     justify-content: space-between;
   }
 
   &.hasDivider {
     .#{$drawer}__header {
-      margin: 20px 20px -4px 20px;
+      margin: 20px 20px -4px;
       padding-bottom: 16px;
       border-bottom: 1px solid use-rgb(n-8);
     }
@@ -83,8 +82,7 @@ $drawer: aui-drawer;
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    flex-flow: column nowrap;
     position: relative;
     z-index: 1;
   }
@@ -97,7 +95,7 @@ $drawer: aui-drawer;
   }
 
   &__footer {
-    margin: -4px 20px 20px 20px;
+    margin: -4px 20px 20px;
     padding-top: 16px;
     border-top: 1px solid use-rgb(n-8);
   }

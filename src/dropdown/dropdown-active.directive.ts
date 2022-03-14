@@ -7,5 +7,5 @@ import { TooltipActiveDirective } from '../tooltip/public-api';
 })
 export class DropdownActiveDirective extends TooltipActiveDirective {
   @Input('auiDropdownActive')
-  customClass: string | string[];
+  override customClass: string | string[] = '';
 }

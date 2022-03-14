@@ -1,4 +1,5 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { FormsModule } from '@angular/forms';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
 import * as Demo from './demos';
@@ -9,7 +10,7 @@ import { StepsModule, ButtonModule, SwitchModule } from '@alauda/ui';
   title="Steps"
   decorators={[
     moduleMetadata({
-      imports: [StepsModule, ButtonModule, SwitchModule],
+      imports: [FormsModule, StepsModule, ButtonModule, SwitchModule],
     }),
   ]}
 />

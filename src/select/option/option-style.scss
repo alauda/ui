@@ -6,7 +6,6 @@
   .#{$block} {
     padding: 0 use-var(inline-padding-xs);
     color: use-text-color(main);
-    background-color: use-rgb(n-10);
     @include text-overflow;
 
     cursor: pointer;
@@ -55,7 +54,6 @@
 
     &.isDisabled {
       color: use-rgb(n-6);
-      background-color: use-rgb(n-10);
       cursor: not-allowed;
     }
 

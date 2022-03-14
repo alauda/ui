@@ -1,4 +1,5 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { FormsModule } from '@angular/forms';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
 import { ActiveTestComponent } from './active-test.component';
@@ -22,6 +23,7 @@ import {
       imports: [
         ButtonModule,
         IconModule,
+        FormsModule,
         FormModule,
         RadioModule,
         TabsModule,

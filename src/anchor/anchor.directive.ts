@@ -43,7 +43,8 @@ export class AnchorDirectiveChild {
 })
 export class AnchorLabelDirective
   extends AnchorDirectiveChild
-  implements OnInit, AfterContentChecked {
+  implements OnInit, AfterContentChecked
+{
   @HostBinding('class.aui-anchor__label')
   @Input('auiAnchorLabel')
   get label() {
@@ -76,7 +77,7 @@ export class AnchorLabelDirective
     return this._id;
   }
 
-  private _id: string = this.elRef.nativeElement.id;
+  private _id: string;
 
   @Input()
   set level(value: number | '') {
@@ -93,10 +94,11 @@ export class AnchorLabelDirective
   labelChange = new EventEmitter<string | TemplateRef<unknown>>();
 
   constructor(
-    protected injector: Injector,
+    protected override injector: Injector,
     public readonly elRef: ElementRef<HTMLElement>,
   ) {
     super(injector);
+    this._id = this.elRef.nativeElement.id;
   }
 
   ngOnInit() {

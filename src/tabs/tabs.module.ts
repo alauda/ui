@@ -8,15 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from '../button/public-api';
 import { IconModule } from '../icon/public-api';
 
-import { TabBodyComponent } from './tab-body.component';
 import {
+  TabBodyComponent,
   TabBodyPortalDirective,
   TabContentDirective,
   TabHeaderAddonDirective,
   TabLabelDirective,
   TabLabelWrapperDirective,
   TabTitleDirective,
-} from './tab-directives';
+} from './tab-body.component';
 import { TabGroupComponent } from './tab-group.component';
 import { TabHeaderActiveIndicatorComponent } from './tab-header-active-indicator.component';
 import { TabHeaderComponent } from './tab-header.component';

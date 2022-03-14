@@ -15,6 +15,12 @@
     }
   ],
   "rules": {
-    "accessor-pairs": 0
+    "accessor-pairs": 0,
+    "@angular-eslint/no-inputs-metadata-property": 0,
+    "@angular-eslint/no-output-native": 0,
+    "@angular-eslint/no-input-rename": 0,
+    "@angular-eslint/no-output-rename": 0,
+    "@angular-eslint/no-host-metadata-property": 0,
+    "@typescript-eslint/no-useless-constructor": 0
   }
 }

@@ -1,21 +1,39 @@
 {
-  "$schema": "./node_modules/ts-node/tsconfig.schema.json",
-  "extends": "@1stg/tsconfig/loose",
-  "include": ["./.storybook/**/*.ts", "src", "stories", "jest.setup.ts"],
-  "exclude": ["release"],
+  "include": ["src", "stories"],
+  "exclude": ["release", "dist"],
   "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "target": "ES2015"
-  },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs"
+    "declaration": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "incremental": true,
+    "jsx": "preserve",
+    "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "target": "ES2015",
+    "moduleResolution": "node",
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "stripInternal": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "baseUrl": ".",
+    "paths": {
+      "@alauda/ui": ["src/public-api"]
     }
   },
-  // For vscode-ng-language-service
   "angularCompilerOptions": {
-    "disableTypeScriptVersionCheck": true,
+    "compilationMode": "partial",
+    "preserveWhitespaces": false,
+    "enableResourceInlining": true,
     "fullTemplateTypeCheck": true,
+    "strictInputAccessModifiers": true,
     "strictInjectionParameters": true,
     "strictTemplates": true,
     "trace": true

@@ -17,7 +17,7 @@ storiesOf('Paginator', module)
     const currentPage = number('currentPage', 1);
     const pageSize = number('pageSize', 20);
     const total = number('total', 350);
-    const pageSizeOptions = array('pageSizeOptions', [10, 20, 50] as any); // FIXME: 移除 as any, array 类型声明错误
+    const pageSizeOptions = array('pageSizeOptions', ['10', '20', '50']);
     const disabled = boolean('disabled', false);
 
     return {
@@ -56,7 +56,7 @@ storiesOf('Paginator', module)
     const currentPage = number('currentPage', 1);
     const pageSize = number('pageSize', 20);
     const total = number('total', 150);
-    const pageSizeOptions = array('pageSizeOptions', [10, 20, 50] as any); // FIXME: 移除 as any, array 类型声明错误
+    const pageSizeOptions = array('pageSizeOptions', ['10', '20', '50']);
 
     return {
       moduleMetadata: {
@@ -86,14 +86,14 @@ export class PaginatorZh extends PaginatorIntl {
    * Stream that emits whenever the labels here are changed. Use this to notify
    * components if the labels have changed after initialization.
    */
-  readonly changes: Subject<void> = new Subject<void>();
+  override readonly changes: Subject<void> = new Subject<void>();
 
   /** A label for the page size selector. */
-  itemsPerPageLabel = '条/页';
+  override itemsPerPageLabel = '条/页';
 
-  jumperLabelPrefix = '前往';
+  override jumperLabelPrefix = '前往';
 
-  jumperLabelSuffix = '页';
+  override jumperLabelSuffix = '页';
 
-  getTotalLabel = (length: number) => `共 ${length} 条`;
+  override getTotalLabel = (length: number) => `共 ${length} 条`;
 }

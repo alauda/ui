@@ -12,7 +12,7 @@
   auiTooltipTrigger="click"
   [auiTooltipHideOnClick]="true"
   [auiTooltipDisabled]="!!disabled"
-  (auiTooltipHide)="openChange.next(false); emitValueChange(value)"
+  (auiTooltipHide)="openChange.next(false); emitValue(value)"
   (auiTooltipShow)="openChange.next(true)"
   (clear)="clearValue()"
   #tooltip="auiTooltip"
@@ -33,6 +33,6 @@
     [maxDate]="maxDate"
     (click)="$event.stopImmediatePropagation()"
     (clear)="clearValue()"
-    (confirm)="tooltip.disposeTooltip(); emitValueChange(value)"
+    (confirm)="tooltip.disposeTooltip(); emitValue(value)"
   ></aui-date-range-picker-panel>
 </ng-template>

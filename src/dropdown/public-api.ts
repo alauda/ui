@@ -8,3 +8,4 @@ export * from './menu-item/menu-item.component';
 export * from './submenu/submenu.component';
 export * from './dropdown.module';
 export * from './dropdown.types';
+export * from './helper-directives';

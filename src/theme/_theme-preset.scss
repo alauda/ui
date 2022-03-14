@@ -1,4 +1,4 @@
-@use "sass:color";
+@use 'sass:color';
 
 @mixin component-size {
   --aui-inline-height-l: 40px;
@@ -95,6 +95,11 @@
   --aui-color-main-bg: var(--aui-color-n-9);
   --aui-color-divider: var(--aui-color-n-8);
   --aui-color-border: var(--aui-color-n-7);
+  --aui-color-main-text: var(--aui-color-n-1);
+  --aui-color-secondary-text: var(--aui-color-n-2);
+  --aui-color-help-text: var(--aui-color-n-4);
+  --aui-color-disabled-text: var(--aui-color-n-6);
+  --aui-color-placeholder-text: var(--aui-color-n-6);
 }
 
 @mixin dark-mode {
@@ -128,7 +133,7 @@
   --aui-color-r-4: #{rgb-string(#792b3f)};
   --aui-color-r-6: #{rgb-string(#532939)};
   --aui-color-r-7: #{rgb-string(#652a3c)};
-  --aui-color-n-1: #{rgb-string(#f3f4f8)};
+  --aui-color-n-1: #{rgb-string(#eeeff3)};
   --aui-color-n-2: #{rgb-string(#c8c9cd)};
   --aui-color-n-3: #{rgb-string(#b8bac2)};
   --aui-color-n-4: #{rgb-string(#989aa2)};
@@ -144,4 +149,9 @@
   --aui-color-main-bg: var(--aui-color-n-9);
   --aui-color-divider: var(--aui-color-n-8);
   --aui-color-border: var(--aui-color-n-7);
+  --aui-color-main-text: var(--aui-color-n-1);
+  --aui-color-secondary-text: var(--aui-color-n-2);
+  --aui-color-help-text: var(--aui-color-n-4);
+  --aui-color-disabled-text: var(--aui-color-n-6);
+  --aui-color-placeholder-text: var(--aui-color-n-6);
 }

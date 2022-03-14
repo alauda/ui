@@ -3,12 +3,7 @@
 @import '~@angular/cdk/overlay-prebuilt';
 
 .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.aui-dialog-backdrop {
-  @include theme-light {
-    background-color: use-rgba(origin-shadow, 0.4);
-  }
-  @include theme-dark {
-    background-color: use-rgba(origin-shadow, 0.65);
-  }
+  @include modal-backdrop;
 }
 
 .cdk-overlay-pane.aui-dialog-overlay-pane {
@@ -69,12 +64,15 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
         &[icon='info_circle_s'] {
           color: use-rgb(primary);
         }
+
         &[icon='check_circle_s'] {
           color: use-rgb(green);
         }
+
         &[icon='exclamation_circle_s'] {
           color: use-rgb(yellow);
         }
+
         &[icon='exclamation_triangle_s'] {
           color: use-rgb(red);
         }
@@ -142,6 +140,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
         padding: $spacing $spacing 16px $spacing;
         border-bottom: $divider-line;
       }
+
       &__footer {
         padding-top: 16px;
         border-top: $divider-line;
@@ -162,6 +161,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
       display: flex;
       flex-direction: column;
       overflow: auto;
+
       &:after {
         clear: both;
       }

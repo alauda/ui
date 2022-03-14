@@ -41,7 +41,8 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
 })
 export class AutoCompleteDirective
   extends BaseTooltip<AutoCompleteContext>
-  implements OnInit, OnDestroy, AfterViewInit {
+  implements OnInit, OnDestroy, AfterViewInit
+{
   @Input('auiAutocomplete')
   get autocomplete() {
     return this._autocomplete;
@@ -78,10 +79,10 @@ export class AutoCompleteDirective
   declare innerSelector: string;
 
   @Output('auiAutocompleteShow')
-  show: EventEmitter<void>;
+  override show = new EventEmitter<void>();
 
   @Output('auiAutocompleteHide')
-  hide: EventEmitter<void>;
+  override hide = new EventEmitter<void>();
 
   @Output('auiAutocompleteSelected')
   selected = new EventEmitter<string>();
@@ -141,7 +142,7 @@ export class AutoCompleteDirective
     }
   }
 
-  ngAfterViewInit() {
+  override ngAfterViewInit() {
     const input = this.input;
 
     fromEvent(input, 'focus')
@@ -156,17 +157,17 @@ export class AutoCompleteDirective
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(ev => this.onInput(ev));
 
-    fromEvent(input, 'keydown')
+    fromEvent<KeyboardEvent>(input, 'keydown')
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((ev: KeyboardEvent) => this.onKeyDown(ev));
+      .subscribe(ev => this.onKeyDown(ev));
   }
 
-  ngOnDestroy() {
+  override ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 
-  onFocus() {
+  override onFocus() {
     if (this.suggestionTrigger === 'auto') {
       super.onFocus();
     }
@@ -229,7 +230,7 @@ export class AutoCompleteDirective
     this.disposeTooltip();
   }
 
-  createTooltip() {
+  override createTooltip() {
     super.createTooltip();
     this.autoFocusFirstSuggestion();
   }
@@ -321,5 +322,5 @@ export class AutoCompleteDirective
 })
 export class CustomAutoCompleteDirective extends AutoCompleteDirective {
   @Input('auiAutocompleteInnerSelector')
-  innerSelector = 'input,textarea';
+  override innerSelector = 'input,textarea';
 }

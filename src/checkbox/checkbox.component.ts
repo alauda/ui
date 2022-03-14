@@ -39,7 +39,8 @@ let uniqueId = 0;
 })
 export class CheckboxComponent<T>
   extends CommonFormControl<boolean>
-  implements AfterViewInit, OnDestroy {
+  implements AfterViewInit, OnDestroy
+{
   id = `aui-checkbox-${uniqueId++}`;
 
   @Input()
@@ -86,21 +87,23 @@ export class CheckboxComponent<T>
     super(cdr);
     this.checkboxGroup = checkboxGroup;
     if (this.checkboxGroup) {
-      combineLatest([this.checkboxGroup.value$, this.label$$])
+      combineLatest([this.checkboxGroup.model$, this.label$$])
         .pipe(
           takeUntil(this.destroy$$),
-          map(([value, label]) => {
+          map(([values, label]) => {
             if (this.checkboxGroup.trackFn) {
-              return value?.some(
+              return values?.some(
                 v =>
                   this.checkboxGroup.trackFn(v) ===
                   this.checkboxGroup.trackFn(label),
               );
             }
-            return value?.includes(label);
+            return values?.includes(label);
           }),
         )
-        .subscribe(this.value$$);
+        .subscribe(checked => {
+          this.writeValue(!!checked);
+        });
     }
   }
 
@@ -113,10 +116,6 @@ export class CheckboxComponent<T>
     this.focusMonitor.stopMonitoring(this.elRef.nativeElement);
   }
 
-  writeValue(value: boolean) {
-    this.value$$.next(value);
-  }
-
   onClick() {
     if (this.disabled) {
       return;
@@ -124,7 +123,7 @@ export class CheckboxComponent<T>
     if (this.indeterminate) {
       this._indeterminate = false;
     }
-    this.emitValueChange(!this.snapshot.value);
+    this.emitValue(!this.model);
     if (this.checkboxGroup) {
       this.checkboxGroup.onCheckboxChange(this);
     }

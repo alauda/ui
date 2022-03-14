@@ -1,7 +1,16 @@
 {
   "extends": "@1stg/tsconfig/angular",
+  "compilerOptions": {
+    "baseUrl": "."
+  },
   "angularCompilerOptions": {
-    "baseUrl": ".",
-    "enableIvy": false
+    "compilationMode": "full",
+    "preserveWhitespaces": false,
+    "enableResourceInlining": true,
+    "fullTemplateTypeCheck": true,
+    "strictInputAccessModifiers": true,
+    "strictInjectionParameters": true,
+    "strictTemplates": true,
+    "trace": true
   }
 }

@@ -1,5 +1,6 @@
-export function coerceString(val: unknown): string {
-  return val == null ? '' : val.toString();
+export function coerceString(val: any): string {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  return val == null ? '' : val?.toString() ?? '';
 }
 
 export function coerceAttrBoolean(val: unknown): boolean {

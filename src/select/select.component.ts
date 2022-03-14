@@ -46,11 +46,12 @@ import { SelectOption } from './select.types';
 })
 export class SelectComponent<T = unknown>
   extends BaseSelect<T>
-  implements AfterContentInit {
+  implements AfterContentInit
+{
   @ViewChild('inputRef', { static: true })
   inputRef: InputComponent;
 
-  values$ = this.value$$.asObservable().pipe(map(val => [val]));
+  values$ = this.model$.asObservable().pipe(map(val => [val]));
 
   selectedOption$: Observable<SelectOption>;
 
@@ -67,13 +68,15 @@ export class SelectComponent<T = unknown>
   isClearable = (hasSelected: boolean) =>
     !this.disabled && this.clearable && hasSelected;
 
-  ngAfterContentInit() {
+  override ngAfterContentInit() {
     super.ngAfterContentInit();
 
     this.selectedOption$ = combineLatest([
-      this.contentOptions.changes.pipe(
+      (
+        this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
+      ).pipe(
         startWith(this.contentOptions),
-        switchMap((options: QueryList<OptionComponent<T>>) =>
+        switchMap(options =>
           combineLatest(options.map(option => option.selected$)).pipe(
             startWith(null as void),
             map(() => options.find(option => option.selected)),
@@ -96,7 +99,7 @@ export class SelectComponent<T = unknown>
           ),
         ),
       ),
-      this.value$,
+      this.model$,
     ]).pipe(
       map(([option, value]) =>
         option
@@ -125,27 +128,27 @@ export class SelectComponent<T = unknown>
     );
   }
 
-  onShowOptions() {
+  override onShowOptions() {
     super.onShowOptions();
   }
 
-  onHideOptions() {
+  override onHideOptions() {
     super.onHideOptions();
     this.inputRef.elementRef.nativeElement.value = '';
   }
 
-  writeValue(val: T) {
-    this.value$$.next(val);
+  protected override valueIn(v: T): T {
     this.closeOption();
+    return v;
   }
 
   selectOption(option: OptionComponent<T>) {
-    this.emitValueChange(option.value);
+    this.emitValue(option.value);
     this.closeOption();
   }
 
   clearValue(event: Event) {
-    this.emitValueChange(null);
+    this.emitValue(null);
     event.stopPropagation();
     event.preventDefault();
   }

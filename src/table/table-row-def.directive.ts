@@ -17,8 +17,10 @@ import { Directive, Input } from '@angular/core';
 })
 export class TableRowDefDirective<T> extends CdkRowDef<T> {
   @Input('auiTableRowDefColumns')
-  columns: string[];
+  override columns: Iterable<string> = [];
 
-  @Input('auiTableRowDefWhen')
-  when: (index: number, rowData: T) => boolean;
+  @Input()
+  set auiTableRowDefWhen(v: (index: number, rowData: T) => boolean) {
+    this.when = v;
+  }
 }

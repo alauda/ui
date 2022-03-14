@@ -1,5 +1,6 @@
 .aui-checkbox-group {
   display: inline-flex;
+  flex-wrap: wrap;
 
   &--column {
     flex-direction: column;

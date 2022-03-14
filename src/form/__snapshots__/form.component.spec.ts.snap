@@ -2,6 +2,7 @@
 
 exports[`FormComponent should match snapshot 1`] = `
 <ng-component
+  __ngContext__={[Function LRootView]}
   form={[Function NgForm]}
 >
   <form
@@ -16,7 +17,7 @@ exports[`FormComponent should match snapshot 1`] = `
         class="aui-form-item aui-form-item--left"
       >
         <div
-          class="aui-form-item__label-wrapper aui-form-item__label-wrapper--required aui-form-item__label-wrapper--left hasLabel"
+          class="hasLabel aui-form-item__label-wrapper aui-form-item__label-wrapper--required aui-form-item__label-wrapper--left"
           style="width: 100px;"
         >
           <label
@@ -40,7 +41,6 @@ exports[`FormComponent should match snapshot 1`] = `
               name="name"
               required=""
             />
-            
             <div
               class="aui-form-item__addon-wrapper"
             >
@@ -52,8 +52,6 @@ exports[`FormComponent should match snapshot 1`] = `
               </div>
             </div>
           </div>
-          
-          
           <div
             class="aui-form-item__hint-wrapper"
           >
@@ -73,6 +71,7 @@ exports[`FormComponent should match snapshot 1`] = `
 
 exports[`FormComponent should match snapshot 2`] = `
 <ng-component
+  __ngContext__={[Function LRootView]}
   form={[Function NgForm]}
 >
   <form
@@ -87,7 +86,7 @@ exports[`FormComponent should match snapshot 2`] = `
         class="aui-form-item aui-form-item--left hasError"
       >
         <div
-          class="aui-form-item__label-wrapper aui-form-item__label-wrapper--required aui-form-item__label-wrapper--left hasLabel"
+          class="hasLabel aui-form-item__label-wrapper aui-form-item__label-wrapper--required aui-form-item__label-wrapper--left"
           style="width: 100px;"
         >
           <label
@@ -111,7 +110,6 @@ exports[`FormComponent should match snapshot 2`] = `
               name="name"
               required=""
             />
-            
             <div
               class="aui-form-item__addon-wrapper"
             >
@@ -123,8 +121,6 @@ exports[`FormComponent should match snapshot 2`] = `
               </div>
             </div>
           </div>
-          
-          
           <div
             class="aui-form-item__hint-wrapper"
           >

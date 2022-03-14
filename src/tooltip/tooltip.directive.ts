@@ -35,15 +35,14 @@ import { BaseTooltip } from './base-tooltip';
 })
 export class TooltipDirective extends BaseTooltip {
   @Input('auiTooltipHideOnClick')
-  hideOnClick: boolean;
+  override hideOnClick = false;
 
   @Output('auiTooltipShow')
-  show: EventEmitter<void>;
+  override show = new EventEmitter<void>();
 
   @Output('auiTooltipHide')
-  hide: EventEmitter<void>;
+  override hide = new EventEmitter<void>();
 
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(
     overlay: Overlay,
     viewContainerRef: ViewContainerRef,

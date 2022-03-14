@@ -49,10 +49,10 @@ const bem = buildBem('aui-picker-panel');
 })
 export class PickerPanelComponent implements OnChanges {
   @Input()
-  navRange!: DateNavRange;
+  navRange: DateNavRange;
 
   @Input()
-  type!: DatePickerType;
+  type: DatePickerType;
 
   @Input()
   anchor = dayjs();

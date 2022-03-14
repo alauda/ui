@@ -23,7 +23,7 @@
 
   &--default {
     &.isActive {
-      color: unset;
+      color: use-rgb(n-1);
     }
   }
 }

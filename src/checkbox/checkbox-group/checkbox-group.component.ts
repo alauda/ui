@@ -50,20 +50,14 @@ export class CheckboxGroupComponent<T> extends CommonFormControl<T[]> {
   })
   checkboxes: QueryList<CheckboxComponent<T>>;
 
-  writeValue(val: T[]) {
-    this.value$$.next(val);
-  }
-
   onCheckboxChange(checkbox: CheckboxComponent<T>) {
     if (this.onTouched) {
       this.onTouched();
     }
     const values = this.checkboxes
-      .filter(item =>
-        item === checkbox ? !item.snapshot.value : item.snapshot.value,
-      )
+      .filter(item => (item === checkbox ? !item.model : item.model))
       .map(item => item.label);
-    this.emitValueChange(values);
+    this.emitValue(values);
   }
 
   onCheckboxBlur() {
