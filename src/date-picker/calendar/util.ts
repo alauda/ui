@@ -174,7 +174,10 @@ export function getTimePickerModel(date: Dayjs): TimePickerModel {
 
 export function updateDateByTimeModel(date: Dayjs, time: TimePickerModel) {
   return time
-    ? date.hour(time.hour).minute(time.minute).second(time.second)
+    ? date
+        .set('hour', time.hour || 0)
+        .set('minute', time.minute || 0)
+        .set('second', time.second || 0)
     : date;
 }
 

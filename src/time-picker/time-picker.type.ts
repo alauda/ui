@@ -18,8 +18,8 @@ export type TimePickerDataLike = ConfigType | TimePickerModel;
 
 export function isTimePickerModel(item: any): item is TimePickerModel {
   return (
-    _isNumberValue(item?.second) &&
-    _isNumberValue(item?.minute) &&
+    _isNumberValue(item?.second) ||
+    _isNumberValue(item?.minute) ||
     _isNumberValue(item?.hour)
   );
 }
