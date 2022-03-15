@@ -1,5 +1,21 @@
 # Changelog
 
+## 6.3.1
+
+### Patch Changes
+
+- [#295](https://github.com/alauda/alauda-ui/pull/295) [`6764aaf`](https://github.com/alauda/alauda-ui/commit/6764aaf6a18ad356507b6acfb1d6cd1d0ea0f5d9) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: theme mixins
+
+  fix: color of tab active indicator
+
+* [#303](https://github.com/alauda/alauda-ui/pull/303) [`b45adbc`](https://github.com/alauda/alauda-ui/commit/b45adbc6c803b3282cd02a9ac72fe189a614b9b9) Thanks [@JounQin](https://github.com/JounQin)! - fix: better compatibility with empty form control
+
+- [#301](https://github.com/alauda/alauda-ui/pull/301) [`7e32fce`](https://github.com/alauda/alauda-ui/commit/7e32fce199b53e0e3a79bff74c94c7e88d2a5d8b) Thanks [@JounQin](https://github.com/JounQin)! - fix: check trackFn on select all
+
+* [#298](https://github.com/alauda/alauda-ui/pull/298) [`698665a`](https://github.com/alauda/alauda-ui/commit/698665a24b3b04db5c224cdcc8bb242578fc99f7) Thanks [@JounQin](https://github.com/JounQin)! - fix: disabled option should not be closeable
+
+- [#299](https://github.com/alauda/alauda-ui/pull/299) [`d3f5d22`](https://github.com/alauda/alauda-ui/commit/d3f5d22fed7120297543020909ab7e957abfc634) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: system scrollbar color
+
 ## 6.3.0
 
 ### Minor Changes
