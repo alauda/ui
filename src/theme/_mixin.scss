@@ -129,13 +129,13 @@
 
 @mixin clear-button() {
   border-radius: 50%;
-  color: $input-suffix-icon-color;
+  color: use-text-color(help);
   cursor: pointer;
   @include transition;
 
   &:hover {
-    color: $input-bg-color;
-    background-color: $input-suffix-icon-color;
+    color: use-rgb(main-bg);
+    background-color: use-text-color(help);
   }
 }
 
@@ -245,8 +245,8 @@
 }
 
 @mixin view-readonly {
-  background-color: $input-bg-color;
-  border-color: $input-border-color;
+  background-color: use-rgb(main-bg);
+  border-color: use-rgb(border);
 }
 
 @mixin vertical-dashed-line($width: 1px, $color: 'n-7') {

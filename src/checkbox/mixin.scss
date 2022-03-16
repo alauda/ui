@@ -8,7 +8,7 @@
     height: use-var(icon-size-m);
     margin-right: use-var(spacing-m);
     border-radius: use-var(border-radius-m);
-    border: 1px $border-style use-rgb(n-7);
+    border: 1px solid use-rgb(n-7);
     color: white;
     background-color: use-rgb(main-bg);
     position: relative;

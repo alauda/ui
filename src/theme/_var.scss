@@ -2,163 +2,14 @@
 
 @import 'base-var';
 
-// Button
-$button-margin: 8px;
-$text-button-margin: 4px;
+$status-color-map: (
+  success: use-rgb(green),
+  warning: use-rgb(yellow),
+  error: use-rgb(red),
+  info: use-rgb(primary),
+);
 
-$button-border-style: $border-style;
-$button-border-radius: $border-radius;
-$button-border-width: $border-width;
-
-$button-large-height: $height-large;
-$button-large-font-size: $font-size-large;
-$button-large-padding-hoz: 20px - $button-border-width;
-
-$button-medium-height: $height-medium;
-$button-medium-font-size: $font-size-regular;
-$button-medium-padding-hoz: 16px - $button-border-width;
-
-$button-small-height: $height-small;
-$button-small-font-size: $font-size-regular;
-$button-small-padding-hoz: 12px - $button-border-width;
-
-$button-mini-height: $height-mini;
-$button-mini-font-size: $font-size-small;
-$button-mini-padding-hoz: 8px - $button-border-width;
-
-$text-button-padding-hoz: 4px - $button-border-width;
-$text-button-large-height: 24px;
-$text-button-large-font-size: 18px;
-$text-button-medium-height: 22px;
-$text-button-medium-font-size: 16px;
-$text-button-small-height: 20px;
-$text-button-small-font-size: 14px;
-$text-button-mini-height: 16px;
-$text-button-mini-font-size: 12px;
-
-// Table
-$table-padding: 12px;
-$table-row-min-height: 58px;
-$table-cell-padding-v: 15px;
-$table-cell-padding-h: 10px;
-
-// Sort
-$sort-indicator-color: #ccc;
-$sort-indicator-color-active: #2c2f36;
-$sort-indicator-size: 4px;
-$sort-indicator-margin: 4px;
-
-// Code editor
-$code-editor-min-height: 400px;
-$code-editor-border: $border-width $border-style #ddd;
-$code-editor-toolbar-padding: 0 20px;
-$code-editor-toolbar-height: 40px;
-$code-editor-toolbar-icon-size: 16px;
-$code-editor-toolbar-font-size: 14px;
-$code-editor-toolbar-control-margin: 4px;
-$code-editor-toolbar-background: #f7f7f7;
-$code-editor-toolbar-background-dark: #333;
-$code-editor-toolbar-color-dark: #fff;
-$code-editor-toolbar-inactive-opacity: 0.6;
-
-// Tooltip
-$tooltip-border-width: $border-width;
-$tooltip-border-radius: $border-radius;
-$tooltip-line-height: $line-height-small;
-$tooltip-font-size: $font-size-small;
-$tooltip-padding-hoz: 16px - $tooltip-border-width;
-$tooltip-padding-ver: 8px - $tooltip-border-width;
-$tooltip-offset: 4px;
-$tooltip-max-width: 416px;
-
-$tooltip-default-bg: rgb(0 0 0 / 85%);
-$tooltip-default-border: $tooltip-default-bg;
-$tooltip-default-text: $color-white;
-
-$tooltip-primary-border: $color-primary;
-$tooltip-primary-bg: $color-white;
-$tooltip-primary-text: $color-primary;
-
-$tooltip-success-border: $color-success;
-$tooltip-success-bg: $color-white;
-$tooltip-success-text: $color-success;
-
-$tooltip-warning-border: $color-warning;
-$tooltip-warning-bg: $color-white;
-$tooltip-warning-text: $color-warning;
-
-$tooltip-error-border: $color-error;
-$tooltip-error-bg: $color-white;
-$tooltip-error-text: $color-error;
-
-$tooltip-info-border: $color-white;
-$tooltip-info-bg: $color-white;
-
-// Radio
-$radio-margin: 24px;
-$radio-font-size: $font-size-regular;
-$radio-label-margin: 8px;
-$radio-color: $color-text-main;
-$radio-line-height: $height-medium;
-$radio-pointer-outer-radius: 8px;
-$radio-pointer-inner-radius: 3px;
-
-$radio-border-color: $color-text-placeholder;
-$radio-border-color-primary: $color-primary;
-$radio-border-style: $border-style;
-$radio-border-width: $border-width;
-$radio-bg-color-disabled: $color-disabled-bg;
-$radio-outline-color: $outline-color-primary;
-
-$radio-button-border-radius: $button-border-radius;
-$radio-button-medium-pointer-size: $font-size-large;
-$radio-button-medium-height: $button-medium-height;
-$radio-button-medium-padding-hoz: $button-medium-padding-hoz;
-$radio-button-small-pointer-size: $font-size-regular;
-$radio-button-small-height: $button-small-height;
-$radio-button-small-padding-hoz: $button-small-padding-hoz;
-$radio-button-mini-height: $button-mini-height;
-$radio-button-mini-padding-hoz: $button-mini-padding-hoz;
-
-// Checkbox
-$checkbox-margin: 24px;
-$checkbox-font-size: $font-size-regular;
-$checkbox-label-margin: 8px;
-$checkbox-color: $color-text-main;
-$checkbox-line-height: $height-medium;
-$checkbox-pointer-radius: $border-radius;
-$checkbox-pointer-width: 16px;
-
-$checkbox-border-color: $color-text-placeholder;
-$checkbox-border-color-primary: $color-primary;
-$checkbox-border-style: $border-style;
-$checkbox-border-width: $border-width;
-$checkbox-bg-color: $color-white;
-$checkbox-bg-color-disabled: $color-disabled-bg;
-$checkbox-outline-color: $outline-color-primary;
-
-$checkbox-tag-bg-color: $color-disabled-bg;
-$checkbox-tag-bg-color-hover: $color-primary-extra-light;
-
-$default-border-color: #ccc;
-$disabled-border-color: #ccc;
-$hover-border-color: $color-primary;
-$focus-border-color: #b3d4ff;
-
-$checked-bg-color: $color-primary;
-$disabled-bg-color: #f2f2f2;
-$checked-inner-bg-color: #fff;
-
-$radio-medium-label-padding: 6px 16px;
-$radio-small-label-padding: 4px 12px;
-
-// Toast
-$toast-z-index: 1001;
-$toast-close-color: #e2e2e2;
-$alerts-wrapper-top: 20px;
-$alerts-wrapper-right: 0;
-
-// Input
+// input
 $input-size: (
   large: (
     height: use-var(inline-height-l),
@@ -186,161 +37,38 @@ $input-size: (
   ),
 );
 
-$input-border-radius: $border-radius;
-$input-border-width: $border-width;
-$input-border-style: $border-style;
-$input-border-color: $color-info;
-$input-border-color-primary: $color-primary;
-$input-border-color-error: $color-error;
-$input-color: $color-text-main;
-$input-placeholder-color: $color-text-placeholder;
-$input-bg-color: $color-white;
-$input-bg-color-disabled: $color-disabled-bg;
-$input-prefix-icon-color: $input-placeholder-color;
-$input-suffix-icon-color: $color-text-help;
-$input-padding-hoz: 8px - $input-border-width;
+// Table
+$table-padding: 12px;
+$table-row-min-height: 58px;
+$table-cell-padding-v: 15px;
+$table-cell-padding-h: 10px;
 
-$input-large-padding-hoz: 12px - $input-border-width;
-$input-large-height: $height-large;
-$input-large-font-size: $font-size-large;
-$input-medium-padding-hoz: 8px - $input-border-width;
-$input-medium-height: $height-medium;
-$input-medium-font-size: $font-size-regular;
-$input-small-padding-hoz: 8px - $input-border-width;
-$input-small-height: $height-small;
-$input-small-font-size: $font-size-regular;
-$input-mini-padding-hoz: 6px - $input-border-width;
-$input-mini-height: $height-mini;
-$input-mini-font-size: $font-size-small;
-
-// Select
-$select-options-padding: 8px;
-$select-options-max-height: $input-medium-height * 8;
-
-// Tag
-$tag-border-width: $border-width;
-$tag-border-radius: $border-radius;
-$tag-border-style: $border-style;
-$tag-max-width: 300px;
-$tag-close-margin: 4px;
-
-$tag-primary-color: $color-primary;
-$tag-primary-bg-color: $color-primary-extra-light;
-$tag-success-color: $color-success;
-$tag-success-bg-color: $color-success-extra-light;
-$tag-warning-color: $color-warning;
-$tag-warning-bg-color: $color-warning-extra-light;
-$tag-error-color: $color-error;
-$tag-error-bg-color: $color-error-extra-light;
-$tag-info-color: $color-text-secondary;
-$tag-info-border-color: $color-info;
-$tag-info-bg-color: $color-disabled-bg;
-
-$tag-large-height: $height-medium;
-$tag-large-font-size: $font-size-regular;
-$tag-large-padding: 16px - $tag-border-width;
-
-$tag-medium-height: $height-small;
-$tag-medium-padding: 12px - $tag-border-width;
-
-$tag-small-height: $height-mini;
-$tag-small-font-size: $font-size-small;
-$tag-margin: 8px;
-
-$tag-mini-height: 20px;
-$tag-mini-margin: 6px;
-$tag-mini-padding: 8px - $tag-border-width;
-$tag-mini-font-size: $font-size-small;
-
-// Form
-$form-item-margin-vertical: 16px;
-
-// Paginator
-$paginator-page-size-select-width: 64px;
-$paginator-outer-block-margin: 12px;
-$paginator-inner-block-margin: 4px;
-
-// Menu
-$menu-max-width: 280px;
-$menu-padding: 8px;
-
-$menu-group-title-padding: 4px;
-$menu-group-divide-style: $border-style;
-$menu-group-divide-width: $border-width;
-$menu-group-divide-color: #ededed;
-
-$menu-item-padding: 0 12px;
-$menu-item-radius: $border-radius;
-$menu-item-large-height: $height-large;
-$menu-item-large-font-size: $font-size-large;
-$menu-item-medium-height: $height-medium;
-$menu-item-medium-font-size: $font-size-regular;
-$menu-item-small-height: $height-small;
-$menu-item-small-font-size: $font-size-regular;
-$menu-item-mini-height: $height-mini;
-$menu-item-mini-font-size: $font-size-small;
-
-$menu-item-primary-color: $color-primary;
-$menu-item-primary-bg: $color-primary-extra-light;
-$menu-item-success-color: $color-success;
-$menu-item-success-bg: $color-success-extra-light;
-$menu-item-warning-color: $color-warning;
-$menu-item-warning-bg: $color-warning-extra-light;
-$menu-item-danger-color: $color-error;
-$menu-item-danger-bg: $color-error-extra-light;
-
-// Card
-$card-border-color: #ededed;
-$card-border-style: $border-style;
-$card-border-width: $border-width;
-$card-border-radius: $border-radius;
-
-// Section
-$section-border-color: $card-border-color;
-$section-border-style: $border-style-dashed;
-$section-border-width: $border-width;
-
-// Icon
-$icon-margin-hoz: 4px;
+// Sort
+$sort-indicator-color: use-text-color(placeholder);
+$sort-indicator-color-active: use-text-color(main);
+$sort-indicator-size: 4px;
+$sort-indicator-margin: 4px;
 
 // Tabs
 $tab-label-content-max-width: 160px;
 $tab-label-padding-large: 16px 20px;
 $tab-label-padding-medium: 12px 20px;
 $tab-label-padding-small: 8px 16px;
-$tab-label-font-size-large: $font-size-larger;
-$tab-label-font-size-medium: $font-size-large;
-$tab-label-font-size-small: $font-size-regular;
-$tab-border: $border-width $border-style #ededed;
+$tab-label-font-size-large: use-var(font-size-xl);
+$tab-label-font-size-medium: use-var(font-size-l);
+$tab-label-font-size-small: use-var(font-size-m);
 $tab-header-type-card-bg-color: use-rgb(n-9);
 $tab-scroll-transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
 $tab-pagination-button-z-index: 3;
 $tab-label-z-index: 2;
 $tab-active-indicator-z-index: 1;
-$tab-label-focus-box-shadow: inset 0 0 0 3px rgba($color-primary, 0.3);
+$tab-label-focus-box-shadow: inset 0 0 0 3px use-rgba(primary, 0.3);
 $tab-header-close-icon-size: 16px;
-$tab-header-title-font-size: $font-size-extra-large;
+$tab-header-title-font-size: use-var(font-size-xxl);
 $tab-header-title-spacing: 20px;
 $tab-header-title-padding: 20px 0 16px;
 
-// Status bar
-$status-bar-border-radius: $border-radius;
-$status-bar-medium-height: 16px;
-$status-bar-small-height: 8px;
-$status-bar-pending-color: #ccecfb;
-$status-bar-pending-color-light: #e0f5ff;
-$status-bar-pending-gradient-width: 4px;
-
-//accordion
-$accordion-item-header-padding: 12px 0;
-$accordion-item-header-color: #666;
-
-// timepicker
-$time-picker-icon-size: $font-size-large;
-$time-picker-body-small-width: 278px;
-
-// datepicker
-$date-picker-icon-size: $font-size-large;
+// date picker
 $date-picker-body-size: 216px;
 $date-picker-seprator-gap: 20px;
 $date-picker-row-gap: 8px;

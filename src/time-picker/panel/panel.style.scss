@@ -40,17 +40,20 @@ $strut_height: $cell_height * ($col_reveal_items - 1);
     overflow: hidden;
     flex: 1;
     text-align: center;
+
     &:hover {
       overflow-y: auto;
     }
 
     align-self: stretch;
+
     ul {
       min-height: $total_height;
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     &-strut {
       height: $strut_height;
       width: 1px;
@@ -82,8 +85,8 @@ $strut_height: $cell_height * ($col_reveal_items - 1);
     }
 
     &.disabled {
-      background-color: $color-disabled-bg;
-      color: $color-info;
+      background-color: use-rgb(n-8);
+      color: use-text-color(disabled);
       cursor: not-allowed;
     }
   }

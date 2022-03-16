@@ -4,7 +4,7 @@
 
 @mixin option-container($block, $size: m) {
   .#{$block} {
-    padding: $select-options-padding 0;
+    padding: 8px 0;
     border-radius: use-var(border-radius-m);
     background-color: use-rgb(popper-bg);
     @include popper-shadow;
@@ -14,6 +14,7 @@
       position: relative;
       overflow: auto;
       @include scroll-bar;
+
       .divider {
         border: none;
         border-top: 1px solid use-rgb(n-8);

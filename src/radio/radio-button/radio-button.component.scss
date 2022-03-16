@@ -10,7 +10,7 @@ $block: 'aui-radio-button';
   vertical-align: middle;
   position: relative;
   color: use-rgb(primary);
-  border: 1px $border-style use-rgb(primary);
+  border: 1px solid use-rgb(primary);
   background-color: use-rgb(button-bg);
   overflow: hidden;
   z-index: 1;
@@ -76,17 +76,20 @@ $block: 'aui-radio-button';
     &:hover,
     &.isChecked {
       z-index: 2;
+
       &:not(.isDisabled) {
         color: use-rgb(primary);
         border-color: use-rgb(primary);
         background-color: use-rgb(button-bg);
       }
     }
+
     &.isDisabled {
       color: use-rgb(n-6);
       border-color: use-rgb(n-7);
       background-color: use-rgb(n-8);
     }
+
     &.isDisabled.isChecked {
       color: use-rgb(p-4);
       border-color: use-rgb(p-4);
@@ -95,9 +98,11 @@ $block: 'aui-radio-button';
 
   &__pointer {
     color: use-rgb(primary);
+
     &:not(:last-child) {
       margin: 0;
     }
+
     .aui-icon {
       position: absolute;
       right: 0;
@@ -130,6 +135,7 @@ $block: 'aui-radio-button';
           font-size: use-var(font-size-l);
         }
       }
+
       &__label {
         height: calc(#{use-var(inline-height-m)} - 2px);
         padding: 0 use-var(inline-padding-m);
@@ -144,6 +150,7 @@ $block: 'aui-radio-button';
           font-size: use-var(font-size-s);
         }
       }
+
       &__label {
         height: calc(#{use-var(inline-height-s)} - 2px);
         padding: 0 use-var(inline-padding-s);

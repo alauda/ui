@@ -21,9 +21,9 @@
   @include modal-shadow;
 
   &__icon {
-    font-size: $font-size-large;
-    width: $font-size-large;
-    line-height: $line-height-larger;
+    font-size: use-var(icon-size-l);
+    width: use-var(icon-size-l);
+    line-height: use-var(line-height-xl);
   }
 
   @each $status, $color in $status-color-map {
@@ -40,48 +40,54 @@
     margin: 0 16px 0 8px;
     width: 304px;
   }
+
   &__title {
-    font-size: $font-size-larger;
+    @include text-set(xl, main);
+
     text-align: left;
-    color: use-rgb(n-1);
-    line-height: $line-height-larger;
     word-break: break-word;
+
     &:not(:only-child) {
       margin-bottom: 6px;
     }
   }
+
   &__content {
-    font-size: $font-size-regular;
-    line-height: $line-height-regular;
-    text-align: left;
-    color: use-rgb(n-2);
+    margin-top: calc(
+      (#{use-var(line-height-xl)} - #{use-var(line-height-m)}) / 2
+    );
+    padding-right: 4px;
     max-height: 140px;
+    @include text-set(m, secondary);
+
+    text-align: left;
     overflow: auto;
     overflow-wrap: break-word;
-    padding-right: 4px;
-    margin-top: math.div(($line-height-larger - $line-height-regular), 2);
+
     @include scroll-bar;
   }
+
   &__close {
     right: 10px;
-    width: 16px;
+    font-size: use-var(icon-size-m);
+    width: use-var(icon-size-m);
     color: use-rgb(n-4);
-    line-height: use-var(line-height-l);
+    line-height: use-var(line-height-xl);
     cursor: pointer;
+
     &:hover {
       color: use-rgb(n-2);
     }
   }
+
   &__remove {
     font-size: use-var(font-size-l);
   }
+
   &__duration {
     font-size: use-var(font-size-m);
   }
-  &__svg {
-    position: absolute;
-    color: $toast-close-color;
-  }
+
   &__footer {
     width: 360px;
     margin-top: 12px;

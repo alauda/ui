@@ -2,8 +2,8 @@
 
 aui-notification-wrapper {
   position: fixed;
-  right: $alerts-wrapper-right;
-  top: $alerts-wrapper-top;
+  right: 0;
+  top: 20px;
   height: 0;
   display: flex;
   flex-direction: column;

@@ -48,7 +48,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
 
     &.hasDivider {
       margin-bottom: 16px;
-      border-bottom: $divider-line;
+      border-bottom: 1px solid use-rgb(divider);
     }
 
     &-title {
@@ -138,12 +138,12 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
       &__header {
         margin: 0;
         padding: $spacing $spacing 16px $spacing;
-        border-bottom: $divider-line;
+        border-bottom: 1px solid use-rgb(divider);
       }
 
       &__footer {
         padding-top: 16px;
-        border-top: $divider-line;
+        border-top: 1px solid use-rgb(divider);
       }
     }
 

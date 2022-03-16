@@ -11,25 +11,22 @@
   // Size modifiers:
   &--large {
     .aui-tab-label {
-      font-size: $tab-label-font-size-large;
       padding: $tab-label-padding-large;
-      line-height: $line-height-larger;
+      @include text-set(xxl);
     }
   }
 
   &--medium {
     .aui-tab-label {
-      font-size: $tab-label-font-size-medium;
       padding: $tab-label-padding-medium;
-      line-height: $line-height-large;
+      @include text-set(xl);
     }
   }
 
   &--small {
     .aui-tab-label {
-      font-size: $tab-label-font-size-small;
       padding: $tab-label-padding-small;
-      line-height: $line-height-regular;
+      @include text-set(m);
     }
   }
 
@@ -46,7 +43,7 @@
     font-size: $tab-header-title-font-size;
     margin-inline: $tab-header-title-spacing;
     padding: $tab-header-title-padding;
-    font-weight: $font-weight-bold;
+    font-weight: use-var(font-weight-bold);
     border-bottom: 1px use-rgb(n-8) solid;
     line-height: 32px;
   }
@@ -148,7 +145,7 @@
   align-items: center;
   white-space: nowrap;
   color: use-rgb(n-2);
-  font-weight: $font-weight-normal;
+  font-weight: use-var(font-weight-bold);
   z-index: $tab-label-z-index;
   transition: opacity 0.3s;
 
@@ -158,10 +155,6 @@
   }
 
   &:not(.aui-tab-label--disabled) {
-    &.isActive {
-      font-weight: $font-weight-bold;
-    }
-
     &.isActive,
     &:hover {
       color: use-rgb(primary);
