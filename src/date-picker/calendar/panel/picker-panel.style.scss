@@ -6,8 +6,8 @@ $in-range-bgcolor: use-rgb(p-6);
 $left-in-range-shadow: -6px 0 0 0 $in-range-bgcolor;
 $right-in-range-shadow: 6px 0 0 0 $in-range-bgcolor;
 
-$left-disabled-shadow: -6px 0 0 0 $color-disabled-bg;
-$right-disabled-shadow: 6px 0 0 0 $color-disabled-bg;
+$left-disabled-shadow: -6px 0 0 0 use-rgb(n-8);
+$right-disabled-shadow: 6px 0 0 0 use-rgb(n-8);
 
 $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
 
@@ -20,9 +20,11 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
     flex-direction: column;
     margin: 12px 9px;
     align-items: center;
+
     .aui-button {
       box-sizing: border-box;
     }
+
     &.month-panel-container,
     &.year-panel-container {
       button {
@@ -30,10 +32,12 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
         height: 28px !important;
       }
     }
+
     &.day-panel-container {
       height: min-content;
       padding: 0;
       margin: 0;
+
       button {
         height: $date-picker-cell-size !important;
         width: $date-picker-cell-size !important;
@@ -100,6 +104,7 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
     &.isDisabled {
       background-color: use-rgb(n-8);
       box-shadow: $left-disabled-shadow, $right-disabled-shadow;
+
       button {
         color: use-text-color(disabled) !important;
         border-color: use-text-color(disabled) !important;
@@ -128,6 +133,7 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
       color: white;
       background-color: use-rgb(primary);
     }
+
     &.isBackground button {
       background-color: initial !important;
       color: use-text-color(disabled);
