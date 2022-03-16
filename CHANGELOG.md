@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.3.2
+
+### Patch Changes
+
+- [#307](https://github.com/alauda/alauda-ui/pull/307) [`0923b50`](https://github.com/alauda/alauda-ui/commit/0923b5088d7ea7a0a13ac0db727569df5f387a92) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: remove unused sass var
+
 ## 6.3.1
 
 ### Patch Changes
