@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.3.3
+
+### Patch Changes
+
+- [#309](https://github.com/alauda/alauda-ui/pull/309) [`456eb80`](https://github.com/alauda/alauda-ui/commit/456eb80d85500b94b188d76f2a0638b42ba0c54e) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: sticky table border radius
+
 ## 6.3.2
 
 ### Patch Changes
