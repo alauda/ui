@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.3.4
+
+### Patch Changes
+
+- [#315](https://github.com/alauda/alauda-ui/pull/315) [`0bae98d`](https://github.com/alauda/alauda-ui/commit/0bae98d637476fb06951bcb17ba28a66e91ce885) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: icon background size
+
 ## 6.3.3
 
 ### Patch Changes
