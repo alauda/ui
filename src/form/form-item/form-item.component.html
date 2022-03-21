@@ -1,4 +1,8 @@
-<div [class]="bem.block(labelPosition)" [class.hasError]="hasError$ | async">
+<div
+  [class]="bem.block(labelPosition)"
+  [class.isPlain]="plain"
+  [class.hasError]="hasError$ | async"
+>
   <div
     [ngClass]="
       bem.element(

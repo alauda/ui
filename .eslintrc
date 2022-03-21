@@ -7,20 +7,22 @@
     {
       "files": "*.spec.ts",
       "rules": {
-        "@typescript-eslint/no-extraneous-class": 0,
-        "jest/expect-expect": 0,
-        "jest/no-export": 0,
+        "@typescript-eslint/no-extraneous-class": "off",
+        "jest/expect-expect": "off",
+        "jest/no-export": "off",
         "sonarjs/no-duplicate-string": 0
       }
     }
   ],
   "rules": {
-    "accessor-pairs": 0,
-    "@angular-eslint/no-inputs-metadata-property": 0,
-    "@angular-eslint/no-output-native": 0,
-    "@angular-eslint/no-input-rename": 0,
-    "@angular-eslint/no-output-rename": 0,
-    "@angular-eslint/no-host-metadata-property": 0,
-    "@typescript-eslint/no-useless-constructor": 0
+    "accessor-pairs": "off",
+    "@angular-eslint/no-inputs-metadata-property": "off",
+    "@angular-eslint/no-output-native": "off",
+    "@angular-eslint/no-input-rename": "off",
+    "@angular-eslint/no-output-rename": "off",
+    "@angular-eslint/no-host-metadata-property": "off",
+    "@typescript-eslint/no-useless-constructor": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-argument": "off"
   }
 }
