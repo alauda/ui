@@ -12,15 +12,18 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { Observable, Subject, combineLatest, merge } from 'rxjs';
 import {
+  Observable,
+  Subject,
+  combineLatest,
+  merge,
   map,
   publishReplay,
   refCount,
   startWith,
   switchMap,
   takeUntil,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import { Bem, buildBem } from '../../utils';
 import { FormDirective } from '../form.directive';
@@ -55,6 +58,9 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
 
   @Input()
   emptyAddon = false;
+
+  @Input()
+  plain = false;
 
   @ContentChild(FormItemLabelDirective, { static: false })
   itemLabel: FormItemLabelDirective;
@@ -142,17 +148,18 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
   }
 
   mapControlStatus(control: NgControl) {
-    return (this.parentForm
-      ? combineLatest([
-          control.statusChanges.pipe(startWith(control.status)),
-          merge(
-            this.parentForm.statusChanges.pipe(
-              startWith(this.parentForm.status),
+    return (
+      this.parentForm
+        ? combineLatest([
+            control.statusChanges.pipe(startWith(control.status)),
+            merge(
+              this.parentForm.statusChanges.pipe(
+                startWith(this.parentForm.status),
+              ),
+              this.parentForm.ngSubmit,
             ),
-            this.parentForm.ngSubmit,
-          ),
-        ]).pipe(map(([status]: string[]) => status))
-      : control.statusChanges
+          ]).pipe(map(([status]: string[]) => status))
+        : control.statusChanges
     ).pipe(
       map(
         (status: string) =>

@@ -17,14 +17,15 @@ $form-item-width: (
   display: flex;
   align-items: flex-start;
   margin-bottom: use-var(spacing-xl);
-  color: use-rgb(n-1);
-  font-size: use-var(font-size-m);
+  @include text-set(m, main);
 
   &--top {
     flex-direction: column;
+
     .aui-form-item__label-wrapper {
       line-height: use-var(line-height-m);
       margin-bottom: use-var(spacing-xs);
+
       &:after {
         display: none;
       }
@@ -49,7 +50,6 @@ $form-item-width: (
       content: ':';
       align-self: flex-start;
       margin-left: use-var(spacing-xs);
-      line-height: use-var(inline-height-m);
     }
 
     &--left {
@@ -102,12 +102,11 @@ $form-item-width: (
 
   &__hint-wrapper,
   &__error-wrapper {
-    font-size: use-var(font-size-s);
-    line-height: use-var(line-height-s);
+    @include text-set(s);
   }
 
   &__hint-wrapper {
-    color: use-rgb(n-4);
+    color: use-text-color(help);
   }
 
   &__error-wrapper {
@@ -128,6 +127,24 @@ $form-item-width: (
 
     aui-icon {
       font-size: use-var(icon-size-m);
+    }
+  }
+
+  &.isPlain & {
+    &__label-wrapper {
+      line-height: use-var(line-height-m);
+
+      &--required .aui-form-item__label:before {
+        display: none;
+      }
+    }
+
+    &__content {
+      min-height: use-var(line-height-m);
+    }
+
+    &__addon-wrapper {
+      height: use-var(line-height-m);
     }
   }
 }
