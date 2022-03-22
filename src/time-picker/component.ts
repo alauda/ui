@@ -143,12 +143,18 @@ export class TimePickerComponent extends CommonFormControl<
     }
   }
 
-  onBlur() {
+  handleTooltipOpen() {
+    this.open.emit();
+  }
+
+  handleTooltipHide() {
     if (this.onTouched) {
       this.onTouched();
     }
     this.setValue(this.timeValue);
     this.submit();
+
+    this.close.emit();
   }
 
   openPanel() {

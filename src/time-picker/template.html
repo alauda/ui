@@ -8,8 +8,8 @@
   auiTooltipTrigger="click"
   auiTooltipPosition="bottom start"
   [auiTooltipDisabled]="disabled"
-  (auiTooltipShow)="open.emit()"
-  (auiTooltipHide)="close.emit()"
+  (auiTooltipShow)="handleTooltipOpen()"
+  (auiTooltipHide)="handleTooltipHide()"
 >
   <aui-input-group>
     <input
@@ -21,7 +21,6 @@
       [(ngModel)]="timeFormatValue"
       (ngModelChange)="changeFromInput($event)"
       (keydown)="onKeyDown($event)"
-      (blur)="onBlur()"
     />
     <span
       *ngIf="showIcon"
