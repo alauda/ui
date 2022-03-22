@@ -16,6 +16,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import dayjs, { Dayjs } from 'dayjs';
 
+import { updateDateByTimeModel } from '../../date-picker/calendar/util';
 import { CommonFormControl } from '../../form/common-form';
 import { ComponentSize } from '../../types';
 import { buildBem } from '../../utils';
@@ -194,7 +195,10 @@ export class TimePickerPanelComponent
     if (!type) {
       return;
     }
-    const result = (currentValue || dayjs()).set(type, value);
+    const result = (
+      currentValue ||
+      updateDateByTimeModel(dayjs(), { hour: 0, minute: 0, second: 0 })
+    ).set(type, value);
     this.emitModel(result);
     return result;
   }

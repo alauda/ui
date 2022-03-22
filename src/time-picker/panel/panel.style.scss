@@ -37,15 +37,11 @@ $strut_height: $cell_height * ($col_reveal_items - 1);
   }
 
   &__column {
-    overflow: hidden;
     flex: 1;
-    text-align: center;
-
-    &:hover {
-      overflow-y: auto;
-    }
-
     align-self: stretch;
+    text-align: center;
+    overflow: auto;
+    @include scroll-bar;
 
     ul {
       min-height: $total_height;
