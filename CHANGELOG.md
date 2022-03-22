@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.3.5
+
+### Patch Changes
+
+- [#317](https://github.com/alauda/alauda-ui/pull/317) [`e182a75`](https://github.com/alauda/alauda-ui/commit/e182a75e8112fce07dff84980e8d97a9a2d791fa) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: time picker may not emit value
+
 ## 6.3.4
 
 ### Patch Changes
