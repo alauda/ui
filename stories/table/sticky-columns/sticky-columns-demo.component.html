@@ -1,4 +1,8 @@
 <h1>固定header & 列</h1>
+<p>
+  <button aui-button (click)="clear()">清空</button>
+  <button aui-button (click)="reset()">重置</button>
+</p>
 <div auiTableScrollWrapper>
   <aui-table [dataSource]="dataSource" auiTableScrollShadow>
     <ng-container auiTableColumnDef="no" [sticky]="true">
@@ -87,9 +91,34 @@
         {{ item[10] }}
       </aui-table-cell>
     </ng-container>
+    <ng-container auiTableColumnDef="cell11">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell11
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[11] }}
+      </aui-table-cell> </ng-container
+    ><ng-container auiTableColumnDef="cell12">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell12
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[12] }}
+      </aui-table-cell> </ng-container
+    ><ng-container auiTableColumnDef="cell13">
+      <aui-table-header-cell *auiTableHeaderCellDef>
+        header cell13
+      </aui-table-header-cell>
+      <aui-table-cell *auiTableCellDef="let item">
+        {{ item[13] }}
+      </aui-table-cell>
+    </ng-container>
     <aui-table-header-row
       *auiTableHeaderRowDef="columns; sticky: true"
     ></aui-table-header-row>
     <aui-table-row *auiTableRowDef="let row; columns: columns"></aui-table-row>
+    <ng-container *auiTablePlaceholderDef>
+      <div class="empty" *ngIf="!dataSource.length">No Data</div>
+    </ng-container>
   </aui-table>
 </div>

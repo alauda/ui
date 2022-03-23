@@ -1,4 +1,5 @@
 @import '../../../src/theme/mixin';
+@import '../../../src/theme/pattern';
 
 :host {
   ::ng-deep {
@@ -6,6 +7,7 @@
     .aui-table__cell {
       flex: 1 0 100px;
     }
+
     .aui-table__header-cell {
       @include text-overflow;
     }
@@ -14,4 +16,6 @@
   aui-table {
     max-height: 300px;
   }
+
+  @include table-placeholder('.empty');
 }

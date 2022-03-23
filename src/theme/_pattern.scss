@@ -50,6 +50,10 @@
     border: solid 1px use-rgb(n-8);
     border-radius: use-var(border-radius-l);
 
+    // fixed placeholder to avoid horizontal scrolling
+    position: sticky;
+    left: 0;
+
     > aui-icon:first-child {
       margin-right: use-var(spacing-m);
     }
