@@ -1,20 +1,21 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { DATA_SOURCE } from './data';
 import { ExpandDemoComponent } from './expand-demo/expand-demo.component';
 import { FixedSizeVirtualScrollDemoComponent } from './fixed-size-virtual-scroll-demo/fixed-size-virtual-scroll-demo.component';
+import { PlaceholderComponent } from './placeholder/placeholder.component';
 import { SortDemoComponent } from './sort-demo/sort-demo.component';
 import { StickyColumnsDemoComponent } from './sticky-columns/sticky-columns-demo.component';
 import { StickyHeadersDemoComponent } from './sticky-headers.components';
-import { PlaceholderComponent } from './placeholder/placeholder.component';
-import { DATA_SOURCE } from './data';
 
 import {
   IconModule,
   ScrollingModule,
   SortModule,
   TableModule,
+  ButtonModule,
 } from '@alauda/ui';
 
 <Meta
@@ -27,6 +28,7 @@ import {
         IconModule,
         ScrollingModule,
         TableModule,
+        ButtonModule,
       ],
       decorators: [
         SortDemoComponent,

@@ -7,10 +7,24 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class StickyColumnsDemoComponent {
   columns = ['no'].concat(
-    Array.from({ length: 10 }).map((_, index) => `cell${index + 1}`),
+    Array.from({ length: 13 }).map((_, index) => `cell${index + 1}`),
   );
 
-  dataSource = Array.from({ length: 6 }).map((_, i) =>
-    ['1'].concat(Array.from({ length: 10 }).map((_, j) => `cell${i}${j}`)),
-  );
+  dataSource: string[][] = this._mockData();
+
+  private _mockData() {
+    return Array.from({ length: 6 }).map((_, i) =>
+      ['1'].concat(Array.from({ length: 13 }).map((_, j) => `cell${i}${j}`)),
+    );
+  }
+
+  clear() {
+    this.dataSource = [];
+  }
+
+  reset() {
+    if (!this.dataSource.length) {
+      this.dataSource = this._mockData();
+    }
+  }
 }
