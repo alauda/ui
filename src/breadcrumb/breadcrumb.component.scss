@@ -3,9 +3,8 @@
 
 .aui-breadcrumb {
   display: flex;
-  align-content: center;
-  font-size: use-var(font-size-m);
-  color: use-rgb(n-2);
+  align-items: center;
+  @include text-set(m, secondary);
 
   &__separator {
     margin: 0 use-var(spacing-s);
