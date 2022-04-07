@@ -15,7 +15,7 @@ $block: aui-sort-header;
     outline: 0;
     font: inherit;
     cursor: inherit;
-    color: currentColor;
+    color: currentcolor;
   }
 
   &__indicator {
@@ -24,6 +24,7 @@ $block: aui-sort-header;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     &:before,
     &:after {
       content: '';
@@ -32,10 +33,12 @@ $block: aui-sort-header;
       border-left: $sort-indicator-size solid transparent;
       border-right: $sort-indicator-size solid transparent;
     }
+
     &:before {
       border-bottom: $sort-indicator-size solid $sort-indicator-color;
       margin-bottom: $sort-indicator-size;
     }
+
     &:after {
       border-top: $sort-indicator-size solid $sort-indicator-color;
     }
@@ -48,6 +51,7 @@ $block: aui-sort-header;
           border-bottom-color: $sort-indicator-color-active;
         }
       }
+
       &--desc {
         &:after {
           border-top-color: $sort-indicator-color-active;

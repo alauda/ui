@@ -28,7 +28,10 @@
       (keydown)="onKeyDown($event)"
       (blur)="closeOption()"
     />
-    <span auiInputSuffix class="aui-select__icon-container">
+    <span
+      auiInputSuffix
+      class="aui-select__icon-container"
+    >
       <aui-icon
         class="aui-select__indicator"
         [icon]="loading ? 'spinner' : 'caret_down_s'"
@@ -64,7 +67,10 @@
     [style.minWidth]="containerWidth"
     (mousedown)="$event.preventDefault()"
   >
-    <div #optionListRef class="aui-option-container__content">
+    <div
+      #optionListRef
+      class="aui-option-container__content"
+    >
       <aui-option
         #inputtingOption
         *ngIf="allowCreate && filterString && !(hasMatchedOption$ | async)"

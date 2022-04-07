@@ -12,6 +12,7 @@ export class TooltipCopyIntl {
   copyFailTip = 'Copy failed';
 }
 
+// eslint-disable-next-line sonar/function-name
 export function TOOLTIP_COPY_INTL_PROVIDER_FACTORY(
   parentIntl: TooltipCopyIntl,
 ) {

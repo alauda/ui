@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ButtonModule } from '../button/public-api';
-import { I18nModule } from '../i18n/public-api';
+import { ButtonModule } from '../button';
+import { I18nModule } from '../i18n';
 import { IconModule } from '../icon/icon.module';
-import { InputModule } from '../input/public-api';
-import { TimePickerModule } from '../time-picker/public-api';
-import { TooltipModule } from '../tooltip/public-api';
+import { InputModule } from '../input';
+import { TimePickerModule } from '../time-picker';
+import { TooltipModule } from '../tooltip';
 
 import { DatePickerPanelComponent } from './calendar/date-picker-panel/component';
 import { CalendarFooterComponent } from './calendar/footer/component';

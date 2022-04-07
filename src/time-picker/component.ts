@@ -15,7 +15,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import { updateDateByTimeModel } from '../date-picker/calendar/util';
 import { CommonFormControl } from '../form/common-form';
-import { TooltipDirective } from '../tooltip/public-api';
+import { TooltipDirective } from '../tooltip';
 import { ComponentSize } from '../types';
 
 import {

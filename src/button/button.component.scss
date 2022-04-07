@@ -204,6 +204,7 @@ $button-size: (
 
     &.isPlain {
       color: use-text-color(main);
+
       &[disabled] {
         color: use-rgb(n-6);
       }
@@ -243,6 +244,7 @@ $button-size: (
 
     &.isPlain {
       color: use-text-color(main);
+
       &[disabled] {
         color: use-rgb(n-6);
       }
@@ -298,12 +300,15 @@ $button-size: (
   &--primary {
     @include colorful-button(primary);
   }
+
   &--success {
     @include colorful-button(green);
   }
+
   &--warning {
     @include colorful-button(yellow);
   }
+
   &--danger {
     @include colorful-button(red);
   }

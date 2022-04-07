@@ -38,9 +38,9 @@ export const DISPLAY_DELAY = 50;
 export const HIDDEN_DELAY = 150;
 
 @Directive()
-// tslint:disable-next-line: directive-class-suffix
 export class BaseTooltip<T = any>
-  implements TooltipInterface, AfterViewInit, OnDestroy {
+  implements TooltipInterface, AfterViewInit, OnDestroy
+{
   set content(value: string | TemplateRef<any>) {
     this.inputContent$$.next(value);
   }

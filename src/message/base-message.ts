@@ -23,7 +23,7 @@ import {
 export abstract class BaseMessage<
   Wrapper extends MessageWrapperComponent,
   Component extends MessageComponent,
-  Config extends MessageConfig
+  Config extends MessageConfig,
 > {
   wrapperInstance: { elementRef: ElementRef<HTMLElement> };
   componentRefs: Array<ComponentRef<Component>> = [];

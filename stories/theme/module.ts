@@ -1,3 +1,9 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
+import { CustomizeComponent } from './customize/component';
+import { PaletteComponent } from './palette/component';
+
 import {
   ButtonModule,
   ColorPickerModule,
@@ -6,11 +12,6 @@ import {
   InputModule,
   TooltipModule,
 } from '@alauda/ui';
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-
-import { CustomizeComponent } from './customize/component';
-import { PaletteComponent } from './palette/component';
 
 @NgModule({
   imports: [

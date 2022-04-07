@@ -10,7 +10,10 @@
     [class]="[bem.element('row'), 'week-header'].join(' ')"
     *ngIf="navRange === DateNavRange.Month"
   >
-    <span *ngFor="let item of weekDefs" [class]="bem.element('cell')">
+    <span
+      *ngFor="let item of weekDefs"
+      [class]="bem.element('cell')"
+    >
       {{ item | auiI18n }}
     </span>
   </div>

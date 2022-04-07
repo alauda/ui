@@ -9,7 +9,8 @@ import { distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable()
 export class FixedSizeTableVirtualScrollStrategy
-  implements VirtualScrollStrategy {
+  implements VirtualScrollStrategy
+{
   private _rowHeight = 42;
   private _headerHeight = 42;
   private _bufferSize = 10;

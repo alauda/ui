@@ -1,5 +1,6 @@
-import { MessageService } from '@alauda/ui';
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+
+import { MessageService } from '@alauda/ui';
 
 @Component({
   template: `
@@ -9,13 +10,22 @@ import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
     >
       消息提醒
     </button>
-    <button aui-button="success" (click)="message.success('这是一条成功消息')">
+    <button
+      aui-button="success"
+      (click)="message.success('这是一条成功消息')"
+    >
       成功消息
     </button>
-    <button aui-button="warning" (click)="message.warning('这是一条警告消息')">
+    <button
+      aui-button="warning"
+      (click)="message.warning('这是一条警告消息')"
+    >
       警告消息
     </button>
-    <button aui-button="danger" (click)="message.error('这是一条错误消息')">
+    <button
+      aui-button="danger"
+      (click)="message.error('这是一条错误消息')"
+    >
       错误消息
     </button>
   `,

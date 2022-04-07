@@ -24,10 +24,12 @@ describe('CheckboxGroupComponent', () => {
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
-    el1 = fixture.debugElement.query(By.css('.group1 aui-checkbox-group'))
-      .nativeElement;
-    el2 = fixture.debugElement.query(By.css('.group2 aui-checkbox-group'))
-      .nativeElement;
+    el1 = fixture.debugElement.query(
+      By.css('.group1 aui-checkbox-group'),
+    ).nativeElement;
+    el2 = fixture.debugElement.query(
+      By.css('.group2 aui-checkbox-group'),
+    ).nativeElement;
   });
 
   it('should checkbox init checked state by value array', fakeAsync(() => {
@@ -74,12 +76,22 @@ describe('CheckboxGroupComponent', () => {
         <aui-checkbox label="box0">box0</aui-checkbox>
         <aui-checkbox label="box1">box1</aui-checkbox>
         <aui-checkbox label="box2">box2</aui-checkbox>
-        <aui-checkbox label="box3" disabled>box3</aui-checkbox>
+        <aui-checkbox
+          label="box3"
+          disabled
+          >box3</aui-checkbox
+        >
       </aui-checkbox-group>
     </div>
     <div class="group2">
-      <aui-checkbox-group [(ngModel)]="value2" [trackFn]="trackFn">
-        <aui-checkbox *ngFor="let v of baseData" [label]="v">
+      <aui-checkbox-group
+        [(ngModel)]="value2"
+        [trackFn]="trackFn"
+      >
+        <aui-checkbox
+          *ngFor="let v of baseData"
+          [label]="v"
+        >
           {{ v.name }}
         </aui-checkbox>
       </aui-checkbox-group>

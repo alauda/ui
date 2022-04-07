@@ -1,8 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/angular';
 
-import { StatusBarModule } from '../../src/status-bar/public-api';
-import { Status, StatusType } from '../../src/status-bar/status-bar.types';
+import { StatusBarModule, Status, StatusType } from '@alauda/ui';
 
 storiesOf('Status Bar', module).add('status bar', () => {
   const status1: Status[] = [
@@ -88,7 +87,11 @@ storiesOf('Status Bar', module).add('status bar', () => {
         [status]="status4"
         (statusClick)="onChunkClick($event)"
       ></aui-status-bar>
-      <ng-template #ref let-type="type" let-value="scale">
+      <ng-template
+        #ref
+        let-type="type"
+        let-value="scale"
+      >
         <div>{{ type }}: {{value}}</div>
       </ng-template>
     `,

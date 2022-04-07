@@ -36,18 +36,29 @@ export function getDatePanelIterable(
   let firstData: Dayjs;
   let counts = 0;
   date = date.clone();
-  if (navRange === DateNavRange.Month) {
-    firstData = date.date(-1).day(weekStartDay);
-    if (firstData.isAfter(date)) {
-      firstData = firstData.subtract(1, 'week');
+  switch (navRange) {
+    case DateNavRange.Month: {
+      firstData = date.date(-1).day(weekStartDay);
+      if (firstData.isAfter(date)) {
+        firstData = firstData.subtract(1, 'week');
+      }
+      counts = DAY_PANEL_COLUMN_COUNT * DAY_PANEL_ROW_COUNT;
+
+      break;
     }
-    counts = DAY_PANEL_COLUMN_COUNT * DAY_PANEL_ROW_COUNT;
-  } else if (navRange === DateNavRange.Year) {
-    firstData = date.month(0);
-    counts = MONTH_PANEL_COLUMN_COUNT * MONTH_PANEL_ROW_COUNT;
-  } else if (navRange === DateNavRange.Decade) {
-    firstData = date.subtract(1, YEAR);
-    counts = YEAR_PANEL_COLUMN_COUNT * YEAR_PANEL_ROW_COUNT;
+    case DateNavRange.Year: {
+      firstData = date.month(0);
+      counts = MONTH_PANEL_COLUMN_COUNT * MONTH_PANEL_ROW_COUNT;
+
+      break;
+    }
+    case DateNavRange.Decade: {
+      firstData = date.subtract(1, YEAR);
+      counts = YEAR_PANEL_COLUMN_COUNT * YEAR_PANEL_ROW_COUNT;
+
+      break;
+    }
+    // No default
   }
   let i = 0;
   return {
@@ -181,10 +192,10 @@ export function updateDateByTimeModel(date: Dayjs, time: TimePickerModel) {
     : date;
 }
 
-export const composeDisabledDateFn = (...fns: DisabledDateFn[]) => (
-  date: Dayjs,
-  navRange: DateNavRange,
-) => !fns.filter(i => !!i).every(fn => !fn(date, navRange));
+export const composeDisabledDateFn =
+  (...fns: DisabledDateFn[]) =>
+  (date: Dayjs, navRange: DateNavRange) =>
+    !fns.filter(i => !!i).every(fn => !fn(date, navRange));
 
 export function minDate(a: Dayjs, b: Dayjs, unit: UnitType = 'date') {
   return !a ? b : !b ? a : a.isBefore(b, unit) ? a : b;

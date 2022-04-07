@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   templateUrl: './template.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoadingSwitchComponent {
   data = false;

@@ -5,7 +5,8 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { DrawerComponent } from './component/drawer.component';
-import { DrawerSize } from './public-api';
+
+import { DrawerSize } from '.';
 
 export interface DrawerOptions<T = any, D = any> {
   title?: string | TemplateRef<unknown>;

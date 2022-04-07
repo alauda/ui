@@ -20,10 +20,16 @@ import { BackTopModule } from '@alauda/ui';
 ## 默认指定外部的 cdkScrollable 组件
 
 <Canvas>
-  <Story name="Inscroll" height="300px">
+  <Story
+    name="Inscroll"
+    height="300px"
+  >
     {{
       template: /* HTML */ `
-        <div style="height:300px;overflow:auto;" cdkScrollable>
+        <div
+          style="height:300px;overflow:auto;"
+          cdkScrollable
+        >
           <div style="height:1000px">
             选择外部的 cdkScrollable 组件作为指定滚动容器，尝试滚动此元素
           </div>
@@ -37,10 +43,16 @@ import { BackTopModule } from '@alauda/ui';
 ## 通过模板变量选择滚动容器
 
 <Canvas>
-  <Story name="Use Element Ref" height="300px">
+  <Story
+    name="Use Element Ref"
+    height="300px"
+  >
     {{
       template: /* HTML */ `
-        <div style="height:300px;overflow:auto;" #containerRef>
+        <div
+          style="height:300px;overflow:auto;"
+          #containerRef
+        >
           <div style="height:1000px">
             通过指定的 ElementRef 选择滚动容器，尝试滚动此元素
           </div>
@@ -54,7 +66,10 @@ import { BackTopModule } from '@alauda/ui';
 ## 无外部滚动容器，默认根据 window
 
 <Canvas>
-  <Story name="Default Window" height="300px">
+  <Story
+    name="Default Window"
+    height="300px"
+  >
     {{
       template: /* HTML */ `
         <div style="height:1000px">
@@ -69,10 +84,16 @@ import { BackTopModule } from '@alauda/ui';
 ## 根据 selector 指定滚动容器
 
 <Canvas>
-  <Story name="Use Selector" height="300px">
+  <Story
+    name="Use Selector"
+    height="300px"
+  >
     {{
       template: /* HTML */ `
-        <div style="height:300px;overflow:auto;" class="target">
+        <div
+          style="height:300px;overflow:auto;"
+          class="target"
+        >
           <div style="height:1000px">
             通过选择器指定滚动容器，尝试滚动此元素
           </div>

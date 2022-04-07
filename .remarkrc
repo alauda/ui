@@ -1,8 +1,13 @@
 {
   "plugins": [
-    "@1stg/remark-config",
+    "@1stg/config",
+    "gfm",
     [
       "lint-no-file-name-irregular-characters",
+      false
+    ],
+    [
+      "lint-no-duplicate-headings",
       false
     ]
   ]

@@ -21,9 +21,11 @@
         (blur)="leftFocus = false; blur.next()"
         [placeholder]="startPlaceholder || ('start_date' | auiI18n)"
       />
-      <span class="placeholder" (click)="focusInput()">{{
-        'to' | auiI18n
-      }}</span>
+      <span
+        class="placeholder"
+        (click)="focusInput()"
+        >{{ 'to' | auiI18n }}</span
+      >
       <input
         style="flex: 1"
         aui-input
@@ -50,7 +52,10 @@
       />
     </ng-container>
   </span>
-  <span [class]="bem.element('addon')" (click)="focusInput()">
+  <span
+    [class]="bem.element('addon')"
+    (click)="focusInput()"
+  >
     <aui-icon
       *ngIf="showClear; else calendar"
       class="clear"

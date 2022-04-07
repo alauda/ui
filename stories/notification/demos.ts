@@ -1,6 +1,13 @@
-import { NotificationService } from '@alauda/ui';
-import { Component, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { noop } from 'rxjs';
+
+import { NotificationService } from '@alauda/ui';
 
 @Component({
   template: `
@@ -53,10 +60,20 @@ import { noop } from 'rxjs';
       </button>
     </span>
     <span>
-      <button aui-button (click)="notify()">使用内容模板的通知</button>
+      <button
+        aui-button
+        (click)="notify()"
+      >
+        使用内容模板的通知
+      </button>
     </span>
     <span>
-      <button aui-button (click)="notify2()">使用页脚模板的通知</button>
+      <button
+        aui-button
+        (click)="notify2()"
+      >
+        使用页脚模板的通知
+      </button>
     </span>
     <span>
       <button
@@ -81,8 +98,18 @@ import { noop } from 'rxjs';
     <ng-template #footer>
       <div style="text-align: right">
         自定义页脚
-        <button aui-button="primary" size="small">primary</button>
-        <button aui-button size="small">default</button>
+        <button
+          aui-button="primary"
+          size="small"
+        >
+          primary
+        </button>
+        <button
+          aui-button
+          size="small"
+        >
+          default
+        </button>
       </div>
     </ng-template>
   `,
@@ -97,6 +124,7 @@ import { noop } from 'rxjs';
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicDemoComponent implements OnDestroy {
   @ViewChild('template', { static: true })

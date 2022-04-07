@@ -11,9 +11,15 @@
   (click)="$event.stopPropagation()"
 >
   <span class="aui-submenu__title"><ng-content></ng-content></span>
-  <aui-icon class="aui-submenu__arrow" icon="angle_right"></aui-icon>
+  <aui-icon
+    class="aui-submenu__arrow"
+    icon="angle_right"
+  ></aui-icon>
 </button>
 
-<aui-menu #menu [size]="size">
+<aui-menu
+  #menu
+  [size]="size"
+>
   <ng-content select="aui-menu-item"></ng-content>
 </aui-menu>

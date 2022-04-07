@@ -10,12 +10,7 @@ import { By } from '@angular/platform-browser';
 
 import { LifeCycle, LifeCycleDirective } from '../utils/life-cycle';
 
-import {
-  TabChangeEvent,
-  TabComponent,
-  TabGroupComponent,
-  TabsModule,
-} from './public-api';
+import { TabChangeEvent, TabComponent, TabGroupComponent, TabsModule } from '.';
 
 describe('TabGroupComponent', () => {
   beforeEach(() => {
@@ -69,25 +64,22 @@ describe('TabGroupComponent', () => {
     }));
 
     // Note: needs to be `async` in order to fail when we expect it to.
-    it(
-      'should set to correct tab on fast change',
-      waitForAsync(() => {
-        const component = fixture.componentInstance;
-        component.selectedIndex = 0;
+    it('should set to correct tab on fast change', waitForAsync(() => {
+      const component = fixture.componentInstance;
+      component.selectedIndex = 0;
+      fixture.detectChanges();
+      setTimeout(() => {
+        component.selectedIndex = 1;
         fixture.detectChanges();
         setTimeout(() => {
-          component.selectedIndex = 1;
+          component.selectedIndex = 0;
           fixture.detectChanges();
-          setTimeout(() => {
-            component.selectedIndex = 0;
-            fixture.detectChanges();
-            fixture.whenStable().then(() => {
-              expect(component.selectedIndex).toBe(0);
-            });
-          }, 1);
+          fixture.whenStable().then(() => {
+            expect(component.selectedIndex).toBe(0);
+          });
         }, 1);
-      }),
-    );
+      }, 1);
+    }));
 
     it('should change tabs based on selectedIndex', fakeAsync(() => {
       const component = fixture.componentInstance;
@@ -102,7 +94,7 @@ describe('TabGroupComponent', () => {
       expect(component.handleSelection).toHaveBeenCalledTimes(1);
       expect(component.selectEvent.index).toBe(2);
       expect(spy).toHaveBeenCalled();
-      
+
       spy.mockRestore();
     }));
 
@@ -307,7 +299,10 @@ function checkSelectedIndex(
       </aui-tab>
       <aui-tab>
         <ng-template auiTabLabel>Tab Two</ng-template>
-        <span *auiTabContent (auiLifeCycle)="handleTabRender(1, $event)">
+        <span
+          *auiTabContent
+          (auiLifeCycle)="handleTabRender(1, $event)"
+        >
           Tab
         </span>
         <span>two</span>
@@ -315,7 +310,10 @@ function checkSelectedIndex(
       </aui-tab>
       <aui-tab>
         <ng-template auiTabLabel>Tab Three</ng-template>
-        <span *auiTabContent (auiLifeCycle)="handleTabRender(2, $event)">
+        <span
+          *auiTabContent
+          (auiLifeCycle)="handleTabRender(2, $event)"
+        >
           Tab
         </span>
         <span>Three</span>

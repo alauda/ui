@@ -23,8 +23,8 @@ import {
   takeUntil,
 } from 'rxjs/operators';
 
-import { CommonFormControl } from '../form/public-api';
-import { TooltipDirective } from '../tooltip/public-api';
+import { CommonFormControl } from '../form';
+import { TooltipDirective } from '../tooltip';
 import { ComponentSize } from '../types';
 import {
   coerceAttrBoolean,
@@ -38,7 +38,6 @@ import { OptionComponent } from './option/option.component';
 import { OptionFilterFn, SelectFilterOption, TrackFn } from './select.types';
 
 @Directive()
-// tslint:disable-next-line: directive-class-suffix
 export abstract class BaseSelect<T, V = T>
   extends CommonFormControl<V>
   implements AfterContentInit, AfterViewInit, OnDestroy
@@ -283,7 +282,7 @@ export abstract class BaseSelect<T, V = T>
           ? combineLatest(options.map(option => option.visible$))
           : of([] as boolean[]),
       ),
-      map(visible => visible.some(value => value)),
+      map(visible => visible.some(Boolean)),
       publishReplay(1),
       refCount(),
     );

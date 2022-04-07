@@ -16,7 +16,7 @@ import { ButtonType } from './button.types';
 const prefix = 'aui-button--';
 
 @Component({
-  // tslint:disable-next-line: component-selector
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'button[aui-button]',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],

@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ButtonModule } from '../button/public-api';
-import { IconModule } from '../icon/public-api';
-import { InputModule } from '../input/public-api';
-import { SelectModule } from '../select/public-api';
+import { ButtonModule } from '../button';
+import { IconModule } from '../icon';
+import { InputModule } from '../input';
+import { SelectModule } from '../select';
 
 import { PAGINATOR_INTL_PROVIDER } from './paginator-intl';
 import { PaginatorComponent } from './paginator.component';

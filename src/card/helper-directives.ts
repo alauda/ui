@@ -1,4 +1,3 @@
-// tslint:disable: no-host-metadata-property
 import { Directive } from '@angular/core';
 
 @Directive({

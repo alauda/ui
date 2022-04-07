@@ -31,7 +31,11 @@
               ></ng-container>
             </ng-template>
           </div>
-          <div class="aui-drawer__close" *ngIf="showClose" (click)="dispose()">
+          <div
+            class="aui-drawer__close"
+            *ngIf="showClose"
+            (click)="dispose()"
+          >
             <aui-icon icon="close"></aui-icon>
           </div>
         </div>
@@ -49,7 +53,10 @@
           </ng-container>
         </div>
 
-        <div *ngIf="footer || footerTemplate" class="aui-drawer__footer">
+        <div
+          *ngIf="footer || footerTemplate"
+          class="aui-drawer__footer"
+        >
           <ng-container
             *ngIf="!isTemplateRef(footer || footerTemplate); else elseTemplate"
           >

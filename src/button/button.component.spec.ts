@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { ComponentSize } from '../types';
 
-import { ButtonModule, ButtonType } from './public-api';
+import { ButtonModule, ButtonType } from '.';
 
 describe('ButtonComponent', () => {
   let fixture: ComponentFixture<TestComponent>;

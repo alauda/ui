@@ -20,8 +20,8 @@ import { Subject } from 'rxjs';
 
 import { coerceAttrBoolean } from '../utils';
 
-import { TabContextService } from './tab-context.service';
 import { TabContentDirective, TabLabelDirective } from './tab-body.component';
+import { TabContextService } from './tab-context.service';
 
 @Component({
   selector: 'aui-tab',

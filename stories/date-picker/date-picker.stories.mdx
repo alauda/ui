@@ -31,7 +31,10 @@ import {
 ## 基本
 
 <Canvas>
-  <Story name="Date Picker" height="500px">
+  <Story
+    name="Date Picker"
+    height="500px"
+  >
     {{
       template: /* HTML */ `
         <aui-date-picker
@@ -55,7 +58,10 @@ import {
 </Canvas>
 
 <Canvas>
-  <Story name="Extra footer" height="500px">
+  <Story
+    name="Extra footer"
+    height="500px"
+  >
     {{
       template: /* HTML */ `
         <aui-date-picker
@@ -64,7 +70,10 @@ import {
           [(ngModel)]="time"
           [extraFooter]="extraFooter"
         ></aui-date-picker>
-        <ng-template #extraFooter let-context="context">
+        <ng-template
+          #extraFooter
+          let-context="context"
+        >
           <div
             style="height:40px;display:flex;justify-content:center;align-items: center"
           >
@@ -88,7 +97,10 @@ import {
 </Canvas>
 
 <Canvas>
-  <Story name="Disabled" height="200px">
+  <Story
+    name="Disabled"
+    height="200px"
+  >
     {{
       template: /* HTML */ `<aui-date-picker
         placeholder="请选择"
@@ -105,7 +117,10 @@ import {
 </Canvas>
 
 <Canvas>
-  <Story name="Disable until today" height="500px">
+  <Story
+    name="Disable until today"
+    height="500px"
+  >
     {{
       template: /* HTML */ `<aui-date-picker
           placeholder="请选择"
@@ -135,7 +150,10 @@ import {
 </Canvas>
 
 <Canvas>
-  <Story name="With time" height="400px">
+  <Story
+    name="With time"
+    height="400px"
+  >
     {{
       template: /* HTML */ `<aui-date-picker
           placeholder="请选择"
@@ -154,7 +172,10 @@ import {
 </Canvas>
 
 <Canvas>
-  <Story name="Month Picker" height="400px">
+  <Story
+    name="Month Picker"
+    height="400px"
+  >
     {{
       template: /* HTML */ `<aui-date-picker
           placeholder="请选择"
@@ -173,7 +194,10 @@ import {
 </Canvas>
 
 <Canvas>
-  <Story name="Year Picker" height="400px">
+  <Story
+    name="Year Picker"
+    height="400px"
+  >
     {{
       template: /* HTML */ `
         <aui-date-picker
@@ -194,21 +218,21 @@ import {
 
 ## DatePicker Inputs
 
-| 名称           | 类型                                                                                                                                 | 默认值               | 描述                                 |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------ |
-| clearable      | boolean                                                                                                                              | true                 | 是否显示清除按钮                     |
-| clearText      | string                                                                                                                               | 'clear'              | 清除按钮文案                         |
-| format         | string                                                                                                                               | 'YYYY-MM-DD'         | 日期显示格式                         |
-| showTime       | boolean                                                                                                                              | false                | 是否显示选择时间                     |
-| type           | DatePickerType                                                                                                                       | DatePickerType.Day   | 指定日期组件类型，为选择日，月，或年 |
-| size           | ComponentSize                                                                                                                        | ComponentSize.Medium | 触发器大小                           |
-| weekStartDay   | number                                                                                                                               | 0                    | 面板的第一个日期为周几               |
-| disabledDate   | (date: Dayjs, type: DateNavRange) => boolean                                                                                         | () => false          | 禁用某些日期                         |
-| disabledTime   | (date: Dayjs) => {hours: () => number[];minutes: (hour?: number) => number[];seconds: (hour?: number, minute?: number) => number[];} | () => null           | 禁用某些时间                         |
-| extraFooter    | TemplateRef                                                                                                                          | null                 | 额外的 footer                        |
-| footerTemplate | TemplateRef                                                                                                                          | null                 | 自定义 footer 内容区                 |
-| minDate        | Dayjs                                                                                                                                | null                 | 最小日期                             |
-| maxDate        | Dayjs                                                                                                                                | null                 | 最大日期                             |
+| 名称           | 类型                                                                                                                                   | 默认值               | 描述                                 |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------ |
+| clearable      | boolean                                                                                                                                | true                 | 是否显示清除按钮                     |
+| clearText      | string                                                                                                                                 | 'clear'              | 清除按钮文案                         |
+| format         | string                                                                                                                                 | 'YYYY-MM-DD'         | 日期显示格式                         |
+| showTime       | boolean                                                                                                                                | false                | 是否显示选择时间                     |
+| type           | DatePickerType                                                                                                                         | DatePickerType.Day   | 指定日期组件类型，为选择日，月，或年 |
+| size           | ComponentSize                                                                                                                          | ComponentSize.Medium | 触发器大小                           |
+| weekStartDay   | number                                                                                                                                 | 0                    | 面板的第一个日期为周几               |
+| disabledDate   | `(date: Dayjs, type: DateNavRange) => boolean`                                                                                         | () => false          | 禁用某些日期                         |
+| disabledTime   | `(date: Dayjs) => {hours: () => number[];minutes: (hour?: number) => number[];seconds: (hour?: number, minute?: number) => number[];}` | () => null           | 禁用某些时间                         |
+| extraFooter    | TemplateRef                                                                                                                            | null                 | 额外的 footer                        |
+| footerTemplate | TemplateRef                                                                                                                            | null                 | 自定义 footer 内容区                 |
+| minDate        | Dayjs                                                                                                                                  | null                 | 最小日期                             |
+| maxDate        | Dayjs                                                                                                                                  | null                 | 最大日期                             |
 
 ### DatePicker 表单输入数据格式
 

@@ -137,11 +137,10 @@ export class StepsComponent implements OnInit, OnDestroy {
       if (this._currentIndex !== newIndex) {
         this.currentIndexChange.emit(newIndex);
       }
-      if (this._currentIndex === this.selectedIndex) {
-        this._currentIndex = this.selectedIndex = newIndex;
-      } else {
-        this._currentIndex = newIndex;
-      }
+      this._currentIndex =
+        this._currentIndex === this.selectedIndex
+          ? (this.selectedIndex = newIndex)
+          : newIndex;
     }
   }
 
@@ -189,6 +188,7 @@ export class StepsComponent implements OnInit, OnDestroy {
     ) {
       return false;
     }
+    // eslint-disable-next-line sonarjs/prefer-single-boolean-return
     if (i < this._currentIndex && !this.selectable) {
       return false;
     }

@@ -1,6 +1,5 @@
 const { execSync } = require('child_process');
 
-// eslint-disable-next-line node/no-extraneous-require
 const semver = require('semver');
 
 let version = process.env.PUBLISH_VERSION || 'patch';

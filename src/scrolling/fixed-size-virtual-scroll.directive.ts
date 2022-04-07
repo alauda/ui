@@ -6,7 +6,7 @@ import {
 import { Directive, forwardRef } from '@angular/core';
 
 @Directive({
-  // tslint:disable-next-line: directive-selector
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'aui-virtual-scroll-viewport[itemSize]',
   providers: [
     {

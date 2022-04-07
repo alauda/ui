@@ -16,12 +16,27 @@ Simplest usage:
 ```html
 <!-- links -->
 <aside>
-  <a auiTocLink="content1" [for]="toc">content1</a>
-  <a auiTocLink="content2" [for]="toc">content2</a>
-  <a auiTocLink="content3" [for]="toc">content3</a>
+  <a
+    auiTocLink="content1"
+    [for]="toc"
+    >content1</a
+  >
+  <a
+    auiTocLink="content2"
+    [for]="toc"
+    >content2</a
+  >
+  <a
+    auiTocLink="content3"
+    [for]="toc"
+    >content3</a
+  >
 </aside>
 <!-- scroll container -->
-<article auiTocContainer #toc="auiTocContainer">
+<article
+  auiTocContainer
+  #toc="auiTocContainer"
+>
   <section auiTocContent="content1">...</section>
   <section auiTocContent="content2">...</section>
   <section auiTocContent="content3">...</section>

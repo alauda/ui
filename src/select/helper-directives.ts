@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
-import { MenuContentDirective } from '../dropdown/public-api';
+import { MenuContentDirective } from '../dropdown';
 
 @Directive({
   selector: '[auiOptionGroupTitle]',

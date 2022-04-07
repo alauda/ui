@@ -16,13 +16,16 @@
   &::-webkit-color-swatch-wrapper {
     padding: 0;
   }
+
   &::-moz-color-swatch-wrapper {
     padding: 0;
   }
+
   &::-webkit-color-swatch {
     border: none;
     border-radius: use-var(border-radius-m);
   }
+
   &::-moz-color-swatch {
     border: none;
     border-radius: use-var(border-radius-m);

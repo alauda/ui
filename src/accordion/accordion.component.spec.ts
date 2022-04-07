@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { AccordionComponent, AccordionModule } from '../public-api';
+import { AccordionComponent, AccordionModule } from '.';
 
 describe('AccordionComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -44,7 +44,11 @@ describe('AccordionComponent', () => {
 
 @Component({
   template: `
-    <aui-accordion class="aui-accordion-test" #accordionRef [multi]="multi">
+    <aui-accordion
+      class="aui-accordion-test"
+      #accordionRef
+      [multi]="multi"
+    >
       <aui-accordion-item>
         <div auiAccordionItemHeader>header1</div>
         <div>content</div>

@@ -20,10 +20,16 @@ import { SelectModule, IconModule } from '@alauda/ui';
 ## 单选
 
 <Canvas>
-  <Story name="Single" height="240px">
+  <Story
+    name="Single"
+    height="240px"
+  >
     {{
       template: /* HTML */ `
-        <aui-select [(ngModel)]="value" placeholder="select a value">
+        <aui-select
+          [(ngModel)]="value"
+          placeholder="select a value"
+        >
           <ng-container *auiOptionContent>
             <aui-option
               *ngFor="let option of arr"
@@ -52,12 +58,24 @@ import { SelectModule, IconModule } from '@alauda/ui';
 ## 单选分组
 
 <Canvas>
-  <Story name="Group" height="360px">
+  <Story
+    name="Group"
+    height="360px"
+  >
     {{
       template: /* HTML */ `
-        <aui-select [(ngModel)]="value" [labelFn]="labelFn" [trackFn]="trackFn">
+        <aui-select
+          [(ngModel)]="value"
+          [labelFn]="labelFn"
+          [trackFn]="trackFn"
+        >
           <aui-option-group *ngFor="let i of arr">
-            <div auiOptionGroupTitle *ngIf="i !== 1">group {{ i }}</div>
+            <div
+              auiOptionGroupTitle
+              *ngIf="i !== 1"
+            >
+              group {{ i }}
+            </div>
             <aui-option
               *ngFor="let j of arr"
               [label]="'option' + (arr.length * i + j)"
@@ -88,11 +106,20 @@ import { SelectModule, IconModule } from '@alauda/ui';
 ## 加载中
 
 <Canvas>
-  <Story name="Loading" height="100px">
+  <Story
+    name="Loading"
+    height="100px"
+  >
     {{
       template: /* HTML */ `
-        <aui-select [(ngModel)]="value" [loading]="true">
-          <aui-option *ngFor="let option of arr" [value]="option">
+        <aui-select
+          [(ngModel)]="value"
+          [loading]="true"
+        >
+          <aui-option
+            *ngFor="let option of arr"
+            [value]="option"
+          >
             {{ option }}
           </aui-option>
           <aui-option-placeholder>Empty</aui-option-placeholder>
@@ -109,11 +136,20 @@ import { SelectModule, IconModule } from '@alauda/ui';
 ## 禁用
 
 <Canvas>
-  <Story name="Disabled" height="100px">
+  <Story
+    name="Disabled"
+    height="100px"
+  >
     {{
       template: /* HTML */ `
-        <aui-select [(ngModel)]="value" [disabled]="true">
-          <aui-option *ngFor="let option of arr" [value]="option">
+        <aui-select
+          [(ngModel)]="value"
+          [disabled]="true"
+        >
+          <aui-option
+            *ngFor="let option of arr"
+            [value]="option"
+          >
             {{ option }}
           </aui-option>
           <aui-option-placeholder>Empty</aui-option-placeholder>
@@ -130,11 +166,20 @@ import { SelectModule, IconModule } from '@alauda/ui';
 ## 可清除
 
 <Canvas>
-  <Story name="Clearable" height="100px">
+  <Story
+    name="Clearable"
+    height="100px"
+  >
     {{
       template: /* HTML */ `
-        <aui-select [(ngModel)]="value" [clearable]="true">
-          <aui-option *ngFor="let option of arr" [value]="option">
+        <aui-select
+          [(ngModel)]="value"
+          [clearable]="true"
+        >
+          <aui-option
+            *ngFor="let option of arr"
+            [value]="option"
+          >
             {{ option }}
           </aui-option>
           <aui-option-placeholder>Empty</aui-option-placeholder>
@@ -151,7 +196,10 @@ import { SelectModule, IconModule } from '@alauda/ui';
 ## 可筛选
 
 <Canvas>
-  <Story name="Filterable" height="300px">
+  <Story
+    name="Filterable"
+    height="300px"
+  >
     {{
       template: /* HTML */ `
         <aui-select
@@ -186,7 +234,10 @@ import { SelectModule, IconModule } from '@alauda/ui';
 ## 多选
 
 <Canvas>
-  <Story name="Multiple" height="240px">
+  <Story
+    name="Multiple"
+    height="240px"
+  >
     {{
       template: /* HTML */ `
         <aui-multi-select

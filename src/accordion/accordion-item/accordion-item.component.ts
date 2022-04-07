@@ -48,7 +48,8 @@ export class AccordionItemContentDirective {}
 })
 export class AccordionItemComponent
   extends CdkAccordionItem
-  implements AfterContentInit {
+  implements AfterContentInit
+{
   @Input()
   background = true;
 

@@ -21,7 +21,6 @@ import { DateNavRange, DisabledTimeFn } from '../date-picker.type';
   selector: 'aui-date-picker',
   templateUrl: './date-picker.template.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // tslint:disable-next-line: validate-decorators
   encapsulation: ViewEncapsulation.Emulated,
   providers: [
     {
@@ -34,7 +33,8 @@ import { DateNavRange, DisabledTimeFn } from '../date-picker.type';
 })
 export class DatePickerComponent
   extends CommonFormControl<ConfigType, Dayjs>
-  implements OnInit {
+  implements OnInit
+{
   @Input()
   clearable = true;
 

@@ -7,7 +7,7 @@ const bem = buildBem('aui-table');
 
 /** Cell template container that adds the right classes and role. */
 @Directive({
-  // tslint:disable-next-line: directive-selector
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'aui-table-cell',
   host: {
     class: 'aui-table__cell',

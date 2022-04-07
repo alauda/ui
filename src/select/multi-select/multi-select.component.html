@@ -60,7 +60,10 @@
     (keydown)="onKeyDown($event)"
     (input)="onInput($event)"
   />
-  <span #inputValueMirror [class]="bem.element('mirror')">
+  <span
+    #inputValueMirror
+    [class]="bem.element('mirror')"
+  >
     {{ inputValue }}
   </span>
 </div>
@@ -71,7 +74,10 @@
     [style.minWidth]="containerWidth"
     (mousedown)="$event.preventDefault()"
   >
-    <div #optionListRef class="aui-option-container__content">
+    <div
+      #optionListRef
+      class="aui-option-container__content"
+    >
       <ng-container
         *ngIf="
           allowSelectAll &&

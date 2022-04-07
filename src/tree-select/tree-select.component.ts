@@ -30,10 +30,10 @@ import {
   tap,
 } from 'rxjs';
 
-import { CommonFormControl } from '../form/public-api';
-import { InputComponent } from '../input/public-api';
+import { CommonFormControl } from '../form';
+import { InputComponent } from '../input';
 import { TrackFn } from '../select/select.types';
-import { TooltipDirective } from '../tooltip/public-api';
+import { TooltipDirective } from '../tooltip';
 import {
   Bem,
   buildBem,
@@ -241,11 +241,9 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
     const pickedNode = this.flattedNodes.find(
       node => this.trackFn(node.value) === this.trackFn(value),
     );
-    if (pickedNode) {
-      this.displayText = this.getLabelFromNode(pickedNode).toString();
-    } else {
-      this.displayText = coerceString(this.trackFn(value));
-    }
+    this.displayText = pickedNode
+      ? this.getLabelFromNode(pickedNode).toString()
+      : coerceString(this.trackFn(value));
   }
 
   clearValue(event: Event) {
@@ -389,14 +387,14 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
           ? combineLatest(nodes.map(node => node.visible$))
           : of([false]),
       ),
-      map(visible => visible.some(value => value)),
+      map(visible => visible.some(Boolean)),
       tap(hasVisibleChildren => (this.isLeaf = !hasVisibleChildren)),
     );
     this.visible$ = combineLatest([
       this.selfVisible$,
       hasVisibleChildNodes$,
     ]).pipe(
-      map(visible => visible.some(value => value)),
+      map(visible => visible.some(Boolean)),
       publishReplay(1),
       refCount(),
     );

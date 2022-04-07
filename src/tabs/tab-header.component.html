@@ -5,7 +5,10 @@
     </div>
   </ng-container>
   <div [ngClass]="bem.element('header-wrapper')">
-    <div [ngClass]="bem.element('pagination-wrapper')" #paginationWrapper>
+    <div
+      [ngClass]="bem.element('pagination-wrapper')"
+      #paginationWrapper
+    >
       <div
         *ngIf="_showPaginationControls"
         (click)="_scrollHeader('before')"

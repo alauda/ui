@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 
 import { ComponentSize } from '../types';
 
-import { SelectComponent, SelectModule } from './public-api';
+import { SelectComponent, SelectModule } from '.';
 
 describe('SelectComponent', () => {
   let fixture: ComponentFixture<TestComponent>;

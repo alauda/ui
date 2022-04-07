@@ -1,4 +1,3 @@
-// tslint:disable: no-output-rename
 import { Overlay } from '@angular/cdk/overlay';
 import {
   AfterViewInit,
@@ -20,11 +19,7 @@ import { NgControl } from '@angular/forms';
 import { BehaviorSubject, Observable, Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import {
-  BaseTooltip,
-  TooltipTrigger,
-  TooltipType,
-} from '../tooltip/public-api';
+import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
 import { scrollIntoView } from '../utils';
 
 import { AutocompleteComponent } from './autocomplete.component';

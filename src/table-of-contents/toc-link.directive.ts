@@ -39,11 +39,9 @@ export class TocLinkDirective implements OnInit, OnDestroy {
     }
     this._subs.push(
       this.for.activedChange.subscribe((actived: string) => {
-        if (Array.isArray(this.auiTocLink)) {
-          this.active = this.auiTocLink.includes(actived);
-        } else {
-          this.active = actived === this.auiTocLink;
-        }
+        this.active = Array.isArray(this.auiTocLink)
+          ? this.auiTocLink.includes(actived)
+          : actived === this.auiTocLink;
         this.cdr.detectChanges();
       }),
     );

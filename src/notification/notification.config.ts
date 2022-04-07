@@ -1,7 +1,7 @@
 import { ComponentType } from '@angular/cdk/portal';
 import { InjectionToken, TemplateRef } from '@angular/core';
 
-import { MessageConfig, MessageGlobalConfig } from '../message/public-api';
+import { MessageConfig, MessageGlobalConfig } from '../message';
 
 export interface NotificationConfig extends MessageConfig {
   title?: string;
@@ -11,6 +11,7 @@ export interface NotificationConfig extends MessageConfig {
   customClass?: string;
 }
 
+// eslint-disable-next-line no-restricted-syntax
 export type NotificationGlobalConfig = MessageGlobalConfig;
 
 export const NOTIFICATION_CONFIG = new InjectionToken<NotificationGlobalConfig>(

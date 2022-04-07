@@ -2,7 +2,7 @@ import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { IconModule } from './public-api';
+import { IconModule } from '.';
 
 describe('IconComponent', () => {
   let fixture: ComponentFixture<TestComponent>;

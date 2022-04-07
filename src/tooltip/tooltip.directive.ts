@@ -1,16 +1,4 @@
-// tslint:disable: no-output-rename
-import { Overlay } from '@angular/cdk/overlay';
-import {
-  ChangeDetectorRef,
-  Directive,
-  ElementRef,
-  EventEmitter,
-  Input,
-  NgZone,
-  Output,
-  Renderer2,
-  ViewContainerRef,
-} from '@angular/core';
+import { Directive, EventEmitter, Input, Output } from '@angular/core';
 
 import { BaseTooltip } from './base-tooltip';
 
@@ -42,15 +30,4 @@ export class TooltipDirective extends BaseTooltip {
 
   @Output('auiTooltipHide')
   override hide = new EventEmitter<void>();
-
-  constructor(
-    overlay: Overlay,
-    viewContainerRef: ViewContainerRef,
-    elRef: ElementRef,
-    renderer: Renderer2,
-    cdr: ChangeDetectorRef,
-    ngZone: NgZone,
-  ) {
-    super(overlay, viewContainerRef, elRef, renderer, cdr, ngZone);
-  }
 }

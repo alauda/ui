@@ -17,7 +17,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
-import { CommonFormControl } from '../form/public-api';
+import { CommonFormControl } from '../form';
 
 import { CheckboxGroupComponent } from './checkbox-group/checkbox-group.component';
 

@@ -2,7 +2,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { TooltipModule } from '../tooltip/public-api';
+import { TooltipModule } from '../tooltip';
 
 import { AutocompletePlaceholderComponent } from './autocomplete-placeholder.component';
 import { AutocompleteComponent } from './autocomplete.component';

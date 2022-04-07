@@ -9,7 +9,10 @@
     [background]="iconMap(type).endsWith('_triangle_s') ? 'triangle' : 'circle'"
   ></aui-icon>
   <div class="aui-inline-alert__body">
-    <div class="aui-inline-alert__title" *ngIf="title || titleRef">
+    <div
+      class="aui-inline-alert__title"
+      *ngIf="title || titleRef"
+    >
       <ng-container *ngIf="title">{{ title }}</ng-container>
       <ng-content select="[auiInlineAlertTitle]"></ng-content>
     </div>

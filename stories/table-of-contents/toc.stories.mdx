@@ -17,7 +17,10 @@ import { TableOfContentsModule } from '@alauda/ui';
 ## 使用方法
 
 <Canvas>
-  <Story name="Toc" height="400px">
+  <Story
+    name="Toc"
+    height="400px"
+  >
     {{
       template: /* HTML */ `
         <div class="demo-container">
@@ -25,23 +28,58 @@ import { TableOfContentsModule } from '@alauda/ui';
             Links:
             <ul>
               <li>
-                <a auiTocLink="content1" [for]="toc1">content 1</a>
+                <a
+                  auiTocLink="content1"
+                  [for]="toc1"
+                  >content 1</a
+                >
               </li>
               <li>
-                <a auiTocLink="content2" [for]="toc1">content 2</a>
+                <a
+                  auiTocLink="content2"
+                  [for]="toc1"
+                  >content 2</a
+                >
               </li>
               <li>
-                <a auiTocLink="content3" [for]="toc1">content 3</a>
+                <a
+                  auiTocLink="content3"
+                  [for]="toc1"
+                  >content 3</a
+                >
               </li>
               <li *ngFor="let item of list">
-                <a [auiTocLink]="item" [for]="toc1">{{ item }}</a>
+                <a
+                  [auiTocLink]="item"
+                  [for]="toc1"
+                  >{{ item }}</a
+                >
               </li>
             </ul>
           </div>
-          <div class="contents" auiTocContainer #toc1="auiTocContainer">
-            <div class="content" auiTocContent="content1">Content 1</div>
-            <div class="content" auiTocContent="content2">Content 2</div>
-            <div class="content" auiTocContent="content3">Content 3</div>
+          <div
+            class="contents"
+            auiTocContainer
+            #toc1="auiTocContainer"
+          >
+            <div
+              class="content"
+              auiTocContent="content1"
+            >
+              Content 1
+            </div>
+            <div
+              class="content"
+              auiTocContent="content2"
+            >
+              Content 2
+            </div>
+            <div
+              class="content"
+              auiTocContent="content3"
+            >
+              Content 3
+            </div>
             <div
               *ngFor="let item of list"
               class="content"
@@ -145,12 +183,27 @@ container 必须是可滚动的。
 ```html
 <!-- links -->
 <aside>
-  <a auiTocLink="content1" [for]="toc">content1</a>
-  <a auiTocLink="content2" [for]="toc">content2</a>
-  <a auiTocLink="content3" [for]="toc">content3</a>
+  <a
+    auiTocLink="content1"
+    [for]="toc"
+    >content1</a
+  >
+  <a
+    auiTocLink="content2"
+    [for]="toc"
+    >content2</a
+  >
+  <a
+    auiTocLink="content3"
+    [for]="toc"
+    >content3</a
+  >
 </aside>
 <!-- scroll container -->
-<article auiTocContainer #toc="auiTocContainer">
+<article
+  auiTocContainer
+  #toc="auiTocContainer"
+>
   <section auiTocContent="content1">...</section>
   <section auiTocContent="content2">...</section>
   <section auiTocContent="content3">...</section>

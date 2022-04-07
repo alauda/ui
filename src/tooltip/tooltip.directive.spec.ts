@@ -9,10 +9,11 @@ import {
 } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { DISPLAY_DELAY, HIDDEN_DELAY } from './base-tooltip';
 
-import { TooltipDirective, TooltipModule } from './public-api';
+import { DISPLAY_DELAY, HIDDEN_DELAY } from './base-tooltip';
 import { TooltipTrigger, TooltipType } from './tooltip.types';
+
+import { TooltipDirective, TooltipModule } from '.';
 
 describe('TooltipDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -174,7 +175,10 @@ describe('TooltipDirective', () => {
       [auiTooltipDisabled]="disabled"
       auiTooltipActive="tooltip-actived"
     ></div>
-    <ng-template #template let-text="text">
+    <ng-template
+      #template
+      let-text="text"
+    >
       <div id="dataNode">{{ text }}</div>
     </ng-template>
   `,

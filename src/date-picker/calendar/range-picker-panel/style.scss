@@ -12,27 +12,33 @@ $block: aui-date-range-picker-panel;
 
     .placeholder {
       color: use-text-color(placeholder);
+
       &.separator {
         margin-inline: 12px;
       }
     }
+
     .date-value {
       color: use-text-color(main);
     }
+
     .date-holder {
       display: inline-block;
       margin-right: 8px;
       width: 82px;
     }
+
     .panel__wrapper {
       width: $range-picker-header-width;
       display: flex;
       justify-content: center;
     }
   }
+
   &__header {
     display: flex;
     justify-content: space-between;
+
     aui-calendar-header {
       flex: 0 0 $range-picker-header-width;
     }
@@ -43,11 +49,13 @@ $block: aui-date-range-picker-panel;
     justify-content: space-between;
     margin: 16px 0;
   }
+
   &__footer {
     .aui-time-picker {
       width: 88px;
     }
   }
+
   &__footer-content {
     display: flex;
     align-items: center;

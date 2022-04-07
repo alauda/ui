@@ -1,4 +1,3 @@
-// tslint:disable: no-host-metadata-property
 import { Directive, Input } from '@angular/core';
 
 import { coerceAttrBoolean } from '../utils';

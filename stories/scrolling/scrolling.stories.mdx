@@ -20,7 +20,10 @@ import { FormModule, RadioModule, ScrollingModule } from '@alauda/ui';
 ## 基本用法
 
 <Canvas>
-  <Story name="Basic" height="280px">
+  <Story
+    name="Basic"
+    height="280px"
+  >
     {{
       template: /* HTML */ `
         <aui-form-item>
@@ -37,12 +40,23 @@ import { FormModule, RadioModule, ScrollingModule } from '@alauda/ui';
           itemSize="50"
           class="example-viewport"
         >
-          <div *auiVirtualFor="let item of items" class="example-item">
+          <div
+            *auiVirtualFor="let item of items"
+            class="example-item"
+          >
             {{ item }}
           </div>
         </aui-virtual-scroll-viewport>
-        <div *ngIf="!enabled" class="example-viewport">
-          <div *ngFor="let item of items" class="example-item">{{ item }}</div>
+        <div
+          *ngIf="!enabled"
+          class="example-viewport"
+        >
+          <div
+            *ngFor="let item of items"
+            class="example-item"
+          >
+            {{ item }}
+          </div>
         </div>
       `,
       styles: [

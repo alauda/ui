@@ -10,8 +10,8 @@ import {
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
+import { MultiSelectComponent, SelectModule } from '..';
 import { ComponentSize } from '../../types';
-import { MultiSelectComponent, SelectModule } from '../public-api';
 
 describe('multiSelectComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -133,7 +133,11 @@ describe('multiSelectComponent', () => {
       <aui-option [value]="1">1</aui-option>
       <aui-option [value]="2">2</aui-option>
       <aui-option [value]="3">3</aui-option>
-      <aui-option [value]="4" disabled>4</aui-option>
+      <aui-option
+        [value]="4"
+        disabled
+        >4</aui-option
+      >
     </aui-multi-select>
   `,
 })

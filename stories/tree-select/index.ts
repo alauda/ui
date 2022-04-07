@@ -1,7 +1,8 @@
-import { TreeNode, TreeSelectModule } from '@alauda/ui';
 import { FormsModule } from '@angular/forms';
 import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/angular';
+
+import { TreeNode, TreeSelectModule } from '@alauda/ui';
 
 const TREE_NODES: TreeNode[] = [
   {

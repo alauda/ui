@@ -1,4 +1,3 @@
-import { TabComponent, TabContextService } from '@alauda/ui';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,6 +6,8 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
+import { TabComponent, TabContextService } from '@alauda/ui';
 
 @Component({
   // tslint:disable-next-line component-selector

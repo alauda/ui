@@ -60,7 +60,7 @@ export class AutocompleteComponent implements AfterContentInit {
       switchMap((suggestions: QueryList<SuggestionComponent>) =>
         combineLatest(suggestions.map(suggestion => suggestion.visible$)),
       ),
-      map(visible => visible.some(value => value)),
+      map(visible => visible.some(Boolean)),
       distinctUntilChanged(),
       debounceTime(0),
       tap(() => {

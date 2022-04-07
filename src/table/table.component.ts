@@ -22,7 +22,7 @@ import {
 
 import {
   TablePlaceholderDefDirective,
-  TablePlaceholderOutlet,
+  TablePlaceholderOutletDirective,
 } from './table-placeholder.directive';
 
 @Component({
@@ -30,10 +30,9 @@ import {
   exportAs: 'auiTable',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['table.component.scss', 'table-scroll.scss'],
-  template: `
-    ${CDK_TABLE_TEMPLATE}
-    <ng-container auiTablePlaceholderOutlet></ng-container>
-  `,
+  template:
+    CDK_TABLE_TEMPLATE +
+    '<ng-container auiTablePlaceholderOutlet></ng-container>',
   host: {
     class: 'aui-table',
   },
@@ -61,8 +60,8 @@ export class TableComponent<T>
   @Input()
   enableScrollWrapper: boolean;
 
-  @ViewChild(TablePlaceholderOutlet, { static: true })
-  _placeholderOutlet: TablePlaceholderOutlet;
+  @ViewChild(TablePlaceholderOutletDirective, { static: true })
+  _placeholderOutlet: TablePlaceholderOutletDirective;
 
   @ContentChild(TablePlaceholderDefDirective, { static: true })
   _placeholderDef: TablePlaceholderDefDirective;

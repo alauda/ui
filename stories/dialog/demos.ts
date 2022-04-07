@@ -1,12 +1,21 @@
-import { DialogService, DialogSize } from '@alauda/ui';
 import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
+
+import { DialogService, DialogSize } from '@alauda/ui';
 
 @Component({
   template: `
-    <button aui-button="primary" (click)="open(dialog)">打开对话框</button>
+    <button
+      aui-button="primary"
+      (click)="open(dialog)"
+    >
+      打开对话框
+    </button>
     <ng-template #dialog>
       <aui-dialog-header>
-        <aui-icon icon="exclamation_circle_s" background="circle"></aui-icon>
+        <aui-icon
+          icon="exclamation_circle_s"
+          background="circle"
+        ></aui-icon>
         <span>What can Kubernetes do for you?</span>
       </aui-dialog-header>
       <aui-dialog-content>
@@ -22,8 +31,18 @@ import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
         best-of-breed ideas from the community.
       </aui-dialog-content>
       <aui-dialog-footer>
-        <button aui-button="primary" [auiDialogClose]="true">Confirm</button>
-        <button aui-button [auiDialogClose]="false">Cancel</button>
+        <button
+          aui-button="primary"
+          [auiDialogClose]="true"
+        >
+          Confirm
+        </button>
+        <button
+          aui-button
+          [auiDialogClose]="false"
+        >
+          Cancel
+        </button>
       </aui-dialog-footer>
     </ng-template>
   `,
@@ -39,7 +58,12 @@ export class BasicDialogComponent {
 
 @Component({
   template: `
-    <button aui-button="primary" (click)="open(dialog)">打开对话框</button>
+    <button
+      aui-button="primary"
+      (click)="open(dialog)"
+    >
+      打开对话框
+    </button>
     <ng-template #dialog>
       <aui-dialog-header>
         <span>What can Kubernetes do for you?</span>
@@ -57,8 +81,18 @@ export class BasicDialogComponent {
         best-of-breed ideas from the community.
       </aui-dialog-content>
       <aui-dialog-footer>
-        <button aui-button="primary" [auiDialogClose]="true">Confirm</button>
-        <button aui-button [auiDialogClose]="false">Cancel</button>
+        <button
+          aui-button="primary"
+          [auiDialogClose]="true"
+        >
+          Confirm
+        </button>
+        <button
+          aui-button
+          [auiDialogClose]="false"
+        >
+          Cancel
+        </button>
       </aui-dialog-footer>
     </ng-template>
   `,
@@ -74,7 +108,12 @@ export class FitViewportDialogComponent {
 
 @Component({
   template: `
-    <button aui-button="primary" (click)="open(dialog)">打开对话框</button>
+    <button
+      aui-button="primary"
+      (click)="open(dialog)"
+    >
+      打开对话框
+    </button>
     <ng-template #dialog>
       <aui-dialog-header>
         <span>What can Kubernetes do for you?</span>
@@ -92,8 +131,18 @@ export class FitViewportDialogComponent {
         best-of-breed ideas from the community.
       </aui-dialog-content>
       <aui-dialog-footer>
-        <button aui-button="primary" [auiDialogClose]="true">Confirm</button>
-        <button aui-button [auiDialogClose]="false">Cancel</button>
+        <button
+          aui-button="primary"
+          [auiDialogClose]="true"
+        >
+          Confirm
+        </button>
+        <button
+          aui-button
+          [auiDialogClose]="false"
+        >
+          Cancel
+        </button>
       </aui-dialog-footer>
     </ng-template>
   `,
@@ -108,7 +157,12 @@ export class FullScreenDialogComponent {
 }
 
 @Component({
-  template: `<button aui-button="primary" (click)="open()">打开对话框</button>`,
+  template: `<button
+    aui-button="primary"
+    (click)="open()"
+  >
+    打开对话框
+  </button>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmDialogComponent {

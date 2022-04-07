@@ -7,6 +7,6 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FixedSizeVirtualScrollDemoComponent {
   dataSource$$ = new BehaviorSubject(
-    Array.from({ length: 50000 }).map((_, i) => ({ id: i + 1 })),
+    Array.from({ length: 50_000 }).map((_, i) => ({ id: i + 1 })),
   );
 }

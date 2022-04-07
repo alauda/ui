@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ButtonModule } from '../button/public-api';
-import { IconModule } from '../icon/public-api';
+import { ButtonModule } from '../button';
+import { IconModule } from '../icon';
 
 import {
   TabBodyComponent,

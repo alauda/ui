@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { ComponentSize } from '../types';
 
-import { InputModule } from './public-api';
+import { InputModule } from '.';
 
 describe('InputComponent', () => {
   let fixture: ComponentFixture<TestComponent>;

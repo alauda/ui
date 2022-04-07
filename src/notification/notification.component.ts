@@ -1,11 +1,7 @@
-import {
-  CdkPortalOutlet,
-  TemplatePortal,
-} from '@angular/cdk/portal';
+import { CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   EmbeddedViewRef,
   HostListener,
@@ -56,13 +52,6 @@ export class NotificationComponent
 
   @ViewChild('modalComponent', { read: ViewContainerRef, static: true })
   private readonly modalEl: ViewContainerRef;
-
-  constructor(
-    viewContainerRef: ViewContainerRef,
-    cdr: ChangeDetectorRef,
-  ) {
-    super(viewContainerRef, cdr);
-  }
 
   @HostListener('mouseenter')
   onMouseEnter() {

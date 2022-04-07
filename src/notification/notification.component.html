@@ -10,8 +10,18 @@
     ></aui-icon>
   </div>
   <div [class]="bem.element('body')">
-    <div *ngIf="title" [class]="bem.element('title')">{{ title }}</div>
-    <div *ngIf="content" [class]="bem.element('content')">{{ content }}</div>
+    <div
+      *ngIf="title"
+      [class]="bem.element('title')"
+    >
+      {{ title }}
+    </div>
+    <div
+      *ngIf="content"
+      [class]="bem.element('content')"
+    >
+      {{ content }}
+    </div>
     <ng-template cdkPortalHost></ng-template>
     <ng-template #modalComponent></ng-template>
   </div>
@@ -23,11 +33,17 @@
     >
       <aui-icon icon="close"></aui-icon>
     </div>
-    <div *ngIf="duration > 0 && !isHover" [class]="bem.element('duration')">
+    <div
+      *ngIf="duration > 0 && !isHover"
+      [class]="bem.element('duration')"
+    >
       {{ remains > 0 ? remains : 1 }}s
     </div>
   </div>
-  <div *ngIf="footerPortal" [class]="bem.element('footer')">
+  <div
+    *ngIf="footerPortal"
+    [class]="bem.element('footer')"
+  >
     <ng-template [cdkPortalOutlet]="footerPortal"></ng-template>
   </div>
 </div>

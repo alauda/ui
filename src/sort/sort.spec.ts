@@ -6,7 +6,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { TableModule } from '../table/public-api';
+import { TableModule } from '../table';
 
 import {
   Sort,
@@ -14,7 +14,7 @@ import {
   SortDirective,
   SortHeaderComponent,
   SortModule,
-} from './public-api';
+} from '.';
 
 describe('Sort', () => {
   let fixture: ComponentFixture<SimpleSortAppComponent>;
@@ -161,8 +161,20 @@ type SimpleAuiSortAppColumnIds = 'defaultA' | 'defaultB' | 'overrideStart';
       [direction]="direction"
       (sortChange)="latestSortEvent = $event"
     >
-      <div id="defaultA" #defaultA aui-sort-header="defaultA">A</div>
-      <div id="defaultB" #defaultB aui-sort-header="defaultB">B</div>
+      <div
+        id="defaultA"
+        #defaultA
+        aui-sort-header="defaultA"
+      >
+        A
+      </div>
+      <div
+        id="defaultB"
+        #defaultB
+        aui-sort-header="defaultB"
+      >
+        B
+      </div>
       <div
         id="overrideStart"
         #overrideStart
@@ -244,21 +256,36 @@ class FakeDataSource extends DataSource<any> {
 
 @Component({
   template: `
-    <cdk-table [dataSource]="dataSource" auiSort>
+    <cdk-table
+      [dataSource]="dataSource"
+      auiSort
+    >
       <ng-container cdkColumnDef="column_a">
-        <cdk-header-cell *cdkHeaderCellDef #sortHeaderA aui-sort-header>
+        <cdk-header-cell
+          *cdkHeaderCellDef
+          #sortHeaderA
+          aui-sort-header
+        >
           Column A
         </cdk-header-cell>
         <cdk-cell *cdkCellDef="let row">{{ row.a }}</cdk-cell>
       </ng-container>
       <ng-container cdkColumnDef="column_b">
-        <cdk-header-cell *cdkHeaderCellDef #sortHeaderB aui-sort-header>
+        <cdk-header-cell
+          *cdkHeaderCellDef
+          #sortHeaderB
+          aui-sort-header
+        >
           Column B
         </cdk-header-cell>
         <cdk-cell *cdkCellDef="let row">{{ row.b }}</cdk-cell>
       </ng-container>
       <ng-container cdkColumnDef="column_c">
-        <cdk-header-cell *cdkHeaderCellDef #sortHeaderC aui-sort-header>
+        <cdk-header-cell
+          *cdkHeaderCellDef
+          #sortHeaderC
+          aui-sort-header
+        >
           Column C
         </cdk-header-cell>
         <cdk-cell *cdkCellDef="let row">{{ row.c }}</cdk-cell>
@@ -278,7 +305,10 @@ class CdkTableSortAppComponent {
 
 @Component({
   template: `
-    <aui-table [dataSource]="dataSource" auiSort>
+    <aui-table
+      [dataSource]="dataSource"
+      auiSort
+    >
       <ng-container auiTableColumnDef="column_a">
         <aui-table-header-cell
           *auiTableHeaderCellDef

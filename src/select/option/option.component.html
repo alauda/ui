@@ -8,8 +8,14 @@
   [class.isFocused]="focused"
   (click)="onClick()"
 >
-  <i *ngIf="isMulti" class="aui-option__pointer">
-    <aui-icon [hidden]="!(selected$ | async)" icon="check_s"></aui-icon>
+  <i
+    *ngIf="isMulti"
+    class="aui-option__pointer"
+  >
+    <aui-icon
+      [hidden]="!(selected$ | async)"
+      icon="check_s"
+    ></aui-icon>
   </i>
   <ng-content></ng-content>
 </div>

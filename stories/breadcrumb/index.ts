@@ -1,5 +1,6 @@
-import { BreadcrumbModule } from '@alauda/ui';
 import { storiesOf } from '@storybook/angular';
+
+import { BreadcrumbModule } from '@alauda/ui';
 
 storiesOf('Breadcrumb', module).add('breadcrumb', () => ({
   moduleMetadata: {

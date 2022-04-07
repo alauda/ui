@@ -8,8 +8,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { RadioModule } from '../public-api';
-
+import { RadioModule } from './radio.module';
 import { RadioSize } from './radio.types';
 
 describe('RadioComponent', () => {
@@ -51,12 +50,16 @@ describe('RadioComponent', () => {
   }));
 
   it('should ngModel work', fakeAsync(() => {
-    (fixture.debugElement.query(By.css('#btn2 input'))
-      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
+    (
+      fixture.debugElement.query(By.css('#btn2 input'))
+        .nativeElement as HTMLElement
+    ).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(
-      (fixture.debugElement.query(By.css('#btn2 .aui-radio-button'))
-        .nativeElement as HTMLElement).classList,
+      (
+        fixture.debugElement.query(By.css('#btn2 .aui-radio-button'))
+          .nativeElement as HTMLElement
+      ).classList,
     ).toContain('isChecked');
     expect(ins.food).toEqual('8');
 
@@ -65,31 +68,60 @@ describe('RadioComponent', () => {
     tick();
     fixture.detectChanges();
     expect(
-      (fixture.debugElement.query(By.css('#btn1 .aui-radio-button'))
-        .nativeElement as HTMLElement).classList,
+      (
+        fixture.debugElement.query(By.css('#btn1 .aui-radio-button'))
+          .nativeElement as HTMLElement
+      ).classList,
     ).toContain('isChecked');
 
-    (fixture.debugElement.query(By.css('#btn3 input'))
-      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
+    (
+      fixture.debugElement.query(By.css('#btn3 input'))
+        .nativeElement as HTMLElement
+    ).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(
-      (fixture.debugElement.query(By.css('#btn3 .aui-radio-button'))
-        .nativeElement as HTMLElement).classList,
+      (
+        fixture.debugElement.query(By.css('#btn3 .aui-radio-button'))
+          .nativeElement as HTMLElement
+      ).classList,
     ).toContain('isChecked');
   }));
 });
 
 @Component({
   template: `
-    <aui-radio-group name="food" [(ngModel)]="food">
+    <aui-radio-group
+      name="food"
+      [(ngModel)]="food"
+    >
       <aui-radio value="7">7</aui-radio>
       <aui-radio value="8">8</aui-radio>
-      <aui-radio value="9" disabled="true">9</aui-radio>
+      <aui-radio
+        value="9"
+        disabled="true"
+        >9</aui-radio
+      >
     </aui-radio-group>
-    <aui-radio-group name="food" [size]="size" [(ngModel)]="food">
-      <aui-radio-button id="btn1" value="7">7</aui-radio-button>
-      <aui-radio-button id="btn2" value="8">8</aui-radio-button>
-      <aui-radio-button id="btn3" [disabled]="disabled" value="9">
+    <aui-radio-group
+      name="food"
+      [size]="size"
+      [(ngModel)]="food"
+    >
+      <aui-radio-button
+        id="btn1"
+        value="7"
+        >7</aui-radio-button
+      >
+      <aui-radio-button
+        id="btn2"
+        value="8"
+        >8</aui-radio-button
+      >
+      <aui-radio-button
+        id="btn3"
+        [disabled]="disabled"
+        value="9"
+      >
         9
       </aui-radio-button>
     </aui-radio-group>

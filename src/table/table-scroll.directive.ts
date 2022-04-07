@@ -10,6 +10,7 @@ import { Subject, fromEvent, merge } from 'rxjs';
 import { startWith, takeUntil } from 'rxjs/operators';
 
 import { observeResizeOn } from '../utils';
+
 import { TableComponent } from './table.component';
 
 const CLASS_PREFIX = 'aui-table';

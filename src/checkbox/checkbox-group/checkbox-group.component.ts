@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { CommonFormControl } from '../../form/public-api';
-import { TrackFn } from '../../select/public-api';
+import { CommonFormControl } from '../../form';
+import { TrackFn } from '../../select';
 import { CheckboxComponent } from '../checkbox.component';
 
 @Component({

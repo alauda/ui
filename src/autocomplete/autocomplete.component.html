@@ -5,7 +5,10 @@
     [style.minWidth]="width"
     (mousedown)="$event.preventDefault()"
   >
-    <div #suggestionListRef class="aui-autocomplete__content">
+    <div
+      #suggestionListRef
+      class="aui-autocomplete__content"
+    >
       <ng-content></ng-content>
     </div>
     <div

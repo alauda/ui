@@ -235,7 +235,7 @@ export class MultiSelectComponent<T = unknown>
         ]),
       ),
       map(statuses => {
-        const selected = statuses.filter(i => i);
+        const selected = statuses.filter(Boolean);
         return selected.length === 0
           ? SelectAllStatus.Empty
           : selected.length !== statuses.length

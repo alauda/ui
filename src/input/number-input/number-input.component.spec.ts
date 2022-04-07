@@ -8,7 +8,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { InputModule, NumberInputComponent } from '../public-api';
+import { InputModule, NumberInputComponent } from '..';
 
 describe('InputNumberComponent', () => {
   let fixture: ComponentFixture<TestComponent>;

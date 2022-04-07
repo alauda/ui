@@ -1,5 +1,11 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, NgModule, TemplateRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  NgModule,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import {
   ComponentFixture,
   TestBed,
@@ -9,7 +15,7 @@ import {
 } from '@angular/core/testing';
 import { timer } from 'rxjs';
 
-import { DialogModule, DialogService, DialogSize } from './public-api';
+import { DialogModule, DialogService, DialogSize } from '.';
 
 describe('DialogService', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -112,6 +118,7 @@ describe('DialogService', () => {
           content: 'custom content',
         })
         .catch(() => {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(ocEl.querySelector('aui-dialog')).toBeNull();
           resolve();
         });
@@ -194,6 +201,7 @@ describe('DialogService', () => {
         // eslint-disable-next-line sonarjs/no-identical-functions
         .catch(() => {
           const t2 = Date.now();
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(t2 - t1).toBeGreaterThanOrEqual(100);
           resolve();
         });
@@ -220,14 +228,16 @@ describe('DialogService', () => {
         // eslint-disable-next-line sonarjs/no-identical-functions
         .catch(() => {
           const t2 = Date.now();
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(t2 - t1).toBeGreaterThanOrEqual(100);
           resolve();
         });
       fixture.detectChanges();
 
-      const cancelBtn: HTMLButtonElement = ocEl.querySelector(
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- no idea
+      const cancelBtn = ocEl.querySelector(
         '.aui-confirm-dialog__cancel-button',
-      );
+      ) as HTMLButtonElement;
       cancelBtn.dispatchEvent(new Event('click'));
       fixture.detectChanges();
 
@@ -278,9 +288,15 @@ describe('DialogService', () => {
   template: `
     <ng-template #template>
       <aui-dialog-header [closeable]="false">title</aui-dialog-header>
-      <button id="close" [auiDialogClose]="result">close</button>
+      <button
+        id="close"
+        [auiDialogClose]="result"
+      >
+        close
+      </button>
     </ng-template>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestComponent {
   result: any;
@@ -289,18 +305,24 @@ class TestComponent {
 }
 
 @Component({
-  // tslint:disable-next-line: component-selector
   selector: 'test-dialog-content',
   template: `
     <aui-dialog-header>title</aui-dialog-header>
     <aui-dialog-content>content</aui-dialog-content>
     <aui-dialog-footer>
       <div>
-        <button id="confirm" [auiDialogClose]="true"></button>
-        <button id="cancel" [auiDialogClose]="false"></button>
+        <button
+          id="confirm"
+          [auiDialogClose]="true"
+        ></button>
+        <button
+          id="cancel"
+          [auiDialogClose]="false"
+        ></button>
       </div>
     </aui-dialog-footer>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class DialogContentComponent {}
 

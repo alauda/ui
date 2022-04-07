@@ -30,7 +30,7 @@ export class AuiSelectValidators {
 
 @Directive({
   selector:
-    // tslint:disable-next-line: directive-selector
+    // eslint-disable-next-line @angular-eslint/directive-selector
     'aui-select[ngModel][includes],aui-select[formControl][includes],aui-select[formControlName][includes]',
   providers: [
     {

@@ -16,7 +16,7 @@ export class TablePlaceholderDefDirective {
 @Directive({
   selector: '[auiTablePlaceholderOutlet]',
 })
-export class TablePlaceholderOutlet implements RowOutlet {
+export class TablePlaceholderOutletDirective implements RowOutlet {
   constructor(
     public viewContainer: ViewContainerRef,
     public elementRef: ElementRef,

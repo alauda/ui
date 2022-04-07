@@ -27,7 +27,10 @@ import { ButtonModule, DialogModule, IconModule } from '@alauda/ui';
 ## 基本样式
 
 <Canvas>
-  <Story name="Basic" height="500px">
+  <Story
+    name="Basic"
+    height="500px"
+  >
     {{
       code: `
         @Component({
@@ -74,7 +77,10 @@ import { ButtonModule, DialogModule, IconModule } from '@alauda/ui';
 ## 对话框内滚动
 
 <Canvas>
-  <Story name="Fit Viewport" height="500px">
+  <Story
+    name="Fit Viewport"
+    height="500px"
+  >
     {{
       component: Demo.FitViewportDialogComponent,
     }}
@@ -84,7 +90,10 @@ import { ButtonModule, DialogModule, IconModule } from '@alauda/ui';
 ## 全屏对话框
 
 <Canvas>
-  <Story name="Full Screen" height="500px">
+  <Story
+    name="Full Screen"
+    height="500px"
+  >
     {{
       component: Demo.FullScreenDialogComponent,
     }}
@@ -94,7 +103,10 @@ import { ButtonModule, DialogModule, IconModule } from '@alauda/ui';
 ## 确认对话框
 
 <Canvas>
-  <Story name="Confirm Dialog" height="300px">
+  <Story
+    name="Confirm Dialog"
+    height="300px"
+  >
     {{
       component: Demo.ConfirmDialogComponent,
     }}
@@ -107,35 +119,35 @@ import { ButtonModule, DialogModule, IconModule } from '@alauda/ui';
 
 `dialogService.open<T, D, R>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, config: DialogConfig<D>): DialogRef<T, R>`
 
-#### DialogConfig<D\> Properties
+#### `DialogConfig<D>` Properties
 
 | 名称        | 类型       | 默认值         | 描述                                                   |
 | ----------- | ---------- | -------------- | ------------------------------------------------------ |
-| data        | <D\>       | null           | 对话框组件可以通过 `InjectToken<DIALOG_DATA>` 注入数据 |
+| data        | `<D>`      | null           | 对话框组件可以通过 `InjectToken<DIALOG_DATA>` 注入数据 |
 | size        | DialogSize | DialogSize.Big | 对话框宽度                                             |
 | fitViewport | boolean    | false          | 是否在对话框内部滚动                                   |
 | hasBackdrop | boolean    | true           | 是否显示背景遮罩                                       |
 
-#### DialogRef<R\> Properties
+#### `DialogRef<R>` Properties
 
-| 名称        | 类型                | 默认值 | 描述               |
-| ----------- | ------------------- | ------ | ------------------ |
-| close       | (result: R) => void | -      | 关闭当前对话框     |
-| afterClosed | ()=> Observable<R\> | -      | 关闭对话框后的回调 |
+| 名称        | 类型                  | 默认值 | 描述               |
+| ----------- | --------------------- | ------ | ------------------ |
+| close       | `(result: R) => void` | -      | 关闭当前对话框     |
+| afterClosed | `()=> Observable<R>`  | -      | 关闭对话框后的回调 |
 
 ### 打开确认对话框
 
 `dialogService.confirm<T, R>(config: ConfirmDialogConfig<T, R>): Promise<T>`
 
-#### ConfirmDialogConfig<T, R\> Properties
+#### `ConfirmDialogConfig<T, R>` Properties
 
-| 名称          | 类型             | 默认值              | 描述               |
-| ------------- | ---------------- | ------------------- | ------------------ |
-| title         | string           | -                   | 标题文本           |
-| content       | string           | -                   | 内容文本           |
-| confirmType   | ConfirmType      | ConfirmType.Primary | 确认框类型         |
-| cancelButton  | boolean          | true                | 是否显示取消按钮   |
-| confirmText   | string           | OK                  | 确认按钮文本       |
-| cancelText    | string           | Cancel              | 取消按钮文本       |
-| beforeConfirm | BeforeAction<T\> | -                   | 点击确认按钮时调用 |
-| beforeCancel  | BeforeAction<T\> | -                   | 点击取消按钮时调用 |
+| 名称          | 类型              | 默认值              | 描述               |
+| ------------- | ----------------- | ------------------- | ------------------ |
+| title         | string            | -                   | 标题文本           |
+| content       | string            | -                   | 内容文本           |
+| confirmType   | ConfirmType       | ConfirmType.Primary | 确认框类型         |
+| cancelButton  | boolean           | true                | 是否显示取消按钮   |
+| confirmText   | string            | OK                  | 确认按钮文本       |
+| cancelText    | string            | Cancel              | 取消按钮文本       |
+| beforeConfirm | `BeforeAction<T>` | -                   | 点击确认按钮时调用 |
+| beforeCancel  | `BeforeAction<T>` | -                   | 点击取消按钮时调用 |

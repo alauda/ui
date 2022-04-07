@@ -6,13 +6,13 @@ import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs';
 
-import { IconModule } from '../icon/public-api';
+import { IconModule } from '../icon';
 
 import {
   TabHeaderActiveIndicatorComponent,
   TabHeaderComponent,
   TabLabelWrapperDirective,
-} from './public-api';
+} from '.';
 
 describe('TabHeaderComponent', () => {
   const change = new Subject();

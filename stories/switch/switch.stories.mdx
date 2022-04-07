@@ -23,7 +23,10 @@ import { SwitchModule } from '@alauda/ui';
 ## 基本开关
 
 <Canvas>
-  <Story name="Basic" height="60px">
+  <Story
+    name="Basic"
+    height="60px"
+  >
     {{
       template: /* HTML */ ` <aui-switch [(ngModel)]="data"></aui-switch> `,
     }}
@@ -33,10 +36,16 @@ import { SwitchModule } from '@alauda/ui';
 ## 加载状态
 
 <Canvas>
-  <Story name="Loading" height="60px">
+  <Story
+    name="Loading"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
-        <aui-switch [(ngModel)]="data" [loading]="true"></aui-switch>
+        <aui-switch
+          [(ngModel)]="data"
+          [loading]="true"
+        ></aui-switch>
       `,
     }}
   </Story>
@@ -45,7 +54,10 @@ import { SwitchModule } from '@alauda/ui';
 ## 禁用态
 
 <Canvas>
-  <Story name="Disabled" height="60px">
+  <Story
+    name="Disabled"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
         <aui-switch
@@ -53,7 +65,10 @@ import { SwitchModule } from '@alauda/ui';
           [(ngModel)]="data"
           [disabled]="true"
         ></aui-switch>
-        <aui-switch [(ngModel)]="initData" [disabled]="true"></aui-switch>
+        <aui-switch
+          [(ngModel)]="initData"
+          [disabled]="true"
+        ></aui-switch>
       `,
       props: {
         initData: true,
@@ -67,7 +82,10 @@ import { SwitchModule } from '@alauda/ui';
 可以人为驱动 switch 的状态变化，实现更加精细的控制
 
 <Canvas>
-  <Story name="Manual" height="60px">
+  <Story
+    name="Manual"
+    height="60px"
+  >
     {{
       code: `
           @Component({

@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { buildBem } from '../utils';
 
-import { TableComponent, TableModule } from './public-api';
+import { TableComponent, TableModule } from '.';
 
 const bem = buildBem('aui-table');
 

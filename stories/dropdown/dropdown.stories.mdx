@@ -19,7 +19,10 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
 ## 基础用法
 
 <Canvas>
-  <Story name="Basic" height="240px">
+  <Story
+    name="Basic"
+    height="240px"
+  >
     {{
       template: /* HTML */ `<button
           aui-button="primary"
@@ -43,7 +46,10 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
 ## 二级菜单
 
 <Canvas>
-  <Story name="Submenu" height="240px">
+  <Story
+    name="Submenu"
+    height="240px"
+  >
     {{
       template: /* HTML */ `<button
           aui-button="primary"
@@ -70,7 +76,10 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
 ## 分组菜单
 
 <Canvas>
-  <Story name="Group" height="340px">
+  <Story
+    name="Group"
+    height="340px"
+  >
     {{
       template: /* HTML */ `<button
           aui-button="primary"
@@ -103,7 +112,10 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
 ## 下拉菜单按钮
 
 <Canvas>
-  <Story name="Dropdown Button" height="200px">
+  <Story
+    name="Dropdown Button"
+    height="200px"
+  >
     {{
       template: /* HTML */ `<aui-dropdown-button type="primary">
         dropdown button
@@ -121,7 +133,10 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
 ## 复用菜单模板
 
 <Canvas>
-  <Story name="Menu Template" height="180px">
+  <Story
+    name="Menu Template"
+    height="180px"
+  >
     {{
       template: /* HTML */ `<button
           aui-button="primary"
@@ -142,7 +157,10 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
           <aui-icon icon="angle_down"></aui-icon>
         </button>
         <aui-menu #menu>
-          <ng-template auiMenuContent let-canDelete="canDelete">
+          <ng-template
+            auiMenuContent
+            let-canDelete="canDelete"
+          >
             <aui-menu-item>创建</aui-menu-item>
             <aui-menu-item>更新</aui-menu-item>
             <aui-menu-item *ngIf="canDelete">删除</aui-menu-item>

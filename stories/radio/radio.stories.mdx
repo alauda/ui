@@ -18,7 +18,10 @@ import { RadioModule } from '@alauda/ui';
 ## 单选组合
 
 <Canvas>
-  <Story name="Group" height="60px">
+  <Story
+    name="Group"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
         <aui-radio-group [(ngModel)]="model">
@@ -37,13 +40,24 @@ import { RadioModule } from '@alauda/ui';
 ## 禁用状态
 
 <Canvas>
-  <Story name="Disabled" height="60px">
+  <Story
+    name="Disabled"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
         <aui-radio-group [(ngModel)]="model">
-          <aui-radio value="1" [disabled]="true">选项一</aui-radio>
+          <aui-radio
+            value="1"
+            [disabled]="true"
+            >选项一</aui-radio
+          >
           <aui-radio value="2">选项二</aui-radio>
-          <aui-radio value="3" [disabled]="true">选项三</aui-radio>
+          <aui-radio
+            value="3"
+            [disabled]="true"
+            >选项三</aui-radio
+          >
         </aui-radio-group>
       `,
       props: {
@@ -56,10 +70,16 @@ import { RadioModule } from '@alauda/ui';
 ## 单选组合 垂直
 
 <Canvas>
-  <Story name="Vertical" height="120px">
+  <Story
+    name="Vertical"
+    height="120px"
+  >
     {{
       template: /* HTML */ `
-        <aui-radio-group [(ngModel)]="model" direction="column">
+        <aui-radio-group
+          [(ngModel)]="model"
+          direction="column"
+        >
           <aui-radio value="1">选项一</aui-radio>
           <aui-radio value="2">选项二</aui-radio>
           <aui-radio value="3">选项三</aui-radio>
@@ -75,23 +95,38 @@ import { RadioModule } from '@alauda/ui';
 ## 按钮样式组合 实色填底
 
 <Canvas>
-  <Story name="Button" height="60px">
+  <Story
+    name="Button"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
-        <aui-radio-group [(ngModel)]="model" [plain]="false">
+        <aui-radio-group
+          [(ngModel)]="model"
+          [plain]="false"
+        >
           <aui-radio-button value="1">选项一</aui-radio-button>
           <aui-radio-button value="2">选项二</aui-radio-button>
           <aui-radio-button value="3">选项三</aui-radio-button>
         </aui-radio-group>
         <p>disabled</p>
-        <aui-radio-group [(ngModel)]="model" [plain]="false">
-          <aui-radio-button value="1" [disabled]="true"
+        <aui-radio-group
+          [(ngModel)]="model"
+          [plain]="false"
+        >
+          <aui-radio-button
+            value="1"
+            [disabled]="true"
             >选项一</aui-radio-button
           >
-          <aui-radio-button value="2" [disabled]="true"
+          <aui-radio-button
+            value="2"
+            [disabled]="true"
             >选项二</aui-radio-button
           >
-          <aui-radio-button value="3" [disabled]="true"
+          <aui-radio-button
+            value="3"
+            [disabled]="true"
             >选项三</aui-radio-button
           >
         </aui-radio-group>
@@ -106,7 +141,10 @@ import { RadioModule } from '@alauda/ui';
 ## 按钮样式组合
 
 <Canvas>
-  <Story name="Button Plain" height="60px">
+  <Story
+    name="Button Plain"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
         <aui-radio-group [(ngModel)]="model">
@@ -116,13 +154,19 @@ import { RadioModule } from '@alauda/ui';
         </aui-radio-group>
         <p>disabled</p>
         <aui-radio-group [(ngModel)]="model">
-          <aui-radio-button value="1" [disabled]="true"
+          <aui-radio-button
+            value="1"
+            [disabled]="true"
             >选项一</aui-radio-button
           >
-          <aui-radio-button value="2" [disabled]="true"
+          <aui-radio-button
+            value="2"
+            [disabled]="true"
             >选项二</aui-radio-button
           >
-          <aui-radio-button value="3" [disabled]="true"
+          <aui-radio-button
+            value="3"
+            [disabled]="true"
             >选项三</aui-radio-button
           >
         </aui-radio-group>
@@ -137,7 +181,10 @@ import { RadioModule } from '@alauda/ui';
 ## 按钮样式组合 尺寸
 
 <Canvas>
-  <Story name="Button Size" height="150px">
+  <Story
+    name="Button Size"
+    height="150px"
+  >
     {{
       template: `
         <aui-radio-group [(ngModel)]="model" size="medium">

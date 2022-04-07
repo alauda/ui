@@ -17,7 +17,11 @@
       >
         {{ clearText || ('clear' | auiI18n) }}
       </button>
-      <button aui-button="primary" (click)="confirm.emit()" size="small">
+      <button
+        aui-button="primary"
+        (click)="confirm.emit()"
+        size="small"
+      >
         {{ 'confirm' | auiI18n }}
       </button>
     </ng-template>

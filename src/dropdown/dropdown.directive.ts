@@ -1,4 +1,3 @@
-// tslint:disable: no-output-rename
 import { Overlay } from '@angular/cdk/overlay';
 import {
   ChangeDetectorRef,
@@ -14,11 +13,7 @@ import {
 } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
 
-import {
-  BaseTooltip,
-  TooltipTrigger,
-  TooltipType,
-} from '../tooltip/public-api';
+import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
 
 import { DropdownActiveDirective } from './dropdown-active.directive';
 import { MenuComponent } from './menu/menu.component';

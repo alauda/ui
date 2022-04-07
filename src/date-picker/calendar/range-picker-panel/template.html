@@ -54,7 +54,10 @@
     (confirm)="confirmValue(rangeValue)"
     *ngIf="showFooter && showTime"
   >
-    <div [class]="bem.element('footer-content')" *ngIf="showTime">
+    <div
+      [class]="bem.element('footer-content')"
+      *ngIf="showTime"
+    >
       <ng-container
         [ngTemplateOutlet]="datePlaceholder"
         [ngTemplateOutletContext]="{
@@ -97,9 +100,19 @@
   </aui-calendar-footer>
 </div>
 
-<ng-template #datePlaceholder let-placeholder="placeholder" let-value="value">
-  <span *ngIf="!value" class="placeholder date-holder">{{ placeholder }}</span>
-  <span *ngIf="value" class="date-value date-holder">{{
-    value | date: FOOTER_DATE_FORMAT
-  }}</span>
+<ng-template
+  #datePlaceholder
+  let-placeholder="placeholder"
+  let-value="value"
+>
+  <span
+    *ngIf="!value"
+    class="placeholder date-holder"
+    >{{ placeholder }}</span
+  >
+  <span
+    *ngIf="value"
+    class="date-value date-holder"
+    >{{ value | date: FOOTER_DATE_FORMAT }}</span
+  >
 </ng-template>

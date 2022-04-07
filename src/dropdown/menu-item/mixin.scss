@@ -26,6 +26,7 @@
       &:hover {
         background-color: use-rgb(p-6);
       }
+
       &.isActive {
         color: use-rgb(primary);
         background-color: use-rgb(p-6);
@@ -34,6 +35,7 @@
 
     &--primary {
       color: use-rgb(primary);
+
       &:hover,
       &.isActive {
         background-color: use-rgb(p-6);
@@ -51,6 +53,7 @@
 
     &--warning {
       color: use-rgb(yellow);
+
       &:hover,
       &.isActive {
         background-color: use-rgb(y-6);
@@ -59,6 +62,7 @@
 
     &--danger {
       color: use-rgb(red);
+
       &:hover,
       &.isActive {
         background-color: use-rgb(r-6);
@@ -81,6 +85,7 @@
     &:not(:first-child) .hasDivider {
       overflow: visible;
       margin-top: use-var(spacing-xl);
+
       &:before {
         content: '';
         position: absolute;

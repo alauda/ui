@@ -2,6 +2,6 @@ coverage
 dist
 release
 CHANGELOG.md
-/tslint-rules
+/.angular
 !/.*.js
 jest.setup.ts

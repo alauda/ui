@@ -20,13 +20,27 @@ describe('TagComponent', () => {
 @Component({
   template: `
     <aui-tag>primary</aui-tag>
-    <aui-tag type="success" [size]="'medium'" [solid]="true" [invalid]="true">
+    <aui-tag
+      type="success"
+      [size]="'medium'"
+      [solid]="true"
+      [invalid]="true"
+    >
       success
     </aui-tag>
-    <aui-tag type="warning" [size]="'small'" [closeable]="true">
+    <aui-tag
+      type="warning"
+      [size]="'small'"
+      [closeable]="true"
+    >
       warning
     </aui-tag>
-    <aui-tag type="error" [size]="'mini'" [round]="true">error</aui-tag>
+    <aui-tag
+      type="error"
+      [size]="'mini'"
+      [round]="true"
+      >error</aui-tag
+    >
     <aui-tag
       type="info"
       size="mini"

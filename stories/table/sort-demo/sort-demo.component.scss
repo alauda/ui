@@ -2,12 +2,15 @@ $block: aui-table;
 
 .#{$block} {
   min-width: 0;
+
   &__column-id {
     flex: 0.5;
   }
+
   &__column-name {
     flex: 2;
   }
+
   &__column-value {
     flex: 1;
   }
