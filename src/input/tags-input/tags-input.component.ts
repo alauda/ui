@@ -25,7 +25,7 @@ import {
 } from '@angular/forms';
 import { take } from 'rxjs';
 
-import { CommonFormControl } from '../../form/public-api';
+import { CommonFormControl } from '../../form';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils';
 

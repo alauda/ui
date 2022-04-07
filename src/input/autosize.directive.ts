@@ -26,7 +26,7 @@ export interface AutoSizeValue {
  */
 @Directive({
   selector:
-    // tslint:disable-next-line: directive-selector
+    // eslint-disable-next-line @angular-eslint/directive-selector
     'textarea[autosize][ngModel],textarea[autosize][formControl],textarea[autosize][formControlName]',
   exportAs: 'TextareaAutosize',
 })

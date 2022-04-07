@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ButtonModule } from '../button/public-api';
-import { IconModule } from '../icon/public-api';
+import { ButtonModule } from '../button';
+import { IconModule } from '../icon';
 import { SharedModule } from '../shared/shared.module';
-import { TagModule } from '../tag/public-api';
+import { TagModule } from '../tag';
 
 import { AutosizeDirective } from './autosize.directive';
 import {

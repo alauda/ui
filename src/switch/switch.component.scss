@@ -33,7 +33,7 @@ $switch-dot-with: $switch-height - ($switch-border-width * 2);
     width: $switch-width;
     height: $switch-height;
     border-radius: math.div($switch-height, 2);
-    background-color: currentColor;
+    background-color: currentcolor;
     transition: background-color $animation-duration;
     position: relative;
     vertical-align: middle;
@@ -82,7 +82,7 @@ $switch-dot-with: $switch-height - ($switch-border-width * 2);
       bottom: $switch-border-width;
       left: $switch-border-width;
       right: $switch-border-width;
-      border: 1px solid currentColor;
+      border: 1px solid currentcolor;
       border-top-color: transparent;
       border-radius: 50%;
       animation: spin 1s infinite linear;
@@ -94,6 +94,7 @@ $switch-dot-with: $switch-height - ($switch-border-width * 2);
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

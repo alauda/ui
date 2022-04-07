@@ -15,14 +15,17 @@
   &__header-row {
     display: flex;
     align-items: center;
+
     &.hasPanel {
       flex-wrap: wrap;
     }
   }
+
   &__header-row + &__row {
     border-top-left-radius: use-var(border-radius-l);
     border-top-right-radius: use-var(border-radius-l);
   }
+
   &__row {
     position: relative;
     border-width: 1px;
@@ -64,16 +67,19 @@
     background-color: use-rgb(n-9);
     padding: 0 $table-cell-padding-h;
   }
+
   &__cell,
   &__header-cell {
     flex: 1;
   }
+
   &__cell {
     padding: $table-cell-padding-v $table-cell-padding-h;
     background-color: use-rgb(n-10);
     overflow: hidden;
     word-wrap: break-word;
   }
+
   &__header-cell {
     padding: $table-padding $table-cell-padding-h;
     font-weight: use-var(font-weight-bold);

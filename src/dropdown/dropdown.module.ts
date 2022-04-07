@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ButtonModule } from '../button/public-api';
-import { IconModule } from '../icon/public-api';
-import { TooltipModule } from '../tooltip/public-api';
+import { ButtonModule } from '../button';
+import { IconModule } from '../icon';
+import { TooltipModule } from '../tooltip';
 
 import { DropdownActiveDirective } from './dropdown-active.directive';
 import { DropdownButtonComponent } from './dropdown-button/dropdown-button.component';

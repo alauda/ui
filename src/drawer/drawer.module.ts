@@ -3,7 +3,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { IconModule } from '../icon/public-api';
+import { IconModule } from '../icon';
 
 import { DrawerComponent } from './component/drawer.component';
 import {

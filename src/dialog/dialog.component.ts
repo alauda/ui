@@ -23,7 +23,6 @@ import { throwDialogContentAlreadyAttachedError } from './utils';
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  // tslint:disable-next-line:validate-decorators
   changeDetection: ChangeDetectionStrategy.Default,
   preserveWhitespaces: false,
 })

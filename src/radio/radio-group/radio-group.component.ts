@@ -9,7 +9,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
-import { CommonFormControl } from '../../form/public-api';
+import { CommonFormControl } from '../../form';
 import { RadioSize } from '../radio.types';
 
 @Component({

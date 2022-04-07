@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { I18nModule } from '../i18n/public-api';
-import { IconModule } from '../icon/public-api';
-import { InputModule } from '../input/public-api';
-import { TagModule } from '../tag/public-api';
-import { TooltipModule } from '../tooltip/public-api';
+import { I18nModule } from '../i18n';
+import { IconModule } from '../icon';
+import { InputModule } from '../input';
+import { TagModule } from '../tag';
+import { TooltipModule } from '../tooltip';
 
 import {
   OptionContentDirective,

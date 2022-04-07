@@ -11,7 +11,6 @@ import {
   Renderer2,
   ViewContainerRef,
 } from '@angular/core';
-import { writeText } from 'clipboard-polyfill';
 
 import { BaseTooltip } from './base-tooltip';
 import { TooltipCopyIntl } from './tooltip-intl';
@@ -88,7 +87,7 @@ export class TooltipCopyDirective extends BaseTooltip implements OnInit {
   async onSourceClick() {
     if (!this.disabled) {
       try {
-        await writeText(this.auiTooltipCopy);
+        await navigator.clipboard.writeText(this.auiTooltipCopy);
         this.content = this.auiTooltipCopySuccessTip;
       } catch {
         this.content = this.auiTooltipCopyFailTip;

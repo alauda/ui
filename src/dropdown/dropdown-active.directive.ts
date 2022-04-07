@@ -1,6 +1,6 @@
 import { Directive, Input } from '@angular/core';
 
-import { TooltipActiveDirective } from '../tooltip/public-api';
+import { TooltipActiveDirective } from '../tooltip';
 
 @Directive({
   selector: '[auiDropdownActive]',

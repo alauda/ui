@@ -13,7 +13,7 @@ import {
 import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { filter, map, takeUntil, tap } from 'rxjs/operators';
 
-import { TableComponent } from '../table/public-api';
+import { TableComponent } from '../table';
 
 import { FixedSizeTableVirtualScrollStrategy } from './fixed-size-table-virtual-scroll-strategy';
 
@@ -32,7 +32,7 @@ const defaults = {
 };
 
 @Directive({
-  // tslint:disable-next-line: directive-selector
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'aui-virtual-scroll-viewport[fixedSize]',
   exportAs: 'viewPort',
   providers: [

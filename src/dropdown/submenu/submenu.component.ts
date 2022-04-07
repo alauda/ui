@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { TooltipTrigger } from '../../tooltip/public-api';
+import { TooltipTrigger } from '../../tooltip';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils';
 import { MenuItemComponent } from '../menu-item/menu-item.component';

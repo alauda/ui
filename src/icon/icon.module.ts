@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ThemeModule } from '../theme/public-api';
+import { ThemeModule } from '../theme';
 
 import { ICON_REGISTER_SERVICE_PROVIDER } from './icon-register.service';
 import { IconComponent } from './icon.component';

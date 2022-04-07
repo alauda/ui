@@ -7,7 +7,7 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { InputModule, SearchComponent } from '../public-api';
+import { InputModule, SearchComponent } from '..';
 
 describe('SearchComponent', () => {
   let fixture: ComponentFixture<TestComponent>;

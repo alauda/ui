@@ -3,7 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { PaginatorComponent } from './paginator.component';
-import { PaginatorModule } from './public-api';
+
+import { PaginatorModule } from '.';
 
 describe('PaginatorComponent', () => {
   let fixture: ComponentFixture<TestComponent>;

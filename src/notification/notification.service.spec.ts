@@ -7,7 +7,7 @@ import {
   NOTIFICATION_CONFIG,
   NotificationModule,
   NotificationService,
-} from './public-api';
+} from '.';
 
 describe('NotificationService', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -87,7 +87,7 @@ describe('NotificationService', () => {
   it('should show a success notification with template', () => {
     notificationService.success({
       contentRef: fixture.componentInstance.templateRef,
-      duration: 10000,
+      duration: 10_000,
     });
     fixture.detectChanges();
 

@@ -29,7 +29,6 @@ import { AnchorComponent } from './anchor.component';
 let uid = 0;
 
 @Directive()
-// tslint:disable-next-line: directive-class-suffix
 export class AnchorDirectiveChild {
   readonly parent: AnchorDirective;
 

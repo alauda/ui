@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { ButtonType } from '../../button/public-api';
+import { ButtonType } from '../../button';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, coerceAttrBoolean } from '../../utils';
 import { MenuComponent } from '../menu/menu.component';

@@ -32,9 +32,11 @@ $icon-margin: use-var(spacing-m);
     &--warning {
       color: use-rgb(yellow);
     }
+
     &--success {
       color: use-rgb(green);
     }
+
     &--danger {
       color: use-rgb(red);
     }

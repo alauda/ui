@@ -31,11 +31,13 @@ $block: 'aui-number-input';
 
   &.isDisabled {
     border: 1px solid use-rgb(n-7);
+
     &:hover {
       cursor: not-allowed;
     }
     .#{$block}__input {
       color: use-rgb(n-6);
+
       &:hover {
         cursor: not-allowed;
       }
@@ -48,9 +50,11 @@ $block: 'aui-number-input';
     border: unset;
     width: use-var(icon-size-xl);
     height: use-var(icon-size-xl);
+
     aui-icon {
       font-size: use-var(font-size-s);
     }
+
     .aui-button__content {
       padding: unset;
     }
@@ -65,9 +69,11 @@ $block: 'aui-number-input';
     background-color: transparent;
     color: use-text-color(main);
     text-align: center;
+
     &:focus {
       border: unset;
     }
+
     &:focus-visible {
       outline: unset;
     }

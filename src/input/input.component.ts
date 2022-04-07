@@ -13,7 +13,7 @@ import { ComponentSize } from '../types';
 import { coerceAttrBoolean } from '../utils';
 
 @Component({
-  // tslint:disable-next-line: component-selector
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'input[aui-input],textarea[aui-input]',
   template: '<ng-content></ng-content>',
   styleUrls: ['./input.component.scss'],

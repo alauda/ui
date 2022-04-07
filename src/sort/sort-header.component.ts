@@ -22,7 +22,7 @@ import { SortDirective } from './sort.directive';
 import { ArrowViewState, SortDirection, Sortable } from './sort.types';
 
 @Component({
-  // tslint:disable-next-line: component-selector
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[aui-sort-header]',
   templateUrl: 'sort-header.component.html',
   styleUrls: ['sort-header.component.scss'],

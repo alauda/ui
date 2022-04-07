@@ -2,8 +2,8 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ButtonModule } from '../button/public-api';
-import { IconModule } from '../icon/public-api';
+import { ButtonModule } from '../button';
+import { IconModule } from '../icon';
 
 import {
   AccordionItemComponent,

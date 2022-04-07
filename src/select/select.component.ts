@@ -18,7 +18,7 @@ import {
   switchMap,
 } from 'rxjs/operators';
 
-import { InputComponent } from '../input/public-api';
+import { InputComponent } from '../input';
 import { coerceString } from '../utils';
 
 import { BaseSelect } from './base-select';

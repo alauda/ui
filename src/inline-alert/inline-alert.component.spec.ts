@@ -1,12 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import {
-  InlineAlertComponent,
-  InlineAlertModule,
-  InlineAlertType,
-} from './public-api';
+import { InlineAlertComponent, InlineAlertModule, InlineAlertType } from '.';
 
 describe('InlineAlertComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -26,24 +22,30 @@ describe('InlineAlertComponent', () => {
     ins.title = 'text title 1';
     fixture.detectChanges();
     expect(
-      (fixture.debugElement.query(
-        By.css('#inline-alert .aui-inline-alert__title'),
-      ).nativeElement as HTMLElement).textContent,
+      (
+        fixture.debugElement.query(
+          By.css('#inline-alert .aui-inline-alert__title'),
+        ).nativeElement as HTMLElement
+      ).textContent,
     ).toContain('text title 1');
 
     ins.content = 'text content 1';
     fixture.detectChanges();
     expect(
-      (fixture.debugElement.query(
-        By.css('#inline-alert .aui-inline-alert__content'),
-      ).nativeElement as HTMLElement).textContent,
+      (
+        fixture.debugElement.query(
+          By.css('#inline-alert .aui-inline-alert__content'),
+        ).nativeElement as HTMLElement
+      ).textContent,
     ).toContain('text content 1');
   });
 
   it('should be closed by click close button', () => {
-    (fixture.debugElement.query(
-      By.css('#inline-alert .aui-inline-alert__close'),
-    ).nativeElement as HTMLElement).click();
+    (
+      fixture.debugElement.query(
+        By.css('#inline-alert .aui-inline-alert__close'),
+      ).nativeElement as HTMLElement
+    ).click();
     fixture.detectChanges();
     expect(
       fixture.debugElement.query(By.css('#inline-alert aui-inline-alert')),
@@ -55,9 +57,11 @@ describe('InlineAlertComponent', () => {
       ins.inlineAlertRef.close.subscribe(() => {
         resolve();
       });
-      (fixture.debugElement.query(
-        By.css('#inline-alert .aui-inline-alert__close'),
-      ).nativeElement as HTMLElement).click();
+      (
+        fixture.debugElement.query(
+          By.css('#inline-alert .aui-inline-alert__close'),
+        ).nativeElement as HTMLElement
+      ).click();
       fixture.detectChanges();
     }));
 
@@ -91,8 +95,10 @@ describe('InlineAlertComponent', () => {
       fixture.componentInstance.type = type;
       fixture.detectChanges();
       expect(
-        (fixture.debugElement.query(By.css('#inline-alert .aui-inline-alert'))
-          .nativeElement as HTMLElement).className,
+        (
+          fixture.debugElement.query(By.css('#inline-alert .aui-inline-alert'))
+            .nativeElement as HTMLElement
+        ).className,
       ).toContain(`aui-inline-alert--${type}`);
     }
   });
@@ -109,6 +115,7 @@ describe('InlineAlertComponent', () => {
       #inlineAlertRef
     ></aui-inline-alert>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestComponent {
   title = '';

@@ -5,12 +5,44 @@
   },
   "overrides": [
     {
+      "files": [
+        "*.md",
+        "*.mdx"
+      ],
+      "parser": "eslint-mdx"
+    },
+    {
+      "files": "*.ts",
+      "rules": {
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": [
+              "aui"
+            ],
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": [
+              "aui"
+            ],
+            "style": "camelCase"
+          }
+        ]
+      }
+    },
+    {
       "files": "*.spec.ts",
       "rules": {
         "@typescript-eslint/no-extraneous-class": "off",
         "jest/expect-expect": "off",
         "jest/no-export": "off",
-        "sonarjs/no-duplicate-string": 0
+        "sonarjs/no-duplicate-string": "off"
       }
     }
   ],
@@ -21,8 +53,6 @@
     "@angular-eslint/no-input-rename": "off",
     "@angular-eslint/no-output-rename": "off",
     "@angular-eslint/no-host-metadata-property": "off",
-    "@typescript-eslint/no-useless-constructor": "off",
-    "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/no-unsafe-argument": "off"
   }
 }

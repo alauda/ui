@@ -1,10 +1,14 @@
-import { Component, DebugElement } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ComponentSize } from '../types';
 
-import { ButtonModule, ButtonType } from './public-api';
+import { ButtonModule, ButtonType } from '.';
 
 describe('ButtonComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -112,6 +116,7 @@ describe('ButtonComponent', () => {
       {{ content }}
     </button>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestComponent {
   type: ButtonType;

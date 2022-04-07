@@ -8,7 +8,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { CheckboxModule } from './public-api';
+import { CheckboxModule } from '.';
 
 describe('CheckboxComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -23,8 +23,9 @@ describe('CheckboxComponent', () => {
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
-    el = fixture.debugElement.query(By.css('.aui-checkbox__content'))
-      .nativeElement;
+    el = fixture.debugElement.query(
+      By.css('.aui-checkbox__content'),
+    ).nativeElement;
   });
 
   it('should render correct text content', () => {
@@ -35,36 +36,50 @@ describe('CheckboxComponent', () => {
 
   it('should render correct with click event', () => {
     // not-checked => checked
-    (fixture.debugElement.query(By.css('#checkbox2 input'))
-      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
+    (
+      fixture.debugElement.query(By.css('#checkbox2 input'))
+        .nativeElement as HTMLElement
+    ).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(
-      (fixture.debugElement.query(By.css('#checkbox2 .aui-checkbox'))
-        .nativeElement as HTMLElement).className,
+      (
+        fixture.debugElement.query(By.css('#checkbox2 .aui-checkbox'))
+          .nativeElement as HTMLElement
+      ).className,
     ).toContain('isChecked');
 
     // checked => not-checked
-    (fixture.debugElement.query(By.css('#checkbox1 input'))
-      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
+    (
+      fixture.debugElement.query(By.css('#checkbox1 input'))
+        .nativeElement as HTMLElement
+    ).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(
-      (fixture.debugElement.query(By.css('#checkbox1 .aui-checkbox'))
-        .nativeElement as HTMLElement).className,
+      (
+        fixture.debugElement.query(By.css('#checkbox1 .aui-checkbox'))
+          .nativeElement as HTMLElement
+      ).className,
     ).not.toContain('isChecked');
 
     // disabled: checked => checked
-    (fixture.debugElement.query(By.css('#checkbox3 input'))
-      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
+    (
+      fixture.debugElement.query(By.css('#checkbox3 input'))
+        .nativeElement as HTMLElement
+    ).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(
-      (fixture.debugElement.query(By.css('#checkbox3 .aui-checkbox'))
-        .nativeElement as HTMLElement).className,
+      (
+        fixture.debugElement.query(By.css('#checkbox3 .aui-checkbox'))
+          .nativeElement as HTMLElement
+      ).className,
     ).toContain('isChecked');
   });
 
   it('should render correct with ngModel', fakeAsync(() => {
-    (fixture.debugElement.query(By.css('#checkbox4 input'))
-      .nativeElement as HTMLElement).dispatchEvent(new Event('click'));
+    (
+      fixture.debugElement.query(By.css('#checkbox4 input'))
+        .nativeElement as HTMLElement
+    ).dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(ins.checkedMap.d).toBe(false);
     ins.checkedMap.d = true;
@@ -72,24 +87,39 @@ describe('CheckboxComponent', () => {
     tick();
     fixture.detectChanges();
     expect(
-      (fixture.debugElement.query(By.css('#checkbox4 .aui-checkbox'))
-        .nativeElement as HTMLElement).className,
+      (
+        fixture.debugElement.query(By.css('#checkbox4 .aui-checkbox'))
+          .nativeElement as HTMLElement
+      ).className,
     ).toContain('isChecked');
   }));
 });
 
 @Component({
   template: `
-    <aui-checkbox id="checkbox1" [(ngModel)]="checkedMap.a">
+    <aui-checkbox
+      id="checkbox1"
+      [(ngModel)]="checkedMap.a"
+    >
       {{ content }}
     </aui-checkbox>
-    <aui-checkbox id="checkbox2" [(ngModel)]="checkedMap.b">
+    <aui-checkbox
+      id="checkbox2"
+      [(ngModel)]="checkedMap.b"
+    >
       {{ content }}
     </aui-checkbox>
-    <aui-checkbox id="checkbox3" [(ngModel)]="checkedMap.c" [disabled]="true">
+    <aui-checkbox
+      id="checkbox3"
+      [(ngModel)]="checkedMap.c"
+      [disabled]="true"
+    >
       {{ content }}
     </aui-checkbox>
-    <aui-checkbox id="checkbox4" [(ngModel)]="checkedMap.d">
+    <aui-checkbox
+      id="checkbox4"
+      [(ngModel)]="checkedMap.d"
+    >
       {{ content }}
     </aui-checkbox>
   `,

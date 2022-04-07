@@ -9,6 +9,7 @@ $block: aui-calendar-header;
     align-items: center;
     justify-content: space-between;
   }
+
   &__nav-content {
     flex: 1;
     display: flex;
@@ -20,6 +21,7 @@ $block: aui-calendar-header;
 
     a {
       color: use-text-color(main);
+
       &:hover {
         color: use-rgb(primary);
         text-decoration: none !important;
@@ -31,6 +33,7 @@ $block: aui-calendar-header;
     }
   }
 }
+
 .action-bar {
   width: 52px;
   display: flex;

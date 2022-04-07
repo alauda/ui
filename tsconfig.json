@@ -25,7 +25,7 @@
     "strictNullChecks": false,
     "baseUrl": ".",
     "paths": {
-      "@alauda/ui": ["src/public-api"]
+      "@alauda/ui": ["src"]
     }
   },
   "angularCompilerOptions": {

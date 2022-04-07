@@ -4,11 +4,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ButtonModule } from '../button/public-api';
-import { I18nModule } from '../i18n/public-api';
-import { IconModule } from '../icon/public-api';
-import { InputModule } from '../input/public-api';
-import { TooltipModule } from '../tooltip/public-api';
+import { ButtonModule } from '../button';
+import { I18nModule } from '../i18n';
+import { IconModule } from '../icon';
+import { InputModule } from '../input';
+import { TooltipModule } from '../tooltip';
 
 import { TimePickerComponent } from './component';
 import { TimePickerPanelComponent } from './panel/panel.component';

@@ -18,7 +18,6 @@ const bem = buildBem('aui-date-picker-trigger');
 @Component({
   selector: 'aui-date-picker-trigger',
   templateUrl: './trigger.template.html',
-  // tslint:disable-next-line: validate-decorators
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./trigger.style.scss'],

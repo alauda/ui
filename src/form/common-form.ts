@@ -15,7 +15,6 @@ import { coerceAttrBoolean } from '../utils';
  * 也可以分别传入 value 和 监听 valueChange 事件以实现阻断用户操作的功能。
  */
 @Directive()
-// tslint:disable-next-line:directive-class-suffix
 export class CommonFormControl<V, M = V> implements ControlValueAccessor {
   @Input()
   get disabled() {

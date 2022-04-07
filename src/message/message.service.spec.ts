@@ -1,9 +1,15 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, NgModule, TemplateRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  NgModule,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MESSAGE_CONFIG, MessageModule, MessageService } from './public-api';
+import { MESSAGE_CONFIG, MessageModule, MessageService } from '.';
 
 describe('MessageService', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -17,7 +23,7 @@ describe('MessageService', () => {
         {
           provide: MESSAGE_CONFIG,
           useValue: {
-            duration: 10000,
+            duration: 10_000,
             maxStack: 3,
           },
         },
@@ -82,6 +88,7 @@ describe('MessageService', () => {
 
 @Component({
   template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestComponent {
   @ViewChild('template', { static: true })

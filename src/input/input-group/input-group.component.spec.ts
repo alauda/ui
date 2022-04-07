@@ -2,9 +2,9 @@ import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { IconModule } from '../../icon/public-api';
+import { InputModule } from '..';
+import { IconModule } from '../../icon';
 import { ComponentSize } from '../../types';
-import { InputModule } from '../public-api';
 
 describe('InputGroupComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -91,9 +91,19 @@ describe('InputGroupComponent', () => {
     <aui-input-group>
       <span auiInputAddonBefore>HTTPS</span>
       <span auiInputAddonAfter>GB</span>
-      <aui-icon auiInputPrefix icon="search_s"></aui-icon>
-      <aui-icon auiInputSuffix icon="spinner"></aui-icon>
-      <input aui-input [size]="size" placeholder="placeholder" />
+      <aui-icon
+        auiInputPrefix
+        icon="search_s"
+      ></aui-icon>
+      <aui-icon
+        auiInputSuffix
+        icon="spinner"
+      ></aui-icon>
+      <input
+        aui-input
+        [size]="size"
+        placeholder="placeholder"
+      />
     </aui-input-group>
   `,
 })

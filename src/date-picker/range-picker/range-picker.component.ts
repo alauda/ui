@@ -18,7 +18,6 @@ import { DisabledDateFn, DisabledTimeFn } from '../date-picker.type';
   selector: 'aui-range-picker',
   templateUrl: './range-picker.template.html',
   // provide tooltip class
-  // tslint:disable-next-line: validate-decorators
   encapsulation: ViewEncapsulation.Emulated,
   providers: [
     {

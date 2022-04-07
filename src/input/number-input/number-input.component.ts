@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { CommonFormControl } from '../../form/public-api';
+import { CommonFormControl } from '../../form';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, coerceNumber } from '../../utils';
 
@@ -31,7 +31,8 @@ import { Bem, buildBem, coerceNumber } from '../../utils';
 })
 export class NumberInputComponent
   extends CommonFormControl<number>
-  implements AfterViewInit {
+  implements AfterViewInit
+{
   bem: Bem = buildBem('aui-number-input');
 
   @Input()

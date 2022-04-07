@@ -9,7 +9,7 @@ aui-icon {
   width: 1em;
   height: 1em;
   vertical-align: -0.125em;
-  fill: currentColor;
+  fill: currentcolor;
 
   &__background {
     width: 1em;
@@ -46,6 +46,7 @@ aui-icon + aui-icon > .aui-icon {
   0% {
     transform: rotateZ(0deg);
   }
+
   100% {
     transform: rotateZ(360deg);
   }

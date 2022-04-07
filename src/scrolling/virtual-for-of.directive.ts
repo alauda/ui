@@ -18,7 +18,6 @@ import { Observable } from 'rxjs';
 export class VirtualForOfDirective<T> extends CdkVirtualForOf<T> {
   @Input()
   set auiVirtualForOf(
-    // tslint:disable-next-line: max-union-size
     value: DataSource<T> | Observable<T[]> | NgIterable<T> | null | undefined,
   ) {
     this.cdkVirtualForOf = value;

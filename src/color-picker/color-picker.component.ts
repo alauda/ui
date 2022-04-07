@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { CommonFormControl } from '../form/public-api';
+import { CommonFormControl } from '../form';
 
 @Component({
   selector: 'aui-color-picker',
