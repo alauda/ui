@@ -44,7 +44,6 @@
     "@angular/core": ">=13.0.0",
     "@angular/forms": ">=13.0.0",
     "@angular/platform-browser": ">=13.0.0",
-    "clipboard-polyfill": "^3.0.0",
     "dayjs": "^1.0.0",
     "rxjs": "^7.0.0"
   },
