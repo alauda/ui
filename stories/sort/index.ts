@@ -1,6 +1,7 @@
-import { Sort, SortModule } from '@alauda/ui';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { storiesOf } from '@storybook/angular';
+
+import { Sort, SortModule } from '@alauda/ui';
 
 storiesOf('Sort', module).add('sort', () => ({
   moduleMetadata: {
@@ -27,11 +28,19 @@ const DATA_SOURCE: Element[] = [
 
 @Component({
   template: `
-    <table auiSort (sortChange)="sortData($event)">
+    <table
+      auiSort
+      (sortChange)="sortData($event)"
+    >
       <tr>
         <th aui-sort-header="id">No.</th>
         <th aui-sort-header="name">Name</th>
-        <th aui-sort-header="value" start="desc">Value</th>
+        <th
+          aui-sort-header="value"
+          start="desc"
+        >
+          Value
+        </th>
       </tr>
       <tr *ngFor="let item of dataSource">
         <td>{{ item.id }}</td>
@@ -40,6 +49,7 @@ const DATA_SOURCE: Element[] = [
       </tr>
     </table>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class DemoComponent {
   dataSource = DATA_SOURCE.slice();

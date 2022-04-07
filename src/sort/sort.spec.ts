@@ -1,12 +1,7 @@
 /* eslint-disable jest/no-standalone-expect */
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { CdkTableModule } from '@angular/cdk/table';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -190,7 +185,6 @@ type SimpleAuiSortAppColumnIds = 'defaultA' | 'defaultB' | 'overrideStart';
       </div>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class SimpleSortAppComponent {
   latestSortEvent: Sort;

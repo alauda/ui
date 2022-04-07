@@ -64,7 +64,7 @@ export class TimePickerPanelComponent
         this.hourEnabled,
         this.minuteEnabled,
         this.secondEnabled,
-      ].filter(i => i).length;
+      ].filter(Boolean).length;
     }
   }
 

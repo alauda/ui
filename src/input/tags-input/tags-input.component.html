@@ -32,7 +32,9 @@
     (keydown)="onKeyDown($event)"
     (input)="onInput()"
   />
-  <span #inputValueMirror [class]="bem.element('mirror')">{{
-    inputRef.value
-  }}</span>
+  <span
+    #inputValueMirror
+    [class]="bem.element('mirror')"
+    >{{ inputRef.value }}</span
+  >
 </div>

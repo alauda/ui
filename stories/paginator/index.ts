@@ -1,4 +1,3 @@
-import { PaginatorIntl, PaginatorModule } from '@alauda/ui';
 import { Injectable } from '@angular/core';
 import {
   array,
@@ -9,6 +8,8 @@ import {
 } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/angular';
 import { Subject } from 'rxjs';
+
+import { PaginatorIntl, PaginatorModule } from '@alauda/ui';
 
 storiesOf('Paginator', module)
   .addDecorator(withKnobs)

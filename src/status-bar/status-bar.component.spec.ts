@@ -85,7 +85,11 @@ describe('Status Bar', () => {
       size="small"
       (statusClick)="onChunkClick($event)"
     ></aui-status-bar>
-    <ng-template #ref let-type="type" let-value="scale">
+    <ng-template
+      #ref
+      let-type="type"
+      let-value="scale"
+    >
       <div>{{ type }}: {{ value }}</div>
     </ng-template>
   `,
@@ -122,9 +126,7 @@ class TestComponent {
     },
   ];
 
-  onChunkClick: (
-    status: Status,
-  ) => {
+  onChunkClick: (status: Status) => {
     //
   };
 }

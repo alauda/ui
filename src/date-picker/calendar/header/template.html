@@ -17,10 +17,16 @@
     *ngIf="dateNavRange === DateNavRange.Month"
     [class]="bem.element('nav-content')"
   >
-    <a href="javascript:;" (click)="clickNav(DateNavRange.Year)">
+    <a
+      href="javascript:;"
+      (click)="clickNav(DateNavRange.Year)"
+    >
       {{ headerRange?.start?.year() }}{{ 'year_suffix' | auiI18n }}
     </a>
-    <a href="javascript:;" (click)="clickNav(DateNavRange.Month)">
+    <a
+      href="javascript:;"
+      (click)="clickNav(DateNavRange.Month)"
+    >
       {{ headerRange?.start?.month() + 1 }}{{ 'month_suffix' | auiI18n }}
     </a>
   </span>
@@ -29,7 +35,10 @@
     *ngIf="dateNavRange === DateNavRange.Year"
     [class]="bem.element('nav-content')"
   >
-    <a href="javascript:;" (click)="clickNav(DateNavRange.Year)">
+    <a
+      href="javascript:;"
+      (click)="clickNav(DateNavRange.Year)"
+    >
       {{ headerRange?.start?.year() }}{{ 'year_suffix' | auiI18n }}
     </a>
   </span>
@@ -56,7 +65,10 @@
   </div>
 </div>
 
-<ng-template #yearControl let-side="side">
+<ng-template
+  #yearControl
+  let-side="side"
+>
   <span class="action-bar">
     <button
       aui-button="text"
@@ -92,7 +104,10 @@
   </span>
 </ng-template>
 
-<ng-template #decadeControl let-side="side">
+<ng-template
+  #decadeControl
+  let-side="side"
+>
   <button
     aui-button="text"
     (click)="navHead(DateNavRange.Decade, side === 'left' ? -10 : 10)"

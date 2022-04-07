@@ -34,7 +34,10 @@ import {
 ## 基本
 
 <Canvas>
-  <Story name="Basic" height="120px">
+  <Story
+    name="Basic"
+    height="120px"
+  >
     {{
       template: /* HTML */ `
         <aui-tag type="primary">primary</aui-tag>
@@ -53,14 +56,42 @@ import {
 ## 边框
 
 <Canvas>
-  <Story name="Borderd" height="60px">
+  <Story
+    name="Borderd"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
-        <aui-tag type="primary" [border]="true" size="mini">primary</aui-tag>
-        <aui-tag type="success" [border]="true" size="mini">success</aui-tag>
-        <aui-tag type="warning" [border]="true" size="mini">warning</aui-tag>
-        <aui-tag type="error" [border]="true" size="mini">error</aui-tag>
-        <aui-tag type="info" [border]="true" size="mini">info</aui-tag>
+        <aui-tag
+          type="primary"
+          [border]="true"
+          size="mini"
+          >primary</aui-tag
+        >
+        <aui-tag
+          type="success"
+          [border]="true"
+          size="mini"
+          >success</aui-tag
+        >
+        <aui-tag
+          type="warning"
+          [border]="true"
+          size="mini"
+          >warning</aui-tag
+        >
+        <aui-tag
+          type="error"
+          [border]="true"
+          size="mini"
+          >error</aui-tag
+        >
+        <aui-tag
+          type="info"
+          [border]="true"
+          size="mini"
+          >info</aui-tag
+        >
       `,
     }}
   </Story>
@@ -69,7 +100,10 @@ import {
 ## 大小
 
 <Canvas>
-  <Story name="Size" height="120px">
+  <Story
+    name="Size"
+    height="120px"
+  >
     {{
       template: /* HTML */ `
         <aui-radio-group [(ngModel)]="size">
@@ -78,17 +112,36 @@ import {
           <aui-radio [value]="ComponentSize.Medium">大标签</aui-radio>
         </aui-radio-group>
         <br />
-        <aui-tag type="primary" [border]="border" [size]="size"
+        <aui-tag
+          type="primary"
+          [border]="border"
+          [size]="size"
           >primary</aui-tag
         >
-        <aui-tag type="success" [border]="border" [size]="size"
+        <aui-tag
+          type="success"
+          [border]="border"
+          [size]="size"
           >success</aui-tag
         >
-        <aui-tag type="warning" [border]="border" [size]="size"
+        <aui-tag
+          type="warning"
+          [border]="border"
+          [size]="size"
           >warning</aui-tag
         >
-        <aui-tag type="error" [border]="border" [size]="size">error</aui-tag>
-        <aui-tag type="info" [border]="border" [size]="size">info</aui-tag>
+        <aui-tag
+          type="error"
+          [border]="border"
+          [size]="size"
+          >error</aui-tag
+        >
+        <aui-tag
+          type="info"
+          [border]="border"
+          [size]="size"
+          >info</aui-tag
+        >
       `,
       props: {
         border: false,
@@ -102,14 +155,42 @@ import {
 ## 实心
 
 <Canvas>
-  <Story name="Solid" height="60px">
+  <Story
+    name="Solid"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
-        <aui-tag type="primary" [solid]="true" size="mini">primary</aui-tag>
-        <aui-tag type="success" [solid]="true" size="mini">success</aui-tag>
-        <aui-tag type="warning" [solid]="true" size="mini">warning</aui-tag>
-        <aui-tag type="error" [solid]="true" size="mini">erro</aui-tag>
-        <aui-tag type="info" [solid]="true" size="mini">info</aui-tag>
+        <aui-tag
+          type="primary"
+          [solid]="true"
+          size="mini"
+          >primary</aui-tag
+        >
+        <aui-tag
+          type="success"
+          [solid]="true"
+          size="mini"
+          >success</aui-tag
+        >
+        <aui-tag
+          type="warning"
+          [solid]="true"
+          size="mini"
+          >warning</aui-tag
+        >
+        <aui-tag
+          type="error"
+          [solid]="true"
+          size="mini"
+          >erro</aui-tag
+        >
+        <aui-tag
+          type="info"
+          [solid]="true"
+          size="mini"
+          >info</aui-tag
+        >
       `,
     }}
   </Story>
@@ -118,14 +199,42 @@ import {
 ## 可关闭
 
 <Canvas>
-  <Story name="Closeable" height="60px">
+  <Story
+    name="Closeable"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
-        <aui-tag type="primary" [closeable]="true" size="mini">primary</aui-tag>
-        <aui-tag type="success" [closeable]="true" size="mini">success</aui-tag>
-        <aui-tag type="warning" [closeable]="true" size="mini">warning</aui-tag>
-        <aui-tag type="error" [closeable]="true" size="mini">erro</aui-tag>
-        <aui-tag type="info" [closeable]="true" size="mini">info</aui-tag>
+        <aui-tag
+          type="primary"
+          [closeable]="true"
+          size="mini"
+          >primary</aui-tag
+        >
+        <aui-tag
+          type="success"
+          [closeable]="true"
+          size="mini"
+          >success</aui-tag
+        >
+        <aui-tag
+          type="warning"
+          [closeable]="true"
+          size="mini"
+          >warning</aui-tag
+        >
+        <aui-tag
+          type="error"
+          [closeable]="true"
+          size="mini"
+          >erro</aui-tag
+        >
+        <aui-tag
+          type="info"
+          [closeable]="true"
+          size="mini"
+          >info</aui-tag
+        >
       `,
     }}
   </Story>
@@ -134,14 +243,42 @@ import {
 ## 无效
 
 <Canvas>
-  <Story name="Invalid" height="60px">
+  <Story
+    name="Invalid"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
-        <aui-tag type="primary" [invalid]="true" size="mini">primary</aui-tag>
-        <aui-tag type="success" [invalid]="true" size="mini">success</aui-tag>
-        <aui-tag type="warning" [invalid]="true" size="mini">warning</aui-tag>
-        <aui-tag type="error" [invalid]="true" size="mini">erro</aui-tag>
-        <aui-tag type="info" [invalid]="true" size="mini">info</aui-tag>
+        <aui-tag
+          type="primary"
+          [invalid]="true"
+          size="mini"
+          >primary</aui-tag
+        >
+        <aui-tag
+          type="success"
+          [invalid]="true"
+          size="mini"
+          >success</aui-tag
+        >
+        <aui-tag
+          type="warning"
+          [invalid]="true"
+          size="mini"
+          >warning</aui-tag
+        >
+        <aui-tag
+          type="error"
+          [invalid]="true"
+          size="mini"
+          >erro</aui-tag
+        >
+        <aui-tag
+          type="info"
+          [invalid]="true"
+          size="mini"
+          >info</aui-tag
+        >
       `,
     }}
   </Story>
@@ -150,14 +287,42 @@ import {
 ## 直角
 
 <Canvas>
-  <Story name="Square" height="60px">
+  <Story
+    name="Square"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
-        <aui-tag type="primary" [round]="false" size="mini">primary</aui-tag>
-        <aui-tag type="success" [round]="false" size="mini">success</aui-tag>
-        <aui-tag type="warning" [round]="false" size="mini">warning</aui-tag>
-        <aui-tag type="error" [round]="false" size="mini">erro</aui-tag>
-        <aui-tag type="info" [round]="false" size="mini">info</aui-tag>
+        <aui-tag
+          type="primary"
+          [round]="false"
+          size="mini"
+          >primary</aui-tag
+        >
+        <aui-tag
+          type="success"
+          [round]="false"
+          size="mini"
+          >success</aui-tag
+        >
+        <aui-tag
+          type="warning"
+          [round]="false"
+          size="mini"
+          >warning</aui-tag
+        >
+        <aui-tag
+          type="error"
+          [round]="false"
+          size="mini"
+          >erro</aui-tag
+        >
+        <aui-tag
+          type="info"
+          [round]="false"
+          size="mini"
+          >info</aui-tag
+        >
       `,
     }}
   </Story>
@@ -166,10 +331,17 @@ import {
 ## 自定义颜色
 
 <Canvas>
-  <Story name="Custom" height="60px">
+  <Story
+    name="Custom"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
-        <aui-tag [color]="'#7c70e2,#f2f1fd'" size="mini">custom</aui-tag>
+        <aui-tag
+          [color]="'#7c70e2,#f2f1fd'"
+          size="mini"
+          >custom</aui-tag
+        >
       `,
     }}
   </Story>
@@ -178,10 +350,17 @@ import {
 ## 可勾选
 
 <Canvas>
-  <Story name="Check" height="60px">
+  <Story
+    name="Check"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
-        <aui-check-tag [(checked)]="model" size="mini">check</aui-check-tag>
+        <aui-check-tag
+          [(checked)]="model"
+          size="mini"
+          >check</aui-check-tag
+        >
         value: {{ model }}
         <br />
       `,
@@ -195,22 +374,40 @@ import {
 ## 可点击
 
 <Canvas>
-  <Story name="Click" height="60px">
+  <Story
+    name="Click"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
-        <aui-tag type="primary" [allowClick]="true" size="mini"
+        <aui-tag
+          type="primary"
+          [allowClick]="true"
+          size="mini"
           ><a>primary</a></aui-tag
         >
-        <aui-tag type="success" [allowClick]="true" size="mini"
+        <aui-tag
+          type="success"
+          [allowClick]="true"
+          size="mini"
           ><a>success</a></aui-tag
         >
-        <aui-tag type="warning" [allowClick]="true" size="mini"
+        <aui-tag
+          type="warning"
+          [allowClick]="true"
+          size="mini"
           ><a>warning</a></aui-tag
         >
-        <aui-tag type="error" [allowClick]="true" size="mini"
+        <aui-tag
+          type="error"
+          [allowClick]="true"
+          size="mini"
           ><a>error</a></aui-tag
         >
-        <aui-tag type="info" [allowClick]="true" size="mini"
+        <aui-tag
+          type="info"
+          [allowClick]="true"
+          size="mini"
           ><a>info</a></aui-tag
         >
       `,
@@ -224,27 +421,61 @@ import {
 ## Icon
 
 <Canvas>
-  <Story name="Icon" height="60px">
+  <Story
+    name="Icon"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
-        <aui-tag type="primary" [border]="true" size="mini">
-          <aui-icon icon="exclamation_circle_s" background="circle"></aui-icon>
+        <aui-tag
+          type="primary"
+          [border]="true"
+          size="mini"
+        >
+          <aui-icon
+            icon="exclamation_circle_s"
+            background="circle"
+          ></aui-icon>
           primary</aui-tag
         >
-        <aui-tag type="success" [border]="true" size="mini"
-          ><aui-icon icon="exclamation_circle_s" background="circle"></aui-icon>
+        <aui-tag
+          type="success"
+          [border]="true"
+          size="mini"
+          ><aui-icon
+            icon="exclamation_circle_s"
+            background="circle"
+          ></aui-icon>
           success</aui-tag
         >
-        <aui-tag type="warning" [border]="true" size="mini"
-          ><aui-icon icon="exclamation_circle_s" background="circle"></aui-icon>
+        <aui-tag
+          type="warning"
+          [border]="true"
+          size="mini"
+          ><aui-icon
+            icon="exclamation_circle_s"
+            background="circle"
+          ></aui-icon>
           warning</aui-tag
         >
-        <aui-tag type="error" [border]="true" size="mini"
-          ><aui-icon icon="exclamation_circle_s" background="circle"></aui-icon>
+        <aui-tag
+          type="error"
+          [border]="true"
+          size="mini"
+          ><aui-icon
+            icon="exclamation_circle_s"
+            background="circle"
+          ></aui-icon>
           error</aui-tag
         >
-        <aui-tag type="info" [border]="true" size="mini"
-          ><aui-icon icon="exclamation_circle_s" background="circle"></aui-icon>
+        <aui-tag
+          type="info"
+          [border]="true"
+          size="mini"
+          ><aui-icon
+            icon="exclamation_circle_s"
+            background="circle"
+          ></aui-icon>
           info</aui-tag
         >
       `,

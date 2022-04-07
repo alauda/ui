@@ -1,4 +1,7 @@
-<div #elRef [ngClass]="rootClass">
+<div
+  #elRef
+  [ngClass]="rootClass"
+>
   <input
     [name]="name"
     [id]="id"
@@ -14,7 +17,10 @@
     class="aui-radio-button__pointer"
     icon="check_triangle_s"
   ></aui-icon>
-  <label class="aui-radio-button__label" [for]="id">
+  <label
+    class="aui-radio-button__label"
+    [for]="id"
+  >
     <span class="aui-radio-button__content"><ng-content></ng-content></span>
   </label>
 </div>

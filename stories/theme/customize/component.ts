@@ -79,10 +79,13 @@ class ColorSchema {
   private readonly schema: Record<string, string>;
 
   constructor(seed: Record<string, string>) {
-    this.schema = Object.entries(seed).reduce((schema, [name, value]) => {
-      Object.assign(schema, this.calcColors(name, value));
-      return schema;
-    }, {} as Record<string, string>);
+    this.schema = Object.entries(seed).reduce<Record<string, string>>(
+      (schema, [name, value]) => {
+        Object.assign(schema, this.calcColors(name, value));
+        return schema;
+      },
+      {},
+    );
   }
 
   get(name: string) {
@@ -99,14 +102,14 @@ class ColorSchema {
 
   private calcColors(name: string, value: string) {
     const shortName = name.charAt(0);
-    return this.calcColorStack(value).reduce(
+    return this.calcColorStack(value).reduce<Record<string, string>>(
       (acc, curr, index) => {
         acc[`${shortName}-${index}`] = curr;
         return acc;
       },
       {
         [name]: value,
-      } as Record<string, string>,
+      },
     );
   }
 

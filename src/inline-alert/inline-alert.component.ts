@@ -53,8 +53,6 @@ export class InlineAlertComponent {
       case InlineAlertType.Danger:
       case InlineAlertType.Error:
         return 'exclamation_triangle_s';
-      case InlineAlertType.Primary:
-      case InlineAlertType.Info:
       default:
         return 'info_circle_s';
     }

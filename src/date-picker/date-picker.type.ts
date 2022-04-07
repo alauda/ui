@@ -5,9 +5,7 @@ export enum Side {
   Right = 'right',
 }
 
-export type DisabledTimeFn = (
-  date?: ConfigType,
-) => {
+export type DisabledTimeFn = (date?: ConfigType) => {
   hours: () => number[];
   minutes: (hour?: number) => number[];
   seconds: (hour?: number, minute?: number) => number[];

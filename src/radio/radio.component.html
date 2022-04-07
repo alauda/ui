@@ -1,4 +1,7 @@
-<div #elRef [ngClass]="rootClass">
+<div
+  #elRef
+  [ngClass]="rootClass"
+>
   <input
     [name]="name"
     [id]="id"
@@ -9,7 +12,10 @@
     (click)="onClick()"
     (blur)="onBlur()"
   />
-  <label class="aui-radio__label" [for]="id">
+  <label
+    class="aui-radio__label"
+    [for]="id"
+  >
     <i class="aui-radio__pointer"></i>
     <span class="aui-radio__content"><ng-content></ng-content></span>
   </label>

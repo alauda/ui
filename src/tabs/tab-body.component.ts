@@ -18,6 +18,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
+
 import { coerceAttrBoolean } from '../utils';
 
 @Component({

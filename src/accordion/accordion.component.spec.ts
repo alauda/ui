@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -55,7 +55,6 @@ describe('AccordionComponent', () => {
       </aui-accordion-item>
     </aui-accordion>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestComponent {
   multi: boolean;

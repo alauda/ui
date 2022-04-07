@@ -62,6 +62,7 @@ export class IconRegisterService {
   }
 }
 
+// eslint-disable-next-line sonar/function-name
 export function ICON_REGISTER_PROVIDER_FACTORY(
   parentRegister: IconRegisterService,
   document: Document,

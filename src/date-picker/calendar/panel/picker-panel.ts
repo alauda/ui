@@ -132,15 +132,26 @@ export class PickerPanelComponent implements OnChanges {
       this.panelData = [[]];
     }
     const [...values] = getDatePanelIterable(date, navRange, this.weekStartDay);
-    if (navRange === DateNavRange.Month) {
-      colCounts = DAY_PANEL_COLUMN_COUNT;
-      rowCounts = DAY_PANEL_ROW_COUNT;
-    } else if (navRange === DateNavRange.Decade) {
-      colCounts = YEAR_PANEL_COLUMN_COUNT;
-      rowCounts = YEAR_PANEL_ROW_COUNT;
-    } else if (navRange === DateNavRange.Year) {
-      colCounts = MONTH_PANEL_COLUMN_COUNT;
-      rowCounts = MONTH_PANEL_ROW_COUNT;
+    switch (navRange) {
+      case DateNavRange.Month: {
+        colCounts = DAY_PANEL_COLUMN_COUNT;
+        rowCounts = DAY_PANEL_ROW_COUNT;
+
+        break;
+      }
+      case DateNavRange.Decade: {
+        colCounts = YEAR_PANEL_COLUMN_COUNT;
+        rowCounts = YEAR_PANEL_ROW_COUNT;
+
+        break;
+      }
+      case DateNavRange.Year: {
+        colCounts = MONTH_PANEL_COLUMN_COUNT;
+        rowCounts = MONTH_PANEL_ROW_COUNT;
+
+        break;
+      }
+      // No default
     }
     for (let k = 0; k < rowCounts; k++) {
       const row = [];

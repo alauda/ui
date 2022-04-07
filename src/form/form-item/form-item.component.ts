@@ -111,7 +111,7 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
       switchMap((controls: QueryList<NgControl>) =>
         combineLatest(
           controls.map(control => this.mapControlStatus(control)),
-        ).pipe(map(statuses => statuses.some(status => status))),
+        ).pipe(map(statuses => statuses.some(Boolean))),
       ),
     );
 

@@ -234,9 +234,10 @@ describe('DialogService', () => {
         });
       fixture.detectChanges();
 
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- no idea
       const cancelBtn = ocEl.querySelector(
         '.aui-confirm-dialog__cancel-button',
-      );
+      ) as HTMLButtonElement;
       cancelBtn.dispatchEvent(new Event('click'));
       fixture.detectChanges();
 
@@ -304,7 +305,6 @@ class TestComponent {
 }
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'test-dialog-content',
   template: `
     <aui-dialog-header>title</aui-dialog-header>

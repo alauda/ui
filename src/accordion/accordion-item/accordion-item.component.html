@@ -22,7 +22,10 @@
     [id]="id"
     [@expand]="expanded ? 'expanded' : 'collapsed'"
   >
-    <div class="aui-accordion-item__content" [class.hasBackground]="background">
+    <div
+      class="aui-accordion-item__content"
+      [class.hasBackground]="background"
+    >
       <ng-content></ng-content>
       <ng-template [ngTemplateOutlet]="lazyContentTpl"></ng-template>
     </div>

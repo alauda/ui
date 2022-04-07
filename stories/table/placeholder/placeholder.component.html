@@ -57,7 +57,12 @@
   <aui-table-row
     *auiTableRowDef="let row; columns: ['id', 'name', 'value']"
   ></aui-table-row>
-  <div *auiTablePlaceholderDef class="placeholder">加载中</div>
+  <div
+    *auiTablePlaceholderDef
+    class="placeholder"
+  >
+    加载中
+  </div>
 </aui-table>
 
 <aui-table [dataSource]="[]">
@@ -87,5 +92,10 @@
   <aui-table-row
     *auiTableRowDef="let row; columns: ['id', 'name', 'value']"
   ></aui-table-row>
-  <div *auiTablePlaceholderDef class="placeholder">无数据</div>
+  <div
+    *auiTablePlaceholderDef
+    class="placeholder"
+  >
+    无数据
+  </div>
 </aui-table>

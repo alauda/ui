@@ -22,6 +22,7 @@ export class PaginatorIntl {
   getTotalLabel = (length: number) => `Total ${length}`;
 }
 
+// eslint-disable-next-line sonar/function-name
 export function PAGINATOR_INTL_PROVIDER_FACTORY(parentIntl: PaginatorIntl) {
   return parentIntl || new PaginatorIntl();
 }

@@ -1,4 +1,3 @@
-import { ComponentSize, IconModule, InputModule } from '@alauda/ui';
 import {
   FormControl,
   FormsModule,
@@ -14,6 +13,8 @@ import {
   withKnobs,
 } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/angular';
+
+import { ComponentSize, IconModule, InputModule } from '@alauda/ui';
 
 storiesOf('Input', module)
   .addDecorator(withKnobs)
@@ -102,8 +103,14 @@ storiesOf('Input', module)
           <aui-input-group>
             <span auiInputAddonBefore>HTTPS</span>
             <span auiInputAddonAfter>GB</span>
-            <aui-icon auiInputPrefix icon="search_s"></aui-icon>
-            <aui-icon auiInputSuffix icon="spinner"></aui-icon>
+            <aui-icon
+              auiInputPrefix
+              icon="search_s"
+            ></aui-icon>
+            <aui-icon
+              auiInputSuffix
+              icon="spinner"
+            ></aui-icon>
             <input
               aui-input
               size="large"
@@ -116,8 +123,14 @@ storiesOf('Input', module)
           <aui-input-group>
             <span auiInputAddonBefore>HTTPS</span>
             <span auiInputAddonAfter>GB</span>
-            <aui-icon auiInputPrefix icon="search_s"></aui-icon>
-            <aui-icon auiInputSuffix icon="spinner"></aui-icon>
+            <aui-icon
+              auiInputPrefix
+              icon="search_s"
+            ></aui-icon>
+            <aui-icon
+              auiInputSuffix
+              icon="spinner"
+            ></aui-icon>
             <input
               aui-input
               size="medium"
@@ -130,8 +143,14 @@ storiesOf('Input', module)
           <aui-input-group>
             <span auiInputAddonBefore>HTTPS</span>
             <span auiInputAddonAfter>GB</span>
-            <aui-icon auiInputPrefix icon="search_s"></aui-icon>
-            <aui-icon auiInputSuffix icon="spinner"></aui-icon>
+            <aui-icon
+              auiInputPrefix
+              icon="search_s"
+            ></aui-icon>
+            <aui-icon
+              auiInputSuffix
+              icon="spinner"
+            ></aui-icon>
             <input
               aui-input
               size="small"
@@ -144,8 +163,14 @@ storiesOf('Input', module)
           <aui-input-group>
             <span auiInputAddonBefore>HTTPS</span>
             <span auiInputAddonAfter>GB</span>
-            <aui-icon auiInputPrefix icon="search_s"></aui-icon>
-            <aui-icon auiInputSuffix icon="spinner"></aui-icon>
+            <aui-icon
+              auiInputPrefix
+              icon="search_s"
+            ></aui-icon>
+            <aui-icon
+              auiInputSuffix
+              icon="spinner"
+            ></aui-icon>
             <input
               aui-input
               size="mini"
@@ -336,10 +361,12 @@ storiesOf('Input', module)
       moduleMetadata: {
         imports: [FormsModule, InputModule],
       },
-      template: /* HTML */ `<textarea
-        [autosize]="{ minRows: minRows, maxRows: maxRows }"
-        [(ngModel)]="value"
-      ></textarea>`,
+      template: /* HTML */ `
+        <textarea
+          [autosize]="{ minRows: minRows, maxRows: maxRows }"
+          [(ngModel)]="value"
+        ></textarea>
+      `,
       props: {
         minRows,
         maxRows,

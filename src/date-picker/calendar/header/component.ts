@@ -64,9 +64,8 @@ export class CalendarHeaderComponent {
   // maxAvail > current date ：right btn hide
   // minAvail > current date ：left btn hide
   shouldShowNav(type: DateNavRange, side: Side) {
-    const availValue = (side === Side.Left
-      ? this._minAvail
-      : this._maxAvail
+    const availValue = (
+      side === Side.Left ? this._minAvail : this._maxAvail
     )?.clone();
     if (!availValue) {
       return true;

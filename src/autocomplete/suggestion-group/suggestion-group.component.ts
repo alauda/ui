@@ -40,7 +40,7 @@ export class SuggestionGroupComponent implements AfterContentInit {
           ? combineLatest(options.map(node => node.visible$))
           : of([false]),
       ),
-      map(visible => visible.some(value => value)),
+      map(visible => visible.some(Boolean)),
       publishReplay(1),
       refCount(),
     );

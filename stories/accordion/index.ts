@@ -1,7 +1,8 @@
-import { AccordionModule } from '@alauda/ui';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/angular';
+
+import { AccordionModule } from '@alauda/ui';
 
 storiesOf('Accordion', module)
   .addDecorator(withKnobs)
@@ -13,7 +14,10 @@ storiesOf('Accordion', module)
         imports: [BrowserAnimationsModule, AccordionModule],
       },
       template: /* HTML */ `
-        <aui-accordion [multi]="multi" [background]="background">
+        <aui-accordion
+          [multi]="multi"
+          [background]="background"
+        >
           <aui-accordion-item [disabled]="true">
             <div auiAccordionItemHeader>header1</div>
             <div>accordion item content1</div>

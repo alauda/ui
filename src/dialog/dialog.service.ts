@@ -97,17 +97,15 @@ export class DialogService {
 
   private hiddenPrevDialog() {
     if (this.openDialogs.length > 0) {
-      this.openDialogs[
-        this.openDialogs.length - 1
-      ].dialogInstance.hidden = true;
+      this.openDialogs[this.openDialogs.length - 1].dialogInstance.hidden =
+        true;
     }
   }
 
   private showPrevDialog() {
     if (this.openDialogs.length > 0) {
-      this.openDialogs[
-        this.openDialogs.length - 1
-      ].dialogInstance.hidden = false;
+      this.openDialogs[this.openDialogs.length - 1].dialogInstance.hidden =
+        false;
     }
   }
 

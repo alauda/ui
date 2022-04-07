@@ -66,7 +66,10 @@
       >
       </aui-calendar-footer>
       <ng-template #todayBtn>
-        <button aui-button="inline" (click)="setToday()">
+        <button
+          aui-button="inline"
+          (click)="setToday()"
+        >
           {{ 'today' | auiI18n }}
         </button>
       </ng-template>

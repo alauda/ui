@@ -1,6 +1,12 @@
 <div [class]="bem.block()">
-  <div *ngFor="let layout of getLayoutArr()" [class]="bem.element('layout')">
-    <div *ngIf="layout === 'pager'" [class]="bem.element('pager')">
+  <div
+    *ngFor="let layout of getLayoutArr()"
+    [class]="bem.element('layout')"
+  >
+    <div
+      *ngIf="layout === 'pager'"
+      [class]="bem.element('pager')"
+    >
       <button
         [ngClass]="bem.element('navigator')"
         aui-button
@@ -67,23 +73,35 @@
         <aui-icon icon="angle_right"></aui-icon>
       </button>
     </div>
-    <div *ngIf="layout === 'total'" [class]="bem.element('total')">
+    <div
+      *ngIf="layout === 'total'"
+      [class]="bem.element('total')"
+    >
       {{ intl.getTotalLabel(total) }}
     </div>
-    <div *ngIf="layout === 'sizes'" [class]="bem.element('sizes')">
+    <div
+      *ngIf="layout === 'sizes'"
+      [class]="bem.element('sizes')"
+    >
       <aui-select
         [disabled]="disabled"
         [value]="pageSize"
         [filterable]="false"
         (valueChange)="changePageSize($event)"
       >
-        <aui-option *ngFor="let size of pageSizeOptions" [value]="size">
+        <aui-option
+          *ngFor="let size of pageSizeOptions"
+          [value]="size"
+        >
           {{ size }}
         </aui-option>
       </aui-select>
       <span>{{ intl.itemsPerPageLabel }}</span>
     </div>
-    <div *ngIf="layout === 'jumper'" [class]="bem.element('jumper')">
+    <div
+      *ngIf="layout === 'jumper'"
+      [class]="bem.element('jumper')"
+    >
       <span *ngIf="intl.jumperLabelPrefix">{{ intl.jumperLabelPrefix }}</span>
       <input
         aui-input
@@ -96,7 +114,10 @@
       />
       <span *ngIf="intl.jumperLabelSuffix">{{ intl.jumperLabelSuffix }}</span>
     </div>
-    <div *ngIf="layout === 'content'" [class]="bem.element('content')">
+    <div
+      *ngIf="layout === 'content'"
+      [class]="bem.element('content')"
+    >
       <ng-content></ng-content>
     </div>
   </div>

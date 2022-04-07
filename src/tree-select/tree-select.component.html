@@ -26,7 +26,10 @@
       (blur)="closeNodes()"
       (keydown)="onKeyDown($event)"
     />
-    <span auiInputSuffix class="aui-tree-select__icon-container">
+    <span
+      auiInputSuffix
+      class="aui-tree-select__icon-container"
+    >
       <aui-icon
         class="aui-tree-select__indicator"
         [icon]="loading ? 'spinner' : 'caret_down_s'"
@@ -46,7 +49,10 @@
     [style.minWidth]="containerWidth"
     (mousedown)="$event.preventDefault()"
   >
-    <div #nodeListRef class="aui-tree-node-container__content">
+    <div
+      #nodeListRef
+      class="aui-tree-node-container__content"
+    >
       <aui-tree-node
         *ngFor="let data of nodesData; trackBy: trackByLabel"
         [nodeData]="data"

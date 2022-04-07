@@ -16,7 +16,7 @@
       *ngFor="let tab of _tabs; let i = index"
       auiTabLabelWrapper
       cdkMonitorElementFocus
-      [class.isActive]="selectedIndex == i"
+      [class.isActive]="selectedIndex === i"
       [class.closeable]="tab.closeable && !tab.disabled"
       [disabled]="tab.disabled"
       (click)="_handleClick(tab, i)"

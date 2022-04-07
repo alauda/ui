@@ -1,5 +1,5 @@
 {
-  "include": ["src", "stories"],
+  "include": ["src", "stories", "jest.setup.ts"],
   "exclude": ["release", "dist"],
   "compilerOptions": {
     "declaration": true,

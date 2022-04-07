@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -115,7 +115,6 @@ describe('InlineAlertComponent', () => {
       #inlineAlertRef
     ></aui-inline-alert>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestComponent {
   title = '';

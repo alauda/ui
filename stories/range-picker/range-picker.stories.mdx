@@ -20,7 +20,10 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
 />
 
 <Canvas>
-  <Story name="Range Picker" height="500px">
+  <Story
+    name="Range Picker"
+    height="500px"
+  >
     {{
       template: /* HTML */ `<aui-range-picker
           [(ngModel)]="range"
@@ -37,7 +40,10 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
 </Canvas>
 
 <Canvas>
-  <Story name="Without time" height="500px">
+  <Story
+    name="Without time"
+    height="500px"
+  >
     {{
       template: /* HTML */ ` <aui-range-picker
           [(ngModel)]="range"
@@ -53,7 +59,10 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
 </Canvas>
 
 <Canvas>
-  <Story name="Disabled" height="500px">
+  <Story
+    name="Disabled"
+    height="500px"
+  >
     {{
       template: /* HTML */ `<aui-range-picker
           [formControl]="control"
@@ -72,7 +81,10 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
 </Canvas>
 
 <Canvas>
-  <Story name="Custom format" height="500px">
+  <Story
+    name="Custom format"
+    height="500px"
+  >
     {{
       template: /* HTML */ ` <aui-range-picker
           [(ngModel)]="range"
@@ -91,7 +103,10 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
 </Canvas>
 
 <Canvas>
-  <Story name="Disable some day" height="500px">
+  <Story
+    name="Disable some day"
+    height="500px"
+  >
     {{
       template: /* HTML */ ` <aui-range-picker
           [(ngModel)]="range"
@@ -108,14 +123,14 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
         range: [dayjs(), dayjs()],
         minDate: dayjs().add(3, 'day'),
         maxDate: dayjs().add(10, 'day'),
-        disableDateFn: function (date, navRange) {
+        disableDateFn(date, navRange) {
           return (
             (navRange === DateNavRange.Month &&
               date.isBefore(dayjs(), 'date')) ||
             date.isSame(dayjs().add(1, 'month').add(2, 'date'), 'date')
           );
         },
-        disabledTimeFn: function () {
+        disabledTimeFn() {
           return {
             left: date =>
               date?.isSame(dayjs(), 'date')
@@ -137,18 +152,18 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
 
 ## RangePicker Inputs
 
-| 名称         | 类型                                         | 默认值               | 描述                   |
-| ------------ | -------------------------------------------- | -------------------- | ---------------------- |
-| clearable    | boolean                                      | true                 | 是否显示清除按钮       |
-| clearText    | string                                       | 'clear'              | 清除按钮文案           |
-| format       | string                                       | 'YYYY-MM-DD'         | 日期显示格式           |
-| showTime     | boolean                                      | false                | 是否显示选择时间       |
-| size         | ComponentSize                                | ComponentSize.Medium | 触发器大小             |
-| weekStartDay | number                                       | 0                    | 面板的第一个日期为周几 |
-| disabledDate | (date: Dayjs, type: DateNavRange) => boolean | () => false          | 禁用某些日期           |
-| disabledTime | {left: DisabledTimeFn,right:DisabledTimeFn}  | null                 | 禁用某些时间           |
-| minDate      | Dayjs                                        | null                 | 最小日期               |
-| maxDate      | Dayjs                                        | null                 | 最大日期               |
+| 名称         | 类型                                           | 默认值               | 描述                   |
+| ------------ | ---------------------------------------------- | -------------------- | ---------------------- |
+| clearable    | boolean                                        | true                 | 是否显示清除按钮       |
+| clearText    | string                                         | 'clear'              | 清除按钮文案           |
+| format       | string                                         | 'YYYY-MM-DD'         | 日期显示格式           |
+| showTime     | boolean                                        | false                | 是否显示选择时间       |
+| size         | ComponentSize                                  | ComponentSize.Medium | 触发器大小             |
+| weekStartDay | number                                         | 0                    | 面板的第一个日期为周几 |
+| disabledDate | `(date: Dayjs, type: DateNavRange) => boolean` | () => false          | 禁用某些日期           |
+| disabledTime | `{left: DisabledTimeFn,right:DisabledTimeFn}`  | null                 | 禁用某些时间           |
+| minDate      | Dayjs                                          | null                 | 最小日期               |
+| maxDate      | Dayjs                                          | null                 | 最大日期               |
 
 ### RangePicker 表单输入数据格式
 

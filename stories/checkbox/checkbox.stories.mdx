@@ -21,7 +21,10 @@ import { CheckboxModule } from '@alauda/ui';
 ## 基本用法
 
 <Canvas>
-  <Story name="Basic" height="60px">
+  <Story
+    name="Basic"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
         value: {{ model | json }}
@@ -42,7 +45,10 @@ import { CheckboxModule } from '@alauda/ui';
 ## 多选组合
 
 <Canvas>
-  <Story name="Group" height="60px">
+  <Story
+    name="Group"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
         value: {{ model }}
@@ -63,15 +69,30 @@ import { CheckboxModule } from '@alauda/ui';
 ## 标签样式
 
 <Canvas>
-  <Story name="Tag" height="60px">
+  <Story
+    name="Tag"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
         value: {{ model }}
         <br />
         <aui-checkbox-group [(ngModel)]="model">
-          <aui-checkbox label="label1" type="tag">选项一</aui-checkbox>
-          <aui-checkbox label="label2" type="tag">选项二</aui-checkbox>
-          <aui-checkbox label="label3" type="tag">选项三</aui-checkbox>
+          <aui-checkbox
+            label="label1"
+            type="tag"
+            >选项一</aui-checkbox
+          >
+          <aui-checkbox
+            label="label2"
+            type="tag"
+            >选项二</aui-checkbox
+          >
+          <aui-checkbox
+            label="label3"
+            type="tag"
+            >选项三</aui-checkbox
+          >
         </aui-checkbox-group>
       `,
       props: {
@@ -84,15 +105,26 @@ import { CheckboxModule } from '@alauda/ui';
 ## 禁用状态
 
 <Canvas>
-  <Story name="Disabled" height="60px">
+  <Story
+    name="Disabled"
+    height="60px"
+  >
     {{
       template: /* HTML */ `
         value: {{ model }}
         <br />
         <aui-checkbox-group [(ngModel)]="model">
-          <aui-checkbox label="label1" [disabled]="true">选项一</aui-checkbox>
+          <aui-checkbox
+            label="label1"
+            [disabled]="true"
+            >选项一</aui-checkbox
+          >
           <aui-checkbox label="label2">选项二</aui-checkbox>
-          <aui-checkbox label="label3" [disabled]="true">选项三</aui-checkbox>
+          <aui-checkbox
+            label="label3"
+            [disabled]="true"
+            >选项三</aui-checkbox
+          >
         </aui-checkbox-group>
       `,
       props: {
@@ -105,7 +137,10 @@ import { CheckboxModule } from '@alauda/ui';
 ## 部分选中状态
 
 <Canvas>
-  <Story name="Indeterminate" height="60px">
+  <Story
+    name="Indeterminate"
+    height="60px"
+  >
     {{ component: IndeterminateCheckboxComponent }}
   </Story>
 </Canvas>
@@ -113,12 +148,18 @@ import { CheckboxModule } from '@alauda/ui';
 ## 垂直布局
 
 <Canvas>
-  <Story name="Vertical" height="120px">
+  <Story
+    name="Vertical"
+    height="120px"
+  >
     {{
       template: /* HTML */ `
         value: {{ model }}
         <br />
-        <aui-checkbox-group [(ngModel)]="model" direction="column">
+        <aui-checkbox-group
+          [(ngModel)]="model"
+          direction="column"
+        >
           <aui-checkbox label="label1">选项一</aui-checkbox>
           <aui-checkbox label="label2">选项二</aui-checkbox>
           <aui-checkbox label="label3">选项三</aui-checkbox>

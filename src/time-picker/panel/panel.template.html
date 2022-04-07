@@ -1,6 +1,14 @@
-<div *ngIf="enabledColumns" [class]="bem.block()" [style.width.px]="totalWidth">
+<div
+  *ngIf="enabledColumns"
+  [class]="bem.block()"
+  [style.width.px]="totalWidth"
+>
   <div [class]="bem.element('content')">
-    <div [class]="bem.element('column')" #hourRef *ngIf="hourEnabled">
+    <div
+      [class]="bem.element('column')"
+      #hourRef
+      *ngIf="hourEnabled"
+    >
       <ul>
         <li
           *ngFor="let item of getControlTypeConfig(TimePickerControlType.Hour)"
@@ -8,11 +16,7 @@
           [style.height.px]="CONTROL_ITEM_HEIGHT"
           [ngClass]="{
             disabled: isDisabled(item, TimePickerControlType.Hour),
-            selected: matchValue(
-              item,
-              TimePickerControlType.Hour,
-              model
-            )
+            selected: matchValue(item, TimePickerControlType.Hour, model)
           }"
           (click)="selectValue(item, TimePickerControlType.Hour)"
         >
@@ -21,7 +25,11 @@
       </ul>
       <div [class]="bem.element('column-strut')"></div>
     </div>
-    <div [class]="bem.element('column')" #minuteRef *ngIf="minuteEnabled">
+    <div
+      [class]="bem.element('column')"
+      #minuteRef
+      *ngIf="minuteEnabled"
+    >
       <ul>
         <li
           *ngFor="
@@ -32,11 +40,7 @@
           [style.height.px]="CONTROL_ITEM_HEIGHT"
           [ngClass]="{
             disabled: isDisabled(item, TimePickerControlType.Minute),
-            selected: matchValue(
-              item,
-              TimePickerControlType.Minute,
-              model
-            )
+            selected: matchValue(item, TimePickerControlType.Minute, model)
           }"
           (click)="selectValue(item, TimePickerControlType.Minute)"
         >
@@ -45,7 +49,11 @@
       </ul>
       <div [class]="bem.element('column-strut')"></div>
     </div>
-    <div [class]="bem.element('column')" #secondRef *ngIf="secondEnabled">
+    <div
+      [class]="bem.element('column')"
+      #secondRef
+      *ngIf="secondEnabled"
+    >
       <ul>
         <li
           *ngFor="
@@ -55,11 +63,7 @@
           [style.height.px]="CONTROL_ITEM_HEIGHT"
           [ngClass]="{
             disabled: isDisabled(item, TimePickerControlType.Second),
-            selected: matchValue(
-              item,
-              TimePickerControlType.Second,
-              model
-            )
+            selected: matchValue(item, TimePickerControlType.Second, model)
           }"
           (click)="selectValue(item, TimePickerControlType.Second)"
         >

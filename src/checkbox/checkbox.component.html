@@ -16,7 +16,10 @@
     (click)="onClick()"
     (blur)="onBlur()"
   />
-  <label class="aui-checkbox__label" [for]="id">
+  <label
+    class="aui-checkbox__label"
+    [for]="id"
+  >
     <i class="aui-checkbox__pointer">
       <aui-icon
         [icon]="indeterminate ? 'square_s' : 'check_s'"

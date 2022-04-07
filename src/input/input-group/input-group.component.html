@@ -14,15 +14,24 @@
       <ng-content select="[auiInputAddonBefore]"></ng-content>
     </div>
     <div [class]="bem.element('input-wrapper')">
-      <span *ngIf="hasPrefix$ | async" [class]="bem.element('prefix')">
+      <span
+        *ngIf="hasPrefix$ | async"
+        [class]="bem.element('prefix')"
+      >
         <ng-content select="[auiInputPrefix]"></ng-content>
       </span>
       <ng-content></ng-content>
-      <span *ngIf="hasSuffix$ | async" [class]="bem.element('suffix')">
+      <span
+        *ngIf="hasSuffix$ | async"
+        [class]="bem.element('suffix')"
+      >
         <ng-content select="[auiInputSuffix]"></ng-content>
       </span>
     </div>
-    <div *ngIf="hasAddonAfter$ | async" [class]="bem.element('addon', 'after')">
+    <div
+      *ngIf="hasAddonAfter$ | async"
+      [class]="bem.element('addon', 'after')"
+    >
       <ng-content select="[auiInputAddonAfter]"></ng-content>
     </div>
   </div>

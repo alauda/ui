@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { Sort } from '../../../src/sort/public-api';
 import { DATA_SOURCE, Element } from '../data';
+
+import { Sort } from '@alauda/ui';
 
 @Component({
   templateUrl: 'sort-demo.component.html',

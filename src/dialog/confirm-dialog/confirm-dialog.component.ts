@@ -49,8 +49,6 @@ export class ConfirmDialogComponent<T = unknown, R = unknown> {
         return 'check_circle_s';
       case ConfirmType.Danger:
         return 'exclamation_triangle_s';
-      case ConfirmType.Primary:
-      case ConfirmType.Warning:
       default:
         return 'exclamation_circle_s';
     }

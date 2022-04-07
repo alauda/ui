@@ -19,10 +19,17 @@ import { AutocompleteModule, InputModule } from '@alauda/ui';
 ## 基本自动补全
 
 <Canvas>
-  <Story name="Basic" height="260px">
+  <Story
+    name="Basic"
+    height="260px"
+  >
     {{
       template: /* HTML */ `
-        <input aui-input [auiAutocomplete]="suggestions" placeholder="爱好" />
+        <input
+          aui-input
+          [auiAutocomplete]="suggestions"
+          placeholder="爱好"
+        />
         <aui-autocomplete #suggestions>
           <aui-suggestion value="basketball">basketball</aui-suggestion>
           <aui-suggestion value="swimming">swimming</aui-suggestion>
@@ -40,10 +47,17 @@ import { AutocompleteModule, InputModule } from '@alauda/ui';
 ## 自动补全分组
 
 <Canvas>
-  <Story name="Suggestions Group" height="360px">
+  <Story
+    name="Suggestions Group"
+    height="360px"
+  >
     {{
       template: /* HTML */ `
-        <input aui-input [auiAutocomplete]="suggestions" placeholder="雇员" />
+        <input
+          aui-input
+          [auiAutocomplete]="suggestions"
+          placeholder="雇员"
+        />
         <aui-autocomplete #suggestions>
           <aui-suggestion-group>
             <div auiSuggestionGroupTitle>女性</div>
@@ -55,7 +69,10 @@ import { AutocompleteModule, InputModule } from '@alauda/ui';
             <div auiSuggestionGroupTitle>男性</div>
             <aui-suggestion value="john">john</aui-suggestion>
             <aui-suggestion value="bob">bob</aui-suggestion>
-            <aui-suggestion value="david" [disabled]="true">
+            <aui-suggestion
+              value="david"
+              [disabled]="true"
+            >
               david
             </aui-suggestion>
           </aui-suggestion-group>
@@ -71,7 +88,10 @@ import { AutocompleteModule, InputModule } from '@alauda/ui';
 ## 不默认选中第一个
 
 <Canvas>
-  <Story name="Not First" height="260px">
+  <Story
+    name="Not First"
+    height="260px"
+  >
     {{
       template: /* HTML */ `
         <input
@@ -97,7 +117,10 @@ import { AutocompleteModule, InputModule } from '@alauda/ui';
 ## 点击不显示推荐项
 
 <Canvas>
-  <Story name="No Trigger" height="260px">
+  <Story
+    name="No Trigger"
+    height="260px"
+  >
     {{
       template: /* HTML */ `
         <input

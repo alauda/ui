@@ -5,9 +5,10 @@ import {
   VerticalConnectionPos,
 } from '@angular/cdk/overlay';
 
-export function getOriginPosition(
-  position: string,
-): { main: OriginConnectionPosition; fallback: OriginConnectionPosition } {
+export function getOriginPosition(position: string): {
+  main: OriginConnectionPosition;
+  fallback: OriginConnectionPosition;
+} {
   const pos = position.split(' ');
   let isXDir;
   if (pos[0] === 'start' || pos[0] === 'end') {
@@ -25,9 +26,10 @@ export function getOriginPosition(
   return { main, fallback };
 }
 
-export function getOverlayPosition(
-  position: string,
-): { main: OverlayConnectionPosition; fallback: OverlayConnectionPosition } {
+export function getOverlayPosition(position: string): {
+  main: OverlayConnectionPosition;
+  fallback: OverlayConnectionPosition;
+} {
   const pos = position.split(' ');
   let isXDir;
   if (pos[0] === 'start' || pos[0] === 'end') {

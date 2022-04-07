@@ -1,5 +1,6 @@
-import { StepItem, StepState, StepsOrientation } from '@alauda/ui';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { StepItem, StepState, StepsOrientation } from '@alauda/ui';
 
 @Component({
   template: `
@@ -12,8 +13,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       (currentIndexChange)="currentIndexChange($event)"
     ></aui-steps>
     <div style="margin-top: 50px">
-      <button aui-button="primary" (click)="prev()">Previous</button>
-      <button aui-button="primary" (click)="next()">Next</button>
+      <button
+        aui-button="primary"
+        (click)="prev()"
+      >
+        Previous
+      </button>
+      <button
+        aui-button="primary"
+        (click)="next()"
+      >
+        Next
+      </button>
     </div>
     <div>Linear: <aui-switch [(ngModel)]="linear"></aui-switch></div>
     <div>Selectable: <aui-switch [(ngModel)]="selectable"></aui-switch></div>
@@ -64,9 +75,24 @@ export class BasicHorizontalDemoComponent {
       (selectedIndexChange)="selectedIndexChange($event)"
     ></aui-steps>
     <div style="margin-top: 50px">
-      <button aui-button="primary" (click)="start()">Start</button>
-      <button aui-button="primary" (click)="complete()">Complete</button>
-      <button aui-button="primary" (click)="error()">Set Error</button>
+      <button
+        aui-button="primary"
+        (click)="start()"
+      >
+        Start
+      </button>
+      <button
+        aui-button="primary"
+        (click)="complete()"
+      >
+        Complete
+      </button>
+      <button
+        aui-button="primary"
+        (click)="error()"
+      >
+        Set Error
+      </button>
     </div>
     <div>Selectable: <aui-switch [(ngModel)]="selectable"></aui-switch></div>
     <div>

@@ -29,7 +29,7 @@ export function createWithMaxRowCount<
     maxRowCount: number;
     customRowHeight?: number;
     size: ComponentSize;
-  }
+  },
 >(component: T) {
   const hostPosition = () => (component.maxRowCount > 0 ? 'relative' : null);
   const hostDisplay = () => (component.maxRowCount ? 'block' : null);

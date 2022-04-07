@@ -85,4 +85,4 @@ yarn build
 
 ## LICENCE
 
-[MIT](LICENCE) © [Alauda](http://www.alauda.io)
+[MIT](LICENSE) © [Alauda](http://www.alauda.io)
