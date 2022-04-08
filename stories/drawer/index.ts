@@ -59,24 +59,11 @@ storiesOf('Drawer', module)
 
 @Component({
   template: `
-    <button
-      aui-button="primary"
-      (click)="open()"
-    >
-      打开抽屉
-    </button>
-    <button
-      aui-button
-      (click)="close()"
-    >
-      关闭
-    </button>
+    <button aui-button="primary" (click)="open()">打开抽屉</button>
+    <button aui-button (click)="close()">关闭</button>
     <div>
       offsetY:
-      <aui-number-input
-        [step]="20"
-        [(ngModel)]="offsetY"
-      ></aui-number-input>
+      <aui-number-input [step]="20" [(ngModel)]="offsetY"></aui-number-input>
     </div>
     <div>
       divider:
@@ -110,12 +97,7 @@ class DemoComponent {
 
 @Component({
   template: `
-    <button
-      aui-button="primary"
-      (click)="open()"
-    >
-      打开抽屉
-    </button>
+    <button aui-button="primary" (click)="open()">打开抽屉</button>
     <aui-drawer
       [visible]="visible"
       [maskClosable]="true"
@@ -142,18 +124,8 @@ export class MaskDrawerComponent {
 
 @Component({
   template: `
-    <button
-      aui-button="primary"
-      (click)="open(customContent)"
-    >
-      打开抽屉
-    </button>
-    <button
-      aui-button
-      (click)="close()"
-    >
-      关闭
-    </button>
+    <button aui-button="primary" (click)="open(customContent)">打开抽屉</button>
+    <button aui-button (click)="close()">关闭</button>
     <ng-template #customContent>
       drawer 自定义content <br />1drawer 自定义content <br />1drawer
       自定义content <br />1drawer 自定义content <br />1drawer 自定义content
@@ -211,24 +183,9 @@ export class ServiceDrawerComponent {
 
 @Component({
   template: `
-    <button
-      aui-button="primary"
-      (click)="open()"
-    >
-      打开component抽屉
-    </button>
-    <button
-      aui-button="primary"
-      (click)="openTwo()"
-    >
-      打开component2抽屉
-    </button>
-    <button
-      aui-button
-      (click)="close()"
-    >
-      关闭
-    </button>
+    <button aui-button="primary" (click)="open()">打开component抽屉</button>
+    <button aui-button="primary" (click)="openTwo()">打开component2抽屉</button>
+    <button aui-button (click)="close()">关闭</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

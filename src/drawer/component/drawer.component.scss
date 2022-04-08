@@ -43,17 +43,10 @@ $drawer: aui-drawer;
   }
 
   &__header {
-    margin: 20px 20px 0;
+    margin: 0 20px;
+    padding: 20px 0;
     display: flex;
     justify-content: space-between;
-  }
-
-  &.hasDivider {
-    .#{$drawer}__header {
-      margin: 20px 20px -4px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid use-rgb(n-8);
-    }
   }
 
   &__title {
@@ -88,15 +81,32 @@ $drawer: aui-drawer;
   }
 
   &__body {
-    margin: 20px;
+    padding: 0 20px;
     overflow: hidden;
     overflow-y: auto;
     height: 100%;
   }
 
   &__footer {
-    margin: -4px 20px 20px;
-    padding-top: 16px;
-    border-top: 1px solid use-rgb(n-8);
+    margin: 0 20px;
+    padding: 20px 0;
+  }
+
+  &.hasDivider {
+    .#{$drawer} {
+      &__header {
+        padding-bottom: 16px;
+        border-bottom: 1px solid use-rgb(n-8);
+      }
+
+      &__body {
+        padding: 16px 20px;
+      }
+
+      &__footer {
+        padding-top: 16px;
+        border-top: 1px solid use-rgb(n-8);
+      }
+    }
   }
 }
