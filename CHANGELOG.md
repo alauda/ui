@@ -1,5 +1,21 @@
 # Changelog
 
+## 6.4.0
+
+### Minor Changes
+
+- [#327](https://github.com/alauda/alauda-ui/pull/327) [`af31503`](https://github.com/alauda/alauda-ui/commit/af3150321a4c13b10250146994766d725e6e9c8e) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: form field indicator color
+
+  fix: drawer scrollbar position
+
+### Patch Changes
+
+- [#325](https://github.com/alauda/alauda-ui/pull/325) [`66bdefb`](https://github.com/alauda/alauda-ui/commit/66bdefbc2a51c0577314d10eb396af3e6e40d335) Thanks [@JounQin](https://github.com/JounQin)! - feat: form item support plain input
+
+- [#325](https://github.com/alauda/alauda-ui/pull/325) [`66bdefb`](https://github.com/alauda/alauda-ui/commit/66bdefbc2a51c0577314d10eb396af3e6e40d335) Thanks [@JounQin](https://github.com/JounQin)! - fix: table placeholder will scroll as the header scrolls horizontally
+
+- [#325](https://github.com/alauda/alauda-ui/pull/325) [`66bdefb`](https://github.com/alauda/alauda-ui/commit/66bdefbc2a51c0577314d10eb396af3e6e40d335) Thanks [@JounQin](https://github.com/JounQin)! - fix: breadcrumb height
+
 ## 6.3.5
 
 ### Patch Changes
