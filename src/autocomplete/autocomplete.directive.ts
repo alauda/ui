@@ -229,14 +229,17 @@ export class AutoCompleteDirective
   }
 
   override createTooltip() {
-    if (this.isCreated) {
-      return;
-    }
     super.createTooltip();
     this.autoFocusFirstSuggestion();
   }
 
   private autoFocusFirstSuggestion() {
+    const focusedSuggestion = this.autocomplete.suggestions.find(
+      suggestion => suggestion.focused,
+    );
+    if (focusedSuggestion) {
+      return;
+    }
     const selectedSuggestion = this.autocomplete.suggestions.find(
       suggestion => suggestion.selected,
     );
