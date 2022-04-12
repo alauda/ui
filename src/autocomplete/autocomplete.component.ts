@@ -10,7 +10,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { Observable, ReplaySubject, combineLatest } from 'rxjs';
+import { Observable, ReplaySubject, combineLatest, of } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -58,7 +58,9 @@ export class AutocompleteComponent implements AfterContentInit {
     this.hasVisibleSuggestion$ = this.suggestions.changes.pipe(
       startWith(this.suggestions),
       switchMap((suggestions: QueryList<SuggestionComponent>) =>
-        combineLatest(suggestions.map(suggestion => suggestion.visible$)),
+        suggestions.length > 0
+          ? combineLatest(suggestions.map(suggestion => suggestion.visible$))
+          : of([] as boolean[]),
       ),
       map(visible => visible.some(Boolean)),
       distinctUntilChanged(),
