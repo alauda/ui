@@ -72,6 +72,7 @@ $block: 'aui-radio-button';
   &.isPlain {
     color: use-rgb(n-1);
     border: 1px solid use-rgb(n-7);
+    background-color: use-rgb(button-bg);
 
     &:hover,
     &.isChecked {
@@ -80,14 +81,12 @@ $block: 'aui-radio-button';
       &:not(.isDisabled) {
         color: use-rgb(primary);
         border-color: use-rgb(primary);
-        background-color: use-rgb(button-bg);
       }
     }
 
     &.isDisabled {
       color: use-rgb(n-6);
       border-color: use-rgb(n-7);
-      background-color: use-rgb(n-8);
     }
 
     &.isDisabled.isChecked {
