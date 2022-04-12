@@ -2,4 +2,4 @@
 "@alauda/ui": patch
 ---
 
-fix: trigger input blur on Escape key
+fix: handle click as focus for autocomplete
