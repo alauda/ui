@@ -232,6 +232,8 @@ export class TagsInputComponent
       requestAnimationFrame(() => {
         this.pushValue(inputEl.value);
       });
+    } else if (event.key === 'Escape') {
+      inputEl.blur();
     }
   }
 
