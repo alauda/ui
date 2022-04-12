@@ -140,7 +140,10 @@ export class AutoCompleteDirective
   override ngAfterViewInit() {
     const input = this.input;
 
-    merge(fromEvent(input, 'click'), fromEvent(input, 'focus'))
+    merge(
+      fromEvent(this.elRef.nativeElement, 'click'),
+      fromEvent(input, 'focus'),
+    )
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => this.onFocus());
 
@@ -226,6 +229,9 @@ export class AutoCompleteDirective
   }
 
   override createTooltip() {
+    if (this.isCreated) {
+      return;
+    }
     super.createTooltip();
     this.autoFocusFirstSuggestion();
   }
