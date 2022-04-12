@@ -16,7 +16,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { BehaviorSubject, Observable, Subject, fromEvent } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, fromEvent, merge } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
@@ -140,7 +140,7 @@ export class AutoCompleteDirective
   override ngAfterViewInit() {
     const input = this.input;
 
-    fromEvent(input, 'focus')
+    merge(fromEvent(input, 'click'), fromEvent(input, 'focus'))
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => this.onFocus());
 
