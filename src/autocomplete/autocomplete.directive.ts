@@ -16,8 +16,8 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { BehaviorSubject, Observable, Subject, fromEvent } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, Observable, Subject, fromEvent, merge } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
 import { scrollIntoView } from '../utils';
@@ -140,8 +140,11 @@ export class AutoCompleteDirective
   override ngAfterViewInit() {
     const input = this.input;
 
-    fromEvent(input, 'focus')
-      .pipe(takeUntil(this.unsubscribe$))
+    merge(
+      fromEvent(this.elRef.nativeElement, 'click'),
+      fromEvent(input, 'focus'),
+    )
+      .pipe(debounceTime(0), takeUntil(this.unsubscribe$))
       .subscribe(() => this.onFocus());
 
     fromEvent(input, 'blur')
@@ -231,6 +234,12 @@ export class AutoCompleteDirective
   }
 
   private autoFocusFirstSuggestion() {
+    const focusedSuggestion = this.autocomplete.suggestions.find(
+      suggestion => suggestion.focused,
+    );
+    if (focusedSuggestion) {
+      return;
+    }
     const selectedSuggestion = this.autocomplete.suggestions.find(
       suggestion => suggestion.selected,
     );
