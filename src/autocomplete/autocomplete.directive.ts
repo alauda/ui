@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { BehaviorSubject, Observable, Subject, fromEvent, merge } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
 import { scrollIntoView } from '../utils';
@@ -144,7 +144,7 @@ export class AutoCompleteDirective
       fromEvent(this.elRef.nativeElement, 'click'),
       fromEvent(input, 'focus'),
     )
-      .pipe(takeUntil(this.unsubscribe$))
+      .pipe(debounceTime(0), takeUntil(this.unsubscribe$))
       .subscribe(() => this.onFocus());
 
     fromEvent(input, 'blur')
