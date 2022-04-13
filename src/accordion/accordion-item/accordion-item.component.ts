@@ -18,7 +18,7 @@ import {
   TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { filter, startWith, take } from 'rxjs/operators';
+import { filter, startWith, take } from 'rxjs';
 
 import { AccordionComponent } from '../accordion.component';
 

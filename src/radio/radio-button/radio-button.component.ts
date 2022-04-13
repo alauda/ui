@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs';
 
 import { Bem, buildBem } from '../../utils';
 import { BaseRadio } from '../base-radio';

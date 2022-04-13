@@ -13,15 +13,17 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, combineLatest, of } from 'rxjs';
 import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  combineLatest,
+  of,
   map,
-  publishReplay,
-  refCount,
   startWith,
   switchMap,
   takeUntil,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import { CommonFormControl } from '../form';
 import { TooltipDirective } from '../tooltip';
@@ -30,6 +32,7 @@ import {
   coerceAttrBoolean,
   coerceString,
   isTemplateRef,
+  publishRef,
   scrollIntoView,
 } from '../utils';
 
@@ -223,8 +226,7 @@ export abstract class BaseSelect<T, V = T>
           return acc;
         }, []),
       ),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
   }
 
@@ -239,8 +241,7 @@ export abstract class BaseSelect<T, V = T>
           QueryList<OptionComponent<T>>,
         ]) => [...customOptions.toArray(), ...contentOptions.toArray()],
       ),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
 
     // support dynamic options loading on filtering
@@ -269,8 +270,7 @@ export abstract class BaseSelect<T, V = T>
       map(([values, filterString]) =>
         values.some(value => this.trackFn(value) === filterString),
       ),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
 
     this.hasVisibleOption$ = (
@@ -283,8 +283,7 @@ export abstract class BaseSelect<T, V = T>
           : of([] as boolean[]),
       ),
       map(visible => visible.some(Boolean)),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
   }
 

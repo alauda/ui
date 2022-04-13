@@ -3,8 +3,7 @@ import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { CdkTableModule } from '@angular/cdk/table';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, map } from 'rxjs';
 
 import { TableModule } from '../table';
 
@@ -375,25 +374,10 @@ function dispatchEvent(node: Node | Window, event: Event): Event {
 
 /** Creates a browser MouseEvent with the specified options. */
 export function createMouseEvent(type: string, x = 0, y = 0) {
-  const event = document.createEvent('MouseEvent');
-
-  event.initMouseEvent(
-    type,
-    false /* canBubble */,
-    false /* cancelable */,
-    window /* view */,
-    0 /* detail */,
-    x /* screenX */,
-    y /* screenY */,
-    x /* clientX */,
-    y /* clientY */,
-    false /* ctrlKey */,
-    false /* altKey */,
-    false /* shiftKey */,
-    false /* metaKey */,
-    0 /* button */,
-    null /* relatedTarget */,
-  );
-
-  return event;
+  return new MouseEvent(type, {
+    screenX: x,
+    screenY: y,
+    clientX: x,
+    clientY: y,
+  });
 }

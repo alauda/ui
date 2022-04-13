@@ -6,8 +6,7 @@ import {
   HostBinding,
   OnDestroy,
 } from '@angular/core';
-import { Subject, fromEvent, merge } from 'rxjs';
-import { startWith, takeUntil } from 'rxjs/operators';
+import { Subject, fromEvent, merge, startWith, takeUntil } from 'rxjs';
 
 import { observeResizeOn } from '../utils';
 

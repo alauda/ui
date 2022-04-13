@@ -21,8 +21,6 @@ import {
   map,
   Observable,
   of,
-  publishReplay,
-  refCount,
   startWith,
   Subject,
   switchMap,
@@ -39,6 +37,7 @@ import {
   buildBem,
   coerceAttrBoolean,
   coerceString,
+  publishRef,
   scrollIntoView,
 } from '../utils';
 
@@ -364,8 +363,7 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
       tap(selected => {
         this.selected = selected;
       }),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
     this.selfVisible$ = combineLatest([
       this.select.filterString$,
@@ -374,8 +372,7 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
       map(([filterString, nodeData]) =>
         this.select.filterFn(filterString, nodeData),
       ),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
   }
 
@@ -395,8 +392,7 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
       hasVisibleChildNodes$,
     ]).pipe(
       map(visible => visible.some(Boolean)),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
 
     this.visible$.pipe(takeUntil(this.destroy$$)).subscribe(visible => {

@@ -6,8 +6,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { startWith, takeUntil } from 'rxjs/operators';
+import { Subject, startWith, takeUntil } from 'rxjs';
 
 import { calcTextareaHeight } from './utils';
 

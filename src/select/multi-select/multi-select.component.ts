@@ -14,19 +14,25 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Observable, combineLatest, of } from 'rxjs';
 import {
+  Observable,
+  combineLatest,
+  of,
   map,
-  publishReplay,
-  refCount,
   startWith,
   switchMap,
   tap,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import { createWithMaxRowCount } from '../../input/tags-input/with-max-row-count';
 import { ComponentSize } from '../../types';
-import { Bem, buildBem, coerceAttrBoolean, coerceString } from '../../utils';
+import {
+  Bem,
+  buildBem,
+  coerceAttrBoolean,
+  coerceString,
+  publishRef,
+} from '../../utils';
 import { BaseSelect } from '../base-select';
 import { OptionComponent } from '../option/option.component';
 import {
@@ -216,8 +222,7 @@ export class MultiSelectComponent<T = unknown>
             return 0;
           }),
       ),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
   }
 
@@ -244,8 +249,7 @@ export class MultiSelectComponent<T = unknown>
       }),
       startWith(SelectAllStatus.Empty),
       tap(selectAllStatus => (this.selectAllStatus = selectAllStatus)),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
     this.hasEnabledOptions$ = combineLatest([
       this.allOptions$,

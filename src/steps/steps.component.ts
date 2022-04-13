@@ -8,8 +8,7 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 
 import { StepItem, StepState, StepsOrientation, StepsType } from './types';
 

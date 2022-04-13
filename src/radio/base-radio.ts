@@ -9,8 +9,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, Subject, combineLatest, map, takeUntil } from 'rxjs';
 
 import { RadioGroupComponent } from './radio-group/radio-group.component';
 

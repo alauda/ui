@@ -11,7 +11,7 @@ import {
   Renderer2,
   ViewContainerRef,
 } from '@angular/core';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime } from 'rxjs';
 
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
 

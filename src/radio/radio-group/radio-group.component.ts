@@ -6,8 +6,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 
 import { CommonFormControl } from '../../form';
 import { RadioSize } from '../radio.types';

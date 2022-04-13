@@ -4,13 +4,11 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject, takeUntil } from 'rxjs';
 
 import { TabComponent, TabContextService } from '@alauda/ui';
 
 @Component({
-  // tslint:disable-next-line component-selector
   selector: 'tabs-active-test',
   template: ` <ng-content></ng-content> `,
   changeDetection: ChangeDetectionStrategy.OnPush,

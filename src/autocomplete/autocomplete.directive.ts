@@ -16,8 +16,15 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { BehaviorSubject, Observable, Subject, fromEvent, merge } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  fromEvent,
+  merge,
+  takeUntil,
+  debounceTime,
+} from 'rxjs';
 
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
 import { scrollIntoView } from '../utils';
@@ -233,7 +240,7 @@ export class AutoCompleteDirective
     this.autoFocusFirstSuggestion();
   }
 
-  private autoFocusFirstSuggestion() {
+  autoFocusFirstSuggestion() {
     const focusedSuggestion = this.autocomplete.suggestions.find(
       suggestion => suggestion.focused,
     );

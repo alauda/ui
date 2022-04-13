@@ -1,13 +1,8 @@
 {
   "plugins": [
     "@1stg/config",
-    "gfm",
     [
       "lint-no-file-name-irregular-characters",
-      false
-    ],
-    [
-      "lint-no-duplicate-headings",
       false
     ]
   ]

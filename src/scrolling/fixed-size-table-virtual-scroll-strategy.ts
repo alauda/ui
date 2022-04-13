@@ -4,8 +4,7 @@ import {
   VirtualScrollStrategy,
 } from '@angular/cdk/scrolling';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject, Subject, distinctUntilChanged } from 'rxjs';
 
 @Injectable()
 export class FixedSizeTableVirtualScrollStrategy

@@ -4,8 +4,7 @@ import {
   Pipe,
   PipeTransform,
 } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject, takeUntil } from 'rxjs';
 
 import { ThemeService } from './theme.service';
 import { Theme, ThemeSet } from './theme.types';

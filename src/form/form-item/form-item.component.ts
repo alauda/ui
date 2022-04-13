@@ -18,14 +18,12 @@ import {
   combineLatest,
   merge,
   map,
-  publishReplay,
-  refCount,
   startWith,
   switchMap,
   takeUntil,
 } from 'rxjs';
 
-import { Bem, buildBem } from '../../utils';
+import { Bem, buildBem, publishRef } from '../../utils';
 import { FormDirective } from '../form.directive';
 import { FormItemWidth, LabelPosition } from '../form.types';
 import {
@@ -165,8 +163,7 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
         (status: string) =>
           status === 'INVALID' && (control.dirty || this.parentForm?.submitted),
       ),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
   }
 

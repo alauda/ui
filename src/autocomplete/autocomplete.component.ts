@@ -10,17 +10,21 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { Observable, ReplaySubject, combineLatest, of } from 'rxjs';
 import {
+  Observable,
+  ReplaySubject,
+  combineLatest,
+  of,
   debounceTime,
   distinctUntilChanged,
   map,
-  publishReplay,
-  refCount,
   startWith,
   switchMap,
   tap,
-} from 'rxjs/operators';
+  withLatestFrom,
+} from 'rxjs';
+
+import { publishRef } from '../utils';
 
 import { AutocompletePlaceholderComponent } from './autocomplete-placeholder.component';
 import { AutoCompleteDirective } from './autocomplete.directive';
@@ -63,13 +67,17 @@ export class AutocompleteComponent implements AfterContentInit {
           : of([] as boolean[]),
       ),
       map(visible => visible.some(Boolean)),
+      withLatestFrom(this.directive$$),
+      map(([hasVisibleSuggestion, directive]) => {
+        if (hasVisibleSuggestion && directive.defaultFirstSuggestion) {
+          directive.autoFocusFirstSuggestion();
+        }
+        return hasVisibleSuggestion;
+      }),
       distinctUntilChanged(),
       debounceTime(0),
-      tap(() => {
-        this.cdr.markForCheck();
-      }),
-      publishReplay(1),
-      refCount(),
+      tap(() => this.cdr.markForCheck()),
+      publishRef(),
     );
 
     this.hasContent$ = combineLatest([

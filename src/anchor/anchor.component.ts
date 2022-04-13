@@ -10,8 +10,17 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { EMPTY, Subject, combineLatest, fromEvent, of } from 'rxjs';
-import { debounceTime, switchMap, takeUntil, tap } from 'rxjs/operators';
+import {
+  EMPTY,
+  Subject,
+  combineLatest,
+  fromEvent,
+  of,
+  debounceTime,
+  switchMap,
+  takeUntil,
+  tap,
+} from 'rxjs';
 
 import { buildBem, isTemplateRef, last } from '../utils';
 

@@ -6,10 +6,9 @@ import {
   TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { Observable, Subject, combineLatest } from 'rxjs';
-import { map, publishReplay, refCount, startWith } from 'rxjs/operators';
+import { Observable, Subject, combineLatest, map, startWith } from 'rxjs';
 
-import { Bem, buildBem } from '../utils';
+import { Bem, buildBem, publishRef } from '../utils';
 
 import { TooltipType } from './tooltip.types';
 
@@ -59,8 +58,7 @@ export class TooltipComponent {
         }
         return '';
       }),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
     this.template$ = this.inputContent$.pipe(
       map(val => {
@@ -69,8 +67,7 @@ export class TooltipComponent {
         }
         return null;
       }),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
     this.class$ = combineLatest([
       this.inputPosition$.pipe(startWith('top')),
@@ -84,9 +81,8 @@ export class TooltipComponent {
           ? `${b}--${dir} ${inputClass}`
           : `${b} ${b}--${inputType} ${b}--${dir} ${inputClass}`;
       }),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
-    this.context$ = this.inputContext$.pipe(publishReplay(1), refCount());
+    this.context$ = this.inputContext$.pipe(publishRef());
   }
 }

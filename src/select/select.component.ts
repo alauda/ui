@@ -8,18 +8,18 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Observable, combineLatest, of } from 'rxjs';
 import {
+  Observable,
+  combineLatest,
+  of,
   distinctUntilChanged,
   map,
-  publishReplay,
-  refCount,
   startWith,
   switchMap,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import { InputComponent } from '../input';
-import { coerceString } from '../utils';
+import { coerceString, publishRef } from '../utils';
 
 import { BaseSelect } from './base-select';
 import { OptionComponent } from './option/option.component';
@@ -117,14 +117,12 @@ export class SelectComponent<T = unknown>
               label: this.labelFn?.(value) || coerceString(this.trackFn(value)),
             },
       ),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
 
     this.hasSelected$ = this.selectedOption$.pipe(
       map(({ label }) => !!label),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
   }
 

@@ -39,14 +39,14 @@ export class IconRegisterService {
       .get(url, {
         responseType: 'text',
       })
-      .subscribe(
-        res => {
+      .subscribe({
+        next: res => {
           this.registerSvgSymbolsByString(res);
         },
-        () => {
+        error() {
           throw getAuiIconFailedToLoadCustomIconFile(url);
         },
-      );
+      });
   }
 
   registerSvgSymbolsByString(str: string) {

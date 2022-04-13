@@ -1,6 +1,11 @@
 import { Injectable, Optional, SkipSelf } from '@angular/core';
-import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
-import { distinctUntilChanged, map } from 'rxjs/operators';
+import {
+  BehaviorSubject,
+  Observable,
+  combineLatest,
+  distinctUntilChanged,
+  map,
+} from 'rxjs';
 
 @Injectable()
 export class TabContextService {
