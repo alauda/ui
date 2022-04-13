@@ -9,7 +9,6 @@ import { Subject, takeUntil } from 'rxjs';
 import { TabComponent, TabContextService } from '@alauda/ui';
 
 @Component({
-  // tslint:disable-next-line component-selector
   selector: 'tabs-active-test',
   template: ` <ng-content></ng-content> `,
   changeDetection: ChangeDetectionStrategy.OnPush,

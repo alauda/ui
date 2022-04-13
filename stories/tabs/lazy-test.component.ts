@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { interval, take } from 'rxjs';
 
 @Component({
-  // tslint:disable-next-line component-selector
   selector: 'tabs-lazy-test',
   template: `
     <ng-content></ng-content>
