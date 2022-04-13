@@ -4,8 +4,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { firstValueFrom, Observable } from 'rxjs';
 
 import { Bem, buildBem } from '../../utils';
 import { DialogRef } from '../dialog-ref';
@@ -94,7 +93,7 @@ export class ConfirmDialogComponent<T = unknown, R = unknown> {
     const result = (beforeAction as CustomBeforeAction<T>)();
 
     if (result instanceof Observable) {
-      return result.pipe(first()).toPromise();
+      return firstValueFrom(result);
     }
 
     return result;

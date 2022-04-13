@@ -7,15 +7,9 @@ import {
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
-import { Observable, combineLatest, of } from 'rxjs';
-import {
-  map,
-  publishReplay,
-  refCount,
-  startWith,
-  switchMap,
-} from 'rxjs/operators';
+import { Observable, combineLatest, of, map, startWith, switchMap } from 'rxjs';
 
+import { publishRef } from '../../utils';
 import { OptionComponent } from '../option/option.component';
 
 @Component({
@@ -41,8 +35,7 @@ export class OptionGroupComponent<T> implements AfterContentInit {
           : of([false]),
       ),
       map(visible => visible.some(Boolean)),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
   }
 }

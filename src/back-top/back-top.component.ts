@@ -8,13 +8,15 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { BehaviorSubject, combineLatest, fromEvent } from 'rxjs';
 import {
+  BehaviorSubject,
+  combineLatest,
+  fromEvent,
   distinctUntilChanged,
   map,
   switchMap,
   throttleTime,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 type TargetType = Element | Window | string;
 

@@ -10,17 +10,17 @@ import {
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
-import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import {
+  BehaviorSubject,
+  Observable,
+  combineLatest,
   distinctUntilChanged,
   map,
-  publishReplay,
-  refCount,
   tap,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import { ComponentSize } from '../../types';
-import { Bem, buildBem, coerceAttrBoolean } from '../../utils';
+import { Bem, buildBem, coerceAttrBoolean, publishRef } from '../../utils';
 import { BaseSelect } from '../base-select';
 
 @Component({
@@ -123,8 +123,7 @@ export class OptionComponent<T> {
       tap(selected => {
         this.selected = selected;
       }),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
     this.size$ = this.select.size$.pipe(
       tap(size => {
@@ -144,8 +143,7 @@ export class OptionComponent<T> {
       tap(visible => {
         this.visible = visible;
       }),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
   }
 

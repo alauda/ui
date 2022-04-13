@@ -12,8 +12,7 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { ReplaySubject, merge } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { ReplaySubject, merge, debounceTime } from 'rxjs';
 
 import { sleep } from '../utils';
 

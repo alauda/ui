@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { ReplaySubject, distinctUntilChanged } from 'rxjs';
 
 import { Theme, ThemeMode } from './theme.types';
 

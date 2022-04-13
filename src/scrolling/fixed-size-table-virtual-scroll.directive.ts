@@ -10,8 +10,15 @@ import {
   SimpleChanges,
   forwardRef,
 } from '@angular/core';
-import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
-import { filter, map, takeUntil, tap } from 'rxjs/operators';
+import {
+  BehaviorSubject,
+  Subject,
+  combineLatest,
+  filter,
+  map,
+  takeUntil,
+  tap,
+} from 'rxjs';
 
 import { TableComponent } from '../table';
 

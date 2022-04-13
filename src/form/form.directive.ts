@@ -1,7 +1,6 @@
 import { Directive, Inject, Input, Optional } from '@angular/core';
 import { ControlContainer, FormGroupDirective, NgForm } from '@angular/forms';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 
 import { LabelPosition } from './form.types';
 

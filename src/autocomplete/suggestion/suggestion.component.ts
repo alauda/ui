@@ -9,17 +9,17 @@ import {
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
-import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import {
+  BehaviorSubject,
+  Observable,
+  combineLatest,
   map,
-  publishReplay,
-  refCount,
   switchMap,
   take,
   tap,
-} from 'rxjs/operators';
+} from 'rxjs';
 
-import { Bem, buildBem, coerceAttrBoolean } from '../../utils';
+import { Bem, buildBem, coerceAttrBoolean, publishRef } from '../../utils';
 import { AutocompleteComponent } from '../autocomplete.component';
 
 @Component({
@@ -83,8 +83,7 @@ export class SuggestionComponent {
       tap(selected => {
         this.selected = selected;
       }),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
     this.visible$ = combineLatest([
       this.autocomplete.directive$$.pipe(
@@ -101,8 +100,7 @@ export class SuggestionComponent {
       tap(visible => {
         this.visible = visible;
       }),
-      publishReplay(1),
-      refCount(),
+      publishRef(),
     );
   }
 

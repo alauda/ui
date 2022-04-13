@@ -14,8 +14,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, Subject, combineLatest, map, takeUntil } from 'rxjs';
 
 import { CommonFormControl } from '../form';
 

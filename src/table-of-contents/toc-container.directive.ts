@@ -14,8 +14,6 @@ import {
   Subscription,
   animationFrameScheduler,
   of,
-} from 'rxjs';
-import {
   debounceTime,
   endWith,
   map,
@@ -26,7 +24,7 @@ import {
   takeUntil,
   takeWhile,
   tap,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 import { TocContentDirective } from './toc-content.directive';
 

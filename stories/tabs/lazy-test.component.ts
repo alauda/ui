@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { interval } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { interval, take } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line component-selector
