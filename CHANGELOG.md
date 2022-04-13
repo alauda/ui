@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.4.1
+
+### Patch Changes
+
+- [#332](https://github.com/alauda/alauda-ui/pull/332) [`2640166`](https://github.com/alauda/alauda-ui/commit/2640166ba015d453fcc2d5207725606f3e8abd4b) Thanks [@JounQin](https://github.com/JounQin)! - fix: trigger autocomplete autoFocusFirstSuggestion on suggestions change
+
+- [#328](https://github.com/alauda/alauda-ui/pull/328) [`8ff6976`](https://github.com/alauda/alauda-ui/commit/8ff69764fae5b01198bb71fe002f7df051983787) Thanks [@JounQin](https://github.com/JounQin)! - fix: suggestions could be empty array
+
+- [#331](https://github.com/alauda/alauda-ui/pull/331) [`ba73b4d`](https://github.com/alauda/alauda-ui/commit/ba73b4d20fed18c7cf0972d5e8150bdb102c0877) Thanks [@JounQin](https://github.com/JounQin)! - fix: handle click as focus for autocomplete
+
 ## 6.4.0
 
 ### Minor Changes
