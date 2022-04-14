@@ -5,7 +5,6 @@
   display: flex;
 
   .aui-breadcrumb__content {
-    display: inline-flex;
     max-width: 224px;
     @include text-overflow;
   }
