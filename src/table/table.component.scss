@@ -42,7 +42,7 @@
       border-top-right-radius: use-var(border-radius-l);
     }
 
-    &:last-child {
+    &:last-of-type {
       border-bottom-width: 1px;
       min-height: $table-row-min-height;
       border-bottom-left-radius: use-var(border-radius-l);

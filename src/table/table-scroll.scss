@@ -114,7 +114,7 @@ $stickyCssClass: 'aui-table-sticky';
       }
     }
 
-    &:last-child {
+    &:last-of-type {
       .aui-table__cell {
         &:first-of-type {
           border-bottom-left-radius: use-var(border-radius-l);
@@ -126,7 +126,7 @@ $stickyCssClass: 'aui-table-sticky';
       }
     }
 
-    &:not(&:last-child) {
+    &:not(&:last-of-type) {
       .aui-table__cell {
         border-bottom-width: 0;
       }
