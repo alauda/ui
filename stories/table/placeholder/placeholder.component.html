@@ -25,7 +25,7 @@
   <aui-table-row
     *auiTableRowDef="let row; columns: ['id', 'name', 'value']"
   ></aui-table-row>
-  <ng-container *auiTablePlaceholderDef>
+  <ng-container *auiTablePlaceholderDef="show$$ | async">
     <div class="placeholder">继续加载中...</div>
   </ng-container>
 </aui-table>

@@ -81,13 +81,11 @@ export class TableComponent<T>
   }
 
   private _createPlaceholder() {
-    const footerRow = this._placeholderDef;
-    if (!this._placeholderDef) {
-      return;
+    if (this._placeholderOutlet && this._placeholderDef) {
+      this._placeholderDef.visible$.subscribe(visible =>
+        this._placeholderOutlet.register(this._placeholderDef, visible),
+      );
     }
-
-    const container = this._placeholderOutlet.viewContainer;
-    container.createEmbeddedView(footerRow.templateRef);
   }
 
   private _clearPlaceholder() {
