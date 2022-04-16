@@ -5,12 +5,12 @@ $b: aui-section;
 
 .#{$b} {
   padding: use-var(spacing-xl) 0;
-  font-size: use-var(font-size-m);
+  @include text-set(m, main);
 
   &__title {
     margin-bottom: use-var(spacing-l);
-    font-size: use-var(font-size-l);
     font-weight: use-var(font-weight-bold);
+    @include text-set(l, main);
   }
 }
 
