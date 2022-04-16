@@ -4,6 +4,7 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
+  HostBinding,
   Input,
   NgZone,
   OnInit,
@@ -14,6 +15,7 @@ import {
 import { debounceTime } from 'rxjs';
 
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
+import { generateDataTestId } from '../utils';
 
 import { DropdownActiveDirective } from './dropdown-active.directive';
 import { MenuComponent } from './menu/menu.component';
@@ -35,6 +37,11 @@ import { MenuComponent } from './menu/menu.component';
   ],
 })
 export class DropdownDirective extends BaseTooltip implements OnInit {
+  @HostBinding('attr.data-test')
+  get testId() {
+    return generateDataTestId(this.elRef.nativeElement, 'DROPDOWN');
+  }
+
   @Input('auiDropdown')
   get menu() {
     return this._menu;

@@ -48,6 +48,11 @@ export class SelectComponent<T = unknown>
   extends BaseSelect<T>
   implements AfterContentInit
 {
+  // @HostBinding('attr.data-test')
+  // override get dataTest(){
+  //   return 'AUI-SELECT/'
+  // }
+
   @ViewChild('inputRef', { static: true })
   inputRef: InputComponent;
 

@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Directive,
   ElementRef,
+  HostBinding,
   Input,
   OnDestroy,
   OnInit,
@@ -11,12 +12,19 @@ import {
 } from '@angular/core';
 import { BehaviorSubject, Subject, combineLatest, map, takeUntil } from 'rxjs';
 
+import { generateDataTestId } from '..';
+
 import { RadioGroupComponent } from './radio-group/radio-group.component';
 
 let uniqueId = 0;
 
 @Directive()
 export class BaseRadio implements OnInit, AfterViewInit, OnDestroy {
+  @HostBinding('attr.data-test')
+  get dataTest() {
+    return generateDataTestId('RADIO');
+  }
+
   id = `aui-radio-${uniqueId++}`;
 
   @Input()

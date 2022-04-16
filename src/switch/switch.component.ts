@@ -4,11 +4,12 @@ import {
   Input,
   ViewEncapsulation,
   forwardRef,
+  HostBinding,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { CommonFormControl } from '../form';
-import { Bem, buildBem } from '../utils';
+import { Bem, buildBem, generateDataTestId } from '../utils';
 
 const prefix = 'aui-switch';
 
@@ -29,6 +30,11 @@ const prefix = 'aui-switch';
 })
 export class SwitchComponent extends CommonFormControl<boolean> {
   bem: Bem = buildBem(prefix);
+
+  @HostBinding('attr.data-test')
+  override get dataTest() {
+    return generateDataTestId(this.elementRef.nativeElement, 'SWITCH');
+  }
 
   @Input()
   loading = false;

@@ -1,7 +1,9 @@
 import {
   ChangeDetectorRef,
   Directive,
+  ElementRef,
   EventEmitter,
+  HostBinding,
   Input,
   Output,
 } from '@angular/core';
@@ -23,6 +25,16 @@ export class CommonFormControl<V, M = V> implements ControlValueAccessor {
 
   set disabled(val: boolean | '') {
     this._disabled = coerceAttrBoolean(val);
+  }
+
+  @HostBinding('attr.data-test')
+  get dataTest(): string {
+    return (
+      'AUI-FORM-CONTROL/' +
+      (this.elementRef?.nativeElement.getAttribute('formControlName') ||
+        this.elementRef?.nativeElement.getAttribute('name') ||
+        '')
+    );
   }
 
   @Input()
@@ -58,7 +70,10 @@ export class CommonFormControl<V, M = V> implements ControlValueAccessor {
   model: M = null;
   model$ = new ReplaySubject<M>(1);
 
-  constructor(protected cdr: ChangeDetectorRef) {
+  constructor(
+    protected cdr: ChangeDetectorRef,
+    protected readonly elementRef: ElementRef<HTMLElement>,
+  ) {
     this.model$.subscribe(model => {
       this.model = model;
       this.cdr.markForCheck();

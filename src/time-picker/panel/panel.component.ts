@@ -129,8 +129,11 @@ export class TimePickerPanelComponent
   // 用于控制初次滚动，是否展示滚动动画效果
   firstScrolled = false;
 
-  constructor(protected override cdr: ChangeDetectorRef) {
-    super(cdr);
+  constructor(
+    protected override cdr: ChangeDetectorRef,
+    elementRef: ElementRef,
+  ) {
+    super(cdr, elementRef);
     this.model$.subscribe(_ => {
       this.cdr.markForCheck();
     });

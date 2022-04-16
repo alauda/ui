@@ -4,12 +4,13 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  HostBinding,
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { Bem, buildBem } from '../utils';
+import { Bem, buildBem, generateDataTestId } from '../utils';
 
 import { MessageAnimations } from './message-animations';
 import { MessageConfig, MessageType } from './message.config';
@@ -46,6 +47,11 @@ export class MessageComponent implements AfterViewInit {
   type: MessageType;
   content: string;
   duration: number;
+
+  @HostBinding('attr.data-test')
+  get dataTest() {
+    return generateDataTestId(`MESSAGE`);
+  }
 
   get icon(): string {
     return typeIcon[this.type];

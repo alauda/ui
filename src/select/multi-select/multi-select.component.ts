@@ -153,8 +153,12 @@ export class MultiSelectComponent<T = unknown>
   trackByValue = (_: number, item: SelectFilterOption<T>) =>
     this.trackFn(item.value);
 
-  constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {
-    super(cdr);
+  constructor(
+    cdr: ChangeDetectorRef,
+    private readonly renderer: Renderer2,
+    elementRef: ElementRef,
+  ) {
+    super(cdr, elementRef);
   }
 
   override ngAfterContentInit() {

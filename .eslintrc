@@ -30,7 +30,8 @@
             ],
             "style": "camelCase"
           }
-        ]
+        ],
+        "sonarjs/no-small-switch": "off"
       }
     },
     {

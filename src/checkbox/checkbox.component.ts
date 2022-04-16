@@ -12,11 +12,13 @@ import {
   ViewChild,
   ViewEncapsulation,
   forwardRef,
+  HostBinding,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BehaviorSubject, Subject, combineLatest, map, takeUntil } from 'rxjs';
 
 import { CommonFormControl } from '../form';
+import { generateDataTestId } from '../utils';
 
 import { CheckboxGroupComponent } from './checkbox-group/checkbox-group.component';
 
@@ -48,6 +50,7 @@ export class CheckboxComponent<T>
   @Input()
   type = 'label';
 
+  @HostBinding('attr.data-test')
   @Input()
   get label() {
     return this._label;
@@ -70,6 +73,11 @@ export class CheckboxComponent<T>
   @ViewChild('elRef', { static: true })
   elRef: ElementRef;
 
+  @HostBinding('attr.data-test')
+  get testId() {
+    return generateDataTestId(this.elRef.nativeElement, 'CHECKBOX');
+  }
+
   private readonly checkboxGroup: CheckboxGroupComponent<T>;
   private _label: T;
   private readonly label$$ = new BehaviorSubject(this.label);
@@ -82,8 +90,9 @@ export class CheckboxComponent<T>
     @Inject(forwardRef(() => CheckboxGroupComponent))
     checkboxGroup: CheckboxGroupComponent<T>,
     private readonly focusMonitor: FocusMonitor,
+    elementRef: ElementRef,
   ) {
-    super(cdr);
+    super(cdr, elementRef);
     this.checkboxGroup = checkboxGroup;
     if (this.checkboxGroup) {
       combineLatest([this.checkboxGroup.model$, this.label$$])

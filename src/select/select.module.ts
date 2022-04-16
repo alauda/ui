@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { I18nModule } from '../i18n';
 import { IconModule } from '../icon';
 import { InputModule } from '../input';
+import { SharedModule } from '../shared/shared.module';
 import { TagModule } from '../tag';
 import { TooltipModule } from '../tooltip';
 
@@ -26,6 +27,7 @@ import { IncludesDirective } from './validators';
     IconModule,
     TooltipModule,
     TagModule,
+    SharedModule,
   ],
   declarations: [
     SelectComponent,

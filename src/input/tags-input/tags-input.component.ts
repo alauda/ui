@@ -163,8 +163,9 @@ export class TagsInputComponent
     private readonly fb: FormBuilder,
     private readonly renderer: Renderer2,
     private readonly injector: Injector,
+    elementRef: ElementRef<HTMLElement>,
   ) {
-    super(cdr);
+    super(cdr, elementRef);
     this.inputControl = this.fb.control('');
   }
 

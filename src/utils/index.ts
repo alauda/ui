@@ -1,3 +1,4 @@
+export * from '../shared/e2e-attribute-binding.directive';
 export * from './async';
 export * from './bem';
 export * from './coercion';

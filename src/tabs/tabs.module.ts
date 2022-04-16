@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from '../button';
 import { IconModule } from '../icon';
+import { SharedModule } from '../shared/shared.module';
 
 import {
   TabBodyComponent,
@@ -31,6 +32,7 @@ import { TabComponent } from './tab.component';
     IconModule,
     A11yModule,
     ObserversModule,
+    SharedModule,
   ],
   declarations: [
     TabGroupComponent,

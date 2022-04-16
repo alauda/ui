@@ -3,12 +3,13 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostBinding,
   TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
 import { Observable, Subject, combineLatest, map, startWith } from 'rxjs';
 
-import { Bem, buildBem, publishRef } from '../utils';
+import { Bem, buildBem, generateDataTestId, publishRef } from '../utils';
 
 import { TooltipType } from './tooltip.types';
 
@@ -21,6 +22,11 @@ import { TooltipType } from './tooltip.types';
   preserveWhitespaces: false,
 })
 export class TooltipComponent {
+  @HostBinding('attr.data-test')
+  get dataTest() {
+    return generateDataTestId('TOOLTIP');
+  }
+
   text: string;
   template: TemplateRef<any>;
   bem: Bem = buildBem('aui-tooltip');

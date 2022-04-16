@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  HostBinding,
   Input,
   ViewEncapsulation,
 } from '@angular/core';
@@ -20,6 +21,7 @@ let id = 0;
   preserveWhitespaces: false,
 })
 export class IconComponent {
+  @HostBinding('attr.data-test')
   @Input()
   icon: string;
 

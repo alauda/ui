@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   EmbeddedViewRef,
+  HostBinding,
   HostListener,
   TemplateRef,
   Type,
@@ -14,7 +15,7 @@ import {
 
 import { MessageAnimations } from '../message/message-animations';
 import { MessageComponent } from '../message/message.component';
-import { Bem, buildBem } from '../utils';
+import { Bem, buildBem, generateDataTestId } from '../utils';
 
 import { NotificationConfig } from './notification.config';
 
@@ -35,6 +36,11 @@ export class NotificationComponent
 {
   protected override readonly animateStartState = 'flyLeft';
   protected override readonly animateStartEnd = 'flyUp';
+
+  @HostBinding('attr.data-test')
+  override get dataTest() {
+    return generateDataTestId('NOTIFICATION');
+  }
 
   override bem: Bem = buildBem('aui-notification');
   override animateState = this.animateStartState;

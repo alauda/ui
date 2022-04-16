@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  HostBinding,
   Input,
   Renderer2,
   ViewEncapsulation,
@@ -10,7 +11,7 @@ import {
 import { BehaviorSubject } from 'rxjs';
 
 import { ComponentSize } from '../types';
-import { coerceAttrBoolean } from '../utils';
+import { coerceAttrBoolean, generateDataTestId } from '../utils';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -22,6 +23,11 @@ import { coerceAttrBoolean } from '../utils';
   preserveWhitespaces: false,
 })
 export class InputComponent {
+  @HostBinding('attr.data-test')
+  get dataTest() {
+    return generateDataTestId(this.elementRef.nativeElement, 'INPUT');
+  }
+
   @Input()
   get size() {
     return this._size;

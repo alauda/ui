@@ -121,6 +121,7 @@
           *ngFor="let option of customCreatedOptions$ | async"
           [label]="option.label"
           [value]="option.value"
+          [attr.data-test]="'aui-option/' + option.label"
         >
           {{ option.label }}
         </aui-option>
