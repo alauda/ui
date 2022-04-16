@@ -9,7 +9,7 @@ $b: aui-card;
   padding: 20px;
   border-radius: use-var(border-radius-l);
   background-color: use-rgb(n-10);
-  font-size: use-var(font-size-m);
+  @include text-set(m, main);
   @include card-shadow;
 
   &__header {
