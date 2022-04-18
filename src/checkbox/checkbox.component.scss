@@ -61,6 +61,10 @@ $block: 'aui-checkbox';
     }
   }
 
+  &.isDisabled &__content {
+    color: use-text-color(disabled);
+  }
+
   &.isIndeterminate &__pointer {
     color: use-rgb(main-bg);
     border-color: use-rgb(primary);
