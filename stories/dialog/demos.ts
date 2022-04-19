@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 
 import { DialogService, DialogSize } from '@alauda/ui';
 
@@ -158,20 +163,39 @@ export class FullScreenDialogComponent {
 
 @Component({
   template: `<button
-    aui-button="primary"
-    (click)="open()"
-  >
-    打开对话框
-  </button>`,
+      aui-button="primary"
+      (click)="openString()"
+    >
+      打开对话框(String)
+    </button>
+    <button
+      aui-button="primary"
+      (click)="openTemplateRef()"
+    >
+      打开对话框(TemplateRef)
+    </button>
+    <ng-template #templateContent
+      >This will permanently delete the item.(TemplateRef)</ng-template
+    > `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmDialogComponent {
+  @ViewChild('templateContent') contentTemplateRef: TemplateRef<any>;
   constructor(private readonly dialog: DialogService) {}
 
-  open() {
+  openString() {
     this.dialog.confirm({
       title: 'Are you sure?',
-      content: 'This will permanently delete the item.',
+      content: 'This will permanently delete the item.(String)',
+      confirmText: 'Yes',
+      cancelText: 'No',
+    });
+  }
+
+  openTemplateRef() {
+    this.dialog.confirm({
+      title: 'Are you sure?',
+      content: this.contentTemplateRef,
       confirmText: 'Yes',
       cancelText: 'No',
     });

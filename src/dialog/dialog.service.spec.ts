@@ -282,6 +282,29 @@ describe('DialogService', () => {
     expect(confirmBtn.disabled).toBeFalsy();
     expect(cancelBtn.disabled).toBeFalsy();
   }));
+
+  it('should open confirm dialog with templateRef content', () =>
+    new Promise<void>(resolve => {
+      const contentTemplateRefTestComponent = TestBed.createComponent(
+        ContentTemplateRefTestComponent,
+      );
+
+      dialogService
+        .confirm({
+          title: 'title',
+          content:
+            contentTemplateRefTestComponent.componentInstance.templateRef,
+        })
+        .then(() => {
+          expect(ocEl.querySelector('aui-dialog')).toBeNull();
+          resolve();
+        });
+      fixture.detectChanges();
+      expect(ocEl.querySelector('.content-template')).toBeTruthy();
+      ocEl
+        .querySelector('.aui-confirm-dialog__confirm-button')
+        .dispatchEvent(new Event('click'));
+    }));
 });
 
 @Component({
@@ -300,6 +323,18 @@ describe('DialogService', () => {
 })
 class TestComponent {
   result: any;
+  @ViewChild('template', { static: true })
+  templateRef: TemplateRef<any>;
+}
+@Component({
+  template: `
+    <ng-template #template>
+      <div class="content-template">content-templateRef</div>
+    </ng-template>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+class ContentTemplateRefTestComponent {
   @ViewChild('template', { static: true })
   templateRef: TemplateRef<any>;
 }
@@ -328,7 +363,11 @@ class DialogContentComponent {}
 
 @NgModule({
   imports: [DialogModule],
-  declarations: [DialogContentComponent, TestComponent],
+  declarations: [
+    DialogContentComponent,
+    TestComponent,
+    ContentTemplateRefTestComponent,
+  ],
   entryComponents: [DialogContentComponent],
 })
 class TestModule {}
