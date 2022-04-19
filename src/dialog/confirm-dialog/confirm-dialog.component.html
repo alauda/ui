@@ -12,7 +12,14 @@
     </span>
     <span>{{ config.title }}</span>
   </div>
-  <div [class]="bem.element('content')">{{ config.content }}</div>
+  <div [class]="bem.element('content')">
+    <ng-container *ngIf="isTemplateRef(config.content); else stringTemplate">
+      <ng-template *ngTemplateOutlet="config.content"></ng-template>
+    </ng-container>
+    <ng-template #stringTemplate>
+      {{ config.content }}
+    </ng-template>
+  </div>
   <div [class]="bem.element('button-wrapper')">
     <div>
       <button
