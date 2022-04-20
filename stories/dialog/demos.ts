@@ -174,6 +174,12 @@ export class FullScreenDialogComponent {
     >
       打开对话框(TemplateRef)
     </button>
+    <button
+      aui-button="primary"
+      (click)="openComponent()"
+    >
+      打开对话框(Component)
+    </button>
     <ng-template #templateContent
       >This will permanently delete the item.(TemplateRef)</ng-template
     > `,
@@ -181,11 +187,12 @@ export class FullScreenDialogComponent {
 })
 export class ConfirmDialogComponent {
   @ViewChild('templateContent') contentTemplateRef: TemplateRef<any>;
+  readonly title = 'Are you sure?';
   constructor(private readonly dialog: DialogService) {}
 
   openString() {
     this.dialog.confirm({
-      title: 'Are you sure?',
+      title: this.title,
       content: 'This will permanently delete the item.(String)',
       confirmText: 'Yes',
       cancelText: 'No',
@@ -194,10 +201,24 @@ export class ConfirmDialogComponent {
 
   openTemplateRef() {
     this.dialog.confirm({
-      title: 'Are you sure?',
+      title: this.title,
       content: this.contentTemplateRef,
       confirmText: 'Yes',
       cancelText: 'No',
     });
   }
+
+  openComponent() {
+    this.dialog.confirm({
+      title: this.title,
+      content: ConfirmContentComponent,
+      confirmText: 'Yes',
+      cancelText: 'No',
+    });
+  }
 }
+@Component({
+  template: 'This will permanently delete the item.(Component)',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ConfirmContentComponent {}

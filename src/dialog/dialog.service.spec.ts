@@ -305,6 +305,24 @@ describe('DialogService', () => {
         .querySelector('.aui-confirm-dialog__confirm-button')
         .dispatchEvent(new Event('click'));
     }));
+
+  it('should open confirm dialog with component content', () =>
+    new Promise<void>(resolve => {
+      dialogService
+        .confirm({
+          title: 'title',
+          content: ContentTemplateRefTestComponent,
+        })
+        .then(() => {
+          expect(ocEl.querySelector('aui-dialog')).toBeNull();
+          resolve();
+        });
+      fixture.detectChanges();
+      expect(ocEl.querySelector('content-component')).toBeTruthy();
+      ocEl
+        .querySelector('.aui-confirm-dialog__confirm-button')
+        .dispatchEvent(new Event('click'));
+    }));
 });
 
 @Component({
@@ -327,6 +345,7 @@ class TestComponent {
   templateRef: TemplateRef<any>;
 }
 @Component({
+  selector: 'content-component',
   template: `
     <ng-template #template>
       <div class="content-template">content-templateRef</div>
