@@ -1,10 +1,10 @@
-import { TemplateRef } from '@angular/core';
+import { TemplateRef, Type } from '@angular/core';
 
 import { BeforeAction, ConfirmType } from '../dialog.types';
 
 export class ConfirmDialogConfig<T = unknown, R = unknown> {
   title: string;
-  content?: string | TemplateRef<any>;
+  content?: string | TemplateRef<any> | Type<any>;
   cancelButton? = true;
   confirmType?: ConfirmType = ConfirmType.Primary;
   confirmText? = 'OK';

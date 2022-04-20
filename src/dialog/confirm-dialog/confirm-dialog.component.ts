@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
 
-import { Bem, buildBem, isTemplateRef } from '../../utils';
+import { Bem, buildBem, isString, isTemplateRef } from '../../utils';
 import { DialogRef } from '../dialog-ref';
 import {
   BeforeAction,
@@ -33,6 +33,7 @@ export class ConfirmDialogComponent<T = unknown, R = unknown> {
   waitConfirm = false;
   waitCancel = false;
   isTemplateRef = isTemplateRef;
+  isString = isString;
   constructor(
     private readonly dialogRef: DialogRef<any>,
     private readonly cdr: ChangeDetectorRef,
