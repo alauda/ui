@@ -33,10 +33,8 @@ $stickyCssClass: 'aui-table-sticky';
     content: '';
     position: sticky;
     display: block;
-    width: calc(100% + #{$table-padding * 2});
     height: 16px;
-    margin-top: -16px;
-    transform: translate3d(-12px, 0, 0);
+    margin: -16px -12px 0;
     z-index: 99;
     top: 28px;
     @include theme-light {
@@ -51,12 +49,11 @@ $stickyCssClass: 'aui-table-sticky';
     content: '';
     position: sticky;
     display: block;
-    width: calc(100% + #{$table-padding * 2});
     height: 16px;
-    transform: translate3d(-12px, 12px, 0);
+    transform: translate3d(0, 12px, 0);
     z-index: 99;
     bottom: 0;
-    margin-top: -16px;
+    margin: -16px -12px 0;
     @include theme-light {
       box-shadow: 0 -10px 10px -4px use-rgba(n-1, 0.16) inset;
     }

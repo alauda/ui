@@ -125,6 +125,10 @@
     border-radius: 2px;
     background-color: $color;
   }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
 }
 
 @mixin clear-button() {
