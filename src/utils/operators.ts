@@ -1,12 +1,32 @@
-import { pipe, publishReplay, refCount } from 'rxjs';
+import { ReplaySubject, share, TimestampProvider } from 'rxjs';
 
-/**
- * @see https://rxjs.dev/deprecations/multicasting#publishreplay
- *
- * FIXME:
- * The recommended replacement is breaking our apps for watching resources,
- * revert it back temporarily. see also https://github.com/ReactiveX/rxjs/discussions/6438
- */
-export const publishRef = <T>(bufferSize = 1, windowTime?: number) =>
-  // eslint-disable-next-line sonar/deprecation
-  pipe(publishReplay<T>(bufferSize, windowTime), refCount());
+export type PublishRefConfig<T> =
+  | number
+  | (import('rxjs/internal/operators/share').ShareConfig<T> & {
+      bufferSize?: number;
+      windowTime?: number;
+      timestampProvider?: TimestampProvider;
+    });
+
+export const publishRef = <T>(bufferSizeOrConfig: PublishRefConfig<T> = {}) => {
+  const {
+    bufferSize = 1,
+    windowTime,
+    timestampProvider,
+    connector = () =>
+      new ReplaySubject(bufferSize, windowTime, timestampProvider),
+    resetOnError = false,
+    resetOnComplete = false,
+    resetOnRefCountZero = true,
+  } = typeof bufferSizeOrConfig === 'number'
+    ? ({
+        bufferSize: bufferSizeOrConfig,
+      } as Exclude<PublishRefConfig<T>, number>)
+    : bufferSizeOrConfig;
+  return share<T>({
+    connector,
+    resetOnError,
+    resetOnComplete,
+    resetOnRefCountZero,
+  });
+};
