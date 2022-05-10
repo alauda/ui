@@ -1,12 +1,16 @@
-import { Directive } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 @Directive({
   selector: '[auiCardHeader]',
   host: {
     '[class.aui-card__header]': 'true',
+    '[class.aui-card__header--secondary]': 'size === "secondary"',
   },
 })
-export class CardHeaderDirective {}
+export class CardHeaderDirective {
+  @Input()
+  size: 'default' | 'secondary' = 'default';
+}
 
 @Directive({
   selector: '[auiCardFooter]',
