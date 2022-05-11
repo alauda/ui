@@ -7,12 +7,17 @@ $stickyCssClass: 'aui-table-sticky';
 
 // style for column shadow
 .aui-table__scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  overflow: hidden;
   background-color: use-rgb(n-9);
   padding: 0 $table-padding $table-padding;
   border-radius: use-var(border-radius-l);
   @include scroll-bar;
 
   .aui-table {
+    max-height: 100%;
     padding: 0;
     border-radius: 0;
   }
@@ -96,6 +101,9 @@ $stickyCssClass: 'aui-table-sticky';
     align-items: stretch;
 
     .aui-table__cell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       border-width: 1px 0;
       border-style: solid;
       border-color: use-rgb(n-8);

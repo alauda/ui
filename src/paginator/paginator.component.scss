@@ -7,7 +7,8 @@ $input-width: 80px;
 .#{$block} {
   display: inline-flex;
   align-items: center;
-  color: use-rgb(n-1);
+  white-space: nowrap;
+  @include text-set(m);
 
   .aui-button {
     width: use-var(line-height-xl);
@@ -71,15 +72,11 @@ $input-width: 80px;
     }
   }
 
-  &__total {
-    font-size: use-var(font-size-m);
-  }
-
   &__navigator.aui-button {
     background-color: use-rgb(n-8);
 
     aui-icon {
-      font-size: use-var(font-size-l);
+      font-size: use-var(icon-size-m);
     }
 
     &:hover {
