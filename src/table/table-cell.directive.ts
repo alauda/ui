@@ -1,5 +1,5 @@
 import { CdkCell, CdkColumnDef } from '@angular/cdk/table';
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 
 import { buildBem } from '../utils';
 
@@ -12,9 +12,13 @@ const bem = buildBem('aui-table');
   host: {
     class: 'aui-table__cell',
     role: 'gridcell',
+    '[class.aui-table__cell--column]': 'direction === "column"',
   },
 })
 export class TableCellDirective extends CdkCell {
+  @Input()
+  direction: 'row' | 'column' = 'row';
+
   constructor(columnDef: CdkColumnDef, elementRef: ElementRef<HTMLElement>) {
     super(columnDef, elementRef);
     elementRef.nativeElement.classList.add(

@@ -67,8 +67,11 @@ Table 组件基于 CdkTable 开发, 加了一些 alauda 自定义的表格样式
             <aui-table-header-cell *auiTableHeaderCellDef>
               Name
             </aui-table-header-cell>
-            <aui-table-cell *auiTableCellDef="let item">
-              <div>{{ item.name }}</div>
+            <aui-table-cell
+              *auiTableCellDef="let item"
+              direction="column"
+            >
+              {{ item.name }}
               <div style="font-size: 12px;color: #96989b;line-height: 16px;">
                 {{ item.displayName }}
               </div>
