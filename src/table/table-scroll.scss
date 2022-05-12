@@ -101,9 +101,6 @@ $stickyCssClass: 'aui-table-sticky';
     align-items: stretch;
 
     .aui-table__cell {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       border-width: 1px 0;
       border-style: solid;
       border-color: use-rgb(n-8);
