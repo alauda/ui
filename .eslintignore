@@ -1,7 +1,8 @@
-coverage
-dist
-release
-CHANGELOG.md
+/coverage
+/dist
+/release
+/CHANGELOG.md
 /.angular
 !/.*.js
-jest.setup.ts
+!/.storybook
+/jest.setup.ts

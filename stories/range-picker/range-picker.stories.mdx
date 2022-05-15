@@ -1,7 +1,7 @@
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 import dayjs from 'dayjs';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
 
@@ -25,13 +25,15 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
     height="500px"
   >
     {{
-      template: /* HTML */ `<aui-range-picker
+      template: /* HTML */ `
+        <aui-range-picker
           [(ngModel)]="range"
           required
           [clearText]="'清除'"
         ></aui-range-picker>
         <br />
-        Form value: {{range|json}}`,
+        Form value: {{range|json}}
+      `,
       props: {
         range: [dayjs(), dayjs()],
       },
@@ -45,12 +47,14 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
     height="500px"
   >
     {{
-      template: /* HTML */ ` <aui-range-picker
+      template: /* HTML */ `
+        <aui-range-picker
           [(ngModel)]="range"
           [showTime]="false"
         ></aui-range-picker>
         <br />
-        Form value: {{range|json}}`,
+        Form value: {{range|json}}
+      `,
       props: {
         range: [dayjs(), dayjs()],
       },
@@ -64,12 +68,14 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
     height="500px"
   >
     {{
-      template: /* HTML */ `<aui-range-picker
+      template: /* HTML */ `
+        <aui-range-picker
           [formControl]="control"
           [showTime]="false"
         ></aui-range-picker>
         <br />
-        Form value: {{control?.value|json}}`,
+        Form value: {{control?.value|json}}
+      `,
       props: {
         control: new FormControl({
           value: [dayjs(), dayjs().add(3, 'day')],
@@ -86,7 +92,8 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
     height="500px"
   >
     {{
-      template: /* HTML */ ` <aui-range-picker
+      template: /* HTML */ `
+        <aui-range-picker
           [(ngModel)]="range"
           required
           [showTime]="true"
@@ -94,7 +101,8 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
           style="width: 400px"
         ></aui-range-picker>
         <br />
-        Form value: {{range|json}}`,
+        Form value: {{range|json}}
+      `,
       props: {
         range: [dayjs(), dayjs()],
       },
@@ -108,7 +116,8 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
     height="500px"
   >
     {{
-      template: /* HTML */ ` <aui-range-picker
+      template: /* HTML */ `
+        <aui-range-picker
           [(ngModel)]="range"
           [showTime]="true"
           [weekStartDay]="3"
@@ -118,7 +127,8 @@ import { DatePickerModule, DateNavRange, ButtonModule } from '@alauda/ui';
           [disabledTime]="disabledTimeFn()"
         ></aui-range-picker>
         <br />
-        Form value: {{control?.value|json}}`,
+        Form value: {{control?.value|json}}
+      `,
       props: {
         range: [dayjs(), dayjs()],
         minDate: dayjs().add(3, 'day'),
