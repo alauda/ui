@@ -1,16 +1,7 @@
 {
-  "extends": "@1stg/tsconfig/angular",
+  "extends": "@1stg/tsconfig/ng-lib",
   "compilerOptions": {
-    "baseUrl": "."
-  },
-  "angularCompilerOptions": {
-    "compilationMode": "full",
-    "preserveWhitespaces": false,
-    "enableResourceInlining": true,
-    "fullTemplateTypeCheck": true,
-    "strictInputAccessModifiers": true,
-    "strictInjectionParameters": true,
-    "strictTemplates": true,
-    "trace": true
+    "baseUrl": ".",
+    "strictNullChecks": false
   }
 }

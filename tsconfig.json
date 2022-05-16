@@ -1,41 +1,23 @@
 {
-  "include": ["src", "stories", "jest.setup.ts"],
-  "exclude": ["release", "dist"],
+  "extends": "@1stg/tsconfig/angular",
+  "include": [
+    "./.storybook/*.ts",
+    "src",
+    "stories",
+    "jest.config.ts",
+    "jest.setup.ts"
+  ],
+  "exclude": ["dist", "release"],
   "compilerOptions": {
-    "declaration": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "incremental": true,
-    "jsx": "preserve",
-    "lib": ["ESNext", "DOM"],
-    "module": "ESNext",
-    "target": "ES2015",
-    "moduleResolution": "node",
-    "noImplicitOverride": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "stripInternal": true,
-    "strictPropertyInitialization": false,
-    "strictNullChecks": false,
     "baseUrl": ".",
     "paths": {
       "@alauda/ui": ["src"]
-    }
+    },
+    "strictNullChecks": false
   },
-  "angularCompilerOptions": {
-    "compilationMode": "partial",
-    "preserveWhitespaces": false,
-    "enableResourceInlining": true,
-    "fullTemplateTypeCheck": true,
-    "strictInputAccessModifiers": true,
-    "strictInjectionParameters": true,
-    "strictTemplates": true,
-    "trace": true
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }

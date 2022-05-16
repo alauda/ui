@@ -5,12 +5,6 @@
   },
   "overrides": [
     {
-      "files": "*.mdx",
-      "rules": {
-        "no-unused-expressions": "off"
-      }
-    },
-    {
       "files": "*.ts",
       "excludedFiles": [
         "*.spec.ts",

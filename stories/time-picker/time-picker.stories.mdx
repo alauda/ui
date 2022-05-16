@@ -1,6 +1,6 @@
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ComponentSize, TimePickerModule } from '@alauda/ui';
 
@@ -25,14 +25,16 @@ import { ComponentSize, TimePickerModule } from '@alauda/ui';
     height="400px"
   >
     {{
-      template: /* HTML */ `<aui-time-picker
+      template: /* HTML */ `
+        <aui-time-picker
           [(ngModel)]="time"
           [size]="csize.Small"
           placeholder="select time"
           required
         ></aui-time-picker>
         <br />
-        Form value: {{time|json}}`,
+        Form value: {{time|json}}
+      `,
       props: {
         time: Date.now(),
         csize: ComponentSize,

@@ -139,24 +139,26 @@ import {
     height="200px"
   >
     {{
-      template: /* HTML */ `<aui-tab-group>
-        <ng-container *auiTabTitle>aa2</ng-container>
-        <aui-tab>
-          <ng-container *auiTabLabel>
-            <aui-icon icon="sun"></aui-icon>
-            Custom Label
-          </ng-container>
-          <aui-card> Content 1 </aui-card>
-        </aui-tab>
-        <aui-tab label="Tab 1"><aui-card>Content 2</aui-card></aui-tab>
-        <aui-tab>
-          <ng-container *auiTabLabel>
-            <aui-icon icon="moon"></aui-icon>
-            Custom Label
-          </ng-container>
-          <aui-card> Content 3 </aui-card>
-        </aui-tab>
-      </aui-tab-group>`,
+      template: /* HTML */ `
+        <aui-tab-group>
+          <ng-container *auiTabTitle>aa2</ng-container>
+          <aui-tab>
+            <ng-container *auiTabLabel>
+              <aui-icon icon="sun"></aui-icon>
+              Custom Label
+            </ng-container>
+            <aui-card> Content 1 </aui-card>
+          </aui-tab>
+          <aui-tab label="Tab 1"><aui-card>Content 2</aui-card></aui-tab>
+          <aui-tab>
+            <ng-container *auiTabLabel>
+              <aui-icon icon="moon"></aui-icon>
+              Custom Label
+            </ng-container>
+            <aui-card> Content 3 </aui-card>
+          </aui-tab>
+        </aui-tab-group>
+      `,
       props: {
         tabs: Array.from({ length: 3 }).fill(),
       },
@@ -299,7 +301,8 @@ import {
     height="100px"
   >
     {{
-      template: /* HTML */ ` <aui-form-item>
+      template: /* HTML */ `
+        <aui-form-item>
           <label auiFormItemLabel>启用 Lazy</label>
           <aui-radio-group
             auiFormItemControl
@@ -332,7 +335,8 @@ import {
               </aui-tab-group>
             </tabs-active-test>
           </aui-tab>
-        </aui-tab-group>`,
+        </aui-tab-group>
+      `,
       props: {
         lazy: true,
       },

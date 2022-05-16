@@ -1,4 +1,6 @@
-module.exports = {
+import { StorybookConfig } from '@storybook/core-common';
+
+const config: StorybookConfig = {
   core: {
     builder: 'webpack5',
   },
@@ -27,3 +29,5 @@ module.exports = {
     return config;
   },
 };
+
+export default config;

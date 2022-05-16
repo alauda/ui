@@ -1,7 +1,7 @@
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 import dayjs from 'dayjs';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   DatePickerModule,
@@ -51,7 +51,7 @@ import {
       props: {
         now: dayjs(),
         time: dayjs().add(7, 'day'),
-        DatePickerType: DatePickerType,
+        DatePickerType,
       },
     }}
   </Story>
@@ -90,7 +90,7 @@ import {
       `,
       props: {
         time: null,
-        DatePickerType: DatePickerType,
+        DatePickerType,
       },
     }}
   </Story>
@@ -102,15 +102,17 @@ import {
     height="200px"
   >
     {{
-      template: /* HTML */ `<aui-date-picker
-        placeholder="请选择"
-        [type]="DatePickerType.Day"
-        [formControl]="control"
-        [showTime]="true"
-      ></aui-date-picker>`,
+      template: /* HTML */ `
+        <aui-date-picker
+          placeholder="请选择"
+          [type]="DatePickerType.Day"
+          [formControl]="control"
+          [showTime]="true"
+        ></aui-date-picker>
+      `,
       props: {
         control: new FormControl({ value: null, disabled: true }),
-        DatePickerType: DatePickerType,
+        DatePickerType,
       },
     }}
   </Story>
@@ -122,7 +124,8 @@ import {
     height="500px"
   >
     {{
-      template: /* HTML */ `<aui-date-picker
+      template: /* HTML */ `
+        <aui-date-picker
           placeholder="请选择"
           [type]="DatePickerType.Day"
           [(ngModel)]="time"
@@ -130,10 +133,11 @@ import {
           [disabledDate]="disableDateFn"
         ></aui-date-picker>
         <br />
-        Form value: {{time?.toDate()}}`,
+        Form value: {{time?.toDate()}}
+      `,
       props: {
         time: null,
-        DatePickerType: DatePickerType,
+        DatePickerType,
         disableDateFn: function (date, navRange) {
           return date.isBefore(
             dayjs(),
@@ -155,17 +159,19 @@ import {
     height="400px"
   >
     {{
-      template: /* HTML */ `<aui-date-picker
+      template: /* HTML */ `
+        <aui-date-picker
           placeholder="请选择"
           [type]="DatePickerType.Day"
           [(ngModel)]="time"
           [showTime]="true"
         ></aui-date-picker>
         <br />
-        Form value: {{time?.toDate()}}`,
+        Form value: {{time?.toDate()}}
+      `,
       props: {
         time: null,
-        DatePickerType: DatePickerType,
+        DatePickerType,
       },
     }}
   </Story>
@@ -177,17 +183,19 @@ import {
     height="400px"
   >
     {{
-      template: /* HTML */ `<aui-date-picker
+      template: /* HTML */ `
+        <aui-date-picker
           placeholder="请选择"
           [type]="DatePickerType.Month"
           [(ngModel)]="month"
         ></aui-date-picker>
         <br />
         Form value: {{month?.toDate()}}
-        <br />`,
+        <br />
+      `,
       props: {
         month: null,
-        DatePickerType: DatePickerType,
+        DatePickerType,
       },
     }}
   </Story>
@@ -210,7 +218,7 @@ import {
       `,
       props: {
         year: null,
-        DatePickerType: DatePickerType,
+        DatePickerType,
       },
     }}
   </Story>
