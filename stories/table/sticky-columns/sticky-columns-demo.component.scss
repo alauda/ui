@@ -13,9 +13,5 @@
     }
   }
 
-  aui-table {
-    max-height: 300px;
-  }
-
   @include table-placeholder('.empty');
 }

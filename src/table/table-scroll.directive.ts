@@ -4,6 +4,7 @@ import {
   ElementRef,
   Host,
   HostBinding,
+  Input,
   OnDestroy,
 } from '@angular/core';
 import { Subject, fromEvent, merge, startWith, takeUntil } from 'rxjs';
@@ -28,7 +29,12 @@ const HAS_TABLE_VERTICAL_SCROLL = 'hasTableVerticalScroll';
     class: 'aui-table__scroll-wrapper',
   },
 })
-export class TableScrollWrapperDirective {}
+export class TableScrollWrapperDirective {
+  @HostBinding('style.max-height')
+  @Input()
+  auiTableScrollWrapper = '100%';
+}
+
 @Directive({
   selector: '[auiTableScrollShadow]',
 })
