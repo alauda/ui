@@ -278,8 +278,8 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
 
   private getLabelFromNode(node: TreeNode<T>) {
     return (
-      node.label ||
       this.labelFn?.(node.value) ||
+      node.label ||
       coerceString(this.trackFn(node.value))
     );
   }
