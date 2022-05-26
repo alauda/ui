@@ -1,5 +1,27 @@
 # Changelog
 
+## 6.4.2
+
+### Patch Changes
+
+- [#339](https://github.com/alauda/alauda-ui/pull/339) [`e98b599`](https://github.com/alauda/alauda-ui/commit/e98b599bf1ce6036cdf0a27dedbf4beb858cd6de) Thanks [@wszgrcy](https://github.com/wszgrcy)! - feat: confirm dialog content support template
+
+- [#341](https://github.com/alauda/alauda-ui/pull/341) [`5ca80b7`](https://github.com/alauda/alauda-ui/commit/5ca80b72859490858ffbec85a4e12f38b363aab2) Thanks [@wszgrcy](https://github.com/wszgrcy)! - feat: confirm dialog content support component
+
+- [#343](https://github.com/alauda/alauda-ui/pull/343) [`305ac14`](https://github.com/alauda/alauda-ui/commit/305ac147b6d7f083a547f5687ae2106308a8fd0b) Thanks [@wszgrcy](https://github.com/wszgrcy)! - fix: table scroll shadow overflow
+
+- [#352](https://github.com/alauda/alauda-ui/pull/352) [`eb0774a`](https://github.com/alauda/alauda-ui/commit/eb0774a386577196e8dabec8a8447af1bc9fd836) Thanks [@EdisonSu768](https://github.com/EdisonSu768)! - fix: autocomplete disabled
+
+- [#346](https://github.com/alauda/alauda-ui/pull/346) [`e022c68`](https://github.com/alauda/alauda-ui/commit/e022c68b2cd0a9789450c02627c2df23fbaee334) Thanks [@fengtianze](https://github.com/fengtianze)! - feat: card header support secondary size
+
+- [#351](https://github.com/alauda/alauda-ui/pull/351) [`e24e025`](https://github.com/alauda/alauda-ui/commit/e24e025fb2109a6539048807147a18a1e88b9f1b) Thanks [@HaoxiangShen](https://github.com/HaoxiangShen)! - fix: tree-select `labelFn` takes higher priority than `label`
+
+- [#345](https://github.com/alauda/alauda-ui/pull/345) [`e4efe38`](https://github.com/alauda/alauda-ui/commit/e4efe38a31d87ff8dc5ba58794f12200be1053e6) Thanks [@mario-mui](https://github.com/mario-mui)! - fix: check tag space to 8px
+
+- [#347](https://github.com/alauda/alauda-ui/pull/347) [`ddf79bb`](https://github.com/alauda/alauda-ui/commit/ddf79bbfffed58e457b219af086038a634b6851b) Thanks [@JounQin](https://github.com/JounQin)! - fix: use flex layout for all table cells
+
+- [#350](https://github.com/alauda/alauda-ui/pull/350) [`bacb05b`](https://github.com/alauda/alauda-ui/commit/bacb05bac65c10feab4b8e2ebecc2c9644a5dd5f) Thanks [@fengtianze](https://github.com/fengtianze)! - feat: table scroll wrapper support height setting
+
 ## 6.4.1
 
 ### Patch Changes
