@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
@@ -7,7 +8,7 @@ import { AutocompleteModule, InputModule } from '@alauda/ui';
   title="Autocomplete"
   decorators={[
     moduleMetadata({
-      imports: [AutocompleteModule, InputModule],
+      imports: [AutocompleteModule, InputModule, FormsModule],
     }),
   ]}
 />
@@ -140,6 +141,46 @@ import { AutocompleteModule, InputModule } from '@alauda/ui';
           </aui-autocomplete-placeholder>
         </aui-autocomplete>
       `,
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Disabled"
+    height="260px"
+  >
+    {{
+      template: /* HTML */ `
+        <button (click)="disabled = !disabled">
+          {{ disabled ? 'Enable' : 'Disable' }}
+        </button>
+        <br />
+        <br />
+        <form #form="ngForm">
+          <aui-tags-input
+            name="fruit"
+            [(ngModel)]="value"
+            [auiAutocomplete]="suggestions"
+            placeholder="水果"
+            [disabled]="disabled"
+          ></aui-tags-input>
+        </form>
+        <aui-autocomplete #suggestions>
+          <aui-suggestion value="apple">apple</aui-suggestion>
+          <aui-suggestion value="banana">banana</aui-suggestion>
+          <aui-suggestion value="peach">peach</aui-suggestion>
+          <aui-suggestion value="grapes">grapes</aui-suggestion>
+          <aui-suggestion value="orange">orange</aui-suggestion>
+          <aui-autocomplete-placeholder>
+            no suggestions
+          </aui-autocomplete-placeholder>
+        </aui-autocomplete>
+      `,
+      props: {
+        disabled: true,
+        value: [],
+      },
     }}
   </Story>
 </Canvas>

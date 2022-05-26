@@ -24,6 +24,7 @@ import {
   merge,
   takeUntil,
   debounceTime,
+  startWith,
 } from 'rxjs';
 
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
@@ -140,6 +141,12 @@ export class AutoCompleteDirective
           if (!Array.isArray(value)) {
             this.inputValue$$.next(value);
           }
+        });
+
+      this.ngControl.statusChanges
+        .pipe(startWith(this.ngControl.status), takeUntil(this.unsubscribe$))
+        .subscribe(status => {
+          this.disabled = status === 'DISABLED';
         });
     }
   }
