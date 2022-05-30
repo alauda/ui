@@ -1,9 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   Output,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -57,6 +59,9 @@ export class SearchComponent {
   @Output()
   clear = new EventEmitter<void>();
 
+  @ViewChild('input', { read: ElementRef })
+  inputRef: ElementRef<HTMLInputElement>;
+
   value = '';
 
   get showSpinner() {
@@ -65,6 +70,10 @@ export class SearchComponent {
 
   get showClear() {
     return !this.disabled && this.clearable && this.value && !this.showSpinner;
+  }
+
+  focus() {
+    this.inputRef.nativeElement.focus();
   }
 
   emitChange(value: string): void {
@@ -87,5 +96,6 @@ export class SearchComponent {
     this.keywordChange.emit('');
     this.search.emit('');
     this.clear.emit();
+    this.inputRef.nativeElement.focus();
   }
 }
