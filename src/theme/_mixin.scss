@@ -58,48 +58,78 @@
 }
 
 // 使用 box-shadow 模拟带圆角的 outline
-@mixin outline-shadow($color: primary) {
-  @include theme-light {
+@mixin outline-shadow($color: primary, $theme: auto) {
+  @if ($theme == light) {
     box-shadow: 0 0 0 2px use-rgba($color, 0.16);
-  }
-  @include theme-dark {
+  } @else if($theme == dark) {
     box-shadow: 0 0 0 2px use-rgba($color, 0.3);
+  } @else {
+    @include theme-light {
+      box-shadow: 0 0 0 2px use-rgba($color, 0.16);
+    }
+    @include theme-dark {
+      box-shadow: 0 0 0 2px use-rgba($color, 0.3);
+    }
   }
 }
 
-@mixin card-shadow() {
-  @include theme-light {
+@mixin card-shadow($theme: auto) {
+  @if ($theme == light) {
     box-shadow: 0 0 4px 0 use-rgba(origin-shadow, 0.1);
-  }
-  @include theme-dark {
+  } @else if($theme == dark) {
     box-shadow: 0 0 4px 0 use-rgba(origin-shadow, 0.75);
+  } @else {
+    @include theme-light {
+      box-shadow: 0 0 4px 0 use-rgba(origin-shadow, 0.1);
+    }
+    @include theme-dark {
+      box-shadow: 0 0 4px 0 use-rgba(origin-shadow, 0.75);
+    }
   }
 }
 
-@mixin popper-shadow() {
-  @include theme-light {
+@mixin popper-shadow($theme: auto) {
+  @if ($theme == light) {
     box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.2);
-  }
-  @include theme-dark {
+  } @else if($theme == dark) {
     box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.75);
+  } @else {
+    @include theme-light {
+      box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.2);
+    }
+    @include theme-dark {
+      box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.75);
+    }
   }
 }
 
-@mixin modal-shadow() {
-  @include theme-light {
+@mixin modal-shadow($theme: auto) {
+  @if ($theme == light) {
     box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.2);
-  }
-  @include theme-dark {
+  } @else if($theme == dark) {
     box-shadow: 0 4px 16px 0 use-rgba(origin-shadow, 0.75);
+  } @else {
+    @include theme-light {
+      box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.2);
+    }
+    @include theme-dark {
+      box-shadow: 0 4px 16px 0 use-rgba(origin-shadow, 0.75);
+    }
   }
 }
 
-@mixin modal-backdrop() {
-  @include theme-light {
+@mixin modal-backdrop($theme: auto) {
+  @if ($theme == light) {
     background-color: use-rgba(origin-shadow, 0.4);
-  }
-  @include theme-dark {
+  } @else if($theme == dark) {
     background-color: use-rgba(origin-shadow, 0.75);
+  } @else {
+    @include theme-light {
+      background-color: use-rgba(origin-shadow, 0.4);
+    }
+    @include theme-dark {
+      background-color: use-rgba(origin-shadow, 0.75);
+    }
   }
 }
 
