@@ -49,6 +49,7 @@
 }
 
 @mixin light-mode {
+  color-scheme: light;
   --aui-color-blue: #{rgb-string(#007af5)};
   --aui-color-b-0: #{rgb-string(#0067d0)};
   --aui-color-b-1: #{rgb-string(#268df6)};
@@ -58,6 +59,15 @@
   --aui-color-b-5: #{rgb-string(#cce4fd)};
   --aui-color-b-6: #{rgb-string(#e5f1fe)};
   --aui-color-b-7: #{rgb-string(#f2f8fe)};
+  --aui-color-primary: var(--aui-color-blue);
+  --aui-color-p-0: var(--aui-color-b-0);
+  --aui-color-p-1: var(--aui-color-b-1);
+  --aui-color-p-2: var(--aui-color-b-2);
+  --aui-color-p-3: var(--aui-color-b-3);
+  --aui-color-p-4: var(--aui-color-b-4);
+  --aui-color-p-5: var(--aui-color-b-5);
+  --aui-color-p-6: var(--aui-color-b-6);
+  --aui-color-p-7: var(--aui-color-b-7);
   --aui-color-green: #{rgb-string(#00c261)};
   --aui-color-g-0: #{rgb-string(#00a552)};
   --aui-color-g-1: #{rgb-string(#26cb78)};
@@ -103,6 +113,7 @@
 }
 
 @mixin dark-mode {
+  color-scheme: dark;
   --aui-color-blue: #{rgb-string(#3d8eff)};
   --aui-color-b-0: #{rgb-string(#3674cc)};
   --aui-color-b-1: #{rgb-string(#6daaff)};
@@ -112,6 +123,15 @@
   --aui-color-b-5: #{rgb-string(#283651)};
   --aui-color-b-6: #{rgb-string(#2a4066)};
   --aui-color-b-7: #{rgb-string(#2c4a7a)};
+  --aui-color-primary: var(--aui-color-blue);
+  --aui-color-p-0: var(--aui-color-b-0);
+  --aui-color-p-1: var(--aui-color-b-1);
+  --aui-color-p-2: var(--aui-color-b-2);
+  --aui-color-p-3: var(--aui-color-b-3);
+  --aui-color-p-4: var(--aui-color-b-4);
+  --aui-color-p-5: var(--aui-color-b-5);
+  --aui-color-p-6: var(--aui-color-b-6);
+  --aui-color-p-7: var(--aui-color-b-7);
   --aui-color-green: #{rgb-string(#11b671)};
   --aui-color-g-0: #{rgb-string(#159261)};
   --aui-color-g-1: #{rgb-string(#4cc894)};

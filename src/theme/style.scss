@@ -3,27 +3,15 @@
 @import 'theme-preset';
 
 @include theme-light {
-  color-scheme: light;
   @include light-mode;
 }
 
 @include theme-dark {
-  color-scheme: dark;
   @include dark-mode;
 }
 
 :root {
   @include component-size;
-
-  --aui-color-primary: var(--aui-color-blue);
-  --aui-color-p-0: var(--aui-color-b-0);
-  --aui-color-p-1: var(--aui-color-b-1);
-  --aui-color-p-2: var(--aui-color-b-2);
-  --aui-color-p-3: var(--aui-color-b-3);
-  --aui-color-p-4: var(--aui-color-b-4);
-  --aui-color-p-5: var(--aui-color-b-5);
-  --aui-color-p-6: var(--aui-color-b-6);
-  --aui-color-p-7: var(--aui-color-b-7);
 }
 
 body {
