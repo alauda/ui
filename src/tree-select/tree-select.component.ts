@@ -58,7 +58,7 @@ import { TreeNode } from './tree-select.types';
     },
   ],
 })
-export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
+export class TreeSelectComponent<T = any> extends CommonFormControl<T> {
   @Input()
   get nodesData() {
     return this._nodesData;
