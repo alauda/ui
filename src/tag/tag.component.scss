@@ -150,33 +150,45 @@
     text-decoration: line-through;
   }
 
-  &.isSolid {
-    color: white;
-
-    .aui-tag__close .aui-icon:hover {
-      color: white;
-    }
-  }
-
   &.isSolid#{&} {
     &--primary {
+      color: white;
       background-color: use-rgb(primary);
+
+      .aui-tag__close .aui-icon:hover {
+        color: use-rgb(primary);
+        background-color: white;
+      }
     }
 
     &--success {
+      color: white;
       background-color: use-rgb(green);
+
+      .aui-tag__close .aui-icon:hover {
+        color: use-rgb(green);
+        background-color: white;
+      }
     }
 
     &--warning {
+      color: white;
       background-color: use-rgb(yellow);
+
+      .aui-tag__close .aui-icon:hover {
+        color: use-rgb(yellow);
+        background-color: white;
+      }
     }
 
     &--error {
+      color: white;
       background-color: use-rgb(red);
-    }
 
-    &--info {
-      background-color: use-rgb(button-bg);
+      .aui-tag__close .aui-icon:hover {
+        color: use-rgb(red);
+        background-color: white;
+      }
     }
   }
 
