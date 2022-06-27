@@ -37,3 +37,6 @@ jobs:
         env:
           PUBLISH_VERSION: ${{ github.event.inputs.version }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Sync Cnpm
+        run: npx cnpm sync @alauda/ui

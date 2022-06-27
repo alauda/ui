@@ -29,3 +29,6 @@ jobs:
         env:
           PUBLISH_VERSION: beta
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Sync Cnpm
+        run: npx cnpm sync @alauda/ui
