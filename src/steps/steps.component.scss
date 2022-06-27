@@ -43,7 +43,6 @@
     }
 
     &-icon {
-      font-size: use-var(icon-size-xl);
       display: inline-flex;
       border-radius: 50%;
 
@@ -191,4 +190,8 @@
       }
     }
   }
+}
+
+aui-steps .aui-steps .aui-step__indicator-icon {
+  font-size: use-var(icon-size-xl);
 }
