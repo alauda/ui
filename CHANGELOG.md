@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.4.3
+
+### Patch Changes
+
+- [#357](https://github.com/alauda/alauda-ui/pull/357) [`ee8cf94`](https://github.com/alauda/alauda-ui/commit/ee8cf94c5de6e2230abe9f5c5848ea24d3b4a680) Thanks [@wszgrcy](https://github.com/wszgrcy)! - fix: tag max-width
+
+- [#360](https://github.com/alauda/alauda-ui/pull/360) [`3d7fa50`](https://github.com/alauda/alauda-ui/commit/3d7fa5054c2a596ed9ae331ebddf98f7f4c77de7) Thanks [@mario-mui](https://github.com/mario-mui)! - fix: improve steps style weights
+
+- [#354](https://github.com/alauda/alauda-ui/pull/354) [`1e7316d`](https://github.com/alauda/alauda-ui/commit/1e7316d8c38c8429c8d1511110a00730510f8457) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: focus input element after clear
+
 ## 6.4.2
 
 ### Patch Changes
