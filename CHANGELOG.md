@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.4.4
+
+### Patch Changes
+
+- [#359](https://github.com/alauda/alauda-ui/pull/359) [`bddf0e3`](https://github.com/alauda/alauda-ui/commit/bddf0e31dc446ffa6a321105b0f0e3f4a08ccbe5) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: solid info tag color
+
 ## 6.4.3
 
 ### Patch Changes
