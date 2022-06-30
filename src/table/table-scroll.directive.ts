@@ -7,9 +7,17 @@ import {
   Input,
   OnDestroy,
 } from '@angular/core';
-import { Subject, fromEvent, merge, startWith, takeUntil } from 'rxjs';
+import {
+  Subject,
+  fromEvent,
+  merge,
+  startWith,
+  takeUntil,
+  switchMap,
+  NEVER,
+} from 'rxjs';
 
-import { observeResizeOn } from '../utils';
+import { coerceAttrBoolean, observeResizeOn } from '../utils';
 
 import { TableComponent } from './table.component';
 
@@ -39,7 +47,15 @@ export class TableScrollWrapperDirective {
   selector: '[auiTableScrollShadow]',
 })
 export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {
+  scrollShadow$$ = new Subject<boolean>();
+
   destroy$$ = new Subject<void>();
+
+  @Input()
+  set auiTableScrollShadow(scrollShadow: boolean | '') {
+    this.scrollShadow$$.next(coerceAttrBoolean(scrollShadow));
+  }
+
   constructor(
     private readonly el: ElementRef<HTMLElement>,
     @Host() private readonly table: TableComponent<unknown>,
@@ -62,11 +78,18 @@ export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {
   }
 
   viewMutation() {
-    merge(
-      observeResizeOn(this.containerEl),
-      fromEvent(this.containerEl, 'scroll'),
-    )
-      .pipe(startWith(null), takeUntil(this.destroy$$))
+    this.scrollShadow$$
+      .pipe(
+        switchMap(scrollShadow =>
+          scrollShadow
+            ? merge(
+                observeResizeOn(this.containerEl),
+                fromEvent(this.containerEl, 'scroll'),
+              ).pipe(startWith(null))
+            : NEVER,
+        ),
+      )
+      .pipe(takeUntil(this.destroy$$))
       .subscribe(() => {
         this.mutateVerticalScroll();
         this.mutateHorizontalScroll();
@@ -132,5 +155,6 @@ export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.destroy$$.next();
+    this.destroy$$.complete();
   }
 }
