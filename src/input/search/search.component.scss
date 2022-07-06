@@ -38,29 +38,18 @@ $block: 'aui-search';
         padding: 0 use-var(inline-padding-xs);
       }
 
-      &.isClearable .#{$block}__input,
-      &.isSearching .#{$block}__input {
-        padding-right: use-var(inline-padding-xs);
-      }
-
       &.hasIcon .#{$block}__input {
         padding-left: calc(
           #{map-get($map, icon-size)} + #{use-var(inline-padding-xs)} * 2 + 1px
         );
       }
 
+      &.hasIcon.isSearching .#{$block}__input,
       &.hasIcon.isClearable .#{$block}__input {
         padding-right: calc(
           #{map-get($map, icon-size)} + #{use-var(inline-padding-xs)} * 2 + 1px
         );
       }
-
-      &.hasIcon.isSearching .#{$block}__input {
-        padding-right: calc(
-          #{map-get($map, icon-size)} + #{use-var(inline-padding-xs)} * 2 + 1px
-        );
-      }
-
 
 
       &.hasButton .#{$block} {
