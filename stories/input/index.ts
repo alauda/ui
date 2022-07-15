@@ -293,6 +293,63 @@ storiesOf('Input', module)
           (keywordChange)="onChangeHandler($event)"
           (clear)="onClearHandler($event)"
         ></aui-search>
+        <div style="margin-top: 20px;">
+          <aui-search
+            [size]="size"
+            [searchButton]="searchButton"
+            [searching]="searching"
+            [clearable]="true"
+            [disabled]="disabled"
+            [(keyword)]="keyword"
+            placeholder="placeholder"
+            (search)="onSearchHandler($event)"
+            (keywordChange)="onChangeHandler($event)"
+            (clear)="onClearHandler($event)"
+          ></aui-search>
+        </div>
+        <div style="margin-top: 20px;">
+          <aui-search
+            [size]="size"
+            [searchButton]="searchButton"
+            [searching]="true"
+            [clearable]="true"
+            [disabled]="disabled"
+            [(keyword)]="keyword"
+            placeholder="placeholder"
+            (search)="onSearchHandler($event)"
+            (keywordChange)="onChangeHandler($event)"
+            (clear)="onClearHandler($event)"
+          ></aui-search>
+        </div>
+        <div style="margin-top: 20px;">
+          <aui-search
+            [size]="size"
+            [searchButton]="true"
+            [searching]="searching"
+            [clearable]="true"
+            [disabled]="disabled"
+            [(keyword)]="keyword"
+            placeholder="placeholder"
+            (search)="onSearchHandler($event)"
+            (keywordChange)="onChangeHandler($event)"
+            (clear)="onClearHandler($event)"
+          ></aui-search>
+        </div>
+        <div style="margin-top: 20px;">
+          <aui-search
+            [size]="size"
+            [searchButton]="true"
+            [searching]="true"
+            [clearable]="true"
+            [disabled]="disabled"
+            [(keyword)]="keyword"
+            placeholder="placeholder"
+            (search)="onSearchHandler($event)"
+            (keywordChange)="onChangeHandler($event)"
+            (clear)="onClearHandler($event)"
+          ></aui-search>
+        </div>
+
         {{ keyword }}
       `,
       props: {
