@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.4.5
+
+### Patch Changes
+
+- [#366](https://github.com/alauda/alauda-ui/pull/366) [`d3edaa6`](https://github.com/alauda/alauda-ui/commit/d3edaa64af86aac618ca3f4b61d52ad10e46f8b7) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: recalc icon pr according to parent class `hasicon` or `hasbutton`, remove useless code
+
+- [#363](https://github.com/alauda/alauda-ui/pull/363) [`a300b76`](https://github.com/alauda/alauda-ui/commit/a300b7684c8c6f3d098c25aae630595cb93d1cfd) Thanks [@JounQin](https://github.com/JounQin)! - feat: support dynamic auiTableScrollShadow input
+
 ## 6.4.4
 
 ### Patch Changes
