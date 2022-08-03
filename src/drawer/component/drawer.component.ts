@@ -187,7 +187,8 @@ export class DrawerComponent<
       const value = visible.currentValue;
       if (value) {
         this.open();
-      } else {
+      } else if (!visible.firstChange) {
+        // 不希望默认关闭时，drawer 渲染后就触发 close 事件
         this.dispose();
       }
     }
