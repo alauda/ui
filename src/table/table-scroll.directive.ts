@@ -15,6 +15,7 @@ import {
   takeUntil,
   switchMap,
   NEVER,
+  BehaviorSubject,
 } from 'rxjs';
 
 import { coerceAttrBoolean, observeResizeOn } from '../utils';
@@ -47,7 +48,7 @@ export class TableScrollWrapperDirective {
   selector: '[auiTableScrollShadow]',
 })
 export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {
-  scrollShadow$$ = new Subject<boolean>();
+  scrollShadow$$ = new BehaviorSubject<boolean>(false);
 
   destroy$$ = new Subject<void>();
 
