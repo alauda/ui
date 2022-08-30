@@ -116,6 +116,7 @@ export class MultiSelectComponent<T = unknown>
   }
 
   inputValue = '';
+  hasDisabledOption = false;
 
   get rootClass() {
     const size = this.size || ComponentSize.Medium;
@@ -222,6 +223,7 @@ export class MultiSelectComponent<T = unknown>
             return 0;
           }),
       ),
+      tap(options => (this.hasDisabledOption = options.some(o => o.disabled))),
       publishRef(),
     );
   }
@@ -293,7 +295,8 @@ export class MultiSelectComponent<T = unknown>
     if (
       event.key === 'Backspace' &&
       this.filterString === '' &&
-      this.model.length > 0
+      this.model.length > 0 &&
+      !this.hasDisabledOption
     ) {
       this.removeValue(this.model[this.model.length - 1]);
       event.stopPropagation();
