@@ -48,7 +48,7 @@
     "rxjs": "^7.0.0"
   },
   "devDependencies": {
-    "@1stg/app-config": "^4.1.1",
+    "@1stg/app-config": "^7.2.1",
     "@angular-devkit/build-angular": "^13.3.5",
     "@angular-devkit/core": "^13.3.5",
     "@angular/animations": "^13.3.8",
@@ -99,6 +99,7 @@
     "zone.js": "^0.11.5"
   },
   "resolutions": {
+    "eslint": "8.22.0",
     "prettier": "^2.6.2"
   },
   "publishConfig": {
