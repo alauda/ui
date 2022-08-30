@@ -50,6 +50,7 @@
 
 @mixin light-mode {
   color-scheme: light;
+
   --aui-color-blue: #{rgb-string(#007af5)};
   --aui-color-b-0: #{rgb-string(#0067d0)};
   --aui-color-b-1: #{rgb-string(#268df6)};
@@ -114,6 +115,7 @@
 
 @mixin dark-mode {
   color-scheme: dark;
+
   --aui-color-blue: #{rgb-string(#3d8eff)};
   --aui-color-b-0: #{rgb-string(#3674cc)};
   --aui-color-b-1: #{rgb-string(#6daaff)};

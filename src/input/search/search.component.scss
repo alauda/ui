@@ -51,7 +51,6 @@ $block: 'aui-search';
         );
       }
 
-
       &.hasButton .#{$block} {
         &__input {
           padding-right: calc(
@@ -75,7 +74,7 @@ $block: 'aui-search';
 
       &.hasButton.isClearable .#{$block}__input {
         padding-right: calc(
-          #{map-get($map, icon-size)}*
+          #{map-get($map, icon-size)} *
             2 +
             #{use-var(inline-padding-xs)} *
             4 +
