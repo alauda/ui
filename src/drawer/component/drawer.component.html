@@ -40,7 +40,10 @@
           </div>
         </div>
 
-        <div class="aui-drawer__body">
+        <div
+          class="aui-drawer__body"
+          cdkScrollable
+        >
           <ng-template cdkPortalOutlet></ng-template>
           <ng-container *ngIf="isTemplateRef(content || contentTemplate)">
             <ng-container
