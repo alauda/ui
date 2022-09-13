@@ -170,9 +170,8 @@ export class TableScrollShadowDirective
   }
 
   override ngOnDestroy() {
+    super.ngOnDestroy();
     this.destroy$$.next();
     this.destroy$$.complete();
-
-    super.ngOnDestroy();
   }
 }
