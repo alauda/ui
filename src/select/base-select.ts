@@ -450,7 +450,7 @@ export abstract class BaseSelect<T, V = T>
       this.openOption();
       return;
     }
-    if (this.focusedOption) {
+    if (this.focusedOption && !this.focusedOption.disabled) {
       this.selectOption(this.focusedOption);
     }
   }
