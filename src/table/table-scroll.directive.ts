@@ -1,3 +1,5 @@
+import { Directionality } from '@angular/cdk/bidi';
+import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
 import {
   AfterViewInit,
   Directive,
@@ -5,7 +7,9 @@ import {
   Host,
   HostBinding,
   Input,
+  NgZone,
   OnDestroy,
+  Optional,
 } from '@angular/core';
 import {
   Subject,
@@ -15,6 +19,7 @@ import {
   takeUntil,
   switchMap,
   NEVER,
+  BehaviorSubject,
 } from 'rxjs';
 
 import { coerceAttrBoolean, observeResizeOn } from '../utils';
@@ -45,9 +50,15 @@ export class TableScrollWrapperDirective {
 
 @Directive({
   selector: '[auiTableScrollShadow]',
+  providers: [
+    { provide: CdkScrollable, useExisting: TableScrollShadowDirective },
+  ],
 })
-export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {
-  scrollShadow$$ = new Subject<boolean>();
+export class TableScrollShadowDirective
+  extends CdkScrollable
+  implements AfterViewInit, OnDestroy
+{
+  scrollShadow$$ = new BehaviorSubject<boolean>(false);
 
   destroy$$ = new Subject<void>();
 
@@ -58,8 +69,13 @@ export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {
 
   constructor(
     private readonly el: ElementRef<HTMLElement>,
+    scrollDispatcher: ScrollDispatcher,
+    ngZone: NgZone,
     @Host() private readonly table: TableComponent<unknown>,
-  ) {}
+    @Optional() dir?: Directionality,
+  ) {
+    super(el, scrollDispatcher, ngZone, dir);
+  }
 
   @HostBinding(`class.${SCROLL_BEFORE_END_CLASS}`)
   SCROLL_BEFORE_END_CLASS = true;
@@ -153,7 +169,8 @@ export class TableScrollShadowDirective implements AfterViewInit, OnDestroy {
     classList[condition ? 'add' : 'remove'](className);
   }
 
-  ngOnDestroy() {
+  override ngOnDestroy() {
+    super.ngOnDestroy();
     this.destroy$$.next();
     this.destroy$$.complete();
   }
