@@ -296,7 +296,7 @@ export class MultiSelectComponent<T = unknown>
       event.key === 'Backspace' &&
       this.filterString === '' &&
       this.model.length > 0 &&
-      !this.hasDisabledOption
+      !this.hasDisabledOption // Disabled backspace when any of select options have disabled state.
     ) {
       this.removeValue(this.model[this.model.length - 1]);
       event.stopPropagation();
