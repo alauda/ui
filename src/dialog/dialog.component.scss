@@ -23,6 +23,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
   flex-direction: column;
   background-color: use-rgb(n-10);
   border-radius: use-var(border-radius-l);
+  overflow: hidden;
   @include modal-shadow;
   @include text-set(m, main);
 

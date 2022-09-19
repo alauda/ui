@@ -1,5 +1,19 @@
 # Changelog
 
+## 6.4.6
+
+### Patch Changes
+
+- [#376](https://github.com/alauda/ui/pull/376) [`4e9c033`](https://github.com/alauda/ui/commit/4e9c033f95c4d969924b95feb9505cc475c54b2a) Thanks [@mario-mui](https://github.com/mario-mui)! - fix: When there is a select in the drawer, the overlay of select will not follow the drawer body scrolling
+
+- [#369](https://github.com/alauda/ui/pull/369) [`476ac02`](https://github.com/alauda/ui/commit/476ac02627cfc81db3e2f20af3019f7b046f3e1b) Thanks [@mario-mui](https://github.com/mario-mui)! - fix: drawer emit close immediately after component constructor
+
+- [#374](https://github.com/alauda/ui/pull/374) [`a7ec1b2`](https://github.com/alauda/ui/commit/a7ec1b274958395438eb3717bb1bf51ff155129d) Thanks [@EdisonSu768](https://github.com/EdisonSu768)! - fix: backspace can delete disabled selected option
+
+- [#372](https://github.com/alauda/ui/pull/372) [`ae415c5`](https://github.com/alauda/ui/commit/ae415c5bf2ced1600bec1a9faf3b0ea8cc8677b7) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: aui-table sticky-column side border disappear, dialog overflow hidden, scroll-shadow extend cdkscroll , table expand row width fix
+
+- [#377](https://github.com/alauda/ui/pull/377) [`88b5faf`](https://github.com/alauda/ui/commit/88b5fafd66b4e199fb013112067d0ed84acc2dcf) Thanks [@EdisonSu768](https://github.com/EdisonSu768)! - Enter can delete disabled focused option which is incorrect.
+
 ## 6.4.5
 
 ### Patch Changes
