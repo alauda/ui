@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.4.7
+
+### Patch Changes
+
+- [#381](https://github.com/alauda/ui/pull/381) [`71329d1`](https://github.com/alauda/ui/commit/71329d1962ff0b99c92b083f7135902e59416278) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: table height collapse when width insufficient
+
 ## 6.4.6
 
 ### Patch Changes
