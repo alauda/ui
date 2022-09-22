@@ -39,6 +39,10 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       position: absolute;
+      right: 0;
+      left: 0;
+      padding-left: inherit;
+      padding-right: inherit;
       margin-left: 1px;
 
       &[hidden] {
