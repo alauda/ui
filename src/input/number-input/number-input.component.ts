@@ -7,12 +7,19 @@ import {
   ViewChild,
   ViewEncapsulation,
   forwardRef,
+  ContentChildren,
+  QueryList,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import { CommonFormControl } from '../../form';
 import { ComponentSize } from '../../types';
-import { Bem, buildBem, coerceNumber } from '../../utils';
+import { Bem, buildBem, coerceNumber, watchContentExist } from '../../utils';
+import {
+  InputAddonAfterDirective,
+  InputAddonBeforeDirective,
+} from '../helper-directives';
 
 @Component({
   selector: 'aui-number-input',
@@ -59,13 +66,27 @@ export class NumberInputComponent
   @Input()
   controlsPosition = '';
 
+  @Input()
+  angleControls = false;
+
   @ViewChild('inputRef', { read: ElementRef })
   inputRef: ElementRef<HTMLInputElement>;
 
+  @ContentChildren(InputAddonBeforeDirective)
+  private readonly addonBeforeRefs: QueryList<InputAddonBeforeDirective>;
+
+  @ContentChildren(InputAddonAfterDirective)
+  private readonly addonAfterRefs: QueryList<InputAddonAfterDirective>;
+
   isFocus = false;
+
+  hasAddonBefore$: Observable<boolean>;
+  hasAddonAfter$: Observable<boolean>;
 
   ngAfterViewInit() {
     this.inputRef.nativeElement.value = (this.model ?? '') + '';
+    this.hasAddonBefore$ = watchContentExist(this.addonBeforeRefs);
+    this.hasAddonAfter$ = watchContentExist(this.addonAfterRefs);
   }
 
   override valueIn(v: number) {
