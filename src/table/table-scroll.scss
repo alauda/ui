@@ -33,6 +33,11 @@ $stickyCssClass: 'aui-table-sticky';
 
 // style for vertical shadow
 .aui-table__scroll-shadow {
+  &.aui-table {
+    overflow: auto;
+    @include scroll-bar;
+  }
+
   &.hasTableTopShadow:before {
     content: '';
     position: sticky;

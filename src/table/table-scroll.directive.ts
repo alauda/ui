@@ -49,21 +49,21 @@ export class TableScrollWrapperDirective {
 }
 
 @Directive({
-  selector: '[auiTableScrollShadow]',
+  selector: '[auiTableScrollable]',
   providers: [
-    { provide: CdkScrollable, useExisting: TableScrollShadowDirective },
+    { provide: CdkScrollable, useExisting: TableScrollableDirective },
   ],
 })
-export class TableScrollShadowDirective
+export class TableScrollableDirective
   extends CdkScrollable
   implements AfterViewInit, OnDestroy
 {
-  scrollShadow$$ = new BehaviorSubject<boolean>(false);
+  scrollShadow$$ = new BehaviorSubject<boolean>(true);
 
   destroy$$ = new Subject<void>();
 
   @Input()
-  set auiTableScrollShadow(scrollShadow: boolean | '') {
+  set auiTableScrollable(scrollShadow: boolean | '') {
     this.scrollShadow$$.next(coerceAttrBoolean(scrollShadow));
   }
 
