@@ -152,6 +152,64 @@ Table 组件基于 CdkTable 开发, 加了一些 alauda 自定义的表格样式
   </Story>
 </Canvas>
 
+## Header 相对父级元素固定
+
+<Canvas>
+  <Story
+    name="Sticky To Parent"
+    height="600px"
+  >
+    {{
+      template: /* HTML */ `
+        <div style="height:300px;overflow:auto">
+          <h1>Sticky To Parent</h1>
+          <aui-table [dataSource]="dataSource">
+            <ng-container auiTableColumnDef="id">
+              <aui-table-header-cell *auiTableHeaderCellDef>
+                No.
+              </aui-table-header-cell>
+              <aui-table-cell *auiTableCellDef="let item">
+                <div>{{ item.id }}</div>
+              </aui-table-cell>
+            </ng-container>
+            <ng-container auiTableColumnDef="name">
+              <aui-table-header-cell *auiTableHeaderCellDef>
+                Name
+              </aui-table-header-cell>
+              <aui-table-cell
+                *auiTableCellDef="let item"
+                direction="column"
+              >
+                {{ item.name }}
+                <div style="font-size: 12px;color: #96989b;line-height: 16px;">
+                  {{ item.displayName }}
+                </div>
+              </aui-table-cell>
+            </ng-container>
+            <ng-container auiTableColumnDef="value">
+              <aui-table-header-cell *auiTableHeaderCellDef>
+                Value
+              </aui-table-header-cell>
+              <aui-table-cell *auiTableCellDef="let item">
+                {{ item.value }}
+              </aui-table-cell>
+            </ng-container>
+            <aui-table-header-row
+              *auiTableHeaderRowDef="['id', 'name', 'value']; sticky: true"
+            ></aui-table-header-row>
+            <aui-table-row
+              *auiTableRowDef="let row; columns: ['id', 'name', 'value'];"
+            ></aui-table-row>
+          </aui-table>
+        </div>
+      `,
+      props: {
+        dataSource: DATA_SOURCE,
+      },
+    }}
+  </Story>
+</Canvas>
+
 ## Sticky Columns 固定
 
 <Canvas>
@@ -173,7 +231,7 @@ Table 组件基于 CdkTable 开发, 加了一些 alauda 自定义的表格样式
 
 ## Directives
 
-| 名称                  | 作用范围         | 描述                                                        |
-| --------------------- | ---------------- | ----------------------------------------------------------- |
-| auiTableScrollWrapper | aui-table 的父级 | 固定列时候需要在 aui-table 的外层包裹一层，提供左右滚动效果 |
-| auiTableScrollShadow  | aui-table        | 固定头部是，提供上下阴影滚动效果                            |
+| 名称                  | 作用范围         | 描述                                                                                  |
+| --------------------- | ---------------- | ------------------------------------------------------------------------------------- |
+| auiTableScrollWrapper | aui-table 的父级 | 固定列时候需要在 aui-table 的外层包裹一层，提供左右滚动效果                           |
+| auiTableScrollable    | aui-table        | 表格内滚动指令，继承 cdkScrollable 指令，提供上下阴影滚动效果，固定表头时相对表格定位 |

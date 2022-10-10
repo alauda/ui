@@ -22,7 +22,7 @@ import {
 import { TableRowDefDirective } from './table-row-def.directive';
 import { TableRowComponent } from './table-row.component';
 import {
-  TableScrollShadowDirective,
+  TableScrollableDirective,
   TableScrollWrapperDirective,
 } from './table-scroll.directive';
 import { TableComponent } from './table.component';
@@ -42,7 +42,7 @@ import { TableComponent } from './table.component';
     TableHeaderRowDefDirective,
     TableHeaderCellDefDirective,
     TableColumnDefDirective,
-    TableScrollShadowDirective,
+    TableScrollableDirective,
     TablePlaceholderOutletDirective,
     TablePlaceholderDefDirective,
     TableScrollWrapperDirective,
@@ -60,7 +60,7 @@ import { TableComponent } from './table.component';
     TableHeaderRowDefDirective,
     TableHeaderCellDefDirective,
     TableColumnDefDirective,
-    TableScrollShadowDirective,
+    TableScrollableDirective,
     TablePlaceholderOutletDirective,
     TablePlaceholderDefDirective,
     TableScrollWrapperDirective,

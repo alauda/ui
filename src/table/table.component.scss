@@ -8,8 +8,6 @@
 
   background-color: use-rgb(n-9);
   border-radius: use-var(border-radius-l);
-  overflow: auto;
-  @include scroll-bar;
 
   &__row,
   &__header-row {
