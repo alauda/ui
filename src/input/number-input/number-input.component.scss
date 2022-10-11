@@ -13,6 +13,8 @@ $block: 'aui-number-input';
   z-index: 1;
 
   &--small {
+    width: 132px;
+
     .#{$block}__decrease.aui-button,
     .#{$block}__increase.aui-button {
       width: 26px;
@@ -66,7 +68,7 @@ $block: 'aui-number-input';
     border-radius: use-var(border-radius-m) 0 0 use-var(border-radius-m);
   }
 
-  &.hasBeforeAndAfter {
+  &.hasBefore.hasAfter {
     border-radius: 0;
   }
 
@@ -127,7 +129,6 @@ $block: 'aui-number-input';
     border: 0;
     margin: 0;
     padding: 0 use-var(spacing-m);
-    background-color: transparent;
     color: use-text-color(main);
 
     &:focus {
