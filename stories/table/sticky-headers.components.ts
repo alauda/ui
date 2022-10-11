@@ -4,9 +4,8 @@ import { DATA_SOURCE } from './data';
 
 @Component({
   template: `
-    <div auiTableScrollWrapper>
+    <div auiTableScrollWrapper="300px">
       <aui-table
-        style="max-height: 300px;overflow: auto;"
         auiTableScrollable
         [dataSource]="dataSource"
       >

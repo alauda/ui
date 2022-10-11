@@ -9,6 +9,7 @@ import {
   Input,
   NgZone,
   OnDestroy,
+  OnInit,
   Optional,
 } from '@angular/core';
 import {
@@ -56,16 +57,22 @@ export class TableScrollWrapperDirective {
 })
 export class TableScrollableDirective
   extends CdkScrollable
-  implements AfterViewInit, OnDestroy
+  implements AfterViewInit, OnInit, OnDestroy
 {
-  scrollShadow$$ = new BehaviorSubject<boolean>(true);
-
-  destroy$$ = new Subject<void>();
-
-  @Input()
-  set auiTableScrollable(scrollShadow: boolean | '') {
-    this.scrollShadow$$.next(coerceAttrBoolean(scrollShadow));
+  @Input('auiTableScrollable')
+  set scrollable(scrollable: boolean | '') {
+    this._scrollable = coerceAttrBoolean(scrollable);
+    this.scrollable$$.next(this._scrollable);
   }
+
+  get scrollable() {
+    return this._scrollable;
+  }
+
+  private _scrollable = true;
+
+  scrollable$$ = new BehaviorSubject<boolean>(this._scrollable);
+  destroy$$ = new Subject<void>();
 
   constructor(
     private readonly el: ElementRef<HTMLElement>,
@@ -87,23 +94,37 @@ export class TableScrollableDirective
     return this.el.nativeElement;
   }
 
+  override ngOnInit() {
+    if (this.scrollable) {
+      this.scrollDispatcher.register(this);
+    }
+  }
+
   ngAfterViewInit() {
-    requestAnimationFrame(() => {
-      this.viewMutation();
-    });
+    this.viewMutation();
+  }
+
+  override ngOnDestroy() {
+    super.ngOnDestroy();
+    this.destroy$$.next();
+    this.destroy$$.complete();
   }
 
   viewMutation() {
-    this.scrollShadow$$
+    this.scrollable$$
       .pipe(
-        switchMap(scrollShadow =>
-          scrollShadow
-            ? merge(
-                observeResizeOn(this.containerEl),
-                fromEvent(this.containerEl, 'scroll'),
-              ).pipe(startWith(null))
-            : NEVER,
-        ),
+        switchMap(scrollable => {
+          if (scrollable) {
+            this.scrollDispatcher.register(this);
+            return merge(
+              observeResizeOn(this.containerEl),
+              fromEvent(this.containerEl, 'scroll'),
+            ).pipe(startWith(null));
+          }
+
+          this.scrollDispatcher.deregister(this);
+          return NEVER;
+        }),
       )
       .pipe(takeUntil(this.destroy$$))
       .subscribe(() => {
@@ -167,11 +188,5 @@ export class TableScrollableDirective
     className: string,
   ) {
     classList[condition ? 'add' : 'remove'](className);
-  }
-
-  override ngOnDestroy() {
-    super.ngOnDestroy();
-    this.destroy$$.next();
-    this.destroy$$.complete();
   }
 }
