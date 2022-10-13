@@ -36,7 +36,7 @@ $block: 'aui-number-input';
     border-color: use-rgb(primary);
 
     .aui-angle-container {
-      opacity: 1;
+      display: flex;
     }
   }
 
@@ -96,9 +96,8 @@ $block: 'aui-number-input';
   }
 
   .aui-angle-container {
-    display: flex;
+    display: none;
     flex-direction: column;
-    opacity: 0;
     border-left: 1px solid use-rgb(n-7);
 
     .separation {
@@ -142,7 +141,6 @@ $block: 'aui-number-input';
 
   &__inner-wrapper {
     display: flex;
-    height: 100%;
   }
 
   &__addon {
