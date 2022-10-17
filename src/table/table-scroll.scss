@@ -103,6 +103,7 @@ $stickyCssClass: 'aui-table-sticky';
     border: none;
     padding: 0;
     align-items: stretch;
+    min-height: $table-row-min-height + 1;
 
     .aui-table__cell {
       border-width: 1px 0;
@@ -121,6 +122,8 @@ $stickyCssClass: 'aui-table-sticky';
     }
 
     &:last-child {
+      min-height: $table-row-min-height + 2;
+
       .aui-table__cell {
         &:first-of-type {
           border-bottom-left-radius: use-var(border-radius-l);
