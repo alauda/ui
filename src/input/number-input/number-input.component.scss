@@ -24,7 +24,7 @@ $block: 'aui-number-input';
     .#{$block}__angleDecrease.aui-button,
     .#{$block}__angleIncrease.aui-button {
       width: 26px;
-      height: 13px;
+      height: 12.5px;
     }
 
     .#{$block}__input {
@@ -108,7 +108,7 @@ $block: 'aui-number-input';
   &__angleDecrease.aui-button,
   &__angleIncrease.aui-button {
     width: 30px;
-    height: 15px;
+    height: 14.5px;
     border: 0;
     border-radius: 0;
     margin-left: 0 !important;
