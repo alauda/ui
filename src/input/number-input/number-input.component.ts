@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
@@ -38,7 +39,7 @@ import {
 })
 export class NumberInputComponent
   extends CommonFormControl<number>
-  implements AfterViewInit
+  implements AfterContentInit, AfterViewInit
 {
   bem: Bem = buildBem('aui-number-input');
 
@@ -83,10 +84,13 @@ export class NumberInputComponent
   hasAddonBefore$: Observable<boolean>;
   hasAddonAfter$: Observable<boolean>;
 
-  ngAfterViewInit() {
-    this.inputRef.nativeElement.value = (this.model ?? '') + '';
+  ngAfterContentInit() {
     this.hasAddonBefore$ = watchContentExist(this.addonBeforeRefs);
     this.hasAddonAfter$ = watchContentExist(this.addonAfterRefs);
+  }
+
+  ngAfterViewInit() {
+    this.inputRef.nativeElement.value = (this.model ?? '') + '';
   }
 
   override valueIn(v: number) {
