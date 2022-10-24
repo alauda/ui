@@ -17,8 +17,9 @@ import { DisabledDateFn, DisabledTimeFn } from '../date-picker.type';
 @Component({
   selector: 'aui-range-picker',
   templateUrl: './range-picker.template.html',
-  // provide tooltip class
-  encapsulation: ViewEncapsulation.Emulated,
+  styleUrls: ['./range-picker.style.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -26,8 +27,6 @@ import { DisabledDateFn, DisabledTimeFn } from '../date-picker.type';
       multi: true,
     },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./range-picker.style.scss'],
 })
 export class RangePickerComponent extends CommonFormControl<
   ConfigType[],

@@ -1,10 +1,8 @@
-::ng-deep {
-  .aui-tooltip.range-picker-wrapper {
-    max-width: none;
-  }
+.aui-tooltip.range-picker-wrapper {
+  max-width: none;
 }
 
-:host {
+aui-range-picker {
   display: inline-block;
   width: 260px;
 }
