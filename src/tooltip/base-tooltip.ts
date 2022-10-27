@@ -41,16 +41,21 @@ export class BaseTooltip<T = any>
   implements TooltipInterface, AfterViewInit, OnDestroy
 {
   set content(value: string | TemplateRef<any>) {
+    this._content = value;
     this.inputContent$$.next(value);
   }
 
-  get context() {
-    return this._context;
+  get content() {
+    return this._content;
   }
 
   set context(value: T) {
     this._context = value;
     this.inputContext$$.next(value);
+  }
+
+  get context() {
+    return this._context;
   }
 
   set class(value: string) {
@@ -64,10 +69,6 @@ export class BaseTooltip<T = any>
     this.inputType$$.next(value);
   }
 
-  get position() {
-    return this._position;
-  }
-
   set position(value: string) {
     if (!value || value === this._position) {
       return;
@@ -77,8 +78,8 @@ export class BaseTooltip<T = any>
     this.disposeTooltip();
   }
 
-  get trigger() {
-    return this._trigger;
+  get position() {
+    return this._position;
   }
 
   set trigger(value) {
@@ -90,8 +91,8 @@ export class BaseTooltip<T = any>
     this.ngZone.run(this.updateListeners, this);
   }
 
-  get disabled() {
-    return this._disabled;
+  get trigger() {
+    return this._trigger;
   }
 
   set disabled(value) {
@@ -99,6 +100,10 @@ export class BaseTooltip<T = any>
     if (value) {
       this.disposeTooltip();
     }
+  }
+
+  get disabled() {
+    return this._disabled || !this.content;
   }
 
   hideOnClick = false;
@@ -131,6 +136,7 @@ export class BaseTooltip<T = any>
   protected _trigger = TooltipTrigger.Hover;
   protected _disabled = false;
   protected _context: T;
+  protected _content: string | TemplateRef<unknown>;
 
   get isCreated() {
     return !!this.overlayRef;
