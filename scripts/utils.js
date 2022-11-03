@@ -4,6 +4,12 @@ function getProdVersion(version) {
   return `${arr[1]}-${arr[2]}`;
 }
 
+function getBuildDest() {
+  const destMatcher = /^dest=([^ ]*)/;
+  return process.argv.find(arg => destMatcher.test(arg))?.slice(5) || 'release';
+}
+
 module.exports = {
   getProdVersion,
+  getBuildDest,
 };
