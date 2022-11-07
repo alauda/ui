@@ -4,15 +4,14 @@ const gulp = require('gulp');
 const sass = require('gulp-dart-sass');
 const ngPackagr = require('ng-packagr');
 
-const { getBuildDest } = require('./utils');
+const { getBuildDest, copyDist } = require('./utils');
 
 const isDebug = process.argv.includes('--debug');
 const watch = process.argv.includes('--watch');
 
 const debugNgPackage = '../ng-package.debug.json';
 
-const dest =
-  (isDebug ? require(debugNgPackage).dest : getBuildDest()) + '/theme';
+const dest = (isDebug ? require(debugNgPackage).dest : 'release') + '/theme';
 
 function copyResources() {
   gulp
@@ -33,11 +32,18 @@ function copyResources() {
 
 const packagr = ngPackagr
   .ngPackagr()
-  .forProject(path.resolve(`ng-package.js`))
+  .forProject(path.resolve(`ng-package.json`))
   .withTsConfig(path.resolve('tsconfig.lib.json'));
 
 if (watch) {
-  packagr.watch().subscribe(copyResources);
+  packagr.watch().subscribe(() => {
+    copyResources();
+
+    const src = path.resolve(__dirname, '../release');
+    const destinations = getBuildDest();
+
+    destinations.forEach(dest => copyDist(src, dest));
+  });
 } else {
   packagr.build().then(copyResources);
 }
