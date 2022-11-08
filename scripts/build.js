@@ -32,17 +32,21 @@ function copyResources() {
 
 const packagr = ngPackagr
   .ngPackagr()
-  .forProject(path.resolve(`ng-package.json`))
+  .forProject(
+    path.resolve(isDebug ? `ng-package.debug.json` : `ng-package.json`),
+  )
   .withTsConfig(path.resolve('tsconfig.lib.json'));
 
 if (watch) {
   packagr.watch().subscribe(() => {
     copyResources();
 
-    const src = path.resolve(__dirname, '../release');
-    const destinations = getBuildDest();
+    if (!isDebug) {
+      const src = path.resolve(__dirname, '../release');
+      const destinations = getBuildDest();
 
-    destinations.forEach(dest => copyDist(src, dest));
+      destinations.forEach(dest => copyDist(src, dest));
+    }
   });
 } else {
   packagr.build().then(copyResources);
