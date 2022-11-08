@@ -20,7 +20,7 @@
     "build:copy": "node scripts/copy-resources",
     "build:lib": "ng-packagr -c tsconfig.lib.json",
     "build:watch": "node scripts/build.js --watch",
-    "debug": "yarn build:lib -p ng-package.debug.json && yarn build:copy --debug",
+    "debug": "node scripts/build.js --debug --watch",
     "dev": "yarn start",
     "lint": "run-p lint:*",
     "lint:es": "eslint . --cache -f friendly",
