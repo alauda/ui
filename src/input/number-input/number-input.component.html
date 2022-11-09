@@ -1,4 +1,12 @@
-<div [class]="bem.element('inner-wrapper')">
+<div
+  [class]="bem.block(size)"
+  [ngClass]="{
+    isFocused: isFocus,
+    isDisabled: disabled,
+    hasBefore: hasAddonBefore$ | async,
+    hasAfter: hasAddonAfter$ | async
+  }"
+>
   <div
     *ngIf="hasAddonBefore$ | async"
     [class]="bem.element('addon', 'before')"
@@ -6,21 +14,14 @@
     <ng-content select="[auiInputAddonBefore]"></ng-content>
   </div>
   <div
-    [class]="bem.block(size)"
-    [ngClass]="{
-      isFocus: isFocus,
-      isDisabled: disabled,
-      hasBefore: hasAddonBefore$ | async,
-      hasAfter: hasAddonAfter$ | async
-    }"
+    [class]="bem.element('inner')"
     auiClickOutside
     (auiClickOutside)="isFocus = false"
   >
     <button
       *ngIf="controls && !angleControls"
-      aui-button
       type="button"
-      [ngClass]="bem.element('decrease')"
+      [ngClass]="bem.element('control', 'decrease')"
       [disabled]="disabled || model <= min"
       (click)="takeOneStep(false); isFocus = true"
     >
@@ -39,9 +40,8 @@
     />
     <button
       *ngIf="controls && !angleControls"
-      aui-button
       type="button"
-      [ngClass]="bem.element('increase')"
+      [ngClass]="bem.element('control', 'increase')"
       [disabled]="disabled || model >= max"
       (click)="takeOneStep(true); isFocus = true"
     >
@@ -49,24 +49,19 @@
     </button>
     <div
       *ngIf="controls && angleControls"
-      class="aui-angle-container"
+      class="aui-number-input__controls"
     >
       <button
-        aui-button
         type="button"
-        size="mini"
-        [ngClass]="bem.element('angleIncrease')"
+        [ngClass]="bem.element('control', 'angle-up')"
         [disabled]="disabled || model >= max"
         (click)="takeOneStep(true); isFocus = true"
       >
         <aui-icon icon="angle_up"></aui-icon>
       </button>
-      <div class="separation"></div>
       <button
-        aui-button
         type="button"
-        size="mini"
-        [ngClass]="bem.element('angleDecrease')"
+        [ngClass]="bem.element('control', 'angle-down')"
         [disabled]="disabled || model <= min"
         (click)="takeOneStep(false); isFocus = true"
       >

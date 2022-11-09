@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ButtonModule } from '../button';
 import { IconModule } from '../icon';
 import { SharedModule } from '../shared/shared.module';
 import { TagModule } from '../tag';
@@ -23,7 +22,6 @@ import { TagsInputComponent } from './tags-input/tags-input.component';
 @NgModule({
   imports: [
     CommonModule,
-    ButtonModule,
     FormsModule,
     ReactiveFormsModule,
     IconModule,

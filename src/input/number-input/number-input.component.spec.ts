@@ -32,12 +32,16 @@ describe('InputNumberComponent', () => {
 
   it('should render correct construction', () => {
     expect(el).not.toBeNull();
-    const iconDecreaseEl = el.querySelector('.aui-number-input__decrease');
+    const iconDecreaseEl = el.querySelector(
+      '.aui-number-input__control--decrease',
+    );
     expect(iconDecreaseEl).not.toBeNull();
     expect(iconDecreaseEl.querySelector('use').getAttribute('xlink:href')).toBe(
       '#aui-icon-minus',
     );
-    const iconIncreaseEl = el.querySelector('.aui-number-input__increase');
+    const iconIncreaseEl = el.querySelector(
+      '.aui-number-input__control--increase',
+    );
     expect(iconIncreaseEl).not.toBeNull();
     expect(iconIncreaseEl.querySelector('use').getAttribute('xlink:href')).toBe(
       '#aui-icon-plus',
@@ -59,7 +63,7 @@ describe('InputNumberComponent', () => {
     ins.value = 5;
     fixture.detectChanges();
     tick();
-    el.querySelector('.aui-number-input__decrease').dispatchEvent(
+    el.querySelector('.aui-number-input__control--decrease').dispatchEvent(
       new Event('click'),
     );
     fixture.detectChanges();
@@ -70,7 +74,7 @@ describe('InputNumberComponent', () => {
     ins.value = 5;
     fixture.detectChanges();
     tick();
-    el.querySelector('.aui-number-input__increase').dispatchEvent(
+    el.querySelector('.aui-number-input__control--increase').dispatchEvent(
       new Event('click'),
     );
     fixture.detectChanges();
@@ -82,7 +86,7 @@ describe('InputNumberComponent', () => {
     ins.step = 2;
     fixture.detectChanges();
     tick();
-    el.querySelector('.aui-number-input__increase').dispatchEvent(
+    el.querySelector('.aui-number-input__control--increase').dispatchEvent(
       new Event('click'),
     );
     fixture.detectChanges();
@@ -96,7 +100,7 @@ describe('InputNumberComponent', () => {
     fixture.detectChanges();
     tick();
     const iconDecreaseEl: HTMLButtonElement = el.querySelector(
-      '.aui-number-input__decrease',
+      '.aui-number-input__control--decrease',
     );
     iconDecreaseEl.dispatchEvent(new Event('click'));
     fixture.detectChanges();
@@ -112,7 +116,7 @@ describe('InputNumberComponent', () => {
     fixture.detectChanges();
     tick();
     const iconIncreaseEl: HTMLButtonElement = el.querySelector(
-      '.aui-number-input__increase',
+      '.aui-number-input__control--increase',
     );
     iconIncreaseEl.dispatchEvent(new Event('click'));
     fixture.detectChanges();
@@ -128,7 +132,9 @@ describe('InputNumberComponent', () => {
     ins.precision = 1;
     fixture.detectChanges();
     tick();
-    const iconIncreaseEl = el.querySelector('.aui-number-input__increase');
+    const iconIncreaseEl = el.querySelector(
+      '.aui-number-input__control--increase',
+    );
     iconIncreaseEl.dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(ins.value).toBe(3.2);
@@ -138,10 +144,10 @@ describe('InputNumberComponent', () => {
     ins.disabled = true;
     fixture.detectChanges();
     const iconIncreaseEl: HTMLButtonElement = el.querySelector(
-      '.aui-number-input__increase',
+      '.aui-number-input__control--increase',
     );
     const iconDecreaseEl: HTMLButtonElement = el.querySelector(
-      '.aui-number-input__decrease',
+      '.aui-number-input__control--decrease',
     );
     expect(iconIncreaseEl.disabled).toBeTruthy();
     expect(iconDecreaseEl.disabled).toBeTruthy();
