@@ -396,6 +396,21 @@ storiesOf('Input', module)
           [(ngModel)]="value"
         ></aui-number-input>
         <br />
+        <br />
+        <aui-number-input
+          [size]="size"
+          [step]="step"
+          [precision]="precision"
+          [min]="min"
+          [max]="max"
+          [controls]="controls"
+          [angleControls]="true"
+          [disabled]="disabled"
+          placeholder="placeholder"
+          [(ngModel)]="value"
+        ></aui-number-input>
+        <br />
+        <br />
         <aui-number-input
           [size]="size"
           [step]="step"
@@ -408,11 +423,12 @@ storiesOf('Input', module)
           placeholder="placeholder"
           [(ngModel)]="value"
         >
-          <span auiInputAddonBefore>CPU</span>
+          <span auiInputAddonBefore>Memory</span>
           <span auiInputAddonAfter>Gi</span>
         </aui-number-input>
         <br />
-        {{ value | json }}
+        <br />
+        value: {{ value | json }}
       `,
       props: {
         size,
