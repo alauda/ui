@@ -20,5 +20,12 @@
 }
 
 // Animation
-$animation-duration: 0.3s;
+$animation-duration-slow: 0.3s; // Modal
+$animation-duration-base: 0.24s; // Tab、Dropdown
+$animation-duration-fast: 0.2s;
+
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+$ease-in: cubic-bezier(0.8, 0, 1, 0.9);
+$ease-in-out: cubic-bezier(0.38, 0, 0.24, 1);
+
 $animation-interpolation: ease;

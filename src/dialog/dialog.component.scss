@@ -1,5 +1,6 @@
 @import '../theme/var';
 @import '../theme/mixin';
+@import '../theme/motion';
 @import '~@angular/cdk/overlay-prebuilt';
 
 .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.aui-dialog-backdrop {
@@ -7,14 +8,21 @@
 }
 
 .cdk-overlay-pane.aui-dialog-overlay-pane {
-  justify-content: center;
-  overflow: auto;
-  @include scroll-bar;
+  @include overlay-pane(normal);
+}
+
+.cdk-overlay-pane.aui-dialog-overlay-pane--fit-viewport {
+  @include overlay-pane;
 }
 
 $spacing: 20px;
 $fullscreen-width: 90vw;
 $fullscreen-height: calc(100vh - (#{$spacing} * 2));
+
+@include zoom-motion(aui-zoom, aui-zoom);
+@include zoom-motion(aui-zoom-slow, aui-zoom, $animation-duration-slow);
+@include fade-motion(aui-fade, aui-fade);
+@include fade-motion(aui-fade-slow, aui-fade, $animation-duration-slow);
 
 .aui-dialog {
   // FIXME: margin-bottom is not working
@@ -127,13 +135,13 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
   &--fullscreen {
     width: $fullscreen-width;
     height: $fullscreen-height;
-    @include absolute-center;
+    margin: 0;
   }
 
   &--fit-viewport {
     max-width: $fullscreen-width;
     max-height: $fullscreen-height;
-    @include absolute-center;
+    margin: 0;
 
     .aui-dialog {
       &__header {

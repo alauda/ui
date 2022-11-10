@@ -133,8 +133,13 @@
   }
 }
 
+@mixin overlay-pane($alignItems: center) {
+  @include flex-center($alignItems);
+  @include scroll-bar;
+}
+
 @mixin transition($target: all) {
-  transition: $target $animation-duration $animation-interpolation;
+  transition: $target $animation-duration-slow $animation-interpolation;
 }
 
 @mixin absolute-center() {
@@ -269,10 +274,10 @@
   text-overflow: ellipsis;
 }
 
-@mixin flex-center {
+@mixin flex-center($alignItems: center) {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: $alignItems;
 }
 
 @mixin point($size, $color: #000) {
@@ -298,4 +303,36 @@
   width: $width;
   background-size: 100% 14px;
   height: 100%;
+}
+
+// Motion
+@mixin motion-common($duration: $animation-duration-base) {
+  animation-duration: $duration;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+@mixin make-motion(
+  $className,
+  $keyframeName,
+  $duration: $animation-duration-base
+) {
+  .#{$className}-enter,
+  .#{$className}-leave {
+    @include motion-common($duration);
+  }
+
+  .#{$className}-enter.#{$className}-enter-active,
+  .#{$className}-leave.#{$className}-leave-active {
+    animation-play-state: running;
+    pointer-events: none;
+  }
+
+  .#{$className}-enter.#{$className}-enter-active {
+    animation-name: #{$keyframeName}-in;
+  }
+
+  .#{$className}-leave.#{$className}-leave-active {
+    animation-name: #{$keyframeName}-out;
+  }
 }

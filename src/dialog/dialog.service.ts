@@ -30,6 +30,8 @@ export const DIALOG_DATA = new InjectionToken<any>('aui-dialog-data');
 export class DialogService {
   static readonly DIALOG_OVERLAY_PANE_CLASS = 'aui-dialog-overlay-pane';
   static readonly DIALOG_BACKDROP_CLASS = 'aui-dialog-backdrop';
+  static readonly DIALOG_OVERLAY_PANE_FIT_VIEWPORT_CLASS =
+    'aui-dialog-overlay-pane--fit-viewport';
 
   openDialogs: Array<DialogRef<any>> = [];
 
@@ -75,6 +77,7 @@ export class DialogService {
       { confirm: boolean; result: T | R }
     >(ConfirmDialogComponent, {
       size: DialogSize.FitContent,
+      noAnimation: !!config.noAnimation,
     });
     dialogRef.componentInstance.setConfig(config);
     return new Promise((resolve, reject) => {
@@ -120,7 +123,10 @@ export class DialogService {
       scrollStrategy: this.overlay.scrollStrategies.block(),
       hasBackdrop: dialogConfig.hasBackdrop && !this.openDialogs.length,
       backdropClass: DialogService.DIALOG_BACKDROP_CLASS,
-      panelClass: DialogService.DIALOG_OVERLAY_PANE_CLASS,
+      panelClass:
+        dialogConfig.fitViewport || dialogConfig.size === DialogSize.Fullscreen
+          ? DialogService.DIALOG_OVERLAY_PANE_FIT_VIEWPORT_CLASS
+          : DialogService.DIALOG_OVERLAY_PANE_CLASS,
       width: '100vw',
       height: '100vh',
     };
@@ -136,6 +142,7 @@ export class DialogService {
     );
     const dialogRef = overlayRef.attach(dialogPortal);
     dialogRef.instance.config = config;
+    dialogRef.instance.overlayRef = overlayRef;
     return dialogRef.instance;
   }
 

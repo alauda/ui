@@ -34,7 +34,7 @@ $switch-dot-with: $switch-height - ($switch-border-width * 2);
     height: $switch-height;
     border-radius: math.div($switch-height, 2);
     background-color: currentcolor;
-    transition: background-color $animation-duration;
+    transition: background-color $animation-duration-slow;
     position: relative;
     vertical-align: middle;
     user-select: none;
@@ -48,7 +48,7 @@ $switch-dot-with: $switch-height - ($switch-border-width * 2);
     position: absolute;
     top: $switch-border-width;
     left: $switch-border-width;
-    transition: left $animation-duration;
+    transition: left $animation-duration-slow;
   }
 
   &.isDisabled {
