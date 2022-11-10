@@ -84,8 +84,8 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
     button {
       box-sizing: content-box;
       // Use trackby to enhance performence, which reuses button and may cause size change with animation.So overwrite transition
-      transition: color $animation-duration $animation-interpolation,
-        background-color $animation-duration $animation-interpolation;
+      transition: color $animation-duration-slow $animation-interpolation,
+        background-color $animation-duration-slow $animation-interpolation;
     }
 
     &.inRange {

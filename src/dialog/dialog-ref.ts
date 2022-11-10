@@ -6,7 +6,7 @@ import {
   ScrollDispatcher,
 } from '@angular/cdk/overlay';
 import { NgZone } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { filter, Observable, Subject, take } from 'rxjs';
 
 import { DialogComponent } from './dialog.component';
 
@@ -38,10 +38,19 @@ export class DialogRef<T = ComponentType<any>, R = any> {
 
   close(result: R = null): void {
     this.scrollable.ngOnDestroy();
-    this.overlayRef.detachBackdrop();
-    this.overlayRef.dispose();
-    this.afterClosed$.next(result);
-    this.afterClosed$.complete();
+
+    this.dialogInstance.animationStateChanged
+      .pipe(
+        filter(event => event.phaseName === 'done' && event.toState === 'exit'),
+        take(1),
+      )
+      .subscribe(() => {
+        this.overlayRef.detachBackdrop();
+        this.overlayRef.dispose();
+        this.afterClosed$.next(result);
+        this.afterClosed$.complete();
+      });
+    this.dialogInstance.startExitAnimation();
   }
 
   afterOpen(): Observable<void> {

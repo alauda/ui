@@ -13,6 +13,7 @@ import {
   inject,
   tick,
 } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { timer } from 'rxjs';
 
 import { DialogModule, DialogService, DialogSize } from '.';
@@ -24,7 +25,7 @@ describe('DialogService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestModule],
+      imports: [TestModule, BrowserAnimationsModule],
     });
 
     fixture = TestBed.createComponent(TestComponent);
@@ -41,6 +42,7 @@ describe('DialogService', () => {
   it('should open dialog with component portal', () => {
     dialogService.open(DialogContentComponent, {
       size: DialogSize.Large,
+      noAnimation: true,
     });
 
     fixture.detectChanges();
@@ -55,7 +57,9 @@ describe('DialogService', () => {
   });
 
   it('should be closed by click cancel button', () => {
-    const dialogRef = dialogService.open(DialogContentComponent);
+    const dialogRef = dialogService.open(DialogContentComponent, {
+      noAnimation: true,
+    });
     dialogRef.afterClosed().subscribe(result => {
       expect(result).toBeFalsy();
       expect(ocEl.querySelector('aui-dialog')).toBeNull();
@@ -67,7 +71,7 @@ describe('DialogService', () => {
 
   it('should open dialog with template portal', () => {
     const ins = fixture.componentInstance;
-    dialogService.open(ins.templateRef);
+    dialogService.open(ins.templateRef, { noAnimation: true });
     fixture.detectChanges();
 
     expect(ocEl.querySelector('.aui-dialog button').innerHTML).toContain(
@@ -80,7 +84,7 @@ describe('DialogService', () => {
       const ins = fixture.componentInstance;
       ins.result = 'result';
       dialogService
-        .open(ins.templateRef)
+        .open(ins.templateRef, { noAnimation: true })
         .afterClosed()
         .subscribe(result => {
           expect(result).toBe('result');
@@ -92,12 +96,13 @@ describe('DialogService', () => {
       fixture.detectChanges();
     }));
 
-  it('should open confirm dialog and invoke confirm callback', () =>
+  it('should open confirm dialog and invoke confirm callback', fakeAsync(() =>
     new Promise<void>(resolve => {
       dialogService
         .confirm({
           title: 'title',
           content: 'content',
+          noAnimation: true,
         })
         .then(() => {
           expect(ocEl.querySelector('aui-dialog')).toBeNull();
@@ -108,7 +113,7 @@ describe('DialogService', () => {
       ocEl
         .querySelector('.aui-confirm-dialog__confirm-button')
         .dispatchEvent(new Event('click'));
-    }));
+    })));
 
   it('should open confirm dialog and invoke cancel callback', () =>
     new Promise<void>(resolve => {
@@ -116,6 +121,7 @@ describe('DialogService', () => {
         .confirm({
           title: 'custom title',
           content: 'custom content',
+          noAnimation: true,
         })
         .catch(() => {
           // eslint-disable-next-line jest/no-conditional-expect
@@ -135,7 +141,7 @@ describe('DialogService', () => {
         .dispatchEvent(new Event('click'));
     }));
 
-  it('should before confirm work correctly', () =>
+  it('should before confirm work correctly', fakeAsync(() =>
     new Promise<void>(resolve => {
       const t1 = Date.now();
       dialogService
@@ -144,6 +150,7 @@ describe('DialogService', () => {
           beforeConfirm: resolve => {
             setTimeout(resolve, 100);
           },
+          noAnimation: true,
         })
         .then(() => {
           const t2 = Date.now();
@@ -160,15 +167,18 @@ describe('DialogService', () => {
 
       expect(confirmBtn.className).toContain('isLoading');
       expect(confirmBtn.disabled).toBeTruthy();
-    }));
+      tick(100);
+      fixture.detectChanges();
+    })));
 
-  it('should before confirm observable work correctly', () =>
+  it('should before confirm observable work correctly', fakeAsync(() =>
     new Promise<void>(resolve => {
       const t1 = Date.now();
       dialogService
         .confirm({
           title: '',
           beforeConfirm: () => timer(100, 100),
+          noAnimation: true,
         })
         // eslint-disable-next-line sonarjs/no-identical-functions
         .then(() => {
@@ -186,7 +196,9 @@ describe('DialogService', () => {
 
       expect(confirmBtn.className).toContain('isLoading');
       expect(confirmBtn.disabled).toBeTruthy();
-    }));
+      tick(100);
+      fixture.detectChanges();
+    })));
 
   it('should before cancel work correctly', () =>
     new Promise<void>(resolve => {
@@ -197,6 +209,7 @@ describe('DialogService', () => {
           beforeCancel: resolve => {
             setTimeout(resolve, 100);
           },
+          noAnimation: true,
         })
         // eslint-disable-next-line sonarjs/no-identical-functions
         .catch(() => {
@@ -224,6 +237,7 @@ describe('DialogService', () => {
         .confirm({
           title: '',
           beforeCancel: () => timer(100),
+          noAnimation: true,
         })
         // eslint-disable-next-line sonarjs/no-identical-functions
         .catch(() => {
@@ -252,6 +266,7 @@ describe('DialogService', () => {
         beforeConfirm: (_, reject) => {
           setTimeout(reject, 100);
         },
+        noAnimation: true,
       })
       .then(() => {
         throw new Error('confirm dialog should not be closed');
@@ -283,7 +298,7 @@ describe('DialogService', () => {
     expect(cancelBtn.disabled).toBeFalsy();
   }));
 
-  it('should open confirm dialog with templateRef content', () =>
+  it('should open confirm dialog with templateRef content', fakeAsync(() =>
     new Promise<void>(resolve => {
       const contentTemplateRefTestComponent = TestBed.createComponent(
         ContentTemplateRefTestComponent,
@@ -294,6 +309,7 @@ describe('DialogService', () => {
           title: 'title',
           content:
             contentTemplateRefTestComponent.componentInstance.templateRef,
+          noAnimation: true,
         })
         .then(() => {
           expect(ocEl.querySelector('aui-dialog')).toBeNull();
@@ -304,14 +320,15 @@ describe('DialogService', () => {
       ocEl
         .querySelector('.aui-confirm-dialog__confirm-button')
         .dispatchEvent(new Event('click'));
-    }));
+    })));
 
-  it('should open confirm dialog with component content', () =>
+  it('should open confirm dialog with component content', fakeAsync(() =>
     new Promise<void>(resolve => {
       dialogService
         .confirm({
           title: 'title',
           content: ContentTemplateRefTestComponent,
+          noAnimation: true,
         })
         .then(() => {
           expect(ocEl.querySelector('aui-dialog')).toBeNull();
@@ -322,7 +339,7 @@ describe('DialogService', () => {
       ocEl
         .querySelector('.aui-confirm-dialog__confirm-button')
         .dispatchEvent(new Event('click'));
-    }));
+    })));
 });
 
 @Component({

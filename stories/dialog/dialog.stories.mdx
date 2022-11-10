@@ -1,5 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import * as Demo from './demos';
 
@@ -9,7 +10,12 @@ import { ButtonModule, DialogModule, IconModule } from '@alauda/ui';
   title="Dialog"
   decorators={[
     moduleMetadata({
-      imports: [ButtonModule, DialogModule, IconModule],
+      imports: [
+        BrowserAnimationsModule,
+        ButtonModule,
+        DialogModule,
+        IconModule,
+      ],
       declarations: [
         Demo.BasicDialogComponent,
         Demo.FitViewportDialogComponent,

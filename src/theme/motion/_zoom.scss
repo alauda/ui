@@ -1,0 +1,41 @@
+@import '../mixin';
+@import '../var';
+
+@mixin zoom-motion(
+  $className,
+  $keyframeName,
+  $duration: $animation-duration-base
+) {
+  @include make-motion($className, $keyframeName, $duration);
+
+  .#{$className}-enter {
+    opacity: 0;
+    animation-timing-function: $ease-out;
+  }
+  .#{$className}-leave {
+    animation-timing-function: $ease-in-out;
+  }
+}
+
+@keyframes aui-zoom-in {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes aui-zoom-out {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}

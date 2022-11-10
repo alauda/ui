@@ -2,7 +2,11 @@ import { ViewContainerRef } from '@angular/core';
 
 import { DialogSize } from './dialog.types';
 
-export class DialogConfig<D = any> {
+export class BaseDialogConfig {
+  noAnimation? = false;
+}
+
+export class DialogConfig<D = any> extends BaseDialogConfig {
   id?: number;
   viewContainerRef?: ViewContainerRef;
   data?: D;
