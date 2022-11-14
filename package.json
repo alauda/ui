@@ -16,10 +16,11 @@
     "ui"
   ],
   "scripts": {
-    "build": "run-s build:lib build:copy",
+    "build": "node scripts/build.js",
     "build:copy": "node scripts/copy-resources",
     "build:lib": "ng-packagr -c tsconfig.lib.json",
-    "debug": "yarn build:lib -p ng-package.debug.json && yarn build:copy --debug",
+    "build:watch": "node scripts/build.js --watch",
+    "debug": "node scripts/build.js --debug --watch",
     "dev": "yarn start",
     "lint": "run-p lint:*",
     "lint:es": "eslint . --cache -f friendly",
