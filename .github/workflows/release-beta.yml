@@ -25,7 +25,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Release beta
-        run: sh scripts/release.sh
+        run: echo $NPM_TOKEN
         env:
           PUBLISH_VERSION: beta
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
