@@ -1,5 +1,25 @@
 # Changelog
 
+## 6.5.0
+
+### Minor Changes
+
+- [#386](https://github.com/alauda/ui/pull/386) [`a07e398`](https://github.com/alauda/ui/commit/a07e3981c7c693addcac8facb1c20a38901b7d2f) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - feat: remove normal table overflow property, scrollShadow set table overflow auto, rename scrollShadow directive to scrollable, add table header sticky to parent story
+
+### Patch Changes
+
+- [#384](https://github.com/alauda/ui/pull/384) [`ecf7ec2`](https://github.com/alauda/ui/commit/ecf7ec2844107329bbe763bbf1325d10d29dde3e) Thanks [@EdisonSu768](https://github.com/EdisonSu768)! - fix: tags-input placeholder
+
+- [#392](https://github.com/alauda/ui/pull/392) [`4ec0696`](https://github.com/alauda/ui/commit/4ec069627b5e7e56987e8541cd4a573aaaf51b12) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: scroll-table row height less than table 1px
+
+- [#401](https://github.com/alauda/ui/pull/401) [`2011c46`](https://github.com/alauda/ui/commit/2011c467675ad8c7401624b07a68ffc0203bfb55) Thanks [@kkxiaoa](https://github.com/kkxiaoa)! - feat: add dialog motion
+
+- [#393](https://github.com/alauda/ui/pull/393) [`1cd9948`](https://github.com/alauda/ui/commit/1cd9948e391e8d65bf55517c76695e8cb61b950b) Thanks [@liyouzhi666](https://github.com/liyouzhi666)! - fix: aui-number-input angleButton height and move 'watchContentExist' from ngAfterViewInit to ngAfterContentInit
+
+- [#389](https://github.com/alauda/ui/pull/389) [`897e336`](https://github.com/alauda/ui/commit/897e336d02a436aba8cac852464a0646483b3d13) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: controllable table scrollable directive
+
+- [#398](https://github.com/alauda/ui/pull/398) [`61e97fa`](https://github.com/alauda/ui/commit/61e97fa2e731c2d1a490cd8bfc988cac4c6e57c1) Thanks [@igauch](https://github.com/igauch)! - fix: some icons are missing
+
 ## 6.4.7
 
 ### Patch Changes
