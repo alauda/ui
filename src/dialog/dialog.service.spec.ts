@@ -56,6 +56,17 @@ describe('DialogService', () => {
     ).not.toBeNull();
   });
 
+  it('should open dialog set custom class work', () => {
+    dialogService.open(DialogContentComponent, {
+      customClass: 'test-class',
+    });
+
+    fixture.detectChanges();
+
+    expect(ocEl.querySelector('.aui-dialog')).not.toBeNull();
+    expect(ocEl.querySelector('.aui-dialog').classList).toContain('test-class');
+  });
+
   it('should be closed by click cancel button', () => {
     const dialogRef = dialogService.open(DialogContentComponent, {
       noAnimation: true,
