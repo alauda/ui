@@ -13,4 +13,5 @@ export class DialogConfig<D = any> extends BaseDialogConfig {
   size?: DialogSize = DialogSize.Big;
   hasBackdrop? = true;
   fitViewport? = false;
+  customClass?: string;
 }

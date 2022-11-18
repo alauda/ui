@@ -78,7 +78,7 @@ export class DialogComponent {
   get rootClass() {
     return `${this.bem.block(this.config.size)} ${
       this.config.fitViewport ? this.bem.modifier('fit-viewport') : ''
-    }`;
+    } ${this.config.customClass || ''}`;
   }
 
   get customStyle() {
