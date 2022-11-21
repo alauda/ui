@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.5.1
+
+### Patch Changes
+
+- [#406](https://github.com/alauda/ui/pull/406) [`cea5e3a`](https://github.com/alauda/ui/commit/cea5e3a23074300e87935c5b62a3cd99b5310900) Thanks [@mario-mui](https://github.com/mario-mui)! - feat: dialog support custom class
+
 ## 6.5.0
 
 ### Minor Changes
