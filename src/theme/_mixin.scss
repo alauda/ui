@@ -27,8 +27,8 @@
   $scope: &;
 
   @at-root {
-    @media (prefers-color-scheme: dark) {
-      #{theme-selector('html[aui-theme-mode=system]', $scope)} {
+    #{theme-selector('html[aui-theme-mode=system]', $scope)} {
+      @media (prefers-color-scheme: dark) {
         @content;
       }
     }

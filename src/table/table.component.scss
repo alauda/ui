@@ -77,7 +77,6 @@
     padding: $table-cell-padding-v $table-cell-padding-h;
     background-color: use-rgb(n-10);
     overflow: hidden;
-    word-wrap: break-word;
 
     &--column {
       flex-direction: column;
