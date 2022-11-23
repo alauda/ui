@@ -1,49 +1,5 @@
 @use 'sass:color';
 
-@mixin component-size {
-  --aui-inline-height-l: 40px;
-  --aui-inline-height-m: 32px;
-  --aui-inline-height-s: 28px;
-  --aui-inline-height-xs: 24px;
-  --aui-inline-padding-l: 19px;
-  --aui-inline-padding-m: 15px;
-  --aui-inline-padding-s: 11px;
-  --aui-inline-padding-xs: 7px;
-  --aui-inline-padding-xxs: 5px;
-  --aui-spacing-xxxxxl: 40px;
-  --aui-spacing-xxxxl: 32px;
-  --aui-spacing-xxxl: 24px;
-  --aui-spacing-xxl: 20px;
-  --aui-spacing-xl: 16px;
-  --aui-spacing-l: 12px;
-  --aui-spacing-m: 8px;
-  --aui-spacing-s: 4px;
-  --aui-spacing-xs: 2px;
-  --aui-font-weight-bold: 500;
-  --aui-font-weight-normal: 400;
-  --aui-font-size-xxl: 20px;
-  --aui-font-size-xl: 18px;
-  --aui-font-size-l: 16px;
-  --aui-font-size-m: 14px;
-  --aui-font-size-s: 12px;
-  --aui-line-height-xxxl: 32px;
-  --aui-line-height-xxl: 28px;
-  --aui-line-height-xl: 24px;
-  --aui-line-height-l: 22px;
-  --aui-line-height-m: 20px;
-  --aui-line-height-s: 16px;
-  --aui-icon-size-xxl: 24px;
-  --aui-icon-size-xl: 24px;
-  --aui-icon-size-l: 16px;
-  --aui-icon-size-m: 16px;
-  --aui-icon-size-s: 12px;
-  --aui-border-radius-l: 4px;
-  --aui-border-radius-m: 2px;
-  --aui-form-item-width-l: 732px;
-  --aui-form-item-width-m: 436px;
-  --aui-form-item-width-s: 140px;
-}
-
 @function rgb-string($color) {
   @return color.red($color), color.green($color), color.blue($color);
 }
@@ -174,4 +130,48 @@
   --aui-color-help-text: var(--aui-color-n-4);
   --aui-color-disabled-text: var(--aui-color-n-6);
   --aui-color-placeholder-text: var(--aui-color-n-6);
+}
+
+@mixin component-size {
+  --aui-inline-height-l: 40px;
+  --aui-inline-height-m: 32px;
+  --aui-inline-height-s: 28px;
+  --aui-inline-height-xs: 24px;
+  --aui-inline-padding-l: 19px;
+  --aui-inline-padding-m: 15px;
+  --aui-inline-padding-s: 11px;
+  --aui-inline-padding-xs: 7px;
+  --aui-inline-padding-xxs: 5px;
+  --aui-spacing-xxxxxl: 40px;
+  --aui-spacing-xxxxl: 32px;
+  --aui-spacing-xxxl: 24px;
+  --aui-spacing-xxl: 20px;
+  --aui-spacing-xl: 16px;
+  --aui-spacing-l: 12px;
+  --aui-spacing-m: 8px;
+  --aui-spacing-s: 4px;
+  --aui-spacing-xs: 2px;
+  --aui-font-weight-bold: 500;
+  --aui-font-weight-normal: 400;
+  --aui-font-size-xxl: 20px;
+  --aui-font-size-xl: 18px;
+  --aui-font-size-l: 16px;
+  --aui-font-size-m: 14px;
+  --aui-font-size-s: 12px;
+  --aui-line-height-xxxl: 32px;
+  --aui-line-height-xxl: 28px;
+  --aui-line-height-xl: 24px;
+  --aui-line-height-l: 22px;
+  --aui-line-height-m: 20px;
+  --aui-line-height-s: 16px;
+  --aui-icon-size-xxl: 24px;
+  --aui-icon-size-xl: 24px;
+  --aui-icon-size-l: 16px;
+  --aui-icon-size-m: 16px;
+  --aui-icon-size-s: 12px;
+  --aui-border-radius-l: 4px;
+  --aui-border-radius-m: 2px;
+  --aui-form-item-width-l: 732px;
+  --aui-form-item-width-m: 436px;
+  --aui-form-item-width-s: 140px;
 }
