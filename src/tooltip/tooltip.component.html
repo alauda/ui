@@ -1,4 +1,5 @@
 <div
+  *ngIf="inputContent$ | async"
   [class]="class$ | async"
   (mouseenter)="hover$.next(true)"
   (mouseleave)="hover$.next(false)"

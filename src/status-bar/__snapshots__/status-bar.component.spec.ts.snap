@@ -197,6 +197,7 @@ exports[`Status Bar should match snapshot 3`] = `
           
           
         </div>
+        
       </aui-tooltip>
     </div>
   </div>
