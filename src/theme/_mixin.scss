@@ -134,6 +134,7 @@
 }
 
 @mixin overlay-pane($alignItems: center) {
+  overflow: auto;
   @include flex-center($alignItems);
   @include scroll-bar;
 }
