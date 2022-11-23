@@ -13,7 +13,10 @@ import {
   inject,
   tick,
 } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
 import { timer } from 'rxjs';
 
 import { DialogModule, DialogService, DialogSize } from '.';
@@ -25,7 +28,7 @@ describe('DialogService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestModule, BrowserAnimationsModule],
+      imports: [TestModule, BrowserAnimationsModule, NoopAnimationsModule],
     });
 
     fixture = TestBed.createComponent(TestComponent);

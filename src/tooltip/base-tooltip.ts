@@ -103,7 +103,7 @@ export class BaseTooltip<T = any>
   }
 
   get disabled() {
-    return this._disabled || !this.content;
+    return this._disabled;
   }
 
   hideOnClick = false;
