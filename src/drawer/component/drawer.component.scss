@@ -46,6 +46,7 @@ $drawer: aui-drawer;
     margin: 0 20px;
     padding: 20px 0;
     display: flex;
+    flex-shrink: 0;
     justify-content: space-between;
   }
 
