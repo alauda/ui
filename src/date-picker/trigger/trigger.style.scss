@@ -65,7 +65,7 @@ aui-date-picker-trigger {
 
       &:focus {
         outline: none;
-        box-shadow: none;
+        box-shadow: none !important;
       }
     }
 
