@@ -23,6 +23,10 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
 
     .aui-button {
       box-sizing: border-box;
+
+      &__content {
+        padding: 0 !important;
+      }
     }
 
     &.month-panel-container,
@@ -108,6 +112,15 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
       button {
         color: use-text-color(disabled) !important;
         border-color: use-text-color(disabled) !important;
+      }
+
+      &.isActive,
+      &.isToday {
+        button {
+          color: white !important;
+          border-color: use-rgb(p-4) !important;
+          background-color: use-rgb(p-4) !important;
+        }
       }
     }
 
