@@ -80,7 +80,7 @@
     top: 50%;
     left: calc(#{use-var(inline-padding-xs)} + 1px);
     transform: translateY(-50%);
-    color: use-text-color(placeholder);
+    color: use-text-color(secondary);
   }
 
   &__suffix {
@@ -88,7 +88,7 @@
     top: 50%;
     right: calc(#{use-var(inline-padding-xs)} + 1px);
     transform: translateY(-50%);
-    color: use-text-color(placeholder);
+    color: use-text-color(secondary);
   }
 
   &.hasAddonBefore {

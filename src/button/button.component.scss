@@ -205,8 +205,16 @@ $button-size: (
     &.isPlain {
       color: use-text-color(main);
 
+      aui-icon {
+        color: use-text-color(secondary);
+      }
+
       &[disabled] {
-        color: use-rgb(n-6);
+        color: use-text-color(disabled);
+
+        aui-icon {
+          color: use-text-color(secondary);
+        }
       }
     }
 
@@ -245,6 +253,10 @@ $button-size: (
     &.isPlain {
       color: use-text-color(main);
 
+      aui-icon {
+        color: use-text-color(secondary);
+      }
+
       &[disabled] {
         color: use-rgb(n-6);
       }
@@ -272,6 +284,10 @@ $button-size: (
     color: use-text-color(main);
     border-color: use-rgb(n-7);
     background-color: use-rgb(button-bg);
+
+    aui-icon {
+      color: use-text-color(secondary);
+    }
 
     &:hover {
       color: use-rgb(primary);
@@ -323,6 +339,15 @@ $button-size: (
   &.isLoading {
     .aui-button__content {
       opacity: 0;
+    }
+  }
+
+  &[disabled],
+  &:hover,
+  &:active,
+  &.isActive {
+    aui-icon {
+      color: inherit;
     }
   }
 }

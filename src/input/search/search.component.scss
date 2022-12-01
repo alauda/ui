@@ -36,6 +36,7 @@ $block: 'aui-search';
 
       .#{$block}__button-icon {
         padding: 0 use-var(inline-padding-xs);
+        color: use-rgb(n-2);
       }
 
       &.hasIcon .#{$block}__input {
@@ -50,7 +51,6 @@ $block: 'aui-search';
           #{map-get($map, icon-size)} + #{use-var(inline-padding-xs)} * 2 + 1px
         );
       }
-
 
       &.hasButton .#{$block} {
         &__input {
