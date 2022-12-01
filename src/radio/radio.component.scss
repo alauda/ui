@@ -4,11 +4,10 @@
 $block: 'aui-radio';
 
 .#{$block} {
-  margin-right: use-var(spacing-xxxl);
-  display: inline-block;
-  color: use-rgb(n-1);
-  font-size: use-var(font-size-m);
-  line-height: use-var(inline-height-m);
+  display: inline-flex;
+  align-items: center;
+  min-height: use-var(inline-height-m);
+  @include text-set(m, main);
   position: relative;
 
   &__input {
@@ -38,6 +37,7 @@ $block: 'aui-radio';
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     width: use-var(icon-size-m);
     height: use-var(icon-size-m);
     margin-right: use-var(spacing-m);
@@ -88,5 +88,11 @@ $block: 'aui-radio';
         background-color: use-rgb(n-4);
       }
     }
+  }
+}
+
+#{$block}:not(:last-child) {
+  .#{$block} {
+    margin-right: use-var(spacing-xxxl);
   }
 }
