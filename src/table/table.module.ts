@@ -4,6 +4,11 @@ import { NgModule } from '@angular/core';
 
 import { IconModule } from '../icon/icon.module';
 
+import { NewTableCellDirective } from './new/table-cell.directive';
+import { NewTableHeaderCellDirective } from './new/table-header-cell.directive';
+import { NewTableHeaderRowComponent } from './new/table-header-row.component';
+import { NewTableRowComponent } from './new/table-row.component';
+import { NewTableComponent } from './new/table.component';
 import { TableCellDefDirective } from './table-cell-def.directive';
 import {
   TableExpandButtonCellComponent,
@@ -35,6 +40,9 @@ import { TableComponent } from './table.component';
     TableHeaderRowComponent,
     TableExpandButtonCellComponent,
     TableExpandPanelCellComponent,
+    NewTableComponent,
+    NewTableHeaderRowComponent,
+    NewTableRowComponent,
     TableCellDirective,
     TableCellDefDirective,
     TableHeaderCellDirective,
@@ -46,6 +54,8 @@ import { TableComponent } from './table.component';
     TablePlaceholderOutletDirective,
     TablePlaceholderDefDirective,
     TableScrollWrapperDirective,
+    NewTableCellDirective,
+    NewTableHeaderCellDirective,
   ],
   exports: [
     TableComponent,
@@ -53,6 +63,9 @@ import { TableComponent } from './table.component';
     TableHeaderRowComponent,
     TableExpandButtonCellComponent,
     TableExpandPanelCellComponent,
+    NewTableComponent,
+    NewTableHeaderRowComponent,
+    NewTableRowComponent,
     TableCellDirective,
     TableCellDefDirective,
     TableHeaderCellDirective,
@@ -64,6 +77,8 @@ import { TableComponent } from './table.component';
     TablePlaceholderOutletDirective,
     TablePlaceholderDefDirective,
     TableScrollWrapperDirective,
+    NewTableCellDirective,
+    NewTableHeaderCellDirective,
   ],
 })
 export class TableModule {}

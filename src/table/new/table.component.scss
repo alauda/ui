@@ -1,0 +1,212 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+.aui-table {
+  display: block;
+  padding: 0 $table-padding $table-padding;
+  @include text-set(m, main);
+
+  background-color: use-rgb(n-9);
+  border-radius: use-var(border-radius-l);
+
+  &__row,
+  &__header-row {
+    display: flex;
+    align-items: center;
+
+    &.hasPanel {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__header-row + &__row {
+    border-top-left-radius: use-var(border-radius-l);
+    border-top-right-radius: use-var(border-radius-l);
+  }
+
+  &__row {
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: use-rgb(n-8);
+    border-bottom-width: 0;
+    background-color: use-rgb(n-10);
+    padding: 0 ($table-cell-padding-h - 1);
+    min-height: $table-row-min-height;
+    box-sizing: content-box;
+
+    &:first-child {
+      border-top-left-radius: use-var(border-radius-l);
+      border-top-right-radius: use-var(border-radius-l);
+    }
+
+    &:last-child {
+      border-bottom-width: 1px;
+      min-height: $table-row-min-height;
+      border-bottom-left-radius: use-var(border-radius-l);
+      border-bottom-right-radius: use-var(border-radius-l);
+    }
+
+    &.isDisabled:before {
+      content: '';
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: use-rgb(n-10);
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+
+  &__header-row {
+    background-color: use-rgb(n-9);
+    padding: 0 $table-cell-padding-h;
+  }
+
+  &__cell,
+  &__header-cell {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  &__cell {
+    padding: $table-cell-padding-v $table-cell-padding-h;
+    background-color: use-rgb(n-10);
+    overflow: hidden;
+
+    &--column {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  }
+
+  &__header-cell {
+    padding: $table-padding $table-cell-padding-h;
+    font-weight: use-var(font-weight-bold);
+    background-color: use-rgb(n-9);
+    @include text-overflow;
+  }
+
+  &__column-expand-button {
+    display: flex;
+    align-items: center;
+    max-width: calc(#{$table-cell-padding-h} * 2 + #{use-var(icon-size-m)});
+
+    &.aui-table__cell {
+      height: $table-row-min-height;
+    }
+
+    .aui-expand-button {
+      @include expand-button;
+    }
+  }
+
+  &__column-expand-panel {
+    margin-top: -6px;
+
+    &.aui-table__header-cell {
+      display: none;
+    }
+
+    &.aui-table__cell {
+      width: 100%;
+      flex-shrink: 0;
+      flex-basis: 100%;
+      padding: 0 $table-cell-padding-h;
+      overflow: hidden;
+
+      .aui-table__cell-expand-panel {
+        width: 100%;
+        border-radius: use-var(border-radius-l);
+        overflow: hidden;
+
+        &-content {
+          &.hasBackground {
+            padding: 16px;
+            background-color: use-rgb(n-9);
+          }
+        }
+      }
+    }
+  }
+}
+
+// 作为table组件，使用原生table是常见的，所以提供内置的样式适配
+table.aui-table {
+  display: table;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+
+  .aui-table {
+    &__row,
+    &__header-row {
+      display: table-row;
+    }
+
+    &__cell,
+    &__header-cell {
+      display: table-cell;
+    }
+
+    &__cell {
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-color: use-rgb(n-8);
+    }
+  }
+
+  tbody {
+    tr:first-child td {
+      border-top-width: 1px;
+      border-top-style: solid;
+
+      &:first-child {
+        border-top-left-radius: use-var(border-radius-l);
+      }
+
+      &:last-child {
+        border-top-right-radius: use-var(border-radius-l);
+      }
+    }
+
+    tr td:first-child {
+      border-left-width: 1px;
+      border-left-style: solid;
+    }
+
+    tr td:last-child {
+      border-right-width: 1px;
+      border-right-style: solid;
+    }
+
+    tr:last-child td {
+      &:first-child {
+        border-bottom-left-radius: use-var(border-radius-l);
+      }
+
+      &:last-child {
+        border-bottom-right-radius: use-var(border-radius-l);
+      }
+    }
+
+    td {
+      vertical-align: middle;
+    }
+  }
+
+  thead {
+    th {
+      text-align: left;
+    }
+  }
+
+  [rowspan='0'] {
+    display: none;
+  }
+}
