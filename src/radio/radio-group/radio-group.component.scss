@@ -1,9 +1,13 @@
 .aui-radio-group {
   display: inline-flex;
-  align-items: center;
+
+  &--row {
+    align-items: center;
+  }
 
   &--column {
     flex-direction: column;
+    justify-content: center;
 
     .aui-radio {
       margin-right: 0;
