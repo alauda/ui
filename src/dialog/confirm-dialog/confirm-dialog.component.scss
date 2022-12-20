@@ -42,9 +42,6 @@ $icon-margin: use-var(spacing-m);
   &__content {
     padding-left: calc(#{$icon-margin} + #{$icon-size});
     @include text-set(m, secondary);
-
-    word-wrap: break-word;
-    word-break: break-all;
   }
 
   &__button-wrapper {
