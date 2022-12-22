@@ -211,10 +211,6 @@ $button-size: (
 
       &[disabled] {
         color: use-text-color(disabled);
-
-        aui-icon {
-          color: use-text-color(secondary);
-        }
       }
     }
 
