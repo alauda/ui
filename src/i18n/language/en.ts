@@ -8,7 +8,7 @@ export const en: I18NInterface = {
     select_date: 'Select Date',
     select_time: 'Select time',
     clear: 'clear',
-    confirm: 'confirm',
+    confirm: 'Confirm',
     to: 'To',
     year_suffix: '',
     month_suffix: '',
