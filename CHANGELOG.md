@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.5.2
+
+### Patch Changes
+
+- [#424](https://github.com/alauda/ui/pull/424) [`c36ef81`](https://github.com/alauda/ui/commit/c36ef81d1211579611c3e490ff4ba83e245f3958) Thanks [@JounQin](https://github.com/JounQin)! - fix: unset word break for confirm dialog
+
+- [#414](https://github.com/alauda/ui/pull/414) [`e1ff045`](https://github.com/alauda/ui/commit/e1ff045f149b5f02ce66d14c56fba403e72d9e0e) Thanks [@mario-mui](https://github.com/mario-mui)! - fix: set aui drawer height
+
 ## 6.5.1
 
 ### Patch Changes
