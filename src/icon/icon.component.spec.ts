@@ -26,18 +26,18 @@ describe('IconComponent', () => {
     const setEl = document.querySelector('.aui-icon-set');
 
     expect(setEl).not.toBeNull();
-    expect(setEl.querySelector('#aui-icon-close')).not.toBeNull();
+    expect(setEl.querySelector('#aui-icon-xmark')).not.toBeNull();
   });
 
   it('should use correct icon', () => {
-    ins.icon = 'close';
+    ins.icon = 'xmark';
     ins.margin = 'right';
     fixture.detectChanges();
     expect(el.getAttribute('class')).toContain('aui-icon');
     expect(el.getAttribute('class')).toContain('aui-icon--right');
-    expect(el.getAttribute('class')).toContain('aui-icon-close');
+    expect(el.getAttribute('class')).toContain('aui-icon-xmark');
     expect(el.querySelector('use').getAttribute('xlink:href')).toBe(
-      '#aui-icon-close',
+      '#aui-icon-xmark',
     );
 
     ins.icon = 'search';

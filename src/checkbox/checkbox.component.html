@@ -22,8 +22,8 @@
   >
     <i class="aui-checkbox__pointer">
       <aui-icon
-        [icon]="indeterminate ? 'square_s' : 'check_s'"
-        [hidden]="!model && !indeterminate"
+        *ngIf="model && !indeterminate"
+        icon="check"
       ></aui-icon>
     </i>
     <span class="aui-checkbox__content"><ng-content></ng-content></span>

@@ -35,7 +35,7 @@ describe('SearchComponent', () => {
     const iconEl = el.querySelector('.aui-search__icon');
     expect(iconEl).not.toBeNull();
     expect(iconEl.querySelector('use').getAttribute('xlink:href')).toBe(
-      '#aui-icon-search_s',
+      '#aui-icon-magnifier',
     );
     expect(inputEl).not.toBeNull();
     expect(inputEl.className).toContain('aui-input');
@@ -51,7 +51,7 @@ describe('SearchComponent', () => {
     const buttonEl = el.querySelector('.aui-search__button');
     expect(buttonEl).not.toBeNull();
     expect(buttonEl.querySelector('use').getAttribute('xlink:href')).toBe(
-      '#aui-icon-search_s',
+      '#aui-icon-magnifier',
     );
   });
 
@@ -67,7 +67,7 @@ describe('SearchComponent', () => {
     const clearEl = el.querySelector('.aui-search__clear');
     expect(clearEl.getAttribute('hidden')).toBeNull();
     expect(clearEl.querySelector('use').getAttribute('xlink:href')).toBe(
-      '#aui-icon-close_small',
+      '#aui-icon-xmark_small',
     );
   });
 
@@ -87,7 +87,7 @@ describe('SearchComponent', () => {
     const clearEl = el.querySelector('.aui-search__clear');
     expect(clearEl.getAttribute('hidden')).toBe('');
     expect(clearEl.querySelector('use').getAttribute('xlink:href')).toBe(
-      '#aui-icon-close_small',
+      '#aui-icon-xmark_small',
     );
 
     ins.searchButton = true;

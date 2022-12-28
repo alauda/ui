@@ -93,7 +93,7 @@ describe('InputGroupComponent', () => {
       <span auiInputAddonAfter>GB</span>
       <aui-icon
         auiInputPrefix
-        icon="search_s"
+        icon="magnifier"
       ></aui-icon>
       <aui-icon
         auiInputSuffix

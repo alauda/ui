@@ -3,7 +3,10 @@
 
 @mixin pointer($checkedStatus) {
   &__pointer {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
     width: use-var(icon-size-m);
     height: use-var(icon-size-m);
     margin-right: use-var(spacing-m);
@@ -14,14 +17,6 @@
     position: relative;
     vertical-align: middle;
     @include transition;
-
-    .aui-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      margin-left: 0;
-    }
   }
 
   &.cdk-keyboard-focused &__pointer {

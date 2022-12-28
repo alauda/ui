@@ -10,7 +10,7 @@
     *ngIf="!searchButton"
     [class]="bem.element('icon')"
   >
-    <aui-icon icon="search_s"></aui-icon>
+    <aui-icon icon="magnifier"></aui-icon>
   </div>
   <input
     #input
@@ -35,7 +35,7 @@
     [class]="bem.element('clear')"
     (click)="emitClear()"
   >
-    <aui-icon icon="close_small"></aui-icon>
+    <aui-icon icon="xmark_small"></aui-icon>
   </div>
   <div
     *ngIf="searchButton"
@@ -43,7 +43,7 @@
     (click)="emitSearch()"
   >
     <div [class]="bem.element('button-icon')">
-      <aui-icon [icon]="searching ? 'spinner' : 'search_s'"></aui-icon>
+      <aui-icon [icon]="searching ? 'spinner' : 'magnifier'"></aui-icon>
     </div>
   </div>
 </div>

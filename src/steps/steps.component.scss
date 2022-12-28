@@ -23,51 +23,71 @@
     display: inline-flex;
     color: use-rgb(n-4);
 
-    &-number {
+    &--index {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       border: 1px solid use-rgb(n-7);
       background-color: use-rgb(n-8);
       font-weight: use-var(font-weight-bold);
       font-size: use-var(font-size-l);
-      display: flex;
-      justify-content: center;
-      width: use-var(icon-size-xl);
-      height: use-var(icon-size-xl);
       line-height: use-var(line-height-l);
 
-      &.selected {
+      &.isActive {
+        color: white;
         border-color: use-rgb(primary);
         background-color: use-rgb(primary);
-        color: white;
       }
     }
 
-    &-icon {
-      display: inline-flex;
+    &--pending,
+    &--done,
+    &--error {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      font-size: use-var(icon-size-l);
+      border-width: 1px;
+      border-style: solid;
       border-radius: 50%;
+    }
 
-      &--done,
-      &--pending {
-        background-color: use-rgb(p-6);
-        color: use-rgb(primary);
+    &--pending {
+      color: use-rgb(primary);
+      border-color: use-rgb(primary);
+      background-color: use-rgb(p-6);
 
-        &.selected {
-          background-color: white;
-        }
+      &.isActive {
+        color: white;
+        border-color: use-rgb(primary);
+        background-color: use-rgb(primary);
       }
+    }
 
-      &--error {
-        background-color: use-rgb(r-6);
-        color: use-rgb(red);
+    &--done {
+      color: use-rgb(green);
+      border-color: use-rgb(green);
+      background-color: use-rgb(g-6);
 
-        &.selected {
-          background-color: white;
-        }
+      &.isActive {
+        color: white;
+        background-color: use-rgb(green);
       }
+    }
 
-      &--pending {
-        transform-origin: center;
-        animation: spin 2s infinite linear;
+    &--error {
+      color: use-rgb(red);
+      border-color: use-rgb(red);
+      background-color: use-rgb(r-6);
+
+      &.isActive {
+        color: white;
+        background-color: use-rgb(red);
       }
     }
   }

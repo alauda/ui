@@ -31,8 +31,8 @@
         [disabled]="disabled"
         (click)="navigate(-5)"
       >
-        <aui-icon icon="ellipsis_h_s"></aui-icon>
-        <aui-icon icon="angle_double_left"></aui-icon>
+        <aui-icon icon="ellipsis_s"></aui-icon>
+        <aui-icon icon="angles_left"></aui-icon>
       </button>
       <button
         *ngFor="let page of getCenterPages(); trackBy: trackByIndex"
@@ -51,8 +51,8 @@
         [disabled]="disabled"
         (click)="navigate(5)"
       >
-        <aui-icon icon="ellipsis_h_s"></aui-icon>
-        <aui-icon icon="angle_double_right"></aui-icon>
+        <aui-icon icon="ellipsis_s"></aui-icon>
+        <aui-icon icon="angles_right"></aui-icon>
       </button>
       <button
         *ngIf="pageCount > 1"
