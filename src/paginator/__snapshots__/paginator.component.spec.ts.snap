@@ -170,13 +170,13 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                           </aui-icon>
                           <aui-icon
                             class="aui-select__clear"
-                            icon="close_small"
+                            icon="xmark_small"
                           >
                             <svg
-                              class="aui-icon aui-icon-close_small"
+                              class="aui-icon aui-icon-xmark_small"
                             >
                               <use
-                                xlink:href="#aui-icon-close_small"
+                                xlink:href="#aui-icon-xmark_small"
                               />
                             </svg>
                           </aui-icon>
@@ -335,24 +335,24 @@ exports[`PaginatorComponent should render current template 1`] = `
               class="aui-button__content"
             >
               <aui-icon
-                icon="ellipsis_h_s"
+                icon="ellipsis_s"
               >
                 <svg
-                  class="aui-icon aui-icon-ellipsis_h_s"
+                  class="aui-icon aui-icon-ellipsis_s"
                 >
                   <use
-                    xlink:href="#aui-icon-ellipsis_h_s"
+                    xlink:href="#aui-icon-ellipsis_s"
                   />
                 </svg>
               </aui-icon>
               <aui-icon
-                icon="angle_double_right"
+                icon="angles_right"
               >
                 <svg
-                  class="aui-icon aui-icon-angle_double_right"
+                  class="aui-icon aui-icon-angles_right"
                 >
                   <use
-                    xlink:href="#aui-icon-angle_double_right"
+                    xlink:href="#aui-icon-angles_right"
                   />
                 </svg>
               </aui-icon>
@@ -448,13 +448,13 @@ exports[`PaginatorComponent should render current template 1`] = `
                           </aui-icon>
                           <aui-icon
                             class="aui-select__clear"
-                            icon="close_small"
+                            icon="xmark_small"
                           >
                             <svg
-                              class="aui-icon aui-icon-close_small"
+                              class="aui-icon aui-icon-xmark_small"
                             >
                               <use
-                                xlink:href="#aui-icon-close_small"
+                                xlink:href="#aui-icon-xmark_small"
                               />
                             </svg>
                           </aui-icon>
@@ -620,24 +620,24 @@ exports[`PaginatorComponent should render current template 2`] = `
               class="aui-button__content"
             >
               <aui-icon
-                icon="ellipsis_h_s"
+                icon="ellipsis_s"
               >
                 <svg
-                  class="aui-icon aui-icon-ellipsis_h_s"
+                  class="aui-icon aui-icon-ellipsis_s"
                 >
                   <use
-                    xlink:href="#aui-icon-ellipsis_h_s"
+                    xlink:href="#aui-icon-ellipsis_s"
                   />
                 </svg>
               </aui-icon>
               <aui-icon
-                icon="angle_double_right"
+                icon="angles_right"
               >
                 <svg
-                  class="aui-icon aui-icon-angle_double_right"
+                  class="aui-icon aui-icon-angles_right"
                 >
                   <use
-                    xlink:href="#aui-icon-angle_double_right"
+                    xlink:href="#aui-icon-angles_right"
                   />
                 </svg>
               </aui-icon>
@@ -737,13 +737,13 @@ exports[`PaginatorComponent should render current template 2`] = `
                           </aui-icon>
                           <aui-icon
                             class="aui-select__clear"
-                            icon="close_small"
+                            icon="xmark_small"
                           >
                             <svg
-                              class="aui-icon aui-icon-close_small"
+                              class="aui-icon aui-icon-xmark_small"
                             >
                               <use
-                                xlink:href="#aui-icon-close_small"
+                                xlink:href="#aui-icon-xmark_small"
                               />
                             </svg>
                           </aui-icon>

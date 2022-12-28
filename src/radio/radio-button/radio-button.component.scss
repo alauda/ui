@@ -31,24 +31,8 @@ $block: 'aui-radio-button';
     border-color: use-rgb(p-4);
     background-color: use-rgb(p-7);
 
-    .#{$block} {
-      &__pointer {
-        color: use-rgb(p-4);
-
-        @include theme-dark {
-          .aui-icon {
-            background-image: linear-gradient(
-              to bottom right,
-              transparent 51%,
-              #{use-rgb(n-4)} 51%
-            );
-          }
-        }
-      }
-
-      &__label {
+    .#{$block}__label {
         cursor: not-allowed;
-      }
     }
   }
 
@@ -87,30 +71,38 @@ $block: 'aui-radio-button';
     &.isDisabled {
       color: use-rgb(n-6);
       border-color: use-rgb(n-7);
-    }
 
-    &.isDisabled.isChecked {
-      color: use-rgb(p-4);
-      border-color: use-rgb(p-4);
+      &.isChecked {
+        color: use-rgb(p-4);
+        border-color: use-rgb(p-4);
+
+        .#{$block}__pointer {
+          background-image: linear-gradient(
+            to bottom right,
+            transparent 50%,
+            use-rgb(p-4) 50%
+          );
+        }
+      }
     }
   }
 
   &__pointer {
-    color: use-rgb(primary);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: white;
+    background-image: linear-gradient(
+      to bottom right,
+      transparent 50%,
+      use-rgb(primary) 50%
+    );
 
-    &:not(:last-child) {
-      margin: 0;
-    }
-
-    .aui-icon {
+    aui-icon {
       position: absolute;
+      line-height: 0;
       right: 0;
       bottom: 0;
-      background-image: linear-gradient(
-        to bottom right,
-        transparent 51%,
-        white 51%
-      );
     }
   }
 
@@ -130,9 +122,9 @@ $block: 'aui-radio-button';
   &--medium {
     .#{$block} {
       &__pointer {
-        .aui-icon {
-          font-size: use-var(font-size-l);
-        }
+        width: use-var(icon-size-m);
+        height: use-var(icon-size-m);
+        font-size: 10px;
       }
 
       &__label {
@@ -145,9 +137,9 @@ $block: 'aui-radio-button';
   &--small {
     .#{$block} {
       &__pointer {
-        .aui-icon {
-          font-size: use-var(font-size-s);
-        }
+        width: use-var(icon-size-s);
+        height: use-var(icon-size-s);
+        font-size: 7px;
       }
 
       &__label {

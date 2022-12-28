@@ -105,7 +105,7 @@ storiesOf('Input', module)
             <span auiInputAddonAfter>GB</span>
             <aui-icon
               auiInputPrefix
-              icon="search_s"
+              icon="magnifier"
             ></aui-icon>
             <aui-icon
               auiInputSuffix
@@ -125,7 +125,7 @@ storiesOf('Input', module)
             <span auiInputAddonAfter>GB</span>
             <aui-icon
               auiInputPrefix
-              icon="search_s"
+              icon="magnifier"
             ></aui-icon>
             <aui-icon
               auiInputSuffix
@@ -145,7 +145,7 @@ storiesOf('Input', module)
             <span auiInputAddonAfter>GB</span>
             <aui-icon
               auiInputPrefix
-              icon="search_s"
+              icon="magnifier"
             ></aui-icon>
             <aui-icon
               auiInputSuffix
@@ -165,7 +165,7 @@ storiesOf('Input', module)
             <span auiInputAddonAfter>GB</span>
             <aui-icon
               auiInputPrefix
-              icon="search_s"
+              icon="magnifier"
             ></aui-icon>
             <aui-icon
               auiInputSuffix

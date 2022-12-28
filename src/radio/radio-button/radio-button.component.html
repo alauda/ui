@@ -12,11 +12,12 @@
     (click)="onClick()"
     (blur)="onBlur()"
   />
-  <aui-icon
+  <i
     *ngIf="checked && isPlain"
     class="aui-radio-button__pointer"
-    icon="check_triangle_s"
-  ></aui-icon>
+  >
+    <aui-icon icon="check"></aui-icon>
+  </i>
   <label
     class="aui-radio-button__label"
     [for]="id"

@@ -28,13 +28,13 @@ exports[`InputGroupComponent should match snapshot 1`] = `
           >
             <aui-icon
               auiinputprefix=""
-              icon="search_s"
+              icon="magnifier"
             >
               <svg
-                class="aui-icon aui-icon-search_s"
+                class="aui-icon aui-icon-magnifier"
               >
                 <use
-                  xlink:href="#aui-icon-search_s"
+                  xlink:href="#aui-icon-magnifier"
                 />
               </svg>
             </aui-icon>

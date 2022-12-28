@@ -12,39 +12,47 @@
     >
       <div class="aui-step__indicator">
         <ng-container *ngIf="isProgress">
-          <ng-container [ngSwitch]="getIcon(i, step.state)">
+          <ng-container [ngSwitch]="step.state">
+            <aui-icon
+              *ngSwitchCase="'pending'"
+              class="aui-step__indicator--pending"
+              [class.isActive]="i === activeIndex"
+              icon="rotate"
+            ></aui-icon>
+            <aui-icon
+              *ngSwitchCase="'done'"
+              class="aui-step__indicator--done"
+              [class.isActive]="i === activeIndex"
+              icon="check"
+            ></aui-icon>
+            <aui-icon
+              *ngSwitchCase="'error'"
+              class="aui-step__indicator--error"
+              [class.isActive]="i === activeIndex"
+              icon="xmark"
+            ></aui-icon>
             <span
-              class="aui-step__indicator-number aui-step__indicator-number--{{
-                step.state
-              }}"
-              *ngSwitchCase="'number'"
-              [class.selected]="getActiveIndex() === i"
+              *ngSwitchDefault
+              class="aui-step__indicator--index"
+              [class.isActive]="i === activeIndex"
             >
               {{ i + 1 }}
             </span>
-            <aui-icon
-              class="aui-step__indicator-icon aui-step__indicator-icon--{{
-                step.state
-              }}"
-              *ngSwitchDefault
-              [class.selected]="getActiveIndex() === i"
-              [icon]="getIcon(i, step.state)"
-            ></aui-icon>
           </ng-container>
         </ng-container>
         <ng-container *ngIf="!isProgress">
           <span
-            class="aui-step__indicator-number"
-            [class.selected]="_currentIndex === i"
-            *ngIf="i >= _currentIndex"
+            *ngIf="i >= currentIndex"
+            class="aui-step__indicator--index"
+            [class.isActive]="currentIndex === i"
           >
             {{ i + 1 }}
           </span>
           <aui-icon
-            class="aui-step__indicator-icon aui-step__indicator-icon--done"
-            [class.selected]="_currentIndex === i"
-            *ngIf="i < _currentIndex"
-            [icon]="getIcon(i, 'done')"
+            *ngIf="i < currentIndex"
+            class="aui-step__indicator--done"
+            [class.isActive]="_currentIndex === i"
+            icon="check"
           ></aui-icon>
         </ng-container>
         <div

@@ -147,7 +147,10 @@ import { RadioModule } from '@alauda/ui';
   >
     {{
       template: /* HTML */ `
-        <aui-radio-group [(ngModel)]="model">
+        <aui-radio-group
+          [(ngModel)]="model"
+          size="small"
+        >
           <aui-radio-button value="1">选项一</aui-radio-button>
           <aui-radio-button value="2">选项二</aui-radio-button>
           <aui-radio-button value="3">选项三</aui-radio-button>
