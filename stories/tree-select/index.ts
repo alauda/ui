@@ -61,6 +61,33 @@ const TREE_NODES: TreeNode[] = [
       },
     ],
   },
+  {
+    label: 'c',
+    value: 'c',
+    expanded: true,
+    icon: 'compress_s',
+    expandedIcon: 'expand_s',
+    children: [
+      {
+        label: 'c-1',
+        value: 'c-1',
+        icon: 'square_s',
+      },
+      {
+        label: 'c-2',
+        value: 'c-2',
+        icon: 'square_s',
+      },
+    ],
+  },
+  {
+    label: 'd',
+    value: 'd',
+    expanded: true,
+    icon: 'square_s',
+    loading: true,
+    children: [],
+  },
 ];
 
 storiesOf('TreeSelect', module)
