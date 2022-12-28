@@ -417,7 +417,7 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
   }
 
   onClick() {
-    if (this.nodeData.disabled) {
+    if (this.nodeData.disabled || this.nodeData.loading) {
       return;
     }
     if (this.leafOnly && !this.isLeaf) {

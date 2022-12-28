@@ -8,4 +8,5 @@ export interface TreeNode<T = unknown> {
   expanded?: boolean;
   icon?: string;
   expandedIcon?: string;
+  loading?: boolean;
 }
