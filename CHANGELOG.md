@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.5.3
+
+### Patch Changes
+
+- [#428](https://github.com/alauda/ui/pull/428) [`b2a98c2`](https://github.com/alauda/ui/commit/b2a98c282329bc8fbad7b3b884f74016df22e1e8) Thanks [@liyouzhi666](https://github.com/liyouzhi666)! - feat: aui-tree-select improvement
+
 ## 6.5.2
 
 ### Patch Changes
