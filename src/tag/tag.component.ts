@@ -71,10 +71,12 @@ export class TagComponent {
 
   get customStyle() {
     const arr = this.color.split(',');
+    const main = arr[0].trim();
+    const secondary = (arr[1] || arr[0]).trim();
     return {
-      color: arr[0],
-      'border-color': arr[0],
-      'background-color': arr[1] || arr[0],
+      color: main,
+      'border-color': this.solid ? secondary : main,
+      'background-color': secondary,
     };
   }
 }
