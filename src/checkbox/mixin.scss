@@ -29,6 +29,20 @@
     background-color: use-rgb(primary);
   }
 
+  &.isIndeterminate &__pointer {
+    border-color: use-rgb(primary);
+    background-color: use-rgb(main-bg);
+
+    &:before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 1px;
+      background-color: use-rgb(primary);
+    }
+  }
+
   &.#{$checkedStatus}.isDisabled &__pointer {
     border-color: use-rgb(p-4);
     background-color: use-rgb(p-4);
