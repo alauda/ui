@@ -92,17 +92,16 @@
           [class]="bemSelectAll.block(size$ | async)"
           [class.isDisabled]="disabled"
           [class.isSelected]="!!(selectAllStatus$ | async)"
+          [class.isIndeterminate]="
+            (selectAllStatus$ | async) === 'indeterminate'
+          "
           [class.isMulti]="true"
           (click)="onSelectAllClick()"
         >
           <i class="aui-option__pointer">
             <aui-icon
-              [icon]="
-                (selectAllStatus$ | async) === 'checked'
-                  ? 'check_s'
-                  : 'square_s'
-              "
-              [hidden]="!(selectAllStatus$ | async)"
+              *ngIf="(selectAllStatus$ | async) === 'checked'"
+              icon="check"
             ></aui-icon>
           </i>
           {{ 'select_all' | auiI18n }}
