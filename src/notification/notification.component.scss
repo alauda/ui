@@ -71,12 +71,12 @@
     right: 10px;
     font-size: use-var(icon-size-m);
     width: use-var(icon-size-m);
-    color: use-rgb(n-4);
+    color: use-rgb(n-2);
     line-height: use-var(line-height-xl);
     cursor: pointer;
 
     &:hover {
-      color: use-rgb(n-2);
+      color: use-rgb(primary);
     }
   }
 

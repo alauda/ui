@@ -29,6 +29,9 @@ $padding-v: 12px - 1px;
     &--#{$name} &__icon {
       color: use-rgb($value);
     }
+    &--#{$name} &__close:hover {
+      color: use-rgb($value);
+    }
   }
 }
 
@@ -66,12 +69,8 @@ $padding-v: 12px - 1px;
     height: 1em;
     line-height: 1em;
     font-size: use-var(font-size-s);
-    color: use-rgb(n-4);
+    color: use-rgb(n-2);
     cursor: pointer;
-
-    &:hover {
-      color: use-rgb(n-2);
-    }
   }
 
   &__title {
