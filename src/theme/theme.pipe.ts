@@ -12,17 +12,17 @@ import { cssVar, rgbColor, rgbaColor } from './utils';
 
 @Pipe({ name: 'auiRgbColor', pure: true })
 export class RgbColorPipe implements PipeTransform {
-  transform = rgbColor;
+  transform: (color: string) => string = rgbColor;
 }
 
 @Pipe({ name: 'auiRgbaColor', pure: true })
 export class RgbaColorPipe implements PipeTransform {
-  transform = rgbaColor;
+  transform: ([color, opacity]: [string, number]) => string = rgbaColor;
 }
 
 @Pipe({ name: 'auiCssVar', pure: true })
 export class CssVarPipe implements PipeTransform {
-  transform = cssVar;
+  transform: (value: string) => string = cssVar;
 }
 
 @Pipe({ name: 'auiThemePicker', pure: false })
