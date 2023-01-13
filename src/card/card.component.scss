@@ -16,7 +16,7 @@ $b: aui-card;
     display: flex;
     align-items: center;
     padding: 0;
-    font-weight: use-var(font-weight-bold);
+    font-weight: use-var(font-weight-bolder);
     @include text-set(xxl, main);
 
     &--secondary {

@@ -12,6 +12,7 @@
   &--large {
     .aui-tab-label {
       padding: $tab-label-padding-large;
+      font-weight: use-var(font-weight-bolder);
       @include text-set(xl);
     }
   }
@@ -19,6 +20,7 @@
   &--medium {
     .aui-tab-label {
       padding: $tab-label-padding-medium;
+      font-weight: use-var(font-weight-bolder);
       @include text-set(l);
     }
   }
@@ -43,7 +45,7 @@
     font-size: $tab-header-title-font-size;
     margin-inline: $tab-header-title-spacing;
     padding: $tab-header-title-padding;
-    font-weight: use-var(font-weight-bold);
+    font-weight: use-var(font-weight-bolder);
     border-bottom: 1px use-rgb(n-8) solid;
     line-height: 32px;
   }

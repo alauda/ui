@@ -20,6 +20,7 @@
   --aui-spacing-s: 4px;
   --aui-spacing-xs: 2px;
   --aui-font-weight-bold: 500;
+  --aui-font-weight-bolder: 600;
   --aui-font-weight-normal: 400;
   --aui-font-size-xxl: 20px;
   --aui-font-size-xl: 18px;
@@ -50,6 +51,7 @@
 
 @mixin light-mode {
   color-scheme: light;
+
   --aui-color-blue: #{rgb-string(#007af5)};
   --aui-color-b-0: #{rgb-string(#0067d0)};
   --aui-color-b-1: #{rgb-string(#268df6)};
@@ -114,6 +116,7 @@
 
 @mixin dark-mode {
   color-scheme: dark;
+
   --aui-color-blue: #{rgb-string(#3d8eff)};
   --aui-color-b-0: #{rgb-string(#3674cc)};
   --aui-color-b-1: #{rgb-string(#6daaff)};
