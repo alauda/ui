@@ -16,7 +16,7 @@ $icon-margin: use-var(spacing-m);
 
   &__title {
     margin-bottom: use-var(spacing-m);
-    font-weight: use-var(font-weight-bold);
+    font-weight: use-var(font-weight-bolder);
     display: flex;
     @include text-set(xl, main);
   }

@@ -54,7 +54,7 @@ $drawer: aui-drawer;
     flex: 1;
     @include text-set(xxl, main);
 
-    font-weight: use-var(font-weight-bold);
+    font-weight: use-var(font-weight-bolder);
     @include text-overflow;
   }
 
