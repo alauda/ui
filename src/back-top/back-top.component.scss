@@ -12,7 +12,7 @@ $block: 'aui-back-top';
   height: use-var(inline-height-m);
   width: use-var(inline-height-m);
   color: use-rgb(n-4);
-  font-size: 16px;
+  font-size: use-var(font-size-l);
   border: 1px solid transparent;
   border-radius: use-var(border-radius-m);
   overflow: hidden;
