@@ -86,6 +86,9 @@ export abstract class BaseSelect<T, V = T>
   labelFn?: (value: T) => string;
 
   @Input()
+  clearFilterOnHide = true;
+
+  @Input()
   get allowCreate() {
     return this._allowCreate;
   }
@@ -330,7 +333,10 @@ export abstract class BaseSelect<T, V = T>
       this.optionContent?.detach();
     }
     this.resetFocusedOption();
-    this.filterString = '';
+
+    if (this.clearFilterOnHide) {
+      this.filterString = '';
+    }
     this.hide.emit();
   }
 
