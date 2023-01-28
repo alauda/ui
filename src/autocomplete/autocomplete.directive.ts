@@ -25,6 +25,7 @@ import {
   takeUntil,
   debounceTime,
   startWith,
+  distinctUntilChanged,
 } from 'rxjs';
 
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
@@ -90,6 +91,10 @@ export class AutoCompleteDirective
   @Output('auiAutocompleteSelected')
   selected = new EventEmitter<string>();
 
+  // Whether to automatically update input value after selection
+  @Input('auiAutocompleteAutoPatch')
+  autoPatch = true;
+
   private _autocomplete: AutocompleteComponent;
   private focusedSuggestion: SuggestionComponent;
 
@@ -100,7 +105,10 @@ export class AutoCompleteDirective
 
   private readonly unsubscribe$ = new Subject<void>();
 
-  inputValue$: Observable<string> = this.inputValue$$.asObservable();
+  inputValue$: Observable<string> = this.inputValue$$
+    .asObservable()
+    .pipe(distinctUntilChanged());
+
   filterFn$: Observable<SuggestionFilterFn> = this.filterFn$$.asObservable();
 
   get input(): HTMLInputElement {
@@ -228,12 +236,14 @@ export class AutoCompleteDirective
   onSuggestionClick(value: string) {
     let isArrCtrl = false;
 
-    if (this.ngControl) {
-      const { control } = this.ngControl;
-      isArrCtrl = Array.isArray(control.value);
-      control.patchValue(isArrCtrl ? [...control.value, value] : value);
-    } else {
-      this.input.value = value;
+    if (this.autoPatch) {
+      if (this.ngControl) {
+        const { control } = this.ngControl;
+        isArrCtrl = Array.isArray(control.value);
+        control.patchValue(isArrCtrl ? [...control.value, value] : value);
+      } else {
+        this.input.value = value;
+      }
     }
 
     this.inputValue$$.next(isArrCtrl ? '' : value);
