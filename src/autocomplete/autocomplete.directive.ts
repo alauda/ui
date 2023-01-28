@@ -90,6 +90,13 @@ export class AutoCompleteDirective
   @Output('auiAutocompleteSelected')
   selected = new EventEmitter<string>();
 
+  // After click suggestion and before update control value
+  @Input('auiAutocompleteBeforeUpdate')
+  beforeUpdate: (
+    oldValue: string | string[],
+    newValue: string,
+  ) => string | string[] = null;
+
   private _autocomplete: AutocompleteComponent;
   private focusedSuggestion: SuggestionComponent;
 
@@ -231,9 +238,15 @@ export class AutoCompleteDirective
     if (this.ngControl) {
       const { control } = this.ngControl;
       isArrCtrl = Array.isArray(control.value);
-      control.patchValue(isArrCtrl ? [...control.value, value] : value);
+      if (this.beforeUpdate) {
+        control.patchValue(this.beforeUpdate(control.value, value));
+      } else {
+        control.patchValue(isArrCtrl ? [...control.value, value] : value);
+      }
     } else {
-      this.input.value = value;
+      this.input.value = this.beforeUpdate
+        ? (this.beforeUpdate(this.input.value, value) as string)
+        : value;
     }
 
     this.inputValue$$.next(isArrCtrl ? '' : value);
