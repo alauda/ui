@@ -55,6 +55,7 @@
     background-color: use-rgb(n-8);
     border-color: use-rgb(n-7) !important;
     color: use-text-color(disabled);
+    -webkit-text-fill-color: use-text-color(disabled);
     cursor: not-allowed;
   }
 
