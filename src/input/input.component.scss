@@ -14,6 +14,7 @@
   color: use-text-color(main);
   outline: none;
   text-overflow: ellipsis;
+  font-weight: use-var(font-weight-normal);
   @include cdk-text-field-autofill-color(use-rgb(n-9), use-text-color(main));
 
   &::-webkit-outer-spin-button,
