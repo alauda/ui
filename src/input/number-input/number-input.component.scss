@@ -102,8 +102,7 @@ $block: 'aui-number-input';
   &__control {
     flex-shrink: 0;
     width: use-var(inline-height-m);
-    height: use-var(inline-height-m);
-    border: 1px solid transparent;
+    border: none;
     color: use-rgb(main-text);
     background-color: use-rgb(main-bg);
     background-clip: padding-box;
@@ -138,23 +137,13 @@ $block: 'aui-number-input';
       position: absolute;
       top: 0;
       left: -1px;
-      width: 1px;
+      width: 0;
       height: 100%;
-      background-color: use-rgb(border);
+      border-right: 1px solid use-rgb(border);
     }
 
-    &--decrease {
-      margin: -1px 0 0 -1px;
-      border-radius: use-var(border-radius-m) 0 0 use-var(border-radius-m);
-
-      &:before {
-        left: 100%;
-      }
-    }
-
-    &--increase {
-      margin: -1px -1px 0 0;
-      border-radius: 0 use-var(border-radius-m) use-var(border-radius-m) 0;
+    &--decrease:before {
+      left: 100%;
     }
 
     &--angle-up,
