@@ -32,7 +32,7 @@ $block: 'aui-radio-button';
     background-color: use-rgb(p-7);
 
     .#{$block}__label {
-        cursor: not-allowed;
+      cursor: not-allowed;
     }
   }
 
@@ -115,7 +115,8 @@ $block: 'aui-radio-button';
   &__label {
     display: flex;
     align-items: center;
-    font-size: use-var(font-size-m);
+    @include text-set(m);
+
     cursor: pointer;
   }
 

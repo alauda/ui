@@ -9,8 +9,7 @@ $b: aui-section;
 
   &__title {
     margin-bottom: use-var(spacing-l);
-    font-weight: use-var(font-weight-bolder);
-    @include text-set(l, main);
+    @include text-set(l, main, bolder);
   }
 }
 

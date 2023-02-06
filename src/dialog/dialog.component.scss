@@ -62,9 +62,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
 
     &-title {
       width: 100%;
-      @include text-set(xl, main);
-
-      font-weight: use-var(font-weight-bolder);
+      @include text-set(xl, main, bolder);
 
       > aui-icon:first-child {
         font-size: use-var(icon-size-xl);

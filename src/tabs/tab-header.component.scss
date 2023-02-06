@@ -12,16 +12,14 @@
   &--large {
     .aui-tab-label {
       padding: $tab-label-padding-large;
-      font-weight: use-var(font-weight-bolder);
-      @include text-set(xl);
+      @include text-set($size: xl, $weight: bolder);
     }
   }
 
   &--medium {
     .aui-tab-label {
       padding: $tab-label-padding-medium;
-      font-weight: use-var(font-weight-bolder);
-      @include text-set(l);
+      @include text-set($size: l, $weight: bolder);
     }
   }
 

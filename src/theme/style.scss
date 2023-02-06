@@ -22,6 +22,10 @@ body {
   line-height: 1.43;
 }
 
+button {
+  @include text-set(m);
+}
+
 a {
   color: use-rgb(primary);
   text-decoration: none;
