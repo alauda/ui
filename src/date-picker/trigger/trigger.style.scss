@@ -37,6 +37,7 @@ aui-date-picker-trigger {
     width: 100%;
     background-color: use-rgb(n-9);
     border-radius: use-var(border-radius-m);
+    @include text-set(m);
 
     &:hover:not(.disabled) {
       border-color: use-rgb(primary);

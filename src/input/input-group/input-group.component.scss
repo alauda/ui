@@ -5,6 +5,7 @@
   display: inline-block;
   width: 100%;
   color: use-text-color(main);
+  font-weight: use-var(font-weight-normal);
 
   &.isDisabled {
     color: use-text-color(disabled);

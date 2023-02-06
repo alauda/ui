@@ -12,6 +12,7 @@
   color: use-text-color(main);
   outline: none;
   cursor: pointer;
+  @include text-set(m);
 
   &::-webkit-color-swatch-wrapper {
     padding: 0;

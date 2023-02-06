@@ -39,9 +39,10 @@
   }
 }
 
-@mixin text-set($size: m, $color: none) {
+@mixin text-set($size: m, $color: none, $weight: normal) {
   font-size: use-var(font-size-#{$size});
   line-height: use-var(line-height-#{$size});
+  font-weight: use-var(font-weight-#{$weight});
   @if $color != none {
     color: use-text-color($color);
   }

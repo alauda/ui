@@ -107,10 +107,11 @@ $block: 'aui-number-input';
     color: use-rgb(main-text);
     background-color: use-rgb(main-bg);
     background-clip: padding-box;
-    font-size: use-var(font-size-s);
     cursor: pointer;
     outline: none;
     position: relative;
+
+    @include text-set(s);
 
     &:hover {
       color: use-rgb(primary);
@@ -189,6 +190,7 @@ $block: 'aui-number-input';
     padding: 0 use-var(inline-padding-xs);
     border: 1px solid use-rgb(n-7);
     background-color: use-rgb(n-8);
+    @include text-set(m);
 
     &--before {
       border-right: none;

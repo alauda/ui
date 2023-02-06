@@ -52,9 +52,7 @@ $drawer: aui-drawer;
 
   &__title {
     flex: 1;
-    @include text-set(xxl, main);
-
-    font-weight: use-var(font-weight-bolder);
+    @include text-set(xxl, main, bolder);
     @include text-overflow;
   }
 

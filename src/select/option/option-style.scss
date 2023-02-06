@@ -6,6 +6,7 @@
   .#{$block} {
     padding: 0 use-var(inline-padding-xs);
     color: use-text-color(main);
+    font-weight: use-var(font-weight-normal);
     @include text-overflow;
 
     cursor: pointer;

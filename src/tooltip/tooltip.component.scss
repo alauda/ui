@@ -7,10 +7,9 @@ $block: 'aui-tooltip';
 .#{$block} {
   position: relative;
   padding: use-var(spacing-xl);
-  line-height: use-var(line-height-s);
-  font-size: use-var(font-size-s);
   border-radius: use-var(border-radius-m);
   @include popper-shadow;
+  @include text-set(s);
 
   max-width: 400px;
   word-wrap: break-word; // do NOT add 'word-break: break-all;', design requirement
