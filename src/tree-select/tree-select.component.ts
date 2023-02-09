@@ -70,7 +70,7 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
     }
     this._nodesData = val;
     this.flattedNodes = this.flatNodesData(val);
-    this.updateSelectDisplay(this.propValue);
+    this.updateSelectDisplay(this.model);
   }
 
   @Input()
