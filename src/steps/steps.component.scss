@@ -61,6 +61,8 @@
       color: use-rgb(primary);
       border-color: use-rgb(primary);
       background-color: use-rgb(p-6);
+      transform-origin: center;
+      animation: spin 2s infinite linear;
 
       &.isActive {
         color: white;
