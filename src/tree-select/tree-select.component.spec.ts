@@ -59,7 +59,7 @@ describe('TreeSelectComponent', () => {
   });
 
   it('should ngModel work', fakeAsync(() => {
-    ins.selectRef.openNodes();
+    ins.selectRef.openOption();
     fixture.detectChanges();
 
     expect(
@@ -71,7 +71,7 @@ describe('TreeSelectComponent', () => {
     fixture.detectChanges();
     tick();
     expect(inputEl.value).toBe('b-2');
-    ins.selectRef.openNodes();
+    ins.selectRef.openOption();
     fixture.detectChanges();
     expect(
       ocEl.querySelector('.aui-tree-node[data-value=b-2]').className,
@@ -97,7 +97,7 @@ describe('TreeSelectComponent', () => {
   });
 
   it('should tree node could be disabled', () => {
-    ins.selectRef.openNodes();
+    ins.selectRef.openOption();
     fixture.detectChanges();
     ocEl
       .querySelector('.aui-tree-node[data-value=a-3] .aui-tree-node__title')

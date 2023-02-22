@@ -223,8 +223,6 @@
   align-items: center;
   width: use-var(icon-size-m);
   height: use-var(icon-size-m);
-  font-size: use-var(icon-size-m);
-  line-height: use-var(icon-size-m);
   color: use-rgb(primary);
   background-color: use-rgb(p-6);
   border-radius: 50%;
@@ -233,9 +231,12 @@
   transition: transform 0.1s ease-in-out;
 
   aui-icon {
-    display: block;
-    width: use-var(icon-size-m);
-    height: use-var(icon-size-m);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: use-var(icon-size-s);
+    height: use-var(icon-size-s);
+    font-size: use-var(icon-size-s);
   }
 
   &:hover {
