@@ -173,14 +173,6 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
     }
   }
 
-  openNodes() {
-    this.tooltipRef.createTooltip();
-  }
-
-  closeNodes() {
-    this.tooltipRef.disposeTooltip();
-  }
-
   updatePosition() {
     this.tooltipRef.updatePosition();
   }
@@ -219,7 +211,7 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
     if (!node.selected) {
       this.emitValue(node.nodeData.value);
       if (this.onChange) {
-        this.closeNodes();
+        this.closeOption();
       }
     }
   }
@@ -232,7 +224,12 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
     }
   }
 
+  openOption() {
+    this.tooltipRef.createTooltip();
+  }
+
   closeOption() {
+    this.inputRef.elementRef.nativeElement.value = this.displayText;
     this.tooltipRef.disposeTooltip();
   }
 
@@ -253,7 +250,7 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
 
   protected override valueIn(v: T): T {
     this.updateSelectDisplay(v);
-    this.closeNodes();
+    this.closeOption();
     return v;
   }
 
