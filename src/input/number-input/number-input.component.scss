@@ -47,7 +47,7 @@ $block: 'aui-number-input';
 
   &__input {
     margin: 0;
-    padding: 0 use-var(spacing-m);
+    padding: 0 calc(use-var(spacing-m) + 1px);
     min-width: 0;
     height: 100%;
     border: 0;
@@ -102,7 +102,7 @@ $block: 'aui-number-input';
 
   &__control {
     flex-shrink: 0;
-    width: use-var(inline-height-m);
+    width: calc(use-var(inline-height-m) - 2px);
     border: none;
     color: use-rgb(main-text);
     background-color: use-rgb(main-bg);
@@ -143,8 +143,16 @@ $block: 'aui-number-input';
       border-right: 1px solid use-rgb(border);
     }
 
-    &--decrease:before {
-      left: 100%;
+    &--decrease {
+      border-radius: use-var(border-radius-m) 0 0 use-var(border-radius-m);
+
+      &:before {
+        left: 100%;
+      }
+    }
+
+    &--increase {
+      border-radius: 0 use-var(border-radius-m) use-var(border-radius-m) 0;
     }
 
     &--angle-up,
@@ -204,5 +212,7 @@ $block: 'aui-number-input';
 
 aui-number-input.ng-invalid.ng-dirty,
 .ng-submitted aui-number-input.ng-invalid {
-  border-color: use-rgb(red);
+  .aui-number-input__inner {
+    border-color: use-rgb(red);
+  }
 }
