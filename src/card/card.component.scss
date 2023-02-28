@@ -19,7 +19,7 @@ $b: aui-card;
     @include text-set(xxl, main, bolder);
 
     &--secondary {
-      @include text-set(xl);
+      @include text-set($size: xl, $weight: bolder);
     }
 
     + .#{$b}__content {
