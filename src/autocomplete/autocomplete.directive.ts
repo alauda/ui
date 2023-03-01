@@ -188,7 +188,7 @@ export class AutoCompleteDirective
   }
 
   override onFocus() {
-    if (this.suggestionTrigger === 'auto') {
+    if (this.suggestionTrigger === 'auto' && !this.isCreated) {
       super.onFocus();
     }
   }
@@ -258,12 +258,6 @@ export class AutoCompleteDirective
   }
 
   autoFocusFirstSuggestion() {
-    const focusedSuggestion = this.autocomplete.suggestions.find(
-      suggestion => suggestion.focused,
-    );
-    if (focusedSuggestion) {
-      return;
-    }
     const selectedSuggestion = this.autocomplete.suggestions.find(
       suggestion => suggestion.selected,
     );
