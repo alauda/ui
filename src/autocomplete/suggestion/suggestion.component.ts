@@ -98,7 +98,9 @@ export class SuggestionComponent {
         filterFn(filterString, suggestion),
       ),
       tap(visible => {
-        this.visible = visible;
+        if (!(this.visible = visible)) {
+          this.focused = false;
+        }
       }),
       publishRef(),
     );

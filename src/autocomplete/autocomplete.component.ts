@@ -66,6 +66,7 @@ export class AutocompleteComponent implements AfterContentInit {
           ? combineLatest(suggestions.map(suggestion => suggestion.visible$))
           : of([] as boolean[]),
       ),
+      debounceTime(0),
       map(visible => visible.some(Boolean)),
       withLatestFrom(this.directive$$),
       map(([hasVisibleSuggestion, directive]) => {
@@ -75,7 +76,6 @@ export class AutocompleteComponent implements AfterContentInit {
         return hasVisibleSuggestion;
       }),
       distinctUntilChanged(),
-      debounceTime(0),
       tap(() => this.cdr.markForCheck()),
       publishRef(),
     );
