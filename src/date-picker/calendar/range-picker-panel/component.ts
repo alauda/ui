@@ -2,10 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  forwardRef,
   Input,
   Output,
   ViewEncapsulation,
-  forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import dayjs, { Dayjs } from 'dayjs';
@@ -57,7 +57,11 @@ export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {
   showFooter = true;
 
   @Input()
-  disabledDate: (date: Dayjs, navRange: DateNavRange) => boolean = () => false;
+  disabledDate: (
+    date: Dayjs,
+    navRange: DateNavRange,
+    startDate: Dayjs,
+  ) => boolean = () => false;
 
   @Input()
   disabledTime: { left: DisabledTimeFn; right: DisabledTimeFn } = {
@@ -130,21 +134,24 @@ export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {
 
   // range 组件范围受控
   getDateDisabledFn(side: Side, constrainValue: Dayjs) {
-    return composeDisabledDateFn((date: Dayjs, navRange: DateNavRange) => {
-      if (navRange === DateNavRange.Month) {
-        return false;
-      }
-      if (navRange === DateNavRange.Decade) {
-        return date[side === Side.Left ? 'isAfter' : 'isBefore'](
+    return composeDisabledDateFn(
+      (date: Dayjs, navRange: DateNavRange) => {
+        if (navRange === DateNavRange.Month) {
+          return false;
+        }
+        if (navRange === DateNavRange.Decade) {
+          return date[side === Side.Left ? 'isAfter' : 'isBefore'](
+            constrainValue,
+            YEAR,
+          );
+        }
+        return !date[side === Side.Left ? 'isBefore' : 'isAfter'](
           constrainValue,
-          YEAR,
+          MONTH,
         );
-      }
-      return !date[side === Side.Left ? 'isBefore' : 'isAfter'](
-        constrainValue,
-        MONTH,
-      );
-    }, this.disabledDate);
+      },
+      (...arg) => this.disabledDate(...arg, this.rangeValue[0]),
+    );
   }
 
   private getDisabledTimeCachedFn(side: Side) {
