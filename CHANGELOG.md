@@ -1,5 +1,19 @@
 # Changelog
 
+## 6.5.4
+
+### Patch Changes
+
+- [#448](https://github.com/alauda/ui/pull/448) [`91f5d2a`](https://github.com/alauda/ui/commit/91f5d2aec969ede9f9e345b179eb8d719b52a212) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: tree select reset filter text
+
+- [#445](https://github.com/alauda/ui/pull/445) [`87b9ae2`](https://github.com/alauda/ui/commit/87b9ae241b1919340993f94843d539008317afdb) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: number-input border blocked and input disabled text color in safari
+
+- [#432](https://github.com/alauda/ui/pull/432) [`71ce648`](https://github.com/alauda/ui/commit/71ce6488d1aa6d82b605b42353943c0c6fdf9bd7) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: tag custom colors
+
+- [#440](https://github.com/alauda/ui/pull/440) [`8401555`](https://github.com/alauda/ui/commit/8401555ea302b5d1cb71c24a99f74cae7d08a5da) Thanks [@EdisonSu768](https://github.com/EdisonSu768)! - fix: theme pipes add types
+
+- [#441](https://github.com/alauda/ui/pull/441) [`af71ea7`](https://github.com/alauda/ui/commit/af71ea7c8d9498af967cb1ce7e8c670f9f232622) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - feat: font adjust adapt to win mac
+
 ## 6.5.3
 
 ### Patch Changes
