@@ -43,8 +43,7 @@ $drawer: aui-drawer;
   }
 
   &__header {
-    margin: 0 20px;
-    padding: 20px 0;
+    padding: 20px;
     display: flex;
     flex-shrink: 0;
     justify-content: space-between;
@@ -60,15 +59,26 @@ $drawer: aui-drawer;
 
   &__close {
     z-index: 10;
-    margin-left: 16px;
+    margin-top: 2px;
+    margin-left: use-var(spacing-xl);
     display: flex;
+    justify-content: center;
     align-items: center;
-    font-size: use-var(icon-size-m);
-    color: use-rgb(n-2);
+    width: 24px;
+    height: 24px;
+    font-size: use-var(icon-size-l);
+    color: use-text-color(secondary);
+    border-radius: use-var(border-radius-m);
     cursor: pointer;
 
     &:hover {
       color: use-rgb(primary);
+      background-color: use-rgb(p-6);
+    }
+
+    &:active {
+      color: use-rgb(p-0);
+      background-color: use-rgb(p-5);
     }
   }
 
@@ -89,8 +99,7 @@ $drawer: aui-drawer;
   }
 
   &__footer {
-    margin: 0 20px;
-    padding: 20px 0;
+    padding: 20px;
   }
 
   &.hasDivider {

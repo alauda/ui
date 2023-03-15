@@ -90,13 +90,24 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
 
     &-close {
       margin-left: use-var(spacing-xl);
-      line-height: use-var(line-height-xl);
-      font-size: use-var(font-size-l);
-      color: use-rgb(n-2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      font-size: use-var(icon-size-l);
+      color: use-text-color(secondary);
+      border-radius: use-var(border-radius-m);
       cursor: pointer;
 
       &:hover {
         color: use-rgb(primary);
+        background-color: use-rgb(p-6);
+      }
+
+      &:active {
+        color: use-rgb(p-0);
+        background-color: use-rgb(p-5);
       }
     }
   }
