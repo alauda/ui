@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.5.5
+
+### Patch Changes
+
+- [#451](https://github.com/alauda/ui/pull/451) [`b0042b6`](https://github.com/alauda/ui/commit/b0042b64310e2917b66238849f3e55b35fb933c1) Thanks [@EdisonSu768](https://github.com/EdisonSu768)! - feat: range picker support start date
+
 ## 6.5.4
 
 ### Patch Changes
