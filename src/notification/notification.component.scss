@@ -10,19 +10,18 @@
 
 .aui-notification {
   margin: 0 20px 10px 0;
-  display: flex;
-  flex-wrap: wrap;
   width: 400px;
-  position: relative;
   border-radius: 4px;
   padding: 20px 16px 20px 20px;
-  align-items: flex-start;
   background-color: use-rgb(popper-bg);
   @include modal-shadow;
 
+  &__wrapper {
+    display: flex;
+  }
+
   &__icon {
     font-size: use-var(icon-size-l);
-    width: use-var(icon-size-l);
     line-height: use-var(line-height-xl);
   }
 
@@ -37,15 +36,12 @@
   }
 
   &__body {
+    flex: 1;
     margin: 0 16px 0 8px;
-    width: 304px;
   }
 
   &__title {
     @include text-set(xl, main);
-
-    text-align: left;
-    word-break: break-word;
 
     &:not(:only-child) {
       margin-bottom: 6px;
@@ -59,38 +55,41 @@
     padding-right: 4px;
     max-height: 140px;
     @include text-set(m, secondary);
-
-    text-align: left;
-    overflow: auto;
-    overflow-wrap: break-word;
-
     @include scroll-bar;
   }
 
+  &__remove {
+    color: use-text-color(secondary);
+    font-size: use-var(font-size-m);
+  }
+
   &__close {
-    right: 10px;
-    font-size: use-var(icon-size-m);
-    width: use-var(icon-size-m);
-    color: use-rgb(n-2);
-    line-height: use-var(line-height-xl);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: use-var(line-height-xl);
+    height: use-var(line-height-xl);
+    font-size: use-var(icon-size-l);
+    border-radius: use-var(border-radius-m);
     cursor: pointer;
 
     &:hover {
       color: use-rgb(primary);
+      background-color: use-rgb(p-6);
+    }
+
+    &:active {
+      color: use-rgb(p-0);
+      background-color: use-rgb(p-5);
     }
   }
 
-  &__remove {
-    font-size: use-var(font-size-l);
-  }
-
   &__duration {
-    font-size: use-var(font-size-m);
+    line-height: use-var(line-height-xl);
   }
 
   &__footer {
     width: 360px;
     margin-top: 12px;
-    word-break: break-all;
   }
 }

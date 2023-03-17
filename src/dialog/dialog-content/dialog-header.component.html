@@ -3,11 +3,10 @@
   [class.hasDivider]="divider"
 >
   <div [class]="bem.element('header-title')"><ng-content></ng-content></div>
-  <div
+  <aui-icon
     *ngIf="closeable"
     [class]="bem.element('header-close')"
+    icon="xmark"
     (click)="dialogRef.close(result)"
-  >
-    <aui-icon icon="xmark"></aui-icon>
-  </div>
+  ></aui-icon>
 </div>

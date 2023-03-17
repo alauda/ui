@@ -61,7 +61,7 @@ export class MessageComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     if (this.duration > 0) {
       this.timerId = window.setTimeout(() => {
-        this.remove();
+        this.close();
       }, this.duration);
     }
   }
@@ -73,7 +73,7 @@ export class MessageComponent implements AfterViewInit {
     this.duration = config.duration;
   }
 
-  remove() {
+  close() {
     clearTimeout(this.timerId);
     this.beforeClosed.next();
     this.beforeClosed.complete();

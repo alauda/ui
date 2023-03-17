@@ -42,7 +42,7 @@ describe('NotificationService', () => {
   it('should work with global config', () => {
     notificationService.success('notification success');
     fixture.detectChanges();
-    expect(ocEl.querySelector('.aui-notification__close').innerHTML).toContain(
+    expect(ocEl.querySelector('.aui-notification__remove').innerHTML).toContain(
       '3s',
     );
     notificationService.success('notification success1');
@@ -95,7 +95,7 @@ describe('NotificationService', () => {
     expect(ocEl.querySelector('.aui-notification button').classList).toContain(
       'temp-btn',
     );
-    expect(ocEl.querySelector('.aui-notification__close').innerHTML).toContain(
+    expect(ocEl.querySelector('.aui-notification__remove').innerHTML).toContain(
       '10s',
     );
   });

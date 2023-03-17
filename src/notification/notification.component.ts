@@ -122,7 +122,7 @@ export class NotificationComponent
     this.timerId = window.setTimeout(() => {
       this.remains -= 1;
       if (this.remains === 0) {
-        this.remove();
+        this.close();
       } else {
         this.countDown();
       }

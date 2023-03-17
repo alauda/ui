@@ -93,14 +93,14 @@ export abstract class BaseMessage<
       ref => ref.instance.uniqueId === id || ref.instance.id === id,
     );
     if (index >= 0) {
-      this.componentRefs[index].instance.remove();
+      this.componentRefs[index].instance.close();
       this.componentRefs.splice(index, 1);
     }
   }
 
   removeAll() {
     this.componentRefs.forEach(ref => {
-      ref.instance.remove();
+      ref.instance.close();
     });
     this.componentRefs = [];
   }
