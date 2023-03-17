@@ -87,6 +87,7 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
     }
 
     &-close {
+      flex-shrink: 0;
       margin-left: use-var(spacing-xl);
       display: flex;
       justify-content: center;

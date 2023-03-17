@@ -31,13 +31,12 @@
               ></ng-container>
             </ng-template>
           </div>
-          <div
-            class="aui-drawer__close"
+          <aui-icon
             *ngIf="showClose"
+            class="aui-drawer__close"
+            icon="xmark"
             (click)="dispose()"
-          >
-            <aui-icon icon="xmark"></aui-icon>
-          </div>
+          ></aui-icon>
         </div>
 
         <div

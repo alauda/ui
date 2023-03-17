@@ -57,6 +57,7 @@ $drawer: aui-drawer;
 
   &__close {
     z-index: 10;
+    flex-shrink: 0;
     margin-top: 2px;
     margin-left: use-var(spacing-xl);
     display: flex;
