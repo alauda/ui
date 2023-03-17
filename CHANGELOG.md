@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.5.6
+
+### Patch Changes
+
+- [#455](https://github.com/alauda/ui/pull/455) [`606a118`](https://github.com/alauda/ui/commit/606a118af110a4a32c197f6c088096cc8b076a48) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: dialog close button width
+
 ## 6.5.5
 
 ### Patch Changes
