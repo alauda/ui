@@ -63,7 +63,7 @@ export class IncludesDirective<T> implements Validator, AfterContentInit {
   constructor(private readonly selectRef: SelectComponent<T>) {}
 
   ngAfterContentInit() {
-    this.selectRef.contentOptions.changes.subscribe(() => {
+    this.selectRef.allOptions$.subscribe(() => {
       if (this.onValidatorChange) {
         this.onValidatorChange();
       }
@@ -75,13 +75,15 @@ export class IncludesDirective<T> implements Validator, AfterContentInit {
   }
 
   validate(control: AbstractControl): ValidationErrors {
-    if (!this.selectRef.contentOptions || !control.value) {
+    if (!this.selectRef.allOptions$.getValue()?.length || !control.value) {
       return;
     }
     return !this.includes
       ? null
       : AuiSelectValidators.includes(
-          this.selectRef.contentOptions
+          // @ts-ignore
+          this.selectRef.allOptions$
+            .getValue()
             .filter(option => !option.disabled)
             .map(option => option.value),
           this.trackFn,

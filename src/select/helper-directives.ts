@@ -16,3 +16,9 @@ export class OptionGroupTitleDirective {}
   exportAs: 'auiOptionContent',
 })
 export class OptionContentDirective extends MenuContentDirective {}
+
+@Directive({
+  selector: '[auiOptionItemCustom]',
+  exportAs: 'auiOptionItemCustom',
+})
+export class OptionItemCustomDirective {}

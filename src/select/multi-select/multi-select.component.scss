@@ -1,7 +1,7 @@
 @import '../../theme/var';
 @import '../../theme/mixin';
 @import '../../input/tags-input/mixin';
-@import '../option/option-style';
+@import '../option-item/option-style';
 @import '../option-container';
 
 @include option('aui-option');

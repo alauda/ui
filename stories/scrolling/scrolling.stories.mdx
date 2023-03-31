@@ -2,13 +2,24 @@ import { FormsModule } from '@angular/forms';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
-import { FormModule, RadioModule, ScrollingModule } from '@alauda/ui';
+import {
+  FormModule,
+  RadioModule,
+  ScrollingModule,
+  SelectModule,
+} from '@alauda/ui';
 
 <Meta
   title="Scrolling"
   decorators={[
     moduleMetadata({
-      imports: [FormsModule, FormModule, RadioModule, ScrollingModule],
+      imports: [
+        FormsModule,
+        FormModule,
+        RadioModule,
+        ScrollingModule,
+        SelectModule,
+      ],
     }),
   ]}
 />
@@ -74,6 +85,64 @@ import { FormModule, RadioModule, ScrollingModule } from '@alauda/ui';
       props: {
         items: Array.from({ length: 100_000 }).map((_, i) => `Item #${i}`),
         enabled: true,
+      },
+    }}
+  </Story>
+</Canvas>
+
+## select 组件内使用
+
+<Canvas>
+  <Story
+    name="Multiple"
+    height="540px"
+  >
+    {{
+      template: /* HTML */ `
+        <aui-multi-select
+          [(ngModel)]="value"
+          [maxRowCount]="6"
+          [allowSelectAll]="true"
+          [clearable]="true"
+          [trackFn]="trackFn"
+        >
+          <aui-virtual-scroll-viewport
+            appendOnly
+            itemSize="50"
+            class="example-viewport"
+            minBufferPx="2000"
+            maxBufferPx="4000"
+            style="height: 250px"
+          >
+            <aui-option
+              *ngFor="let option of arr"
+              [label]="option.value"
+              [value]="option"
+              [disabled]="option.value === 'option5'"
+              style="display: none"
+            >
+              {{ option.value }}
+            </aui-option>
+            <aui-option
+              *auiVirtualFor="let option of arr"
+              [label]="option.value"
+              [value]="option"
+              [disabled]="option.value === 'option5'"
+            >
+              {{ option.value }}
+            </aui-option>
+          </aui-virtual-scroll-viewport>
+          <aui-option-placeholder>Empty</aui-option-placeholder>
+        </aui-multi-select>
+        <br />
+        value: {{ value | json }}
+      `,
+      props: {
+        arr: Array.from({ length: 50_000 })
+          .fill(null)
+          .map((_, i) => ({ value: `option${i + 1}` })),
+        value: [{ value: 'option1' }, { value: 'option5' }],
+        trackFn: ({ value }) => value,
       },
     }}
   </Story>

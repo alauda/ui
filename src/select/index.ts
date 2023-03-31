@@ -1,6 +1,6 @@
 export * from './helper-directives';
 export * from './multi-select/multi-select.component';
-export * from './option/option.component';
+export * from './option.component';
 export * from './option-group/option-group.component';
 export * from './option-placeholder.component';
 export * from './select.component';

@@ -340,6 +340,7 @@ export class BaseTooltip<T = any>
   }
 
   protected onBodyClick(event: Event) {
+    // TODO 点击select虚拟列表后面几页的最后没完全展现的一个会自动收起？？？
     if (
       !this.elRef.nativeElement.contains(event.target as Node) &&
       (this.hideOnClick ||

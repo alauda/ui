@@ -10,6 +10,7 @@ import {
   OnDestroy,
   Output,
   QueryList,
+  TemplateRef,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
@@ -18,14 +19,15 @@ import {
   Observable,
   Subject,
   combineLatest,
-  of,
   map,
-  startWith,
   switchMap,
   takeUntil,
+  merge,
+  startWith,
 } from 'rxjs';
 
 import { CommonFormControl } from '../form';
+import { VirtualScrollViewportComponent } from '../scrolling/virtual-scroll-viewport.component';
 import { TooltipDirective } from '../tooltip';
 import { ComponentSize } from '../types';
 import {
@@ -36,9 +38,27 @@ import {
   scrollIntoView,
 } from '../utils';
 
-import { OptionContentDirective } from './helper-directives';
-import { OptionComponent } from './option/option.component';
-import { OptionFilterFn, SelectFilterOption, TrackFn } from './select.types';
+import {
+  OptionContentDirective,
+  OptionItemCustomDirective,
+} from './helper-directives';
+import { OptionItemComponent } from './option-item/option-item.component';
+import { OptionComponent } from './option.component';
+import {
+  CreateFn,
+  DisplayOption,
+  OptionFilterFn,
+  SelectFilterOption,
+  TrackFn,
+} from './select.types';
+
+export const itemSizeMap = {
+  [ComponentSize.Large]: 40,
+  [ComponentSize.Medium]: 32,
+  [ComponentSize.Small]: 28,
+  [ComponentSize.Mini]: 26,
+  [ComponentSize.Empty]: 32,
+};
 
 @Directive()
 export abstract class BaseSelect<T, V = T>
@@ -56,6 +76,16 @@ export abstract class BaseSelect<T, V = T>
     }
     this._size = val;
     this.size$$.next(val);
+  }
+
+  @Input()
+  get options() {
+    return this._options;
+  }
+
+  set options(val: Array<SelectFilterOption<T>>) {
+    this._options = val;
+    this.options$$.next(val);
   }
 
   @Input()
@@ -77,15 +107,6 @@ export abstract class BaseSelect<T, V = T>
   }
 
   @Input()
-  filterFn: OptionFilterFn<T> = this._filterFn.bind(this);
-
-  @Input()
-  trackFn: TrackFn<T> = this._trackFn;
-
-  @Input()
-  labelFn?: (value: T) => string;
-
-  @Input()
   get allowCreate() {
     return this._allowCreate;
   }
@@ -94,32 +115,14 @@ export abstract class BaseSelect<T, V = T>
     this._allowCreate = coerceAttrBoolean(val);
   }
 
-  get allOptions() {
-    return [
-      ...(this.customOptions ? this.customOptions.toArray() : []),
-      ...(this.contentOptions ? this.contentOptions.toArray() : []),
-    ];
-  }
+  @Input()
+  filterFn: OptionFilterFn<T> = this._filterFn.bind(this);
 
-  get opened() {
-    return this.tooltipRef.isCreated;
-  }
+  @Input()
+  trackFn: TrackFn<T> = this._trackFn;
 
-  get inputReadonly() {
-    return !(this.filterable && this.opened);
-  }
-
-  get filterString() {
-    return this._filterString;
-  }
-
-  set filterString(val) {
-    if (val !== this._filterString) {
-      this._filterString = val;
-      this.filterString$$.next(val);
-      this.filterChange.emit(val);
-    }
-  }
+  @Input()
+  labelFn?: (value: T) => string;
 
   @Input()
   loading = false;
@@ -132,6 +135,22 @@ export abstract class BaseSelect<T, V = T>
 
   @Input()
   lazy = true;
+
+  // TODO
+  // 1. 还不完全支持多选（输入框中大量的tag）
+  // 2. 还不完全支持group（group高度和item不一致）
+  @Input()
+  useVirtual: boolean;
+
+  @Input()
+  // TODO 还不支持动态高度的option
+  itemSize: number;
+
+  @Input()
+  maxItemLength = 10;
+
+  @Input()
+  createFn: CreateFn<T> = this._createFn;
 
   @Output()
   filterChange = new EventEmitter<string>();
@@ -151,140 +170,200 @@ export abstract class BaseSelect<T, V = T>
   @ViewChild('optionListRef', { static: false })
   protected optionListRef: ElementRef<HTMLDivElement>;
 
-  @ViewChild('inputtingOption', { static: false })
-  protected inputtingOption: OptionComponent<T>;
+  @ViewChild(VirtualScrollViewportComponent)
+  virtualScrollViewport!: VirtualScrollViewportComponent;
 
+  // 可以传入自定义optionItem，级别最高
+  @ContentChild(OptionItemCustomDirective, { read: TemplateRef })
+  inputItemTemplate: TemplateRef<any>;
+
+  @ViewChildren(OptionItemComponent, { read: ElementRef })
+  contentOptionItems: QueryList<ElementRef>;
+
+  // TODO 这个用法有问题
   @ContentChild(OptionContentDirective)
   protected optionContent?: OptionContentDirective;
 
-  @ViewChildren(OptionComponent)
-  customOptions: QueryList<OptionComponent<T>>;
-
+  // TODO 应该删除OptionComponent
   @ContentChildren(OptionComponent, { descendants: true })
-  contentOptions: QueryList<OptionComponent<T>>;
+  contentTplOptions: QueryList<OptionComponent<T>>;
+
+  get opened() {
+    return this.tooltipRef.isCreated;
+  }
+
+  get inputReadonly() {
+    return !(this.filterable && this.opened);
+  }
+
+  get _itemSize() {
+    return this.itemSize || itemSizeMap[this.size];
+  }
+
+  get filterString() {
+    return this._filterString;
+  }
+
+  set filterString(val) {
+    if (val !== this._filterString) {
+      this._filterString = val;
+      this.filterString$$.next(val);
+      this.filterChange.emit(val);
+    }
+  }
 
   isTemplateRef = isTemplateRef;
   isMulti = false;
+  protected scrolledIndex = 0;
+
+  private _size: ComponentSize = ComponentSize.Medium;
+  private _options: Array<SelectFilterOption<T>>;
+  private _filterable = true;
+  private _clearable = false;
+  private _allowCreate = false;
+  private _filterString = '';
+  selectableOptions: Array<DisplayOption<T>> = [];
 
   /**
    * Utility field to make sure the users always see the value as type array
    */
   abstract readonly values$: Observable<T[]>;
-
-  allOptions$: Observable<Array<OptionComponent<T>>>;
-
-  protected focusedOption: OptionComponent<T>;
-
-  private _size: ComponentSize = ComponentSize.Medium;
-  private _filterable = true;
-  private _clearable = false;
-  private _allowCreate = false;
-  private _filterString = '';
+  protected contentOptions$: Observable<Array<DisplayOption<T>>>;
+  protected customOptions$: Observable<Array<DisplayOption<T>>>;
+  protected inputtingOption$: Observable<DisplayOption<T>>;
+  containerWidth: string;
 
   protected destroy$$ = new Subject<void>();
   protected size$$ = new BehaviorSubject<ComponentSize>(this.size);
+  protected options$$ = new BehaviorSubject<Array<DisplayOption<T>>>(null);
   private readonly filterString$$ = new BehaviorSubject<string>(
     this.filterString,
   );
 
   size$ = this.size$$.asObservable();
+  options$ = this.options$$.asObservable();
   filterString$ = this.filterString$$.asObservable();
-  hasVisibleOption$: Observable<boolean>;
-  hasMatchedOption$: Observable<boolean>;
-  customCreatedOptions$: Observable<Array<SelectFilterOption<T>>>;
-  containerWidth: string;
+  allOptions$ = new BehaviorSubject<Array<DisplayOption<T>>>([]);
+  filterOptions$ = new BehaviorSubject<Array<DisplayOption<T>>>([]);
+  focused$ = new BehaviorSubject<DisplayOption<T>>(null);
+
+  trackByValue = (_: number, item: SelectFilterOption<T>) =>
+    this.trackFn(item.value);
 
   ngAfterContentInit() {
-    this.customCreatedOptions$ = combineLatest([
+    this.contentOptions$ = this.options$.pipe(
+      switchMap(options => {
+        if (options?.length) {
+          return this.options$;
+        }
+        return combineLatest([
+          this.values$,
+          merge(
+            ...this.contentTplOptions.map(contentTpl => contentTpl.changes),
+            this.contentTplOptions.changes,
+          ).pipe(startWith(this.contentTplOptions)),
+        ]).pipe(
+          map(([values]) => {
+            const contents: Array<DisplayOption<T>> = [];
+            let lastGroupTitle: ElementRef;
+            this.contentTplOptions.toArray().forEach(com => {
+              const {
+                value,
+                label,
+                disabled,
+                groupTitle,
+                labelContext,
+                template,
+              } = com;
+              if (lastGroupTitle !== groupTitle) {
+                lastGroupTitle = groupTitle;
+                contents.push({
+                  value,
+                  groupTitle,
+                });
+              }
+              contents.push({
+                value,
+                label,
+                disabled,
+                labelContext,
+                selected: this.getSelected(value, values),
+                contentTemplate: template,
+              } as DisplayOption<T>);
+            });
+            return contents;
+          }),
+        );
+      }),
+      publishRef(),
+    );
+  }
+
+  ngAfterViewInit() {
+    this.inputtingOption$ = this.filterString$.pipe(
+      map(filterString => {
+        if (filterString && this.allowCreate) {
+          return this.createFn(filterString);
+        }
+      }),
+      publishRef(),
+    );
+
+    this.customOptions$ = combineLatest([
       this.values$,
-      (
-        this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
-      ).pipe(
-        startWith(this.contentOptions),
-        switchMap((options: QueryList<OptionComponent<T>>) =>
-          options.length > 0
-            ? combineLatest(options.map(option => option.value$))
-            : of([] as T[]),
-        ),
-      ),
+      this.contentOptions$,
     ]).pipe(
-      map(([values, optionValues]) =>
-        values.reduce<Array<SelectFilterOption<T>>>((acc, value) => {
-          const included = optionValues
-            .map(value => this.trackFn(value))
-            .includes(this.trackFn(value));
-          if (!included) {
+      map(([values, options]) => {
+        if (!this.allowCreate) {
+          return [];
+        }
+        const optionKeys = new Set(
+          options.map(option => this.trackFn(option.value)),
+        );
+        return values.reduce<Array<DisplayOption<T>>>((acc, value) => {
+          if (!optionKeys.has(this.trackFn(value))) {
             const label =
               this.labelFn?.(value) || coerceString(this.trackFn(value));
             if (label) {
               acc.push({
                 label,
                 value,
+                selected: true,
               });
             }
           }
           return acc;
-        }, []),
-      ),
-      publishRef(),
-    );
-  }
-
-  ngAfterViewInit() {
-    this.allOptions$ = combineLatest([
-      this.customOptions.changes.pipe(startWith(this.customOptions)),
-      this.contentOptions.changes.pipe(startWith(this.contentOptions)),
-    ]).pipe(
-      map(
-        ([customOptions, contentOptions]: [
-          QueryList<OptionComponent<T>>,
-          QueryList<OptionComponent<T>>,
-        ]) => [...customOptions.toArray(), ...contentOptions.toArray()],
-      ),
+        }, []);
+      }),
       publishRef(),
     );
 
-    // support dynamic options loading on filtering
-    this.allOptions$.pipe(takeUntil(this.destroy$$)).subscribe(() => {
-      if (this.opened) {
-        requestAnimationFrame(() => {
-          this.autoFocusFirstOption();
-        });
-      }
+    combineLatest([
+      this.inputtingOption$,
+      this.customOptions$,
+      this.contentOptions$,
+    ])
+      .pipe(
+        map(([inputtingOption, customOptions, contentOptions]) => {
+          const arr = [...customOptions, ...contentOptions];
+          if (inputtingOption) {
+            arr.unshift(inputtingOption);
+          }
+          this.allOptions$.next(arr);
+        }),
+      )
+      .subscribe();
+
+    combineLatest([this.allOptions$, this.filterString$])
+      .pipe(takeUntil(this.destroy$$))
+      .subscribe(([options, filterString]) => {
+        options = options.filter(option => this.filterFn(filterString, option));
+        this.filterOptions$.next(options);
+      });
+
+    this.filterOptions$.pipe(takeUntil(this.destroy$$)).subscribe(options => {
+      this.selectableOptions = options.filter(option => !option.disabled);
     });
-
-    this.hasMatchedOption$ = combineLatest([
-      this.allOptions$.pipe(
-        map(customOptions =>
-          customOptions.filter(option => option !== this.inputtingOption),
-        ),
-        // eslint-disable-next-line sonarjs/no-identical-functions
-        switchMap(options =>
-          options.length > 0
-            ? combineLatest(options.map(option => option.value$))
-            : of([] as T[]),
-        ),
-      ),
-      this.filterString$,
-    ]).pipe(
-      map(([values, filterString]) =>
-        values.some(value => this.trackFn(value) === filterString),
-      ),
-      publishRef(),
-    );
-
-    this.hasVisibleOption$ = (
-      this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
-    ).pipe(
-      startWith(this.contentOptions),
-      switchMap((options: QueryList<OptionComponent<T>>) =>
-        options.length > 0
-          ? combineLatest(options.map(option => option.visible$))
-          : of([] as boolean[]),
-      ),
-      map(visible => visible.some(Boolean)),
-      publishRef(),
-    );
   }
 
   ngOnDestroy() {
@@ -370,30 +449,26 @@ export abstract class BaseSelect<T, V = T>
     }
   }
 
-  onOptionClick(option: OptionComponent<T>) {
+  onOptionClick(option: OptionItemComponent<T>) {
     this.resetFocusedOption(option);
     this.selectOption(option);
   }
 
-  protected autoFocusFirstOption() {
-    if (this.defaultFirstOption && this.allowCreate && this.filterString) {
-      const matchedOption = this.contentOptions.find(
-        option => this.trackFn(option.value) === this.filterString,
-      );
-      this.resetFocusedOption(matchedOption || this.customOptions.first);
-      return;
-    }
+  updateAllOptions(option: DisplayOption<T>) {
+    const allOptions = this.allOptions$.getValue();
+    allOptions.find(_option => _option.value === option.value).selected =
+      !option.selected;
+    this.allOptions$.next(allOptions);
+  }
 
-    const selectedOption = this.allOptions.find(
-      option => option.selected && option.visible,
-    );
+  protected autoFocusFirstOption() {
+    const first =
+      this.selectableOptions.find(option => option.selected) ||
+      this.selectableOptions[0];
     if (this.defaultFirstOption) {
-      this.resetFocusedOption(
-        selectedOption ||
-          this.allOptions.find(option => option.visible && !option.disabled),
-      );
-    } else if (selectedOption) {
-      this.scrollToOption(selectedOption);
+      this.resetFocusedOption(first);
+    } else {
+      this.scrollToOption(first);
     }
   }
 
@@ -402,46 +477,64 @@ export abstract class BaseSelect<T, V = T>
       this.openOption();
       return;
     }
-    const visibleOptions = this.allOptions.filter(
-      option => option.visible && !option.disabled,
-    );
-    if (visibleOptions.length === 0) {
+
+    if (this.selectableOptions.length === 0) {
       return;
     }
     const step = dir === 'down' ? 1 : -1;
-    let i = visibleOptions.indexOf(this.focusedOption);
+    let i = this.selectableOptions.findIndex(option =>
+      this.isFocus(option.value),
+    );
     i = i + step;
-    if (i >= visibleOptions.length) {
+    if (i >= this.selectableOptions.length) {
       i = 0;
     } else if (i < 0) {
-      i = visibleOptions.length - 1;
+      i = this.selectableOptions.length - 1;
     }
-    this.resetFocusedOption(visibleOptions[i]);
+    this.resetFocusedOption(this.selectableOptions[i]);
   }
 
-  protected resetFocusedOption(focusedOption?: OptionComponent<T>) {
-    if (this.focusedOption === focusedOption) {
+  isFocus = (
+    value: DisplayOption<T>['value'],
+    focusOption?: DisplayOption<T>,
+  ) => {
+    const _focusOption = focusOption || this.focused$.getValue();
+    return (
+      _focusOption && this.trackFn(_focusOption.value) === this.trackFn(value)
+    );
+  };
+
+  protected resetFocusedOption(focusedOption?: DisplayOption<T>) {
+    if (focusedOption?.value) {
+      this.focused$.next(focusedOption);
+      this.scrollToOption(focusedOption);
+    }
+  }
+
+  onScrolledIndexChange(index: number) {
+    this.scrolledIndex = index;
+  }
+
+  protected scrollToOption(option: DisplayOption<T>) {
+    const index = this.filterOptions$
+      .getValue()
+      .findIndex(
+        item => this.trackFn(item.value) === this.trackFn(option.value),
+      );
+    if (!this.virtualScrollViewport) {
+      if (this.contentOptionItems.get(index)) {
+        scrollIntoView(
+          this.optionListRef.nativeElement,
+          this.contentOptionItems.get(index).nativeElement,
+        );
+      }
       return;
     }
-
-    if (this.focusedOption) {
-      this.focusedOption.blur();
-    }
-
-    this.focusedOption = focusedOption;
-
-    if (this.focusedOption) {
-      this.focusedOption.focus();
-      this.scrollToOption(this.focusedOption);
-    }
-  }
-
-  protected scrollToOption(option: OptionComponent<T>) {
-    if (this.optionListRef) {
-      scrollIntoView(
-        this.optionListRef.nativeElement,
-        option.elRef.nativeElement,
-      );
+    if (
+      index < this.scrolledIndex ||
+      index >= this.scrolledIndex + this.maxItemLength
+    ) {
+      this.virtualScrollViewport.scrollToIndex(index || 0);
     }
   }
 
@@ -450,9 +543,34 @@ export abstract class BaseSelect<T, V = T>
       this.openOption();
       return;
     }
-    if (this.focusedOption && !this.focusedOption.disabled) {
-      this.selectOption(this.focusedOption);
+    let focusedOption = this.focused$.getValue();
+    if (focusedOption) {
+      // 更新聚焦的option，例如：focus某一项后一直按enter键
+      focusedOption = this.selectableOptions.find(
+        option =>
+          this.trackFn(option.value) === this.trackFn(focusedOption.value),
+      );
+      focusedOption && this.selectOption(focusedOption);
     }
+  }
+
+  getSelected(
+    value: DisplayOption<T>['value'],
+    values: Array<DisplayOption<T>['value']>,
+  ) {
+    return values.some(item => this.trackFn(item) === this.trackFn(value));
+  }
+
+  focus(option: DisplayOption<T>) {
+    this.focused$.next(option);
+  }
+
+  blur() {
+    this.focused$.next(null);
+  }
+
+  getLabelByValue(value: T) {
+    return this.labelFn?.(value) || coerceString(this.trackFn(value));
   }
 
   protected escSelect() {
@@ -461,6 +579,14 @@ export abstract class BaseSelect<T, V = T>
 
   private _trackFn<T>(value: T) {
     return value;
+  }
+
+  private _createFn<T>(input: string) {
+    // @ts-ignore
+    const value = input as T;
+    return {
+      value,
+    };
   }
 
   private _filterFn(
@@ -476,6 +602,6 @@ export abstract class BaseSelect<T, V = T>
       .includes(filterString?.toLowerCase() ?? '');
   }
 
-  abstract selectOption(option: OptionComponent<T>): void;
+  abstract selectOption(option: DisplayOption<T>): void;
   abstract clearValue(event: Event): void;
 }

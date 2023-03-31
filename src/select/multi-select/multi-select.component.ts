@@ -7,22 +7,13 @@ import {
   ElementRef,
   HostBinding,
   Input,
-  QueryList,
   Renderer2,
   ViewChild,
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import {
-  Observable,
-  combineLatest,
-  of,
-  map,
-  startWith,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { Observable, combineLatest, map, startWith, tap } from 'rxjs';
 
 import { createWithMaxRowCount } from '../../input/tags-input/with-max-row-count';
 import { ComponentSize } from '../../types';
@@ -34,8 +25,8 @@ import {
   publishRef,
 } from '../../utils';
 import { BaseSelect } from '../base-select';
-import { OptionComponent } from '../option/option.component';
 import {
+  DisplayOption,
   SelectAllStatus,
   SelectFilterOption,
   TagClassFn,
@@ -151,44 +142,19 @@ export class MultiSelectComponent<T = unknown>
 
   focused = false;
 
-  trackByValue = (_: number, item: SelectFilterOption<T>) =>
-    this.trackFn(item.value);
-
   constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {
     super(cdr);
   }
 
   override ngAfterContentInit() {
     super.ngAfterContentInit();
+  }
 
+  override ngAfterViewInit() {
+    super.ngAfterViewInit();
     this.selectedOptions$ = combineLatest([
       this.model$,
-      (
-        this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
-      ).pipe(
-        startWith(this.contentOptions),
-        switchMap((options: QueryList<OptionComponent<T>>) =>
-          options.length > 0
-            ? combineLatest(
-                options.map(option =>
-                  combineLatest([
-                    option.value$,
-                    option.label$,
-                    option.labelContext$,
-                    option.disabled$,
-                  ]).pipe(
-                    map(([value, label, labelContext, disabled]) => ({
-                      value,
-                      label,
-                      labelContext,
-                      disabled,
-                    })),
-                  ),
-                ),
-              )
-            : of([] as Array<SelectFilterOption<T>>),
-        ),
-      ),
+      this.contentOptions$,
     ]).pipe(
       map(([values, options]) =>
         values
@@ -226,26 +192,13 @@ export class MultiSelectComponent<T = unknown>
       tap(options => (this.hasDisabledOption = options.some(o => o.disabled))),
       publishRef(),
     );
-  }
-
-  override ngAfterViewInit() {
-    super.ngAfterViewInit();
-    this.selectAllStatus$ = combineLatest([
-      this.allOptions$,
-      this.filterString$,
-    ]).pipe(
-      switchMap(([allOptions]) =>
-        combineLatest([
-          ...(allOptions ?? [])
-            .filter(({ visible, disabled }) => visible && !disabled)
-            .map(({ selected$ }) => selected$),
-        ]),
-      ),
-      map(statuses => {
-        const selected = statuses.filter(Boolean);
+    this.selectAllStatus$ = this.filterOptions$.pipe(
+      map(allOptions => {
+        const options = allOptions.filter(option => !option.disabled);
+        const selected = options.filter(option => option.selected);
         return selected.length === 0
           ? SelectAllStatus.Empty
-          : selected.length !== statuses.length
+          : selected.length !== options.length
           ? SelectAllStatus.Indeterminate
           : SelectAllStatus.Checked;
       }),
@@ -253,14 +206,9 @@ export class MultiSelectComponent<T = unknown>
       tap(selectAllStatus => (this.selectAllStatus = selectAllStatus)),
       publishRef(),
     );
-    this.hasEnabledOptions$ = combineLatest([
-      this.allOptions$,
-      this.filterString$,
-    ]).pipe(
+    this.hasEnabledOptions$ = this.filterOptions$.pipe(
       map(
-        ([allOptions]) =>
-          !!allOptions.filter(({ visible, disabled }) => visible && !disabled)
-            .length,
+        allOptions => !!allOptions.filter(({ disabled }) => !disabled).length,
       ),
     );
   }
@@ -317,13 +265,14 @@ export class MultiSelectComponent<T = unknown>
     }
   }
 
-  selectOption(option: OptionComponent<T>) {
+  selectOption(option: DisplayOption<T>) {
     if (option.selected) {
       this.removeValue(option.value);
     } else {
       this.addValue(option.value);
     }
-    const isCustom = !this.contentOptions.some(
+    this.updateAllOptions(option);
+    const isCustom = !this.contentTplOptions.some(
       ({ value }) => value === option.value,
     );
     if (isCustom) {
@@ -365,28 +314,27 @@ export class MultiSelectComponent<T = unknown>
     if (this.disabled) {
       return;
     }
-    const visibleOptionsValue = this.allOptions
-      .filter(({ visible, disabled }) => visible && !disabled)
+    const visibleOptionsValue = this.filterOptions$
+      .getValue()
+      .filter(({ disabled }) => !disabled)
       .map(({ value }) => value);
 
     if (this.selectAllStatus === SelectAllStatus.Checked) {
       this.emitValue(
-        this.model.filter(value => !this.includes(visibleOptionsValue, value)),
+        this.model.filter(
+          value => !this.getSelected(value, visibleOptionsValue),
+        ),
       );
     } else {
       this.emitValue(
         this.model.concat(visibleOptionsValue).reduce<T[]>((acc, curr) => {
-          if (!this.includes(acc, curr)) {
+          if (!this.getSelected(curr, acc)) {
             acc.push(curr);
           }
           return acc;
         }, []),
       );
     }
-  }
-
-  private includes(values: T[], value: T) {
-    return values.some(v => this.trackFn(v) === this.trackFn(value));
   }
 
   protected override valueIn(v: T[]): T[] {

@@ -1,9 +1,9 @@
 <div
   #elRef
-  [hidden]="!(visible$ | async)"
+  *ngIf="!groupTitlePortal; else group"
   [class]="bem.block(size$ | async)"
   [class.isDisabled]="disabled"
-  [class.isSelected]="selected$ | async"
+  [class.isSelected]="selected"
   [class.isMulti]="isMulti"
   [class.isFocused]="focused"
   (click)="onClick()"
@@ -13,9 +13,15 @@
     class="aui-option__pointer"
   >
     <aui-icon
-      [hidden]="!(selected$ | async)"
+      [hidden]="!selected"
       icon="check"
     ></aui-icon>
   </i>
   <ng-content></ng-content>
 </div>
+
+<ng-template #group>
+  <div class="aui-option__group-item">
+    <ng-container *cdkPortalOutlet="groupTitlePortal!"></ng-container>
+  </div>
+</ng-template>

@@ -1,28 +1,19 @@
 import {
-  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
-  QueryList,
   ViewChild,
   ViewEncapsulation,
   forwardRef,
+  AfterViewInit,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import {
-  Observable,
-  combineLatest,
-  of,
-  distinctUntilChanged,
-  map,
-  startWith,
-  switchMap,
-} from 'rxjs';
+import { Observable, combineLatest, map } from 'rxjs';
 
 import { InputComponent } from '../input';
 import { coerceString, publishRef } from '../utils';
 
 import { BaseSelect } from './base-select';
-import { OptionComponent } from './option/option.component';
+import { OptionItemComponent } from './option-item/option-item.component';
 import { SelectOption } from './select.types';
 
 @Component({
@@ -46,7 +37,7 @@ import { SelectOption } from './select.types';
 })
 export class SelectComponent<T = unknown>
   extends BaseSelect<T>
-  implements AfterContentInit
+  implements AfterViewInit
 {
   @ViewChild('inputRef', { static: true })
   inputRef: InputComponent;
@@ -68,36 +59,23 @@ export class SelectComponent<T = unknown>
   isClearable = (hasSelected: boolean) =>
     !this.disabled && this.clearable && hasSelected;
 
-  override ngAfterContentInit() {
-    super.ngAfterContentInit();
+  override ngAfterViewInit() {
+    super.ngAfterViewInit();
 
     this.selectedOption$ = combineLatest([
-      (
-        this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
-      ).pipe(
-        startWith(this.contentOptions),
-        switchMap(options =>
-          combineLatest(options.map(option => option.selected$)).pipe(
-            startWith(null as void),
-            map(() => options.find(option => option.selected)),
-            distinctUntilChanged(),
-            switchMap(option =>
-              option
-                ? combineLatest([
-                    option.value$,
-                    option.label$,
-                    option.labelContext$,
-                  ]).pipe(
-                    map(([value, label, labelContext]) => ({
-                      value,
-                      label,
-                      labelContext,
-                    })),
-                  )
-                : of(null as void),
-            ),
-          ),
-        ),
+      this.filterOptions$.pipe(
+        map(options => {
+          const selected = options.find(option => option.selected);
+          if (!selected) {
+            return;
+          }
+          const { value, label, labelContext } = selected;
+          return {
+            value,
+            label,
+            labelContext,
+          };
+        }),
       ),
       this.model$,
     ]).pipe(
@@ -140,7 +118,7 @@ export class SelectComponent<T = unknown>
     return v;
   }
 
-  selectOption(option: OptionComponent<T>) {
+  selectOption(option: OptionItemComponent<T>) {
     this.emitValue(option.value);
     this.closeOption();
   }

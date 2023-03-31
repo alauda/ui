@@ -6,11 +6,14 @@ import {
   QueryList,
   ViewEncapsulation,
   forwardRef,
+  ContentChild,
+  ElementRef,
 } from '@angular/core';
 import { Observable, combineLatest, of, map, startWith, switchMap } from 'rxjs';
 
 import { publishRef } from '../../utils';
-import { OptionComponent } from '../option/option.component';
+import { OptionGroupTitleDirective } from '../helper-directives';
+import { OptionComponent } from '../option.component';
 
 @Component({
   selector: 'aui-option-group',
@@ -24,6 +27,9 @@ export class OptionGroupComponent<T> implements AfterContentInit {
   @ContentChildren(forwardRef(() => OptionComponent))
   options: QueryList<OptionComponent<T>>;
 
+  @ContentChild(OptionGroupTitleDirective, { read: ElementRef })
+  groupTitle: ElementRef;
+
   hasVisibleOption$: Observable<boolean>;
 
   ngAfterContentInit() {
@@ -31,10 +37,15 @@ export class OptionGroupComponent<T> implements AfterContentInit {
       startWith(this.options),
       switchMap((options: QueryList<OptionComponent<T>>) =>
         options.length > 0
-          ? combineLatest(options.map(node => node.visible$))
+          ? combineLatest(
+              options.map(node => {
+                node.groupTitle = this.groupTitle;
+                return node.changes;
+              }),
+            )
           : of([false]),
       ),
-      map(visible => visible.some(Boolean)),
+      map(options => !!options.length),
       publishRef(),
     );
   }
