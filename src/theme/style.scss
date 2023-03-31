@@ -1,6 +1,7 @@
 @import 'base-var';
 @import 'mixin';
 @import 'theme-preset';
+@import 'node_modules/@angular/cdk/overlay-prebuilt';
 
 @include theme-light {
   @include light-mode;

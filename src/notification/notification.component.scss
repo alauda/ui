@@ -2,7 +2,6 @@
 
 @import '../theme/var';
 @import '../theme/mixin';
-@import '~@angular/cdk/overlay-prebuilt';
 
 .cdk-overlay-pane.aui-notification-overlay-pane {
   z-index: 1001;
