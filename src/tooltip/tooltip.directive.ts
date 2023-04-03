@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, Input, Output } from '@angular/core';
+import { Directive, EventEmitter, Output } from '@angular/core';
 
 import { BaseTooltip } from './base-tooltip';
 
@@ -19,15 +19,13 @@ import { BaseTooltip } from './base-tooltip';
     'position:auiTooltipPosition',
     'trigger:auiTooltipTrigger',
     'disabled:auiTooltipDisabled',
+    'hideOnClick:auiTooltipHideOnClick',
   ],
 })
 export class TooltipDirective extends BaseTooltip {
-  @Input('auiTooltipHideOnClick')
-  override hideOnClick = false;
-
   @Output('auiTooltipShow')
-  override show = new EventEmitter<void>();
+  override showed = new EventEmitter<void>();
 
   @Output('auiTooltipHide')
-  override hide = new EventEmitter<void>();
+  override hided = new EventEmitter<void>();
 }

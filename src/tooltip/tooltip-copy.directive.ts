@@ -78,7 +78,7 @@ export class TooltipCopyDirective extends BaseTooltip implements OnInit {
 
   ngOnInit() {
     this.content = this.auiTooltipCopyTip;
-    this.hide.subscribe(() => {
+    this.hided.subscribe(() => {
       this.content = this.auiTooltipCopyTip;
     });
   }

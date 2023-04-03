@@ -143,7 +143,7 @@ describe('TooltipDirective', () => {
 
   it('should emit show event', () =>
     new Promise(resolve => {
-      ins.tooltip.show.subscribe(resolve);
+      ins.tooltip.showed.subscribe(resolve);
 
       ins.trigger = TooltipTrigger.Click;
       fixture.detectChanges();
@@ -153,7 +153,7 @@ describe('TooltipDirective', () => {
 
   it('should emit hide event', () =>
     new Promise(resolve => {
-      ins.tooltip.hide.subscribe(resolve);
+      ins.tooltip.hided.subscribe(resolve);
 
       ins.trigger = TooltipTrigger.Click;
       fixture.detectChanges();

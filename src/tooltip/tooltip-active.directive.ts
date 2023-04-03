@@ -14,10 +14,10 @@ export class TooltipActiveDirective {
     private readonly el: ElementRef,
     private readonly renderer: Renderer2,
   ) {
-    tooltipDirective.show.subscribe(() => {
+    tooltipDirective.showed.subscribe(() => {
       this.addClass();
     });
-    tooltipDirective.hide.subscribe(() => {
+    tooltipDirective.hided.subscribe(() => {
       this.removeClass();
     });
   }
