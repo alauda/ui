@@ -21,7 +21,6 @@ $block: 'aui-number-input';
 
     &__control {
       width: use-var(inline-height-s);
-      height: use-var(inline-height-s);
 
       &--angle-up,
       &--angle-down {
@@ -110,6 +109,7 @@ $block: 'aui-number-input';
     cursor: pointer;
     outline: none;
     position: relative;
+    height: 100%;
 
     @include text-set(s);
 
