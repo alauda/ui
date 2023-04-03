@@ -82,11 +82,8 @@ export class AutoCompleteDirective
 
   declare innerSelector: string;
 
-  @Output('auiAutocompleteShow')
-  override show = new EventEmitter<void>();
-
-  @Output('auiAutocompleteHide')
-  override hide = new EventEmitter<void>();
+  @Output('auiAutocompleteVisibleChange')
+  override visibleChange = new EventEmitter<boolean>();
 
   @Output('auiAutocompleteSelected')
   selected = new EventEmitter<string>();
@@ -135,11 +132,8 @@ export class AutoCompleteDirective
   }
 
   ngOnInit() {
-    this.show.subscribe(() => {
-      this.updateSuggestionsContext();
-    });
-    this.hide.subscribe(() => {
-      this.resetFocusedSuggestion();
+    this.visibleChange.pipe(takeUntil(this.destroy$)).subscribe(visible => {
+      this[visible ? 'updateSuggestionsContext' : 'resetFocusedSuggestion']();
     });
 
     if (this.ngControl) {
@@ -196,7 +190,7 @@ export class AutoCompleteDirective
   onInput(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.inputValue$$.next(value);
-    this.createTooltip();
+    this.show();
   }
 
   onKeyDown(event: KeyboardEvent) {
@@ -219,7 +213,7 @@ export class AutoCompleteDirective
         }
         break;
       case 'Escape':
-        this.disposeTooltip();
+        this.hide();
         event.stopPropagation();
         event.preventDefault();
         break;
@@ -249,11 +243,11 @@ export class AutoCompleteDirective
     this.inputValue$$.next(isArrCtrl ? '' : value);
 
     this.selected.emit(value);
-    this.disposeTooltip();
+    this.hide();
   }
 
-  override createTooltip() {
-    super.createTooltip();
+  override show() {
+    super.show();
     this.autoFocusFirstSuggestion();
   }
 
@@ -281,7 +275,7 @@ export class AutoCompleteDirective
 
   private focusSuggestionDir(dir: 'down' | 'up') {
     if (!this.isCreated) {
-      this.createTooltip();
+      this.show();
       return;
     }
     const visibleSuggestions = this.autocomplete.suggestions.filter(

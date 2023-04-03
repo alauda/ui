@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CustomizeComponent } from './customize/component';
 import { PaletteComponent } from './palette/component';
@@ -22,6 +23,7 @@ import {
     InputModule,
     FormModule,
     TooltipModule,
+    BrowserAnimationsModule,
   ],
   declarations: [PaletteComponent, CustomizeComponent],
   exports: [PaletteComponent, CustomizeComponent],

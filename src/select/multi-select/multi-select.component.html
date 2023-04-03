@@ -3,12 +3,12 @@
   #selectRef
   #tooltipRef="auiTooltip"
   [auiTooltip]="templateRef"
+  [auiDisableAnimation]="true"
   [auiTooltipDisabled]="disabled"
   auiTooltipTrigger="click"
   auiTooltipPosition="bottom start"
   auiTooltipType="plain"
-  (auiTooltipShow)="onShowOptions()"
-  (auiTooltipHide)="onHideOptions()"
+  (auiTooltipVisibleChange)="onVisibleOptions($event)"
   (mousedown)="$event.preventDefault()"
   [style.max-height]="maxHeight"
 >

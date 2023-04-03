@@ -3,6 +3,7 @@ import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ComponentSize } from '../types';
 
@@ -19,7 +20,7 @@ describe('SelectComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [SelectModule, FormsModule],
+      imports: [SelectModule, FormsModule, BrowserAnimationsModule],
       declarations: [TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);

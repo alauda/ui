@@ -9,6 +9,8 @@ import {
 } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { filter } from 'rxjs';
 
 import { DISPLAY_DELAY, HIDDEN_DELAY } from './base-tooltip';
 import { TooltipTrigger, TooltipType } from './tooltip.types';
@@ -24,7 +26,7 @@ describe('TooltipDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TooltipModule, FormsModule],
+      imports: [TooltipModule, FormsModule, BrowserAnimationsModule],
       declarations: [TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
@@ -42,6 +44,7 @@ describe('TooltipDirective', () => {
     hostEl.dispatchEvent(new Event('mouseenter'));
     tick(DISPLAY_DELAY);
     fixture.detectChanges();
+    tick();
 
     expect(ins.tooltip.isCreated).toBeTruthy();
     expect(ocEl.querySelector('.aui-tooltip').innerHTML).toContain(
@@ -51,6 +54,8 @@ describe('TooltipDirective', () => {
 
     hostEl.dispatchEvent(new Event('mouseleave'));
     tick(HIDDEN_DELAY);
+    fixture.detectChanges();
+    tick();
 
     expect(ins.tooltip.isCreated).toBeFalsy();
     expect(ocEl.querySelector('.aui-tooltip')).toBeNull();
@@ -72,46 +77,57 @@ describe('TooltipDirective', () => {
     tick(HIDDEN_DELAY - 40);
   }));
 
-  it('should click trigger work', () => {
+  it('should click trigger work', fakeAsync(() => {
     ins.trigger = TooltipTrigger.Click;
     fixture.detectChanges();
     hostEl.dispatchEvent(new Event('click'));
     fixture.detectChanges();
+    tick();
     expect(ocEl.querySelector('.aui-tooltip')).not.toBeNull();
+
     document.body.click();
+    fixture.detectChanges();
+    tick();
     expect(ocEl.querySelector('.aui-tooltip')).toBeNull();
 
     hostEl.dispatchEvent(new Event('click'));
     fixture.detectChanges();
+    tick();
     expect(ocEl.querySelector('.aui-tooltip')).not.toBeNull();
     hostEl.dispatchEvent(new Event('click'));
+    fixture.detectChanges();
+    tick();
     expect(ocEl.querySelector('.aui-tooltip')).toBeNull();
-  });
+  }));
 
-  it('should focus trigger work', () => {
+  it('should focus trigger work', fakeAsync(() => {
     ins.trigger = TooltipTrigger.Focus;
     fixture.detectChanges();
     hostEl.dispatchEvent(new Event('focus'));
     fixture.detectChanges();
+    tick();
 
     expect(ocEl.querySelector('.aui-tooltip')).not.toBeNull();
 
     hostEl.dispatchEvent(new Event('blur'));
+    fixture.detectChanges();
+    tick();
 
     expect(ocEl.querySelector('.aui-tooltip')).toBeNull();
-  });
+  }));
 
-  it('should can be disabled', () => {
+  it('should can be disabled', fakeAsync(() => {
     ins.disabled = true;
     ins.trigger = TooltipTrigger.Click;
     fixture.detectChanges();
     hostEl.dispatchEvent(new Event('click'));
     fixture.detectChanges();
+    tick();
 
     expect(ocEl.querySelector('.aui-tooltip')).toBeNull();
-  });
+  }));
 
-  it('should tooltip configs work', () => {
+  it('should tooltip configs work', fakeAsync(() => {
     ins.trigger = TooltipTrigger.Click;
     ins.content = 'custom content';
     ins.type = TooltipType.Primary;
@@ -120,30 +136,32 @@ describe('TooltipDirective', () => {
     fixture.detectChanges();
     hostEl.dispatchEvent(new Event('click'));
     fixture.detectChanges();
+    tick();
 
     const tooltipEl = ocEl.querySelector('.aui-tooltip');
     expect(tooltipEl.innerHTML).toContain('custom content');
     expect(tooltipEl.className).toContain('aui-tooltip--primary');
     expect(tooltipEl.className).toContain('aui-tooltip--start');
     expect(tooltipEl.className).toContain('custom-class');
-  });
+  }));
 
-  it('should tooltip render templateRef', () => {
+  it('should tooltip render templateRef', fakeAsync(() => {
     ins.trigger = TooltipTrigger.Click;
     ins.content = ins.templateRef;
     ins.context = { text: 'custom context' };
     fixture.detectChanges();
     hostEl.dispatchEvent(new Event('click'));
     fixture.detectChanges();
+    tick();
 
     expect(ocEl.querySelector('#dataNode').innerHTML).toContain(
       'custom context',
     );
-  });
+  }));
 
   it('should emit show event', () =>
     new Promise(resolve => {
-      ins.tooltip.show.subscribe(resolve);
+      ins.tooltip.visibleChange.pipe(filter(Boolean)).subscribe(resolve);
 
       ins.trigger = TooltipTrigger.Click;
       fixture.detectChanges();
@@ -151,15 +169,21 @@ describe('TooltipDirective', () => {
       fixture.detectChanges();
     }));
 
-  it('should emit hide event', () =>
+  it('should emit hide event', fakeAsync(() =>
     new Promise(resolve => {
-      ins.tooltip.hide.subscribe(resolve);
+      ins.tooltip.visibleChange
+        .pipe(filter(visible => !visible))
+        .subscribe(resolve);
 
       ins.trigger = TooltipTrigger.Click;
       fixture.detectChanges();
       hostEl.dispatchEvent(new Event('click'));
+      fixture.detectChanges();
+      tick();
+
       document.body.click();
-    }));
+      fixture.detectChanges();
+    })));
 });
 
 @Component({
@@ -173,6 +197,7 @@ describe('TooltipDirective', () => {
       [auiTooltipPosition]="position"
       [auiTooltipTrigger]="trigger"
       [auiTooltipDisabled]="disabled"
+      [auiDisableAnimation]="true"
       auiTooltipActive="tooltip-actived"
     ></div>
     <ng-template

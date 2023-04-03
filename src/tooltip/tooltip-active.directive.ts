@@ -1,25 +1,38 @@
-import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  OnDestroy,
+  Renderer2,
+} from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 
 import { BaseTooltip } from './base-tooltip';
 
 @Directive({
   selector: '[auiTooltipActive]',
 })
-export class TooltipActiveDirective {
+export class TooltipActiveDirective implements OnDestroy {
   @Input('auiTooltipActive')
   customClass: string | string[] = '';
+
+  destroy$ = new Subject();
 
   constructor(
     tooltipDirective: BaseTooltip,
     private readonly el: ElementRef,
     private readonly renderer: Renderer2,
   ) {
-    tooltipDirective.show.subscribe(() => {
-      this.addClass();
-    });
-    tooltipDirective.hide.subscribe(() => {
-      this.removeClass();
-    });
+    tooltipDirective.visibleChange
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(visible => {
+        this[visible ? 'addClass' : 'removeClass']();
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(null);
+    this.destroy$.complete();
   }
 
   private addClass() {

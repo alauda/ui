@@ -1,12 +1,28 @@
 import {
+  style,
+  transition,
+  trigger,
+  AnimationEvent,
+  state,
+  animate,
+} from '@angular/animations';
+import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
+  OnDestroy,
   TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { Observable, Subject, combineLatest, map, startWith } from 'rxjs';
+import {
+  Observable,
+  Subject,
+  combineLatest,
+  map,
+  startWith,
+  BehaviorSubject,
+} from 'rxjs';
 
 import { Bem, buildBem, publishRef } from '../utils';
 
@@ -19,11 +35,35 @@ import { TooltipType } from './tooltip.types';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  animations: [
+    trigger('showHide', [
+      state(
+        'show',
+        style({
+          opacity: 1,
+          transform: 'scale(1)',
+        }),
+      ),
+      state(
+        'hide,void',
+        style({
+          opacity: 0,
+          transform: 'scale(0)',
+        }),
+      ),
+      transition('* => show', [animate('160ms cubic-bezier(0, 0, 0.2, 1)')]),
+      transition('* => hide', [
+        animate('160ms cubic-bezier(0.38, 0, 0.24, 1)'),
+      ]),
+    ]),
+  ],
 })
-export class TooltipComponent {
+export class TooltipComponent implements OnDestroy {
   text: string;
   template: TemplateRef<any>;
   bem: Bem = buildBem('aui-tooltip');
+  showHide: 'show' | 'hide' = 'hide';
+  disableAnimation = true;
 
   inputContent$: Observable<string | TemplateRef<any>>;
   inputType$: Observable<TooltipType>;
@@ -37,11 +77,21 @@ export class TooltipComponent {
   context$: Observable<any>;
 
   hover$ = new Subject<boolean>();
+  destroy$ = new Subject();
+  animating$$ = new BehaviorSubject(false);
+  hide$ = new Subject();
+  beforeHide$ = new Subject();
+  beforeShow$ = new Subject();
 
   constructor(
     public elRef: ElementRef<HTMLElement>,
     public cdr: ChangeDetectorRef,
   ) {}
+
+  ngOnDestroy() {
+    this.destroy$.next(null);
+    this.destroy$.complete();
+  }
 
   setupInputs(inputs: {
     inputContent$: Observable<string | TemplateRef<any>>;
@@ -49,6 +99,7 @@ export class TooltipComponent {
     inputPosition$: Observable<string>;
     inputClass$: Observable<string>;
     inputContext$: Observable<any>;
+    disableAnimation?: boolean;
   }) {
     Object.assign(this, inputs);
     this.text$ = this.inputContent$.pipe(
@@ -84,5 +135,25 @@ export class TooltipComponent {
       publishRef(),
     );
     this.context$ = this.inputContext$.pipe(publishRef());
+  }
+
+  onAnimation(event: AnimationEvent) {
+    const { phaseName, toState } = event;
+    this.animating$$.next(phaseName === 'start');
+    if (toState === 'hide' && phaseName === 'done') {
+      this.hide$.next(true);
+    }
+  }
+
+  show() {
+    this.beforeShow$.next(null);
+    this.showHide = 'show';
+    this.cdr.markForCheck();
+  }
+
+  hide() {
+    this.beforeHide$.next(null);
+    this.showHide = 'hide';
+    this.cdr.markForCheck();
   }
 }

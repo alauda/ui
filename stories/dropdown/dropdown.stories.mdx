@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
@@ -7,7 +8,12 @@ import { ButtonModule, IconModule, DropdownModule } from '@alauda/ui';
   title="Dropdown"
   decorators={[
     moduleMetadata({
-      imports: [ButtonModule, IconModule, DropdownModule],
+      imports: [
+        ButtonModule,
+        IconModule,
+        DropdownModule,
+        BrowserAnimationsModule,
+      ],
     }),
   ]}
 />

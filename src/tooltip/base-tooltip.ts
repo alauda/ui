@@ -1,4 +1,9 @@
-import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
+import {
+  ConnectedPosition,
+  Overlay,
+  OverlayConfig,
+  OverlayRef,
+} from '@angular/cdk/overlay';
 import { ComponentPortal, ComponentType } from '@angular/cdk/portal';
 import {
   AfterViewInit,
@@ -12,7 +17,16 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { ReplaySubject, merge, debounceTime } from 'rxjs';
+import {
+  ReplaySubject,
+  merge,
+  debounceTime,
+  takeUntil,
+  first,
+  filter,
+  Subject,
+  delay,
+} from 'rxjs';
 
 import { sleep } from '../utils';
 
@@ -29,12 +43,22 @@ export interface TooltipInterface {
   trigger: TooltipTrigger;
   disabled: boolean;
   hideOnClick: boolean;
-  show: EventEmitter<void>;
-  hide: EventEmitter<void>;
+  visibleChange: EventEmitter<boolean>;
 }
 
 export const DISPLAY_DELAY = 50;
 export const HIDDEN_DELAY = 150;
+
+// @ts-ignore
+interface HackOverlayRef extends OverlayRef {
+  _positionStrategy: {
+    _hasExactPosition: () => boolean;
+    _pane: HTMLElement;
+    _lastPosition: ConnectedPosition | null;
+    _boundingBox: HTMLElement;
+    _transformOriginSelector: string;
+  };
+}
 
 @Directive()
 export class BaseTooltip<T = any>
@@ -75,7 +99,7 @@ export class BaseTooltip<T = any>
     }
     this._position = value;
     this.inputPosition$$.next(value);
-    this.disposeTooltip();
+    this._disposeTooltip();
   }
 
   get position() {
@@ -87,7 +111,7 @@ export class BaseTooltip<T = any>
       return;
     }
     this._trigger = value;
-    this.disposeTooltip();
+    this._disposeTooltip();
     this.ngZone.run(this.updateListeners, this);
   }
 
@@ -98,7 +122,7 @@ export class BaseTooltip<T = any>
   set disabled(value) {
     this._disabled = value;
     if (value) {
-      this.disposeTooltip();
+      this._disposeTooltip();
     }
   }
 
@@ -107,11 +131,11 @@ export class BaseTooltip<T = any>
   }
 
   hideOnClick = false;
+  disableAnimation = true;
 
-  show = new EventEmitter<void>();
-  hide = new EventEmitter<void>();
+  visibleChange = new EventEmitter<boolean>();
 
-  protected overlayRef: OverlayRef;
+  overlayRef: OverlayRef;
   protected componentClass: ComponentType<any> = TooltipComponent;
   protected componentIns: TooltipComponent;
   protected hostHovered = false;
@@ -124,6 +148,7 @@ export class BaseTooltip<T = any>
   protected inputPosition$$ = new ReplaySubject<string>(1);
   protected inputClass$$ = new ReplaySubject<string>(1);
   protected inputContext$$ = new ReplaySubject<any>(1);
+
   protected tooltipChanged$ = merge(
     this.inputContent$$,
     this.inputType$$,
@@ -131,6 +156,8 @@ export class BaseTooltip<T = any>
     this.inputClass$$,
     this.inputContext$$,
   );
+
+  protected destroy$ = new Subject();
 
   protected _position = 'top';
   protected _trigger = TooltipTrigger.Hover;
@@ -155,10 +182,63 @@ export class BaseTooltip<T = any>
     });
   }
 
-  createTooltip() {
+  private _updateTransformOrigin() {
+    // @ts-ignore
+    const overlayRef = this.overlayRef as HackOverlayRef;
+    const positionStrategy = overlayRef._positionStrategy;
+    const hasExactPosition = positionStrategy._hasExactPosition(); // 是不是应用了精确定位
+    if (!hasExactPosition) {
+      return;
+    }
+    // 如果是精确定位，也就是预设位置空间不足以承载弹出元素，被重新指定新的弹出位置
+    const paneRect = positionStrategy._pane.getBoundingClientRect(); // 弹出pane元素Rect
+    const triggerElReact = this.elRef.nativeElement.getBoundingClientRect(); // 触发点Rect
+
+    const position = positionStrategy._lastPosition; // 当前策略位置（调整后的最佳的）
+    let xOrigin: 'left' | 'right' | 'center';
+    const yOrigin: 'top' | 'bottom' | 'center' = position.overlayY;
+    if (position.overlayX === 'center') {
+      xOrigin = 'center';
+    } else {
+      xOrigin = position.overlayX === 'start' ? 'left' : 'right';
+    }
+
+    const origins: string[] = [xOrigin, yOrigin];
+    if (
+      xOrigin === 'center' ||
+      (xOrigin === 'left' &&
+        ![triggerElReact.right, triggerElReact.left].includes(paneRect.left)) ||
+      (xOrigin === 'right' &&
+        ![triggerElReact.right, triggerElReact.left].includes(paneRect.right))
+    ) {
+      const originLeft =
+        triggerElReact.left - paneRect.left + triggerElReact.width / 2;
+      origins[0] = Math.min(originLeft, paneRect.width) + 'px';
+    }
+    if (
+      yOrigin === 'center' ||
+      (yOrigin === 'top' &&
+        ![triggerElReact.bottom, triggerElReact.top].includes(paneRect.top)) || // 位置没有被完全被颠倒的
+      (yOrigin === 'bottom' &&
+        ![triggerElReact.bottom, triggerElReact.top].includes(paneRect.bottom)) // 位置没有被完全被颠倒的
+    ) {
+      const originTop =
+        triggerElReact.top - paneRect.top + triggerElReact.height / 2;
+      origins[1] = Math.min(originTop, paneRect.height) + 'px';
+    }
+    const aniEls = positionStrategy._boundingBox.querySelectorAll<HTMLElement>(
+      positionStrategy._transformOriginSelector,
+    );
+    Array.from(aniEls).forEach(el => {
+      el.style.transformOrigin = origins.join(' ');
+    });
+  }
+
+  _createTooltip() {
     if (this.disabled || this.isCreated) {
       return;
     }
+    this._disposeTooltip();
     this.overlayRef = this.createOverlay();
     const portal = new ComponentPortal(
       this.componentClass,
@@ -171,12 +251,24 @@ export class BaseTooltip<T = any>
       inputContext$: this.inputContext$$.asObservable(),
       inputPosition$: this.inputPosition$$.asObservable(),
       inputType$: this.inputType$$.asObservable(),
+      disableAnimation: this.disableAnimation,
     });
+    this.componentIns.hide$.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this._disposeTooltip();
+    });
+    merge(
+      this.componentIns.beforeHide$,
+      this.componentIns.beforeShow$.pipe(delay(0)),
+    )
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(this._updateTransformOrigin.bind(this));
 
     if (this.trigger === TooltipTrigger.Hover) {
-      this.componentIns.hover$.subscribe(hovered => {
-        this.onTooltipHovered(hovered);
-      });
+      this.componentIns.hover$
+        .pipe(takeUntil(this.componentIns.destroy$))
+        .subscribe(hovered => {
+          this.onTooltipHovered(hovered);
+        });
     }
     if (
       this.trigger === TooltipTrigger.Hover ||
@@ -189,31 +281,47 @@ export class BaseTooltip<T = any>
       );
     }
 
-    this.show.emit();
-
+    this.componentIns?.show();
     this.cdr.markForCheck();
+
+    this.visibleChange.emit(true);
   }
 
-  disposeTooltip() {
-    if (this.overlayRef) {
-      this.overlayRef.dispose();
-      this.overlayRef = null;
-      this.componentIns = null;
-      this.tooltipHovered = false;
-      if (this.unlistenBody) {
-        this.unlistenBody();
-        this.unlistenBody = null;
-      }
-      this.hide.emit();
-    }
+  _disposeTooltip() {
+    this.componentIns?.animating$$
+      .pipe(
+        filter(animating => !animating),
+        first(),
+      )
+      .subscribe(() => {
+        if (this.overlayRef) {
+          this.overlayRef.dispose();
+          this.overlayRef = null;
+          this.componentIns = null;
+          this.tooltipHovered = false;
+          if (this.unlistenBody) {
+            this.unlistenBody();
+            this.unlistenBody = null;
+          }
+          this.visibleChange.emit(false);
+        }
+      });
   }
 
   toggleTooltip() {
     if (this.isCreated) {
-      this.disposeTooltip();
+      this.hide();
     } else {
-      this.createTooltip();
+      this.show();
     }
+  }
+
+  show() {
+    this._createTooltip();
+  }
+
+  hide() {
+    this.componentIns?.hide();
   }
 
   updatePosition() {
@@ -229,7 +337,9 @@ export class BaseTooltip<T = any>
   }
 
   ngOnDestroy() {
-    this.disposeTooltip();
+    this.destroy$.next(null);
+    this.destroy$.complete();
+    this._disposeTooltip();
     this.clearListeners();
   }
 
@@ -293,6 +403,7 @@ export class BaseTooltip<T = any>
       .position()
       .flexibleConnectedTo(this.elRef)
       .withGrowAfterOpen(true)
+      .withTransformOriginOn('.aui-tooltip')
       .withPositions([
         { ...originPosition.main, ...overlayPosition.main },
         { ...originPosition.fallback, ...overlayPosition.fallback },
@@ -312,7 +423,7 @@ export class BaseTooltip<T = any>
     if (!this.isCreated) {
       await sleep(DISPLAY_DELAY);
       if (this.hostHovered) {
-        this.createTooltip();
+        this._createTooltip();
       }
     }
   }
@@ -321,7 +432,7 @@ export class BaseTooltip<T = any>
     this.hostHovered = false;
     await sleep(HIDDEN_DELAY);
     if (!this.tooltipHovered && !this.hostHovered) {
-      this.disposeTooltip();
+      this.componentIns?.hide();
     }
   }
 
@@ -330,7 +441,7 @@ export class BaseTooltip<T = any>
     if (!hovered) {
       await sleep(HIDDEN_DELAY);
       if (!this.tooltipHovered && !this.hostHovered) {
-        this.disposeTooltip();
+        this.componentIns?.hide();
       }
     }
   }
@@ -345,15 +456,15 @@ export class BaseTooltip<T = any>
       (this.hideOnClick ||
         !this.componentIns.elRef.nativeElement.contains(event.target as Node))
     ) {
-      this.disposeTooltip();
+      this.componentIns?.hide();
     }
   }
 
   protected onFocus() {
-    this.createTooltip();
+    this._createTooltip();
   }
 
   protected onBlur() {
-    this.disposeTooltip();
+    this.componentIns?.hide();
   }
 }

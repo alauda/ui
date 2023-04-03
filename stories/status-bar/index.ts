@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/angular';
 
@@ -55,7 +56,7 @@ storiesOf('Status Bar', module).add('status bar', () => {
 
   return {
     moduleMetadata: {
-      imports: [StatusBarModule],
+      imports: [StatusBarModule, BrowserAnimationsModule],
     },
     template: /* HTML */ `
       <aui-status-bar

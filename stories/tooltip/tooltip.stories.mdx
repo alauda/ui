@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
@@ -7,7 +8,7 @@ import { TooltipModule, ButtonModule } from '@alauda/ui';
   title="Tooltip"
   decorators={[
     moduleMetadata({
-      imports: [TooltipModule, ButtonModule],
+      imports: [TooltipModule, ButtonModule, BrowserAnimationsModule],
     }),
   ]}
 />
@@ -250,14 +251,14 @@ import { TooltipModule, ButtonModule } from '@alauda/ui';
                 <button
                   aui-button="text"
                   size="mini"
-                  (click)="tooltip.disposeTooltip()"
+                  (click)="tooltip.hide()"
                 >
                   取消
                 </button>
                 <button
                   aui-button="text"
                   size="mini"
-                  (click)="tooltip.disposeTooltip()"
+                  (click)="tooltip.hide()"
                 >
                   确定
                 </button>
@@ -295,15 +296,14 @@ import { TooltipModule, ButtonModule } from '@alauda/ui';
 
 ## Outputs
 
-| 名称           | 回调参数 | 描述         |
-| -------------- | -------- | ------------ |
-| auiTooltipShow | void     | tooltip 打开 |
-| auiTooltipHide | void     | tooltip 关闭 |
+| 名称                    | 回调参数 | 描述               |
+| ----------------------- | -------- | ------------------ |
+| auiTooltipVisibleChange | boolean  | tooltip 打开或关闭 |
 
 ## Public Methods
 
-| 名称           | 参数 | 描述                  |
-| -------------- | ---- | --------------------- |
-| createTooltip  | void | 打开 tooltip          |
-| disposeTooltip | void | 关闭 tooltip          |
-| toggleTooltip  | void | 切换 tooltip 开关状态 |
+| 名称          | 参数 | 描述                  |
+| ------------- | ---- | --------------------- |
+| show          | void | 打开 tooltip          |
+| hide          | void | 关闭 tooltip          |
+| toggleTooltip | void | 切换 tooltip 开关状态 |

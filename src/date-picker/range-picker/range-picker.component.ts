@@ -10,7 +10,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
 
-import { CommonFormControl } from '../../form/common-form';
+import { CommonFormControl } from '../../form';
 import { ComponentSize } from '../../types';
 import { DisabledDateFn, DisabledTimeFn } from '../date-picker.type';
 
@@ -69,7 +69,7 @@ export class RangePickerComponent extends CommonFormControl<
   size: ComponentSize;
 
   @Output()
-  openChange = new EventEmitter<boolean>();
+  visibleChange = new EventEmitter<boolean>();
 
   value: [Dayjs, Dayjs];
 
@@ -86,5 +86,12 @@ export class RangePickerComponent extends CommonFormControl<
   clearValue() {
     this.value = null;
     this.emitValue(null);
+  }
+
+  tooltipVisibleChange(visible: boolean) {
+    this.visibleChange.next(visible);
+    if (!visible) {
+      this.emitValue(this.value);
+    }
   }
 }

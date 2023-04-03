@@ -11,6 +11,7 @@ import {
   Renderer2,
   ViewContainerRef,
 } from '@angular/core';
+import { takeUntil } from 'rxjs';
 
 import { BaseTooltip } from './base-tooltip';
 import { TooltipCopyIntl } from './tooltip-intl';
@@ -22,6 +23,9 @@ import { TooltipCopyIntl } from './tooltip-intl';
 export class TooltipCopyDirective extends BaseTooltip implements OnInit {
   @HostBinding('class.aui-tooltip-copy')
   className = true;
+
+  @Input('auiDisableAnimation')
+  override disableAnimation = false;
 
   @Input()
   get auiTooltipCopy() {
@@ -78,7 +82,7 @@ export class TooltipCopyDirective extends BaseTooltip implements OnInit {
 
   ngOnInit() {
     this.content = this.auiTooltipCopyTip;
-    this.hide.subscribe(() => {
+    this.visibleChange.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this.content = this.auiTooltipCopyTip;
     });
   }
