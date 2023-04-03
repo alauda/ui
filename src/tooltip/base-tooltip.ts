@@ -206,7 +206,7 @@ export class BaseTooltip<T = any>
       );
     }
 
-    this.componentIns.show();
+    this.componentIns?.show();
     this.cdr.markForCheck();
 
     this.showed.emit();

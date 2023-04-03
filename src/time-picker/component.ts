@@ -161,7 +161,7 @@ export class TimePickerComponent extends CommonFormControl<
     if (this.tooltipRef.isCreated) {
       return;
     }
-    this.tooltipRef.createTooltip();
+    this.tooltipRef.show();
     this.open.next();
   }
 
@@ -169,7 +169,7 @@ export class TimePickerComponent extends CommonFormControl<
     if (!this.tooltipRef.isCreated) {
       return;
     }
-    this.tooltipRef.disposeTooltip();
+    this.tooltipRef.hide();
     this.close.next();
   }
 

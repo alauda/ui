@@ -1,4 +1,3 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
@@ -8,7 +7,7 @@ import { TooltipModule, ButtonModule } from '@alauda/ui';
   title="Tooltip"
   decorators={[
     moduleMetadata({
-      imports: [TooltipModule, ButtonModule, BrowserAnimationsModule],
+      imports: [TooltipModule, ButtonModule],
     }),
   ]}
 />

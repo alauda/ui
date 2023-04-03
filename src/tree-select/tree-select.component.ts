@@ -225,12 +225,12 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
   }
 
   openOption() {
-    this.tooltipRef.createTooltip();
+    this.tooltipRef.show();
   }
 
   closeOption() {
     this.inputRef.elementRef.nativeElement.value = this.displayText;
-    this.tooltipRef.disposeTooltip();
+    this.tooltipRef.hide();
   }
 
   updateSelectDisplay(value: any) {

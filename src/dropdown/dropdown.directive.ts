@@ -55,10 +55,10 @@ export class DropdownDirective extends BaseTooltip implements OnInit {
   override hideOnClick = true;
 
   @Output('auiDropdownShow')
-  override show = new EventEmitter<void>();
+  override showed = new EventEmitter<void>();
 
   @Output('auiDropdownHide')
-  override hide = new EventEmitter<void>();
+  override hided = new EventEmitter<void>();
 
   private _menu: MenuComponent;
 
@@ -78,14 +78,14 @@ export class DropdownDirective extends BaseTooltip implements OnInit {
   }
 
   ngOnInit() {
-    this.show.pipe(debounceTime(0)).subscribe(() => {
+    this.showed.pipe(debounceTime(0)).subscribe(() => {
       if (this.menu.lazyContent) {
         this.menu.lazyContent.attach(this.lazyContentContext);
         this.updatePosition();
       }
     });
 
-    this.hide.subscribe(() => {
+    this.hided.subscribe(() => {
       if (this.menu.lazyContent) {
         this.menu.lazyContent.detach();
       }

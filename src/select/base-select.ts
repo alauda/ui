@@ -294,11 +294,11 @@ export abstract class BaseSelect<T, V = T>
   }
 
   openOption() {
-    this.tooltipRef.createTooltip();
+    this.tooltipRef.show();
   }
 
   closeOption() {
-    this.tooltipRef.disposeTooltip();
+    this.tooltipRef.hide();
   }
 
   onShowOptions() {

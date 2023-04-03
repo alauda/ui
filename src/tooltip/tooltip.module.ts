@@ -1,6 +1,7 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TooltipActiveDirective } from './tooltip-active.directive';
 import { TooltipCopyDirective } from './tooltip-copy.directive';
@@ -9,7 +10,7 @@ import { TooltipComponent } from './tooltip.component';
 import { TooltipDirective } from './tooltip.directive';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule],
+  imports: [CommonModule, OverlayModule, BrowserAnimationsModule],
   declarations: [
     TooltipDirective,
     TooltipComponent,

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ButtonModule } from '../button';
 import { IconModule } from '../icon';
@@ -16,7 +17,13 @@ import { MenuComponent } from './menu/menu.component';
 import { SubmenuComponent } from './submenu/submenu.component';
 
 @NgModule({
-  imports: [CommonModule, TooltipModule, IconModule, ButtonModule],
+  imports: [
+    CommonModule,
+    TooltipModule,
+    IconModule,
+    ButtonModule,
+    NoopAnimationsModule,
+  ],
   declarations: [
     DropdownDirective,
     DropdownActiveDirective,

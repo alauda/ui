@@ -134,7 +134,6 @@ export class TooltipComponent implements OnDestroy {
 
   onAnimation(event: AnimationEvent) {
     const { phaseName, toState } = event;
-    // TODO 打开过程中关闭
     this.animating$$.next(phaseName === 'start');
     if (toState === 'hide' && phaseName === 'done') {
       this.hide$.next(true);

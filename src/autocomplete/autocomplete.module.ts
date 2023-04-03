@@ -1,6 +1,7 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TooltipModule } from '../tooltip';
 
@@ -15,7 +16,7 @@ import { SuggestionGroupComponent } from './suggestion-group/suggestion-group.co
 import { SuggestionComponent } from './suggestion/suggestion.component';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, TooltipModule],
+  imports: [CommonModule, OverlayModule, TooltipModule, NoopAnimationsModule],
   declarations: [
     AutoCompleteDirective,
     CustomAutoCompleteDirective,
