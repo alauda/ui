@@ -1,4 +1,5 @@
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
@@ -8,7 +9,12 @@ import { AutocompleteModule, InputModule } from '@alauda/ui';
   title="Autocomplete"
   decorators={[
     moduleMetadata({
-      imports: [AutocompleteModule, InputModule, FormsModule],
+      imports: [
+        AutocompleteModule,
+        InputModule,
+        FormsModule,
+        BrowserAnimationsModule,
+      ],
     }),
   ]}
 />
@@ -197,10 +203,9 @@ import { AutocompleteModule, InputModule } from '@alauda/ui';
 
 ## Autocomplete Outputs
 
-| 名称                | 回调参数 | 描述         |
-| ------------------- | -------- | ------------ |
-| auiAutocompleteShow | void     | 自动补全打开 |
-| auiAutocompleteHide | void     | 自动补全关闭 |
+| 名称                         | 回调参数 | 描述               |
+| ---------------------------- | -------- | ------------------ |
+| auiAutocompleteVisibleChange | boolean  | 自动补全打开或关闭 |
 
 ## Suggestion Inputs
 

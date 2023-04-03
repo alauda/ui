@@ -4,12 +4,12 @@
   [class.isClearable]="clearable && timeFormatValue"
   #tooltipRef="auiTooltip"
   [auiTooltip]="template"
+  [auiDisableAnimation]="true"
   auiTooltipType="plain"
   auiTooltipTrigger="click"
   auiTooltipPosition="bottom start"
   [auiTooltipDisabled]="disabled"
-  (auiTooltipShow)="handleTooltipOpen()"
-  (auiTooltipHide)="handleTooltipHide()"
+  (auiTooltipVisibleChange)="handleTooltipVisible($event)"
 >
   <aui-input-group>
     <input

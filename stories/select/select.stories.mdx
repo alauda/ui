@@ -1,4 +1,5 @@
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
@@ -8,7 +9,7 @@ import { SelectModule, IconModule } from '@alauda/ui';
   title="Select"
   decorators={[
     moduleMetadata({
-      imports: [FormsModule, SelectModule, IconModule],
+      imports: [FormsModule, SelectModule, IconModule, BrowserAnimationsModule],
     }),
   ]}
 />

@@ -143,25 +143,25 @@ export class TimePickerComponent extends CommonFormControl<
     }
   }
 
-  handleTooltipOpen() {
-    this.open.emit();
-  }
+  handleTooltipVisible(visible: boolean) {
+    if (visible) {
+      this.open.emit();
+    } else {
+      if (this.onTouched) {
+        this.onTouched();
+      }
+      this.setValue(this.timeValue);
+      this.submit();
 
-  handleTooltipHide() {
-    if (this.onTouched) {
-      this.onTouched();
+      this.close.emit();
     }
-    this.setValue(this.timeValue);
-    this.submit();
-
-    this.close.emit();
   }
 
   openPanel() {
     if (this.tooltipRef.isCreated) {
       return;
     }
-    this.tooltipRef.createTooltip();
+    this.tooltipRef.show();
     this.open.next();
   }
 
@@ -169,7 +169,7 @@ export class TimePickerComponent extends CommonFormControl<
     if (!this.tooltipRef.isCreated) {
       return;
     }
-    this.tooltipRef.disposeTooltip();
+    this.tooltipRef.hide();
     this.close.next();
   }
 

@@ -81,7 +81,7 @@ export class DatePickerComponent
   placeholder: string;
 
   @Output()
-  openChange = new EventEmitter<boolean>();
+  visibleChange = new EventEmitter<boolean>();
 
   value: Dayjs;
   DatePickerType = DatePickerType;
@@ -116,5 +116,12 @@ export class DatePickerComponent
   clearValue() {
     this.value = null;
     this.emitValue(null);
+  }
+
+  tooltipVisibleChange(visible: boolean) {
+    this.visibleChange.next(visible);
+    if (!visible) {
+      this.emitValue(this.value);
+    }
   }
 }

@@ -4,6 +4,7 @@
   [format]="format"
   style="display: flex"
   [auiTooltip]="template"
+  [auiDisableAnimation]="true"
   auiTooltipType="info"
   auiTooltipClass="date-picker-wrapper"
   [disabled]="!!disabled"
@@ -12,8 +13,7 @@
   [auiTooltipDisabled]="!!disabled"
   [auiTooltipHideOnClick]="true"
   [placeholder]="placeholder"
-  (auiTooltipHide)="openChange.next(false); emitValue(value)"
-  (auiTooltipShow)="openChange.next(true)"
+  (auiTooltipVisibleChange)="tooltipVisibleChange($event)"
   (clear)="clearValue()"
   #tooltip="auiTooltip"
 ></aui-date-picker-trigger>
@@ -36,6 +36,6 @@
     [maxDate]="maxDate"
     (click)="$event.stopImmediatePropagation()"
     (clear)="clearValue()"
-    (confirm)="tooltip.disposeTooltip(); emitValue(value)"
+    (confirm)="tooltip.hide(); emitValue(value)"
   ></aui-date-picker-panel>
 </ng-template>

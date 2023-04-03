@@ -1,4 +1,5 @@
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/angular';
 
@@ -104,7 +105,7 @@ storiesOf('TreeSelect', module)
     const leafOnly = boolean('leafOnly', false);
     return {
       moduleMetadata: {
-        imports: [FormsModule, TreeSelectModule],
+        imports: [FormsModule, TreeSelectModule, BrowserAnimationsModule],
       },
       template: /* HTML */ `
         {{ value | json }}

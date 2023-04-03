@@ -11,7 +11,7 @@ import {
   Renderer2,
   ViewContainerRef,
 } from '@angular/core';
-import { debounceTime } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
 
@@ -54,11 +54,8 @@ export class DropdownDirective extends BaseTooltip implements OnInit {
   @Input('auiDropdownHideOnClick')
   override hideOnClick = true;
 
-  @Output('auiDropdownShow')
-  override show = new EventEmitter<void>();
-
-  @Output('auiDropdownHide')
-  override hide = new EventEmitter<void>();
+  @Output('auiDropdownVisibleChange')
+  override visibleChange = new EventEmitter<boolean>();
 
   private _menu: MenuComponent;
 
@@ -78,16 +75,16 @@ export class DropdownDirective extends BaseTooltip implements OnInit {
   }
 
   ngOnInit() {
-    this.show.pipe(debounceTime(0)).subscribe(() => {
+    this.visibleChange.pipe(takeUntil(this.destroy$)).subscribe(visible => {
       if (this.menu.lazyContent) {
-        this.menu.lazyContent.attach(this.lazyContentContext);
-        this.updatePosition();
-      }
-    });
-
-    this.hide.subscribe(() => {
-      if (this.menu.lazyContent) {
-        this.menu.lazyContent.detach();
+        if (visible) {
+          setTimeout(() => {
+            this.menu.lazyContent.attach(this.lazyContentContext);
+            this.updatePosition();
+          });
+        } else {
+          this.menu.lazyContent.detach();
+        }
       }
     });
   }

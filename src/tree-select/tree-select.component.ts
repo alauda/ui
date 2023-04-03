@@ -177,18 +177,18 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
     this.tooltipRef.updatePosition();
   }
 
-  onShowNodes() {
-    this.containerWidth = this.selectRef.nativeElement.offsetWidth + 'px';
-    this.show.emit();
-    this.cdr.detectChanges();
-  }
-
-  onHideNodes() {
-    if (this.onTouched) {
-      this.onTouched();
+  onVisibleNodes(visible: boolean) {
+    if (visible) {
+      this.containerWidth = this.selectRef.nativeElement.offsetWidth + 'px';
+      this.show.emit();
+      this.cdr.detectChanges();
+    } else {
+      if (this.onTouched) {
+        this.onTouched();
+      }
+      this.filterString = '';
+      this.hide.emit();
     }
-    this.filterString = '';
-    this.hide.emit();
   }
 
   onInput(event: Event) {
@@ -225,12 +225,12 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
   }
 
   openOption() {
-    this.tooltipRef.createTooltip();
+    this.tooltipRef.show();
   }
 
   closeOption() {
     this.inputRef.elementRef.nativeElement.value = this.displayText;
-    this.tooltipRef.disposeTooltip();
+    this.tooltipRef.hide();
   }
 
   updateSelectDisplay(value: any) {

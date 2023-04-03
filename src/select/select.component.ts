@@ -126,13 +126,13 @@ export class SelectComponent<T = unknown>
     );
   }
 
-  override onShowOptions() {
-    super.onShowOptions();
-  }
-
-  override onHideOptions() {
-    super.onHideOptions();
-    this.inputRef.elementRef.nativeElement.value = '';
+  onVisibleOptions(visible: boolean) {
+    if (visible) {
+      super.onShowOptions();
+    } else {
+      super.onHideOptions();
+      this.inputRef.elementRef.nativeElement.value = '';
+    }
   }
 
   protected override valueIn(v: T): T {

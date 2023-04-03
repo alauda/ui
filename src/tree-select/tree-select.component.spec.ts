@@ -9,6 +9,7 @@ import {
 } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TreeSelectComponent } from './tree-select.component';
 import { TreeSelectModule } from './tree-select.module';
@@ -24,7 +25,7 @@ describe('TreeSelectComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TreeSelectModule, FormsModule],
+      imports: [TreeSelectModule, FormsModule, BrowserAnimationsModule],
       declarations: [TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
@@ -60,6 +61,7 @@ describe('TreeSelectComponent', () => {
 
   it('should ngModel work', fakeAsync(() => {
     ins.selectRef.openOption();
+    tick();
     fixture.detectChanges();
 
     expect(
@@ -72,6 +74,7 @@ describe('TreeSelectComponent', () => {
     tick();
     expect(inputEl.value).toBe('b-2');
     ins.selectRef.openOption();
+    tick();
     fixture.detectChanges();
     expect(
       ocEl.querySelector('.aui-tree-node[data-value=b-2]').className,

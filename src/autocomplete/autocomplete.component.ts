@@ -54,13 +54,14 @@ export class AutocompleteComponent implements AfterContentInit {
 
   hasVisibleSuggestion$: Observable<boolean>;
   hasContent$: Observable<boolean>;
+  visibles$: Observable<boolean[]>;
 
   directive$$ = new ReplaySubject<AutoCompleteDirective>(1);
 
   constructor(private readonly cdr: ChangeDetectorRef) {}
 
   ngAfterContentInit() {
-    this.hasVisibleSuggestion$ = this.suggestions.changes.pipe(
+    this.visibles$ = this.suggestions.changes.pipe(
       startWith(this.suggestions),
       switchMap((suggestions: QueryList<SuggestionComponent>) =>
         suggestions.length > 0
@@ -68,6 +69,8 @@ export class AutocompleteComponent implements AfterContentInit {
           : of([] as boolean[]),
       ),
       debounceTime(0),
+    );
+    this.hasVisibleSuggestion$ = this.visibles$.pipe(
       map(visible => visible.some(Boolean)),
       withLatestFrom(this.directive$$),
       map(([hasVisibleSuggestion, directive]) => {
@@ -105,5 +108,19 @@ export class AutocompleteComponent implements AfterContentInit {
         }
       }),
     );
+
+    this.visibles$
+      .pipe(
+        distinctUntilChanged(
+          (prev, cur) => JSON.stringify(prev) === JSON.stringify(cur),
+        ),
+      )
+      .subscribe(() => {
+        this.directive$$.pipe(first()).subscribe(directive => {
+          window.requestAnimationFrame(() => {
+            directive.overlayRef?.updatePosition();
+          });
+        });
+      });
   }
 }

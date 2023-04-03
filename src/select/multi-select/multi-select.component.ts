@@ -265,15 +265,15 @@ export class MultiSelectComponent<T = unknown>
     );
   }
 
-  override onShowOptions() {
-    super.onShowOptions();
-    this.inputRef.nativeElement.focus();
-  }
-
-  override onHideOptions() {
-    super.onHideOptions();
-    this.inputRef.nativeElement.value = '';
-    this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
+  onVisibleOptions(visible: boolean) {
+    if (visible) {
+      super.onShowOptions();
+      this.inputRef.nativeElement.focus();
+    } else {
+      super.onHideOptions();
+      this.inputRef.nativeElement.value = '';
+      this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
+    }
   }
 
   override onInput(event: Event) {

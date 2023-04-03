@@ -1,4 +1,5 @@
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { moduleMetadata } from '@storybook/angular';
 
@@ -8,7 +9,12 @@ import { ComponentSize, TimePickerModule } from '@alauda/ui';
   title="TimePicker"
   decorators={[
     moduleMetadata({
-      imports: [TimePickerModule, FormsModule, ReactiveFormsModule],
+      imports: [
+        TimePickerModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+      ],
     }),
   ]}
 />
@@ -128,9 +134,9 @@ import { ComponentSize, TimePickerModule } from '@alauda/ui';
 
 ## TimePicker Outputs
 
-| 名称       | 类型    | 默认值 | 描述                  |
-| ---------- | ------- | ------ | --------------------- |
-| openChange | boolean | -      | 打开或关闭事件 output |
+| 名称          | 类型    | 默认值 | 描述                  |
+| ------------- | ------- | ------ | --------------------- |
+| visibleChange | boolean | -      | 打开或关闭事件 output |
 
 ### TimePicker 表单输入数据格式
 

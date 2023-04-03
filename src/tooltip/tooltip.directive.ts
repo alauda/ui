@@ -19,15 +19,13 @@ import { BaseTooltip } from './base-tooltip';
     'position:auiTooltipPosition',
     'trigger:auiTooltipTrigger',
     'disabled:auiTooltipDisabled',
+    'hideOnClick:auiTooltipHideOnClick',
   ],
 })
 export class TooltipDirective extends BaseTooltip {
-  @Input('auiTooltipHideOnClick')
-  override hideOnClick = false;
+  @Output('auiTooltipVisibleChange')
+  override visibleChange = new EventEmitter<boolean>();
 
-  @Output('auiTooltipShow')
-  override show = new EventEmitter<void>();
-
-  @Output('auiTooltipHide')
-  override hide = new EventEmitter<void>();
+  @Input('auiDisableAnimation')
+  override disableAnimation = false;
 }

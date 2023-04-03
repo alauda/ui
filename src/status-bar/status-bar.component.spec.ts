@@ -8,6 +8,9 @@ import {
   tick,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { DISPLAY_DELAY } from '../tooltip/base-tooltip';
 
 import { StatusBarModule } from './status-bar.module';
 import { Status, StatusType } from './status-bar.types';
@@ -17,7 +20,7 @@ describe('Status Bar', () => {
   let ocEl: HTMLElement;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [StatusBarModule],
+      imports: [StatusBarModule, NoopAnimationsModule],
       declarations: [TestComponent],
     });
 
@@ -36,9 +39,10 @@ describe('Status Bar', () => {
       By.css('aui-status-bar .aui-status-bar__chunk'),
     ).nativeElement as HTMLElement;
     chunk.dispatchEvent(new Event('mouseenter'));
-    tick(50);
-
+    tick(DISPLAY_DELAY);
     fixture.detectChanges();
+    tick();
+
     expect(fixture).toMatchSnapshot();
     expect(ocEl).toMatchSnapshot();
   }));
