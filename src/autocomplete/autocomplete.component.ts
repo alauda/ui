@@ -22,6 +22,7 @@ import {
   switchMap,
   tap,
   withLatestFrom,
+  first,
 } from 'rxjs';
 
 import { publishRef } from '../utils';
@@ -93,6 +94,16 @@ export class AutocompleteComponent implements AfterContentInit {
         ([hasVisibleSuggestion, hasPlaceholder]) =>
           hasVisibleSuggestion || hasPlaceholder,
       ),
+      distinctUntilChanged(),
+      tap(hasContent => {
+        if (hasContent) {
+          this.directive$$.pipe(first()).subscribe(directive => {
+            window.requestAnimationFrame(() => {
+              directive.overlayRef.updatePosition();
+            });
+          });
+        }
+      }),
     );
   }
 }
