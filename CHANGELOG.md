@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.5.7
+
+### Patch Changes
+
+- [#467](https://github.com/alauda/ui/pull/467) [`c59c4cc`](https://github.com/alauda/ui/commit/c59c4cc6289f22f02639ef87f8ca12876ca0710a) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: number input style when size is small
+
+  fix: tree node text centered
+
 ## 6.5.6
 
 ### Patch Changes
