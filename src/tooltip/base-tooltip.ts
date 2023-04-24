@@ -111,7 +111,7 @@ export class BaseTooltip<T = any>
   show = new EventEmitter<void>();
   hide = new EventEmitter<void>();
 
-  overlayRef: OverlayRef;
+  protected overlayRef: OverlayRef;
   protected componentClass: ComponentType<any> = TooltipComponent;
   protected componentIns: TooltipComponent;
   protected hostHovered = false;
@@ -293,7 +293,6 @@ export class BaseTooltip<T = any>
       .position()
       .flexibleConnectedTo(this.elRef)
       .withGrowAfterOpen(true)
-      .withPush(false)
       .withPositions([
         { ...originPosition.main, ...overlayPosition.main },
         { ...originPosition.fallback, ...overlayPosition.fallback },
