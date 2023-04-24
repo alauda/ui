@@ -16,7 +16,7 @@ $b: aui-card;
     display: flex;
     align-items: center;
     padding: 0;
-    @include text-set(xxl, main, bolder);
+    @include text-set(xl, main, bolder);
 
     &--secondary {
       @include text-set($size: xl, $weight: bolder);

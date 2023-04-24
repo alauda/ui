@@ -210,7 +210,8 @@
 }
 
 @mixin input-error() {
-  border-color: use-rgb(red) !important;
+  border-color: #f66f6a !important;
+  background-color: #ffeeed !important;
 
   &:focus,
   &.isFocused {
