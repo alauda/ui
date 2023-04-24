@@ -7,7 +7,7 @@ $block: 'aui-tooltip';
 .#{$block} {
   position: relative;
   padding: use-var(spacing-xl);
-  border-radius: use-var(border-radius-m);
+  border-radius: use-var(border-radius-l);
   @include popper-shadow;
   @include text-set(s);
 

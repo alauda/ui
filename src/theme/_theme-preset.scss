@@ -28,11 +28,11 @@
   --aui-font-size-m: 14px;
   --aui-font-size-s: 12px;
   --aui-line-height-xxxl: 32px;
-  --aui-line-height-xxl: 28px;
-  --aui-line-height-xl: 24px;
-  --aui-line-height-l: 22px;
+  --aui-line-height-xxl: 30px;
+  --aui-line-height-xl: 26px;
+  --aui-line-height-l: 24px;
   --aui-line-height-m: 20px;
-  --aui-line-height-s: 16px;
+  --aui-line-height-s: 18px;
   --aui-icon-size-xxl: 24px;
   --aui-icon-size-xl: 24px;
   --aui-icon-size-l: 16px;
@@ -52,7 +52,7 @@
 @mixin light-mode {
   color-scheme: light;
 
-  --aui-color-blue: #{rgb-string(#007af5)};
+  --aui-color-blue: #{rgb-string(#2369ef)};
   --aui-color-b-0: #{rgb-string(#0067d0)};
   --aui-color-b-1: #{rgb-string(#268df6)};
   --aui-color-b-2: #{rgb-string(#4da2f8)};
@@ -70,21 +70,21 @@
   --aui-color-p-5: var(--aui-color-b-5);
   --aui-color-p-6: var(--aui-color-b-6);
   --aui-color-p-7: var(--aui-color-b-7);
-  --aui-color-green: #{rgb-string(#00c261)};
+  --aui-color-green: #{rgb-string(#01a839)};
   --aui-color-g-0: #{rgb-string(#00a552)};
   --aui-color-g-1: #{rgb-string(#26cb78)};
   --aui-color-g-2: #{rgb-string(#4cd490)};
   --aui-color-g-4: #{rgb-string(#b3eccf)};
   --aui-color-g-6: #{rgb-string(#e6f9ef)};
   --aui-color-g-7: #{rgb-string(#f2fbf6)};
-  --aui-color-yellow: #{rgb-string(#f5a300)};
+  --aui-color-yellow: #{rgb-string(#f1b819)};
   --aui-color-y-0: #{rgb-string(#dc9200)};
   --aui-color-y-1: #{rgb-string(#f6b026)};
   --aui-color-y-2: #{rgb-string(#f8be4d)};
   --aui-color-y-4: #{rgb-string(#fce3b3)};
   --aui-color-y-6: #{rgb-string(#fef5e6)};
   --aui-color-y-7: #{rgb-string(#fefaf3)};
-  --aui-color-red: #{rgb-string(#eb0027)};
+  --aui-color-red: #{rgb-string(#f82a21)};
   --aui-color-r-0: #{rgb-string(#c70021)};
   --aui-color-r-1: #{rgb-string(#ed2647)};
   --aui-color-r-2: #{rgb-string(#f14c67)};
@@ -99,12 +99,13 @@
   --aui-color-n-6: #{rgb-string(#c8cacd)};
   --aui-color-n-7: #{rgb-string(#d4d6d9)};
   --aui-color-n-8: #{rgb-string(#edeff2)};
-  --aui-color-n-9: #{rgb-string(#f7f9fc)};
+  --aui-color-n-9: #{rgb-string(#eef0f5)};
   --aui-color-n-10: #{rgb-string(#fff)};
   --aui-color-origin-shadow: var(--aui-color-n-1);
   --aui-color-popper-bg: var(--aui-color-n-10);
-  --aui-color-button-bg: var(--aui-color-n-9);
+  --aui-color-button-bg: var(--aui-color-n-10);
   --aui-color-main-bg: var(--aui-color-n-9);
+  --aui-color-input-bg: var(--aui-color-n-10);
   --aui-color-divider: var(--aui-color-n-8);
   --aui-color-border: var(--aui-color-n-7);
   --aui-color-main-text: var(--aui-color-n-1);
@@ -170,6 +171,7 @@
   --aui-color-popper-bg: #{rgb-string(#383b47)};
   --aui-color-button-bg: #{rgb-string(#383b47)};
   --aui-color-main-bg: var(--aui-color-n-9);
+  --aui-color-input-bg: var(--aui-color-n-9);
   --aui-color-divider: var(--aui-color-n-8);
   --aui-color-border: var(--aui-color-n-7);
   --aui-color-main-text: var(--aui-color-n-1);
