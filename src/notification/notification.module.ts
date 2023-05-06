@@ -12,7 +12,6 @@ import { NotificationService } from './notification.service';
 @NgModule({
   imports: [CommonModule, OverlayModule, PortalModule, IconModule],
   declarations: [NotificationWrapperComponent, NotificationComponent],
-  entryComponents: [NotificationWrapperComponent, NotificationComponent],
   providers: [NotificationService],
 })
 export class NotificationModule {}

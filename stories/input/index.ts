@@ -1,5 +1,5 @@
 import {
-  FormControl,
+  UntypedFormControl,
   FormsModule,
   ReactiveFormsModule,
   ValidatorFn,
@@ -202,7 +202,7 @@ storiesOf('Input', module)
       return null;
     };
 
-    const control = new FormControl(value, { validators: [checkArrFn] });
+    const control = new UntypedFormControl(value, { validators: [checkArrFn] });
     const size = select('size', sizeOptions, ComponentSize.Medium);
     const allowRepeat = boolean('allowRepeat', true);
     const allowEmpty = boolean('allowEmpty', false);

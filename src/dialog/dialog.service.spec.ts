@@ -418,6 +418,5 @@ class DialogContentComponent {}
     TestComponent,
     ContentTemplateRefTestComponent,
   ],
-  entryComponents: [DialogContentComponent],
 })
 class TestModule {}

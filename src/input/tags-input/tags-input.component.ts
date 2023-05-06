@@ -16,12 +16,12 @@ import {
 } from '@angular/core';
 import {
   AsyncValidatorFn,
-  FormBuilder,
+  UntypedFormBuilder,
   NG_VALUE_ACCESSOR,
   NgControl,
   ValidatorFn,
   Validators,
-  FormControl,
+  UntypedFormControl,
 } from '@angular/forms';
 import { take } from 'rxjs';
 
@@ -132,7 +132,7 @@ export class TagsInputComponent
   override model: string[] = [];
 
   // 内置form control，仅作校验使用
-  readonly inputControl: FormControl;
+  readonly inputControl: UntypedFormControl;
   // 外层 FormControl，所有的校验逻辑针对输入数据
   controlContainer: NgControl;
 
@@ -160,7 +160,7 @@ export class TagsInputComponent
 
   constructor(
     cdr: ChangeDetectorRef,
-    private readonly fb: FormBuilder,
+    private readonly fb: UntypedFormBuilder,
     private readonly renderer: Renderer2,
     private readonly injector: Injector,
   ) {
