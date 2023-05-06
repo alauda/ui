@@ -24,7 +24,6 @@ const COMMON = [
   imports: [CommonModule, IconModule, IconModule, OverlayModule, PortalModule],
   declarations: COMMON,
   exports: COMMON,
-  entryComponents: [DrawerComponent],
   providers: [DrawerService],
 })
 export class DrawerModule {}
