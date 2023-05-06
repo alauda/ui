@@ -18,6 +18,5 @@ import { AnchorDirective, AnchorLabelDirective } from './anchor.directive';
     AnchorDirective,
     AnchorLabelDirective,
   ],
-  entryComponents: [AnchorComponent],
 })
 export class AnchorModule {}

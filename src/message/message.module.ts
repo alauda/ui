@@ -11,7 +11,6 @@ import { MessageService } from './message.service';
 @NgModule({
   imports: [CommonModule, OverlayModule, IconModule],
   declarations: [MessageWrapperComponent, MessageComponent],
-  entryComponents: [MessageWrapperComponent, MessageComponent],
   providers: [MessageService],
 })
 export class MessageModule {}

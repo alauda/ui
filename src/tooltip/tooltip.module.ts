@@ -16,7 +16,6 @@ import { TooltipDirective } from './tooltip.directive';
     TooltipActiveDirective,
     TooltipCopyDirective,
   ],
-  entryComponents: [TooltipComponent],
   exports: [TooltipDirective, TooltipActiveDirective, TooltipCopyDirective],
   providers: [TOOLTIP_COPY_INTL_INTL_PROVIDER],
 })

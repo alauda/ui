@@ -37,7 +37,6 @@ import { DialogService } from './dialog.service';
     DialogFooterComponent,
     DialogCloseDirective,
   ],
-  entryComponents: [DialogComponent, ConfirmDialogComponent],
   providers: [DialogService],
 })
 export class DialogModule {}

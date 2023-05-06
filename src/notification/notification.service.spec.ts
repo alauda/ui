@@ -138,6 +138,5 @@ export class TestComponent {
 @NgModule({
   imports: [NotificationModule, NoopAnimationsModule],
   declarations: [TestComponent, NotificationContentComponent],
-  entryComponents: [NotificationContentComponent],
 })
 class TestModule {}
