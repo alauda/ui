@@ -1,5 +1,12 @@
 # Changelog
 
+## 6.5.8
+
+### Patch Changes
+
+- [#466](https://github.com/alauda/ui/pull/466) [`74dde67`](https://github.com/alauda/ui/commit/74dde67f6e12c282b1765ea51b624408909205b9) Thanks [@igauch](https://github.com/igauch)! - feat: tooltip add animation
+  fix: autocomplete init position
+
 ## 6.5.7
 
 ### Patch Changes
