@@ -188,6 +188,9 @@ export class TabHeaderComponent
     const realign = () => {
       this._updatePagination();
       this._alignActiveIndicatorToSelectedTab();
+      requestAnimationFrame(() => {
+        this._scrollToLabel(this._selectedIndex);
+      });
     };
 
     this._keyManager = new FocusKeyManager(this._labelWrappers)
