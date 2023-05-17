@@ -256,12 +256,15 @@ export class BaseTooltip<T = any>
     this.componentIns.hide$.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this._disposeTooltip();
     });
-    merge(
-      this.componentIns.beforeHide$,
-      this.componentIns.beforeShow$.pipe(delay(0)),
-    )
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(this._updateTransformOrigin.bind(this));
+
+    if (!this.disableAnimation) {
+      merge(
+        this.componentIns.beforeHide$,
+        this.componentIns.beforeShow$.pipe(delay(0)),
+      )
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(this._updateTransformOrigin.bind(this));
+    }
 
     if (this.trigger === TooltipTrigger.Hover) {
       this.componentIns.hover$
@@ -321,7 +324,12 @@ export class BaseTooltip<T = any>
   }
 
   hide() {
-    this.componentIns?.hide();
+    if (this.disableAnimation) {
+      // 如果禁用了动画就立即销毁，而不是等动画完成事件后才销毁
+      this._disposeTooltip();
+    } else {
+      this.componentIns?.hide();
+    }
   }
 
   updatePosition() {
@@ -432,7 +440,7 @@ export class BaseTooltip<T = any>
     this.hostHovered = false;
     await sleep(HIDDEN_DELAY);
     if (!this.tooltipHovered && !this.hostHovered) {
-      this.componentIns?.hide();
+      this.hide();
     }
   }
 
@@ -441,7 +449,7 @@ export class BaseTooltip<T = any>
     if (!hovered) {
       await sleep(HIDDEN_DELAY);
       if (!this.tooltipHovered && !this.hostHovered) {
-        this.componentIns?.hide();
+        this.hide();
       }
     }
   }
@@ -456,7 +464,7 @@ export class BaseTooltip<T = any>
       (this.hideOnClick ||
         !this.componentIns.elRef.nativeElement.contains(event.target as Node))
     ) {
-      this.componentIns?.hide();
+      this.hide();
     }
   }
 
@@ -465,6 +473,6 @@ export class BaseTooltip<T = any>
   }
 
   protected onBlur() {
-    this.componentIns?.hide();
+    this.hide();
   }
 }
