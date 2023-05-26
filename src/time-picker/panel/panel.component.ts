@@ -44,9 +44,6 @@ const bem = buildBem('aui-time-picker-panel');
       multi: true,
     },
   ],
-  host: {
-    mousedown: '$event.preventDefault()',
-  },
 })
 export class TimePickerPanelComponent
   extends CommonFormControl<Dayjs>
