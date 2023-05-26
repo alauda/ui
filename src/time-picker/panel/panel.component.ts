@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  HostListener,
   Input,
   OnChanges,
   Output,
@@ -44,9 +45,6 @@ const bem = buildBem('aui-time-picker-panel');
       multi: true,
     },
   ],
-  host: {
-    mousedown: '$event.preventDefault()',
-  },
 })
 export class TimePickerPanelComponent
   extends CommonFormControl<Dayjs>
@@ -76,6 +74,10 @@ export class TimePickerPanelComponent
 
   get totalWidth() {
     return this.enabledColumns * TIME_PICKER_COLUMN_WIDTH;
+  }
+
+  @HostListener('mousedown') onMousedown() {
+    return false;
   }
 
   @Input()
