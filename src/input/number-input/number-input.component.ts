@@ -70,6 +70,9 @@ export class NumberInputComponent
   @Input()
   angleControls = false;
 
+  @Input()
+  clearable = false;
+
   @ViewChild('inputRef', { read: ElementRef })
   inputRef: ElementRef<HTMLInputElement>;
 
@@ -101,17 +104,21 @@ export class NumberInputComponent
   }
 
   override modelOut(value: number) {
-    return Math.max(
-      coerceNumber(this.min, Number.MIN_SAFE_INTEGER),
-      Math.min(
-        coerceNumber(this.max, Number.MAX_SAFE_INTEGER),
-        this.parsePrecision(value),
-      ),
-    );
+    return value === null && this.clearable
+      ? value
+      : Math.max(
+          coerceNumber(this.min, Number.MIN_SAFE_INTEGER),
+          Math.min(
+            coerceNumber(this.max, Number.MAX_SAFE_INTEGER),
+            this.parsePrecision(value),
+          ),
+        );
   }
 
   inputChanged(value: string) {
-    this.emitModel(coerceNumber(value, this.model));
+    this.emitModel(
+      coerceNumber(value, !value && this.clearable ? null : this.model),
+    );
   }
 
   takeOneStep(positive: boolean) {

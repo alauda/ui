@@ -154,6 +154,27 @@ describe('InputNumberComponent', () => {
     tick();
     expect(inputEl.disabled).toBeTruthy();
   }));
+
+  it('should input value cannot be cleared by default', fakeAsync(() => {
+    ins.value = 2;
+    fixture.detectChanges();
+    tick();
+    ins.inputNumberRef.inputChanged('');
+    fixture.detectChanges();
+    tick();
+    expect(ins.value).toBe(2);
+  }));
+
+  it('should input value can be cleared', fakeAsync(() => {
+    ins.value = 2;
+    ins.clearable = true;
+    fixture.detectChanges();
+    tick();
+    ins.inputNumberRef.inputChanged('');
+    fixture.detectChanges();
+    tick();
+    expect(ins.value).toBe(null);
+  }));
 });
 
 @Component({
@@ -168,6 +189,7 @@ describe('InputNumberComponent', () => {
       [disabled]="disabled"
       [(ngModel)]="value"
       [placeholder]="placeholder"
+      [clearable]="clearable"
     ></aui-number-input>
   `,
 })
@@ -180,6 +202,7 @@ class TestComponent {
   disabled: boolean;
   placeholder = 'placeholder';
   value = 0;
+  clearable = false;
 
   @ViewChild('inputNumberRef', { static: true })
   inputNumberRef: NumberInputComponent;
