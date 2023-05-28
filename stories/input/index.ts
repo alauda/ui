@@ -378,6 +378,7 @@ storiesOf('Input', module)
     const value = number('value', 4);
     const disabled = boolean('disabled', false);
     const controls = boolean('controls', true);
+    const clearable = boolean('clearable', false);
 
     return {
       moduleMetadata: {
@@ -394,6 +395,7 @@ storiesOf('Input', module)
           [disabled]="disabled"
           placeholder="placeholder"
           [(ngModel)]="value"
+          [clearable]="clearable"
         ></aui-number-input>
         <br />
         <br />
@@ -408,6 +410,7 @@ storiesOf('Input', module)
           [disabled]="disabled"
           placeholder="placeholder"
           [(ngModel)]="value"
+          [clearable]="clearable"
         ></aui-number-input>
         <br />
         <br />
@@ -422,6 +425,7 @@ storiesOf('Input', module)
           [disabled]="disabled"
           placeholder="placeholder"
           [(ngModel)]="value"
+          [clearable]="clearable"
         >
           <span auiInputAddonBefore>Memory</span>
           <span auiInputAddonAfter>Gi</span>
@@ -439,6 +443,7 @@ storiesOf('Input', module)
         value,
         disabled,
         controls,
+        clearable,
       },
     };
   })
