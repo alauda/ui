@@ -1,14 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { storiesOf } from '@storybook/angular';
 
-import { Sort, SortModule } from '@alauda/ui';
-
-storiesOf('Sort', module).add('sort', () => ({
-  moduleMetadata: {
-    imports: [SortModule],
-  },
-  component: DemoComponent,
-}));
+import { Sort } from '@alauda/ui';
 
 interface Element {
   id: number;
@@ -51,7 +43,7 @@ const DATA_SOURCE: Element[] = [
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-class DemoComponent {
+export class DemoComponent {
   dataSource = DATA_SOURCE.slice();
 
   sortData(sort: Sort) {

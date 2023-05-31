@@ -1,5 +1,6 @@
 @import '../theme/var';
 @import '../theme/mixin';
+@import '../../node_modules/@angular/cdk/overlay-prebuilt';
 
 .cdk-overlay-pane.aui-message-overlay-pane {
   z-index: 1001;

@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DATA_SOURCE } from '../data';
 
 @Component({
+  selector: 'expand-table-demo',
   templateUrl: 'expand-demo.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

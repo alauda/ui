@@ -19,7 +19,7 @@ import {
 } from '@alauda/ui';
 
 <Meta
-  title="Table"
+  title="Tables"
   decorators={[
     moduleMetadata({
       imports: [
@@ -30,12 +30,13 @@ import {
         TableModule,
         ButtonModule,
       ],
-      decorators: [
+      declarations: [
         SortDemoComponent,
         ExpandDemoComponent,
         FixedSizeVirtualScrollDemoComponent,
         StickyColumnsDemoComponent,
         StickyHeadersDemoComponent,
+        PlaceholderComponent,
       ],
     }),
   ]}
@@ -105,11 +106,9 @@ Table 组件基于 CdkTable 开发, 加了一些 alauda 自定义的表格样式
 <Canvas>
   <Story
     name="Placeholder"
-    height="600px"
+    height="300px"
   >
-    {{
-      component: PlaceholderComponent,
-    }}
+    {{ template: '<placeholder-table-demo></placeholder-table-demo>' }}
   </Story>
 </Canvas>
 
@@ -120,9 +119,7 @@ Table 组件基于 CdkTable 开发, 加了一些 alauda 自定义的表格样式
     name="Sort"
     height="540px"
   >
-    {{
-      component: SortDemoComponent,
-    }}
+    {{ template: '<sort-table-demo></sort-table-demo>' }}
   </Story>
 </Canvas>
 
@@ -133,9 +130,7 @@ Table 组件基于 CdkTable 开发, 加了一些 alauda 自定义的表格样式
     name="Expand"
     height="600px"
   >
-    {{
-      component: ExpandDemoComponent,
-    }}
+    {{ template: '<expand-table-demo></expand-table-demo>' }}
   </Story>
 </Canvas>
 
@@ -146,9 +141,7 @@ Table 组件基于 CdkTable 开发, 加了一些 alauda 自定义的表格样式
     name="Sticky Header"
     height="600px"
   >
-    {{
-      component: StickyHeadersDemoComponent,
-    }}
+    {{ template: '<sticky-headers-table-demo></sticky-headers-table-demo>' }}
   </Story>
 </Canvas>
 
@@ -217,9 +210,7 @@ Table 组件基于 CdkTable 开发, 加了一些 alauda 自定义的表格样式
     name="Sticky Columns"
     height="500px"
   >
-    {{
-      component: StickyColumnsDemoComponent,
-    }}
+    {{ template: '<sticky-columns-table-demo></sticky-columns-table-demo>' }}
   </Story>
 </Canvas>
 

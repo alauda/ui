@@ -2,7 +2,6 @@
 
 exports[`Status Bar should match snapshot 1`] = `
 <ng-component
-  __ngContext__={[Function LRootView]}
   status1={[Function Array]}
   status2={[Function Array]}
 >
@@ -88,7 +87,6 @@ exports[`Status Bar should match snapshot 1`] = `
 
 exports[`Status Bar should match snapshot 2`] = `
 <ng-component
-  __ngContext__={[Function LRootView]}
   status1={[Function Array]}
   status2={[Function Array]}
 >

@@ -24,6 +24,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist",
+            "index": "",
+            "main": "",
             "tsConfig": "tsconfig.json",
             "inlineStyleLanguage": "scss",
             "styles": ["src/theme/style.scss"]
@@ -54,6 +56,28 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "storybook:build",
+            "compodoc": false,
+            "port": 6006
+          },
+          "compodoc": true,
+          "compodocArgs": ["-e", "json", "-d", "."]
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "storybook:build",
+            "compodoc": false,
+            "outputDir": "dist"
+          },
+          "compodoc": true,
+          "compodocArgs": ["-e", "json", "-d", "."]
         }
       }
     }

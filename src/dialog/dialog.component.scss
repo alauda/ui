@@ -1,6 +1,7 @@
 @import '../theme/var';
 @import '../theme/mixin';
 @import '../theme/motion';
+@import '../../node_modules/@angular/cdk/overlay-prebuilt';
 
 .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.aui-dialog-backdrop {
   @include modal-backdrop;
