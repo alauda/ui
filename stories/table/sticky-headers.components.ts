@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DATA_SOURCE } from './data';
 
 @Component({
+  selector: 'sticky-headers-table-demo',
   template: `
     <div auiTableScrollWrapper="300px">
       <aui-table

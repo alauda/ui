@@ -75,7 +75,7 @@ $block: 'aui-search';
 
       &.hasButton.isClearable .#{$block}__input {
         padding-right: calc(
-          #{map-get($map, icon-size)}*
+          #{map-get($map, icon-size)} *
             2 +
             #{use-var(inline-padding-xs)} *
             4 +
@@ -101,7 +101,7 @@ $block: 'aui-search';
     align-items: center;
   }
 
-  &:not(.isDisabled):not(.isSearching) &__button {
+  &:not(.isDisabled, .isSearching) &__button {
     cursor: pointer;
 
     &:hover {

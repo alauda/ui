@@ -8,6 +8,7 @@ import {
 import { DialogService, DialogSize } from '@alauda/ui';
 
 @Component({
+  selector: 'basic-dialog-demo',
   template: `
     <button
       aui-button="primary"
@@ -62,6 +63,7 @@ export class BasicDialogComponent {
 }
 
 @Component({
+  selector: 'fit-viewport-dialog-demo',
   template: `
     <button
       aui-button="primary"
@@ -122,6 +124,7 @@ export class FitViewportDialogComponent {
 }
 
 @Component({
+  selector: 'full-screen-dialog-demo',
   template: `
     <button
       aui-button="primary"
@@ -175,6 +178,7 @@ export class FullScreenDialogComponent {
 }
 
 @Component({
+  selector: 'confirm-dialog-demo',
   template: `<button
       aui-button="primary"
       (click)="openString()"

@@ -3,6 +3,7 @@ import chroma from 'chroma-js';
 import { saveAs } from 'file-saver';
 
 @Component({
+  selector: 'customize-demo',
   templateUrl: './template.html',
   styleUrls: ['./style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

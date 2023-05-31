@@ -2,7 +2,6 @@
 
 exports[`PaginatorComponent should change page size correctly 1`] = `
 <ng-component
-  __ngContext__={[Function LRootView]}
   currentPage={[Function Number]}
   disabled="false"
   layout={[Function Array]}
@@ -222,7 +221,6 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
 
 exports[`PaginatorComponent should render current template 1`] = `
 <ng-component
-  __ngContext__={[Function LRootView]}
   currentPage={[Function Number]}
   disabled="false"
   layout={[Function Array]}
@@ -500,7 +498,6 @@ exports[`PaginatorComponent should render current template 1`] = `
 
 exports[`PaginatorComponent should render current template 2`] = `
 <ng-component
-  __ngContext__={[Function LRootView]}
   currentPage={[Function Number]}
   disabled={[Function Boolean]}
   layout={[Function Array]}

@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BreadcrumbComponent should render correct template 1`] = `
-<ng-component
-  __ngContext__={[Function LRootView]}
->
+<ng-component>
   <aui-breadcrumb>
     <div
       class="aui-breadcrumb"

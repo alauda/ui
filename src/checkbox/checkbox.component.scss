@@ -69,7 +69,7 @@ $block: 'aui-checkbox';
     border-color: use-rgb(primary);
     background-color: use-rgb(main-bg);
 
-    &::before {
+    &:before {
       content: '';
       display: block;
       width: 8px;
@@ -82,7 +82,7 @@ $block: 'aui-checkbox';
   &.isIndeterminate.isDisabled &__pointer {
     border-color: use-rgb(p-4);
 
-    &::before {
+    &:before {
       background-color: use-rgb(p-4);
     }
   }

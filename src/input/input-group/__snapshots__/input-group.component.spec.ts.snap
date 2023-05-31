@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputGroupComponent should match snapshot 1`] = `
-<ng-component
-  __ngContext__={[Function LRootView]}
->
+<ng-component>
   <aui-input-group>
     <div
       class="hasAddonBefore hasAddonAfter hasPrefix hasSuffix aui-input-group aui-input-group--medium"

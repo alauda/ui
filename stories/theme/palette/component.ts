@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  selector: 'palette-demo',
   templateUrl: './template.html',
   styleUrls: ['./style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
