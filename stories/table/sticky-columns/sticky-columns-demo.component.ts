@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
+  selector: 'sticky-columns-table-demo',
   templateUrl: 'sticky-columns-demo.component.html',
   styleUrls: ['sticky-columns-demo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

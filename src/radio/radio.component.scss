@@ -8,6 +8,7 @@ $block: 'aui-radio';
   align-items: center;
   min-height: use-var(inline-height-m);
   @include text-set(m, main);
+
   position: relative;
 
   &__input {

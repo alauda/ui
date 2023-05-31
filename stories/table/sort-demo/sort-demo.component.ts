@@ -5,6 +5,7 @@ import { DATA_SOURCE, Element } from '../data';
 import { Sort } from '@alauda/ui';
 
 @Component({
+  selector: 'sort-table-demo',
   templateUrl: 'sort-demo.component.html',
   styleUrls: ['sort-demo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,9 +1,7 @@
-import { StorybookConfig } from '@storybook/core-common';
+import type { StorybookConfig } from "@storybook/angular";
 
 const config: StorybookConfig = {
-  core: {
-    builder: 'webpack5',
-  },
+  core: {},
   stories: [
     '../stories/**/index.@(js|ts)',
     '../stories/**/*.stories.@(js|ts|mdx)',
@@ -21,13 +19,25 @@ const config: StorybookConfig = {
       use: [
         {
           loader: require.resolve('@storybook/source-loader'),
-          options: { parser: 'typescript' },
+          options: {
+            parser: 'typescript',
+          },
         },
       ],
       enforce: 'pre',
     });
     return config;
   },
+  framework: {
+    name: '@storybook/angular',
+    options: {},
+  },
+  docs: {
+    autodocs: true,
+  },
+  features: {
+    legacyMdx1: true, // Enables MDX v1 support
+    storyStoreV7: false, // Opt out of on-demand story loading
+  },
 };
-
 export default config;

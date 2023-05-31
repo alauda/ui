@@ -4,60 +4,11 @@ import {
   Input,
   TemplateRef,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { storiesOf } from '@storybook/angular';
 
-import {
-  ButtonModule,
-  DrawerModule,
-  DrawerRef,
-  DrawerService,
-  InputModule,
-  SwitchModule,
-} from '@alauda/ui';
-
-storiesOf('Drawer', module)
-  .add('drawer', () => ({
-    moduleMetadata: {
-      imports: [
-        ButtonModule,
-        DrawerModule,
-        InputModule,
-        FormsModule,
-        SwitchModule,
-      ],
-      declarations: [DemoComponent],
-    },
-    component: DemoComponent,
-  }))
-  .add('mask drawer', () => ({
-    moduleMetadata: {
-      imports: [ButtonModule, DrawerModule],
-      declarations: [MaskDrawerComponent],
-    },
-    component: MaskDrawerComponent,
-  }))
-  .add('service create drawer', () => ({
-    moduleMetadata: {
-      imports: [ButtonModule, DrawerModule],
-      declarations: [ServiceDrawerComponent],
-    },
-    component: ServiceDrawerComponent,
-  }))
-  .add('service create component drawer', () => ({
-    moduleMetadata: {
-      imports: [ButtonModule, DrawerModule],
-      declarations: [
-        ServiceDrawerCptComponent,
-        DrawerContentComponent,
-        DrawerContent1Component,
-      ],
-      entryComponents: [DrawerContentComponent, DrawerContent1Component],
-    },
-    component: ServiceDrawerCptComponent,
-  }));
+import { DrawerRef, DrawerService } from '@alauda/ui';
 
 @Component({
+  selector: 'drawer-demo',
   template: `
     <button
       aui-button="primary"
@@ -95,7 +46,7 @@ storiesOf('Drawer', module)
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-class DemoComponent {
+export class DemoComponent {
   offsetY = 0;
   visible = false;
   divider = true;
@@ -109,6 +60,7 @@ class DemoComponent {
 }
 
 @Component({
+  selector: 'mask-drawer-demo',
   template: `
     <button
       aui-button="primary"
@@ -141,6 +93,7 @@ export class MaskDrawerComponent {
 }
 
 @Component({
+  selector: 'service-drawer-demo',
   template: `
     <button
       aui-button="primary"
@@ -210,6 +163,7 @@ export class ServiceDrawerComponent {
 }
 
 @Component({
+  selector: 'service-drawer-cpt-demo',
   template: `
     <button
       aui-button="primary"
