@@ -161,6 +161,9 @@ $block: 'aui-number-input';
       width: calc(use-var(inline-height-m) - 2px);
       height: calc(50% - 0.5px) !important;
       border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &:focus {
         z-index: 1;

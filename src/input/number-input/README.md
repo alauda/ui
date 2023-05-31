@@ -13,3 +13,4 @@
 | controls         | 是否使用控制按钮       | boolean       | true                    |
 | placeholder      | 占位符                 | string        | ''                      |
 | controlsPosition | 控制按钮位置(暂未实现) | string        | -                       |
+| clearable        | 是否可以清空已输入的值 | boolean       | false                   |
