@@ -46,8 +46,6 @@ export class DialogService {
     compOrTempRef: ComponentType<T> | TemplateRef<T>,
     config: DialogConfig<D> = null,
   ): DialogRef<T, R> {
-    this.hiddenPrevDialog();
-
     config = { ...new DialogConfig(), ...config };
 
     const overlayRef = this.createOverlay(config);
@@ -62,7 +60,6 @@ export class DialogService {
     dialogRef.updatePosition().updateSize();
     dialogRef.afterClosed().subscribe(() => {
       this.removeDialog(dialogRef);
-      this.showPrevDialog();
     });
 
     return dialogRef;
@@ -98,20 +95,6 @@ export class DialogService {
     });
   }
 
-  private hiddenPrevDialog() {
-    if (this.openDialogs.length > 0) {
-      this.openDialogs[this.openDialogs.length - 1].dialogInstance.hidden =
-        true;
-    }
-  }
-
-  private showPrevDialog() {
-    if (this.openDialogs.length > 0) {
-      this.openDialogs[this.openDialogs.length - 1].dialogInstance.hidden =
-        false;
-    }
-  }
-
   private createOverlay(config: DialogConfig): OverlayRef {
     const overlayConfig = this.getOverlayConfig(config);
     return this.overlay.create(overlayConfig);
@@ -121,7 +104,7 @@ export class DialogService {
     return {
       positionStrategy: this.overlay.position().global(),
       scrollStrategy: this.overlay.scrollStrategies.block(),
-      hasBackdrop: dialogConfig.hasBackdrop && !this.openDialogs.length,
+      hasBackdrop: dialogConfig.hasBackdrop,
       backdropClass: DialogService.DIALOG_BACKDROP_CLASS,
       panelClass:
         dialogConfig.fitViewport || dialogConfig.size === DialogSize.Fullscreen

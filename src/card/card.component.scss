@@ -16,11 +16,7 @@ $b: aui-card;
     display: flex;
     align-items: center;
     padding: 0;
-    @include text-set(xxl, main, bolder);
-
-    &--secondary {
-      @include text-set($size: xl, $weight: bolder);
-    }
+    @include text-set(xl, main, bolder);
 
     + .#{$b}__content {
       margin-top: use-var(spacing-xl);

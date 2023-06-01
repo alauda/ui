@@ -4,10 +4,12 @@ import { Directive, Input } from '@angular/core';
   selector: '[auiCardHeader]',
   host: {
     '[class.aui-card__header]': 'true',
-    '[class.aui-card__header--secondary]': 'size === "secondary"',
   },
 })
 export class CardHeaderDirective {
+  /**
+   * @deprecated
+   */
   @Input()
   size: 'default' | 'secondary' = 'default';
 }
