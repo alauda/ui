@@ -55,7 +55,6 @@ export class DialogComponent {
 
   config: DialogConfig;
 
-  hidden = false;
   // animation state
   state: 'void' | 'enter' | 'exit' = 'enter';
 
@@ -79,14 +78,6 @@ export class DialogComponent {
     return `${this.bem.block(this.config.size)} ${
       this.config.fitViewport ? this.bem.modifier('fit-viewport') : ''
     } ${this.config.customClass || ''}`;
-  }
-
-  get customStyle() {
-    return this.hidden
-      ? {
-          opacity: 0,
-        }
-      : {};
   }
 
   get zoomClassMap() {

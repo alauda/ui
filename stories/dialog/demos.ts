@@ -38,9 +38,33 @@ import { DialogService, DialogSize } from '@alauda/ui';
       <aui-dialog-footer>
         <button
           aui-button="primary"
-          [auiDialogClose]="true"
+          (click)="open(dialog1)"
         >
-          Confirm
+          Open Next
+        </button>
+        <button
+          aui-button
+          [auiDialogClose]="false"
+        >
+          Cancel
+        </button>
+      </aui-dialog-footer>
+    </ng-template>
+    <ng-template #dialog1>
+      <aui-dialog-header>
+        <aui-icon
+          icon="exclamation_circle_s"
+          background="circle"
+        ></aui-icon>
+        <span>What can Kubernetes do for you?</span>
+      </aui-dialog-header>
+      <aui-dialog-content> </aui-dialog-content>
+      <aui-dialog-footer>
+        <button
+          aui-button="primary"
+          (click)="open(dialog)"
+        >
+          Open Next
         </button>
         <button
           aui-button
