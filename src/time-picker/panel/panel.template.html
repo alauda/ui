@@ -93,9 +93,6 @@
     </div>
   </ng-container>
   <ng-template #customFooter>
-    <ng-container
-      [ngTemplateOutlet]="footerTemplate"
-      [ngTemplateOutletContext]="{ $implicit: this }"
-    ></ng-container>
+    <ng-container [ngTemplateOutlet]="footerTemplate"></ng-container>
   </ng-template>
 </div>
