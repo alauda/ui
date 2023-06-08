@@ -1,0 +1,26 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import * as basic from './basic.stories';
+import * as group from './group.stories';
+
+<Meta title="Example/Checkbox" />
+
+# Checkbox 多选框
+
+## 基本用法
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+<Controls of={basic.Basic} />
+
+## 多选组合
+
+<Canvas
+  of={group.Group}
+  meta={group}
+></Canvas>
+
+<Controls of={group.Group} />

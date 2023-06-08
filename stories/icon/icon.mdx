@@ -1,0 +1,61 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as basic from './basic.stories';
+import * as list from './list.stories';
+
+<Meta title="Example/Icon" />
+
+# Icon
+
+Icon 模块内置了一套常用的图标，并且支持导入自定义的 [SVG symbol](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/symbol) 图标。
+
+## 内置图标使用方法
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+## 引入自定义图标
+
+可以通过 `IconRegisterService` 注册 `SVG symbol` 或自行将其添加到 DOM 中。symbol id 格式为 `<prefix>-<icon name>`，使用时以 `:` 分隔图标前缀和图标名称。
+
+```typescript
+import customIcons from 'your_custom_icons_path.svg';
+
+@NgModule({
+  imports: [IconModule],
+})
+export class AppModule {
+  constructor(iconRegister: IconRegisterService) {
+    iconRegister.registrySvgSymbolsByUrl(customIcons);
+  }
+}
+```
+
+```html
+<!-- 自定义图标 -->
+<svg>
+  <symbol id="custom-spinner">...</symbol>
+</svg>
+
+<!-- 使用 -->
+<aui-icon icon="custom:spinner"></aui-icon>
+```
+
+## 图标列表
+
+<Canvas
+  of={list.List}
+  meta={list}
+></Canvas>
+
+## Inputs
+
+| 名称   | 类型              | 默认值 | 描述               |
+| ------ | ----------------- | ------ | ------------------ |
+| icon   | string            | -      | 图标名称           |
+| link   | string            | -      | 外部图标地址       |
+| margin | 'left' \| 'right' | -      | 在图标一侧添加边距 |
+| size   | string            | -      | 图标大小           |
+| color  | string            | -      | 图标颜色           |

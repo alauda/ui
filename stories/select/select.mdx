@@ -1,0 +1,75 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import * as basic from './basic.stories';
+import * as group from './group.stories';
+import * as multiple from './multiple.stories';
+
+<Meta title="Example/Select" />
+
+# Select
+
+下拉选择框
+
+## 单选
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+<Controls of={basic.Basic} />
+
+## 单选分组
+
+<Canvas
+  of={group.Group}
+  meta={group}
+></Canvas>
+
+## 多选
+
+<Canvas
+  of={multiple.Multiple}
+  meta={multiple}
+></Canvas>
+
+## Select & MultiSelect Inputs
+
+| 名称               | 类型           | 默认值                  | 描述                                      |
+| ------------------ | -------------- | ----------------------- | ----------------------------------------- |
+| size               | ComponentSize  | ComponentSize.Medium    | 大小                                      |
+| value              | any            | -                       | 初始值                                    |
+| placeholder        | string         | -                       | 占位文本                                  |
+| disabled           | boolean        | false                   | 是否禁用                                  |
+| loading            | boolean        | false                   | 是否加载中                                |
+| clearable          | boolean        | false                   | 选项是否可清除                            |
+| filterable         | boolean        | true                    | 是否支持选项过滤                          |
+| defaultFirstOption | boolean        | true                    | 是否第一项作为默认选项                    |
+| lazy               | boolean        | true                    | 关闭候选项时是否缓存 Option 组件          |
+| filterFn           | OptionFilterFn | Array.property.includes | 自定义过滤方法，filterable 为 true 时设置 |
+| trackFn            | TrackFn        | val => val              | 返回 value 唯一标识符                     |
+
+## MultiSelect Inputs
+
+| 名称        | 类型       | 默认值 | 描述                 |
+| ----------- | ---------- | ------ | -------------------- |
+| tagClassFn  | TagClassFn | -      | 选中项的 class 定义  |
+| maxRowCount | number     | -      | 多选输入框的最大行数 |
+
+## Select & MultiSelect Outputs
+
+| 名称         | 类型   | 默认值 | 描述         |
+| ------------ | ------ | ------ | ------------ |
+| show         | -      | -      | 显示时调用   |
+| hide         | -      | -      | 隐藏时调用   |
+| filterChange | string | -      | input 值变化 |
+| valueChange  | any    | -      | 选中值变化   |
+
+## Option Inputs
+
+| 名称         | 类型                  | 默认值 | 描述                                                  |
+| ------------ | --------------------- | ------ | ----------------------------------------------------- |
+| label        | string or TemplateRef | -      | 选中后 select 显示的文案                              |
+| labelContext | Object                | -      | 当 label 为 template 时设置，传递到 template 的上下文 |
+| disabled     | boolean               | false  | 是否禁用                                              |
+| value        | any                   | -      | 选项的值                                              |

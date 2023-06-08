@@ -1,0 +1,54 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as autosize from './auto-size.stories';
+import * as inputGroup from './input-group.stories';
+import * as input from './input.stories';
+import * as numberInput from './number-input.stories';
+import * as searchInput from './search-input.stories';
+import * as tagsInput from './tags-input.stories';
+
+<Meta title="Example/Input" />
+
+# Input
+
+## input
+
+<Canvas
+  of={input.Input}
+  meta={input}
+></Canvas>
+
+## input group
+
+<Canvas
+  of={inputGroup.InputGroup}
+  meta={inputGroup}
+></Canvas>
+
+## tags input
+
+<Canvas
+  of={tagsInput.TagsInput}
+  meta={tagsInput}
+></Canvas>
+
+## search input
+
+<Canvas
+  of={searchInput.SearchInput}
+  meta={searchInput}
+></Canvas>
+
+## number input
+
+<Canvas
+  of={numberInput.NumberInput}
+  meta={numberInput}
+></Canvas>
+
+## autosize
+
+<Canvas
+  of={autosize.AutoSize}
+  meta={autosize}
+></Canvas>

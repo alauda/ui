@@ -1,0 +1,77 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as basic from './basic.stories';
+import * as expand from './expand.stories';
+import * as placeholder from './placeholder.stories';
+import * as sort from './sort.stories';
+import * as stickyColumns from './sticky-columns.stories';
+import * as stickyHeader from './sticky-header.stories';
+import * as stickyParent from './sticky-parent.stories';
+
+<Meta title="Example/Table" />
+
+# Table
+
+Table 组件基于 CdkTable 开发, 加了一些 alauda 自定义的表格样式
+
+## 基础使用
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+## Placeholder 使用
+
+<Canvas
+  of={placeholder.Placeholder}
+  meta={placeholder}
+></Canvas>
+
+## Sort 排序
+
+<Canvas
+  of={sort.Sort}
+  meta={sort}
+></Canvas>
+
+## expand 展开
+
+<Canvas
+  of={expand.Expand}
+  meta={expand}
+></Canvas>
+
+## Header 固定
+
+<Canvas
+  of={stickyHeader.StickyHeader}
+  meta={stickyHeader}
+></Canvas>
+
+## Header 相对父级元素固定
+
+<Canvas
+  of={stickyParent.StickyParent}
+  meta={stickyParent}
+></Canvas>
+
+## Sticky Columns 固定
+
+<Canvas
+  of={stickyColumns.StickyColumns}
+  meta={stickyColumns}
+></Canvas>
+
+## aui-table Inputs
+
+| 名称       | 类型  | 默认值 | 描述       |
+| ---------- | ----- | ------ | ---------- |
+| dataSource | array | -      | table 数据 |
+
+## Directives
+
+| 名称                  | 作用范围         | 描述                                                                                  |
+| --------------------- | ---------------- | ------------------------------------------------------------------------------------- |
+| auiTableScrollWrapper | aui-table 的父级 | 固定列时候需要在 aui-table 的外层包裹一层，提供左右滚动效果                           |
+| auiTableScrollable    | aui-table        | 表格内滚动指令，继承 cdkScrollable 指令，提供上下阴影滚动效果，固定表头时相对表格定位 |

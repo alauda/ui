@@ -1,0 +1,71 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as basic from './basic.stories';
+import * as disabled from './disabled.stories';
+import * as noTrigger from './no-trigger.stories';
+import * as notFirst from './not-first.stories';
+import * as suggestionsGroup from './suggestions-group.stories';
+
+<Meta title="Example/Autocomplete" />
+
+# Autocomplete
+
+自动补全组件
+
+## 基本自动补全
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+## Disabled
+
+<Canvas
+  of={disabled.Disabled}
+  meta={disabled}
+></Canvas>
+
+## 点击不显示推荐项
+
+<Canvas
+  of={noTrigger.NoTrigger}
+  meta={noTrigger}
+></Canvas>
+
+## 不默认选中第一个
+
+<Canvas
+  of={notFirst.NotFirst}
+  meta={notFirst}
+></Canvas>
+
+## 自动补全分组
+
+<Canvas
+  of={suggestionsGroup.SuggestionsGroup}
+  meta={suggestionsGroup}
+></Canvas>
+
+## Autocomplete Inputs
+
+| 名称                                  | 类型                                              | 默认值 | 描述                                                                           |
+| ------------------------------------- | ------------------------------------------------- | ------ | ------------------------------------------------------------------------------ |
+| auiAutocomplete                       | NgTemplate                                        | -      | 自动补全组件模板引用                                                           |
+| auiAutocompleteClass                  | string                                            | -      | 向自动补全组件添加类名                                                         |
+| auiAutocompleteFilterFn               | function: (inputValue,suggestionValue) => boolean | -      | 自动补全过滤器,传入参数为当前输入文本和 suggestion 的 value 值，符合条件的显示 |
+| auiAutocompleteDefaultFirstSuggestion | boolean                                           | true   | 下拉时自动选中第一个，回车即可选中                                             |
+| auiAutocompleteTrigger                | 'auto' \| 'input'                                 | 'auto' | 点击输入框时是否显示推荐项，默认 auto 为显示                                   |
+
+## Autocomplete Outputs
+
+| 名称                         | 回调参数 | 描述               |
+| ---------------------------- | -------- | ------------------ |
+| auiAutocompleteVisibleChange | boolean  | 自动补全打开或关闭 |
+
+## Suggestion Inputs
+
+| 名称     | 类型    | 默认值 | 描述                      |
+| -------- | ------- | ------ | ------------------------- |
+| value    | string  | -      | suggestion 条目对应的值   |
+| disabled | boolean | false  | 禁用 suggestion，不可选择 |

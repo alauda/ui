@@ -1,0 +1,25 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as basic from './basic.stories';
+
+<Meta title="Example/Scrolling" />
+
+# Scrolling
+
+虚拟滚动模块，继承自 [CdkScrolling](https://material.angular.io/cdk/scrolling/api) ，大数据量列表使用
+
+## 基本用法
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+## 基础 API
+
+| 名称                        | 类型      | 描述                       |
+| --------------------------- | --------- | -------------------------- |
+| aui-virtual-scroll-viewport | Component | 虚拟滚动容器               |
+| itemSize                    | Input     | 单个内容区域高度           |
+| scrolledIndexChange         | Output    | 视窗内第一个元素变化时发射 |
+| \*auiVirtualFor             | Directive | 替代 \*ngFor               |

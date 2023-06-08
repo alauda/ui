@@ -1,0 +1,18 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as AnchorStories from './anchor.stories';
+import * as windowStories from './window-scroller.stories';
+
+<Meta title="Example/Anchor" />
+
+# Anchor
+
+<Canvas
+  of={AnchorStories.innerScroller}
+  meta={AnchorStories}
+></Canvas>
+
+<Canvas
+  of={windowStories.WindowScroller}
+  meta={windowStories}
+></Canvas>

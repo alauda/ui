@@ -1,0 +1,22 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as customize from './customize.stories';
+import * as palette from './palette.stories';
+
+<Meta title="Example/Theme" />
+
+# Theme
+
+## Palette
+
+<Canvas
+  of={palette.Palette}
+  meta={palette}
+></Canvas>
+
+## Customize
+
+<Canvas
+  of={customize.Customize}
+  meta={customize}
+></Canvas>
