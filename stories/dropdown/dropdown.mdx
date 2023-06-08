@@ -1,0 +1,89 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as basic from './basic.stories';
+import * as button from './button.stories';
+import * as group from './group.stories';
+import * as submenu from './submenu.stories';
+import * as template from './template.stories';
+
+<Meta title="Example/Dropdown" />
+
+# Dropdown
+
+弹出一组操作的按钮。
+
+## 基础用法
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+## 二级菜单
+
+<Canvas
+  of={submenu.Submenu}
+  meta={submenu}
+></Canvas>
+
+## 分组菜单
+
+<Canvas
+  of={group.Group}
+  meta={group}
+></Canvas>
+
+## 下拉菜单按钮
+
+<Canvas
+  of={button.Button}
+  meta={button}
+></Canvas>
+
+## 复用菜单模板
+
+<Canvas
+  of={template.Template}
+  meta={template}
+></Canvas>
+
+## Dropdown Inputs
+
+| 名称                   | 类型               | 默认值               | 描述                                 |
+| ---------------------- | ------------------ | -------------------- | ------------------------------------ |
+| auiDropdown            | NgTemplate         | -                    | 弹出菜单的模板                       |
+| auiDropdownPosition    | string             | 'bottom end'         | 菜单弹出位置                         |
+| auiDropdownClass       | string             | -                    | 向弹出层容器添加类名                 |
+| auiDropdownTrigger     | TooltipTrigger     | TooltipTrigger.Click | 触发方式                             |
+| auiDropdownDisabled    | boolean            | false                | 禁用下拉菜单                         |
+| auiDropdownHideOnClick | boolean            | true                 | 点击菜单项时是否自动关闭弹出层       |
+| auiDropdownContext     | any                | -                    | 提供给 `auiMenuContent` 的模板上下文 |
+| auiDropdownActive      | string \| string[] | 'isActive'           | 弹出层打开时向宿主元素添加类名       |
+
+## Dropdown Outputs
+
+| 名称            | 回调参数 | 描述       |
+| --------------- | -------- | ---------- |
+| auiDropdownShow | void     | 弹出层打开 |
+| auiDropdownHide | void     | 弹出层关闭 |
+
+## Dropdown Button Inputs
+
+| 名称     | 类型          | 默认值               | 描述           |
+| -------- | ------------- | -------------------- | -------------- |
+| type     | ButtonType    | ButtonType.Default   | 按钮类型       |
+| plain    | boolean       | false                | 是否为朴素按钮 |
+| size     | ComponentSize | ComponentSize.Medium | 按钮大小       |
+| disabled | boolean       | false                | 禁用按钮       |
+
+## Dropdown Button Outputs
+
+| 名称        | 回调参数 | 描述       |
+| ----------- | -------- | ---------- |
+| buttonClick | void     | 按钮被点击 |
+
+## Menu Inputs
+
+| 名称 | 类型          | 默认值              | 描述     |
+| ---- | ------------- | ------------------- | -------- |
+| size | ComponentSize | ComponentSize.Small | 选项大小 |

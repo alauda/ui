@@ -1,0 +1,46 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as basic from './basic.stories';
+import * as inline from './inline.stories';
+import * as label from './label.stories';
+
+<Meta title="Example/Form" />
+
+# Form
+
+## 基础使用
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+## Form position top
+
+<Canvas
+  of={label.Label}
+  meta={label}
+></Canvas>
+
+## Form inline
+
+<Canvas
+  of={inline.Inline}
+  meta={inline}
+></Canvas>
+
+## aui-form Inputs
+
+| 名称                 | 类型                       | 默认值 | 描述                   |
+| -------------------- | -------------------------- | ------ | ---------------------- |
+| auiFormLabelWidth    | string                     | -      | label 宽度             |
+| auiFormLabelPosition | 'left' \| 'top' \| 'right' | -      | label 位置             |
+| auiFormInline        | boolean                    | -      | 表单结构是否为内联结构 |
+| auiFormEmptyAddon    | boolean                    | -      | 是否图标占位           |
+
+## aui-form-item Inputs
+
+| 名称  | 类型                           | 默认值 | 描述                       |
+| ----- | ------------------------------ | ------ | -------------------------- |
+| width | 'large' \| 'medium' \| 'small' | -      | item 的 content 宽度       |
+| plain | boolean                        | false  | control 为纯文本时缩小行高 |

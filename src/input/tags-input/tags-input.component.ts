@@ -16,7 +16,7 @@ import {
 } from '@angular/core';
 import {
   AsyncValidatorFn,
-  UntypedFormBuilder,
+  FormBuilder,
   NG_VALUE_ACCESSOR,
   NgControl,
   ValidatorFn,
@@ -160,7 +160,7 @@ export class TagsInputComponent
 
   constructor(
     cdr: ChangeDetectorRef,
-    private readonly fb: UntypedFormBuilder,
+    private readonly fb: FormBuilder,
     private readonly renderer: Renderer2,
     private readonly injector: Injector,
   ) {

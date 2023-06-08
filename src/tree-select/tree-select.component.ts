@@ -330,7 +330,7 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
   @ViewChild('titleRef', { static: true })
   titleRef: ElementRef<HTMLElement>;
 
-  @ViewChildren(TreeNodeComponent)
+  @ViewChildren('treeNodes')
   childNodes: QueryList<TreeNodeComponent<T>>;
 
   selected = false;

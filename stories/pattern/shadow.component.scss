@@ -1,0 +1,32 @@
+@import '../../src/theme/pattern';
+
+.container {
+  padding: 20px;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  background-color: #eee;
+}
+
+.card {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shadow-0 {
+  @include shadow-0;
+}
+
+.shadow-2 {
+  @include shadow-2;
+}
+
+.shadow-8 {
+  @include shadow-8;
+}
+
+.shadow-16 {
+  @include shadow-16;
+}

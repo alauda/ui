@@ -1,0 +1,40 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as basic from './basic.stories';
+import * as manual from './manual.stories';
+
+<Meta title="Example/Switch" />
+
+# Switch
+
+开关组件
+
+## 基本开关
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+## 手动控制开关态
+
+可以人为驱动 switch 的状态变化，实现更加精细的控制
+
+<Canvas
+  of={manual.Manual}
+  meta={manual}
+></Canvas>
+
+## Switch Inputs
+
+| 名称     | 类型    | 默认值 | 描述                  |
+| -------- | ------- | ------ | --------------------- |
+| value    | boolean | -      | switch value          |
+| disabled | boolean | false  | 禁用 switch           |
+| loading  | boolean | false  | 是否处于 loading 状态 |
+
+## Switch Outputs
+
+| 名称        | 回调参数 | 描述                 |
+| ----------- | -------- | -------------------- |
+| valueChange | void     | switch 的 value 变化 |

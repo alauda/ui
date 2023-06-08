@@ -1,0 +1,69 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import * as basic from './basic.stories';
+import * as check from './check.stories';
+import * as custom from './custom.stories';
+import * as icon from './icon.stories';
+
+<Meta title="Example/Tag" />
+
+# Tag
+
+标签
+
+## 基本
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+<Controls of={basic.Basic} />
+
+## 可勾选
+
+<Canvas
+  of={check.Check}
+  meta={check}
+></Canvas>
+
+## 自定义颜色
+
+<Canvas
+  of={custom.Custom}
+  meta={custom}
+></Canvas>
+
+## Icon
+
+<Canvas
+  of={icon.Icon}
+  meta={icon}
+></Canvas>
+
+## Tag Inputs
+
+| 名称      | 类型          | 默认值               | 描述                                            |
+| --------- | ------------- | -------------------- | ----------------------------------------------- |
+| type      | TagType       | TagType.Primary      | 标签类型                                        |
+| size      | ComponentSize | ComponentSize.Medium | 标签大小                                        |
+| color     | string        | -                    | 自定义颜色, `'BORDER_COLOR[,BACKGOUNRD_COLOR]'` |
+| border    | boolean       | false                | 是否添加边框                                    |
+| round     | boolean       | true                 | 是否为圆角                                      |
+| closeable | boolean       | false                | 是否可以关闭                                    |
+| solid     | boolean       | false                | 是否为实心                                      |
+| invalid   | boolean       | false                | 是否无效                                        |
+
+## Check Tag Inputs
+
+| 名称    | 类型          | 默认值               | 描述        |
+| ------- | ------------- | -------------------- | ----------- |
+| size    | ComponentSize | ComponentSize.Medium | 标签大小    |
+| round   | boolean       | true                 | 是否为圆角  |
+| checked | boolean       | false                | model value |
+
+## Check Tag Outputs
+
+| 名称          | 类型    | 默认值 | 描述               |
+| ------------- | ------- | ------ | ------------------ |
+| checkedChange | boolean | -      | 获取状态变化后的值 |

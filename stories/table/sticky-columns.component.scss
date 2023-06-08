@@ -1,0 +1,17 @@
+@import '../../src/theme/mixin';
+@import '../../src/theme/pattern';
+
+:host {
+  ::ng-deep {
+    .aui-table__header-cell,
+    .aui-table__cell {
+      flex: 1 0 100px;
+    }
+
+    .aui-table__header-cell {
+      @include text-overflow;
+    }
+  }
+
+  @include table-placeholder('.empty');
+}

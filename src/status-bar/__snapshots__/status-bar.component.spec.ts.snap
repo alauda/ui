@@ -187,7 +187,7 @@ exports[`Status Bar should match snapshot 3`] = `
       <aui-tooltip>
         <div
           class="ng-trigger ng-trigger-showHide aui-tooltip aui-tooltip--default aui-tooltip--top"
-          style="opacity:1;transform:scale(1);0:opacity;1:transform;"
+          style="opacity: 1; transform: scale(1);"
         >
             
           <div

@@ -1,0 +1,22 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as global from './global-style.stories';
+import * as shadow from './shadow.stories';
+
+<Meta title="Example/Pattern" />
+
+# Pattern
+
+## Global Style
+
+<Canvas
+  of={global.GlobalStyle}
+  meta={global}
+></Canvas>
+
+## Shadow
+
+<Canvas
+  of={shadow.Shadow}
+  meta={shadow}
+></Canvas>

@@ -46,6 +46,7 @@
     class="aui-tree-node__children"
   >
     <aui-tree-node
+      #treeNodes
       *ngFor="let data of nodeData.children; trackBy: trackByLabel"
       [nodeData]="data"
       [leafOnly]="leafOnly"

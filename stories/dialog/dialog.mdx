@@ -1,0 +1,79 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as basic from './basic.stories';
+import * as confirm from './confirm.stories';
+import * as fit from './fit.stories';
+import * as full from './full.stories';
+
+<Meta title="Example/Dialog" />
+
+# Dialog
+
+弹出对话框
+
+## 基本样式
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+## 对话框内滚动
+
+<Canvas
+  of={fit.Fit}
+  meta={fit}
+></Canvas>
+
+## 全屏对话框
+
+<Canvas
+  of={full.Full}
+  meta={full}
+></Canvas>
+
+## 确认对话框
+
+<Canvas
+  of={confirm.Confirm}
+  meta={confirm}
+></Canvas>
+
+## DialogService API
+
+### 打开组件或模板对话框
+
+`dialogService.open<T, D, R>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, config: DialogConfig<D>): DialogRef<T, R>`
+
+#### `DialogConfig<D>` Properties
+
+| 名称        | 类型       | 默认值         | 描述                                                   |
+| ----------- | ---------- | -------------- | ------------------------------------------------------ |
+| data        | `<D>`      | null           | 对话框组件可以通过 `InjectToken<DIALOG_DATA>` 注入数据 |
+| size        | DialogSize | DialogSize.Big | 对话框宽度                                             |
+| fitViewport | boolean    | false          | 是否在对话框内部滚动                                   |
+| hasBackdrop | boolean    | true           | 是否显示背景遮罩                                       |
+
+#### `DialogRef<R>` Properties
+
+| 名称        | 类型                  | 默认值 | 描述               |
+| ----------- | --------------------- | ------ | ------------------ |
+| close       | `(result: R) => void` | -      | 关闭当前对话框     |
+| afterClosed | `()=> Observable<R>`  | -      | 关闭对话框后的回调 |
+
+### 打开确认对话框
+
+`dialogService.confirm<T, R>(config: ConfirmDialogConfig<T, R>): Promise<T>`
+
+#### `ConfirmDialogConfig<T, R>` Properties
+
+| 名称          | 类型              | 默认值              | 描述               |
+| ------------- | ----------------- | ------------------- | ------------------ |
+| title         | string            | -                   | 标题文本           |
+| content       | string            | -                   | 内容文本           |
+| confirmType   | ConfirmType       | ConfirmType.Primary | 确认框类型         |
+| cancelButton  | boolean           | true                | 是否显示取消按钮   |
+| confirmText   | string            | OK                  | 确认按钮文本       |
+| cancelText    | string            | Cancel              | 取消按钮文本       |
+| beforeConfirm | `BeforeAction<T>` | -                   | 点击确认按钮时调用 |
+| beforeCancel  | `BeforeAction<T>` | -                   | 点击取消按钮时调用 |

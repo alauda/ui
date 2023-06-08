@@ -1,0 +1,38 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as BasicDrawerStories from './basic-drawer.stories';
+import * as MaskDrawerStories from './mask-drawer.stories';
+import * as ServiceCptDrawerStories from './service-drawer-cpt.stories';
+import * as ServiceDrawerStories from './service-drawer.stories';
+
+<Meta title="Example/Drawer" />
+
+# Drawer
+
+## Basic
+
+<Canvas
+  of={BasicDrawerStories.BasicDrawer}
+  meta={BasicDrawerStories}
+></Canvas>
+
+## Mask Drawer
+
+<Canvas
+  of={MaskDrawerStories.MaskDrawer}
+  meta={MaskDrawerStories}
+></Canvas>
+
+## Service Create Drawer
+
+<Canvas
+  of={ServiceDrawerStories.ServiceDrawer}
+  meta={ServiceDrawerStories}
+></Canvas>
+
+## Service Create Component Drawer
+
+<Canvas
+  of={ServiceCptDrawerStories.ServiceCptDrawer}
+  meta={ServiceCptDrawerStories}
+></Canvas>
