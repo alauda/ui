@@ -76,6 +76,10 @@
       cursor: not-allowed;
     }
 
+    &[disabled] > * {
+      pointer-events: none;
+    }
+
     aui-icon:first-child {
       margin-right: use-var(spacing-m);
     }
