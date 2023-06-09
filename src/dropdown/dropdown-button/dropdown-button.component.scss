@@ -31,12 +31,13 @@
   &__content.aui-button {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
+    z-index: 1;
 
     &:not([disabled]) {
       &:hover,
       &:active,
       &:focus {
-        z-index: 1;
+        z-index: 2;
       }
     }
   }
@@ -44,14 +45,15 @@
   &__trigger.aui-button {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+    z-index: 1;
 
     &[disabled] {
-      z-index: -1;
+      z-index: 0;
     }
 
     &:not([disabled]) {
       &:focus {
-        z-index: 1;
+        z-index: 2;
       }
     }
   }
