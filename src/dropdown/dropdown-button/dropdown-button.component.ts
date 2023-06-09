@@ -1,16 +1,21 @@
 import {
+  AfterContentInit,
   ChangeDetectionStrategy,
   Component,
   ContentChild,
+  ContentChildren,
   EventEmitter,
   Input,
   Output,
+  QueryList,
   ViewEncapsulation,
 } from '@angular/core';
+import { Observable, map, startWith } from 'rxjs';
 
 import { ButtonType } from '../../button';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, coerceAttrBoolean } from '../../utils';
+import { MenuItemComponent } from '../menu-item/menu-item.component';
 import { MenuComponent } from '../menu/menu.component';
 
 @Component({
@@ -21,7 +26,7 @@ import { MenuComponent } from '../menu/menu.component';
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class DropdownButtonComponent {
+export class DropdownButtonComponent implements AfterContentInit {
   bem: Bem = buildBem('aui-dropdown-button');
 
   @Input()
@@ -51,9 +56,17 @@ export class DropdownButtonComponent {
   @ContentChild(MenuComponent, { static: true })
   menu: MenuComponent;
 
-  get disableTrigger() {
-    return !this.menu?.hasEnabledItem;
-  }
+  @ContentChildren(MenuItemComponent, { descendants: true })
+  private readonly menuItems: QueryList<MenuItemComponent>;
 
   private _disabled = false;
+
+  disableTrigger$: Observable<boolean>;
+
+  ngAfterContentInit() {
+    this.disableTrigger$ = this.menuItems.changes.pipe(
+      startWith(null),
+      map(() => this.menuItems.length === 0),
+    );
+  }
 }

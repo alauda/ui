@@ -18,7 +18,7 @@
     [plain]="plain"
     [size]="size"
     [auiDropdown]="menu"
-    [disabled]="disableTrigger"
+    [disabled]="disableTrigger$ | async"
   >
     <aui-icon icon="angle_down"></aui-icon>
   </button>
