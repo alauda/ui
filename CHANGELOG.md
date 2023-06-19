@@ -1,5 +1,19 @@
 # Changelog
 
+## 6.5.9
+
+### Patch Changes
+
+- [#475](https://github.com/alauda/ui/pull/475) [`71a60cc`](https://github.com/alauda/ui/commit/71a60cc050aaf42445fe01e3ed9c083edcb0f153) Thanks [@2eron](https://github.com/2eron)! - feat: number input allow clear
+
+- [#471](https://github.com/alauda/ui/pull/471) [`ca276e0`](https://github.com/alauda/ui/commit/ca276e0ecae6fb238166e6a837cebbac7cefbd70) Thanks [@igauch](https://github.com/igauch)! - fix: tab group auto scroll to active label when init
+
+  feat: optimize disabled animation in base tooltip
+
+- [#474](https://github.com/alauda/ui/pull/474) [`0bb4a32`](https://github.com/alauda/ui/commit/0bb4a32a5166f7aaa39e4c4f332c3a5d21033425) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - refactor: mod panel host binding method
+
+- [#459](https://github.com/alauda/ui/pull/459) [`54d15b3`](https://github.com/alauda/ui/commit/54d15b3dd7811504de0915c7e856177434807776) Thanks [@EdisonSu768](https://github.com/EdisonSu768)! - fix: overlay-prebuilt not working in drawer
+
 ## 6.5.8
 
 ### Patch Changes
