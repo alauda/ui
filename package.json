@@ -1,6 +1,6 @@
 {
   "name": "@alauda/ui",
-  "version": "6.5.7",
+  "version": "6.5.7-prod-3.12-appark-0",
   "description": "Angular UI components by Alauda Frontend Team.",
   "repository": "git+https://github.com/alauda/alauda-ui.git",
   "author": "Alauda Frontend",
