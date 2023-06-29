@@ -12,7 +12,7 @@ import { DialogService } from '../dialog.service';
 import { getClosestDialog } from '../utils';
 
 @Directive({
-  selector: 'button[auiDialogClose]',
+  selector: '[auiDialogClose]',
   exportAs: 'auiDialogClose',
 })
 export class DialogCloseDirective implements OnInit {
