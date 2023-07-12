@@ -66,6 +66,10 @@
   }
 
   &__indicator {
+    &:not(.isVisible) {
+      visibility: hidden;
+    }
+
     &:hover {
       color: use-rgb(primary);
     }
