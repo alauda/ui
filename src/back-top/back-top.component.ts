@@ -88,8 +88,29 @@ export class BackTopComponent {
   }
 
   handleClick(event: Event) {
-    this._scrollTarget.scrollTo({ top: 0, behavior: 'smooth' });
+    this.scrollToTop(300);
     this.click.emit(event);
+  }
+
+  scrollToTop(duration: number) {
+    const startHeight = this.getTargetScrollTop(this._scrollTarget);
+    let startTime: number;
+
+    const scrollStep = (timestamp: number) => {
+      if (!startTime) {
+        startTime = timestamp;
+      }
+      const scrollHeight = Math.max(
+        startHeight - ((timestamp - startTime) / duration) * startHeight,
+        0,
+      );
+
+      this._scrollTarget.scrollTo(0, scrollHeight);
+      if (scrollHeight) {
+        requestAnimationFrame(scrollStep);
+      }
+    };
+    requestAnimationFrame(scrollStep);
   }
 
   getTarget(target: TargetType): Element | Window {
