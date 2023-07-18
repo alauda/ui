@@ -17,8 +17,9 @@
       [icon]="'spinner'"
     ></aui-icon>
     <aui-icon
-      *ngIf="nodeData.children && !nodeData.loading"
+      *ngIf="!nodeData.loading"
       class="aui-tree-node__indicator"
+      [class.isVisible]="nodeData.children"
       margin="left"
       size="16"
       [icon]="nodeData.expanded ? 'angle_down' : 'angle_right'"

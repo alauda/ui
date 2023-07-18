@@ -119,15 +119,33 @@ export default class TreeSelectComponent {
       expandedIcon: 'folder_open',
       children: [
         {
+          label: 'c-0',
+          value: 'c-0',
+          icon: 'folder',
+          children: [
+            {
+              label: 'c-0-1',
+              value: 'c-0-1',
+              icon: 'file',
+            },
+            {
+              label: 'c-0-2',
+              value: 'c-0-2',
+              icon: 'file',
+            },
+          ],
+        },
+        {
           label: 'c-1',
           value: 'c-1',
-          icon: 'file',
+          icon: 'folder',
         },
         {
           label: 'c-2',
           value: 'c-2',
           icon: 'file',
         },
+        
       ],
     },
     {
