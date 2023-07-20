@@ -79,7 +79,7 @@ $input-width: 80px;
       font-size: use-var(icon-size-m);
     }
 
-    &:hover {
+    &:hover:not([disabled]) {
       background-color: use-rgb(p-6);
     }
   }
