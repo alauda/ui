@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { paginatorEnComponent } from './paginator-en.component';
@@ -10,7 +11,7 @@ const meta: Meta<paginatorEnComponent> = {
   decorators: [
     moduleMetadata({
       declarations: [paginatorEnComponent],
-      imports: [PaginatorModule],
+      imports: [BrowserAnimationsModule, PaginatorModule],
     }),
   ],
 };

@@ -50,16 +50,25 @@ export class PaginatorComponent implements OnDestroy {
   get pageIndex() {
     return this.currentPage - 1;
   }
-
   set pageIndex(val) {
     this.currentPage = val + 1;
   }
 
   @Input()
-  currentPage = 1;
+  get currentPage() {
+    return this._currentPage;
+  }
+  set currentPage(val) {
+    this._currentPage = +val;
+  }
 
   @Input()
-  pageSize = 20;
+  get pageSize() {
+    return this._pageSize;
+  }
+  set pageSize(val) {
+    this._pageSize = +val;
+  }
 
   @Input()
   pageSizeOptions: number[] = [20, 50, 100];
@@ -86,10 +95,16 @@ export class PaginatorComponent implements OnDestroy {
   disabled = false;
 
   @Output()
+  readonly pageIndexChange = new EventEmitter<number>();
+
+  @Output()
   readonly currentPageChange = new EventEmitter<number>();
 
   @Output()
   readonly pageSizeChange = new EventEmitter<number>();
+
+  private _currentPage = 1;
+  private _pageSize = 20;
 
   private readonly intlChangeSub: Subscription;
 
@@ -129,6 +144,7 @@ export class PaginatorComponent implements OnDestroy {
     if (page === this.currentPage) {
       return;
     }
+    this.pageIndexChange.emit(page - 1);
     this.currentPageChange.emit(page);
   }
 

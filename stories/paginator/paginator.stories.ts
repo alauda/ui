@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { Subject } from 'rxjs';
 
@@ -30,7 +31,7 @@ const meta: Meta<paginatorComponent> = {
   decorators: [
     moduleMetadata({
       declarations: [paginatorComponent],
-      imports: [PaginatorModule],
+      imports: [BrowserAnimationsModule, PaginatorModule],
       providers: [
         {
           provide: PaginatorIntl,
