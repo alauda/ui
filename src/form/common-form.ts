@@ -16,14 +16,8 @@ import { coerceAttrBoolean } from '../utils';
  */
 @Directive()
 export class CommonFormControl<V, M = V> implements ControlValueAccessor {
-  @Input()
-  get disabled() {
-    return this._disabled;
-  }
-
-  set disabled(val: boolean | '') {
-    this._disabled = coerceAttrBoolean(val);
-  }
+  @Input({ transform: coerceAttrBoolean })
+  disabled: boolean;
 
   @Input()
   get readonly() {
@@ -53,7 +47,6 @@ export class CommonFormControl<V, M = V> implements ControlValueAccessor {
   protected onChange: (_: V) => void;
   protected onTouched: () => void;
   private _propValue: V;
-  private _disabled = false;
 
   model: M = null;
   model$ = new ReplaySubject<M>(1);
@@ -102,8 +95,3 @@ export class CommonFormControl<V, M = V> implements ControlValueAccessor {
     return model as any;
   }
 }
-
-/**
- * @deprecated use {@link CommonFormControl} instead
- */
-export const CommonForm = CommonFormControl;

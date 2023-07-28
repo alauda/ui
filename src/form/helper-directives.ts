@@ -41,14 +41,6 @@ export class FormItemErrorDirective {}
   },
 })
 export class FormItemControlDirective {
-  @Input()
-  get required() {
-    return this._required;
-  }
-
-  set required(val: boolean | '') {
-    this._required = coerceAttrBoolean(val);
-  }
-
-  private _required = false;
+  @Input({ transform: coerceAttrBoolean })
+  required: boolean;
 }

@@ -41,14 +41,8 @@ export class DropdownButtonComponent implements AfterContentInit {
   @Input()
   loading = false;
 
-  @Input()
-  get disabled() {
-    return this._disabled;
-  }
-
-  set disabled(val: boolean | '') {
-    this._disabled = coerceAttrBoolean(val);
-  }
+  @Input({ transform: coerceAttrBoolean })
+  disabled: boolean;
 
   @Output()
   buttonClick = new EventEmitter<Event>();
@@ -58,8 +52,6 @@ export class DropdownButtonComponent implements AfterContentInit {
 
   @ContentChildren(MenuItemComponent, { descendants: true })
   private readonly menuItems: QueryList<MenuItemComponent>;
-
-  private _disabled = false;
 
   disableTrigger$: Observable<boolean>;
 

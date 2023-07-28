@@ -178,7 +178,7 @@ export class AnchorComponent
             scrollableEl === window
               ? document.documentElement
               : (scrollableEl as HTMLElement);
-          const activedItem =
+          const activeItem =
             this.items.find(
               ({ target }) =>
                 target.offsetTop +
@@ -188,21 +188,21 @@ export class AnchorComponent
                     0) >
                 scrollTop + paddingTop,
             ) || last(this.items);
-          return activedItem ? of(activedItem) : EMPTY;
+          return activeItem ? of(activeItem) : EMPTY;
         }),
-        tap(activedItem => {
-          if (activedItem.id) {
-            this.activeId = activedItem.id;
+        tap(activeItem => {
+          if (activeItem.id) {
+            this.activeId = activeItem.id;
             this.cdr.markForCheck();
           }
         }),
         debounceTime(100),
-        tap(activedItem => {
-          if (injectId && activedItem.id) {
+        tap(activeItem => {
+          if (injectId && activeItem.id) {
             history.replaceState(
               null,
               null,
-              location.pathname + location.search + '#' + activedItem.id,
+              location.pathname + location.search + '#' + activeItem.id,
             );
           }
         }),

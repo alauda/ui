@@ -104,17 +104,9 @@ export class TabHeaderAddonDirective extends CdkPortal {
   },
 })
 export class TabLabelWrapperDirective {
-  private _disabled: boolean;
-
   /** Whether or not the tab is disabled  */
-  @Input()
-  get disabled() {
-    return this._disabled;
-  }
-
-  set disabled(value: boolean | '') {
-    this._disabled = coerceAttrBoolean(value);
-  }
+  @Input({ transform: coerceAttrBoolean })
+  disabled: boolean;
 
   getOffsetLeft(): number {
     return this.elementRef.nativeElement.offsetLeft;
