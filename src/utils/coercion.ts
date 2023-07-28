@@ -1,19 +1,13 @@
-export function coerceString(val: any): string {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  return val == null ? '' : val?.toString() ?? '';
-}
+import { booleanAttribute } from '@angular/core';
 
-export function coerceAttrBoolean(val: unknown): boolean {
-  return val === '' ? true : !!val;
-}
+export const coerceString = (val: unknown) => (val == null ? '' : String(val));
 
-export function coerceNumber(val: unknown, fallbackValue = 0): number {
-  return _isNumberValue(val) ? Number(val) : fallbackValue;
-}
+// https://github.com/angular/angular/issues/51190#issuecomment-1655566332
+export type AttrBoolean = boolean | '';
 
-export function _isNumberValue(value: unknown): boolean {
-  // parseFloat(value) handles most of the cases we're interested in (it treats null, empty string,
-  // and other non-number values as NaN, where Number just uses 0) but it considers the string
-  // '123hello' to be a valid number. Therefore we also check if Number(value) is NaN.
-  return !isNaN(parseFloat(value as string)) && !isNaN(Number(value));
-}
+export const coerceAttrBoolean: (val: AttrBoolean) => boolean =
+  booleanAttribute;
+
+// https://github.com/angular/angular/blob/1c553ee915b500820e11c53bffc582b65bb6b7ac/packages/core/src/util/coercion.ts#L39
+export const isNumberValue = (val: unknown) =>
+  !isNaN(parseFloat(val as any)) && !isNaN(Number(val));

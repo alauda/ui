@@ -19,7 +19,7 @@ import {
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
-import { Bem, buildBem, coerceNumber } from '../utils';
+import { Bem, buildBem } from '../utils';
 
 import {
   TabHeaderAddonDirective,
@@ -101,7 +101,6 @@ export class TabHeaderComponent
   }
 
   set selectedIndex(value: number) {
-    value = coerceNumber(value);
     this._selectedIndexChanged = this._selectedIndex !== value;
     this._selectedIndex = value;
 

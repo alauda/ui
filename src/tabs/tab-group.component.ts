@@ -20,7 +20,7 @@ import {
 } from '@angular/core';
 import { Subject, Subscription, merge } from 'rxjs';
 
-import { Bem, buildBem, coerceNumber } from '../utils';
+import { Bem, buildBem } from '../utils';
 
 import {
   TabHeaderAddonDirective,
@@ -65,7 +65,7 @@ export class TabGroupComponent
   _tabTitle: TabTitleDirective;
 
   /** The tab index that should be selected after the content has been checked. */
-  private _indexToSelect: number | null = 0;
+  private _indexToSelect = 0;
 
   /** Subscription to tabs being added/removed. */
   private _tabsSubscription = Subscription.EMPTY;
@@ -91,12 +91,12 @@ export class TabGroupComponent
 
   /** The index of the active tab. */
   @Input()
-  get selectedIndex(): number | null {
+  get selectedIndex(): number {
     return this._selectedIndex;
   }
 
-  set selectedIndex(value: number | null) {
-    this._indexToSelect = coerceNumber(value, null);
+  set selectedIndex(value: number) {
+    this._indexToSelect = value;
     this._changeActivatedTabs();
   }
 
