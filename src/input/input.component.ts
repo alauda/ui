@@ -41,7 +41,7 @@ export class InputComponent {
   }
 
   @Input()
-  get disabled() {
+  get disabled(): boolean {
     return this._disabled;
   }
 
@@ -64,10 +64,7 @@ export class InputComponent {
 
   size$ = new BehaviorSubject<ComponentSize>(this.size);
 
-  /**
-   * workaround for @link https://github.com/microsoft/TypeScript/pull/42425
-   */
-  disabled$ = new BehaviorSubject<boolean>(this.disabled as boolean);
+  disabled$ = new BehaviorSubject(this.disabled);
 
   constructor(
     public elementRef: ElementRef<HTMLInputElement>,

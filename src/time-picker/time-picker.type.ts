@@ -1,6 +1,5 @@
 import { ConfigType } from 'dayjs';
-
-import { _isNumberValue } from '../utils';
+import { isNumberValue } from '../utils';
 
 export enum TimePickerControlType {
   Hour = 'hour',
@@ -18,8 +17,8 @@ export type TimePickerDataLike = ConfigType | TimePickerModel;
 
 export function isTimePickerModel(item: any): item is TimePickerModel {
   return (
-    _isNumberValue(item?.second) ||
-    _isNumberValue(item?.minute) ||
-    _isNumberValue(item?.hour)
+    isNumberValue(item?.second) ||
+    isNumberValue(item?.minute) ||
+    isNumberValue(item?.hour)
   );
 }

@@ -1,18 +1,18 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
+  forwardRef,
   Input,
+  OnDestroy,
   Output,
+  QueryList,
   ViewChild,
   ViewChildren,
   ViewEncapsulation,
-  forwardRef,
-  QueryList,
-  ChangeDetectorRef,
-  AfterViewInit,
-  OnDestroy,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
@@ -79,32 +79,14 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
   @Input()
   placeholder = '';
 
-  @Input()
-  get filterable() {
-    return this._filterable;
-  }
+  @Input({ transform: coerceAttrBoolean })
+  filterable: boolean;
 
-  set filterable(val: boolean | '') {
-    this._filterable = coerceAttrBoolean(val);
-  }
+  @Input({ transform: coerceAttrBoolean })
+  clearable: boolean;
 
-  @Input()
-  get clearable() {
-    return this._clearable;
-  }
-
-  set clearable(val: boolean | '') {
-    this._clearable = coerceAttrBoolean(val);
-  }
-
-  @Input()
-  get leafOnly() {
-    return this._leafOnly;
-  }
-
-  set leafOnly(val: boolean | '') {
-    this._leafOnly = coerceAttrBoolean(val);
-  }
+  @Input({ transform: coerceAttrBoolean })
+  leafOnly: boolean;
 
   @Input()
   filterFn = this._filterFn;
@@ -138,9 +120,6 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
 
   private _nodesData: Array<TreeNode<T>> = [];
   private _filterString = '';
-  private _filterable = false;
-  private _clearable = false;
-  private _leafOnly = false;
   private readonly filterString$$ = new BehaviorSubject(this.filterString);
 
   filterString$: Observable<string> = this.filterString$$.asObservable();
@@ -192,8 +171,7 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
   }
 
   onInput(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-    this.filterString = value;
+    this.filterString = (event.target as HTMLInputElement).value;
     this.cdr.markForCheck();
   }
 
@@ -318,14 +296,8 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
     this.nodeData$$.next(val);
   }
 
-  @Input()
-  get leafOnly() {
-    return this._leafOnly;
-  }
-
-  set leafOnly(val: boolean | '') {
-    this._leafOnly = coerceAttrBoolean(val);
-  }
+  @Input({ transform: coerceAttrBoolean })
+  leafOnly = true;
 
   @ViewChild('titleRef', { static: true })
   titleRef: ElementRef<HTMLElement>;
@@ -337,7 +309,6 @@ export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
   visible = true;
   isLeaf = false;
 
-  private _leafOnly = true;
   private readonly select: TreeSelectComponent<T>;
   selected$: Observable<boolean>;
   selfVisible$: Observable<boolean>;

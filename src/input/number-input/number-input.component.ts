@@ -10,13 +10,14 @@ import {
   forwardRef,
   ContentChildren,
   QueryList,
+  numberAttribute,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { CommonFormControl } from '../../form';
 import { ComponentSize } from '../../types';
-import { Bem, buildBem, coerceNumber, watchContentExist } from '../../utils';
+import { Bem, buildBem, watchContentExist } from '../../utils';
 import {
   InputAddonAfterDirective,
   InputAddonBeforeDirective,
@@ -46,11 +47,17 @@ export class NumberInputComponent
   @Input()
   size: ComponentSize = ComponentSize.Medium;
 
-  @Input()
-  min: string | number = Number.MIN_SAFE_INTEGER;
+  @Input({
+    transform: (val: number | string) =>
+      numberAttribute(val, Number.MIN_SAFE_INTEGER),
+  })
+  min: number;
 
-  @Input()
-  max: string | number = Number.MAX_SAFE_INTEGER;
+  @Input({
+    transform: (val: number | string) =>
+      numberAttribute(val, Number.MAX_SAFE_INTEGER),
+  })
+  max: number;
 
   @Input()
   step = 1;
@@ -106,18 +113,12 @@ export class NumberInputComponent
   override modelOut(value: number) {
     return value === null && this.clearable
       ? value
-      : Math.max(
-          coerceNumber(this.min, Number.MIN_SAFE_INTEGER),
-          Math.min(
-            coerceNumber(this.max, Number.MAX_SAFE_INTEGER),
-            this.parsePrecision(value),
-          ),
-        );
+      : Math.max(this.min, Math.min(this.max, this.parsePrecision(value)));
   }
 
   inputChanged(value: string) {
     this.emitModel(
-      coerceNumber(value, !value && this.clearable ? null : this.model),
+      numberAttribute(value, !value && this.clearable ? null : this.model),
     );
   }
 

@@ -3,11 +3,9 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  Inject,
   Input,
   ViewChild,
   ViewEncapsulation,
-  forwardRef,
 } from '@angular/core';
 import {
   BehaviorSubject,
@@ -33,7 +31,6 @@ import { AutocompleteComponent } from '../autocomplete.component';
 export class SuggestionComponent {
   bem: Bem = buildBem('aui-suggestion');
 
-  private _disabled = false;
   private _value: string;
   private readonly value$$ = new BehaviorSubject<string>(this.value);
 
@@ -47,14 +44,8 @@ export class SuggestionComponent {
     this.value$$.next(val);
   }
 
-  @Input()
-  get disabled() {
-    return this._disabled;
-  }
-
-  set disabled(val: boolean | '') {
-    this._disabled = coerceAttrBoolean(val);
-  }
+  @Input({ transform: coerceAttrBoolean })
+  disabled: boolean;
 
   @ViewChild('elRef', { static: true })
   elRef: ElementRef;
@@ -63,16 +54,13 @@ export class SuggestionComponent {
   visible = true;
   focused = false;
 
-  private readonly autocomplete: AutocompleteComponent;
   selected$: Observable<boolean>;
   visible$: Observable<boolean>;
 
   constructor(
     private readonly cdr: ChangeDetectorRef,
-    @Inject(forwardRef(() => AutocompleteComponent))
-    autocomplete: any, // FIXME: workaround temporarily
+    private readonly autocomplete: AutocompleteComponent,
   ) {
-    this.autocomplete = autocomplete;
     this.selected$ = combineLatest([
       this.autocomplete.directive$$.pipe(
         switchMap(directive => directive.inputValue$),

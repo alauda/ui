@@ -15,12 +15,12 @@ import {
 } from '@angular/core';
 import {
   BehaviorSubject,
-  Observable,
-  Subject,
   combineLatest,
-  of,
   map,
+  Observable,
+  of,
   startWith,
+  Subject,
   switchMap,
   takeUntil,
 } from 'rxjs';
@@ -58,23 +58,11 @@ export abstract class BaseSelect<T, V = T>
     this.size$$.next(val);
   }
 
-  @Input()
-  get filterable() {
-    return this._filterable;
-  }
+  @Input({ transform: coerceAttrBoolean })
+  filterable = true;
 
-  set filterable(val: boolean | '') {
-    this._filterable = coerceAttrBoolean(val);
-  }
-
-  @Input()
-  get clearable() {
-    return this._clearable;
-  }
-
-  set clearable(val: boolean | '') {
-    this._clearable = coerceAttrBoolean(val);
-  }
+  @Input({ transform: coerceAttrBoolean })
+  clearable: boolean;
 
   @Input()
   filterFn: OptionFilterFn<T> = this._filterFn.bind(this);
@@ -85,14 +73,8 @@ export abstract class BaseSelect<T, V = T>
   @Input()
   labelFn?: (value: T) => string;
 
-  @Input()
-  get allowCreate() {
-    return this._allowCreate;
-  }
-
-  set allowCreate(val: boolean | '') {
-    this._allowCreate = coerceAttrBoolean(val);
-  }
+  @Input({ transform: coerceAttrBoolean })
+  allowCreate: boolean;
 
   get allOptions() {
     return [
@@ -176,9 +158,6 @@ export abstract class BaseSelect<T, V = T>
   protected focusedOption: OptionComponent<T>;
 
   private _size: ComponentSize = ComponentSize.Medium;
-  private _filterable = true;
-  private _clearable = false;
-  private _allowCreate = false;
   private _filterString = '';
 
   protected destroy$$ = new Subject<void>();
@@ -335,8 +314,7 @@ export abstract class BaseSelect<T, V = T>
   }
 
   onInput(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-    this.filterString = value;
+    this.filterString = (event.target as HTMLInputElement).value;
 
     requestAnimationFrame(() => {
       this.autoFocusFirstOption();
@@ -477,5 +455,6 @@ export abstract class BaseSelect<T, V = T>
   }
 
   abstract selectOption(option: OptionComponent<T>): void;
+
   abstract clearValue(event: Event): void;
 }

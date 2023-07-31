@@ -75,7 +75,6 @@ export class MultiSelectComponent<T = unknown>
   selectAllStatus: SelectAllStatus;
   hasEnabledOptions$: Observable<boolean>;
 
-  private _allowSelectAll = false;
   override isMulti = true;
   override model: T[] = [];
 
@@ -90,14 +89,8 @@ export class MultiSelectComponent<T = unknown>
   @Input()
   customRowHeight = 0; // 0: use default style const value, > 1: for ```tagClassFn``` maybe affect lineHeight
 
-  @Input()
-  get allowSelectAll() {
-    return this._allowSelectAll;
-  }
-
-  set allowSelectAll(val: boolean | '') {
-    this._allowSelectAll = coerceAttrBoolean(val);
-  }
+  @Input({ transform: coerceAttrBoolean })
+  allowSelectAll: boolean;
 
   @ViewChild('inputRef', { static: true })
   inputRef: ElementRef<HTMLInputElement>;

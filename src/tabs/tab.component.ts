@@ -45,14 +45,8 @@ export class TabComponent implements AfterContentInit, OnDestroy, OnChanges {
   closeable = false;
 
   /** Whether or not the tab is disabled  */
-  @Input()
-  get disabled() {
-    return this._disabled;
-  }
-
-  set disabled(value: boolean | '') {
-    this._disabled = coerceAttrBoolean(value);
-  }
+  @Input({ transform: coerceAttrBoolean })
+  disabled: boolean;
 
   @Output()
   close = new EventEmitter<void>();
@@ -92,8 +86,6 @@ export class TabComponent implements AfterContentInit, OnDestroy, OnChanges {
 
   /** Portal that will be the hosted content of the tab */
   private _contentPortal: TemplatePortal | null = null;
-
-  private _disabled = false;
 
   constructor(
     private readonly _viewContainerRef: ViewContainerRef,
