@@ -1,10 +1,17 @@
 <div
   class="aui-back-top"
-  (click)="handleClick($event)"
   [class.show]="isDisplayed$ | async"
 >
-  <aui-icon
-    icon="arrow_up_to_line"
-    class="aui-back-top__icon"
-  ></aui-icon>
+  <button
+    aui-button="text"
+    [square]="true"
+    [plain]="true"
+    (click)="handleClick($event)"
+    size="small"
+  >
+    <aui-icon
+      icon="arrow_up_to_line"
+      class="aui-back-top__icon"
+    ></aui-icon>
+  </button>
 </div>

@@ -88,7 +88,7 @@ export class BackTopComponent {
   }
 
   handleClick(event: Event) {
-    this.scrollToTop(300);
+    this.scrollToTop(200);
     this.click.emit(event);
   }
 

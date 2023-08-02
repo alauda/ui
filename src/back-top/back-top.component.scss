@@ -11,31 +11,15 @@ $block: 'aui-back-top';
 
   height: use-var(inline-height-m);
   width: use-var(inline-height-m);
-  color: use-rgb(n-4);
-  font-size: use-var(font-size-l);
-  border: 1px solid transparent;
   border-radius: use-var(border-radius-m);
   overflow: hidden;
   visibility: hidden;
   cursor: pointer;
   @include popper-shadow;
-  @include transition;
 
-  @include theme-light {
-    background-color: use-rgb(n-10);
-  }
-  @include theme-dark {
-    background-color: use-rgb(n-8);
-  }
+  background-color: use-rgb(n-10);
 
   &.show {
     visibility: visible;
-  }
-
-  &:hover {
-    color: use-rgb(primary);
-    border-color: use-rgb(primary);
-    background-color: use-rgb(p-6);
-    box-shadow: none;
   }
 }
