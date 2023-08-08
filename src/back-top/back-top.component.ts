@@ -115,7 +115,7 @@ export class BackTopComponent {
 
   getTarget(target: TargetType): Element | Window {
     const scrollTarget =
-      (typeof target === 'string' && document.querySelector(target)) ||
+      (typeof target === 'string' ? document.querySelector(target) : target) ||
       this.cdkScrollable?.getElementRef().nativeElement ||
       window;
     this._scrollTarget = scrollTarget;
