@@ -2,4 +2,4 @@
 "@alauda/ui": patch
 ---
 
-fix: should prefer custom target
+fix(back-top): should prefer custom target
