@@ -51,13 +51,13 @@ export class NumberInputComponent
     transform: (val: number | string) =>
       numberAttribute(val, Number.MIN_SAFE_INTEGER),
   })
-  min: number;
+  min = Number.MIN_SAFE_INTEGER;
 
   @Input({
     transform: (val: number | string) =>
       numberAttribute(val, Number.MAX_SAFE_INTEGER),
   })
-  max: number;
+  max = Number.MAX_SAFE_INTEGER;
 
   @Input()
   step = 1;
