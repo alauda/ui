@@ -17,6 +17,7 @@
     {
       "files": "**/*.scss",
       "rules": {
+        "import-notation": "string",
         "no-invalid-position-at-import-rule": [
           true,
           {

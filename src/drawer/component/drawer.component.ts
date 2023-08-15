@@ -115,7 +115,7 @@ export class DrawerComponent<
     return {
       'aui-drawer': true,
       hasDivider: this.divider,
-      ...(!this.drawerClass ? null : { [this.drawerClass]: true }),
+      ...(this.drawerClass ? { [this.drawerClass]: true } : null),
     };
   }
 

@@ -120,12 +120,7 @@ export class StepsComponent implements OnInit, OnDestroy {
   }
 
   private getProgressCurrentIndex(steps: StepItem[]) {
-    if (!steps?.length) {
-      if (this._currentIndex !== 0) {
-        this.currentIndexChange.emit(0);
-      }
-      this._currentIndex = 0;
-    } else {
+    if (steps?.length) {
       const reversedSteps = this.steps.slice(0).reverse();
       const doneStepIndex = reversedSteps.findIndex(
         step => step.state === StepState.Done,
@@ -140,6 +135,11 @@ export class StepsComponent implements OnInit, OnDestroy {
         this._currentIndex === this.selectedIndex
           ? (this.selectedIndex = newIndex)
           : newIndex;
+    } else {
+      if (this._currentIndex !== 0) {
+        this.currentIndexChange.emit(0);
+      }
+      this._currentIndex = 0;
     }
   }
 
@@ -199,9 +199,9 @@ export class StepsComponent implements OnInit, OnDestroy {
   }
 
   getActiveIndex() {
-    return this.selectedIndex !== undefined
-      ? this.selectedIndex
-      : this._currentIndex;
+    return this.selectedIndex === undefined
+      ? this._currentIndex
+      : this.selectedIndex;
   }
 
   isLastActive(i: number, steps: StepItem[]) {

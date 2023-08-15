@@ -78,13 +78,13 @@ export class IncludesDirective<T> implements Validator, AfterContentInit {
     if (!this.selectRef.contentOptions || !control.value) {
       return;
     }
-    return !this.includes
-      ? null
-      : AuiSelectValidators.includes(
+    return this.includes
+      ? AuiSelectValidators.includes(
           this.selectRef.contentOptions
             .filter(option => !option.disabled)
             .map(option => option.value),
           this.trackFn,
-        )(control);
+        )(control)
+      : null;
   }
 }

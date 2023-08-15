@@ -354,7 +354,7 @@ export class BaseTooltip<T = any>
   protected updateListeners() {
     this.clearListeners();
     switch (this.trigger) {
-      case TooltipTrigger.Click:
+      case TooltipTrigger.Click: {
         this.listeners.push(
           this.renderer.listen(
             this.elRef.nativeElement,
@@ -363,7 +363,8 @@ export class BaseTooltip<T = any>
           ),
         );
         break;
-      case TooltipTrigger.Hover:
+      }
+      case TooltipTrigger.Hover: {
         this.listeners.push(
           this.renderer.listen(
             this.elRef.nativeElement,
@@ -377,7 +378,8 @@ export class BaseTooltip<T = any>
           ),
         );
         break;
-      case TooltipTrigger.Focus:
+      }
+      case TooltipTrigger.Focus: {
         this.listeners.push(
           this.renderer.listen(
             this.elRef.nativeElement,
@@ -391,8 +393,10 @@ export class BaseTooltip<T = any>
           ),
         );
         break;
-      case TooltipTrigger.Manual:
+      }
+      case TooltipTrigger.Manual: {
         break;
+      }
     }
   }
 

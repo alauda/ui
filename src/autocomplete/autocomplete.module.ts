@@ -11,8 +11,8 @@ import {
   CustomAutoCompleteDirective,
 } from './autocomplete.directive';
 import { SuggestionGroupTitleDirective } from './helper-directives';
-import { SuggestionGroupComponent } from './suggestion-group/suggestion-group.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import { SuggestionGroupComponent } from './suggestion-group/suggestion-group.component';
 
 @NgModule({
   imports: [CommonModule, OverlayModule, TooltipModule],

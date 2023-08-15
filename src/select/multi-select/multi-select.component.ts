@@ -228,19 +228,19 @@ export class MultiSelectComponent<T = unknown>
       this.filterString$,
     ]).pipe(
       switchMap(([allOptions]) =>
-        combineLatest([
-          ...(allOptions ?? [])
+        combineLatest(
+          (allOptions ?? [])
             .filter(({ visible, disabled }) => visible && !disabled)
             .map(({ selected$ }) => selected$),
-        ]),
+        ),
       ),
       map(statuses => {
         const selected = statuses.filter(Boolean);
         return selected.length === 0
           ? SelectAllStatus.Empty
-          : selected.length !== statuses.length
-          ? SelectAllStatus.Indeterminate
-          : SelectAllStatus.Checked;
+          : selected.length === statuses.length
+          ? SelectAllStatus.Checked
+          : SelectAllStatus.Indeterminate;
       }),
       startWith(SelectAllStatus.Empty),
       tap(selectAllStatus => (this.selectAllStatus = selectAllStatus)),
@@ -291,7 +291,7 @@ export class MultiSelectComponent<T = unknown>
       this.model.length > 0 &&
       !this.hasDisabledOption // Disabled backspace when any of select options have disabled state.
     ) {
-      this.removeValue(this.model[this.model.length - 1]);
+      this.removeValue(this.model.at(-1));
       event.stopPropagation();
       event.preventDefault();
     } else if (event.key === 'Enter') {
@@ -399,12 +399,7 @@ export class MultiSelectComponent<T = unknown>
   // calculate input element width according to its value
   private setInputWidth() {
     const { value } = this.inputRef.nativeElement;
-    if (!value.length) {
-      this.inputValue = '';
-      requestAnimationFrame(() => {
-        this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
-      });
-    } else {
+    if (value.length) {
       this.inputValue = value;
       requestAnimationFrame(() => {
         this.renderer.setStyle(
@@ -412,6 +407,11 @@ export class MultiSelectComponent<T = unknown>
           'width',
           `${this.inputValueMirror.nativeElement.scrollWidth}px`,
         );
+      });
+    } else {
+      this.inputValue = '';
+      requestAnimationFrame(() => {
+        this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
       });
     }
   }

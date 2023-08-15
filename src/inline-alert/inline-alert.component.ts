@@ -46,15 +46,19 @@ export class InlineAlertComponent {
 
   iconMap(type: InlineAlertType) {
     switch (type) {
-      case InlineAlertType.Success:
+      case InlineAlertType.Success: {
         return 'check_circle_s';
-      case InlineAlertType.Warning:
+      }
+      case InlineAlertType.Warning: {
         return 'exclamation_circle_s';
+      }
       case InlineAlertType.Danger:
-      case InlineAlertType.Error:
+      case InlineAlertType.Error: {
         return 'exclamation_triangle_s';
-      default:
+      }
+      default: {
         return 'info_circle_s';
+      }
     }
   }
 

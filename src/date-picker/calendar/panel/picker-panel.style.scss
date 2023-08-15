@@ -124,7 +124,7 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
       }
     }
 
-    &.isDisabled + &:not(.isDisabled):not(.isRangeStart) {
+    &.isDisabled + &:not(.isDisabled, .isRangeStart) {
       box-shadow: $left-mask-shadow;
     }
 

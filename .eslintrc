@@ -30,7 +30,8 @@
             ],
             "style": "camelCase"
           }
-        ]
+        ],
+        "unicorn/prefer-event-target": "off"
       }
     },
     {
@@ -50,6 +51,8 @@
     "@angular-eslint/no-input-rename": "off",
     "@angular-eslint/no-output-rename": "off",
     "@angular-eslint/no-host-metadata-property": "off",
-    "@typescript-eslint/no-unsafe-argument": "off"
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "markup/markup": "off",
+    "regexp/strict": "off"
   }
 }

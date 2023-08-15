@@ -118,28 +118,30 @@ export class TimePickerComponent extends CommonFormControl<
   }
 
   changeFromInput(source: string) {
-    if (!source) {
-      this.timeValue = null;
-    } else {
+    if (source) {
       const afterParsed = dayjs(source, this.format);
       if (afterParsed.isValid()) {
         this.timeValue = afterParsed;
       }
+    } else {
+      this.timeValue = null;
     }
   }
 
   onKeyDown(event: KeyboardEvent) {
     switch (event.key) {
-      case 'Enter':
+      case 'Enter': {
         this.openPanel();
         event.stopPropagation();
         event.preventDefault();
         break;
-      case 'Escape':
+      }
+      case 'Escape': {
         this.closePanel();
         event.stopPropagation();
         event.preventDefault();
         break;
+      }
     }
   }
 

@@ -50,6 +50,7 @@ export class PaginatorComponent implements OnDestroy {
   get pageIndex() {
     return this.currentPage - 1;
   }
+
   set pageIndex(val) {
     this.currentPage = val + 1;
   }
@@ -58,6 +59,7 @@ export class PaginatorComponent implements OnDestroy {
   get currentPage() {
     return this._currentPage;
   }
+
   set currentPage(val) {
     this._currentPage = +val;
   }
@@ -66,6 +68,7 @@ export class PaginatorComponent implements OnDestroy {
   get pageSize() {
     return this._pageSize;
   }
+
   set pageSize(val) {
     this._pageSize = +val;
   }

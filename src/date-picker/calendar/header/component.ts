@@ -108,9 +108,10 @@ export class CalendarHeaderComponent {
         anchor = this.anchor.add(value, YEAR);
         break;
       }
-      case DateNavRange.Decade:
+      case DateNavRange.Decade: {
         anchor = this.anchor.add(value, YEAR);
         break;
+      }
     }
     this.anchorChange.next(anchor);
   }

@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('node:path');
 
 const gulp = require('gulp');
 const sass = require('gulp-dart-sass');
@@ -49,5 +49,6 @@ if (watch) {
     }
   });
 } else {
+  // eslint-disable-next-line unicorn/prefer-top-level-await
   packagr.build().then(copyResources);
 }

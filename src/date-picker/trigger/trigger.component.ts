@@ -70,9 +70,9 @@ export class DatePickerTriggerComponent {
   }
 
   get hasValue() {
-    return !this.isRange
-      ? !!this.value
-      : (this.value as Dayjs[])?.[0] || (this.value as Dayjs[])?.[1];
+    return this.isRange
+      ? (this.value as Dayjs[])?.[0] || (this.value as Dayjs[])?.[1]
+      : !!this.value;
   }
 
   get showClear() {

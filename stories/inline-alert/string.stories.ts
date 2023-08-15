@@ -18,6 +18,7 @@ const meta: Meta<InlineStringComponent> = {
 export default meta;
 type Story = StoryObj<InlineStringComponent>;
 
+// eslint-disable-next-line sonar/no-globals-shadowing
 export const String: Story = {
   name: 'String',
 };

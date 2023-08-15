@@ -198,9 +198,9 @@ export const composeDisabledDateFn =
     !fns.filter(i => !!i).every(fn => !fn(date, navRange));
 
 export function minDate(a: Dayjs, b: Dayjs, unit: UnitType = 'date') {
-  return !a ? b : !b ? a : a.isBefore(b, unit) ? a : b;
+  return a ? (b ? (a.isBefore(b, unit) ? a : b) : a) : b;
 }
 
 export function maxDate(a: Dayjs, b: Dayjs, unit: UnitType = 'date') {
-  return !a ? b : !b ? a : a.isAfter(b, unit) ? a : b;
+  return a ? (b ? (a.isAfter(b, unit) ? a : b) : a) : b;
 }

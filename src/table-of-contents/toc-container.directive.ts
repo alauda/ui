@@ -41,7 +41,7 @@ export class TocContainerDirective implements AfterContentInit, OnDestroy {
   private readonly _scrollTo$ = new Subject<string>();
   private readonly _onDestroy$ = new Subject<void>();
   private readonly _subs: Subscription[] = [];
-  private _nativeElement: HTMLElement;
+  private readonly _nativeElement: HTMLElement;
 
   get scrollTop(): number {
     return this._nativeElement.scrollTop || 0;
