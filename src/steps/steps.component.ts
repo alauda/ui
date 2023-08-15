@@ -47,12 +47,6 @@ export class StepsComponent implements OnInit, OnDestroy {
     this.stepsChange$$.next(val);
   }
 
-  /**
-   * @deprecated type 为 step 时一般在使用上下文中控制是否可以进行下一步；type 为 progress 时强制按顺序执行
-   */
-  @Input()
-  linear = false;
-
   @Input()
   get currentIndex() {
     return this._currentIndex;
@@ -100,23 +94,7 @@ export class StepsComponent implements OnInit, OnDestroy {
   }
 
   private setCurrentIndex(index: number) {
-    if (this.linear) {
-      if (this.steps?.length) {
-        const ret = Math.min(Math.max(0, index), this.steps.length - 1);
-        const reversedPrevSteps = this.steps.slice(0, ret).reverse();
-        const doneIndex = reversedPrevSteps.findIndex(
-          step => step.state === StepState.Done || step.optional,
-        );
-        const lastDoneStepIndex =
-          doneIndex > -1 ? reversedPrevSteps.length - doneIndex : 0;
-        this._currentIndex = this.selectedIndex = Math.min(
-          lastDoneStepIndex,
-          ret,
-        );
-      }
-    } else {
-      this._currentIndex = this.selectedIndex = index;
-    }
+    this._currentIndex = this.selectedIndex = index;
   }
 
   private getProgressCurrentIndex(steps: StepItem[]) {
@@ -182,7 +160,7 @@ export class StepsComponent implements OnInit, OnDestroy {
     if (!this.selectable || this.selectedIndex === i) {
       return false;
     }
-    const isLinear = this.isProgress ? true : this.linear;
+    const isLinear = this.isProgress;
     if (
       isLinear &&
       !currentStep.optional &&

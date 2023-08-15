@@ -1,5 +1,5 @@
 import { Inject, Injectable, isDevMode } from '@angular/core';
-import { BehaviorSubject, Observable, pluck } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 import { I18NInterface, I18NInterfaceToken, StringMap } from './i18n.type';
 
@@ -13,7 +13,9 @@ export class I18nService {
 
   constructor(@Inject(I18NInterfaceToken) private _i18n: I18NInterface) {
     this.i18nChange$$ = new BehaviorSubject<I18NInterface>(this._i18n);
-    this.localeChange$ = this.i18nChange$$.asObservable().pipe(pluck('locale'));
+    this.localeChange$ = this.i18nChange$$
+      .asObservable()
+      .pipe(map(i18n => i18n.locale));
   }
 
   setI18n(i18n: I18NInterface) {

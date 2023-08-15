@@ -199,9 +199,7 @@ export class TabHeaderComponent
 
     // Defer the first call in order to allow for slower browsers to lay out the elements.
     // This helps in cases where the user lands directly on a page with paginated tabs.
-    typeof requestAnimationFrame === 'undefined'
-      ? realign()
-      : requestAnimationFrame(realign);
+    requestAnimationFrame(realign);
 
     // On window resize, realign the ink bar and update the orientation of
     // the key manager if the direction has changed.
