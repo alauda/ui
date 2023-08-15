@@ -78,10 +78,8 @@ $switch-dot-with: $switch-height - ($switch-border-width * 2);
     .#{$block}__dot:after {
       content: '';
       position: absolute;
-      top: $switch-border-width;
-      bottom: $switch-border-width;
-      left: $switch-border-width;
-      right: $switch-border-width;
+      inset: $switch-border-width $switch-border-width $switch-border-width
+        $switch-border-width;
       border: 1px solid currentcolor;
       border-top-color: transparent;
       border-radius: 50%;

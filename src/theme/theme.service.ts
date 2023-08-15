@@ -19,17 +19,21 @@ export class ThemeService {
     this.htmlEl = document.querySelector('html')!;
 
     switch (this.htmlEl.getAttribute('aui-theme-mode')) {
-      case 'dark':
+      case 'dark': {
         this.themeMode = 'dark';
         break;
-      case 'light':
+      }
+      case 'light': {
         this.themeMode = 'light';
         break;
-      case 'system':
+      }
+      case 'system': {
         this.themeMode = 'system';
         break;
-      default:
+      }
+      default: {
         this.themeMode = 'light';
+      }
     }
 
     const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');

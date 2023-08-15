@@ -15,8 +15,8 @@ import { Observable, map, startWith } from 'rxjs';
 import { ButtonType } from '../../button';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, coerceAttrBoolean } from '../../utils';
-import { MenuItemComponent } from '../menu-item/menu-item.component';
 import { MenuComponent } from '../menu/menu.component';
+import { MenuItemComponent } from '../menu-item/menu-item.component';
 
 @Component({
   selector: 'aui-dropdown-button',

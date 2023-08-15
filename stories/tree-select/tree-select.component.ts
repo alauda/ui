@@ -145,7 +145,6 @@ export default class TreeSelectComponent {
           value: 'c-2',
           icon: 'file',
         },
-        
       ],
     },
     {

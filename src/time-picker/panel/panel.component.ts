@@ -144,18 +144,18 @@ export class TimePickerPanelComponent
       return true;
     }
     if (type === TimePickerControlType.Hour) {
-      return (!this.disableHours ? [] : this.disableHours()).includes(value);
+      return (this.disableHours ? this.disableHours() : []).includes(value);
     }
     if (type === TimePickerControlType.Minute) {
       return (
-        !this.disableMinutes ? [] : this.disableMinutes(currentValue?.hour())
+        this.disableMinutes ? this.disableMinutes(currentValue?.hour()) : []
       ).includes(value);
     }
     if (type === TimePickerControlType.Second) {
       return (
-        !this.disableSeconds
-          ? []
-          : this.disableSeconds(currentValue?.hour(), currentValue?.minute())
+        this.disableSeconds
+          ? this.disableSeconds(currentValue?.hour(), currentValue?.minute())
+          : []
       ).includes(value);
     }
   }
@@ -181,7 +181,7 @@ export class TimePickerPanelComponent
 
   override writeValue(value: Dayjs) {
     super.writeValue(value);
-    this.syncScrollOffset(!this.firstScrolled ? 0 : 120, value);
+    this.syncScrollOffset(this.firstScrolled ? 120 : 0, value);
   }
 
   selectValue(value: number, type: TimePickerControlType): void {
@@ -254,9 +254,7 @@ export class TimePickerPanelComponent
     if (currentTop === targetOffset) {
       return;
     }
-    if (!duration) {
-      element.scrollTop = targetOffset;
-    } else {
+    if (duration) {
       const difference = targetOffset - currentTop;
       // 每个tick滚动距离
       const perTick = (difference / duration) * 10;
@@ -268,6 +266,8 @@ export class TimePickerPanelComponent
         }
         this.scrollByValue(element, value, divideBy, duration - 10);
       });
+    } else {
+      element.scrollTop = targetOffset;
     }
   }
 

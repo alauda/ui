@@ -32,6 +32,7 @@ Object.defineProperty(window, 'matchMedia', {
   value() {
     return {
       matches: 'light',
+      addListener: () => undefined as void,
       addEventListener: () => undefined as void,
     };
   },

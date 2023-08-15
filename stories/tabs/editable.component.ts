@@ -31,7 +31,7 @@ export default class TabsEditableComponent {
     this.tabs = this.tabs.concat(
       Array.from({ length: num })
         .fill('')
-        .map((_, i) => this.tabs[this.tabs.length - 1] + i + 1),
+        .map((_, i) => this.tabs.at(-1) + i + 1),
     );
   }
 

@@ -2,25 +2,32 @@ import { ComponentSize } from '../../types';
 
 function getRowHeight(size: ComponentSize) {
   switch (size) {
-    case ComponentSize.Large:
+    case ComponentSize.Large: {
       return 33;
-    case ComponentSize.Small:
+    }
+    case ComponentSize.Small: {
       return 23;
-    case ComponentSize.Mini:
+    }
+    case ComponentSize.Mini: {
       return 21;
-    default:
+    }
+    default: {
       return 25;
+    }
   }
 }
 
 function getContainerPaddingPatch(size: ComponentSize) {
   switch (size) {
-    case ComponentSize.Mini:
+    case ComponentSize.Mini: {
       return 3;
-    case ComponentSize.Small:
+    }
+    case ComponentSize.Small: {
       return 5;
-    default:
+    }
+    default: {
       return 7;
+    }
   }
 }
 

@@ -22,9 +22,6 @@ jobs:
           node-version: 16
           cache: yarn
 
-      - name: Link Yarn global binaries into PATH
-        run: echo "$(yarn global bin)" >> $GITHUB_PATH
-
       - name: Install Dependencies
         run: yarn --frozen-lockfile
 

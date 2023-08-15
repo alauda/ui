@@ -45,12 +45,15 @@ export class ConfirmDialogComponent<T = unknown, R = unknown> {
 
   iconMap(type: ConfirmType) {
     switch (type) {
-      case ConfirmType.Success:
+      case ConfirmType.Success: {
         return 'check_circle_s';
-      case ConfirmType.Danger:
+      }
+      case ConfirmType.Danger: {
         return 'exclamation_triangle_s';
-      default:
+      }
+      default: {
         return 'exclamation_circle_s';
+      }
     }
   }
 

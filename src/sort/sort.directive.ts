@@ -72,11 +72,11 @@ export class SortDirective implements OnChanges, OnDestroy {
   }
 
   sort(sortable: Sortable): void {
-    if (this.active !== sortable.id) {
-      this.active = sortable.id;
-      this.direction = sortable.start ? sortable.start : this.start;
-    } else {
+    if (this.active === sortable.id) {
       this.direction = this.direction === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.active = sortable.id;
+      this.direction = sortable.start || this.start;
     }
 
     this.sortChange.emit({

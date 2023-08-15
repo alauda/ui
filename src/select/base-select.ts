@@ -237,7 +237,6 @@ export abstract class BaseSelect<T, V = T>
         map(customOptions =>
           customOptions.filter(option => option !== this.inputtingOption),
         ),
-        // eslint-disable-next-line sonarjs/no-identical-functions
         switchMap(options =>
           options.length > 0
             ? combineLatest(options.map(option => option.value$))
@@ -325,26 +324,30 @@ export abstract class BaseSelect<T, V = T>
 
   onKeyDown(event: KeyboardEvent) {
     switch (event.key) {
-      case 'ArrowDown':
+      case 'ArrowDown': {
         this.focusOptionDir('down');
         event.stopPropagation();
         event.preventDefault();
         break;
-      case 'ArrowUp':
+      }
+      case 'ArrowUp': {
         this.focusOptionDir('up');
         event.stopPropagation();
         event.preventDefault();
         break;
-      case 'Enter':
+      }
+      case 'Enter': {
         this.selectFocusedOption();
         event.stopPropagation();
         event.preventDefault();
         break;
-      case 'Escape':
+      }
+      case 'Escape': {
         this.escSelect();
         event.stopPropagation();
         event.preventDefault();
         break;
+      }
     }
   }
 

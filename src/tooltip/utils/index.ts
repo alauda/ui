@@ -21,7 +21,7 @@ export function getOriginPosition(position: string): {
   const { x, y } = invertPosition(main.originX, main.originY);
   const fallback = {
     originX: isXDir ? x : main.originX,
-    originY: !isXDir ? y : main.originY,
+    originY: isXDir ? main.originY : y,
   };
   return { main, fallback };
 }
@@ -40,12 +40,12 @@ export function getOverlayPosition(position: string): {
   const vertical = (pos[isXDir ? 1 : 0] as VerticalConnectionPos) || 'center';
   const main = {
     overlayX: isXDir ? invertHorizontal(horizontal) : horizontal,
-    overlayY: !isXDir ? invertVertical(vertical) : vertical,
+    overlayY: isXDir ? vertical : invertVertical(vertical),
   };
   const { x, y } = invertPosition(main.overlayX, main.overlayY);
   const fallback = {
     overlayX: isXDir ? x : main.overlayX,
-    overlayY: !isXDir ? y : main.overlayY,
+    overlayY: isXDir ? main.overlayY : y,
   };
   return { main, fallback };
 }

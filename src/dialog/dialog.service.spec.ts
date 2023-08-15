@@ -194,7 +194,6 @@ describe('DialogService', () => {
           beforeConfirm: () => timer(100, 100),
           noAnimation: true,
         })
-        // eslint-disable-next-line sonarjs/no-identical-functions
         .then(() => {
           const t2 = Date.now();
           expect(t2 - t1).toBeGreaterThanOrEqual(100);
@@ -225,7 +224,6 @@ describe('DialogService', () => {
           },
           noAnimation: true,
         })
-        // eslint-disable-next-line sonarjs/no-identical-functions
         .catch(() => {
           const t2 = Date.now();
           // eslint-disable-next-line jest/no-conditional-expect
@@ -253,7 +251,6 @@ describe('DialogService', () => {
           beforeCancel: () => timer(100),
           noAnimation: true,
         })
-        // eslint-disable-next-line sonarjs/no-identical-functions
         .catch(() => {
           const t2 = Date.now();
           // eslint-disable-next-line jest/no-conditional-expect

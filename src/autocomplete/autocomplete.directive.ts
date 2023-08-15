@@ -195,28 +195,32 @@ export class AutoCompleteDirective
 
   onKeyDown(event: KeyboardEvent) {
     switch (event.key) {
-      case 'ArrowDown':
+      case 'ArrowDown': {
         this.focusSuggestionDir('down');
         event.stopPropagation();
         event.preventDefault();
         break;
-      case 'ArrowUp':
+      }
+      case 'ArrowUp': {
         this.focusSuggestionDir('up');
         event.stopPropagation();
         event.preventDefault();
         break;
-      case 'Enter':
+      }
+      case 'Enter': {
         if (this.focusedSuggestion) {
           this.selectFocusedOption();
           event.stopPropagation();
           event.preventDefault();
         }
         break;
-      case 'Escape':
+      }
+      case 'Escape': {
         this.hide();
         event.stopPropagation();
         event.preventDefault();
         break;
+      }
     }
   }
 

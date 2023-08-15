@@ -12,9 +12,9 @@ import {
   OptionGroupTitleDirective,
 } from './helper-directives';
 import { MultiSelectComponent } from './multi-select/multi-select.component';
+import { OptionComponent } from './option/option.component';
 import { OptionGroupComponent } from './option-group/option-group.component';
 import { OptionPlaceholderComponent } from './option-placeholder.component';
-import { OptionComponent } from './option/option.component';
 import { SelectComponent } from './select.component';
 import { IncludesDirective } from './validators';
 

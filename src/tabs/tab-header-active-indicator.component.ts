@@ -35,12 +35,12 @@ export class TabHeaderActiveIndicatorComponent {
    * @param element
    */
   alignToElement(element: HTMLElement) {
-    if (typeof requestAnimationFrame !== 'undefined') {
+    if (typeof requestAnimationFrame === 'undefined') {
+      this._setStyles(element);
+    } else {
       this._ngZone.runOutsideAngular(() => {
         requestAnimationFrame(() => this._setStyles(element));
       });
-    } else {
-      this._setStyles(element);
     }
   }
 

@@ -202,14 +202,14 @@ export class TagsInputComponent
     const value = this.inputRef.nativeElement.value;
     // make sure value sync to span element
     requestAnimationFrame(() => {
-      if (!value.length) {
-        this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
-      } else {
+      if (value.length) {
         this.renderer.setStyle(
           this.inputRef.nativeElement,
           'width',
           this.inputValueMirror.nativeElement.scrollWidth + 'px',
         );
+      } else {
+        this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
       }
     });
     if (

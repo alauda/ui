@@ -5,4 +5,4 @@
 /.angular
 !/.*.js
 !/.storybook
-/jest.setup.ts
+/documentation.json
