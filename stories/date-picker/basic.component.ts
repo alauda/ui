@@ -13,6 +13,8 @@ import { DatePickerType } from '@alauda/ui';
       placeholder="请选择"
       [weekStartDay]="2"
       [disabled]="disabled"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
       required
     ></aui-date-picker>
     <br />
@@ -27,4 +29,15 @@ export default class DatePickerBasicComponent {
   now = dayjs();
   time = dayjs().add(7, 'day');
   DatePickerType = DatePickerType;
+
+  minDate = dayjs()
+  .subtract(7, 'day')
+  .set('hour', 12)
+  .set('minute', 32)
+  .set('second', 12);
+maxDate = dayjs()
+  .add(7, 'day')
+  .set('hour', 17)
+  .set('minute', 46)
+  .set('second', 25);
 }

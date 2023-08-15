@@ -35,6 +35,7 @@ import {
   getTypeByNavRange,
   sortDates,
 } from '../util';
+import { TimePickerModel } from 'src/time-picker';
 
 dayjs.extend(isBetween);
 
@@ -56,6 +57,9 @@ export class PickerPanelComponent implements OnChanges {
 
   @Input()
   anchor = dayjs();
+
+  @Input()
+  selectedTime: TimePickerModel;
 
   @Input()
   matchDates: Dayjs[];
@@ -85,8 +89,20 @@ export class PickerPanelComponent implements OnChanges {
 
   get disabledDateFn() {
     return composeDisabledDateFn(
-      date => this.minDate && date.isBefore(this.minDate),
-      date => this.maxDate && date.isAfter(this.maxDate),
+      date =>
+        this.minDate &&
+        date
+          .set('hour', this.selectedTime?.hour || 23)
+          .set('minute', this.selectedTime?.minute || 59)
+          .set('second', this.selectedTime?.second || 59)
+          .isBefore(this.minDate),
+      date =>
+        this.maxDate &&
+        date
+          .set('hour', this.selectedTime?.hour || 0)
+          .set('minute', this.selectedTime?.minute || 0)
+          .set('second', this.selectedTime?.second || 0)
+          .isAfter(this.maxDate),
       this.disabledDate,
     );
   }

@@ -23,6 +23,7 @@ import {
   updateDate,
   updateDateByTimeModel,
 } from '../util';
+import { HOUR_ITEMS, MINUTE_ITEMS, SECOND_ITEMS } from 'src/time-picker';
 
 @Component({
   selector: 'aui-date-picker-panel',
@@ -56,6 +57,17 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
   }
 
   private _type: DatePickerType;
+
+  @Input()
+  set selectedTime(time: TimePickerModel) {
+    this._selectedTime = time;
+  }
+
+  get selectedTime() {
+    return this._selectedTime;
+  }
+
+  private _selectedTime: TimePickerModel;
 
   @Input()
   showTime = false;
@@ -98,7 +110,10 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
     type: keyof ReturnType<DisabledTimeFn>,
   ) {
     if (selectedDate !== this._cacheSelectedDate) {
-      this._cacheDisabledTimeFn = this.disabledTime(selectedDate);
+      this._cacheDisabledTimeFn = combineDisabledTimeFn(
+        this._disabledTimeFn.bind(this),
+        this.disabledTime,
+      )(selectedDate);
       this._cacheSelectedDate = selectedDate;
     }
     return this._cacheDisabledTimeFn?.[type];
@@ -113,8 +128,6 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
   anchor: Dayjs;
 
   selectedDate: Dayjs;
-
-  selectedTime: TimePickerModel;
 
   DateNavRange = DateNavRange;
   DatePickerType = DatePickerType;
@@ -159,11 +172,103 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
     if (!this.selectedDate) {
       return;
     }
+
     this.selectedDate = updateDateByTimeModel(this.selectedDate, time);
     this.emitValue(this.selectedDate);
+  }
+
+  clearValue() {
+    this.selectedTime = null;
+    this.clear.next();
   }
 
   setToday() {
     this.confirmValue(dayjs(), true);
   }
+
+  private _disabledTimeFn(selectedDate: ConfigType) {
+    const returnFnMap: Record<
+      keyof ReturnType<DisabledTimeFn>,
+      () => number[]
+    > = {
+      hours: () => [],
+      minutes: () => [],
+      seconds: () => [],
+    };
+
+    if (
+      selectedDate &&
+      this.minDate &&
+      (selectedDate as Dayjs)?.isSame(this.minDate, 'day')
+    ) {
+      returnFnMap.hours = () =>
+        HOUR_ITEMS.filter(item => item < this.minDate.hour());
+      returnFnMap.minutes = (hour?: number) => {
+        if (hour === this.minDate.hour()) {
+          return MINUTE_ITEMS.filter(item => item < this.minDate.minute());
+        }
+        return [];
+      };
+      returnFnMap.seconds = (hour?: number, minute?: number) => {
+        if (hour === this.minDate.hour() && minute === this.minDate.minute()) {
+          return SECOND_ITEMS.filter(item => item < this.minDate.second());
+        }
+        return [];
+      };
+    }
+
+    if (
+      selectedDate &&
+      this.maxDate &&
+      (selectedDate as Dayjs)?.isSame(this.maxDate, 'day')
+    ) {
+      returnFnMap.hours = () =>
+        HOUR_ITEMS.filter(item => item > this.maxDate.hour());
+      returnFnMap.minutes = (hour?: number) => {
+        if (hour === this.maxDate.hour()) {
+          return MINUTE_ITEMS.filter(item => item > this.maxDate.minute());
+        }
+        return [];
+      };
+      returnFnMap.seconds = (hour?: number, minute?: number) => {
+        if (hour === this.maxDate.hour() && minute === this.maxDate.minute()) {
+          return SECOND_ITEMS.filter(item => item > this.maxDate.second());
+        }
+        return [];
+      };
+    }
+
+    return returnFnMap;
+  }
+}
+
+function combineDisabledTimeFn(
+  ...disabledFnList: DisabledTimeFn[]
+): DisabledTimeFn {
+  return (date?: ConfigType) => ({
+    hours: () =>
+      Array.from(
+        new Set(
+          disabledFnList
+            .map(fn => fn(date)?.hours?.() || [])
+            .reduce((prev, cur) => [...prev, ...cur], []),
+        ),
+      ),
+    minutes: (hour?: number) =>
+      Array.from(
+        new Set(
+          disabledFnList
+            .map(fn => fn(date)?.minutes?.(hour) || [])
+            .reduce((prev, cur) => [...prev, ...cur], []),
+        ),
+      ),
+    seconds: (hour?: number, minute?: number) =>
+      Array.from(
+        new Set(
+          disabledFnList
+            .map(fn => fn(date)?.seconds?.(hour, minute) || [])
+            .reduce((prev, cur) => [...prev, ...cur], []),
+        ),
+      ),
+  });
 }

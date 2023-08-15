@@ -17,6 +17,7 @@
     [weekStartDay]="weekStartDay"
     [minDate]="minDate"
     [maxDate]="maxDate"
+    [selectedTime]="selectedTime"
     [type]="type"
     [matchDates]="[selectedDate]"
     (select)="panelValueChange($event)"
@@ -30,7 +31,7 @@
 
   <ng-container *ngIf="showFooter">
     <aui-calendar-footer
-      (clear)="clear.next()"
+      (clear)="clearValue()"
       (confirm)="confirmValue()"
       [clearable]="clearable"
       [clearText]="clearText"

@@ -197,10 +197,12 @@ export class TimePickerPanelComponent
     if (!type) {
       return;
     }
-    const result = (
-      currentValue ||
-      updateDateByTimeModel(dayjs(), { hour: 0, minute: 0, second: 0 })
-    ).set(type, value);
+    const result = this.validResult(
+      (
+        currentValue ||
+        updateDateByTimeModel(dayjs(), { hour: 0, minute: 0, second: 0 })
+      ).set(type, value),
+    );
     this.emitModel(result);
     return result;
   }
@@ -243,6 +245,71 @@ export class TimePickerPanelComponent
     }
   }
 
+  matchValue(
+    value: number,
+    type: TimePickerControlType,
+    currDate: Dayjs,
+  ): boolean {
+    return currDate?.get(type) === value;
+  }
+
+  getControlTypeConfig(type: TimePickerControlType): number[] {
+    return {
+      [TimePickerControlType.Hour]: this.HOUR_ITEM_CONFIG,
+      [TimePickerControlType.Minute]: this.MINUTE_ITEM_CONFIG,
+      [TimePickerControlType.Second]: this.SECOND_ITEM_CONFIG,
+    }[type];
+  }
+
+  selectNow() {
+    this.firstScrolled = true;
+    this.emitModel(this.validResult(dayjs()));
+  }
+
+  trackBy(_index: number, content: number) {
+    return content;
+  }
+
+  private validResult(result: Dayjs) {
+    const validHours = this.validHours();
+    result = result.set(
+      'hour',
+      validHours.includes(result.hour()) ? result.hour() : validHours[0],
+    );
+
+    const validMinutes = this.validMinutes(result.hour());
+    result = result.set(
+      'minute',
+      validMinutes.includes(result.minute())
+        ? result.minute()
+        : validMinutes[0],
+    );
+
+    const validSeconds = this.validSeconds(result.hour(), result.minute());
+    result = result.set(
+      'second',
+      validSeconds.includes(result.second())
+        ? result.second()
+        : validSeconds[0],
+    );
+    return result;
+  }
+
+  private validHours() {
+    const disabledHours = this.disableHours?.() || [];
+    return HOUR_ITEMS.filter(hour => !disabledHours.includes(hour));
+  }
+
+  private validMinutes(hour: number) {
+    const disabledMinutes = this.disableMinutes?.(hour) || [];
+    return MINUTE_ITEMS.filter(minute => !disabledMinutes.includes(minute));
+  }
+
+  private validSeconds(hour: number, minute: number) {
+    const disabledSeconds = this.disableSeconds?.(hour, minute) || [];
+    return SECOND_ITEMS.filter(second => !disabledSeconds.includes(second));
+  }
+
   private scrollByValue(
     element: HTMLElement,
     value: number,
@@ -269,30 +336,5 @@ export class TimePickerPanelComponent
         this.scrollByValue(element, value, divideBy, duration - 10);
       });
     }
-  }
-
-  matchValue(
-    value: number,
-    type: TimePickerControlType,
-    currDate: Dayjs,
-  ): boolean {
-    return currDate?.get(type) === value;
-  }
-
-  getControlTypeConfig(type: TimePickerControlType): number[] {
-    return {
-      [TimePickerControlType.Hour]: this.HOUR_ITEM_CONFIG,
-      [TimePickerControlType.Minute]: this.MINUTE_ITEM_CONFIG,
-      [TimePickerControlType.Second]: this.SECOND_ITEM_CONFIG,
-    }[type];
-  }
-
-  selectNow() {
-    this.firstScrolled = true;
-    this.emitModel(dayjs());
-  }
-
-  trackBy(_index: number, content: number) {
-    return content;
   }
 }
