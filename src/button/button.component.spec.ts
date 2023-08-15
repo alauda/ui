@@ -47,7 +47,6 @@ describe('ButtonComponent', () => {
       ButtonType.Success,
       ButtonType.Warning,
       ButtonType.Danger,
-      ButtonType.Info,
       ButtonType.Text,
     ];
 

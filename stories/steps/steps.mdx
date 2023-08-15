@@ -23,14 +23,13 @@ Steps
 
 ### Steps Properties
 
-| 名称         | 类型                       | 描述                                                                                                  |
-| ------------ | -------------------------- | ----------------------------------------------------------------------------------------------------- |
-| linear       | boolean                    | 是否按顺序执行，默认为 false。如果为 true，当前步骤非可选及未完成时后面步骤无法的点击。（deprecated） |
-| selectable   | boolean                    | 是否可以点击步骤切换或查看。默认为 false                                                              |
-| orientation  | 'vertical' or 'horizontal' | 方向                                                                                                  |
-| currentIndex | number                     | 当前的步骤。当 type 为 progress 时，无需传入，组件会根据 steps 的状态自动设置                         |
-| steps        | StepItem[]                 | 步骤                                                                                                  |
-| type         | 'step' or 'progress'       | 默认为 step                                                                                           |
+| 名称         | 类型                       | 描述                                                                          |
+| ------------ | -------------------------- | ----------------------------------------------------------------------------- |
+| selectable   | boolean                    | 是否可以点击步骤切换或查看。默认为 false                                      |
+| orientation  | 'vertical' or 'horizontal' | 方向                                                                          |
+| currentIndex | number                     | 当前的步骤。当 type 为 progress 时，无需传入，组件会根据 steps 的状态自动设置 |
+| steps        | StepItem[]                 | 步骤                                                                          |
+| type         | 'step' or 'progress'       | 默认为 step                                                                   |
 
 ### Steps Output
 
@@ -41,10 +40,9 @@ Steps
 
 ### StepItem Definition
 
-| 名称        | 类型      | 可选  | 描述                                                  |
-| ----------- | --------- | ----- | ----------------------------------------------------- |
-| label       | string    | false | 步骤名称                                              |
-| description | string    | true  | 步骤描述                                              |
-| editable    | boolean   | true  | 完成后是否可以选择该步骤。默认为 true。（deprecated） |
-| state       | StepState | true  | 状态。'done', 'pending' or 'error'                    |
-| optional    | boolean   | true  | 是否可跳过。默认为 false                              |
+| 名称        | 类型      | 可选  | 描述                               |
+| ----------- | --------- | ----- | ---------------------------------- |
+| label       | string    | false | 步骤名称                           |
+| description | string    | true  | 步骤描述                           |
+| state       | StepState | true  | 状态。'done', 'pending' or 'error' |
+| optional    | boolean   | true  | 是否可跳过。默认为 false           |

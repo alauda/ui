@@ -101,7 +101,7 @@ export class AutocompleteComponent implements AfterContentInit {
       tap(hasContent => {
         if (hasContent) {
           this.directive$$.pipe(first()).subscribe(directive => {
-            window.requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
               directive.overlayRef.updatePosition();
             });
           });
@@ -117,7 +117,7 @@ export class AutocompleteComponent implements AfterContentInit {
       )
       .subscribe(() => {
         this.directive$$.pipe(first()).subscribe(directive => {
-          window.requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
             directive.overlayRef?.updatePosition();
           });
         });

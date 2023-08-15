@@ -39,14 +39,6 @@ export class RadioGroupComponent extends CommonFormControl<any> {
   @Input()
   direction: 'row' | 'column' = 'row';
 
-  /**
-   * @deprecated use `plain` instead
-   */
-  @Input()
-  set isPlain(val: boolean) {
-    this.plain = val;
-  }
-
   @Input()
   set plain(val: boolean) {
     this.isPlain$$.next(val);

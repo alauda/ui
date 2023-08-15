@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive } from '@angular/core';
 
 @Directive({
   selector: '[auiCardHeader]',
@@ -6,13 +6,7 @@ import { Directive, Input } from '@angular/core';
     '[class.aui-card__header]': 'true',
   },
 })
-export class CardHeaderDirective {
-  /**
-   * @deprecated
-   */
-  @Input()
-  size: 'default' | 'secondary' = 'default';
-}
+export class CardHeaderDirective {}
 
 @Directive({
   selector: '[auiCardFooter]',

@@ -14,27 +14,6 @@ import { Bem, buildBem } from '../utils';
 
 import { PaginatorIntl } from './paginator-intl';
 
-/**
- * Change event object that is emitted when the user selects a
- * different page size or navigates to another page.
- * @deprecated use Output events directly instead
- */
-export class PageEvent {
-  /** The current page index. */
-  pageIndex: number;
-
-  /**
-   * Index of the page that was selected previously.
-   */
-  previousPageIndex: number;
-
-  /** The current page size */
-  pageSize: number;
-
-  /** The current total number of items being paged */
-  length: number;
-}
-
 @Component({
   selector: 'aui-paginator',
   templateUrl: 'paginator.component.html',
@@ -78,18 +57,6 @@ export class PaginatorComponent implements OnDestroy {
 
   @Input()
   total = 0;
-
-  /**
-   * @deprecated use `total` instead
-   */
-  @Input()
-  get length() {
-    return this.total;
-  }
-
-  set length(val) {
-    this.total = val;
-  }
 
   @Input()
   layout: string | string[] = 'total,pager,sizes';
