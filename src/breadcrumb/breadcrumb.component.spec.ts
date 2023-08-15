@@ -6,8 +6,7 @@ import { BreadcrumbModule } from './breadcrumb.module';
 describe('BreadcrumbComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [BreadcrumbModule],
-      declarations: [TestComponent],
+      imports: [BreadcrumbModule, TestComponent],
     });
   });
 
@@ -36,5 +35,7 @@ describe('BreadcrumbComponent', () => {
       <aui-breadcrumb-item>default</aui-breadcrumb-item>
     </aui-breadcrumb>
   `,
+  standalone: true,
+  imports: [BreadcrumbModule],
 })
 class TestComponent {}

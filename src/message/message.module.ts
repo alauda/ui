@@ -9,8 +9,13 @@ import { MessageComponent } from './message.component';
 import { MessageService } from './message.service';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, IconModule],
-  declarations: [MessageWrapperComponent, MessageComponent],
+  imports: [
+    CommonModule,
+    OverlayModule,
+    IconModule,
+    MessageWrapperComponent,
+    MessageComponent,
+  ],
   providers: [MessageService],
 })
 export class MessageModule {}

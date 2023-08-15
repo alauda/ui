@@ -31,6 +31,7 @@ import { TocContentDirective } from './toc-content.directive';
 @Directive({
   selector: '[auiTocContainer]',
   exportAs: 'auiTocContainer',
+  standalone: true,
 })
 export class TocContainerDirective implements AfterContentInit, OnDestroy {
   @Output()

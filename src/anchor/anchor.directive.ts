@@ -38,6 +38,7 @@ export class AnchorDirectiveChild {
 
 @Directive({
   selector: '[auiAnchorLabel]',
+  standalone: true,
 })
 export class AnchorLabelDirective
   extends AnchorDirectiveChild
@@ -114,6 +115,7 @@ export class AnchorLabelDirective
 
 @Directive({
   selector: '[auiAnchor]',
+  standalone: true,
 })
 export class AnchorDirective implements AfterContentInit, OnDestroy {
   @Input()

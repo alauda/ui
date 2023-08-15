@@ -7,8 +7,7 @@ import { CheckTagComponent } from './check-tag/check-tag.component';
 import { TagComponent } from './tag.component';
 
 @NgModule({
-  imports: [CommonModule, IconModule],
-  declarations: [TagComponent, CheckTagComponent],
+  imports: [CommonModule, IconModule, TagComponent, CheckTagComponent],
   exports: [TagComponent, CheckTagComponent],
 })
 export class TagModule {}

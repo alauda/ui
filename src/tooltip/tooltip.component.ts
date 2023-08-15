@@ -6,6 +6,7 @@ import {
   state,
   animate,
 } from '@angular/animations';
+import { NgIf, NgTemplateOutlet, AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -57,6 +58,8 @@ import { TooltipType } from './tooltip.types';
       ]),
     ]),
   ],
+  standalone: true,
+  imports: [NgIf, NgTemplateOutlet, AsyncPipe],
 })
 export class TooltipComponent implements OnDestroy {
   text: string;

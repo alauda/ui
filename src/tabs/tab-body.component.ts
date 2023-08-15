@@ -16,6 +16,7 @@ import {
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
+  forwardRef,
 } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
@@ -27,6 +28,8 @@ import { coerceAttrBoolean } from '../utils';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [forwardRef(() => TabBodyPortalDirective)],
 })
 export class TabBodyComponent implements OnDestroy {
   private _content: TemplatePortal;
@@ -58,6 +61,7 @@ export class TabBodyComponent implements OnDestroy {
 /** Used to flag tab labels for use with the portal directive */
 @Directive({
   selector: '[auiTabLabel]',
+  standalone: true,
 })
 export class TabLabelDirective extends CdkPortal {
   // eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -74,6 +78,7 @@ export class TabLabelDirective extends CdkPortal {
  */
 @Directive({
   selector: '[auiTabContent]',
+  standalone: true,
 })
 export class TabContentDirective {
   constructor(public template: TemplateRef<any>) {}
@@ -82,6 +87,7 @@ export class TabContentDirective {
 /** Used to project additional template from host to the tab header. */
 @Directive({
   selector: '[auiTabHeaderAddon]',
+  standalone: true,
 })
 export class TabHeaderAddonDirective extends CdkPortal {
   // eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -102,6 +108,7 @@ export class TabHeaderAddonDirective extends CdkPortal {
     '[class.aui-tab-label]': 'true',
     '[class.aui-tab-label--disabled]': '!!disabled',
   },
+  standalone: true,
 })
 export class TabLabelWrapperDirective {
   /** Whether or not the tab is disabled  */
@@ -126,6 +133,7 @@ export class TabLabelWrapperDirective {
 
 @Directive({
   selector: '[auiTabTitle]',
+  standalone: true,
 })
 export class TabTitleDirective extends CdkPortal {
   // eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -142,6 +150,7 @@ export class TabTitleDirective extends CdkPortal {
  */
 @Directive({
   selector: '[auiTabBodyHost]',
+  standalone: true,
 })
 export class TabBodyPortalDirective
   extends CdkPortalOutlet

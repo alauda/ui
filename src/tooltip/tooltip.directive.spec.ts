@@ -26,8 +26,12 @@ describe('TooltipDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TooltipModule, FormsModule, BrowserAnimationsModule],
-      declarations: [TestComponent],
+      imports: [
+        TooltipModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        TestComponent,
+      ],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -207,6 +211,8 @@ describe('TooltipDirective', () => {
       <div id="dataNode">{{ text }}</div>
     </ng-template>
   `,
+  standalone: true,
+  imports: [TooltipModule, FormsModule],
 })
 class TestComponent {
   content: string | TemplateRef<any> = 'hello world';

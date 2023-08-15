@@ -25,8 +25,12 @@ describe('TreeSelectComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TreeSelectModule, FormsModule, BrowserAnimationsModule],
-      declarations: [TestComponent],
+      imports: [
+        TreeSelectModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        TestComponent,
+      ],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -124,6 +128,8 @@ describe('TreeSelectComponent', () => {
       <aui-tree-node-placeholder>None</aui-tree-node-placeholder>
     </aui-tree-select>
   `,
+  standalone: true,
+  imports: [TreeSelectModule, FormsModule],
 })
 class TestComponent {
   value = 'a-1';

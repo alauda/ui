@@ -8,11 +8,13 @@ import { MenuContentDirective } from '../dropdown';
   host: {
     '[class.aui-option-group__title]': 'true',
   },
+  standalone: true,
 })
 export class OptionGroupTitleDirective {}
 
 @Directive({
   selector: '*[auiOptionContent]',
   exportAs: 'auiOptionContent',
+  standalone: true,
 })
 export class OptionContentDirective extends MenuContentDirective {}

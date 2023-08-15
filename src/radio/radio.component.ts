@@ -1,4 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -18,6 +19,8 @@ import { RadioGroupComponent } from './radio-group/radio-group.component';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [NgClass],
 })
 export class RadioComponent extends BaseRadio {
   bem: Bem = buildBem('aui-radio');

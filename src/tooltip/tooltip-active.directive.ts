@@ -11,6 +11,7 @@ import { BaseTooltip } from './base-tooltip';
 
 @Directive({
   selector: '[auiTooltipActive]',
+  standalone: true,
 })
 export class TooltipActiveDirective implements OnDestroy {
   @Input('auiTooltipActive')

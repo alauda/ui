@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -19,6 +20,8 @@ import { SuggestionComponent } from '../suggestion/suggestion.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [AsyncPipe],
 })
 export class SuggestionGroupComponent implements AfterContentInit {
   @ContentChildren(forwardRef(() => SuggestionComponent))

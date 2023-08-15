@@ -9,6 +9,7 @@ import {
 @Directive({
   selector: '[auiClickOutside]',
   exportAs: 'auiClickOutside',
+  standalone: true,
 })
 export class ClickOutsideDirective {
   @Output()

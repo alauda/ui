@@ -10,8 +10,14 @@ import { NotificationComponent } from './notification.component';
 import { NotificationService } from './notification.service';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, PortalModule, IconModule],
-  declarations: [NotificationWrapperComponent, NotificationComponent],
+  imports: [
+    CommonModule,
+    OverlayModule,
+    PortalModule,
+    IconModule,
+    NotificationWrapperComponent,
+    NotificationComponent,
+  ],
   providers: [NotificationService],
 })
 export class NotificationModule {}

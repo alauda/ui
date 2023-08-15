@@ -28,8 +28,10 @@ import {
 import { TableComponent } from './table.component';
 
 @NgModule({
-  imports: [CommonModule, IconModule, CdkTableModule],
-  declarations: [
+  imports: [
+    CommonModule,
+    IconModule,
+    CdkTableModule,
     TableComponent,
     TableRowComponent,
     TableHeaderRowComponent,

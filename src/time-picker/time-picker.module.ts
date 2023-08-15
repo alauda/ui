@@ -25,8 +25,9 @@ import { TimePickerPanelComponent } from './panel/panel.component';
     IconModule,
     ButtonModule,
     I18nModule,
+    TimePickerComponent,
+    TimePickerPanelComponent,
   ],
-  declarations: [TimePickerComponent, TimePickerPanelComponent],
   exports: [TimePickerComponent, TimePickerPanelComponent],
 })
 export class TimePickerModule {}

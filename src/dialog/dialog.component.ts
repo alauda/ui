@@ -4,7 +4,9 @@ import {
   CdkPortalOutlet,
   ComponentPortal,
   TemplatePortal,
+  PortalModule,
 } from '@angular/cdk/portal';
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -46,6 +48,8 @@ import { throwDialogContentAlreadyAttachedError } from './utils';
     '(@dialogContainer.start)': 'onAnimationStart($event)',
     '(@dialogContainer.done)': 'onAnimationDone($event)',
   },
+  standalone: true,
+  imports: [NgClass, PortalModule],
 })
 export class DialogComponent {
   @ViewChild(CdkPortalOutlet, { static: true })

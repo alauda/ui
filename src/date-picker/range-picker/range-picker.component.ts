@@ -7,12 +7,15 @@ import {
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
 
 import { CommonFormControl } from '../../form';
+import { TooltipDirective } from '../../tooltip/tooltip.directive';
 import { ComponentSize } from '../../types';
+import { DateRangePickerPanelComponent } from '../calendar/range-picker-panel/component';
 import { DisabledDateFn, DisabledTimeFn } from '../date-picker.type';
+import { DatePickerTriggerComponent } from '../trigger/trigger.component';
 
 @Component({
   selector: 'aui-range-picker',
@@ -26,6 +29,13 @@ import { DisabledDateFn, DisabledTimeFn } from '../date-picker.type';
       useExisting: forwardRef(() => RangePickerComponent),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    DatePickerTriggerComponent,
+    TooltipDirective,
+    DateRangePickerPanelComponent,
+    FormsModule,
   ],
 })
 export class RangePickerComponent extends CommonFormControl<

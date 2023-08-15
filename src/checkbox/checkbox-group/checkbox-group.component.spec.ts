@@ -18,8 +18,7 @@ describe('CheckboxGroupComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, CheckboxModule],
-      declarations: [TestComponent],
+      imports: [FormsModule, CheckboxModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -97,6 +96,8 @@ describe('CheckboxGroupComponent', () => {
       </aui-checkbox-group>
     </div>
   `,
+  standalone: true,
+  imports: [FormsModule, CheckboxModule],
 })
 class TestComponent {
   value: string[];

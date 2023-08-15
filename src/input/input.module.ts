@@ -27,8 +27,6 @@ import { TagsInputComponent } from './tags-input/tags-input.component';
     IconModule,
     TagModule,
     SharedModule,
-  ],
-  declarations: [
     AutosizeDirective,
     InputComponent,
     InputGroupComponent,

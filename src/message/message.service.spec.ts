@@ -89,6 +89,7 @@ describe('MessageService', () => {
 @Component({
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class TestComponent {
   @ViewChild('template', { static: true })
@@ -96,7 +97,6 @@ export class TestComponent {
 }
 
 @NgModule({
-  imports: [MessageModule, NoopAnimationsModule],
-  declarations: [TestComponent],
+  imports: [MessageModule, NoopAnimationsModule, TestComponent],
 })
 class TestModule {}

@@ -39,6 +39,7 @@ export class AuiSelectValidators {
       multi: true,
     },
   ],
+  standalone: true,
 })
 export class IncludesDirective<T> implements Validator, AfterContentInit {
   @Input()

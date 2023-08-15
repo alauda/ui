@@ -20,6 +20,7 @@ import { coerceAttrBoolean } from '../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
 })
 export class InputComponent {
   @Input()

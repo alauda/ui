@@ -1,3 +1,4 @@
+import { NgIf, NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -5,6 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
+import { ThemePickerPipe } from '../theme/theme.pipe';
 import { Bem, buildBem, handlePixel } from '../utils';
 
 import { IconRegisterService } from './icon-register.service';
@@ -18,6 +20,8 @@ let id = 0;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [NgIf, NgClass, ThemePickerPipe],
 })
 export class IconComponent {
   @Input()

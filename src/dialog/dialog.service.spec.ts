@@ -19,6 +19,11 @@ import {
 } from '@angular/platform-browser/animations';
 import { timer } from 'rxjs';
 
+import { DialogCloseDirective } from './dialog-content/dialog-close.directive';
+import { DialogContentComponent as DialogContentComponent_1 } from './dialog-content/dialog-content.component';
+import { DialogFooterComponent } from './dialog-content/dialog-footer.component';
+import { DialogHeaderComponent } from './dialog-content/dialog-header.component';
+
 import { DialogModule, DialogService, DialogSize } from '.';
 
 describe('DialogService', () => {
@@ -366,6 +371,8 @@ describe('DialogService', () => {
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [DialogHeaderComponent, DialogCloseDirective],
 })
 class TestComponent {
   result: any;
@@ -380,6 +387,7 @@ class TestComponent {
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 class ContentTemplateRefTestComponent {
   @ViewChild('template', { static: true })
@@ -405,12 +413,19 @@ class ContentTemplateRefTestComponent {
     </aui-dialog-footer>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    DialogHeaderComponent,
+    DialogContentComponent_1,
+    DialogFooterComponent,
+    DialogCloseDirective,
+  ],
 })
 class DialogContentComponent {}
 
 @NgModule({
-  imports: [DialogModule],
-  declarations: [
+  imports: [
+    DialogModule,
     DialogContentComponent,
     TestComponent,
     ContentTemplateRefTestComponent,

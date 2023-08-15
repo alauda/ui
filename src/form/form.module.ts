@@ -12,8 +12,8 @@ import {
 } from './helper-directives';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [
+  imports: [
+    CommonModule,
     FormDirective,
     FormItemComponent,
     FormItemAddonDirective,

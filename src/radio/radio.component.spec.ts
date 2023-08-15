@@ -19,8 +19,7 @@ describe('RadioComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RadioModule, FormsModule],
-      declarations: [TestComponent],
+      imports: [RadioModule, FormsModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -126,6 +125,8 @@ describe('RadioComponent', () => {
       </aui-radio-button>
     </aui-radio-group>
   `,
+  standalone: true,
+  imports: [RadioModule, FormsModule],
 })
 export class TestComponent {
   size: RadioSize = RadioSize.Medium;

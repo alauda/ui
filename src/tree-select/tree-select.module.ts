@@ -12,8 +12,11 @@ import {
 } from './tree-select.component';
 
 @NgModule({
-  imports: [CommonModule, TooltipModule, IconModule, InputModule],
-  declarations: [
+  imports: [
+    CommonModule,
+    TooltipModule,
+    IconModule,
+    InputModule,
     TreeSelectComponent,
     TreeNodeComponent,
     TreeNodePlaceholderComponent,

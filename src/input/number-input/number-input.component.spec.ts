@@ -19,8 +19,7 @@ describe('InputNumberComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [InputModule, FormsModule],
-      declarations: [TestComponent],
+      imports: [InputModule, FormsModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -192,6 +191,8 @@ describe('InputNumberComponent', () => {
       [clearable]="clearable"
     ></aui-number-input>
   `,
+  standalone: true,
+  imports: [InputModule, FormsModule],
 })
 class TestComponent {
   size: string;

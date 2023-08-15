@@ -14,8 +14,7 @@ describe('PaginatorComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [PaginatorModule],
-      declarations: [TestComponent],
+      imports: [PaginatorModule, TestComponent],
     });
 
     fixture = TestBed.createComponent(TestComponent);
@@ -120,6 +119,8 @@ describe('PaginatorComponent', () => {
       custom content
     </aui-paginator>
   `,
+  standalone: true,
+  imports: [PaginatorModule],
 })
 class TestComponent {
   currentPage = 1;

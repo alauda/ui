@@ -5,8 +5,7 @@ import { SortHeaderComponent } from './sort-header.component';
 import { SortDirective } from './sort.directive';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [SortDirective, SortHeaderComponent],
+  imports: [CommonModule, SortDirective, SortHeaderComponent],
   exports: [SortDirective, SortHeaderComponent],
 })
 export class SortModule {}

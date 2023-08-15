@@ -7,8 +7,7 @@ import { ICON_REGISTER_SERVICE_PROVIDER } from './icon-register.service';
 import { IconComponent } from './icon.component';
 
 @NgModule({
-  imports: [CommonModule, ThemeModule],
-  declarations: [IconComponent],
+  imports: [CommonModule, ThemeModule, IconComponent],
   exports: [IconComponent],
   providers: [ICON_REGISTER_SERVICE_PROVIDER],
 })

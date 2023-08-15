@@ -40,8 +40,8 @@ const COMPONENTS = [
     TimePickerModule,
     IconModule,
     I18nModule,
+    ...COMPONENTS,
   ],
-  declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
 })
 export class DatePickerModule {}

@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
+import { IconComponent } from '../icon/icon.component';
 import { Bem, buildBem } from '../utils';
 
 import { MessageAnimations } from './message-animations';
@@ -31,6 +32,8 @@ const typeIcon: { [key: string]: string } = {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [IconComponent],
 })
 export class MessageComponent implements AfterViewInit {
   protected readonly animateStartState: string = 'slideDown';

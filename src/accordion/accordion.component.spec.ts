@@ -9,8 +9,7 @@ describe('AccordionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AccordionModule],
-      declarations: [TestComponent],
+      imports: [AccordionModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -55,6 +54,8 @@ describe('AccordionComponent', () => {
       </aui-accordion-item>
     </aui-accordion>
   `,
+  standalone: true,
+  imports: [AccordionModule],
 })
 class TestComponent {
   multi: boolean;

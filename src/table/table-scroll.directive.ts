@@ -42,6 +42,7 @@ const HAS_TABLE_VERTICAL_SCROLL = 'hasTableVerticalScroll';
   host: {
     class: 'aui-table__scroll-wrapper',
   },
+  standalone: true,
 })
 export class TableScrollWrapperDirective {
   @HostBinding('style.max-height')
@@ -54,6 +55,7 @@ export class TableScrollWrapperDirective {
   providers: [
     { provide: CdkScrollable, useExisting: TableScrollableDirective },
   ],
+  standalone: true,
 })
 export class TableScrollableDirective
   extends CdkScrollable

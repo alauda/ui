@@ -18,8 +18,7 @@ describe('SearchComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [InputModule],
-      declarations: [TestComponent],
+      imports: [InputModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -210,6 +209,8 @@ describe('SearchComponent', () => {
       [placeholder]="placeholder"
     ></aui-search>
   `,
+  standalone: true,
+  imports: [InputModule],
 })
 class TestComponent {
   searchButton: boolean;

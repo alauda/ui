@@ -14,6 +14,7 @@ import {
 @Directive({
   selector: '*[auiMenuContent]',
   exportAs: 'auiMenuContent',
+  standalone: true,
 })
 export class MenuContentDirective implements OnDestroy {
   private portal: TemplatePortal;

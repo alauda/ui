@@ -1,3 +1,4 @@
+import { NgIf, NgTemplateOutlet, DatePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,14 +8,19 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import dayjs, { Dayjs } from 'dayjs';
 
 import { CommonFormControl } from '../../../form/common-form';
+import { I18nPipe } from '../../../i18n/i18n.pipe';
+import { TimePickerComponent } from '../../../time-picker/component';
 import { TimePickerModel } from '../../../time-picker/time-picker.type';
 import { buildBem } from '../../../utils';
 import { DateNavRange, DisabledTimeFn, Side } from '../../date-picker.type';
 import { DatePickerType, MONTH, YEAR } from '../constant';
+import { CalendarFooterComponent } from '../footer/component';
+import { CalendarHeaderComponent } from '../header/component';
+import { PickerPanelComponent } from '../panel/picker-panel';
 import {
   composeDisabledDateFn,
   getTimePickerModel,
@@ -41,6 +47,18 @@ const bem = buildBem('aui-date-range-picker-panel');
       useExisting: forwardRef(() => DateRangePickerPanelComponent),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    CalendarHeaderComponent,
+    PickerPanelComponent,
+    NgIf,
+    CalendarFooterComponent,
+    NgTemplateOutlet,
+    TimePickerComponent,
+    FormsModule,
+    DatePipe,
+    I18nPipe,
   ],
 })
 export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {

@@ -10,8 +10,7 @@ describe('FormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, FormModule],
-      declarations: [TestComponent],
+      imports: [FormsModule, FormModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -65,6 +64,8 @@ describe('FormComponent', () => {
       </aui-form-item>
     </form>
   `,
+  standalone: true,
+  imports: [FormsModule, FormModule],
 })
 class TestComponent {
   @ViewChild('form', { static: true })

@@ -15,8 +15,10 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
 import { SuggestionGroupComponent } from './suggestion-group/suggestion-group.component';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, TooltipModule],
-  declarations: [
+  imports: [
+    CommonModule,
+    OverlayModule,
+    TooltipModule,
     AutoCompleteDirective,
     CustomAutoCompleteDirective,
     AutocompleteComponent,

@@ -21,8 +21,10 @@ describe('TabHeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CommonModule, PortalModule, IconModule],
-      declarations: [
+      imports: [
+        CommonModule,
+        PortalModule,
+        IconModule,
         TabHeaderComponent,
         TabHeaderActiveIndicatorComponent,
         TabLabelWrapperDirective,
@@ -88,6 +90,8 @@ interface Tab {
       }
     `,
   ],
+  standalone: true,
+  imports: [CommonModule, PortalModule, IconModule],
 })
 class SimpleTabHeaderAppComponent {
   selectedIndex = 0;

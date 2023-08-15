@@ -21,6 +21,7 @@ import { BaseTooltip } from './base-tooltip';
     'disabled:auiTooltipDisabled',
     'hideOnClick:auiTooltipHideOnClick',
   ],
+  standalone: true,
 })
 export class TooltipDirective extends BaseTooltip {
   @Output('auiTooltipVisibleChange')

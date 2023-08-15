@@ -14,8 +14,7 @@ describe('InputComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [InputModule],
-      declarations: [TestComponent],
+      imports: [InputModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -38,6 +37,8 @@ describe('InputComponent', () => {
 
 @Component({
   template: '<input aui-input [size]="size">',
+  standalone: true,
+  imports: [InputModule],
 })
 class TestComponent {
   size: ComponentSize;

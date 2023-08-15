@@ -21,8 +21,6 @@ import { DialogService } from './dialog.service';
     PortalModule,
     IconModule,
     ButtonModule,
-  ],
-  declarations: [
     DialogComponent,
     DialogHeaderComponent,
     DialogContentComponent,

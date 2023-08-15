@@ -25,6 +25,7 @@ import { RadioSize } from '../radio.types';
       multi: true,
     },
   ],
+  standalone: true,
 })
 export class RadioGroupComponent extends CommonFormControl<any> {
   private readonly size$$ = new BehaviorSubject<RadioSize>(RadioSize.Medium);

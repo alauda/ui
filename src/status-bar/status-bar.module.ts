@@ -6,8 +6,7 @@ import { TooltipModule } from '../tooltip';
 import { StatusBarComponent } from './status-bar.component';
 
 @NgModule({
-  imports: [CommonModule, TooltipModule],
-  declarations: [StatusBarComponent],
+  imports: [CommonModule, TooltipModule, StatusBarComponent],
   exports: [StatusBarComponent],
 })
 export class StatusBarModule {}

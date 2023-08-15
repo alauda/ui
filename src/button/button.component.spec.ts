@@ -14,8 +14,7 @@ describe('ButtonComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ButtonModule],
-      declarations: [TestComponent],
+      imports: [ButtonModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -111,6 +110,8 @@ describe('ButtonComponent', () => {
       {{ content }}
     </button>
   `,
+  standalone: true,
+  imports: [ButtonModule],
 })
 class TestComponent {
   type: ButtonType;

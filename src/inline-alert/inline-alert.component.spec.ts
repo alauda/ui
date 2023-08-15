@@ -10,8 +10,7 @@ describe('InlineAlertComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [InlineAlertModule],
-      declarations: [TestComponent],
+      imports: [InlineAlertModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -115,6 +114,8 @@ describe('InlineAlertComponent', () => {
       #inlineAlertRef
     ></aui-inline-alert>
   `,
+  standalone: true,
+  imports: [InlineAlertModule],
 })
 export class TestComponent {
   title = '';

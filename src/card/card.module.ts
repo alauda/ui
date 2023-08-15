@@ -10,8 +10,8 @@ import {
 import { SectionComponent } from './section.component';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [
+  imports: [
+    CommonModule,
     CardComponent,
     CardHeaderDirective,
     CardFooterDirective,

@@ -29,6 +29,7 @@ import { ArrowViewState, SortDirection, Sortable } from './sort.types';
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class SortHeaderComponent implements Sortable, OnInit, OnDestroy {
   private readonly _rerenderSubscription: Subscription;

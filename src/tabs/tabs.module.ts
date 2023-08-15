@@ -31,8 +31,6 @@ import { TabComponent } from './tab.component';
     IconModule,
     A11yModule,
     ObserversModule,
-  ],
-  declarations: [
     TabGroupComponent,
     TabComponent,
     TabLabelDirective,

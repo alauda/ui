@@ -17,8 +17,7 @@ describe('CheckboxComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CheckboxModule, FormsModule],
-      declarations: [TestComponent],
+      imports: [CheckboxModule, FormsModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -123,6 +122,8 @@ describe('CheckboxComponent', () => {
       {{ content }}
     </aui-checkbox>
   `,
+  standalone: true,
+  imports: [CheckboxModule, FormsModule],
 })
 export class TestComponent {
   checkedMap = { a: true, b: false, c: true, d: true };

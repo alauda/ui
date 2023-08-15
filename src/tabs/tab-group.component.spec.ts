@@ -15,8 +15,8 @@ import { TabChangeEvent, TabComponent, TabGroupComponent, TabsModule } from '.';
 describe('TabGroupComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TabsModule],
-      declarations: [SimpleTabsTestAppComponent, LifeCycleDirective],
+      imports: [TabsModule, SimpleTabsTestAppComponent],
+      declarations: [LifeCycleDirective],
     });
   });
 
@@ -325,6 +325,8 @@ function checkSelectedIndex(
       </aui-tab>
     </aui-tab-group>
   `,
+  standalone: true,
+  imports: [TabsModule],
 })
 class SimpleTabsTestAppComponent {
   @ViewChildren(TabComponent)

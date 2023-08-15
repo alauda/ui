@@ -6,5 +6,6 @@ import { Directive } from '@angular/core';
   host: {
     '[class.aui-suggestion-group__title]': 'true',
   },
+  standalone: true,
 })
 export class SuggestionGroupTitleDirective {}

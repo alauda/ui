@@ -20,8 +20,12 @@ describe('SelectComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [SelectModule, FormsModule, BrowserAnimationsModule],
-      declarations: [TestComponent],
+      imports: [
+        SelectModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        TestComponent,
+      ],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -133,6 +137,8 @@ describe('SelectComponent', () => {
       </aui-option>
     </aui-select>
   `,
+  standalone: true,
+  imports: [SelectModule, FormsModule],
 })
 class TestComponent {
   disabled: boolean;

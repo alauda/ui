@@ -14,6 +14,7 @@ import { Directive, Input } from '@angular/core';
     },
   ],
   inputs: ['sticky'],
+  standalone: true,
 })
 export class TableColumnDefDirective extends CdkColumnDef {
   // Unique name for this column

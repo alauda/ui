@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -26,6 +27,8 @@ const prefix = 'aui-switch';
       multi: true,
     },
   ],
+  standalone: true,
+  imports: [NgClass],
 })
 export class SwitchComponent extends CommonFormControl<boolean> {
   bem: Bem = buildBem(prefix);

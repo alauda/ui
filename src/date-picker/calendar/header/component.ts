@@ -1,3 +1,4 @@
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -8,6 +9,9 @@ import {
 } from '@angular/core';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
 
+import { ButtonComponent } from '../../../button/button.component';
+import { I18nPipe } from '../../../i18n/i18n.pipe';
+import { IconComponent } from '../../../icon/icon.component';
 import { buildBem } from '../../../utils';
 import {
   CalendarHeaderRange,
@@ -25,6 +29,8 @@ const bem = buildBem('aui-calendar-header');
   styleUrls: ['./style.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, NgTemplateOutlet, ButtonComponent, IconComponent, I18nPipe],
 })
 export class CalendarHeaderComponent {
   @Input()

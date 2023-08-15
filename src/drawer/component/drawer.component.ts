@@ -8,7 +8,10 @@ import {
   CdkPortalOutlet,
   ComponentPortal,
   TemplatePortal,
+  PortalModule,
 } from '@angular/cdk/portal';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { NgIf, NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -32,6 +35,7 @@ import {
 } from '@angular/core';
 import { Observable, Subject, takeUntil } from 'rxjs';
 
+import { IconComponent } from '../../icon/icon.component';
 import { isTemplateRef } from '../../utils';
 
 import { DrawerRef, DrawerSize } from './drawer-ref';
@@ -57,6 +61,16 @@ const SIZE_MAPPER = {
   styleUrls: ['./drawer.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    NgIf,
+    NgClass,
+    NgStyle,
+    NgTemplateOutlet,
+    IconComponent,
+    CdkScrollable,
+    PortalModule,
+  ],
 })
 export class DrawerComponent<
     T = ComponentType<unknown>,

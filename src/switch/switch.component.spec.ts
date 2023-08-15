@@ -16,8 +16,7 @@ describe('SwitchComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [SwitchModule, FormsModule],
-      declarations: [TestComponent],
+      imports: [SwitchModule, FormsModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -106,6 +105,8 @@ describe('SwitchComponent', () => {
       [loading]="true"
     ></aui-switch>
   `,
+  standalone: true,
+  imports: [SwitchModule, FormsModule],
 })
 export class TestComponent {
   switchMap = { a: true, b: false, c: true, d: true };

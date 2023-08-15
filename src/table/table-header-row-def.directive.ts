@@ -13,6 +13,7 @@ import { Directive, Input } from '@angular/core';
       useExisting: TableHeaderRowDefDirective,
     },
   ],
+  standalone: true,
 })
 export class TableHeaderRowDefDirective extends CdkHeaderRowDef {
   @Input('auiTableHeaderRowDef')

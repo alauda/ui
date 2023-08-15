@@ -1,4 +1,11 @@
 import {
+  NgFor,
+  NgClass,
+  NgIf,
+  NgTemplateOutlet,
+  AsyncPipe,
+} from '@angular/common';
+import {
   AfterContentInit,
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -24,7 +31,11 @@ import {
   tap,
 } from 'rxjs';
 
+import { I18nPipe } from '../../i18n/i18n.pipe';
+import { IconComponent } from '../../icon/icon.component';
 import { createWithMaxRowCount } from '../../input/tags-input/with-max-row-count';
+import { TagComponent } from '../../tag/tag.component';
+import { TooltipDirective } from '../../tooltip/tooltip.directive';
 import { ComponentSize } from '../../types';
 import {
   Bem,
@@ -62,6 +73,19 @@ import {
       provide: BaseSelect,
       useExisting: MultiSelectComponent,
     },
+  ],
+  standalone: true,
+  imports: [
+    TooltipDirective,
+    IconComponent,
+    NgFor,
+    TagComponent,
+    NgClass,
+    NgIf,
+    NgTemplateOutlet,
+    OptionComponent,
+    AsyncPipe,
+    I18nPipe,
   ],
 })
 export class MultiSelectComponent<T = unknown>

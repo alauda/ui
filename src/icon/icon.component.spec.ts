@@ -12,8 +12,7 @@ describe('IconComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [IconModule],
-      declarations: [TestComponent],
+      imports: [IconModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -109,6 +108,8 @@ describe('IconComponent', () => {
       [size]="size"
     ></aui-icon>
   `,
+  standalone: true,
+  imports: [IconModule],
 })
 class TestComponent {
   icon = '';

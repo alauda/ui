@@ -31,6 +31,7 @@ import { TabContextService } from './tab-context.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
   providers: [TabContextService],
+  standalone: true,
 })
 export class TabComponent implements AfterContentInit, OnDestroy, OnChanges {
   @Input()

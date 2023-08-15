@@ -26,8 +26,6 @@ import { IncludesDirective } from './validators';
     IconModule,
     TooltipModule,
     TagModule,
-  ],
-  declarations: [
     SelectComponent,
     OptionComponent,
     OptionGroupComponent,

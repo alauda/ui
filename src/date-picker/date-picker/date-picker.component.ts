@@ -9,13 +9,16 @@ import {
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
 
 import { CommonFormControl } from '../../form/common-form';
+import { TooltipDirective } from '../../tooltip/tooltip.directive';
 import { ComponentSize } from '../../types';
 import { DatePickerType } from '../calendar/constant';
+import { DatePickerPanelComponent } from '../calendar/date-picker-panel/component';
 import { DateNavRange, DisabledTimeFn } from '../date-picker.type';
+import { DatePickerTriggerComponent } from '../trigger/trigger.component';
 
 @Component({
   selector: 'aui-date-picker',
@@ -29,6 +32,13 @@ import { DateNavRange, DisabledTimeFn } from '../date-picker.type';
       useExisting: forwardRef(() => DatePickerComponent),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    DatePickerTriggerComponent,
+    TooltipDirective,
+    DatePickerPanelComponent,
+    FormsModule,
   ],
 })
 export class DatePickerComponent

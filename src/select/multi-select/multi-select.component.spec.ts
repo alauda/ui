@@ -23,8 +23,12 @@ describe('multiSelectComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [SelectModule, FormsModule, BrowserAnimationsModule],
-      declarations: [TestComponent],
+      imports: [
+        SelectModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        TestComponent,
+      ],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -142,6 +146,8 @@ describe('multiSelectComponent', () => {
       >
     </aui-multi-select>
   `,
+  standalone: true,
+  imports: [SelectModule, FormsModule],
 })
 class TestComponent {
   value: number[];

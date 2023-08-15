@@ -1,3 +1,4 @@
+import { NgClass, NgIf, NgStyle, AsyncPipe } from '@angular/common';
 import {
   AfterContentInit,
   AfterViewInit,
@@ -16,6 +17,8 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { CommonFormControl } from '../../form';
+import { IconComponent } from '../../icon/icon.component';
+import { ClickOutsideDirective } from '../../shared/click-outside.directive';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, watchContentExist } from '../../utils';
 import {
@@ -36,6 +39,15 @@ import {
       useExisting: forwardRef(() => NumberInputComponent),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    NgClass,
+    NgIf,
+    ClickOutsideDirective,
+    IconComponent,
+    NgStyle,
+    AsyncPipe,
   ],
 })
 export class NumberInputComponent

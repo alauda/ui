@@ -17,8 +17,7 @@ describe('InputGroupComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [InputModule, IconModule],
-      declarations: [TestComponent],
+      imports: [InputModule, IconModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -106,6 +105,8 @@ describe('InputGroupComponent', () => {
       />
     </aui-input-group>
   `,
+  standalone: true,
+  imports: [InputModule, IconModule],
 })
 class TestComponent {
   size: ComponentSize;

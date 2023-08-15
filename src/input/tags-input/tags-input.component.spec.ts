@@ -18,8 +18,7 @@ describe('TagsInputComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, InputModule],
-      declarations: [TestComponent],
+      imports: [FormsModule, InputModule, TestComponent],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -92,6 +91,8 @@ describe('TagsInputComponent', () => {
       [placeholder]="placeholder"
     ></aui-tags-input>
   `,
+  standalone: true,
+  imports: [FormsModule, InputModule],
 })
 class TestComponent {
   value: string[];

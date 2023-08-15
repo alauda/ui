@@ -6,5 +6,6 @@ import { Directive } from '@angular/core';
   host: {
     '[class.aui-menu-group__title]': 'true',
   },
+  standalone: true,
 })
 export class MenuGroupTitleDirective {}

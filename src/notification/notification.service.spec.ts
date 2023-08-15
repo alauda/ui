@@ -118,6 +118,7 @@ describe('NotificationService', () => {
 
 @Component({
   template: `<div class="notification-demo-content">demo content</div>`,
+  standalone: true,
 })
 class NotificationContentComponent {}
 
@@ -129,6 +130,7 @@ class NotificationContentComponent {}
       </ng-template>
     </div>
   `,
+  standalone: true,
 })
 export class TestComponent {
   @ViewChild('template', { static: true })
@@ -136,7 +138,11 @@ export class TestComponent {
 }
 
 @NgModule({
-  imports: [NotificationModule, NoopAnimationsModule],
-  declarations: [TestComponent, NotificationContentComponent],
+  imports: [
+    NotificationModule,
+    NoopAnimationsModule,
+    TestComponent,
+    NotificationContentComponent,
+  ],
 })
 class TestModule {}

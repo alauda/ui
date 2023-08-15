@@ -18,6 +18,7 @@ import { TagType } from '../tag.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
 })
 export class CheckTagComponent {
   bem: Bem = buildBem('aui-tag');

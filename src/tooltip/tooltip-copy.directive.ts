@@ -19,6 +19,7 @@ import { TooltipCopyIntl } from './tooltip-intl';
 @Directive({
   selector: '[auiTooltipCopy]',
   inputs: ['position:auiTooltipPosition', 'disabled:auiTooltipDisabled'],
+  standalone: true,
 })
 export class TooltipCopyDirective extends BaseTooltip implements OnInit {
   @HostBinding('class.aui-tooltip-copy')

@@ -16,6 +16,7 @@ import {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
 })
 export class AccordionComponent extends CdkAccordion {
   @Input()

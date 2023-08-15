@@ -1,4 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,6 +10,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
+import { IconComponent } from '../icon/icon.component';
 import { ComponentSize } from '../types';
 
 import { ButtonType } from './button.types';
@@ -23,6 +25,8 @@ const prefix = 'aui-button--';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [NgIf, IconComponent],
 })
 export class ButtonComponent implements OnDestroy {
   @Input('aui-button')

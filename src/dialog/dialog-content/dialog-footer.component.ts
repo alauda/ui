@@ -12,6 +12,7 @@ import { Bem, buildBem } from '../../utils';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
 })
 export class DialogFooterComponent {
   bem: Bem = buildBem('aui-dialog');

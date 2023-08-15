@@ -12,6 +12,7 @@ import {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
 })
 export class MessageWrapperComponent {
   constructor(public elementRef: ElementRef) {}

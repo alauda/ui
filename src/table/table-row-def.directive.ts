@@ -14,6 +14,7 @@ import { Directive, Input } from '@angular/core';
       useExisting: TableRowDefDirective,
     },
   ],
+  standalone: true,
 })
 export class TableRowDefDirective<T> extends CdkRowDef<T> {
   @Input('auiTableRowDefColumns')
