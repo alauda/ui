@@ -1,6 +1,12 @@
+import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { SelectModule } from 'src/select';
 
 @Component({
+  standalone: true,
+  imports: [SelectModule, FormsModule, NgFor],
   selector: 'story-select-basic',
   template: `
     <aui-select

@@ -82,6 +82,11 @@
     left: calc(#{use-var(inline-padding-xs)} + 1px);
     transform: translateY(-50%);
     color: use-text-color(secondary);
+    pointer-events: none;
+
+    > * {
+      pointer-events: auto;
+    }
   }
 
   &__suffix {
@@ -90,6 +95,11 @@
     right: calc(#{use-var(inline-padding-xs)} + 1px);
     transform: translateY(-50%);
     color: use-text-color(secondary);
+    pointer-events: none;
+
+    > * {
+      pointer-events: auto;
+    }
   }
 
   &.hasAddonBefore {
