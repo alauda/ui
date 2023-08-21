@@ -184,10 +184,19 @@
   &__icon-container {
     display: block;
     position: relative;
+    pointer-events: none !important;
+
+    .aui-icon {
+      margin: 0 !important;
+    }
   }
 
   &.isDisabled &__icon-container {
     color: use-rgb(n-4);
+  }
+
+  &__indicator {
+    display: flex;
   }
 
   &__clear {
@@ -205,6 +214,7 @@
 
     &__clear {
       display: flex;
+      pointer-events: auto;
     }
   }
 }

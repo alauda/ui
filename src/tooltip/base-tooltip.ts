@@ -359,7 +359,7 @@ export class BaseTooltip<T = any>
           this.renderer.listen(
             this.elRef.nativeElement,
             'click',
-            this.onClick.bind(this) as () => void,
+            this.onClick.bind(this),
           ),
         );
         break;
@@ -458,8 +458,9 @@ export class BaseTooltip<T = any>
     }
   }
 
-  protected onClick() {
+  protected onClick(event: Event) {
     this.toggleTooltip();
+    event.stopPropagation();
   }
 
   protected onBodyClick(event: Event) {
