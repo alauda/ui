@@ -3,7 +3,9 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   Output,
+  SimpleChanges,
   TemplateRef,
   ViewChild,
   ViewEncapsulation,
@@ -23,7 +25,7 @@ import {
   TimePickerModel,
   isTimePickerModel,
 } from './time-picker.type';
-import { HOUR_ITEMS, MINUTE_ITEMS, SECOND_ITEMS } from './constant';
+import { validResult } from './util';
 
 dayjs.extend(customParseFormat);
 
@@ -41,10 +43,10 @@ dayjs.extend(customParseFormat);
     },
   ],
 })
-export class TimePickerComponent extends CommonFormControl<
-  TimePickerDataLike,
-  TimePickerModel
-> {
+export class TimePickerComponent
+  extends CommonFormControl<TimePickerDataLike, TimePickerModel>
+  implements OnChanges
+{
   @Input()
   format = 'HH:mm:ss';
 
@@ -61,13 +63,13 @@ export class TimePickerComponent extends CommonFormControl<
   showIcon = true;
 
   @Input()
-  disableHours: () => number[];
+  disableHours?: () => number[];
 
   @Input()
-  disableMinutes: (hour?: number) => number[];
+  disableMinutes?: (hour?: number) => number[];
 
   @Input()
-  disableSeconds: (hour?: number, minute?: number) => number[];
+  disableSeconds?: (hour?: number, minute?: number) => number[];
 
   @Input()
   hourStep = 1;
@@ -93,6 +95,12 @@ export class TimePickerComponent extends CommonFormControl<
   timeValue: Dayjs = null;
   timeFormatValue = '';
 
+  private validResult = validResult({
+    hours: this.disableHours,
+    minutes: this.disableMinutes,
+    seconds: this.disableSeconds,
+  });
+
   override writeValue(value: TimePickerDataLike) {
     if (!value) {
       return this.setValue(null);
@@ -107,6 +115,20 @@ export class TimePickerComponent extends CommonFormControl<
     const validResult = this.validResult(result);
     this.setValue(validResult);
     super.writeValue(validResult);
+  }
+
+  ngOnChanges({ disableHours, disableMinutes, disableSeconds }: SimpleChanges) {
+    if (
+      this.disableHours !== disableHours?.currentValue ||
+      this.disableMinutes !== disableMinutes?.currentValue ||
+      this.disableSeconds !== disableSeconds?.currentValue
+    ) {
+      this.validResult = validResult({
+        hours: disableHours?.currentValue,
+        minutes: disableMinutes?.currentValue,
+        seconds: disableSeconds?.currentValue,
+      });
+    }
   }
 
   setValue(value: Dayjs) {
@@ -196,45 +218,5 @@ export class TimePickerComponent extends CommonFormControl<
     if (close) {
       this.closePanel();
     }
-  }
-
-  private validResult(result: Dayjs) {
-    const validHours = this.validHours();
-    result = result.set(
-      'hour',
-      validHours.includes(result.hour()) ? result.hour() : validHours[0],
-    );
-
-    const validMinutes = this.validMinutes(result.hour());
-    result = result.set(
-      'minute',
-      validMinutes.includes(result.minute())
-        ? result.minute()
-        : validMinutes[0],
-    );
-
-    const validSeconds = this.validSeconds(result.hour(), result.minute());
-    result = result.set(
-      'second',
-      validSeconds.includes(result.second())
-        ? result.second()
-        : validSeconds[0],
-    );
-    return result;
-  }
-
-  private validHours() {
-    const disabledHours = this.disableHours?.() || [];
-    return HOUR_ITEMS.filter(hour => !disabledHours.includes(hour));
-  }
-
-  private validMinutes(hour: number) {
-    const disabledMinutes = this.disableMinutes?.(hour) || [];
-    return MINUTE_ITEMS.filter(minute => !disabledMinutes.includes(minute));
-  }
-
-  private validSeconds(hour: number, minute: number) {
-    const disabledSeconds = this.disableSeconds?.(hour, minute) || [];
-    return SECOND_ITEMS.filter(second => !disabledSeconds.includes(second));
   }
 }

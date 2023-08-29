@@ -28,6 +28,7 @@ import {
   SECOND_ITEMS,
 } from '../constant';
 import { TimePickerControlType } from '../time-picker.type';
+import { validResult } from '../util';
 
 const TIME_PICKER_COLUMN_WIDTH = 80;
 const bem = buildBem('aui-time-picker-panel');
@@ -96,13 +97,13 @@ export class TimePickerPanelComponent
   confirm = new EventEmitter<void>();
 
   @Input()
-  disableHours: () => number[];
+  disableHours?: () => number[];
 
   @Input()
-  disableMinutes: (hour?: number) => number[];
+  disableMinutes?: (hour?: number) => number[];
 
   @Input()
-  disableSeconds: (hour?: number, minute?: number) => number[];
+  disableSeconds?: (hour?: number, minute?: number) => number[];
 
   hourEnabled: boolean;
   minuteEnabled: boolean;
@@ -130,6 +131,12 @@ export class TimePickerPanelComponent
 
   // 用于控制初次滚动，是否展示滚动动画效果
   firstScrolled = false;
+
+  private validResult = validResult({
+    hours: this.disableHours,
+    minutes: this.disableMinutes,
+    seconds: this.disableSeconds,
+  });
 
   constructor(protected override cdr: ChangeDetectorRef) {
     super(cdr);
@@ -160,7 +167,21 @@ export class TimePickerPanelComponent
     }
   }
 
-  ngOnChanges({ hourStep, minuteStep, secondStep }: SimpleChanges): void {
+  ngOnChanges({
+    hourStep,
+    minuteStep,
+    secondStep,
+    disableHours,
+    disableMinutes,
+    disableSeconds,
+  }: SimpleChanges): void {
+    if (disableHours || disableMinutes || disableSeconds) {
+      this.validResult = validResult({
+        hours: disableHours?.currentValue,
+        minutes: disableMinutes?.currentValue,
+        seconds: disableSeconds?.currentValue,
+      });
+    }
     if (hourStep?.currentValue > 0) {
       this.HOUR_ITEM_CONFIG = HOUR_ITEMS.filter(
         i => i % hourStep.currentValue === 0,
@@ -268,46 +289,6 @@ export class TimePickerPanelComponent
 
   trackBy(_index: number, content: number) {
     return content;
-  }
-
-  private validResult(result: Dayjs) {
-    const validHours = this.validHours();
-    result = result.set(
-      'hour',
-      validHours.includes(result.hour()) ? result.hour() : validHours[0],
-    );
-
-    const validMinutes = this.validMinutes(result.hour());
-    result = result.set(
-      'minute',
-      validMinutes.includes(result.minute())
-        ? result.minute()
-        : validMinutes[0],
-    );
-
-    const validSeconds = this.validSeconds(result.hour(), result.minute());
-    result = result.set(
-      'second',
-      validSeconds.includes(result.second())
-        ? result.second()
-        : validSeconds[0],
-    );
-    return result;
-  }
-
-  private validHours() {
-    const disabledHours = this.disableHours?.() || [];
-    return HOUR_ITEMS.filter(hour => !disabledHours.includes(hour));
-  }
-
-  private validMinutes(hour: number) {
-    const disabledMinutes = this.disableMinutes?.(hour) || [];
-    return MINUTE_ITEMS.filter(minute => !disabledMinutes.includes(minute));
-  }
-
-  private validSeconds(hour: number, minute: number) {
-    const disabledSeconds = this.disableSeconds?.(hour, minute) || [];
-    return SECOND_ITEMS.filter(second => !disabledSeconds.includes(second));
   }
 
   private scrollByValue(
