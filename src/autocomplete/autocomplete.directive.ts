@@ -95,7 +95,8 @@ export class AutoCompleteDirective
   private _autocomplete: AutocompleteComponent;
   private focusedSuggestion: SuggestionComponent;
 
-  private readonly inputValue$$ = new BehaviorSubject<string>('');
+  private readonly inputValue$$ = new BehaviorSubject(this.input.value);
+
   private readonly filterFn$$ = new BehaviorSubject<SuggestionFilterFn>(
     this.filterFn,
   );
