@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <input
       aui-input
+      value="basketball"
       [auiAutocomplete]="suggestions"
       placeholder="爱好"
     />
