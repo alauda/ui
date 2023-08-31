@@ -47,3 +47,14 @@ import { IncludesDirective } from './validators';
   ],
 })
 export class SelectModule {}
+
+export const SELECT_MODULE = [
+  SelectComponent,
+  OptionComponent,
+  OptionGroupComponent,
+  OptionPlaceholderComponent,
+  MultiSelectComponent,
+  IncludesDirective,
+  OptionGroupTitleDirective,
+  OptionContentDirective,
+] as const;

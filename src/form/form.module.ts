@@ -33,3 +33,13 @@ import {
   ],
 })
 export class FormModule {}
+
+export const FORM_MODULE = [
+  FormDirective,
+  FormItemComponent,
+  FormItemAddonDirective,
+  FormItemErrorDirective,
+  FormItemHintDirective,
+  FormItemLabelDirective,
+  FormItemControlDirective,
+] as const;

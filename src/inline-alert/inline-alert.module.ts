@@ -16,3 +16,8 @@ import { InlineAlertComponent } from './inline-alert.component';
   exports: [InlineAlertComponent, InlineAlertTitleDirective],
 })
 export class InlineAlertModule {}
+
+export const INLINE_ALERT_MODULE = [
+  InlineAlertComponent,
+  InlineAlertTitleDirective,
+] as const;

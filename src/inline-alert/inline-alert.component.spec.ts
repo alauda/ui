@@ -2,16 +2,15 @@ import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { InlineAlertComponent, InlineAlertModule, InlineAlertType } from '.';
+import { InlineAlertComponent } from './inline-alert.component';
+import { INLINE_ALERT_MODULE } from './inline-alert.module';
+import { InlineAlertType } from './inline-alert.types';
 
 describe('InlineAlertComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
   let ins: TestComponent;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [InlineAlertModule, TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -115,7 +114,7 @@ describe('InlineAlertComponent', () => {
     ></aui-inline-alert>
   `,
   standalone: true,
-  imports: [InlineAlertModule],
+  imports: [...INLINE_ALERT_MODULE],
 })
 export class TestComponent {
   title = '';

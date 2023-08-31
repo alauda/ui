@@ -69,3 +69,22 @@ import { TableComponent } from './table.component';
   ],
 })
 export class TableModule {}
+
+export const TABLE_MODULE = [
+  TableComponent,
+  TableRowComponent,
+  TableHeaderRowComponent,
+  TableExpandButtonCellComponent,
+  TableExpandPanelCellComponent,
+  TableCellDirective,
+  TableCellDefDirective,
+  TableHeaderCellDirective,
+  TableRowDefDirective,
+  TableHeaderRowDefDirective,
+  TableHeaderCellDefDirective,
+  TableColumnDefDirective,
+  TableScrollableDirective,
+  TablePlaceholderOutletDirective,
+  TablePlaceholderDefDirective,
+  TableScrollWrapperDirective,
+] as const;

@@ -113,7 +113,7 @@ export class OptionComponent<T> {
   constructor(
     private readonly cdr: ChangeDetectorRef,
     @Inject(forwardRef(() => BaseSelect))
-    select: any, // FIXME: workaround temporarily
+    select: BaseSelect<T>,
   ) {
     this.isMulti = select.isMulti;
     this.select = select;

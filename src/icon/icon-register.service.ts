@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, Optional, SkipSelf } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 
 import { auiIcons } from './icons';
 import {
@@ -8,7 +8,9 @@ import {
   getAuiIconNoHttpProviderError,
 } from './utils';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class IconRegisterService {
   private defaultIconPrefix = 'aui-icon';
   private readonly doc: Document;
@@ -16,7 +18,7 @@ export class IconRegisterService {
   constructor(
     @Optional()
     @Inject(DOCUMENT)
-    document: any,
+    document: Document,
     @Optional() private readonly httpClient: HttpClient,
   ) {
     this.doc = document;
@@ -61,22 +63,3 @@ export class IconRegisterService {
     this.doc.body.append(setEl);
   }
 }
-
-// eslint-disable-next-line sonar/function-name
-export function ICON_REGISTER_PROVIDER_FACTORY(
-  parentRegister: IconRegisterService,
-  document: Document,
-  httpClient: HttpClient,
-) {
-  return parentRegister || new IconRegisterService(document, httpClient);
-}
-
-export const ICON_REGISTER_SERVICE_PROVIDER = {
-  provide: IconRegisterService,
-  deps: [
-    [new Optional(), new SkipSelf(), IconRegisterService],
-    [new Optional(), DOCUMENT],
-    [new Optional(), HttpClient],
-  ],
-  useFactory: ICON_REGISTER_PROVIDER_FACTORY,
-};

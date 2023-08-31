@@ -2,9 +2,11 @@ import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { InputModule } from '..';
-import { IconModule } from '../../icon';
+import { IconComponent } from '../../icon';
 import { ComponentSize } from '../../types';
+import { InputComponent } from '../input.component';
+
+import { INPUT_GROUP_MODULE } from './input-group.component';
 
 describe('InputGroupComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -16,9 +18,6 @@ describe('InputGroupComponent', () => {
   let inputWrapperEl: HTMLElement;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [InputModule, IconModule, TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -106,7 +105,7 @@ describe('InputGroupComponent', () => {
     </aui-input-group>
   `,
   standalone: true,
-  imports: [InputModule, IconModule],
+  imports: [InputComponent, IconComponent, ...INPUT_GROUP_MODULE],
 })
 class TestComponent {
   size: ComponentSize;

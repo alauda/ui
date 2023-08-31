@@ -38,3 +38,13 @@ import { SuggestionGroupComponent } from './suggestion-group/suggestion-group.co
   ],
 })
 export class AutocompleteModule {}
+
+export const AUTOCOMPLETE_MODULE = [
+  AutoCompleteDirective,
+  CustomAutoCompleteDirective,
+  AutocompleteComponent,
+  SuggestionComponent,
+  AutocompletePlaceholderComponent,
+  SuggestionGroupComponent,
+  SuggestionGroupTitleDirective,
+] as const;

@@ -19,12 +19,13 @@ import {
   switchMap,
 } from 'rxjs';
 
-import { IconComponent } from '../icon/icon.component';
-import { InputComponent } from '../input';
-import { InputSuffixDirective } from '../input/helper-directives';
-import { InputGroupComponent } from '../input/input-group/input-group.component';
-import { InputComponent as InputComponent_1 } from '../input/input.component';
-import { TooltipDirective } from '../tooltip/tooltip.directive';
+import { IconComponent } from '../icon';
+import {
+  InputComponent,
+  InputSuffixDirective,
+  InputGroupComponent,
+} from '../input';
+import { TooltipDirective } from '../tooltip';
 import { coerceString, publishRef } from '../utils';
 
 import { BaseSelect } from './base-select';
@@ -53,7 +54,7 @@ import { SelectOption } from './select.types';
   imports: [
     TooltipDirective,
     InputGroupComponent,
-    InputComponent_1,
+    InputComponent,
     InputSuffixDirective,
     IconComponent,
     NgIf,

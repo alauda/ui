@@ -2,7 +2,6 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import {
   ChangeDetectionStrategy,
   Component,
-  NgModule,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
@@ -13,18 +12,15 @@ import {
   inject,
   tick,
 } from '@angular/core/testing';
-import {
-  BrowserAnimationsModule,
-  NoopAnimationsModule,
-} from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { timer } from 'rxjs';
 
 import { DialogCloseDirective } from './dialog-content/dialog-close.directive';
-import { DialogContentComponent as DialogContentComponent_1 } from './dialog-content/dialog-content.component';
+import { DialogContentComponent } from './dialog-content/dialog-content.component';
 import { DialogFooterComponent } from './dialog-content/dialog-footer.component';
 import { DialogHeaderComponent } from './dialog-content/dialog-header.component';
 
-import { DialogModule, DialogService, DialogSize } from '.';
+import { DialogService, DialogSize } from '.';
 
 describe('DialogService', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -33,7 +29,8 @@ describe('DialogService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestModule, BrowserAnimationsModule, NoopAnimationsModule],
+      imports: [NoopAnimationsModule],
+      providers: [DialogService],
     });
 
     fixture = TestBed.createComponent(TestComponent);
@@ -48,7 +45,7 @@ describe('DialogService', () => {
   });
 
   it('should open dialog with component portal', () => {
-    dialogService.open(DialogContentComponent, {
+    dialogService.open(TestDialogContentComponent, {
       size: DialogSize.Large,
       noAnimation: true,
     });
@@ -65,7 +62,7 @@ describe('DialogService', () => {
   });
 
   it('should open dialog set custom class work', () => {
-    dialogService.open(DialogContentComponent, {
+    dialogService.open(TestDialogContentComponent, {
       customClass: 'test-class',
     });
 
@@ -76,7 +73,7 @@ describe('DialogService', () => {
   });
 
   it('should be closed by click cancel button', () => {
-    const dialogRef = dialogService.open(DialogContentComponent, {
+    const dialogRef = dialogService.open(TestDialogContentComponent, {
       noAnimation: true,
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -379,6 +376,7 @@ class TestComponent {
   @ViewChild('template', { static: true })
   templateRef: TemplateRef<any>;
 }
+
 @Component({
   selector: 'content-component',
   template: `
@@ -416,19 +414,9 @@ class ContentTemplateRefTestComponent {
   standalone: true,
   imports: [
     DialogHeaderComponent,
-    DialogContentComponent_1,
+    DialogContentComponent,
     DialogFooterComponent,
     DialogCloseDirective,
   ],
 })
-class DialogContentComponent {}
-
-@NgModule({
-  imports: [
-    DialogModule,
-    DialogContentComponent,
-    TestComponent,
-    ContentTemplateRefTestComponent,
-  ],
-})
-class TestModule {}
+class TestDialogContentComponent {}

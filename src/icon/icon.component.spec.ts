@@ -2,7 +2,7 @@ import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { IconModule } from '.';
+import { IconComponent } from './icon.component';
 
 describe('IconComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -11,9 +11,6 @@ describe('IconComponent', () => {
   let el: HTMLElement;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [IconModule, TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -109,12 +106,12 @@ describe('IconComponent', () => {
     ></aui-icon>
   `,
   standalone: true,
-  imports: [IconModule],
+  imports: [IconComponent],
 })
 class TestComponent {
   icon = '';
   link = '';
-  margin: string;
+  margin: 'left' | 'right';
   color: string;
   size: string;
 }

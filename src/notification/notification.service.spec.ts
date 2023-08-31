@@ -1,13 +1,9 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, NgModule, TemplateRef, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import {
-  NOTIFICATION_CONFIG,
-  NotificationModule,
-  NotificationService,
-} from '.';
+import { NOTIFICATION_CONFIG, NotificationService } from '.';
 
 describe('NotificationService', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -16,7 +12,7 @@ describe('NotificationService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestModule],
+      imports: [NoopAnimationsModule],
       providers: [
         {
           provide: NOTIFICATION_CONFIG,
@@ -117,7 +113,7 @@ describe('NotificationService', () => {
 });
 
 @Component({
-  template: `<div class="notification-demo-content">demo content</div>`,
+  template: ` <div class="notification-demo-content">demo content</div>`,
   standalone: true,
 })
 class NotificationContentComponent {}
@@ -136,13 +132,3 @@ export class TestComponent {
   @ViewChild('template', { static: true })
   templateRef: TemplateRef<any>;
 }
-
-@NgModule({
-  imports: [
-    NotificationModule,
-    NoopAnimationsModule,
-    TestComponent,
-    NotificationContentComponent,
-  ],
-})
-class TestModule {}

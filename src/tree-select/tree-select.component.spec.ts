@@ -7,12 +7,11 @@ import {
   inject,
   tick,
 } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { TreeNodePlaceholderComponent } from './tree-node-placeholder.component';
 import { TreeSelectComponent } from './tree-select.component';
-import { TreeSelectModule } from './tree-select.module';
 import { TreeNode } from './tree-select.types';
 
 describe('TreeSelectComponent', () => {
@@ -25,12 +24,7 @@ describe('TreeSelectComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        TreeSelectModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        TestComponent,
-      ],
+      imports: [NoopAnimationsModule],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -129,7 +123,7 @@ describe('TreeSelectComponent', () => {
     </aui-tree-select>
   `,
   standalone: true,
-  imports: [TreeSelectModule, FormsModule],
+  imports: [TreeSelectComponent, TreeNodePlaceholderComponent],
 })
 class TestComponent {
   value = 'a-1';

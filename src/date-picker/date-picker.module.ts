@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonModule } from '../button';
 import { I18nModule } from '../i18n';
-import { IconModule } from '../icon/icon.module';
+import { IconModule } from '../icon';
 import { InputModule } from '../input';
 import { TimePickerModule } from '../time-picker';
 import { TooltipModule } from '../tooltip';

@@ -55,3 +55,14 @@ import { TabComponent } from './tab.component';
   ],
 })
 export class TabsModule {}
+
+export const TABS_MODULE = [
+  TabGroupComponent,
+  TabComponent,
+  TabLabelDirective,
+  TabContentDirective,
+  TabHeaderAddonDirective,
+  TabTitleDirective,
+  TabLabelWrapperDirective,
+  TabHeaderComponent,
+] as const;

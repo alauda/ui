@@ -59,3 +59,11 @@ export class InputGroupComponent implements AfterContentInit {
     this.hasSuffix$ = watchContentExist(this.suffixRefs);
   }
 }
+
+export const INPUT_GROUP_MODULE = [
+  InputGroupComponent,
+  InputAddonAfterDirective,
+  InputAddonBeforeDirective,
+  InputPrefixDirective,
+  InputSuffixDirective,
+] as const;

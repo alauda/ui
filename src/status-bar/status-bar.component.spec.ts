@@ -20,7 +20,7 @@ describe('Status Bar', () => {
   let ocEl: HTMLElement;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [StatusBarModule, NoopAnimationsModule, TestComponent],
+      imports: [NoopAnimationsModule],
     });
 
     fixture = TestBed.createComponent(TestComponent);

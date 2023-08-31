@@ -20,8 +20,7 @@ import { IconComponent } from '../icon/icon.component';
 import { InputSuffixDirective } from '../input/helper-directives';
 import { InputGroupComponent } from '../input/input-group/input-group.component';
 import { InputComponent } from '../input/input.component';
-import { TooltipDirective } from '../tooltip';
-import { TooltipDirective as TooltipDirective_1 } from '../tooltip/tooltip.directive';
+import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { ComponentSize } from '../types';
 
 import { TimePickerPanelComponent } from './panel/panel.component';
@@ -48,7 +47,7 @@ dayjs.extend(customParseFormat);
   ],
   standalone: true,
   imports: [
-    TooltipDirective_1,
+    TooltipDirective,
     InputGroupComponent,
     InputComponent,
     FormsModule,

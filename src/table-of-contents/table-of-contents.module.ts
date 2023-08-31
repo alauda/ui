@@ -15,3 +15,9 @@ import { TocLinkDirective } from './toc-link.directive';
   exports: [TocContentDirective, TocContainerDirective, TocLinkDirective],
 })
 export class TableOfContentsModule {}
+
+export const TABLE_OF_CONTENTS_MODULE = [
+  TocContentDirective,
+  TocContainerDirective,
+  TocLinkDirective,
+] as const;

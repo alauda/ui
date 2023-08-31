@@ -16,3 +16,8 @@ import { CheckboxComponent } from './checkbox.component';
   exports: [CheckboxComponent, CheckboxGroupComponent],
 })
 export class CheckboxModule {}
+
+export const CHECKBOX_MODULE = [
+  CheckboxComponent,
+  CheckboxGroupComponent,
+] as const;

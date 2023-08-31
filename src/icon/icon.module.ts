@@ -3,12 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { ThemeModule } from '../theme';
 
-import { ICON_REGISTER_SERVICE_PROVIDER } from './icon-register.service';
 import { IconComponent } from './icon.component';
 
 @NgModule({
   imports: [CommonModule, ThemeModule, IconComponent],
   exports: [IconComponent],
-  providers: [ICON_REGISTER_SERVICE_PROVIDER],
 })
 export class IconModule {}

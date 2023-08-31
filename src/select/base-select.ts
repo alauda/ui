@@ -42,7 +42,9 @@ import { OptionContentDirective } from './helper-directives';
 import { OptionComponent } from './option/option.component';
 import { OptionFilterFn, SelectFilterOption, TrackFn } from './select.types';
 
-@Directive()
+@Directive({
+  standalone: true,
+})
 export abstract class BaseSelect<T, V = T>
   extends CommonFormControl<V>
   implements AfterContentInit, AfterViewInit, OnDestroy

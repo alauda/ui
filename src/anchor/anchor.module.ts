@@ -20,3 +20,10 @@ import { AnchorDirective, AnchorLabelDirective } from './anchor.directive';
   ],
 })
 export class AnchorModule {}
+
+export const ANCHOR_MODULE = [
+  AnchorComponent,
+  AnchorTreeComponent,
+  AnchorDirective,
+  AnchorLabelDirective,
+] as const;

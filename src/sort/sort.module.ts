@@ -9,3 +9,5 @@ import { SortDirective } from './sort.directive';
   exports: [SortDirective, SortHeaderComponent],
 })
 export class SortModule {}
+
+export const SORT_MODULE = [SortDirective, SortHeaderComponent] as const;

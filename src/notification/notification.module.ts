@@ -7,7 +7,6 @@ import { IconModule } from '../icon';
 
 import { NotificationWrapperComponent } from './notification-wrapper.component';
 import { NotificationComponent } from './notification.component';
-import { NotificationService } from './notification.service';
 
 @NgModule({
   imports: [
@@ -18,6 +17,5 @@ import { NotificationService } from './notification.service';
     NotificationWrapperComponent,
     NotificationComponent,
   ],
-  providers: [NotificationService],
 })
 export class NotificationModule {}

@@ -17,7 +17,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { CommonFormControl } from '../../form';
-import { IconComponent } from '../../icon/icon.component';
+import { IconComponent } from '../../icon';
 import { ClickOutsideDirective } from '../../shared/click-outside.directive';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, watchContentExist } from '../../utils';
@@ -153,3 +153,9 @@ export class NumberInputComponent
     return index < 0 ? 0 : step.slice(index + 1).length;
   }
 }
+
+export const NUMBER_INPUT_MODULE = [
+  NumberInputComponent,
+  InputAddonBeforeDirective,
+  InputAddonAfterDirective,
+] as const;

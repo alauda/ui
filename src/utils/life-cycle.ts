@@ -18,6 +18,7 @@ export enum LifeCycle {
  */
 @Directive({
   selector: '[auiLifeCycle]',
+  standalone: true,
 })
 export class LifeCycleDirective implements OnInit, OnDestroy {
   @Output()

@@ -1,3 +1,4 @@
+import { NgForOf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   ComponentFixture,
@@ -8,7 +9,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { CheckboxModule } from '../checkbox.module';
+import { CHECKBOX_MODULE } from '../checkbox.module';
 
 describe('CheckboxGroupComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -17,9 +18,6 @@ describe('CheckboxGroupComponent', () => {
   let el2: HTMLElement;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [FormsModule, CheckboxModule, TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -78,8 +76,8 @@ describe('CheckboxGroupComponent', () => {
         <aui-checkbox
           label="box3"
           disabled
-          >box3</aui-checkbox
-        >
+          >box3
+        </aui-checkbox>
       </aui-checkbox-group>
     </div>
     <div class="group2">
@@ -97,7 +95,7 @@ describe('CheckboxGroupComponent', () => {
     </div>
   `,
   standalone: true,
-  imports: [FormsModule, CheckboxModule],
+  imports: [FormsModule, NgForOf, ...CHECKBOX_MODULE],
 })
 class TestComponent {
   value: string[];

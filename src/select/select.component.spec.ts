@@ -1,13 +1,14 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { NgForOf } from '@angular/common';
 import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ComponentSize } from '../types';
 
-import { SelectComponent, SelectModule } from '.';
+import { SELECT_MODULE, SelectComponent } from '.';
 
 describe('SelectComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -20,12 +21,7 @@ describe('SelectComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        SelectModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        TestComponent,
-      ],
+      imports: [NoopAnimationsModule],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -138,7 +134,7 @@ describe('SelectComponent', () => {
     </aui-select>
   `,
   standalone: true,
-  imports: [SelectModule, FormsModule],
+  imports: [FormsModule, NgForOf, ...SELECT_MODULE],
 })
 class TestComponent {
   disabled: boolean;

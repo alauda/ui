@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { IconComponent } from '../../icon/icon.component';
+import { IconComponent } from '../../icon';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils';
 import { InputComponent } from '../input.component';

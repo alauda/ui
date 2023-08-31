@@ -6,7 +6,6 @@ import { IconModule } from '../icon/icon.module';
 
 import { MessageWrapperComponent } from './message-wrapper.component';
 import { MessageComponent } from './message.component';
-import { MessageService } from './message.service';
 
 @NgModule({
   imports: [
@@ -16,6 +15,5 @@ import { MessageService } from './message.service';
     MessageWrapperComponent,
     MessageComponent,
   ],
-  providers: [MessageService],
 })
 export class MessageModule {}

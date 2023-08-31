@@ -16,3 +16,8 @@ import { BreadcrumbComponent } from './breadcrumb.component';
   exports: [BreadcrumbComponent, BreadcrumbItemComponent],
 })
 export class BreadcrumbModule {}
+
+export const BREADCRUMB_MODULE = [
+  BreadcrumbComponent,
+  BreadcrumbItemComponent,
+] as const;

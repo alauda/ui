@@ -14,7 +14,9 @@ import { coerceAttrBoolean } from '../utils';
  * form control 内部不保持 value 属性，当不使用 ngModel 时可以通过 [(value)] 实现双向绑定；
  * 也可以分别传入 value 和 监听 valueChange 事件以实现阻断用户操作的功能。
  */
-@Directive()
+@Directive({
+  standalone: true,
+})
 export class CommonFormControl<V, M = V> implements ControlValueAccessor {
   @Input()
   get disabled() {

@@ -29,6 +29,12 @@ import { AccordionComponent } from './accordion.component';
     AccordionItemHeaderDirective,
     AccordionItemContentDirective,
   ],
-  providers: [],
 })
 export class AccordionModule {}
+
+export const ACCORDION_MODULE = [
+  AccordionComponent,
+  AccordionItemComponent,
+  AccordionItemHeaderDirective,
+  AccordionItemContentDirective,
+] as const;

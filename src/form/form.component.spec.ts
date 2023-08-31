@@ -1,17 +1,17 @@
+import { NgIf } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, NgForm } from '@angular/forms';
 
-import { FormModule } from './form.module';
+import { InputComponent } from '../input/input.component';
+
+import { FORM_MODULE } from './form.module';
 
 describe('FormComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
   let ins: TestComponent;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [FormsModule, FormModule, TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -45,7 +45,7 @@ describe('FormComponent', () => {
           aui-input
           required
           minlength="3"
-          [(ngModel)]="value1"
+          [(ngModel)]="value"
         />
         <div
           auiFormItemError
@@ -65,9 +65,11 @@ describe('FormComponent', () => {
     </form>
   `,
   standalone: true,
-  imports: [FormsModule, FormModule],
+  imports: [FormsModule, NgIf, InputComponent, ...FORM_MODULE],
 })
 class TestComponent {
   @ViewChild('form', { static: true })
   form: NgForm;
+
+  value: string;
 }
