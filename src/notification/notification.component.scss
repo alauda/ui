@@ -38,6 +38,7 @@
   &__body {
     flex: 1;
     margin: 0 16px 0 8px;
+    overflow: hidden;
   }
 
   &__title {
@@ -46,6 +47,8 @@
     &:not(:only-child) {
       margin-bottom: 6px;
     }
+
+    overflow-wrap: break-word;
   }
 
   &__content {
@@ -54,8 +57,11 @@
     );
     padding-right: 4px;
     max-height: 140px;
+    overflow: auto;
     @include text-set(m, secondary);
     @include scroll-bar;
+
+    overflow-wrap: break-word;
   }
 
   &__remove {
@@ -86,6 +92,8 @@
 
   &__duration {
     line-height: use-var(line-height-xl);
+    min-width: use-var(line-height-xl);
+    text-align: right;
   }
 
   &__footer {
