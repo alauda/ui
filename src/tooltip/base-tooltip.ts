@@ -458,9 +458,8 @@ export class BaseTooltip<T = any>
     }
   }
 
-  protected onClick(event: Event) {
+  protected onClick() {
     this.toggleTooltip();
-    event.stopPropagation();
   }
 
   protected onBodyClick(event: Event) {
