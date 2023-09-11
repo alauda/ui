@@ -85,8 +85,8 @@ export class PickerPanelComponent implements OnChanges {
 
   get disabledDateFn() {
     return composeDisabledDateFn(
-      date => this.minDate && date.isBefore(this.minDate),
-      date => this.maxDate && date.isAfter(this.maxDate),
+      date => this.minDate && date.isBefore(this.minDate, 'date'),
+      date => this.maxDate && date.isAfter(this.maxDate, 'date'),
       this.disabledDate,
     );
   }
