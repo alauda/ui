@@ -22,7 +22,6 @@ import {
   switchMap,
   tap,
   withLatestFrom,
-  first,
 } from 'rxjs';
 
 import { publishRef } from '../utils';
@@ -62,13 +61,13 @@ export class AutocompleteComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.visibles$ = this.suggestions.changes.pipe(
-      startWith(this.suggestions),
       switchMap((suggestions: QueryList<SuggestionComponent>) =>
         suggestions.length > 0
           ? combineLatest(suggestions.map(suggestion => suggestion.visible$))
           : of([] as boolean[]),
       ),
       debounceTime(0),
+      startWith(this.suggestions.map(suggestion => suggestion.visible)),
     );
     this.hasVisibleSuggestion$ = this.visibles$.pipe(
       map(visible => visible.some(Boolean)),
@@ -98,29 +97,12 @@ export class AutocompleteComponent implements AfterContentInit {
           hasVisibleSuggestion || hasPlaceholder,
       ),
       distinctUntilChanged(),
-      tap(hasContent => {
-        if (hasContent) {
-          this.directive$$.pipe(first()).subscribe(directive => {
-            requestAnimationFrame(() => {
-              directive.overlayRef.updatePosition();
-            });
-          });
-        }
-      }),
     );
 
-    this.visibles$
-      .pipe(
-        distinctUntilChanged(
-          (prev, cur) => JSON.stringify(prev) === JSON.stringify(cur),
-        ),
-      )
-      .subscribe(() => {
-        this.directive$$.pipe(first()).subscribe(directive => {
-          requestAnimationFrame(() => {
-            directive.overlayRef?.updatePosition();
-          });
-        });
+    combineLatest([this.directive$$, this.visibles$])
+      .pipe(debounceTime(50))
+      .subscribe(([directive]) => {
+        directive.overlayRef?.updatePosition();
       });
   }
 }
