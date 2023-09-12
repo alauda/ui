@@ -12,6 +12,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
 
 import { CommonFormControl } from '../../../form/common-form';
+import { HOUR_ITEMS, MINUTE_ITEMS, SECOND_ITEMS } from '../../../time-picker';
 import { TimePickerModel } from '../../../time-picker/time-picker.type';
 import { DateNavRange, DisabledTimeFn } from '../../date-picker.type';
 import { DatePickerType } from '../constant';
@@ -98,7 +99,10 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
     type: keyof ReturnType<DisabledTimeFn>,
   ) {
     if (selectedDate !== this._cacheSelectedDate) {
-      this._cacheDisabledTimeFn = this.disabledTime(selectedDate);
+      this._cacheDisabledTimeFn = combineDisabledTimeFn(
+        this._disabledTimeFn.bind(this),
+        this.disabledTime,
+      )(selectedDate);
       this._cacheSelectedDate = selectedDate;
     }
     return this._cacheDisabledTimeFn?.[type];
@@ -166,4 +170,64 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
   setToday() {
     this.confirmValue(dayjs(), true);
   }
+
+  clearValue() {
+    this.selectedTime = null;
+    this.clear.next();
+  }
+
+  private _disabledTimeFn(
+    selectedDate: Dayjs,
+  ): Record<keyof ReturnType<DisabledTimeFn>, () => number[]> {
+    const getTimeFilter = (
+      date: Dayjs,
+      comparator: (a: number, b: number) => boolean,
+    ) => ({
+      hours: () => HOUR_ITEMS.filter(item => comparator(item, date.hour())),
+      minutes: (hour?: number) =>
+        hour === date.hour()
+          ? MINUTE_ITEMS.filter(item => comparator(item, date.minute()))
+          : [],
+      seconds: (hour?: number, minute?: number) =>
+        hour === date.hour() && minute === date.minute()
+          ? SECOND_ITEMS.filter(item => comparator(item, date.second()))
+          : [],
+    });
+
+    if (selectedDate) {
+      if (this.minDate && selectedDate.isSame(this.minDate, 'date')) {
+        return getTimeFilter(this.minDate, (a, b) => a < b);
+      }
+      if (this.maxDate && selectedDate.isSame(this.maxDate, 'date')) {
+        return getTimeFilter(this.maxDate, (a, b) => a > b);
+      }
+    }
+
+    return {
+      hours: () => [],
+      minutes: () => [],
+      seconds: () => [],
+    };
+  }
+}
+
+function combineDisabledTimeFn(
+  ...disabledFnList: DisabledTimeFn[]
+): DisabledTimeFn {
+  return (date: Dayjs) => ({
+    hours: () =>
+      Array.from(
+        new Set(disabledFnList.flatMap(fn => fn(date)?.hours() || [])),
+      ),
+    minutes: (hour?: number) =>
+      Array.from(
+        new Set(disabledFnList.flatMap(fn => fn(date)?.minutes(hour) || [])),
+      ),
+    seconds: (hour?: number, minute?: number) =>
+      Array.from(
+        new Set(
+          disabledFnList.flatMap(fn => fn(date)?.seconds(hour, minute) || []),
+        ),
+      ),
+  });
 }

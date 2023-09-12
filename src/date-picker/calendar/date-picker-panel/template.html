@@ -61,6 +61,7 @@
     <ng-template #today>
       <aui-calendar-footer
         *ngIf="type === DatePickerType.Day"
+        (clear)="clearValue()"
         [clearable]="false"
         [customAction]="todayBtn"
       >
