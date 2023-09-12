@@ -16,6 +16,8 @@ import {
 import {
   BehaviorSubject,
   combineLatest,
+  debounceTime,
+  distinctUntilChanged,
   map,
   Observable,
   of,
@@ -168,6 +170,7 @@ export abstract class BaseSelect<T, V = T>
 
   size$ = this.size$$.asObservable();
   filterString$ = this.filterString$$.asObservable();
+  optionVisibles$: Observable<boolean[]>;
   hasVisibleOption$: Observable<boolean>;
   hasMatchedOption$: Observable<boolean>;
   customCreatedOptions$: Observable<Array<SelectFilterOption<T>>>;
@@ -251,7 +254,7 @@ export abstract class BaseSelect<T, V = T>
       publishRef(),
     );
 
-    this.hasVisibleOption$ = (
+    this.optionVisibles$ = (
       this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
     ).pipe(
       startWith(this.contentOptions),
@@ -260,9 +263,18 @@ export abstract class BaseSelect<T, V = T>
           ? combineLatest(options.map(option => option.visible$))
           : of([] as boolean[]),
       ),
-      map(visible => visible.some(Boolean)),
       publishRef(),
     );
+
+    this.hasVisibleOption$ = this.optionVisibles$.pipe(
+      map(visible => visible.some(Boolean)),
+      distinctUntilChanged(),
+      publishRef(),
+    );
+
+    this.optionVisibles$.pipe(debounceTime(50)).subscribe(() => {
+      this.tooltipRef?.updatePosition();
+    });
   }
 
   ngOnDestroy() {
