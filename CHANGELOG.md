@@ -1,5 +1,35 @@
 # Changelog
 
+## 7.0.0
+
+### Major Changes
+
+- [#494](https://github.com/alauda/ui/pull/494) [`fe9ef9e`](https://github.com/alauda/ui/commit/fe9ef9ed03bd6205bcbcc57a7685160e45bfb3bb) Thanks [@JounQin](https://github.com/JounQin)! - refactor: remove some deprecated APIs
+
+- [#483](https://github.com/alauda/ui/pull/483) [`3973cd4`](https://github.com/alauda/ui/commit/3973cd4e80fc0fe9f3eae18d18757e47ddbf2de1) Thanks [@liyouzhi666](https://github.com/liyouzhi666)! - angular upgrade v16, storybook upgrade v7
+
+### Minor Changes
+
+- [#488](https://github.com/alauda/ui/pull/488) [`c5ba896`](https://github.com/alauda/ui/commit/c5ba8964b3d9ee9304bd78f701e6988359fc7855) Thanks [@JounQin](https://github.com/JounQin)! - feat: simplify coerceAttrBoolean getter/setter
+
+- [#488](https://github.com/alauda/ui/pull/488) [`c5ba896`](https://github.com/alauda/ui/commit/c5ba8964b3d9ee9304bd78f701e6988359fc7855) Thanks [@JounQin](https://github.com/JounQin)! - feat: use `numberAttribute` from `@angular/core`
+
+### Patch Changes
+
+- [#501](https://github.com/alauda/ui/pull/501) [`c23767f`](https://github.com/alauda/ui/commit/c23767fe2c0a8c73e6aed0f6f031341271fe2448) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: fix date-picker date disabled error
+
+- [#486](https://github.com/alauda/ui/pull/486) [`8bbbfee`](https://github.com/alauda/ui/commit/8bbbfee361c82abbd7a3a55a634b4ed7d945c833) Thanks [@Chenoops](https://github.com/Chenoops)! - feat: optimize back to top transition
+
+- [#491](https://github.com/alauda/ui/pull/491) [`df2ff1c`](https://github.com/alauda/ui/commit/df2ff1ca209b96dd19db560471955350bd9bbe88) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: number-input min max undefined & revert common form disabled input
+
+- [#490](https://github.com/alauda/ui/pull/490) [`3a3aefa`](https://github.com/alauda/ui/commit/3a3aefa64e0b1550f7f62c224e2d643c0f8ccb26) Thanks [@JounQin](https://github.com/JounQin)! - fix(back-top): should prefer custom target
+
+- [#484](https://github.com/alauda/ui/pull/484) [`bda1860`](https://github.com/alauda/ui/commit/bda1860b5ff35faee9fff9104bbdaf53830904f8) Thanks [@yinshuxun](https://github.com/yinshuxun)! - fix: fix tree hierarchical relationship
+
+- [#489](https://github.com/alauda/ui/pull/489) [`6f48e86`](https://github.com/alauda/ui/commit/6f48e868c8dbbc429596bc33ff08b149164a67e6) Thanks [@Chenoops](https://github.com/Chenoops)! - feat: optimizing back-to-top style
+
+- [#497](https://github.com/alauda/ui/pull/497) [`28dc7c3`](https://github.com/alauda/ui/commit/28dc7c374d465ff2db5d517591fa7793f7d7ea7f) Thanks [@JounQin](https://github.com/JounQin)! - fix: incorrect autocomplete default input value
+
 ## 6.5.9
 
 ### Patch Changes
