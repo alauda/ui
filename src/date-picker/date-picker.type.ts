@@ -1,11 +1,11 @@
-import { ConfigType, Dayjs } from 'dayjs';
+import { Dayjs } from 'dayjs';
 
 export enum Side {
   Left = 'left',
   Right = 'right',
 }
 
-export type DisabledTimeFn = (date?: ConfigType) => {
+export type DisabledTimeFn = (date?: Dayjs) => {
   hours: () => number[];
   minutes: (hour?: number) => number[];
   seconds: (hour?: number, minute?: number) => number[];

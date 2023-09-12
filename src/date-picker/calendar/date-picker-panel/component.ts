@@ -176,7 +176,9 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
     this.clear.next();
   }
 
-  private _disabledTimeFn(selectedDate: ConfigType) {
+  private _disabledTimeFn(
+    selectedDate: Dayjs,
+  ): Record<keyof ReturnType<DisabledTimeFn>, () => number[]> {
     const getTimeFilter = (
       date: Dayjs,
       comparator: (a: number, b: number) => boolean,
@@ -193,16 +195,10 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
     });
 
     if (selectedDate) {
-      if (
-        this.minDate &&
-        (selectedDate as Dayjs)?.isSame(this.minDate, 'date')
-      ) {
+      if (this.minDate && selectedDate.isSame(this.minDate, 'date')) {
         return getTimeFilter(this.minDate, (a, b) => a < b);
       }
-      if (
-        this.maxDate &&
-        (selectedDate as Dayjs)?.isSame(this.maxDate, 'date')
-      ) {
+      if (this.maxDate && selectedDate.isSame(this.maxDate, 'date')) {
         return getTimeFilter(this.maxDate, (a, b) => a > b);
       }
     }
@@ -211,26 +207,26 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
       hours: () => [],
       minutes: () => [],
       seconds: () => [],
-    } as Record<keyof ReturnType<DisabledTimeFn>, () => number[]>;
+    };
   }
 }
 
 function combineDisabledTimeFn(
   ...disabledFnList: DisabledTimeFn[]
 ): DisabledTimeFn {
-  return (date?: ConfigType) => ({
+  return (date?: Dayjs) => ({
     hours: () =>
       Array.from(
-        new Set(disabledFnList.flatMap(fn => fn(date)?.hours?.() || [])),
+        new Set(disabledFnList.flatMap(fn => fn(date)?.hours() || [])),
       ),
     minutes: (hour?: number) =>
       Array.from(
-        new Set(disabledFnList.flatMap(fn => fn(date)?.minutes?.(hour) || [])),
+        new Set(disabledFnList.flatMap(fn => fn(date)?.minutes(hour) || [])),
       ),
     seconds: (hour?: number, minute?: number) =>
       Array.from(
         new Set(
-          disabledFnList.flatMap(fn => fn(date)?.seconds?.(hour, minute) || []),
+          disabledFnList.flatMap(fn => fn(date)?.seconds(hour, minute) || []),
         ),
       ),
   });
