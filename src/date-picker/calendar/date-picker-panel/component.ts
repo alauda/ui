@@ -214,7 +214,7 @@ export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
 function combineDisabledTimeFn(
   ...disabledFnList: DisabledTimeFn[]
 ): DisabledTimeFn {
-  return (date?: Dayjs) => ({
+  return (date: Dayjs) => ({
     hours: () =>
       Array.from(
         new Set(disabledFnList.flatMap(fn => fn(date)?.hours() || [])),
