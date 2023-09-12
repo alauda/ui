@@ -12,6 +12,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
 
 import { CommonFormControl } from '../../../form/common-form';
+import { HOUR_ITEMS, MINUTE_ITEMS, SECOND_ITEMS } from '../../../time-picker';
 import { TimePickerModel } from '../../../time-picker/time-picker.type';
 import { DateNavRange, DisabledTimeFn } from '../../date-picker.type';
 import { DatePickerType } from '../constant';
@@ -23,8 +24,6 @@ import {
   updateDate,
   updateDateByTimeModel,
 } from '../util';
-
-import { HOUR_ITEMS, MINUTE_ITEMS, SECOND_ITEMS } from 'src/time-picker';
 
 @Component({
   selector: 'aui-date-picker-panel',
