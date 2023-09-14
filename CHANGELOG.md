@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.0.2
+
+### Patch Changes
+
+- [#504](https://github.com/alauda/ui/pull/504) [`2b1da13`](https://github.com/alauda/ui/commit/2b1da138c29404a8fd12ca7fd8c1d3bd2f84fc32) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - chore: update aui icon
+
 ## 7.0.1
 
 ### Patch Changes
