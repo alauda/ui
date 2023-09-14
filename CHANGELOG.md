@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.0.1
+
+### Patch Changes
+
+- [#502](https://github.com/alauda/ui/pull/502) [`296dd2a`](https://github.com/alauda/ui/commit/296dd2af3dd3035b52a761635366ba4246b0da5a) Thanks [@igauch](https://github.com/igauch)! - fix: update overlay position when option is changed
+
 ## 7.0.0
 
 ### Major Changes
