@@ -16,6 +16,7 @@ import {
   map,
   switchMap,
   throttleTime,
+  startWith,
 } from 'rxjs';
 
 type TargetType = Element | Window | string;
@@ -38,6 +39,14 @@ export class BackTopComponent {
   get visibilityHeight() {
     return this._visibilityHeight;
   }
+
+  @Input()
+  position: {
+    left?: string;
+    right?: string;
+    top?: string;
+    bottom?: string;
+  } = { right: '12px', bottom: '12px' };
 
   @Input()
   set target(val: TargetType) {
@@ -63,7 +72,7 @@ export class BackTopComponent {
 
   constructor(@Optional() private readonly cdkScrollable: CdkScrollable) {}
 
-  isDisplayed$ = combineLatest([
+  display$ = combineLatest([
     this.target$$.asObservable().pipe(
       map(target => this.getTarget(target)),
       switchMap(target =>
@@ -77,6 +86,8 @@ export class BackTopComponent {
     this.visibilityHeight$$,
   ]).pipe(
     map(([scrollTop, visibilityHeight]) => scrollTop >= visibilityHeight),
+    map(visible => (visible ? 'flex' : 'none')),
+    startWith('none'),
     distinctUntilChanged(),
   );
 

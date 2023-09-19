@@ -4,22 +4,14 @@
 $block: 'aui-back-top';
 
 .#{$block} {
-  position: fixed;
-  right: 12px;
-  bottom: 12px;
   @include flex-center;
 
   height: use-var(inline-height-m);
   width: use-var(inline-height-m);
   border-radius: use-var(border-radius-m);
   overflow: hidden;
-  visibility: hidden;
   cursor: pointer;
   @include popper-shadow;
 
   background-color: use-rgb(n-10);
-
-  &.show {
-    visibility: visible;
-  }
 }
