@@ -1,6 +1,8 @@
 <div
   class="aui-back-top"
-  [class.show]="isDisplayed$ | async"
+  [style.display]="display$ | async"
+  [style.position]="'fixed'"
+  [style]="position"
 >
   <button
     aui-button="text"

@@ -41,10 +41,11 @@ import * as useSelector from './use-selector.stories';
 
 ## Backtop Inputs
 
-| 名称             | 类型                        | 默认值 | 描述                                                                                                                       |
-| ---------------- | --------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------- |
-| visibilityHeight | number                      | 400    | 目标容器滚动到多高的距离，展示 backtop 按钮                                                                                |
-| target           | Element \| Window \| string | -      | 指定目标容器，可以指定 ElementRef，selector 来选择目标组件，不指定时优先选择外部的 cdkScrollable 组件，若没有则选择 window |
+| 名称             | 类型                                                                | 默认值                              | 描述                                                                                                                       |
+| ---------------- | ------------------------------------------------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| visibilityHeight | number                                                              | 400                                 | 目标容器滚动到多高的距离，展示 backtop 按钮                                                                                |
+| position         | \{ left?: string; right?: string; top?: string; bottom?: string; \} | \{ right: '12px', bottom: '12px' \} | 设置按钮在浏览器窗口中的位置                                                                                               |
+| target           | Element \| Window \| string                                         | -                                   | 指定目标容器，可以指定 ElementRef，selector 来选择目标组件，不指定时优先选择外部的 cdkScrollable 组件，若没有则选择 window |
 
 ## Backtop Outputs
 
