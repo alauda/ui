@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.0.3
+
+### Patch Changes
+
+- [#507](https://github.com/alauda/ui/pull/507) [`9e598d3`](https://github.com/alauda/ui/commit/9e598d30786c2a1c393cb07a3c316c1dddd3b959) Thanks [@igauch](https://github.com/igauch)! - fix: autocomplete will show placeholder when sync option
+
 ## 7.0.2
 
 ### Patch Changes
