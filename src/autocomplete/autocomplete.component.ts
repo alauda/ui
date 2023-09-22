@@ -68,6 +68,7 @@ export class AutocompleteComponent implements AfterContentInit {
       ),
       debounceTime(0),
       startWith(this.suggestions.map(suggestion => suggestion.visible)),
+      publishRef(),
     );
     this.hasVisibleSuggestion$ = this.visibles$.pipe(
       map(visible => visible.some(Boolean)),
