@@ -252,6 +252,11 @@ export class TabGroupComponent
           tabs.includes(tab),
         );
       }
+
+      if (tabs) {
+        this.selectedIndex = this._findIndexByTab(this._tab);
+      }
+
       const indexToSelect = this._clampTabIndex(this._indexToSelect);
       // Maintain the previously-selected tab if a new tab is added or removed and there is no
       // explicit change that selects a different tab.
