@@ -1,4 +1,8 @@
-import { DataSource } from '@angular/cdk/collections';
+import {
+  _RecycleViewRepeaterStrategy,
+  _VIEW_REPEATER_STRATEGY,
+  DataSource,
+} from '@angular/cdk/collections';
 import {
   CdkVirtualForOf,
   CdkVirtualForOfContext,
@@ -15,6 +19,12 @@ import { Observable } from 'rxjs';
 @Directive({
   selector: '[auiVirtualFor][auiVirtualForOf]',
   standalone: true,
+  providers: [
+    {
+      provide: _VIEW_REPEATER_STRATEGY,
+      useClass: _RecycleViewRepeaterStrategy,
+    },
+  ],
 })
 export class VirtualForOfDirective<T> extends CdkVirtualForOf<T> {
   @Input()
