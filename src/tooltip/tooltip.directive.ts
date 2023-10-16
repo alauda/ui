@@ -1,5 +1,6 @@
 import { Directive, EventEmitter, Input, Output } from '@angular/core';
 
+import { AnimationType } from './animations';
 import { BaseTooltip } from './base-tooltip';
 
 @Directive({
@@ -29,4 +30,7 @@ export class TooltipDirective extends BaseTooltip {
 
   @Input('auiDisableAnimation')
   override disableAnimation = false;
+
+  @Input('auiTooltipAnimationType')
+  override animationType: AnimationType;
 }
