@@ -73,6 +73,8 @@ export class DropdownDirective extends BaseTooltip implements OnInit {
     this.type = TooltipType.Plain;
     this.position = 'bottom end';
     this.trigger = TooltipTrigger.Click;
+    this.disableAnimation = false;
+    this.animationType = 'scaleY';
   }
 
   ngOnInit() {

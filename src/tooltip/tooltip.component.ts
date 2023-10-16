@@ -1,10 +1,6 @@
 import {
-  style,
-  transition,
   trigger,
   AnimationEvent,
-  state,
-  animate,
 } from '@angular/animations';
 import { NgIf, NgTemplateOutlet, AsyncPipe } from '@angular/common';
 import {
@@ -27,6 +23,7 @@ import {
 
 import { Bem, buildBem, publishRef } from '../utils';
 
+import { animations, AnimationType } from './animations';
 import { TooltipType } from './tooltip.types';
 
 @Component({
@@ -36,28 +33,7 @@ import { TooltipType } from './tooltip.types';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  animations: [
-    trigger('showHide', [
-      state(
-        'show',
-        style({
-          opacity: 1,
-          transform: 'scale(1)',
-        }),
-      ),
-      state(
-        'hide,void',
-        style({
-          opacity: 0,
-          transform: 'scale(0)',
-        }),
-      ),
-      transition('* => show', [animate('160ms cubic-bezier(0, 0, 0.2, 1)')]),
-      transition('* => hide', [
-        animate('160ms cubic-bezier(0.38, 0, 0.24, 1)'),
-      ]),
-    ]),
-  ],
+  animations: [trigger('showHide', animations)],
   standalone: true,
   imports: [NgIf, NgTemplateOutlet, AsyncPipe],
 })
@@ -65,8 +41,9 @@ export class TooltipComponent implements OnDestroy {
   text: string;
   template: TemplateRef<any>;
   bem: Bem = buildBem('aui-tooltip');
-  showHide: 'show' | 'hide' = 'hide';
+  showHide = 'scale-hide';
   disableAnimation = true;
+  animationType: AnimationType;
 
   inputContent$: Observable<string | TemplateRef<any>>;
   inputType$: Observable<TooltipType>;
@@ -103,6 +80,7 @@ export class TooltipComponent implements OnDestroy {
     inputClass$: Observable<string>;
     inputContext$: Observable<any>;
     disableAnimation?: boolean;
+    animationType?: string;
   }) {
     Object.assign(this, inputs);
     this.text$ = this.inputContent$.pipe(
@@ -131,9 +109,12 @@ export class TooltipComponent implements OnDestroy {
       map(([inputPosition, inputType, inputClass]) => {
         const b = this.bem.block();
         const dir = inputPosition.split(' ')[0];
-        return inputType === TooltipType.Plain
-          ? `${b}--${dir} ${inputClass}`
-          : `${b} ${b}--${inputType} ${b}--${dir} ${inputClass}`;
+        return (
+          `${b}--${dir} ${inputClass} ${this.bem.element(
+            'transform-origin',
+          )} ` +
+          (inputType === TooltipType.Plain ? '' : `${b} ${b}--${inputType}`)
+        );
       }),
       publishRef(),
     );
@@ -143,20 +124,20 @@ export class TooltipComponent implements OnDestroy {
   onAnimation(event: AnimationEvent) {
     const { phaseName, toState } = event;
     this.animating$$.next(phaseName === 'start');
-    if (toState === 'hide' && phaseName === 'done') {
+    if (toState.endsWith('-hide') && phaseName === 'done') {
       this.hide$.next(true);
     }
   }
 
   show() {
     this.beforeShow$.next(null);
-    this.showHide = 'show';
+    this.showHide = `${this.animationType}-show`;
     this.cdr.markForCheck();
   }
 
   hide() {
     this.beforeHide$.next(null);
-    this.showHide = 'hide';
+    this.showHide = `${this.animationType}-hide`;
     this.cdr.markForCheck();
   }
 }

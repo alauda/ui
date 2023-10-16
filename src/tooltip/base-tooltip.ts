@@ -30,6 +30,7 @@ import {
 
 import { sleep } from '../utils';
 
+import { AnimationType } from './animations';
 import { TooltipComponent } from './tooltip.component';
 import { TooltipTrigger, TooltipType } from './tooltip.types';
 import { getOriginPosition, getOverlayPosition } from './utils';
@@ -134,6 +135,7 @@ export class BaseTooltip<T = any>
 
   hideOnClick = false;
   disableAnimation = true;
+  animationType: AnimationType = 'scale';
 
   visibleChange = new EventEmitter<boolean>();
 
@@ -254,6 +256,7 @@ export class BaseTooltip<T = any>
       inputPosition$: this.inputPosition$$.asObservable(),
       inputType$: this.inputType$$.asObservable(),
       disableAnimation: this.disableAnimation,
+      animationType: this.animationType,
     });
     this.componentIns.hide$.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this._disposeTooltip();
@@ -417,7 +420,7 @@ export class BaseTooltip<T = any>
       .position()
       .flexibleConnectedTo(this.elRef)
       .withGrowAfterOpen(true)
-      .withTransformOriginOn('.aui-tooltip')
+      .withTransformOriginOn('.aui-tooltip__transform-origin')
       .withPositions([
         { ...originPosition.main, ...overlayPosition.main },
         { ...originPosition.fallback, ...overlayPosition.fallback },
