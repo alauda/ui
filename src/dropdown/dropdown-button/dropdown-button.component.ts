@@ -3,7 +3,6 @@ import {
   AfterContentInit,
   ChangeDetectionStrategy,
   Component,
-  ContentChild,
   ContentChildren,
   EventEmitter,
   Input,
@@ -19,7 +18,6 @@ import { IconComponent } from '../../icon/icon.component';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, coerceAttrBoolean } from '../../utils';
 import { DropdownDirective } from '../dropdown.directive';
-import { MenuComponent } from '../menu/menu.component';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 
 @Component({
@@ -52,9 +50,6 @@ export class DropdownButtonComponent implements AfterContentInit {
 
   @Output()
   buttonClick = new EventEmitter<Event>();
-
-  @ContentChild(MenuComponent, { static: true })
-  menu: MenuComponent;
 
   @ContentChildren(MenuItemComponent, { descendants: true })
   private readonly menuItems: QueryList<MenuItemComponent>;

@@ -134,8 +134,7 @@ export class BaseTooltip<T = any>
   }
 
   hideOnClick = false;
-  disableAnimation = true;
-  animationType: AnimationType = 'scale';
+  animationType: AnimationType = 'none';
 
   visibleChange = new EventEmitter<boolean>();
 
@@ -255,14 +254,13 @@ export class BaseTooltip<T = any>
       inputContext$: this.inputContext$$.asObservable(),
       inputPosition$: this.inputPosition$$.asObservable(),
       inputType$: this.inputType$$.asObservable(),
-      disableAnimation: this.disableAnimation,
       animationType: this.animationType,
     });
     this.componentIns.hide$.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this._disposeTooltip();
     });
 
-    if (!this.disableAnimation) {
+    if (this.animationType !== 'none') {
       merge(
         this.componentIns.beforeHide$,
         this.componentIns.beforeShow$.pipe(delay(0)),
@@ -329,7 +327,7 @@ export class BaseTooltip<T = any>
   }
 
   hide() {
-    if (this.disableAnimation) {
+    if (this.animationType === 'none') {
       // 如果禁用了动画就立即销毁，而不是等动画完成事件后才销毁
       this._disposeTooltip();
     } else {

@@ -25,9 +25,6 @@ export class TooltipCopyDirective extends BaseTooltip implements OnInit {
   @HostBinding('class.aui-tooltip-copy')
   className = true;
 
-  @Input('auiDisableAnimation')
-  override disableAnimation = false;
-
   @Input()
   get auiTooltipCopy() {
     return this._copyText || this.elRef.nativeElement.textContent;

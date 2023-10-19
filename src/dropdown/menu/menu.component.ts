@@ -1,17 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ContentChild,
   Input,
-  TemplateRef,
-  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 
 import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils';
-
-import { MenuContentDirective } from './menu-content.directive';
 
 @Component({
   selector: 'aui-menu',
@@ -27,10 +22,4 @@ export class MenuComponent {
 
   @Input()
   size: ComponentSize = ComponentSize.Small;
-
-  @ViewChild(TemplateRef, { static: true })
-  template: TemplateRef<any>;
-
-  @ContentChild(MenuContentDirective, { static: true })
-  lazyContent: MenuContentDirective;
 }

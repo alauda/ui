@@ -29,6 +29,7 @@ import {
 } from 'rxjs';
 
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
+import { AnimationType } from '../tooltip/animations';
 import { scrollIntoView } from '../utils';
 
 import { AutocompleteComponent } from './autocomplete.component';
@@ -92,6 +93,8 @@ export class AutoCompleteDirective
   // Whether to automatically update input value after selection
   @Input('auiAutocompleteAutoPatch')
   autoPatch = true;
+
+  override animationType: AnimationType = 'scaleY';
 
   private _autocomplete: AutocompleteComponent;
   private focusedSuggestion: SuggestionComponent;

@@ -118,6 +118,7 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
         >
           <aui-select>
             <div
+              auitooltipanimtype="scaleY"
               auitooltipposition="bottom start"
               auitooltiptrigger="click"
               auitooltiptype="plain"
@@ -395,6 +396,7 @@ exports[`PaginatorComponent should render current template 1`] = `
         >
           <aui-select>
             <div
+              auitooltipanimtype="scaleY"
               auitooltipposition="bottom start"
               auitooltiptrigger="click"
               auitooltiptype="plain"
@@ -681,6 +683,7 @@ exports[`PaginatorComponent should render current template 2`] = `
         >
           <aui-select>
             <div
+              auitooltipanimtype="scaleY"
               auitooltipposition="bottom start"
               auitooltiptrigger="click"
               auitooltiptype="plain"

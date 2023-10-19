@@ -28,9 +28,6 @@ export class TooltipDirective extends BaseTooltip {
   @Output('auiTooltipVisibleChange')
   override visibleChange = new EventEmitter<boolean>();
 
-  @Input('auiDisableAnimation')
-  override disableAnimation = false;
-
-  @Input('auiTooltipAnimationType')
-  override animationType: AnimationType;
+  @Input('auiTooltipAnimType')
+  override animationType: AnimationType = 'scale';
 }

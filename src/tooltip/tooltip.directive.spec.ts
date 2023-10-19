@@ -196,7 +196,7 @@ describe('TooltipDirective', () => {
       [auiTooltipPosition]="position"
       [auiTooltipTrigger]="trigger"
       [auiTooltipDisabled]="disabled"
-      [auiDisableAnimation]="true"
+      auiTooltipAnimType="none"
       auiTooltipActive="tooltip-actived"
     ></div>
     <ng-template
