@@ -1,7 +1,7 @@
 <button
   [class]="className"
-  [auiTooltip]="menu.template"
-  auiTooltipAnimationType="scaleY"
+  [auiTooltip]="menu"
+  auiTooltipAnimType="scaleY"
   [auiTooltipDisabled]="disabled"
   [auiTooltipTrigger]="trigger"
   [auiTooltipHideOnClick]="true"
@@ -18,9 +18,8 @@
   ></aui-icon>
 </button>
 
-<aui-menu
-  #menu
-  [size]="size"
->
-  <ng-content select="aui-menu-item"></ng-content>
-</aui-menu>
+<ng-template #menu>
+  <aui-menu [size]="size">
+    <ng-content select="aui-menu-item"></ng-content>
+  </aui-menu>
+</ng-template>

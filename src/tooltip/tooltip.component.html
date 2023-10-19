@@ -3,7 +3,7 @@
   [class]="class$ | async"
   (mouseenter)="hover$.next(true)"
   (mouseleave)="hover$.next(false)"
-  [@.disabled]="disableAnimation"
+  [@.disabled]="animationType === 'none'"
   [@showHide]="showHide"
   (@showHide.start)="onAnimation($event)"
   (@showHide.done)="onAnimation($event)"

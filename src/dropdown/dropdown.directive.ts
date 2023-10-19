@@ -6,17 +6,15 @@ import {
   EventEmitter,
   Input,
   NgZone,
-  OnInit,
   Output,
   Renderer2,
   ViewContainerRef,
 } from '@angular/core';
-import { takeUntil } from 'rxjs';
 
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
+import { AnimationType } from '../tooltip/animations';
 
 import { DropdownActiveDirective } from './dropdown-active.directive';
-import { MenuComponent } from './menu/menu.component';
 
 @Directive({
   selector: '[auiDropdown]',
@@ -26,6 +24,8 @@ import { MenuComponent } from './menu/menu.component';
     'disabled:auiDropdownDisabled',
     'position:auiDropdownPosition',
     'trigger:auiDropdownTrigger',
+    'context:auiDropdownContext',
+    'content:auiDropdown',
   ],
   providers: [
     {
@@ -35,30 +35,14 @@ import { MenuComponent } from './menu/menu.component';
   ],
   standalone: true,
 })
-export class DropdownDirective extends BaseTooltip implements OnInit {
-  @Input('auiDropdown')
-  get menu() {
-    return this._menu;
-  }
-
-  set menu(value) {
-    if (value === this._menu) {
-      return;
-    }
-    this._menu = value;
-    this.content = value.template;
-  }
-
-  @Input('auiDropdownContext')
-  lazyContentContext: any;
-
+export class DropdownDirective extends BaseTooltip {
   @Input('auiDropdownHideOnClick')
   override hideOnClick = true;
 
   @Output('auiDropdownVisibleChange')
   override visibleChange = new EventEmitter<boolean>();
 
-  private _menu: MenuComponent;
+  override animationType: AnimationType = 'scaleY';
 
   constructor(
     overlay: Overlay,
@@ -73,22 +57,5 @@ export class DropdownDirective extends BaseTooltip implements OnInit {
     this.type = TooltipType.Plain;
     this.position = 'bottom end';
     this.trigger = TooltipTrigger.Click;
-    this.disableAnimation = false;
-    this.animationType = 'scaleY';
-  }
-
-  ngOnInit() {
-    this.visibleChange.pipe(takeUntil(this.destroy$)).subscribe(visible => {
-      if (this.menu.lazyContent) {
-        if (visible) {
-          setTimeout(() => {
-            this.menu.lazyContent.attach(this.lazyContentContext);
-            this.updatePosition();
-          });
-        } else {
-          this.menu.lazyContent.detach();
-        }
-      }
-    });
   }
 }

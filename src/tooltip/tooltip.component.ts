@@ -1,7 +1,4 @@
-import {
-  trigger,
-  AnimationEvent,
-} from '@angular/animations';
+import { AnimationEvent, trigger } from '@angular/animations';
 import { NgIf, NgTemplateOutlet, AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -42,7 +39,6 @@ export class TooltipComponent implements OnDestroy {
   template: TemplateRef<any>;
   bem: Bem = buildBem('aui-tooltip');
   showHide = 'scale-hide';
-  disableAnimation = true;
   animationType: AnimationType;
 
   inputContent$: Observable<string | TemplateRef<any>>;
@@ -79,7 +75,6 @@ export class TooltipComponent implements OnDestroy {
     inputPosition$: Observable<string>;
     inputClass$: Observable<string>;
     inputContext$: Observable<any>;
-    disableAnimation?: boolean;
     animationType?: string;
   }) {
     Object.assign(this, inputs);

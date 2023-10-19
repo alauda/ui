@@ -20,16 +20,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       dropdown 2
       <aui-icon icon="angle_down"></aui-icon>
     </button>
-    <aui-menu #menu>
-      <ng-template
-        auiMenuContent
-        let-canDelete="canDelete"
-      >
+    <ng-template
+      #menu
+      let-canDelete="canDelete"
+    >
+      <aui-menu>
         <aui-menu-item>创建</aui-menu-item>
         <aui-menu-item>更新</aui-menu-item>
         <aui-menu-item *ngIf="canDelete">删除</aui-menu-item>
-      </ng-template>
-    </aui-menu>
+      </aui-menu>
+    </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
