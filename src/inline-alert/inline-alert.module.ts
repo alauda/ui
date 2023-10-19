@@ -7,8 +7,17 @@ import { InlineAlertTitleDirective } from './helper-directives';
 import { InlineAlertComponent } from './inline-alert.component';
 
 @NgModule({
-  imports: [CommonModule, IconModule],
-  declarations: [InlineAlertComponent, InlineAlertTitleDirective],
+  imports: [
+    CommonModule,
+    IconModule,
+    InlineAlertComponent,
+    InlineAlertTitleDirective,
+  ],
   exports: [InlineAlertComponent, InlineAlertTitleDirective],
 })
 export class InlineAlertModule {}
+
+export const INLINE_ALERT_MODULE = [
+  InlineAlertComponent,
+  InlineAlertTitleDirective,
+] as const;

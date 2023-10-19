@@ -6,6 +6,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { CdkCell } from '@angular/cdk/table';
+import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,6 +15,8 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
+
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'aui-table-cell[auiExpandButton]',
@@ -31,6 +34,8 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [IconComponent],
 })
 export class TableExpandButtonCellComponent extends CdkCell {
   @Input()
@@ -72,6 +77,8 @@ export class TableExpandButtonCellComponent extends CdkCell {
       transition('* <=> expanded', [animate('0.1s ease-in-out')]),
     ]),
   ],
+  standalone: true,
+  imports: [NgIf],
 })
 export class TableExpandPanelCellComponent extends CdkCell {
   @Input()

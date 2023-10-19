@@ -2,16 +2,13 @@ import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { AccordionComponent, AccordionModule } from '.';
+import { AccordionComponent } from './accordion.component';
+import { ACCORDION_MODULE } from './accordion.module';
 
 describe('AccordionComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [AccordionModule],
-      declarations: [TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
   });
@@ -55,6 +52,8 @@ describe('AccordionComponent', () => {
       </aui-accordion-item>
     </aui-accordion>
   `,
+  standalone: true,
+  imports: [...ACCORDION_MODULE],
 })
 class TestComponent {
   multi: boolean;

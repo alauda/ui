@@ -12,6 +12,7 @@ import { LabelPosition } from './form.types';
     '[class.aui-form--inline]': 'inline',
     '[class.ng-submitted]': 'ngClassSubmitted',
   },
+  standalone: true,
 })
 export class FormDirective {
   get ngClassSubmitted() {

@@ -8,6 +8,7 @@ import {
 
 @Directive({
   selector: 'ng-template[auiTablePlaceholderDef]',
+  standalone: true,
 })
 export class TablePlaceholderDefDirective {
   constructor(public templateRef: TemplateRef<any>) {}
@@ -15,6 +16,7 @@ export class TablePlaceholderDefDirective {
 
 @Directive({
   selector: '[auiTablePlaceholderOutlet]',
+  standalone: true,
 })
 export class TablePlaceholderOutletDirective implements RowOutlet {
   constructor(

@@ -14,6 +14,7 @@ const bem = buildBem('aui-table');
     role: 'gridcell',
     '[class.aui-table__cell--column]': 'direction === "column"',
   },
+  standalone: true,
 })
 export class TableCellDirective extends CdkCell {
   @Input()

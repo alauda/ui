@@ -20,6 +20,7 @@ import { MenuContentDirective } from './menu-content.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
 })
 export class MenuComponent {
   bem: Bem = buildBem('aui-menu');

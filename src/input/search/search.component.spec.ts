@@ -7,7 +7,7 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { InputModule, SearchComponent } from '..';
+import { SearchComponent } from './search.component';
 
 describe('SearchComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -17,10 +17,6 @@ describe('SearchComponent', () => {
   let inputEl: HTMLInputElement;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [InputModule],
-      declarations: [TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -210,6 +206,8 @@ describe('SearchComponent', () => {
       [placeholder]="placeholder"
     ></aui-search>
   `,
+  standalone: true,
+  imports: [SearchComponent],
 })
 class TestComponent {
   searchButton: boolean;

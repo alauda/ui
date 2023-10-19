@@ -1,4 +1,7 @@
 /* eslint-disable no-prototype-builtins */
+import { A11yModule } from '@angular/cdk/a11y';
+import { PortalModule } from '@angular/cdk/portal';
+import { NgClass, NgIf, NgFor } from '@angular/common';
 import {
   AfterContentChecked,
   AfterContentInit,
@@ -20,11 +23,14 @@ import {
 } from '@angular/core';
 import { Subject, Subscription, merge } from 'rxjs';
 
+import { IconComponent } from '../icon/icon.component';
 import { Bem, buildBem } from '../utils';
 
 import {
   TabHeaderAddonDirective,
   TabTitleDirective,
+  TabLabelWrapperDirective,
+  TabBodyComponent,
 } from './tab-body.component';
 import { TabHeaderComponent } from './tab-header.component';
 import { TabComponent } from './tab.component';
@@ -46,6 +52,20 @@ export class TabChangeEvent {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [
+    NgClass,
+    TabHeaderComponent,
+    NgIf,
+    TabTitleDirective,
+    PortalModule,
+    NgFor,
+    TabLabelWrapperDirective,
+    A11yModule,
+    IconComponent,
+    TabHeaderAddonDirective,
+    TabBodyComponent,
+  ],
 })
 export class TabGroupComponent
   implements OnChanges, AfterContentChecked, AfterContentInit, OnDestroy

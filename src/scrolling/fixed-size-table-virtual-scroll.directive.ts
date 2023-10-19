@@ -49,6 +49,7 @@ const defaults = {
       deps: [forwardRef(() => FixedSizeTableVirtualScrollDirective)],
     },
   ],
+  standalone: true,
 })
 export class FixedSizeTableVirtualScrollDirective<T = unknown>
   implements AfterContentInit, OnChanges, OnDestroy

@@ -14,6 +14,7 @@ import { getClosestDialog } from '../utils';
 @Directive({
   selector: '[auiDialogClose]',
   exportAs: 'auiDialogClose',
+  standalone: true,
 })
 export class DialogCloseDirective implements OnInit {
   @Input('auiDialogClose')

@@ -20,8 +20,7 @@ describe('Status Bar', () => {
   let ocEl: HTMLElement;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [StatusBarModule, NoopAnimationsModule],
-      declarations: [TestComponent],
+      imports: [NoopAnimationsModule],
     });
 
     fixture = TestBed.createComponent(TestComponent);
@@ -97,6 +96,8 @@ describe('Status Bar', () => {
       <div>{{ type }}: {{ value }}</div>
     </ng-template>
   `,
+  standalone: true,
+  imports: [StatusBarModule],
 })
 class TestComponent {
   status1: Status[] = [

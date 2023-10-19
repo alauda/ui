@@ -5,8 +5,8 @@ import { AnchorComponent, AnchorTreeComponent } from './anchor.component';
 import { AnchorDirective, AnchorLabelDirective } from './anchor.directive';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [
+  imports: [
+    CommonModule,
     AnchorComponent,
     AnchorTreeComponent,
     AnchorDirective,
@@ -20,3 +20,10 @@ import { AnchorDirective, AnchorLabelDirective } from './anchor.directive';
   ],
 })
 export class AnchorModule {}
+
+export const ANCHOR_MODULE = [
+  AnchorComponent,
+  AnchorTreeComponent,
+  AnchorDirective,
+  AnchorLabelDirective,
+] as const;

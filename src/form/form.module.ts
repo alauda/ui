@@ -12,8 +12,8 @@ import {
 } from './helper-directives';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [
+  imports: [
+    CommonModule,
     FormDirective,
     FormItemComponent,
     FormItemAddonDirective,
@@ -33,3 +33,13 @@ import {
   ],
 })
 export class FormModule {}
+
+export const FORM_MODULE = [
+  FormDirective,
+  FormItemComponent,
+  FormItemAddonDirective,
+  FormItemErrorDirective,
+  FormItemHintDirective,
+  FormItemLabelDirective,
+  FormItemControlDirective,
+] as const;

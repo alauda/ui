@@ -15,7 +15,7 @@ const EXPORTABLE_DIRECTIVES = [
 const EXPORTABLE = [...EXPORTABLE_COMPONENTS, ...EXPORTABLE_DIRECTIVES];
 
 @NgModule({
-  declarations: EXPORTABLE,
+  imports: [...EXPORTABLE],
   exports: EXPORTABLE,
 })
 export class ScrollingModule {}

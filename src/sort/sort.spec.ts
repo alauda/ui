@@ -22,8 +22,10 @@ describe('Sort', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [SortModule, CdkTableModule, TableModule],
-      declarations: [
+      imports: [
+        SortModule,
+        CdkTableModule,
+        TableModule,
         SimpleSortAppComponent,
         CdkTableSortAppComponent,
         AuiTableSortAppComponent,
@@ -184,6 +186,8 @@ type SimpleAuiSortAppColumnIds = 'defaultA' | 'defaultB' | 'overrideStart';
       </div>
     </div>
   `,
+  standalone: true,
+  imports: [SortModule, CdkTableModule, TableModule],
 })
 class SimpleSortAppComponent {
   latestSortEvent: Sort;
@@ -293,6 +297,8 @@ class FakeDataSource extends DataSource<any> {
       <cdk-row *cdkRowDef="let row; columns: columnsToRender"></cdk-row>
     </cdk-table>
   `,
+  standalone: true,
+  imports: [SortModule, CdkTableModule, TableModule],
 })
 class CdkTableSortAppComponent {
   @ViewChild(SortDirective, { static: true })
@@ -346,6 +352,8 @@ class CdkTableSortAppComponent {
       ></aui-table-row>
     </aui-table>
   `,
+  standalone: true,
+  imports: [SortModule, CdkTableModule, TableModule],
 })
 class AuiTableSortAppComponent {
   @ViewChild(SortDirective, { static: true })

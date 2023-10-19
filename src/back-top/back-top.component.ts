@@ -1,4 +1,5 @@
 import { CdkScrollable } from '@angular/cdk/overlay';
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -19,6 +20,9 @@ import {
   startWith,
 } from 'rxjs';
 
+import { ButtonComponent } from '../button/button.component';
+import { IconComponent } from '../icon/icon.component';
+
 type TargetType = Element | Window | string;
 
 @Component({
@@ -28,6 +32,8 @@ type TargetType = Element | Window | string;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [ButtonComponent, IconComponent, AsyncPipe],
 })
 export class BackTopComponent {
   @Input()

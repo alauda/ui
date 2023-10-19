@@ -1,0 +1,13 @@
+diff --git a/node_modules/inquirer/lib/utils/screen-manager.js b/node_modules/inquirer/lib/utils/screen-manager.js
+index d411a99..c98e86c 100644
+--- a/node_modules/inquirer/lib/utils/screen-manager.js
++++ b/node_modules/inquirer/lib/utils/screen-manager.js
+@@ -1,7 +1,7 @@
+ 'use strict';
+ const util = require('./readline');
+ const cliWidth = require('cli-width');
+-const wrapAnsi = require('wrap-ansi');
++const wrapAnsi = require('wrap-ansi-cjs');
+ const stripAnsi = require('strip-ansi');
+ const stringWidth = require('string-width');
+ const ora = require('ora');

@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -8,6 +9,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
+import { IconComponent } from '../icon/icon.component';
 import { Bem, buildBem } from '../utils';
 
 import { InlineAlertTitleDirective } from './helper-directives';
@@ -20,6 +22,8 @@ import { InlineAlertType } from './inline-alert.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [NgIf, IconComponent],
 })
 export class InlineAlertComponent {
   bem: Bem = buildBem('aui-inline-alert');

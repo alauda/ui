@@ -8,7 +8,10 @@ import {
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { InputModule, NumberInputComponent } from '..';
+import {
+  NUMBER_INPUT_MODULE,
+  NumberInputComponent,
+} from './number-input.component';
 
 describe('InputNumberComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -18,10 +21,6 @@ describe('InputNumberComponent', () => {
   let inputEl: HTMLInputElement;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [InputModule, FormsModule],
-      declarations: [TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -192,6 +191,8 @@ describe('InputNumberComponent', () => {
       [clearable]="clearable"
     ></aui-number-input>
   `,
+  standalone: true,
+  imports: [FormsModule, ...NUMBER_INPUT_MODULE],
 })
 class TestComponent {
   size: string;

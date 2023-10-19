@@ -8,6 +8,7 @@ import {
   CdkTable,
   _COALESCED_STYLE_SCHEDULER,
   _CoalescedStyleScheduler,
+  CdkTableModule,
 } from '@angular/cdk/table';
 import {
   AfterContentInit,
@@ -52,6 +53,8 @@ import {
       useClass: _CoalescedStyleScheduler,
     },
   ],
+  standalone: true,
+  imports: [CdkTableModule, TablePlaceholderOutletDirective],
 })
 export class TableComponent<T>
   extends CdkTable<T>

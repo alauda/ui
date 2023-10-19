@@ -15,6 +15,7 @@ import { MenuItemType } from '../dropdown.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
 })
 export class MenuItemComponent {
   bem: Bem = buildBem('aui-menu-item');

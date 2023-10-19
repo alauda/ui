@@ -10,16 +10,11 @@ import { By } from '@angular/platform-browser';
 
 import { LifeCycle, LifeCycleDirective } from '../utils/life-cycle';
 
-import { TabChangeEvent, TabComponent, TabGroupComponent, TabsModule } from '.';
+import { TabContentDirective, TabLabelDirective } from './tab-body.component';
+import { TabChangeEvent, TabGroupComponent } from './tab-group.component';
+import { TabComponent } from './tab.component';
 
 describe('TabGroupComponent', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [TabsModule],
-      declarations: [SimpleTabsTestAppComponent, LifeCycleDirective],
-    });
-  });
-
   describe('basic behavior', () => {
     let fixture: ComponentFixture<SimpleTabsTestAppComponent>;
 
@@ -325,6 +320,14 @@ function checkSelectedIndex(
       </aui-tab>
     </aui-tab-group>
   `,
+  standalone: true,
+  imports: [
+    TabGroupComponent,
+    TabComponent,
+    TabLabelDirective,
+    TabContentDirective,
+    LifeCycleDirective,
+  ],
 })
 class SimpleTabsTestAppComponent {
   @ViewChildren(TabComponent)

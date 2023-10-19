@@ -1,4 +1,8 @@
-import { CDK_ROW_TEMPLATE, CdkHeaderRow } from '@angular/cdk/table';
+import {
+  CDK_ROW_TEMPLATE,
+  CdkHeaderRow,
+  CdkTableModule,
+} from '@angular/cdk/table';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,5 +21,7 @@ import {
   encapsulation: ViewEncapsulation.None,
   exportAs: 'auiTableHeaderRow',
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [CdkTableModule],
 })
 export class TableHeaderRowComponent extends CdkHeaderRow {}

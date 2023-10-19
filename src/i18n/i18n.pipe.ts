@@ -12,6 +12,7 @@ import { StringMap } from './i18n.type';
 @Pipe({
   name: 'auiI18n',
   pure: false,
+  standalone: true,
 })
 export class I18nPipe implements PipeTransform, OnDestroy {
   private readonly destroy$$ = new Subject<void>();

@@ -1,15 +1,9 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  NgModule,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MESSAGE_CONFIG, MessageModule, MessageService } from '.';
+import { MESSAGE_CONFIG, MessageService } from '.';
 
 describe('MessageService', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -18,7 +12,7 @@ describe('MessageService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestModule],
+      imports: [NoopAnimationsModule],
       providers: [
         {
           provide: MESSAGE_CONFIG,
@@ -89,14 +83,6 @@ describe('MessageService', () => {
 @Component({
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
-export class TestComponent {
-  @ViewChild('template', { static: true })
-  templateRef: TemplateRef<any>;
-}
-
-@NgModule({
-  imports: [MessageModule, NoopAnimationsModule],
-  declarations: [TestComponent],
-})
-class TestModule {}
+export class TestComponent {}

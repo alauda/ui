@@ -2,9 +2,9 @@ import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { PaginatorComponent } from './paginator.component';
+import { SelectComponent } from '../select/select.component';
 
-import { PaginatorModule } from '.';
+import { PaginatorComponent } from './paginator.component';
 
 describe('PaginatorComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -13,11 +13,6 @@ describe('PaginatorComponent', () => {
   let el: HTMLElement;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [PaginatorModule],
-      declarations: [TestComponent],
-    });
-
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -120,6 +115,12 @@ describe('PaginatorComponent', () => {
       custom content
     </aui-paginator>
   `,
+  standalone: true,
+  imports: [
+    PaginatorComponent,
+    // https://github.com/angular/angular/issues/51568
+    SelectComponent,
+  ],
 })
 class TestComponent {
   currentPage = 1;

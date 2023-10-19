@@ -22,6 +22,7 @@ import { CommonFormControl } from '../form';
       multi: true,
     },
   ],
+  standalone: true,
 })
 export class ColorPickerComponent extends CommonFormControl<string> {
   onInput(event: Event) {

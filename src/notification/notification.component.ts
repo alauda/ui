@@ -1,4 +1,9 @@
-import { CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
+import {
+  CdkPortalOutlet,
+  TemplatePortal,
+  PortalModule,
+} from '@angular/cdk/portal';
+import { NgIf } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -12,6 +17,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
+import { IconComponent } from '../icon/icon.component';
 import { MessageAnimations } from '../message/message-animations';
 import { MessageComponent } from '../message/message.component';
 import { Bem, buildBem } from '../utils';
@@ -28,6 +34,8 @@ let uniqueId = 0;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [IconComponent, NgIf, PortalModule],
 })
 export class NotificationComponent
   extends MessageComponent

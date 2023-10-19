@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,15 +10,20 @@ import {
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import dayjs, { Dayjs } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import { updateDateByTimeModel } from '../date-picker/calendar/util';
 import { CommonFormControl } from '../form/common-form';
-import { TooltipDirective } from '../tooltip';
+import { IconComponent } from '../icon/icon.component';
+import { InputSuffixDirective } from '../input/helper-directives';
+import { InputGroupComponent } from '../input/input-group/input-group.component';
+import { InputComponent } from '../input/input.component';
+import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { ComponentSize } from '../types';
 
+import { TimePickerPanelComponent } from './panel/panel.component';
 import {
   TimePickerDataLike,
   TimePickerModel,
@@ -38,6 +44,17 @@ dayjs.extend(customParseFormat);
       useExisting: forwardRef(() => TimePickerComponent),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    TooltipDirective,
+    InputGroupComponent,
+    InputComponent,
+    FormsModule,
+    NgIf,
+    InputSuffixDirective,
+    IconComponent,
+    TimePickerPanelComponent,
   ],
 })
 export class TimePickerComponent extends CommonFormControl<

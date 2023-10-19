@@ -7,6 +7,7 @@ import { coerceAttrBoolean } from '../utils';
   host: {
     '[class.aui-form-item__label]': 'true',
   },
+  standalone: true,
 })
 export class FormItemLabelDirective {}
 
@@ -15,6 +16,7 @@ export class FormItemLabelDirective {}
   host: {
     '[class.aui-form-item__hint]': 'true',
   },
+  standalone: true,
 })
 export class FormItemHintDirective {}
 
@@ -23,6 +25,7 @@ export class FormItemHintDirective {}
   host: {
     '[class.aui-form-item__addon]': 'true',
   },
+  standalone: true,
 })
 export class FormItemAddonDirective {}
 
@@ -31,6 +34,7 @@ export class FormItemAddonDirective {}
   host: {
     '[class.aui-form-item__error]': 'true',
   },
+  standalone: true,
 })
 export class FormItemErrorDirective {}
 
@@ -39,6 +43,7 @@ export class FormItemErrorDirective {}
   host: {
     '[class.aui-form-item__control]': 'true',
   },
+  standalone: true,
 })
 export class FormItemControlDirective {
   @Input({ transform: coerceAttrBoolean })

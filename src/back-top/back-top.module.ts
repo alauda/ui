@@ -7,8 +7,7 @@ import { IconModule } from '../icon/icon.module';
 import { BackTopComponent } from './back-top.component';
 
 @NgModule({
-  imports: [CommonModule, IconModule, ButtonModule],
-  declarations: [BackTopComponent],
+  imports: [CommonModule, IconModule, ButtonModule, BackTopComponent],
   exports: [BackTopComponent],
 })
 export class BackTopModule {}

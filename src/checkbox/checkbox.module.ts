@@ -7,8 +7,17 @@ import { CheckboxGroupComponent } from './checkbox-group/checkbox-group.componen
 import { CheckboxComponent } from './checkbox.component';
 
 @NgModule({
-  imports: [CommonModule, IconModule],
-  declarations: [CheckboxComponent, CheckboxGroupComponent],
+  imports: [
+    CommonModule,
+    IconModule,
+    CheckboxComponent,
+    CheckboxGroupComponent,
+  ],
   exports: [CheckboxComponent, CheckboxGroupComponent],
 })
 export class CheckboxModule {}
+
+export const CHECKBOX_MODULE = [
+  CheckboxComponent,
+  CheckboxGroupComponent,
+] as const;

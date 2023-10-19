@@ -33,6 +33,7 @@ import { MenuComponent } from './menu/menu.component';
       useExisting: DropdownDirective,
     },
   ],
+  standalone: true,
 })
 export class DropdownDirective extends BaseTooltip implements OnInit {
   @Input('auiDropdown')

@@ -14,6 +14,7 @@ import { MessageWrapperComponent } from '../message/message-wrapper.component';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
 })
 export class NotificationWrapperComponent extends MessageWrapperComponent {
   constructor(public override elementRef: ElementRef) {

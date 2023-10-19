@@ -42,6 +42,7 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
   host: {
     autocomplete: 'off',
   },
+  standalone: true,
 })
 export class AutoCompleteDirective
   extends BaseTooltip<AutoCompleteContext>
@@ -340,6 +341,7 @@ export class AutoCompleteDirective
   host: {
     autocomplete: 'off',
   },
+  standalone: true,
 })
 export class CustomAutoCompleteDirective extends AutoCompleteDirective {
   @Input('auiAutocompleteInnerSelector')

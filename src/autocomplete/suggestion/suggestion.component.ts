@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -27,6 +28,8 @@ import { AutocompleteComponent } from '../autocomplete.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [AsyncPipe],
 })
 export class SuggestionComponent {
   bem: Bem = buildBem('aui-suggestion');

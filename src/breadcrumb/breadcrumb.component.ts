@@ -17,6 +17,7 @@ import { BreadcrumbItemComponent } from './breadcrumb-item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
 })
 export class BreadcrumbComponent implements AfterContentInit {
   @Input()

@@ -1,4 +1,11 @@
 import {
+  NgIf,
+  NgFor,
+  NgClass,
+  NgTemplateOutlet,
+  DecimalPipe,
+} from '@angular/common';
+import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -17,8 +24,10 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import dayjs, { Dayjs } from 'dayjs';
 
+import { ButtonComponent } from '../../button/button.component';
 import { updateDateByTimeModel } from '../../date-picker/calendar/util';
 import { CommonFormControl } from '../../form/common-form';
+import { I18nPipe } from '../../i18n/i18n.pipe';
 import { ComponentSize } from '../../types';
 import { buildBem } from '../../utils';
 import {
@@ -44,6 +53,16 @@ const bem = buildBem('aui-time-picker-panel');
       useExisting: forwardRef(() => TimePickerPanelComponent),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    NgIf,
+    NgFor,
+    NgClass,
+    ButtonComponent,
+    NgTemplateOutlet,
+    DecimalPipe,
+    I18nPipe,
   ],
 })
 export class TimePickerPanelComponent

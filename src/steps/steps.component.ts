@@ -1,4 +1,11 @@
 import {
+  NgFor,
+  NgIf,
+  NgSwitch,
+  NgSwitchCase,
+  NgSwitchDefault,
+} from '@angular/common';
+import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
@@ -9,6 +16,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
+
+import { IconComponent } from '../icon/icon.component';
 
 import { StepItem, StepState, StepsOrientation, StepsType } from './types';
 
@@ -33,6 +42,15 @@ const StepSelectedIcon = {
   styleUrls: ['./steps.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [
+    NgFor,
+    NgIf,
+    NgSwitch,
+    NgSwitchCase,
+    IconComponent,
+    NgSwitchDefault,
+  ],
 })
 export class StepsComponent implements OnInit, OnDestroy {
   _currentIndex: number;

@@ -9,7 +9,7 @@ import {
 } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { filter } from 'rxjs';
 
 import { DISPLAY_DELAY, HIDDEN_DELAY } from './base-tooltip';
@@ -26,8 +26,7 @@ describe('TooltipDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TooltipModule, FormsModule, BrowserAnimationsModule],
-      declarations: [TestComponent],
+      imports: [NoopAnimationsModule],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -207,6 +206,8 @@ describe('TooltipDirective', () => {
       <div id="dataNode">{{ text }}</div>
     </ng-template>
   `,
+  standalone: true,
+  imports: [TooltipModule, FormsModule],
 })
 class TestComponent {
   content: string | TemplateRef<any> = 'hello world';

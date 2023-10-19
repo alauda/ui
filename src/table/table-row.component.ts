@@ -1,4 +1,4 @@
-import { CDK_ROW_TEMPLATE, CdkRow } from '@angular/cdk/table';
+import { CDK_ROW_TEMPLATE, CdkRow, CdkTableModule } from '@angular/cdk/table';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -21,6 +21,8 @@ import {
   encapsulation: ViewEncapsulation.None,
   exportAs: 'auiTableRow',
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [CdkTableModule],
 })
 export class TableRowComponent extends CdkRow implements AfterContentInit {
   @Input()

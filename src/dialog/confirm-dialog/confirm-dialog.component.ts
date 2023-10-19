@@ -1,4 +1,10 @@
 import {
+  NgIf,
+  NgTemplateOutlet,
+  NgComponentOutlet,
+  NgClass,
+} from '@angular/common';
+import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -6,6 +12,8 @@ import {
 } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
 
+import { ButtonComponent } from '../../button/button.component';
+import { IconComponent } from '../../icon/icon.component';
 import { Bem, buildBem, isString, isTemplateRef } from '../../utils';
 import { DialogRef } from '../dialog-ref';
 import {
@@ -24,6 +32,15 @@ import { ConfirmDialogConfig } from './confirm-dialog-config';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [
+    IconComponent,
+    NgIf,
+    NgTemplateOutlet,
+    NgComponentOutlet,
+    ButtonComponent,
+    NgClass,
+  ],
 })
 export class ConfirmDialogComponent<T = unknown, R = unknown> {
   bem: Bem = buildBem('aui-confirm-dialog');

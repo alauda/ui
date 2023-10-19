@@ -60,7 +60,9 @@ interface HackOverlayRef extends OverlayRef {
   };
 }
 
-@Directive()
+@Directive({
+  standalone: true,
+})
 export class BaseTooltip<T = any>
   implements TooltipInterface, AfterViewInit, OnDestroy
 {

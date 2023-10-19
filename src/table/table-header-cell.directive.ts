@@ -13,6 +13,7 @@ const bem = buildBem('aui-table');
     class: 'aui-table__header-cell',
     role: 'columnheader',
   },
+  standalone: true,
 })
 export class TableHeaderCellDirective extends CdkHeaderCell {
   constructor(columnDef: CdkColumnDef, elementRef: ElementRef<HTMLElement>) {

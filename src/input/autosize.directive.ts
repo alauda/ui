@@ -28,6 +28,7 @@ export interface AutoSizeValue {
     // eslint-disable-next-line @angular-eslint/directive-selector
     'textarea[autosize][ngModel],textarea[autosize][formControl],textarea[autosize][formControlName]',
   exportAs: 'TextareaAutosize',
+  standalone: true,
 })
 export class AutosizeDirective implements AfterViewInit, OnDestroy {
   private _autoSize: AutoSizeValue = DEFAULT_VALUE;

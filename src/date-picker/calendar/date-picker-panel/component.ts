@@ -1,3 +1,4 @@
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -8,14 +9,24 @@ import {
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
 
+import { ButtonComponent } from '../../../button/button.component';
 import { CommonFormControl } from '../../../form/common-form';
-import { HOUR_ITEMS, MINUTE_ITEMS, SECOND_ITEMS } from '../../../time-picker';
-import { TimePickerModel } from '../../../time-picker/time-picker.type';
+import { I18nPipe } from '../../../i18n/i18n.pipe';
+import {
+  HOUR_ITEMS,
+  MINUTE_ITEMS,
+  SECOND_ITEMS,
+  TimePickerComponent,
+  TimePickerModel,
+} from '../../../time-picker';
 import { DateNavRange, DisabledTimeFn } from '../../date-picker.type';
 import { DatePickerType } from '../constant';
+import { CalendarFooterComponent } from '../footer/component';
+import { CalendarHeaderComponent } from '../header/component';
+import { PickerPanelComponent } from '../panel/picker-panel';
 import {
   getNavRangeByType,
   getTimePickerModel,
@@ -37,6 +48,18 @@ import {
       useExisting: forwardRef(() => DatePickerPanelComponent),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    CalendarHeaderComponent,
+    PickerPanelComponent,
+    NgIf,
+    NgTemplateOutlet,
+    CalendarFooterComponent,
+    TimePickerComponent,
+    FormsModule,
+    ButtonComponent,
+    I18nPipe,
   ],
 })
 export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {

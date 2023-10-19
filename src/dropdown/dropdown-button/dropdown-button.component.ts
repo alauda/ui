@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -13,8 +14,11 @@ import {
 import { Observable, map, startWith } from 'rxjs';
 
 import { ButtonType } from '../../button';
+import { ButtonComponent } from '../../button/button.component';
+import { IconComponent } from '../../icon/icon.component';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, coerceAttrBoolean } from '../../utils';
+import { DropdownDirective } from '../dropdown.directive';
 import { MenuComponent } from '../menu/menu.component';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 
@@ -25,6 +29,8 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [ButtonComponent, DropdownDirective, IconComponent, AsyncPipe],
 })
 export class DropdownButtonComponent implements AfterContentInit {
   bem: Bem = buildBem('aui-dropdown-button');

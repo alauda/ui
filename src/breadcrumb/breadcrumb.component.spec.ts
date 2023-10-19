@@ -1,16 +1,9 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { BreadcrumbModule } from './breadcrumb.module';
+import { BREADCRUMB_MODULE } from './breadcrumb.module';
 
 describe('BreadcrumbComponent', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [BreadcrumbModule],
-      declarations: [TestComponent],
-    });
-  });
-
   it('should render correct template', () => {
     const fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -36,5 +29,7 @@ describe('BreadcrumbComponent', () => {
       <aui-breadcrumb-item>default</aui-breadcrumb-item>
     </aui-breadcrumb>
   `,
+  standalone: true,
+  imports: [...BREADCRUMB_MODULE],
 })
 class TestComponent {}

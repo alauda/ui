@@ -12,8 +12,7 @@ const bem = buildBem('aui-table');
 describe('Table', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TableModule],
-      declarations: [SimpleTableAppComponent],
+      imports: [TableModule, SimpleTableAppComponent],
     });
   });
 
@@ -121,6 +120,8 @@ class FakeDataSource extends DataSource<TestData> {
       ></aui-table-row>
     </aui-table>
   `,
+  standalone: true,
+  imports: [TableModule],
 })
 class SimpleTableAppComponent {
   dataSource: FakeDataSource | null = new FakeDataSource();

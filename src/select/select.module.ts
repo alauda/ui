@@ -26,8 +26,6 @@ import { IncludesDirective } from './validators';
     IconModule,
     TooltipModule,
     TagModule,
-  ],
-  declarations: [
     SelectComponent,
     OptionComponent,
     OptionGroupComponent,
@@ -49,3 +47,14 @@ import { IncludesDirective } from './validators';
   ],
 })
 export class SelectModule {}
+
+export const SELECT_MODULE = [
+  SelectComponent,
+  OptionComponent,
+  OptionGroupComponent,
+  OptionPlaceholderComponent,
+  MultiSelectComponent,
+  IncludesDirective,
+  OptionGroupTitleDirective,
+  OptionContentDirective,
+] as const;

@@ -16,8 +16,11 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { SubmenuComponent } from './submenu/submenu.component';
 
 @NgModule({
-  imports: [CommonModule, TooltipModule, IconModule, ButtonModule],
-  declarations: [
+  imports: [
+    CommonModule,
+    TooltipModule,
+    IconModule,
+    ButtonModule,
     DropdownDirective,
     DropdownActiveDirective,
     DropdownButtonComponent,

@@ -15,5 +15,6 @@ import { Directive, forwardRef } from '@angular/core';
       deps: [forwardRef(() => FixedSizeVirtualScrollDirective)],
     },
   ],
+  standalone: true,
 })
 export class FixedSizeVirtualScrollDirective extends CdkFixedSizeVirtualScroll {}

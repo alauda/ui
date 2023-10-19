@@ -27,6 +27,7 @@ import { CheckboxComponent } from '../checkbox.component';
       multi: true,
     },
   ],
+  standalone: true,
 })
 export class CheckboxGroupComponent<T> extends CommonFormControl<T[]> {
   private _trackFn: TrackFn<T>;

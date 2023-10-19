@@ -10,8 +10,8 @@ import {
 import { SectionComponent } from './section.component';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [
+  imports: [
+    CommonModule,
     CardComponent,
     CardHeaderDirective,
     CardFooterDirective,
@@ -27,3 +27,11 @@ import { SectionComponent } from './section.component';
   ],
 })
 export class CardModule {}
+
+export const CARD_MODULE = [
+  CardComponent,
+  CardHeaderDirective,
+  CardFooterDirective,
+  SectionComponent,
+  SectionTitleDirective,
+] as const;

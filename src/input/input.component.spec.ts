@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { ComponentSize } from '../types';
 
-import { InputModule } from '.';
+import { InputComponent } from './input.component';
 
 describe('InputComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -13,10 +13,6 @@ describe('InputComponent', () => {
   let el: HTMLElement;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [InputModule],
-      declarations: [TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -38,6 +34,8 @@ describe('InputComponent', () => {
 
 @Component({
   template: '<input aui-input [size]="size">',
+  standalone: true,
+  imports: [InputComponent],
 })
 class TestComponent {
   size: ComponentSize;

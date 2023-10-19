@@ -21,8 +21,7 @@ const COMMON = [
 ];
 
 @NgModule({
-  imports: [CommonModule, IconModule, IconModule, OverlayModule, PortalModule],
-  declarations: COMMON,
+  imports: [CommonModule, IconModule, OverlayModule, PortalModule, ...COMMON],
   exports: COMMON,
   providers: [DrawerService],
 })

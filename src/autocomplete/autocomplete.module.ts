@@ -15,8 +15,10 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
 import { SuggestionGroupComponent } from './suggestion-group/suggestion-group.component';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule, TooltipModule],
-  declarations: [
+  imports: [
+    CommonModule,
+    OverlayModule,
+    TooltipModule,
     AutoCompleteDirective,
     CustomAutoCompleteDirective,
     AutocompleteComponent,
@@ -36,3 +38,13 @@ import { SuggestionGroupComponent } from './suggestion-group/suggestion-group.co
   ],
 })
 export class AutocompleteModule {}
+
+export const AUTOCOMPLETE_MODULE = [
+  AutoCompleteDirective,
+  CustomAutoCompleteDirective,
+  AutocompleteComponent,
+  SuggestionComponent,
+  AutocompletePlaceholderComponent,
+  SuggestionGroupComponent,
+  SuggestionGroupTitleDirective,
+] as const;

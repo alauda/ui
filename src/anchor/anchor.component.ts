@@ -1,3 +1,4 @@
+import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -25,6 +26,7 @@ import {
 import { buildBem, isTemplateRef, last } from '../utils';
 
 import { AnchorDirectiveChild } from './anchor.directive';
+import { AnchorModule } from './anchor.module';
 import { AnchorItem, AnchorTreeItem } from './types';
 import { getAnchorTreeItems } from './utils';
 
@@ -35,6 +37,8 @@ const bem = buildBem('aui-anchor');
   templateUrl: 'anchor-tree.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgFor, NgIf, NgTemplateOutlet, AnchorModule],
 })
 export class AnchorTreeComponent
   extends AnchorDirectiveChild
@@ -120,6 +124,8 @@ export class AnchorTreeComponent
   styleUrls: ['anchor.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [AnchorTreeComponent],
 })
 export class AnchorComponent
   extends AnchorDirectiveChild

@@ -5,6 +5,7 @@ import { Directive } from '@angular/core';
   host: {
     '[class.aui-card__header]': 'true',
   },
+  standalone: true,
 })
 export class CardHeaderDirective {}
 
@@ -13,6 +14,7 @@ export class CardHeaderDirective {}
   host: {
     '[class.aui-card__footer]': 'true',
   },
+  standalone: true,
 })
 export class CardFooterDirective {}
 
@@ -21,5 +23,6 @@ export class CardFooterDirective {}
   host: {
     '[class.aui-section__title]': 'true',
   },
+  standalone: true,
 })
 export class SectionTitleDirective {}

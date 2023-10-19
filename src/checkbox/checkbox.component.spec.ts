@@ -8,7 +8,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { CheckboxModule } from '.';
+import { CheckboxComponent } from '.';
 
 describe('CheckboxComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -16,10 +16,6 @@ describe('CheckboxComponent', () => {
   let el: HTMLElement;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [CheckboxModule, FormsModule],
-      declarations: [TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -123,6 +119,8 @@ describe('CheckboxComponent', () => {
       {{ content }}
     </aui-checkbox>
   `,
+  standalone: true,
+  imports: [FormsModule, CheckboxComponent],
 })
 export class TestComponent {
   checkedMap = { a: true, b: false, c: true, d: true };

@@ -1,3 +1,4 @@
+import { NgIf, NgTemplateOutlet, NgFor, AsyncPipe } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -18,7 +19,13 @@ import {
   switchMap,
 } from 'rxjs';
 
-import { InputComponent } from '../input';
+import { IconComponent } from '../icon';
+import {
+  InputComponent,
+  InputSuffixDirective,
+  InputGroupComponent,
+} from '../input';
+import { TooltipDirective } from '../tooltip';
 import { coerceString, publishRef } from '../utils';
 
 import { BaseSelect } from './base-select';
@@ -42,6 +49,19 @@ import { SelectOption } from './select.types';
       provide: BaseSelect,
       useExisting: SelectComponent,
     },
+  ],
+  standalone: true,
+  imports: [
+    TooltipDirective,
+    InputGroupComponent,
+    InputComponent,
+    InputSuffixDirective,
+    IconComponent,
+    NgIf,
+    NgTemplateOutlet,
+    OptionComponent,
+    NgFor,
+    AsyncPipe,
   ],
 })
 export class SelectComponent<T = unknown>

@@ -1,3 +1,4 @@
+import { NgIf, AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -19,6 +20,7 @@ import {
   tap,
 } from 'rxjs';
 
+import { IconComponent } from '../../icon/icon.component';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem, coerceAttrBoolean, publishRef } from '../../utils';
 import { BaseSelect } from '../base-select';
@@ -30,6 +32,8 @@ import { BaseSelect } from '../base-select';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [NgIf, IconComponent, AsyncPipe],
 })
 export class OptionComponent<T> {
   bem: Bem = buildBem('aui-option');
@@ -109,7 +113,7 @@ export class OptionComponent<T> {
   constructor(
     private readonly cdr: ChangeDetectorRef,
     @Inject(forwardRef(() => BaseSelect))
-    select: any, // FIXME: workaround temporarily
+    select: BaseSelect<T>,
   ) {
     this.isMulti = select.isMulti;
     this.select = select;

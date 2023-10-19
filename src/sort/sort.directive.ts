@@ -21,6 +21,7 @@ import { Sort, SortDirection, Sortable } from './sort.types';
 @Directive({
   selector: '[auiSort]',
   exportAs: 'auiSort',
+  standalone: true,
 })
 export class SortDirective implements OnChanges, OnDestroy {
   sortables = new Map<string, Sortable>();

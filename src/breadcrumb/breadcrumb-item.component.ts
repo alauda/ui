@@ -1,9 +1,12 @@
+import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ViewEncapsulation,
 } from '@angular/core';
+
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'aui-breadcrumb-item',
@@ -12,6 +15,8 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [NgIf, IconComponent],
 })
 export class BreadcrumbItemComponent {
   get separator() {

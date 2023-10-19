@@ -1,3 +1,4 @@
+import { NgClass, NgIf, NgFor } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -11,6 +12,8 @@ import {
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 
+import { ButtonComponent } from '../../../button/button.component';
+import { I18nPipe } from '../../../i18n/i18n.pipe';
 import { buildBem } from '../../../utils';
 import { DateNavRange } from '../../date-picker.type';
 import {
@@ -46,6 +49,8 @@ const bem = buildBem('aui-picker-panel');
   styleUrls: ['./picker-panel.style.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgClass, NgIf, NgFor, ButtonComponent, I18nPipe],
 })
 export class PickerPanelComponent implements OnChanges {
   @Input()

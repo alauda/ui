@@ -1,5 +1,8 @@
 import { FocusKeyManager } from '@angular/cdk/a11y';
+import { ObserversModule } from '@angular/cdk/observers';
+import { PortalModule } from '@angular/cdk/portal';
 import { ViewportRuler } from '@angular/cdk/scrolling';
+import { NgClass, NgIf } from '@angular/common';
 import {
   AfterContentChecked,
   AfterContentInit,
@@ -19,6 +22,7 @@ import {
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
+import { IconComponent } from '../icon/icon.component';
 import { Bem, buildBem } from '../utils';
 
 import {
@@ -48,6 +52,15 @@ const EXAGGERATED_OVERSCROLL = 60;
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    NgClass,
+    NgIf,
+    PortalModule,
+    IconComponent,
+    ObserversModule,
+    TabHeaderActiveIndicatorComponent,
+  ],
 })
 export class TabHeaderComponent
   implements OnDestroy, AfterContentChecked, AfterContentInit

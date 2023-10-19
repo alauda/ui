@@ -9,8 +9,13 @@ import {
 } from './theme.pipe';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [ThemePickerPipe, RgbColorPipe, RgbaColorPipe, CssVarPipe],
+  imports: [
+    CommonModule,
+    ThemePickerPipe,
+    RgbColorPipe,
+    RgbaColorPipe,
+    CssVarPipe,
+  ],
   exports: [ThemePickerPipe, RgbColorPipe, RgbaColorPipe, CssVarPipe],
 })
 export class ThemeModule {}

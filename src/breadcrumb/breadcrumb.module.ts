@@ -7,8 +7,17 @@ import { BreadcrumbItemComponent } from './breadcrumb-item.component';
 import { BreadcrumbComponent } from './breadcrumb.component';
 
 @NgModule({
-  imports: [CommonModule, IconModule],
-  declarations: [BreadcrumbComponent, BreadcrumbItemComponent],
+  imports: [
+    CommonModule,
+    IconModule,
+    BreadcrumbComponent,
+    BreadcrumbItemComponent,
+  ],
   exports: [BreadcrumbComponent, BreadcrumbItemComponent],
 })
 export class BreadcrumbModule {}
+
+export const BREADCRUMB_MODULE = [
+  BreadcrumbComponent,
+  BreadcrumbItemComponent,
+] as const;

@@ -7,6 +7,7 @@ import {
 } from '@angular/animations';
 import { CdkAccordionItem } from '@angular/cdk/accordion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -20,14 +21,17 @@ import {
 } from '@angular/core';
 import { filter, startWith, take } from 'rxjs';
 
+import { IconComponent } from '../../icon/icon.component';
 import { AccordionComponent } from '../accordion.component';
 
 @Directive({
   selector: '[auiAccordionItemHeader]',
+  standalone: true,
 })
 export class AccordionItemHeaderDirective {}
 @Directive({
   selector: '[auiAccordionContent]',
+  standalone: true,
 })
 export class AccordionItemContentDirective {}
 @Component({
@@ -45,6 +49,8 @@ export class AccordionItemContentDirective {}
     ]),
   ],
   viewProviders: [AccordionItemComponent],
+  standalone: true,
+  imports: [IconComponent, NgIf, NgTemplateOutlet],
 })
 export class AccordionItemComponent
   extends CdkAccordionItem

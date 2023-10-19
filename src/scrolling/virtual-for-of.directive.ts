@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 
 @Directive({
   selector: '[auiVirtualFor][auiVirtualForOf]',
+  standalone: true,
 })
 export class VirtualForOfDirective<T> extends CdkVirtualForOf<T> {
   @Input()

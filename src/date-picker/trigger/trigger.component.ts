@@ -1,3 +1,4 @@
+import { NgClass, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,6 +10,8 @@ import {
 } from '@angular/core';
 import { Dayjs } from 'dayjs';
 
+import { I18nPipe } from '../../i18n/i18n.pipe';
+import { IconComponent } from '../../icon/icon.component';
 import { InputComponent } from '../../input/input.component';
 import { ComponentSize } from '../../types';
 import { buildBem } from '../../utils';
@@ -21,6 +24,8 @@ const bem = buildBem('aui-date-picker-trigger');
   styleUrls: ['./trigger.style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [NgClass, NgIf, InputComponent, IconComponent, I18nPipe],
 })
 export class DatePickerTriggerComponent {
   @Input()

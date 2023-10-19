@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ColorPickerComponent } from './color-picker.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule],
-  declarations: [ColorPickerComponent],
+  imports: [CommonModule, FormsModule, ColorPickerComponent],
   exports: [ColorPickerComponent],
 })
 export class ColorPickerModule {}

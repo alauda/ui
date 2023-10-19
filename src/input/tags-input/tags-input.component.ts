@@ -1,3 +1,4 @@
+import { NgFor } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -26,6 +27,7 @@ import {
 import { take } from 'rxjs';
 
 import { CommonFormControl } from '../../form';
+import { TagComponent } from '../../tag/tag.component';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils';
 
@@ -51,6 +53,8 @@ export const INPUT_ERROR_KEY = 'input_data_error';
       multi: true,
     },
   ],
+  standalone: true,
+  imports: [NgFor, TagComponent],
 })
 export class TagsInputComponent
   extends CommonFormControl<string[]>

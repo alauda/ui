@@ -9,7 +9,7 @@ import {
 } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MultiSelectComponent, SelectModule } from '..';
 import { ComponentSize } from '../../types';
@@ -23,8 +23,7 @@ describe('multiSelectComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [SelectModule, FormsModule, BrowserAnimationsModule],
-      declarations: [TestComponent],
+      imports: [NoopAnimationsModule],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
@@ -142,6 +141,8 @@ describe('multiSelectComponent', () => {
       >
     </aui-multi-select>
   `,
+  standalone: true,
+  imports: [SelectModule, FormsModule],
 })
 class TestComponent {
   value: number[];

@@ -35,7 +35,7 @@ exports[`FormComponent should match snapshot 1`] = `
             <input
               aui-input=""
               auiformitemcontrol=""
-              class="ng-untouched ng-pristine ng-valid aui-form-item__control"
+              class="aui-input aui-input--medium ng-untouched ng-pristine ng-valid aui-form-item__control"
               minlength="3"
               name="name"
               required=""
@@ -103,7 +103,7 @@ exports[`FormComponent should match snapshot 2`] = `
             <input
               aui-input=""
               auiformitemcontrol=""
-              class="ng-untouched ng-pristine aui-form-item__control ng-invalid"
+              class="aui-input aui-input--medium ng-untouched ng-pristine aui-form-item__control ng-invalid"
               minlength="3"
               name="name"
               required=""

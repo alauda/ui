@@ -13,19 +13,28 @@ import {
 import { AccordionComponent } from './accordion.component';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
+    CdkAccordionModule,
+    IconModule,
+    ButtonModule,
     AccordionComponent,
     AccordionItemComponent,
     AccordionItemHeaderDirective,
     AccordionItemContentDirective,
   ],
-  imports: [CommonModule, CdkAccordionModule, IconModule, ButtonModule],
   exports: [
     AccordionComponent,
     AccordionItemComponent,
     AccordionItemHeaderDirective,
     AccordionItemContentDirective,
   ],
-  providers: [],
 })
 export class AccordionModule {}
+
+export const ACCORDION_MODULE = [
+  AccordionComponent,
+  AccordionItemComponent,
+  AccordionItemHeaderDirective,
+  AccordionItemContentDirective,
+] as const;

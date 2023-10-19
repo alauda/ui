@@ -1,4 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { NgIf } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -17,6 +18,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BehaviorSubject, Subject, combineLatest, map, takeUntil } from 'rxjs';
 
 import { CommonFormControl } from '../form';
+import { IconComponent } from '../icon/icon.component';
 
 import { CheckboxGroupComponent } from './checkbox-group/checkbox-group.component';
 
@@ -35,6 +37,8 @@ let uniqueId = 0;
       multi: true,
     },
   ],
+  standalone: true,
+  imports: [NgIf, IconComponent],
 })
 export class CheckboxComponent<T>
   extends CommonFormControl<boolean>

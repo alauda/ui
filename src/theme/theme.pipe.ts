@@ -10,22 +10,38 @@ import { ThemeService } from './theme.service';
 import { Theme, ThemeSet } from './theme.types';
 import { cssVar, rgbColor, rgbaColor } from './utils';
 
-@Pipe({ name: 'auiRgbColor', pure: true })
+@Pipe({
+  name: 'auiRgbColor',
+  pure: true,
+  standalone: true,
+})
 export class RgbColorPipe implements PipeTransform {
   transform: (color: string) => string = rgbColor;
 }
 
-@Pipe({ name: 'auiRgbaColor', pure: true })
+@Pipe({
+  name: 'auiRgbaColor',
+  pure: true,
+  standalone: true,
+})
 export class RgbaColorPipe implements PipeTransform {
   transform: ([color, opacity]: [string, number]) => string = rgbaColor;
 }
 
-@Pipe({ name: 'auiCssVar', pure: true })
+@Pipe({
+  name: 'auiCssVar',
+  pure: true,
+  standalone: true,
+})
 export class CssVarPipe implements PipeTransform {
   transform: (value: string) => string = cssVar;
 }
 
-@Pipe({ name: 'auiThemePicker', pure: false })
+@Pipe({
+  name: 'auiThemePicker',
+  pure: false,
+  standalone: true,
+})
 export class ThemePickerPipe<T> implements PipeTransform, OnDestroy {
   private currentTheme: Theme;
   private readonly destroy$$ = new Subject<void>();

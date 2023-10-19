@@ -2,7 +2,6 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import {
   ChangeDetectionStrategy,
   Component,
-  NgModule,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
@@ -13,13 +12,15 @@ import {
   inject,
   tick,
 } from '@angular/core/testing';
-import {
-  BrowserAnimationsModule,
-  NoopAnimationsModule,
-} from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { timer } from 'rxjs';
 
-import { DialogModule, DialogService, DialogSize } from '.';
+import { DialogCloseDirective } from './dialog-content/dialog-close.directive';
+import { DialogContentComponent } from './dialog-content/dialog-content.component';
+import { DialogFooterComponent } from './dialog-content/dialog-footer.component';
+import { DialogHeaderComponent } from './dialog-content/dialog-header.component';
+
+import { DialogService, DialogSize } from '.';
 
 describe('DialogService', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -28,7 +29,8 @@ describe('DialogService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestModule, BrowserAnimationsModule, NoopAnimationsModule],
+      imports: [NoopAnimationsModule],
+      providers: [DialogService],
     });
 
     fixture = TestBed.createComponent(TestComponent);
@@ -43,7 +45,7 @@ describe('DialogService', () => {
   });
 
   it('should open dialog with component portal', () => {
-    dialogService.open(DialogContentComponent, {
+    dialogService.open(TestDialogContentComponent, {
       size: DialogSize.Large,
       noAnimation: true,
     });
@@ -60,7 +62,7 @@ describe('DialogService', () => {
   });
 
   it('should open dialog set custom class work', () => {
-    dialogService.open(DialogContentComponent, {
+    dialogService.open(TestDialogContentComponent, {
       customClass: 'test-class',
     });
 
@@ -71,7 +73,7 @@ describe('DialogService', () => {
   });
 
   it('should be closed by click cancel button', () => {
-    const dialogRef = dialogService.open(DialogContentComponent, {
+    const dialogRef = dialogService.open(TestDialogContentComponent, {
       noAnimation: true,
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -366,12 +368,15 @@ describe('DialogService', () => {
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [DialogHeaderComponent, DialogCloseDirective],
 })
 class TestComponent {
   result: any;
   @ViewChild('template', { static: true })
   templateRef: TemplateRef<any>;
 }
+
 @Component({
   selector: 'content-component',
   template: `
@@ -380,6 +385,7 @@ class TestComponent {
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 class ContentTemplateRefTestComponent {
   @ViewChild('template', { static: true })
@@ -405,15 +411,12 @@ class ContentTemplateRefTestComponent {
     </aui-dialog-footer>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-})
-class DialogContentComponent {}
-
-@NgModule({
-  imports: [DialogModule],
-  declarations: [
+  standalone: true,
+  imports: [
+    DialogHeaderComponent,
     DialogContentComponent,
-    TestComponent,
-    ContentTemplateRefTestComponent,
+    DialogFooterComponent,
+    DialogCloseDirective,
   ],
 })
-class TestModule {}
+class TestDialogContentComponent {}

@@ -8,7 +8,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { InputModule } from '../input.module';
+import { TagsInputComponent } from './tags-input.component';
 
 describe('TagsInputComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -17,10 +17,6 @@ describe('TagsInputComponent', () => {
   let inputEl: HTMLInputElement;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [FormsModule, InputModule],
-      declarations: [TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -92,6 +88,8 @@ describe('TagsInputComponent', () => {
       [placeholder]="placeholder"
     ></aui-tags-input>
   `,
+  standalone: true,
+  imports: [FormsModule, TagsInputComponent],
 })
 class TestComponent {
   value: string[];

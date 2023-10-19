@@ -1,3 +1,4 @@
+import { NgFor, NgIf } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -29,9 +30,12 @@ import {
 } from 'rxjs';
 
 import { CommonFormControl } from '../form';
-import { InputComponent } from '../input';
+import { IconComponent } from '../icon/icon.component';
+import { InputSuffixDirective } from '../input/helper-directives';
+import { InputGroupComponent } from '../input/input-group/input-group.component';
+import { InputComponent } from '../input/input.component';
 import { TrackFn } from '../select/select.types';
-import { TooltipDirective } from '../tooltip';
+import { TooltipDirective } from '../tooltip/tooltip.directive';
 import {
   Bem,
   buildBem,
@@ -56,6 +60,17 @@ import { TreeNode } from './tree-select.types';
       useExisting: forwardRef(() => TreeSelectComponent),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    InputGroupComponent,
+    InputComponent,
+    InputSuffixDirective,
+    IconComponent,
+    TooltipDirective,
+    NgIf,
+    NgFor,
+    forwardRef(() => TreeNodeComponent),
   ],
 })
 export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
@@ -275,6 +290,8 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [NgIf, IconComponent, NgFor],
 })
 export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
   bem: Bem = buildBem('aui-tree-node');

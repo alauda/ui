@@ -1,3 +1,4 @@
+import { NgClass, NgIf, AsyncPipe } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -25,6 +26,8 @@ import { InputComponent } from '../input.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [NgClass, NgIf, AsyncPipe],
 })
 export class InputGroupComponent implements AfterContentInit {
   bem: Bem = buildBem('aui-input-group');
@@ -56,3 +59,11 @@ export class InputGroupComponent implements AfterContentInit {
     this.hasSuffix$ = watchContentExist(this.suffixRefs);
   }
 }
+
+export const INPUT_GROUP_MODULE = [
+  InputGroupComponent,
+  InputAddonAfterDirective,
+  InputAddonBeforeDirective,
+  InputPrefixDirective,
+  InputSuffixDirective,
+] as const;

@@ -12,6 +12,7 @@ import { TocContainerDirective } from './toc-container.directive';
 
 @Directive({
   selector: '[auiTocContent]',
+  standalone: true,
 })
 export class TocContentDirective implements OnInit, OnDestroy {
   @HostBinding('class.isActive')

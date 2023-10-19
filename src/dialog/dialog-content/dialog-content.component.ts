@@ -16,6 +16,7 @@ import { Bem, buildBem } from '../../utils';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  standalone: true,
 })
 export class DialogContentComponent extends CdkScrollable {
   bem: Bem = buildBem('aui-dialog');

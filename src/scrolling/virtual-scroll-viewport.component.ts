@@ -25,5 +25,6 @@ import {
       useExisting: VirtualScrollViewportComponent,
     },
   ],
+  standalone: true,
 })
 export class VirtualScrollViewportComponent extends CdkVirtualScrollViewport {}

@@ -6,8 +6,18 @@ import { TocContentDirective } from './toc-content.directive';
 import { TocLinkDirective } from './toc-link.directive';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [TocContentDirective, TocContainerDirective, TocLinkDirective],
+  imports: [
+    CommonModule,
+    TocContentDirective,
+    TocContainerDirective,
+    TocLinkDirective,
+  ],
   exports: [TocContentDirective, TocContainerDirective, TocLinkDirective],
 })
 export class TableOfContentsModule {}
+
+export const TABLE_OF_CONTENTS_MODULE = [
+  TocContentDirective,
+  TocContainerDirective,
+  TocLinkDirective,
+] as const;

@@ -4,7 +4,8 @@ import { By } from '@angular/platform-browser';
 
 import { ComponentSize } from '../types';
 
-import { ButtonModule, ButtonType } from '.';
+import { ButtonComponent } from './button.component';
+import { ButtonType } from './button.types';
 
 describe('ButtonComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
@@ -13,10 +14,6 @@ describe('ButtonComponent', () => {
   let el: HTMLElement;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [ButtonModule],
-      declarations: [TestComponent],
-    });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     ins = fixture.componentInstance;
@@ -111,6 +108,8 @@ describe('ButtonComponent', () => {
       {{ content }}
     </button>
   `,
+  standalone: true,
+  imports: [ButtonComponent],
 })
 class TestComponent {
   type: ButtonType;

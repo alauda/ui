@@ -6,8 +6,7 @@ import { TagModule } from './tag.module';
 describe('TagComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TagModule],
-      declarations: [TestComponent],
+      imports: [TagModule, TestComponent],
     });
   });
 
@@ -52,5 +51,7 @@ describe('TagComponent', () => {
       info
     </aui-tag>
   `,
+  standalone: true,
+  imports: [TagModule],
 })
 class TestComponent {}

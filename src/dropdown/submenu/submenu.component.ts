@@ -7,9 +7,13 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
+import { IconComponent } from '../../icon/icon.component';
 import { TooltipTrigger } from '../../tooltip';
+import { TooltipActiveDirective } from '../../tooltip/tooltip-active.directive';
+import { TooltipDirective } from '../../tooltip/tooltip.directive';
 import { ComponentSize } from '../../types';
 import { Bem, buildBem } from '../../utils';
+import { MenuComponent } from '../menu/menu.component';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 
 @Component({
@@ -19,6 +23,13 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [
+    TooltipActiveDirective,
+    TooltipDirective,
+    IconComponent,
+    MenuComponent,
+  ],
 })
 export class SubmenuComponent extends MenuItemComponent {
   override bem: Bem = buildBem('aui-submenu');

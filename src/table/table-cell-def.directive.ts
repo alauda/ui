@@ -13,5 +13,6 @@ import { Directive } from '@angular/core';
       useExisting: TableCellDefDirective,
     },
   ],
+  standalone: true,
 })
 export class TableCellDefDirective extends CdkCellDef {}

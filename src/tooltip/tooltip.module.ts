@@ -4,19 +4,18 @@ import { NgModule } from '@angular/core';
 
 import { TooltipActiveDirective } from './tooltip-active.directive';
 import { TooltipCopyDirective } from './tooltip-copy.directive';
-import { TOOLTIP_COPY_INTL_INTL_PROVIDER } from './tooltip-intl';
 import { TooltipComponent } from './tooltip.component';
 import { TooltipDirective } from './tooltip.directive';
 
 @NgModule({
-  imports: [CommonModule, OverlayModule],
-  declarations: [
+  imports: [
+    CommonModule,
+    OverlayModule,
     TooltipDirective,
     TooltipComponent,
     TooltipActiveDirective,
     TooltipCopyDirective,
   ],
   exports: [TooltipDirective, TooltipActiveDirective, TooltipCopyDirective],
-  providers: [TOOLTIP_COPY_INTL_INTL_PROVIDER],
 })
 export class TooltipModule {}
