@@ -1,5 +1,19 @@
 # Changelog
 
+## 7.1.0
+
+### Minor Changes
+
+- [#498](https://github.com/alauda/ui/pull/498) [`ab236ce`](https://github.com/alauda/ui/commit/ab236ce8fdb0b8128cd3cc152612af81a2de12e7) Thanks [@JounQin](https://github.com/JounQin)! - feat!: migrate to standalone API
+
+### Patch Changes
+
+- [#512](https://github.com/alauda/ui/pull/512) [`457e4e5`](https://github.com/alauda/ui/commit/457e4e56c497032911556445d90f0249c77e2233) Thanks [@JounQin](https://github.com/JounQin)! - fix: update i18n pipe on locale change
+
+- [#506](https://github.com/alauda/ui/pull/506) [`9d04180`](https://github.com/alauda/ui/commit/9d041802b39afd22afd8145704d3a2b3973d3fc1) Thanks [@fengtianze](https://github.com/fengtianze)! - feat: backtop support custom position
+
+- [#516](https://github.com/alauda/ui/pull/516) [`a9b0cb9`](https://github.com/alauda/ui/commit/a9b0cb93c9161fb7cafe6f675952cd744f717b31) Thanks [@JounQin](https://github.com/JounQin)! - fix: check includes on init and known reference issues
+
 ## 7.0.3
 
 ### Patch Changes
