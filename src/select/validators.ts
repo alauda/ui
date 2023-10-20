@@ -6,13 +6,13 @@ import {
   Validator,
   ValidatorFn,
 } from '@angular/forms';
+import { startWith } from 'rxjs';
 
 import { coerceAttrBoolean } from '../utils';
 
 import { SelectComponent } from './select.component';
 import { TrackFn } from './select.types';
 
-// @dynamic
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class AuiSelectValidators {
   static includes<T>(
@@ -64,11 +64,13 @@ export class IncludesDirective<T> implements Validator, AfterContentInit {
   constructor(private readonly selectRef: SelectComponent<T>) {}
 
   ngAfterContentInit() {
-    this.selectRef.contentOptions.changes.subscribe(() => {
-      if (this.onValidatorChange) {
-        this.onValidatorChange();
-      }
-    });
+    this.selectRef.contentOptions.changes
+      .pipe(startWith(this.selectRef.contentOptions))
+      .subscribe(() => {
+        if (this.onValidatorChange) {
+          this.onValidatorChange();
+        }
+      });
   }
 
   registerOnValidatorChange(fn: () => void) {

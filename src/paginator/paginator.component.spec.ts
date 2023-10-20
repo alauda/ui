@@ -2,8 +2,6 @@ import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { SelectComponent } from '../select/select.component';
-
 import { PaginatorComponent } from './paginator.component';
 
 describe('PaginatorComponent', () => {
@@ -116,11 +114,7 @@ describe('PaginatorComponent', () => {
     </aui-paginator>
   `,
   standalone: true,
-  imports: [
-    PaginatorComponent,
-    // https://github.com/angular/angular/issues/51568
-    SelectComponent,
-  ],
+  imports: [PaginatorComponent],
 })
 class TestComponent {
   currentPage = 1;

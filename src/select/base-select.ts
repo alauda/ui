@@ -12,6 +12,7 @@ import {
   QueryList,
   ViewChild,
   ViewChildren,
+  forwardRef,
 } from '@angular/core';
 import {
   BehaviorSubject,
@@ -143,10 +144,10 @@ export abstract class BaseSelect<T, V = T>
   @ContentChild(OptionContentDirective)
   protected optionContent?: OptionContentDirective;
 
-  @ViewChildren(OptionComponent)
+  @ViewChildren(forwardRef(() => OptionComponent))
   customOptions: QueryList<OptionComponent<T>>;
 
-  @ContentChildren(OptionComponent, { descendants: true })
+  @ContentChildren(forwardRef(() => OptionComponent), { descendants: true })
   contentOptions: QueryList<OptionComponent<T>>;
 
   isTemplateRef = isTemplateRef;

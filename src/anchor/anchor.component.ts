@@ -26,7 +26,6 @@ import {
 import { buildBem, isTemplateRef, last } from '../utils';
 
 import { AnchorDirectiveChild } from './anchor.directive';
-import { AnchorModule } from './anchor.module';
 import { AnchorItem, AnchorTreeItem } from './types';
 import { getAnchorTreeItems } from './utils';
 
@@ -38,7 +37,7 @@ const bem = buildBem('aui-anchor');
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgFor, NgIf, NgTemplateOutlet, AnchorModule],
+  imports: [NgFor, NgIf, NgTemplateOutlet],
 })
 export class AnchorTreeComponent
   extends AnchorDirectiveChild
