@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.2.0
+
+### Minor Changes
+
+- [#517](https://github.com/alauda/ui/pull/517) [`12815db`](https://github.com/alauda/ui/commit/12815dbaabb13e8a907b31f11f7a21fa3619c338) Thanks [@igauch](https://github.com/igauch)! - feat: select, dropdown, tree-select and autocomplete add animation
+  [BREAKING CHANGE] refactor: remove auiMenuContent directive; When using the auiDropdown directive, you cannot directly use aui-menu, but need to wrap it with ng-template, because the aui-menu template has been removed
+
 ## 7.1.0
 
 ### Minor Changes
