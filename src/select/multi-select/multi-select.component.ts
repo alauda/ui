@@ -7,33 +7,24 @@ import {
 } from '@angular/common';
 import {
   AfterContentInit,
-  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
   HostBinding,
   Input,
-  QueryList,
   Renderer2,
   ViewChild,
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import {
-  Observable,
-  combineLatest,
-  of,
-  map,
-  startWith,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { Observable, combineLatest, map, startWith, tap } from 'rxjs';
 
 import { I18nPipe } from '../../i18n/i18n.pipe';
 import { IconComponent } from '../../icon/icon.component';
 import { createWithMaxRowCount } from '../../input/tags-input/with-max-row-count';
+import { ScrollingModule } from '../../scrolling';
 import { TagComponent } from '../../tag/tag.component';
 import { TooltipDirective } from '../../tooltip/tooltip.directive';
 import { ComponentSize } from '../../types';
@@ -45,8 +36,10 @@ import {
   publishRef,
 } from '../../utils';
 import { BaseSelect } from '../base-select';
-import { OptionComponent } from '../option/option.component';
+import { OptionItemComponent } from '../option-item/option-item.component';
+import { OptionComponent } from '../option.component';
 import {
+  DisplayOption,
   SelectAllStatus,
   SelectFilterOption,
   TagClassFn,
@@ -86,28 +79,19 @@ import {
     OptionComponent,
     AsyncPipe,
     I18nPipe,
+    OptionItemComponent,
+    ScrollingModule,
   ],
 })
 export class MultiSelectComponent<T = unknown>
   extends BaseSelect<T, T[]>
-  implements AfterContentInit, AfterViewInit
+  implements AfterContentInit
 {
-  bem: Bem = buildBem('aui-multi-select');
-  bemSelectAll: Bem = buildBem('aui-option');
-  selectedOptions$: Observable<Array<SelectFilterOption<T>>>;
-  selectAllStatus$: Observable<SelectAllStatus>;
-  selectAllStatus: SelectAllStatus;
-  hasEnabledOptions$: Observable<boolean>;
-
-  override isMulti = true;
-  override model: T[] = [];
-
-  values$ = this.model$;
-
   @Input()
   tagClassFn: TagClassFn<T>;
 
   @Input()
+  // todo 再新增一个支持最多显示多少个选中项的配置，例如antd的maxTagCount，大数据全选所有时的规避方案
   maxRowCount = 0;
 
   @Input()
@@ -131,9 +115,6 @@ export class MultiSelectComponent<T = unknown>
   get hostDisplay() {
     return this.withMaxRowCount.hostDisplay();
   }
-
-  inputValue = '';
-  hasDisabledOption = false;
 
   get rootClass() {
     const size = this.size || ComponentSize.Medium;
@@ -164,12 +145,23 @@ export class MultiSelectComponent<T = unknown>
     return this.withMaxRowCount.maxHeight();
   }
 
+  bem: Bem = buildBem('aui-multi-select');
+  bemSelectAll: Bem = buildBem('aui-option');
+  selectedOptions$: Observable<Array<SelectFilterOption<T>>>;
+  selectAllStatus$: Observable<SelectAllStatus>;
+  selectAllStatus: SelectAllStatus;
+  hasEnabledOptions$: Observable<boolean>;
+
+  override isMulti = true;
+  override model: T[] = [];
+
+  values$ = this.model$;
+  inputValue = '';
+  hasDisabledOption = false;
+
   private readonly withMaxRowCount = createWithMaxRowCount(this);
 
   focused = false;
-
-  trackByValue = (_: number, item: SelectFilterOption<T>) =>
-    this.trackFn(item.value);
 
   constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {
     super(cdr);
@@ -177,35 +169,9 @@ export class MultiSelectComponent<T = unknown>
 
   override ngAfterContentInit() {
     super.ngAfterContentInit();
-
     this.selectedOptions$ = combineLatest([
       this.model$,
-      (
-        this.contentOptions.changes as Observable<QueryList<OptionComponent<T>>>
-      ).pipe(
-        startWith(this.contentOptions),
-        switchMap((options: QueryList<OptionComponent<T>>) =>
-          options.length > 0
-            ? combineLatest(
-                options.map(option =>
-                  combineLatest([
-                    option.value$,
-                    option.label$,
-                    option.labelContext$,
-                    option.disabled$,
-                  ]).pipe(
-                    map(([value, label, labelContext, disabled]) => ({
-                      value,
-                      label,
-                      labelContext,
-                      disabled,
-                    })),
-                  ),
-                ),
-              )
-            : of([] as Array<SelectFilterOption<T>>),
-        ),
-      ),
+      this.contentOptions$,
     ]).pipe(
       map(([values, options]) =>
         values
@@ -243,26 +209,13 @@ export class MultiSelectComponent<T = unknown>
       tap(options => (this.hasDisabledOption = options.some(o => o.disabled))),
       publishRef(),
     );
-  }
-
-  override ngAfterViewInit() {
-    super.ngAfterViewInit();
-    this.selectAllStatus$ = combineLatest([
-      this.allOptions$,
-      this.filterString$,
-    ]).pipe(
-      switchMap(([allOptions]) =>
-        combineLatest(
-          (allOptions ?? [])
-            .filter(({ visible, disabled }) => visible && !disabled)
-            .map(({ selected$ }) => selected$),
-        ),
-      ),
-      map(statuses => {
-        const selected = statuses.filter(Boolean);
+    this.selectAllStatus$ = this.filterOptions$.pipe(
+      map(allOptions => {
+        const options = allOptions.filter(option => !option.disabled);
+        const selected = options.filter(option => option.selected);
         return selected.length === 0
           ? SelectAllStatus.Empty
-          : selected.length === statuses.length
+          : selected.length === options.length
           ? SelectAllStatus.Checked
           : SelectAllStatus.Indeterminate;
       }),
@@ -270,14 +223,9 @@ export class MultiSelectComponent<T = unknown>
       tap(selectAllStatus => (this.selectAllStatus = selectAllStatus)),
       publishRef(),
     );
-    this.hasEnabledOptions$ = combineLatest([
-      this.allOptions$,
-      this.filterString$,
-    ]).pipe(
+    this.hasEnabledOptions$ = this.filterOptions$.pipe(
       map(
-        ([allOptions]) =>
-          !!allOptions.filter(({ visible, disabled }) => visible && !disabled)
-            .length,
+        allOptions => !!allOptions.filter(({ disabled }) => !disabled).length,
       ),
     );
   }
@@ -316,8 +264,7 @@ export class MultiSelectComponent<T = unknown>
       !this.hasDisabledOption // Disabled backspace when any of select options have disabled state.
     ) {
       this.removeValue(this.model.at(-1));
-      event.stopPropagation();
-      event.preventDefault();
+      super.stopEvent(event);
     } else if (event.key === 'Enter') {
       if (
         this.model
@@ -327,20 +274,20 @@ export class MultiSelectComponent<T = unknown>
         return;
       }
       this.selectFocusedOption();
-      event.stopPropagation();
-      event.preventDefault();
+      super.stopEvent(event);
     } else {
       super.onKeyDown(event);
     }
   }
 
-  selectOption(option: OptionComponent<T>) {
+  selectOption(option: DisplayOption<T>) {
     if (option.selected) {
       this.removeValue(option.value);
     } else {
       this.addValue(option.value);
     }
-    const isCustom = !this.contentOptions.some(
+    this.updateAllOptions(option);
+    const isCustom = !this.contentTplOptions.some(
       ({ value }) => value === option.value,
     );
     if (isCustom) {
@@ -382,28 +329,27 @@ export class MultiSelectComponent<T = unknown>
     if (this.disabled) {
       return;
     }
-    const visibleOptionsValue = this.allOptions
-      .filter(({ visible, disabled }) => visible && !disabled)
+    const visibleOptionsValue = this.filterOptions$
+      .getValue()
+      .filter(({ disabled }) => !disabled)
       .map(({ value }) => value);
 
     if (this.selectAllStatus === SelectAllStatus.Checked) {
       this.emitValue(
-        this.model.filter(value => !this.includes(visibleOptionsValue, value)),
+        this.model.filter(
+          value => !this.getSelected(value, visibleOptionsValue),
+        ),
       );
     } else {
       this.emitValue(
         this.model.concat(visibleOptionsValue).reduce<T[]>((acc, curr) => {
-          if (!this.includes(acc, curr)) {
+          if (!this.getSelected(curr, acc)) {
             acc.push(curr);
           }
           return acc;
         }, []),
       );
     }
-  }
-
-  private includes(values: T[], value: T) {
-    return values.some(v => this.trackFn(v) === this.trackFn(value));
   }
 
   protected override valueIn(v: T[]): T[] {

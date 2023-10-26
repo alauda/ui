@@ -1,6 +1,7 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import * as basic from './basic.stories';
+import * as bigData from './big-data.stories';
 import * as group from './group.stories';
 import * as multiple from './multiple.stories';
 
@@ -33,21 +34,31 @@ import * as multiple from './multiple.stories';
   meta={multiple}
 ></Canvas>
 
+## 大数据
+
+<Canvas
+  of={bigData.BigData}
+  meta={bigData}
+></Canvas>
+
 ## Select & MultiSelect Inputs
 
-| 名称               | 类型           | 默认值                  | 描述                                      |
-| ------------------ | -------------- | ----------------------- | ----------------------------------------- |
-| size               | ComponentSize  | ComponentSize.Medium    | 大小                                      |
-| value              | any            | -                       | 初始值                                    |
-| placeholder        | string         | -                       | 占位文本                                  |
-| disabled           | boolean        | false                   | 是否禁用                                  |
-| loading            | boolean        | false                   | 是否加载中                                |
-| clearable          | boolean        | false                   | 选项是否可清除                            |
-| filterable         | boolean        | true                    | 是否支持选项过滤                          |
-| defaultFirstOption | boolean        | true                    | 是否第一项作为默认选项                    |
-| lazy               | boolean        | true                    | 关闭候选项时是否缓存 Option 组件          |
-| filterFn           | OptionFilterFn | Array.property.includes | 自定义过滤方法，filterable 为 true 时设置 |
-| trackFn            | TrackFn        | val => val              | 返回 value 唯一标识符                     |
+| 名称               | 类型           | 默认值                           | 描述                                      |
+| ------------------ | -------------- | -------------------------------- | ----------------------------------------- |
+| size               | ComponentSize  | ComponentSize.Medium             | 大小                                      |
+| value              | any            | -                                | 初始值                                    |
+| placeholder        | string         | -                                | 占位文本                                  |
+| disabled           | boolean        | false                            | 是否禁用                                  |
+| readonly           | boolean        | false                            | 是否只读                                  |
+| loading            | boolean        | false                            | 是否加载中                                |
+| clearable          | boolean        | false                            | 选项是否可清除                            |
+| filterable         | boolean        | true                             | 是否支持选项过滤                          |
+| defaultFirstOption | boolean        | true                             | 是否第一项作为默认选项                    |
+| filterFn           | OptionFilterFn | Array.property.includes          | 自定义过滤方法，filterable 为 true 时设置 |
+| trackFn            | TrackFn        | val => val                       | 返回 value 唯一标识符                     |
+| createFn           | CreateFn       | inputVal => \{ value: inputVal } | 返回 option 组件配置                      |
+| options            | DisplayOption  | -                                | 使用 options 定义选项列表                 |
+| useVirtual         | boolean        | false                            | 是否使用虚拟列表                          |
 
 ## MultiSelect Inputs
 

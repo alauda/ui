@@ -1,12 +1,6 @@
-import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
-import { SelectModule } from 'src/select';
 
 @Component({
-  standalone: true,
-  imports: [SelectModule, FormsModule, NgFor],
   selector: 'story-select-basic',
   template: `
     <aui-select
@@ -15,17 +9,16 @@ import { SelectModule } from 'src/select';
       [disabled]="disabled"
       [clearable]="clearable"
       [filterable]="filterable"
+      [allowCreate]="true"
       placeholder="select a value"
     >
-      <ng-container *auiOptionContent>
-        <aui-option
-          *ngFor="let option of arr"
-          [value]="option"
-          [disabled]="option === 'option5'"
-        >
-          {{ option }}
-        </aui-option>
-      </ng-container>
+      <aui-option
+        *ngFor="let option of arr"
+        [value]="option"
+        [disabled]="option === 'option5'"
+      >
+        {{ option }}
+      </aui-option>
       <aui-option-placeholder>Empty</aui-option-placeholder>
     </aui-select>
     <br />

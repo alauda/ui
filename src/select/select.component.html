@@ -67,35 +67,67 @@
     [style.minWidth]="containerWidth"
     (mousedown)="$event.preventDefault()"
   >
+    <ng-content select="[prefix]"></ng-content>
     <div
       #optionListRef
       class="aui-option-container__content"
     >
-      <aui-option
-        #inputtingOption
-        *ngIf="allowCreate && filterString && !(hasMatchedOption$ | async)"
-        [value]="filterString"
-      >
-        {{ filterString }}
-      </aui-option>
-      <ng-container *ngIf="allowCreate">
-        <aui-option
-          *ngFor="let option of customCreatedOptions$ | async"
-          [label]="option.label"
-          [value]="option.value"
+      <ng-container *ngIf="!useVirtual; else virtual">
+        <ng-template
+          *ngFor="let item of filterOptions$ | async; trackBy: trackByValue"
+          [ngTemplateOutlet]="inputItemTemplate || itemTemplate"
+          [ngTemplateOutletContext]="{ $implicit: item }"
         >
-          {{ option.label }}
-        </aui-option>
+        </ng-template>
       </ng-container>
-      <ng-content></ng-content>
+      <ng-template #virtual>
+        <aui-virtual-scroll-viewport
+          [itemSize]="_itemSize"
+          [maxBufferPx]="_itemSize * maxItemLength"
+          [minBufferPx]="_itemSize * maxItemLength"
+          (scrolledIndexChange)="onScrolledIndexChange($event)"
+          [style.height.px]="(filterOptions$ | async).length * _itemSize"
+          [style.max-height.px]="_itemSize * maxItemLength"
+        >
+          <!-- templateCacheSize: 0 能解决过滤场景从无匹配项到有匹配项后前面几个option的内容显示不出来的问题 -->
+          <ng-template
+            *auiVirtualFor="
+              let item of filterOptions$ | async;
+              trackBy: trackByValue;
+              template: inputItemTemplate || itemTemplate;
+              templateCacheSize: 0
+            "
+          >
+          </ng-template>
+        </aui-virtual-scroll-viewport>
+      </ng-template>
+      <ng-template
+        #itemTemplate
+        let-item
+      >
+        <aui-option-item
+          [label]="item.label"
+          [value]="item.value"
+          [selected]="item.selected"
+          [disabled]="item.disabled"
+          [groupTitle]="item.groupTitle"
+          [focused]="isFocus(item.value, focused$ | async)"
+        >
+          <ng-container *ngIf="item.contentTemplate; else normal">
+            <ng-container
+              *ngTemplateOutlet="item.contentTemplate"
+            ></ng-container>
+          </ng-container>
+          <ng-template #normal>
+            {{ item.label || getLabelByValue(item.value) }}
+          </ng-template>
+        </aui-option-item>
+      </ng-template>
     </div>
+    <ng-content select="[suffix]"></ng-content>
     <div
       *ngIf="
-        !(
-          (hasVisibleOption$ | async) ||
-          (allowCreate && (customCreatedOptions$ | async).length) ||
-          (allowCreate && filterString)
-        )
+        !((filterOptions$ | async)?.length || (allowCreate && filterString))
       "
       class="aui-option-container__placeholder"
     >

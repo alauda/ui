@@ -41,9 +41,6 @@ describe('multiSelectComponent', () => {
     ).toBe('');
     expect(el.className).not.toContain('isDisabled');
     expect(el.className).toContain('aui-multi-select--medium');
-    ins.selectRef.contentOptions.forEach(option => {
-      expect(option.size).toBe(ComponentSize.Medium);
-    });
     ins.disabled = true;
     ins.loading = true;
     ins.clearable = true;
@@ -57,22 +54,19 @@ describe('multiSelectComponent', () => {
     ).toContain('placeholder');
     expect(el.className).toContain('isDisabled');
     expect(el.className).toContain('aui-multi-select--large');
-    ins.selectRef.contentOptions.forEach(option => {
-      expect(option.size).toBe(ComponentSize.Large);
-    });
   }));
 
   it('should ngModel work', fakeAsync(() => {
     expect(el.querySelectorAll(':not(input).aui-tag').length).toBe(0);
     expect(
-      ins.selectRef.contentOptions.filter(option => option.selected).length,
+      ins.selectRef.selectableOptions.filter(option => option.selected).length,
     ).toBe(0);
     ins.value = [1, 2];
     fixture.detectChanges();
     tick();
     expect(el.querySelectorAll(':not(input).aui-tag').length).toBe(2);
     expect(
-      ins.selectRef.contentOptions.filter(option => option.selected).length,
+      ins.selectRef.selectableOptions.filter(option => option.selected).length,
     ).toBe(2);
     el.dispatchEvent(new Event('click'));
     fixture.detectChanges();
@@ -90,21 +84,21 @@ describe('multiSelectComponent', () => {
     fixture.detectChanges();
     expect(el.querySelectorAll(':not(input).aui-tag').length).toBe(0);
     expect(
-      ins.selectRef.contentOptions.filter(option => option.selected).length,
+      ins.selectRef.selectableOptions.filter(option => option.selected).length,
     ).toBe(0);
     ins.value = [1, 2];
     fixture.detectChanges();
     tick();
     expect(el.querySelectorAll(':not(input).aui-tag').length).toBe(2);
     expect(
-      ins.selectRef.contentOptions.filter(option => option.selected).length,
+      ins.selectRef.selectableOptions.filter(option => option.selected).length,
     ).toBe(2);
     const closeEl = el.querySelector('.aui-multi-select__clear');
     closeEl.dispatchEvent(new Event('click'));
     fixture.detectChanges();
     expect(el.querySelectorAll(':not(input).aui-tag').length).toBe(0);
     expect(
-      ins.selectRef.contentOptions.filter(option => option.selected).length,
+      ins.selectRef.selectableOptions.filter(option => option.selected).length,
     ).toBe(0);
     expect(ins.value).toEqual([]);
   }));

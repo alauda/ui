@@ -2,30 +2,24 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 
-import SelectBasicComponent from './basic.component';
+import { SelectBigDataComponent } from './big-data.component';
 
 import { SelectModule } from '@alauda/ui';
 
-const meta: Meta<SelectBasicComponent> = {
+const meta: Meta<SelectBigDataComponent> = {
   title: 'Example/Select',
-  component: SelectBasicComponent,
+  component: SelectBigDataComponent,
   decorators: [
     moduleMetadata({
-      declarations: [SelectBasicComponent],
+      declarations: [SelectBigDataComponent],
       imports: [FormsModule, SelectModule, BrowserAnimationsModule],
     }),
   ],
 };
 
 export default meta;
-type Story = StoryObj<SelectBasicComponent>;
+type Story = StoryObj<SelectBigDataComponent>;
 
-export const Basic: Story = {
-  name: 'Basic',
-  args: {
-    disabled: false,
-    loading: false,
-    clearable: false,
-    filterable: true,
-  },
+export const BigData: Story = {
+  name: 'BigData',
 };

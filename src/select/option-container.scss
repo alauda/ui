@@ -9,6 +9,11 @@
     background-color: use-rgb(popper-bg);
     @include popper-shadow;
 
+    .divider {
+      border: none;
+      border-top: 1px solid use-rgb(n-8);
+    }
+
     &__content {
       max-height: calc(#{use-var(inline-height-#{$size})} * 10);
       position: relative;
@@ -23,9 +28,27 @@
     }
   }
 
+  .#{$block}--large {
+    .#{$block}__content {
+      max-height: calc(#{use-var(inline-height-l)} * 10);
+    }
+    .#{$block}__placeholder {
+      font-size: use-var(font-size-l);
+    }
+  }
+
   .#{$block}--small {
     .#{$block}__content {
       max-height: calc(#{use-var(inline-height-s)} * 10);
+    }
+    .#{$block}__placeholder {
+      font-size: use-var(font-size-s);
+    }
+  }
+
+  .#{$block}--mini {
+    .#{$block}__content {
+      max-height: calc(#{use-var(inline-height-xs)} * 10);
     }
     .#{$block}__placeholder {
       font-size: use-var(font-size-s);

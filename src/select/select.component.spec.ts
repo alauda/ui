@@ -1,7 +1,13 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { NgForOf } from '@angular/common';
 import { Component, DebugElement, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  inject,
+  tick,
+  fakeAsync,
+} from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,8 +47,10 @@ describe('SelectComponent', () => {
     expect(inputEl.placeholder).toBe('');
     expect(inputEl.disabled).toBeFalsy();
     expect(inputEl.className).toContain('aui-input--medium');
-    ins.selectRef.contentOptions.forEach(option => {
-      expect(option.size).toBe(ComponentSize.Medium);
+    ins.selectRef.contentOptionItems.forEach(option => {
+      expect(
+        option.nativeElement.className.includes(ComponentSize.Medium),
+      ).toBe(true);
     });
 
     ins.disabled = true;
@@ -53,14 +61,17 @@ describe('SelectComponent', () => {
 
     expect(inputEl.disabled).toBeTruthy();
     expect(inputEl.className).toContain('aui-input--large');
-    ins.selectRef.contentOptions.forEach(option => {
-      expect(option.size).toBe(ComponentSize.Large);
+    ins.selectRef.contentOptionItems.forEach(option => {
+      expect(option.nativeElement.className.includes(ComponentSize.Large)).toBe(
+        true,
+      );
     });
   });
 
-  it('should [(value)] work', () => {
+  it('should [(value)] work', fakeAsync(() => {
     el.dispatchEvent(new Event('click'));
     fixture.detectChanges();
+    tick();
 
     const optionEls = ocEl.querySelectorAll('.aui-option');
     expect(optionEls.item(0).className).toContain('isSelected');
@@ -83,7 +94,7 @@ describe('SelectComponent', () => {
     fixture.detectChanges();
     expect(ins.value.value).toBe(2);
     expect(getLabelEl().innerHTML).toContain('2');
-  });
+  }));
 
   it('should clearable work', () => {
     ins.clearable = true;

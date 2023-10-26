@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 import { ButtonComponent } from '../button/button.component';
 import { IconComponent } from '../icon/icon.component';
 import { InputComponent } from '../input/input.component';
-import { OptionComponent } from '../select/option/option.component';
+import { OptionComponent } from '../select/option.component';
 import { SelectComponent } from '../select/select.component';
 import { Bem, buildBem } from '../utils';
 

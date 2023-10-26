@@ -6,7 +6,6 @@ import {
   Validator,
   ValidatorFn,
 } from '@angular/forms';
-import { startWith } from 'rxjs';
 
 import { coerceAttrBoolean } from '../utils';
 
@@ -64,13 +63,11 @@ export class IncludesDirective<T> implements Validator, AfterContentInit {
   constructor(private readonly selectRef: SelectComponent<T>) {}
 
   ngAfterContentInit() {
-    this.selectRef.contentOptions.changes
-      .pipe(startWith(this.selectRef.contentOptions))
-      .subscribe(() => {
-        if (this.onValidatorChange) {
-          this.onValidatorChange();
-        }
-      });
+    this.selectRef.allOptions$.subscribe(() => {
+      if (this.onValidatorChange) {
+        this.onValidatorChange();
+      }
+    });
   }
 
   registerOnValidatorChange(fn: () => void) {
@@ -78,14 +75,12 @@ export class IncludesDirective<T> implements Validator, AfterContentInit {
   }
 
   validate(control: AbstractControl): ValidationErrors {
-    if (!this.selectRef.contentOptions || !control.value) {
+    if (!this.selectRef.selectableOptions?.length || !control.value) {
       return;
     }
     return this.includes
       ? AuiSelectValidators.includes(
-          this.selectRef.contentOptions
-            .filter(option => !option.disabled)
-            .map(option => option.value),
+          this.selectRef.selectableOptions.map(option => option.value),
           this.trackFn,
         )(control)
       : null;
