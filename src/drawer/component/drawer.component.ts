@@ -201,7 +201,8 @@ export class DrawerComponent<
     this.templateContext = { $implicit: this.contentParams };
 
     if (this.mask) {
-      // scrollStrategy 为 Block 时，若打开 Drawer 时，高度不足以出现滚动，则 scrollStrategy 不会生效
+      // Issues: https://github.com/angular/components/issues/10841
+      // scrollStrategy 为 Block 时，若创建 Overlay 时，高度不足以出现滚动，则 scrollStrategy 不会生效
       fromEvent(window, 'resize')
         .pipe(
           debounceTime(100),

@@ -18,6 +18,8 @@ import {
   ViewEncapsulation,
   Renderer2,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime, filter, fromEvent } from 'rxjs';
 
 import { Bem, buildBem, getElementOffset } from '../utils';
 
@@ -99,7 +101,21 @@ export class DialogComponent {
   constructor(
     private readonly elementRef: ElementRef<HTMLElement>,
     private readonly render: Renderer2,
-  ) {}
+  ) {
+    // Issues: https://github.com/angular/components/issues/10841
+    // scrollStrategy 为 Block 时，若创建 Overlay 时，高度不足以出现滚动，则 scrollStrategy 不会生效
+    fromEvent(window, 'resize')
+      .pipe(
+        debounceTime(100),
+        filter(
+          () => document.documentElement.scrollHeight > window.innerHeight,
+        ),
+        takeUntilDestroyed(),
+      )
+      .subscribe(() => {
+        this.overlayRef?.getConfig().scrollStrategy.enable();
+      });
+  }
 
   attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {
     if (this.portalOutlet.hasAttached()) {
