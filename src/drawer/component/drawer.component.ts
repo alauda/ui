@@ -33,7 +33,14 @@ import {
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import {
+  Observable,
+  Subject,
+  debounceTime,
+  filter,
+  fromEvent,
+  takeUntil,
+} from 'rxjs';
 
 import { IconComponent } from '../../icon/icon.component';
 import { isTemplateRef } from '../../utils';
@@ -192,6 +199,23 @@ export class DrawerComponent<
     this.attachOverlay();
     this.updateBodyOverflow();
     this.templateContext = { $implicit: this.contentParams };
+
+    if (this.mask) {
+      // Issues: https://github.com/angular/components/issues/10841
+      // scrollStrategy 为 Block 时，若创建 Overlay 时，高度不足以出现滚动，则 scrollStrategy 不会生效
+      fromEvent(window, 'resize')
+        .pipe(
+          debounceTime(100),
+          filter(
+            () => document.documentElement.scrollHeight > window.innerHeight,
+          ),
+          takeUntil(this.onDestroy$),
+        )
+        .subscribe(() => {
+          this.overlayRef.getConfig().scrollStrategy.enable();
+        });
+    }
+
     this.cdr.detectChanges();
   }
 
@@ -249,7 +273,9 @@ export class DrawerComponent<
     return new OverlayConfig({
       panelClass: DRAWER_OVERLAY_CLASS,
       positionStrategy: this.overlay.position().global(),
-      scrollStrategy: this.overlay.scrollStrategies.block(),
+      scrollStrategy: this.mask
+        ? this.overlay.scrollStrategies.block()
+        : this.overlay.scrollStrategies.noop(),
     });
   }
 
