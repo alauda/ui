@@ -4,9 +4,11 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Inject,
   Input,
   ViewChild,
   ViewEncapsulation,
+  forwardRef,
 } from '@angular/core';
 import {
   BehaviorSubject,
@@ -62,6 +64,7 @@ export class SuggestionComponent {
 
   constructor(
     private readonly cdr: ChangeDetectorRef,
+    @Inject(forwardRef(() => AutocompleteComponent))
     private readonly autocomplete: AutocompleteComponent,
   ) {
     this.selected$ = combineLatest([
