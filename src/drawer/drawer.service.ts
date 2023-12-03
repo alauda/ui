@@ -1,65 +1,142 @@
-import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal, ComponentType } from '@angular/cdk/portal';
-import { ComponentRef, Injectable, TemplateRef } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { ComponentRef, Injectable } from '@angular/core';
+import { debounceTime, filter, fromEvent, Subject, takeUntil } from 'rxjs';
 
-import { DrawerComponent } from './component/drawer.component';
+import { DrawerInternalComponent } from './component/internal/internal.component';
+import { DrawerRef } from './drawer-ref';
+import { DrawerOptions } from './types';
 
-import { DrawerSize } from '.';
+const DRAWER_OVERLAY_CLASS = 'aui-drawer-overlay';
+const DRAWER_OVERLAY_BACKDROP_CLASS = 'aui-drawer-mask';
 
-export interface DrawerOptions<T = any, D = any> {
-  title?: string | TemplateRef<unknown>;
-  width?: number;
-  content?: ComponentType<T> | TemplateRef<T>;
-  contentParams?: D;
-  footer?: string | TemplateRef<unknown>;
-  offsetY?: string;
-  divider?: boolean;
-  drawerClass?: string;
-  size?: DrawerSize;
-  visible?: boolean;
-  hideOnClickOutside?: boolean;
-  showClose?: boolean;
-  mask?: boolean;
-  maskClosable?: boolean;
-}
 @Injectable()
 export class DrawerService {
-  private drawerRef: ComponentRef<DrawerComponent>;
   private overlayRef: OverlayRef;
-  private readonly unsubscribe$ = new Subject<void>();
+  options: DrawerOptions;
+  onDestroy$ = new Subject<void>();
+  drawerCpt: ComponentRef<DrawerInternalComponent>;
 
   constructor(private readonly overlay: Overlay) {}
 
-  open<T = unknown>(options: DrawerOptions<T>) {
-    this.drawerRef?.instance?.dispose();
-    this.createDrawer();
+  open(options: DrawerOptions) {
+    this.disposeOverlay();
     this.updateOptions(options);
-    return this.drawerRef?.instance;
+    this.createOverlay();
+    return this.createDrawer();
+  }
+
+  close() {
+    this.drawerCpt?.instance?.hide();
   }
 
   updateOptions(options: DrawerOptions): void {
-    Object.assign(this.drawerRef.instance, options);
+    this.options = options;
   }
 
-  private createDrawer(): void {
-    this.overlayRef = this.overlay.create();
-    this.drawerRef = this.overlayRef.attach(
-      new ComponentPortal(DrawerComponent),
-    );
-    this.drawerRef.instance.drawerViewInit
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(() => {
-        this.drawerRef.instance.open();
+  private createOverlay() {
+    this.overlayRef = this.overlay.create(this.getOverlayConfig());
+    this.overlayRef.backdropClick().subscribe(() => {
+      if (this.options.maskClosable) {
+        this.close();
+      }
+    });
+    this.overlayRef
+      .outsidePointerEvents()
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(event => {
+        // 判断鼠标点击事件的 target 是否为 overlay-container 的子节点，如果是，则不关闭 drawer。
+        // 为了避免点击 drawer 里的 tooltip 后 drawer 被关闭。
+        if (
+          this.overlayRef &&
+          this.options.hideOnClickOutside &&
+          event.target instanceof Node &&
+          !this.overlayRef.hostElement?.parentNode?.contains(event.target)
+        ) {
+          event.stopPropagation();
+          event.preventDefault();
+          this.close();
+        }
       });
+    this.overlayRef.getConfig().scrollStrategy.enable();
+    if (this.options.mask) {
+      // Issues: https://github.com/angular/components/issues/10841
+      // scrollStrategy 为 Block 时，若创建 Overlay 时，高度不足以出现滚动，则 scrollStrategy 不会生效
+      fromEvent(window, 'resize')
+        .pipe(
+          debounceTime(100),
+          filter(
+            () => document.documentElement.scrollHeight > window.innerHeight,
+          ),
+          takeUntil(this.onDestroy$),
+        )
+        .subscribe(() => {
+          this.overlayRef.getConfig().scrollStrategy.enable();
+        });
+    }
+  }
 
-    this.drawerRef.instance.afterClosed
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(() => {
-        this.overlayRef.dispose();
-        this.drawerRef = null;
-        this.unsubscribe$.next();
-        this.unsubscribe$.complete();
-      });
+  private createDrawer(): DrawerRef {
+    this.drawerCpt = this.overlayRef.attach(
+      new ComponentPortal(DrawerInternalComponent),
+    );
+    this.drawerCpt.instance.options = this.options;
+    this.drawerCpt.instance.animationStep$.subscribe(step => {
+      const backdropElement = this.overlayRef.backdropElement;
+      if (backdropElement) {
+        const enters = [
+          `${DRAWER_OVERLAY_BACKDROP_CLASS}-enter`,
+          `${DRAWER_OVERLAY_BACKDROP_CLASS}-enter-active`,
+        ];
+        const leaves = [
+          `${DRAWER_OVERLAY_BACKDROP_CLASS}-leave`,
+          `${DRAWER_OVERLAY_BACKDROP_CLASS}-leave-active`,
+        ];
+        if (step === 'showStart') {
+          backdropElement.classList.add(...enters);
+        }
+        if (step === 'hideStart') {
+          backdropElement.classList.add(...leaves);
+        }
+        if (['showDone', 'hideDone'].includes(step)) {
+          backdropElement.classList.remove(...enters, ...leaves);
+        }
+      }
+      if (step === 'hideDone') {
+        this.disposeOverlay();
+      }
+    });
+
+    const drawerRef = new DrawerRef(this.drawerCpt.instance);
+
+    this.drawerCpt.instance.show();
+
+    return drawerRef;
+  }
+
+  private getOverlayConfig(): OverlayConfig {
+    return new OverlayConfig({
+      panelClass: DRAWER_OVERLAY_CLASS,
+      positionStrategy: this.overlay.position().global(),
+      scrollStrategy: this.options.mask
+        ? this.overlay.scrollStrategies.block()
+        : this.overlay.scrollStrategies.noop(),
+      hasBackdrop: this.options.mask,
+      backdropClass: DRAWER_OVERLAY_BACKDROP_CLASS,
+    });
+  }
+
+  private disposeOverlay(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+    if (this.overlayRef) {
+      this.overlayRef.getConfig().scrollStrategy.disable();
+      this.overlayRef.dispose();
+    }
+    this.overlayRef = null;
+  }
+
+  ngOnDestroy(): void {
+    this.disposeOverlay();
   }
 }

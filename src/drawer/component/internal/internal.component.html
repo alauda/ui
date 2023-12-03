@@ -1,0 +1,69 @@
+<div
+  [style.marginTop]="options.offsetY"
+  [ngClass]="drawerClasses"
+  [@showHide]="showHide"
+  (@showHide.start)="onAnimation($event)"
+  (@showHide.done)="onAnimation($event)"
+  [ngStyle]="{
+    width: width + 'px'
+  }"
+>
+  <div class="aui-drawer__content">
+    <div class="aui-drawer__body-wrapper">
+      <div class="aui-drawer__header">
+        <div class="aui-drawer__title">
+          <ng-container
+            *ngIf="!isTemplateRef(options.title); else elseTemplate"
+          >
+            {{ options.title }}
+          </ng-container>
+          <ng-template #elseTemplate>
+            <ng-container
+              *ngIf="options.title"
+              [ngTemplateOutlet]="$any(options.title)"
+              [ngTemplateOutletContext]="{ $implicit: options.contentParams }"
+            ></ng-container>
+          </ng-template>
+        </div>
+        <aui-icon
+          *ngIf="options.showClose"
+          class="aui-drawer__close"
+          icon="xmark"
+          (click)="hide()"
+        ></aui-icon>
+      </div>
+
+      <div
+        class="aui-drawer__body"
+        cdkScrollable
+      >
+        <ng-template cdkPortalOutlet></ng-template>
+        <ng-container *ngIf="isTemplateRef(options.content)">
+          <ng-container
+            *ngTemplateOutlet="
+              $any(options.content);
+              context: { $implicit: options.contentParams }
+            "
+          >
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <div
+        *ngIf="options.footer"
+        class="aui-drawer__footer"
+      >
+        <ng-container *ngIf="!isTemplateRef(options.footer); else elseTemplate">
+          {{ options.footer }}
+        </ng-container>
+        <ng-template #elseTemplate>
+          <ng-container
+            *ngIf="options.footer"
+            [ngTemplateOutlet]="$any(options.footer)"
+            [ngTemplateOutletContext]="{ $implicit: options.contentParams }"
+          ></ng-container>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
