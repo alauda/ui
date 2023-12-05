@@ -49,7 +49,7 @@ import { DrawerRef, DrawerService } from '@alauda/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServiceDrawerComponent {
-  drawerRef: DrawerRef;
+  drawerRef: DrawerRef<string>;
   constructor(private readonly drawerService: DrawerService) {}
 
   open(template: TemplateRef<unknown>) {
@@ -58,15 +58,9 @@ export class ServiceDrawerComponent {
       content: template,
       footer: 'footer',
     });
-    this.drawerRef.afterClosed.subscribe(res => {
-      console.log(res);
-    });
-    this.drawerRef.afterOpen.subscribe(() => {
-      console.log('open');
-    });
   }
 
   close() {
-    this.drawerRef.dispose('on close');
+    this.drawerRef.close();
   }
 }

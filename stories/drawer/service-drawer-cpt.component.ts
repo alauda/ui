@@ -37,11 +37,11 @@ export class ServiceDrawerCptComponent {
       contentParams: { data: 111 },
       footer: 'footer',
     });
-    this.drawerRef.afterClosed.subscribe(res => {
-      console.log(res);
+    this.drawerRef.afterClosed.subscribe(() => {
+      //
     });
     this.drawerRef.afterOpen.subscribe(() => {
-      console.log('open');
+      //
     });
   }
 
@@ -56,7 +56,7 @@ export class ServiceDrawerCptComponent {
   }
 
   close() {
-    this.drawerRef.dispose('on close');
+    this.drawerRef.close('on close');
   }
 }
 

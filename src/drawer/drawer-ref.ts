@@ -25,7 +25,11 @@ export class DrawerRef<R = any> {
       });
   }
 
-  dispose(result: R = null): void {
+  open() {
+    this.drawerInstance.show();
+  }
+
+  close(result: R = null): void {
     this.result = result;
     this.drawerInstance.hide();
   }

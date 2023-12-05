@@ -13,27 +13,31 @@ import {
 } from '@angular/core';
 import { first } from 'rxjs';
 
+import { DrawerRef } from '../drawer-ref';
 import { DrawerService } from '../drawer.service';
 import {
   DrawerContentDirective,
   DrawerFooterDirective,
   DrawerHeaderDirective,
 } from '../helper-directives';
-import { DrawerSize } from '../types';
+import { DrawerOptions, DrawerSize } from '../types';
 
 @Component({
   selector: 'aui-drawer',
-  template: '',
+  template: '<ng-content></ng-content>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   providers: [DrawerService],
 })
-export class DrawerComponent implements AfterViewInit, OnChanges {
+export class DrawerComponent<T = unknown, C = unknown, R = any>
+  extends DrawerOptions<T, C>
+  implements AfterViewInit, OnChanges
+{
   @Input()
-  title: string | TemplateRef<unknown>;
+  title: string | TemplateRef<C>;
 
   @Input()
-  footer: string | TemplateRef<unknown>;
+  footer: string | TemplateRef<C>;
 
   @Input()
   size: DrawerSize = DrawerSize.Medium;
@@ -45,7 +49,7 @@ export class DrawerComponent implements AfterViewInit, OnChanges {
   visible: boolean;
 
   @Input()
-  content: TemplateRef<unknown> | ComponentType<unknown>;
+  content: TemplateRef<C> | ComponentType<T>;
 
   @Input()
   hideOnClickOutside = false;
@@ -68,31 +72,41 @@ export class DrawerComponent implements AfterViewInit, OnChanges {
   @Input()
   width: number;
 
+  @Input()
+  contentParams: C;
+
   @Output()
-  readonly close = new EventEmitter<MouseEvent>();
+  readonly close = new EventEmitter<R>();
 
   @ContentChild(DrawerHeaderDirective, { read: TemplateRef })
-  private readonly titleTemplate: TemplateRef<unknown>;
+  private readonly titleTemplate: TemplateRef<C>;
 
   @ContentChild(DrawerContentDirective, { read: TemplateRef })
   private readonly contentTemplateOrComponent:
-    | TemplateRef<unknown>
-    | ComponentType<unknown>;
+    | TemplateRef<C>
+    | ComponentType<T>;
 
   @ContentChild(DrawerFooterDirective, { read: TemplateRef })
-  private readonly footerTemplate: TemplateRef<unknown>;
+  private readonly footerTemplate: TemplateRef<C>;
 
-  constructor(private readonly drawerService: DrawerService) {}
+  private drawerRef: DrawerRef;
+
+  constructor(private readonly drawerService: DrawerService) {
+    super();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     const { visible } = changes;
     if (visible) {
       const value = visible.currentValue;
       if (value) {
-        this.open();
+        this.drawerRef = this.drawerService.open(this);
+        this.drawerRef.afterClosed.pipe(first()).subscribe(res => {
+          this.close.emit(res);
+        });
       } else if (!visible.firstChange) {
         // 不希望默认关闭时，drawer 渲染后就触发 close 事件
-        this.drawerService.close();
+        this.drawerRef.close();
       }
     }
   }
@@ -101,12 +115,5 @@ export class DrawerComponent implements AfterViewInit, OnChanges {
     this.title = this.title || this.titleTemplate;
     this.content = this.content || this.contentTemplateOrComponent;
     this.footer = this.footer || this.footerTemplate;
-  }
-
-  private open() {
-    const ref = this.drawerService.open(this);
-    ref.afterClosed.pipe(first()).subscribe(res => {
-      this.close.emit(res);
-    });
   }
 }

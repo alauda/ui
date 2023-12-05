@@ -8,42 +8,39 @@ import { DrawerRef } from './drawer-ref';
 import { DrawerOptions } from './types';
 
 const DRAWER_OVERLAY_CLASS = 'aui-drawer-overlay';
-const DRAWER_OVERLAY_BACKDROP_CLASS = 'aui-drawer-mask';
 
 @Injectable()
-export class DrawerService {
+export class DrawerService<T = unknown, C = unknown, R = any> {
   private overlayRef: OverlayRef;
-  options: DrawerOptions;
-  onDestroy$ = new Subject<void>();
-  drawerCpt: ComponentRef<DrawerInternalComponent>;
+  options: DrawerOptions<T, C>;
+  drawerRef: DrawerRef<R>;
+  invisible$ = new Subject();
+  private drawerCpt: ComponentRef<DrawerInternalComponent<T, C>>;
 
   constructor(private readonly overlay: Overlay) {}
 
-  open(options: DrawerOptions) {
-    this.disposeOverlay();
+  open(options: DrawerOptions<T, C>) {
     this.updateOptions(options);
     this.createOverlay();
-    return this.createDrawer();
+    this.createDrawer();
+    this.drawerRef = new DrawerRef(this.drawerCpt.instance);
+    this.drawerRef.open();
+
+    return this.drawerRef;
   }
 
-  close() {
-    this.drawerCpt?.instance?.hide();
-  }
-
-  updateOptions(options: DrawerOptions): void {
+  updateOptions(options: DrawerOptions<T, C>): void {
     this.options = options;
   }
 
   private createOverlay() {
-    this.overlayRef = this.overlay.create(this.getOverlayConfig());
-    this.overlayRef.backdropClick().subscribe(() => {
-      if (this.options.maskClosable) {
-        this.close();
-      }
-    });
+    if (!this.overlayRef) {
+      this.overlayRef = this.overlay.create(this.getOverlayConfig());
+    }
+
     this.overlayRef
       .outsidePointerEvents()
-      .pipe(takeUntil(this.onDestroy$))
+      .pipe(takeUntil(this.invisible$))
       .subscribe(event => {
         // 判断鼠标点击事件的 target 是否为 overlay-container 的子节点，如果是，则不关闭 drawer。
         // 为了避免点击 drawer 里的 tooltip 后 drawer 被关闭。
@@ -55,9 +52,10 @@ export class DrawerService {
         ) {
           event.stopPropagation();
           event.preventDefault();
-          this.close();
+          this.drawerRef.close();
         }
       });
+
     this.overlayRef.getConfig().scrollStrategy.enable();
     if (this.options.mask) {
       // Issues: https://github.com/angular/components/issues/10841
@@ -68,7 +66,7 @@ export class DrawerService {
           filter(
             () => document.documentElement.scrollHeight > window.innerHeight,
           ),
-          takeUntil(this.onDestroy$),
+          takeUntil(this.invisible$),
         )
         .subscribe(() => {
           this.overlayRef.getConfig().scrollStrategy.enable();
@@ -76,42 +74,21 @@ export class DrawerService {
     }
   }
 
-  private createDrawer(): DrawerRef {
-    this.drawerCpt = this.overlayRef.attach(
-      new ComponentPortal(DrawerInternalComponent),
+  private createDrawer() {
+    if (this.drawerCpt) {
+      return;
+    }
+    const drawerCpt = this.overlayRef.attach(
+      new ComponentPortal(DrawerInternalComponent<T, C>),
     );
-    this.drawerCpt.instance.options = this.options;
-    this.drawerCpt.instance.animationStep$.subscribe(step => {
-      const backdropElement = this.overlayRef.backdropElement;
-      if (backdropElement) {
-        const enters = [
-          `${DRAWER_OVERLAY_BACKDROP_CLASS}-enter`,
-          `${DRAWER_OVERLAY_BACKDROP_CLASS}-enter-active`,
-        ];
-        const leaves = [
-          `${DRAWER_OVERLAY_BACKDROP_CLASS}-leave`,
-          `${DRAWER_OVERLAY_BACKDROP_CLASS}-leave-active`,
-        ];
-        if (step === 'showStart') {
-          backdropElement.classList.add(...enters);
-        }
-        if (step === 'hideStart') {
-          backdropElement.classList.add(...leaves);
-        }
-        if (['showDone', 'hideDone'].includes(step)) {
-          backdropElement.classList.remove(...enters, ...leaves);
-        }
-      }
+    drawerCpt.instance.options = this.options;
+    drawerCpt.instance.animationStep$.subscribe(step => {
       if (step === 'hideDone') {
-        this.disposeOverlay();
+        this.invisible$.next(null);
+        this.overlayRef?.getConfig().scrollStrategy.disable();
       }
     });
-
-    const drawerRef = new DrawerRef(this.drawerCpt.instance);
-
-    this.drawerCpt.instance.show();
-
-    return drawerRef;
+    this.drawerCpt = drawerCpt;
   }
 
   private getOverlayConfig(): OverlayConfig {
@@ -121,14 +98,11 @@ export class DrawerService {
       scrollStrategy: this.options.mask
         ? this.overlay.scrollStrategies.block()
         : this.overlay.scrollStrategies.noop(),
-      hasBackdrop: this.options.mask,
-      backdropClass: DRAWER_OVERLAY_BACKDROP_CLASS,
     });
   }
 
   private disposeOverlay(): void {
-    this.onDestroy$.next();
-    this.onDestroy$.complete();
+    this.invisible$.next(null);
     if (this.overlayRef) {
       this.overlayRef.getConfig().scrollStrategy.disable();
       this.overlayRef.dispose();

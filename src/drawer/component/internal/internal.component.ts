@@ -1,12 +1,11 @@
 import {
   animate,
   AnimationEvent,
-  keyframes,
+  state,
   style,
   transition,
   trigger,
 } from '@angular/animations';
-import { ComponentType } from '@angular/cdk/overlay';
 import {
   CdkPortalOutlet,
   ComponentPortal,
@@ -18,10 +17,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  EventEmitter,
+  ElementRef,
   InjectionToken,
   Injector,
-  Output,
   Type,
   ViewChild,
   ViewEncapsulation,
@@ -30,7 +28,7 @@ import { Subject } from 'rxjs';
 
 import { TimingFunction } from '../../../core/animation/animation-consts';
 import { IconComponent } from '../../../icon/icon.component';
-import { isTemplateRef } from '../../../utils';
+import { handlePixel, isTemplateRef } from '../../../utils';
 import { DrawerOptions, DrawerSize } from '../../types';
 
 export const DATA = new InjectionToken('drawer-data');
@@ -40,6 +38,8 @@ const SIZE_MAPPER = {
   [DrawerSize.Medium]: 600,
   [DrawerSize.Big]: 800,
 };
+const DRAWER_OVERLAY_BACKDROP_CLASS = 'aui-drawer-mask';
+
 export const duration = '300ms';
 
 type Step = 'showStart' | 'showDone' | 'hideStart' | 'hideDone';
@@ -61,53 +61,41 @@ type Step = 'showStart' | 'showDone' | 'hideStart' | 'hideDone';
   ],
   animations: [
     trigger('showHide', [
+      state(
+        'show',
+        style({
+          opacity: 1,
+          transform: 'translateX(0)',
+        }),
+      ),
+      state(
+        'hide, void',
+        style({
+          opacity: 0,
+          transform: 'translateX(100%)',
+        }),
+      ),
       transition('hide => show, void => show', [
-        animate(
-          `${duration} ${TimingFunction.easeOut}`,
-          keyframes([
-            style({
-              opacity: 0,
-              transform: 'translateX(100%)',
-            }),
-            style({
-              opacity: 1,
-              transform: 'translateX(0)',
-            }),
-          ]),
-        ),
+        animate(`${duration} ${TimingFunction.easeOut}`),
       ]),
       transition('show => hide, show => void', [
-        animate(
-          `${duration} ${TimingFunction.easeInOut}`,
-          keyframes([
-            style({
-              opacity: 1,
-              transform: 'translateX(0)',
-            }),
-            style({
-              opacity: 0,
-              transform: 'translateX(100%)',
-            }),
-          ]),
-        ),
+        animate(`${duration} ${TimingFunction.easeInOut}`),
       ]),
     ]),
   ],
 })
-export class DrawerInternalComponent<T = ComponentType<unknown>> {
-  @Output()
-  maskClick = new EventEmitter<MouseEvent>();
-
-  @Output()
-  closeClick = new EventEmitter();
-
+export class DrawerInternalComponent<T = unknown, C = unknown> {
   @ViewChild(CdkPortalOutlet, { static: false })
   bodyPortalOutlet: CdkPortalOutlet;
 
+  @ViewChild('mask')
+  mask: ElementRef<HTMLElement>;
+
   animationStep$ = new Subject<Step>();
 
-  options: DrawerOptions;
+  options: DrawerOptions<T, C>;
   showHide = 'hide';
+  maskVisible: boolean;
 
   get drawerClasses(): Record<string, boolean> {
     return {
@@ -120,8 +108,8 @@ export class DrawerInternalComponent<T = ComponentType<unknown>> {
   }
 
   get width() {
-    return (
-      this.options.width || SIZE_MAPPER[this.options.size || DrawerSize.Medium]
+    return handlePixel(
+      this.options.width || SIZE_MAPPER[this.options.size || DrawerSize.Medium],
     );
   }
 
@@ -168,6 +156,32 @@ export class DrawerInternalComponent<T = ComponentType<unknown>> {
         phaseName.charAt(0).toUpperCase() + phaseName.slice(1),
       ].join('') as Step;
       this.animationStep$.next(step);
+
+      const backdropElement = this.mask?.nativeElement;
+      if (backdropElement) {
+        const enters = [
+          `${DRAWER_OVERLAY_BACKDROP_CLASS}-enter`,
+          `${DRAWER_OVERLAY_BACKDROP_CLASS}-enter-active`,
+        ];
+        const leaves = [
+          `${DRAWER_OVERLAY_BACKDROP_CLASS}-leave`,
+          `${DRAWER_OVERLAY_BACKDROP_CLASS}-leave-active`,
+        ];
+        if (step === 'showStart') {
+          this.maskVisible = true;
+          backdropElement.classList.add(...enters);
+        }
+        if (step === 'hideStart') {
+          backdropElement.classList.add(...leaves);
+        }
+        if (step === 'hideDone') {
+          this.maskVisible = false;
+        }
+        if (['showDone', 'hideDone'].includes(step)) {
+          backdropElement.classList.remove(...enters, ...leaves);
+        }
+        this.cdr.markForCheck();
+      }
     }
   }
 
@@ -179,5 +193,11 @@ export class DrawerInternalComponent<T = ComponentType<unknown>> {
   hide() {
     this.showHide = 'hide';
     this.cdr.markForCheck();
+  }
+
+  maskClick() {
+    if (this.options.maskClosable) {
+      this.hide();
+    }
   }
 }

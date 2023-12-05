@@ -4,8 +4,17 @@
 
 $drawer: aui-drawer;
 
-.cdk-overlay-backdrop.cdk-overlay-backdrop-showing.aui-drawer-mask {
+.#{$drawer}-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
   @include modal-backdrop;
+
+  &.isOpen {
+    height: 100%;
+  }
 }
 
 @include fade-motion(aui-drawer-mask, aui-fade, 0.3s);
