@@ -30,8 +30,7 @@ import { DrawerOptions, DrawerSize } from '../types';
   providers: [DrawerService],
 })
 export class DrawerComponent<T = unknown, C = unknown, R = any>
-  extends DrawerOptions<T, C>
-  implements AfterViewInit, OnChanges
+  implements AfterViewInit, OnChanges, Required<DrawerOptions<T, C>>
 {
   @Input()
   title: string | TemplateRef<C>;
@@ -91,9 +90,7 @@ export class DrawerComponent<T = unknown, C = unknown, R = any>
 
   private drawerRef: DrawerRef;
 
-  constructor(private readonly drawerService: DrawerService) {
-    super();
-  }
+  constructor(private readonly drawerService: DrawerService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     const { visible } = changes;

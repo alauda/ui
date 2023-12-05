@@ -20,7 +20,7 @@
           <ng-container *ngIf="isTemplateRef(options.title); else normal">
             <ng-container
               [ngTemplateOutlet]="options.title"
-              [ngTemplateOutletContext]="{ $implicit: options.contentParams }"
+              [ngTemplateOutletContext]="options.contentParams"
             ></ng-container>
           </ng-container>
           <ng-template #normal>
@@ -42,10 +42,7 @@
         <ng-template cdkPortalOutlet></ng-template>
         <ng-container *ngIf="isTemplateRef(options.content)">
           <ng-container
-            *ngTemplateOutlet="
-              options.content;
-              context: { $implicit: options.contentParams }
-            "
+            *ngTemplateOutlet="options.content; context: options.contentParams"
           >
           </ng-container>
         </ng-container>
@@ -58,7 +55,7 @@
         <ng-container *ngIf="isTemplateRef(options.footer); else normal">
           <ng-container
             [ngTemplateOutlet]="options.footer"
-            [ngTemplateOutletContext]="{ $implicit: options.contentParams }"
+            [ngTemplateOutletContext]="options.contentParams"
           ></ng-container>
         </ng-container>
         <ng-template #normal>
