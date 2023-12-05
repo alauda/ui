@@ -2,7 +2,7 @@ import { filter, Observable, Subject } from 'rxjs';
 
 import { DrawerInternalComponent } from './component/internal/internal.component';
 
-export class DrawerRef<R = any> {
+export class DrawerRef<T = unknown, C extends object = object, R = unknown> {
   private result: R;
 
   private readonly afterOpen$ = new Subject<void>();
@@ -16,7 +16,7 @@ export class DrawerRef<R = any> {
     return this.afterClosed$.asObservable();
   }
 
-  constructor(public drawerInstance: DrawerInternalComponent) {
+  constructor(public drawerInstance: DrawerInternalComponent<T, C>) {
     this.drawerInstance.animationStep$
       .pipe(filter(step => step === 'hideDone'))
       .subscribe(() => {
@@ -29,7 +29,7 @@ export class DrawerRef<R = any> {
     this.drawerInstance.show();
   }
 
-  close(result: R = null): void {
+  close(result?: R): void {
     this.result = result;
     this.drawerInstance.hide();
   }

@@ -2,13 +2,13 @@
   #mask
   class="aui-drawer-mask"
   *ngIf="options.mask"
-  [class.isOpen]="maskVisible"
+  [class.isOpen]="maskVisible$ | async"
   (click)="maskClick()"
 ></div>
 <div
   [style.marginTop]="options.offsetY"
   [ngClass]="drawerClasses"
-  [@showHide]="showHide"
+  [@showHide]="showHide$$ | async"
   (@showHide.start)="onAnimation($event)"
   (@showHide.done)="onAnimation($event)"
   [style.width]="width"
@@ -17,12 +17,11 @@
     <div class="aui-drawer__body-wrapper">
       <div class="aui-drawer__header">
         <div class="aui-drawer__title">
-          <ng-container *ngIf="isTemplateRef(options.title); else normal">
-            <ng-container
-              [ngTemplateOutlet]="options.title"
-              [ngTemplateOutletContext]="options.contentParams"
-            ></ng-container>
-          </ng-container>
+          <ng-container
+            *ngIf="isTemplateRef(options.title); else normal"
+            [ngTemplateOutlet]="options.title"
+            [ngTemplateOutletContext]="options.contentParams"
+          ></ng-container>
           <ng-template #normal>
             {{ options.title }}
           </ng-template>
@@ -40,11 +39,11 @@
         cdkScrollable
       >
         <ng-template cdkPortalOutlet></ng-template>
-        <ng-container *ngIf="isTemplateRef(options.content)">
-          <ng-container
-            *ngTemplateOutlet="options.content; context: options.contentParams"
-          >
-          </ng-container>
+        <ng-container
+          *ngIf="isTemplateRef(options.content)"
+          [ngTemplateOutlet]="options.content"
+          [ngTemplateOutletContext]="options.contentParams"
+        >
         </ng-container>
       </div>
 
@@ -52,12 +51,11 @@
         *ngIf="options.footer"
         class="aui-drawer__footer"
       >
-        <ng-container *ngIf="isTemplateRef(options.footer); else normal">
-          <ng-container
-            [ngTemplateOutlet]="options.footer"
-            [ngTemplateOutletContext]="options.contentParams"
-          ></ng-container>
-        </ng-container>
+        <ng-container
+          *ngIf="isTemplateRef(options.footer); else normal"
+          [ngTemplateOutlet]="options.footer"
+          [ngTemplateOutletContext]="options.contentParams"
+        ></ng-container>
         <ng-template #normal>
           {{ options.footer }}
         </ng-template>

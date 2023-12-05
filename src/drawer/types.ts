@@ -1,13 +1,17 @@
 import { ComponentType } from '@angular/cdk/portal';
 import { TemplateRef } from '@angular/core';
 
-export enum DrawerSize {
-  Small = 'small',
-  Medium = 'medium',
-  Big = 'big',
-}
+import { ValueOf } from '../types';
 
-export interface DrawerOptions<T = unknown, C = unknown> {
+export const DrawerSize = {
+  Small: 'small',
+  Medium: 'medium',
+  Big: 'big',
+} as const;
+
+export type DrawerSize = ValueOf<typeof DrawerSize>;
+
+export interface DrawerOptions<T = unknown, C extends object = object> {
   title?: string | TemplateRef<C>;
   content?: ComponentType<T> | TemplateRef<C>;
   footer?: string | TemplateRef<C>;

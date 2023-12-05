@@ -12,10 +12,15 @@ import {
   PortalModule,
 } from '@angular/cdk/portal';
 import { CdkScrollable } from '@angular/cdk/scrolling';
-import { NgClass, NgIf, NgStyle, NgTemplateOutlet } from '@angular/common';
+import {
+  AsyncPipe,
+  NgClass,
+  NgIf,
+  NgStyle,
+  NgTemplateOutlet,
+} from '@angular/common';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   InjectionToken,
@@ -24,7 +29,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 import { TimingFunction } from '../../../core/animation/animation-consts';
 import { IconComponent } from '../../../icon/icon.component';
@@ -58,6 +63,7 @@ type Step = 'showStart' | 'showDone' | 'hideStart' | 'hideDone';
     IconComponent,
     CdkScrollable,
     PortalModule,
+    AsyncPipe,
   ],
   animations: [
     trigger('showHide', [
@@ -84,18 +90,18 @@ type Step = 'showStart' | 'showDone' | 'hideStart' | 'hideDone';
     ]),
   ],
 })
-export class DrawerInternalComponent<T = unknown, C = unknown> {
+export class DrawerInternalComponent<T = unknown, C extends object = object> {
   @ViewChild(CdkPortalOutlet, { static: false })
   bodyPortalOutlet: CdkPortalOutlet;
 
   @ViewChild('mask')
-  mask: ElementRef<HTMLElement>;
+  mask: ElementRef<HTMLDivElement>;
 
   animationStep$ = new Subject<Step>();
 
   options: DrawerOptions<T, C>;
-  showHide = 'hide';
-  maskVisible: boolean;
+  showHide$$ = new BehaviorSubject<'show' | 'hide'>('hide');
+  maskVisible$ = new Subject<boolean>();
 
   get drawerClasses(): Record<string, boolean> {
     return {
@@ -115,10 +121,7 @@ export class DrawerInternalComponent<T = unknown, C = unknown> {
 
   isTemplateRef = isTemplateRef;
 
-  constructor(
-    private readonly cdr: ChangeDetectorRef,
-    private readonly injector: Injector,
-  ) {}
+  constructor(private readonly injector: Injector) {}
 
   ngAfterViewInit() {
     this.attachBodyContent();
@@ -127,72 +130,81 @@ export class DrawerInternalComponent<T = unknown, C = unknown> {
   private attachBodyContent(): void {
     this.bodyPortalOutlet?.dispose();
     const content = this.options.content;
-    if (content instanceof Type) {
-      const componentPortal = new ComponentPortal<T>(
-        content,
-        null,
-        Injector.create({
-          providers: [
-            {
-              provide: DATA,
-              useValue: this.options.contentParams,
-            },
-          ],
-          parent: this.injector,
-        }),
-      );
-      const componentRef =
-        this.bodyPortalOutlet?.attachComponentPortal(componentPortal);
-      Object.assign(componentRef.instance, this.options.contentParams);
-      componentRef.changeDetectorRef.detectChanges();
+    if (!(content instanceof Type)) {
+      return;
     }
+    const componentPortal = new ComponentPortal<T>(
+      content,
+      null,
+      Injector.create({
+        providers: [
+          {
+            provide: DATA,
+            useValue: this.options.contentParams,
+          },
+        ],
+        parent: this.injector,
+      }),
+    );
+    const componentRef =
+      this.bodyPortalOutlet?.attachComponentPortal(componentPortal);
+    Object.assign(componentRef.instance, this.options.contentParams);
+    componentRef.changeDetectorRef.detectChanges();
   }
 
   onAnimation(event: AnimationEvent) {
     const { phaseName, toState } = event;
-    if (['show', 'hide'].includes(toState)) {
-      const step = [
-        toState,
-        phaseName.charAt(0).toUpperCase() + phaseName.slice(1),
-      ].join('') as Step;
-      this.animationStep$.next(step);
+    if (!['show', 'hide'].includes(toState)) {
+      return;
+    }
 
-      const backdropElement = this.mask?.nativeElement;
-      if (backdropElement) {
-        const enters = [
-          `${DRAWER_OVERLAY_BACKDROP_CLASS}-enter`,
-          `${DRAWER_OVERLAY_BACKDROP_CLASS}-enter-active`,
-        ];
-        const leaves = [
-          `${DRAWER_OVERLAY_BACKDROP_CLASS}-leave`,
-          `${DRAWER_OVERLAY_BACKDROP_CLASS}-leave-active`,
-        ];
-        if (step === 'showStart') {
-          this.maskVisible = true;
-          backdropElement.classList.add(...enters);
-        }
-        if (step === 'hideStart') {
-          backdropElement.classList.add(...leaves);
-        }
-        if (step === 'hideDone') {
-          this.maskVisible = false;
-        }
-        if (['showDone', 'hideDone'].includes(step)) {
-          backdropElement.classList.remove(...enters, ...leaves);
-        }
-        this.cdr.markForCheck();
+    const step = [
+      toState,
+      phaseName.charAt(0).toUpperCase() + phaseName.slice(1),
+    ].join('') as Step;
+    this.animationStep$.next(step);
+
+    const backdropElement = this.mask?.nativeElement;
+    if (!backdropElement) {
+      return;
+    }
+
+    const enters = [
+      `${DRAWER_OVERLAY_BACKDROP_CLASS}-enter`,
+      `${DRAWER_OVERLAY_BACKDROP_CLASS}-enter-active`,
+    ];
+    const leaves = [
+      `${DRAWER_OVERLAY_BACKDROP_CLASS}-leave`,
+      `${DRAWER_OVERLAY_BACKDROP_CLASS}-leave-active`,
+    ];
+    switch (step) {
+      case 'showStart': {
+        backdropElement.classList.add(...enters);
+        this.maskVisible$.next(true);
+        break;
+      }
+      case 'hideStart': {
+        backdropElement.classList.add(...leaves);
+        break;
+      }
+      case 'showDone': {
+        backdropElement.classList.remove(...enters);
+        break;
+      }
+      case 'hideDone': {
+        this.maskVisible$.next(false);
+        backdropElement.classList.remove(...leaves);
+        break;
       }
     }
   }
 
   show() {
-    this.showHide = 'show';
-    this.cdr.markForCheck();
+    this.showHide$$.next('show');
   }
 
   hide() {
-    this.showHide = 'hide';
-    this.cdr.markForCheck();
+    this.showHide$$.next('hide');
   }
 
   maskClick() {

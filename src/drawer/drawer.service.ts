@@ -10,12 +10,18 @@ import { DrawerOptions } from './types';
 const DRAWER_OVERLAY_CLASS = 'aui-drawer-overlay';
 
 @Injectable()
-export class DrawerService<T = unknown, C = unknown, R = any> {
+export class DrawerService<
+  T = unknown,
+  C extends object = object,
+  R = unknown,
+> {
   private overlayRef: OverlayRef;
   options: DrawerOptions<T, C>;
-  drawerRef: DrawerRef<R>;
-  invisible$ = new Subject();
-  private drawerCpt: ComponentRef<DrawerInternalComponent<T, C>>;
+  drawerRef: DrawerRef<T, C, R>;
+  invisible$ = new Subject<void>();
+  private drawerInternalComponentRef: ComponentRef<
+    DrawerInternalComponent<T, C>
+  >;
 
   constructor(private readonly overlay: Overlay) {}
 
@@ -23,7 +29,9 @@ export class DrawerService<T = unknown, C = unknown, R = any> {
     this.updateOptions(options);
     this.createOverlay();
     this.createDrawer();
-    this.drawerRef = new DrawerRef(this.drawerCpt.instance);
+    this.drawerRef = new DrawerRef<T, C, R>(
+      this.drawerInternalComponentRef.instance,
+    );
     this.drawerRef.open();
 
     return this.drawerRef;
@@ -75,20 +83,20 @@ export class DrawerService<T = unknown, C = unknown, R = any> {
   }
 
   private createDrawer() {
-    if (this.drawerCpt) {
+    if (this.drawerInternalComponentRef) {
       return;
     }
-    const drawerCpt = this.overlayRef.attach(
+    const drawerInternalComponentRef = this.overlayRef.attach(
       new ComponentPortal(DrawerInternalComponent<T, C>),
     );
-    drawerCpt.instance.options = this.options;
-    drawerCpt.instance.animationStep$.subscribe(step => {
+    drawerInternalComponentRef.instance.options = this.options;
+    drawerInternalComponentRef.instance.animationStep$.subscribe(step => {
       if (step === 'hideDone') {
-        this.invisible$.next(null);
+        this.invisible$.next();
         this.overlayRef?.getConfig().scrollStrategy.disable();
       }
     });
-    this.drawerCpt = drawerCpt;
+    this.drawerInternalComponentRef = drawerInternalComponentRef;
   }
 
   private getOverlayConfig(): OverlayConfig {
@@ -101,16 +109,12 @@ export class DrawerService<T = unknown, C = unknown, R = any> {
     });
   }
 
-  private disposeOverlay(): void {
-    this.invisible$.next(null);
+  ngOnDestroy(): void {
+    this.invisible$.next();
     if (this.overlayRef) {
       this.overlayRef.getConfig().scrollStrategy.disable();
       this.overlayRef.dispose();
+      this.overlayRef = null;
     }
-    this.overlayRef = null;
-  }
-
-  ngOnDestroy(): void {
-    this.disposeOverlay();
   }
 }

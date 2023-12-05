@@ -49,10 +49,10 @@ import { DrawerRef, DrawerService } from '@alauda/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServiceDrawerComponent {
-  drawerRef: DrawerRef<string>;
+  drawerRef: DrawerRef;
   constructor(private readonly drawerService: DrawerService) {}
 
-  open(template: TemplateRef<unknown>) {
+  open(template: TemplateRef<object>) {
     this.drawerRef = this.drawerService.open({
       title: 'title',
       content: template,
