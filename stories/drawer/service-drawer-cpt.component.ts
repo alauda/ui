@@ -56,7 +56,7 @@ export class ServiceDrawerCptComponent {
   }
 
   close() {
-    this.drawerRef.close('on close');
+    this.drawerRef.close();
   }
 }
 
