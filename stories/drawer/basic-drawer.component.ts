@@ -29,10 +29,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       [divider]="divider"
       [offsetY]="offsetY + 'px'"
       [visible]="visible"
-      (close)="close()"
+      [hideOnClickOutside]="true"
+      (close)="closeHandle()"
     >
       <div *auiDrawerHeader>header</div>
-      <ng-container *auiDrawerContent> content </ng-container>
+      <ng-container *auiDrawerContent>
+        <input aui-input />
+      </ng-container>
       <div *auiDrawerFooter>footer</div>
     </aui-drawer>
   `,
@@ -47,6 +50,10 @@ export class BasicDrawerComponent {
   }
 
   close() {
+    this.visible = false;
+  }
+
+  closeHandle() {
     this.visible = false;
   }
 }

@@ -1,4 +1,5 @@
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { BasicDrawerComponent } from './basic-drawer.component';
@@ -22,6 +23,7 @@ const meta: Meta<BasicDrawerComponent> = {
         InputModule,
         FormsModule,
         SwitchModule,
+        BrowserAnimationsModule,
       ],
     }),
   ],

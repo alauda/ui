@@ -1,5 +1,6 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
+@import '../../../theme/var';
+@import '../../../theme/mixin';
+@import '../../../theme/motion';
 
 $drawer: aui-drawer;
 
@@ -16,23 +17,16 @@ $drawer: aui-drawer;
   }
 }
 
+@include fade-motion(aui-drawer-mask, aui-fade, 0.3s);
+
 .#{$drawer} {
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   z-index: 9999;
-  transition: transform 0.3s, opacity 0.3s, box-shaow 0.3s;
-  @include text-set(m, main);
 
-  &.isOpen &__content {
-    @include theme-light {
-      box-shadow: -2px 0 8px 0 use-rgba(origin-shadow, 0.2);
-    }
-    @include theme-dark {
-      box-shadow: -2px 0 8px 0 use-rgba(origin-shadow, 0.75);
-    }
-  }
+  @include text-set(m, main);
 
   &__content {
     background-color: use-rgb(n-10);
@@ -40,6 +34,13 @@ $drawer: aui-drawer;
     height: 100%;
     right: 0;
     width: 100%;
+
+    @include theme-light {
+      box-shadow: -2px 0 8px 0 use-rgba(origin-shadow, 0.2);
+    }
+    @include theme-dark {
+      box-shadow: -2px 0 8px 0 use-rgba(origin-shadow, 0.75);
+    }
   }
 
   &__header {

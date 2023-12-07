@@ -52,21 +52,15 @@ export class ServiceDrawerComponent {
   drawerRef: DrawerRef;
   constructor(private readonly drawerService: DrawerService) {}
 
-  open(template: TemplateRef<unknown>) {
+  open(template: TemplateRef<object>) {
     this.drawerRef = this.drawerService.open({
       title: 'title',
       content: template,
       footer: 'footer',
     });
-    this.drawerRef.afterClosed.subscribe(res => {
-      console.log(res);
-    });
-    this.drawerRef.afterOpen.subscribe(() => {
-      console.log('open');
-    });
   }
 
   close() {
-    this.drawerRef.dispose('on close');
+    this.drawerRef.close();
   }
 }

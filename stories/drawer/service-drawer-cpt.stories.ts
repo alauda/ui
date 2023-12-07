@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 
 import {
@@ -13,7 +14,7 @@ const meta: Meta<ServiceDrawerCptComponent> = {
   component: ServiceDrawerCptComponent,
   decorators: [
     moduleMetadata({
-      imports: [ButtonModule, DrawerModule],
+      imports: [ButtonModule, DrawerModule, BrowserAnimationsModule],
       declarations: [
         ServiceDrawerCptComponent,
         DrawerContentComponent,

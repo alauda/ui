@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { MaskDrawerComponent } from './mask-drawer.component';
@@ -10,7 +11,7 @@ const meta: Meta<MaskDrawerComponent> = {
   decorators: [
     moduleMetadata({
       declarations: [MaskDrawerComponent],
-      imports: [ButtonModule, DrawerModule],
+      imports: [ButtonModule, DrawerModule, BrowserAnimationsModule],
     }),
   ],
 };

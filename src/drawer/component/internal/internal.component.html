@@ -1,0 +1,65 @@
+<div
+  #mask
+  class="aui-drawer-mask"
+  *ngIf="options.mask"
+  [class.isOpen]="maskVisible$ | async"
+  (click)="maskClick()"
+></div>
+<div
+  [style.marginTop]="options.offsetY"
+  [ngClass]="drawerClasses"
+  [@showHide]="showHide$$ | async"
+  (@showHide.start)="onAnimation($event)"
+  (@showHide.done)="onAnimation($event)"
+  [style.width]="width"
+>
+  <div class="aui-drawer__content">
+    <div class="aui-drawer__body-wrapper">
+      <div class="aui-drawer__header">
+        <div class="aui-drawer__title">
+          <ng-container
+            *ngIf="isTemplateRef(options.title); else normal"
+            [ngTemplateOutlet]="options.title"
+            [ngTemplateOutletContext]="options.contentParams"
+          ></ng-container>
+          <ng-template #normal>
+            {{ options.title }}
+          </ng-template>
+        </div>
+        <aui-icon
+          *ngIf="options.showClose"
+          class="aui-drawer__close"
+          icon="xmark"
+          (click)="hide()"
+        ></aui-icon>
+      </div>
+
+      <div
+        class="aui-drawer__body"
+        cdkScrollable
+      >
+        <ng-template cdkPortalOutlet></ng-template>
+        <ng-container
+          *ngIf="isTemplateRef(options.content)"
+          [ngTemplateOutlet]="options.content"
+          [ngTemplateOutletContext]="options.contentParams"
+        >
+        </ng-container>
+      </div>
+
+      <div
+        *ngIf="options.footer"
+        class="aui-drawer__footer"
+      >
+        <ng-container
+          *ngIf="isTemplateRef(options.footer); else normal"
+          [ngTemplateOutlet]="options.footer"
+          [ngTemplateOutletContext]="options.contentParams"
+        ></ng-container>
+        <ng-template #normal>
+          {{ options.footer }}
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

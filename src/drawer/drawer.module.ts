@@ -6,12 +6,12 @@ import { NgModule } from '@angular/core';
 import { IconModule } from '../icon';
 
 import { DrawerComponent } from './component/drawer.component';
+import { DrawerService } from './drawer.service';
 import {
   DrawerContentDirective,
   DrawerFooterDirective,
   DrawerHeaderDirective,
-} from './component/helper-directives';
-import { DrawerService } from './drawer.service';
+} from './helper-directives';
 
 const COMMON = [
   DrawerComponent,
