@@ -30,6 +30,10 @@ $form-item-width: (
         display: none;
       }
     }
+
+    .aui-form-item__label {
+      line-height: use-var(line-height-m);
+    }
   }
 
   &__label-wrapper {
