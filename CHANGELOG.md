@@ -1,5 +1,22 @@
 # Changelog
 
+## 7.3.0
+
+### Minor Changes
+
+- [#530](https://github.com/alauda/ui/pull/530) [`9092f15`](https://github.com/alauda/ui/commit/9092f151cf0a91ca5ba43aced520c931747c633b) Thanks [@igauch](https://github.com/igauch)! - - fix: `close` event will be triggered twice - close #247
+  - fix: no transition when use drawer service - close #529
+  - refactor: only instantiate when opened
+  - [BREAKING CHANGE] refactor: return type of `DrawerService#open` is changed from `DrawerComponent` to `DrawerRef`
+
+### Patch Changes
+
+- [#521](https://github.com/alauda/ui/pull/521) [`607c016`](https://github.com/alauda/ui/commit/607c016119b3199d67bc01703585b540457ad8cd) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: drawer scroll strategy adjust
+
+- [#527](https://github.com/alauda/ui/pull/527) [`3040f5e`](https://github.com/alauda/ui/commit/3040f5e0c6af1446c798500c9d08c668aba0287b) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: form item label top margin bottom use s
+
+- [#525](https://github.com/alauda/ui/pull/525) [`369ee93`](https://github.com/alauda/ui/commit/369ee9353580ff646dc590255382f1cc84449a1b) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: autocomplete circle dependencies
+
 ## 7.2.0
 
 ### Minor Changes
