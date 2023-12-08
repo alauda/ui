@@ -22,17 +22,17 @@ $form-item-width: (
   &--top {
     flex-direction: column;
 
-    .aui-form-item__label-wrapper {
-      line-height: use-var(line-height-m);
-      margin-bottom: use-var(spacing-s);
-
-      &:after {
-        display: none;
-      }
-    }
-
     .aui-form-item__label {
       line-height: use-var(line-height-m);
+
+      &-wrapper {
+        line-height: use-var(line-height-m);
+        margin-bottom: use-var(spacing-s);
+
+        &:after {
+          display: none;
+        }
+      }
     }
   }
 
