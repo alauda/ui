@@ -5,9 +5,16 @@ import { debounceTime, filter, fromEvent, Subject, takeUntil } from 'rxjs';
 
 import { DrawerInternalComponent } from './component/internal/internal.component';
 import { DrawerRef } from './drawer-ref';
-import { DrawerOptions } from './types';
+import { DrawerOptions, DrawerSize } from './types';
 
 const DRAWER_OVERLAY_CLASS = 'aui-drawer-overlay';
+const defaultOptions: DrawerOptions = {
+  size: DrawerSize.Medium,
+  offsetY: '0px',
+  showClose: true,
+  hideOnClickOutside: true,
+  divider: true,
+};
 
 @Injectable()
 export class DrawerService<
@@ -38,7 +45,10 @@ export class DrawerService<
   }
 
   updateOptions(options: DrawerOptions<T, C>): void {
-    this.options = options;
+    this.options = {
+      ...(defaultOptions as DrawerOptions<T, C>),
+      ...options,
+    };
   }
 
   private createOverlay() {
