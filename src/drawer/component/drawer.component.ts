@@ -45,7 +45,7 @@ export class DrawerComponent<
   size: DrawerSize;
 
   @Input()
-  offsetY = '0px';
+  offsetY: string;
 
   @Input()
   visible: boolean;
@@ -76,6 +76,9 @@ export class DrawerComponent<
 
   @Input()
   contentParams: C;
+
+  @Input()
+  disposeWhenHide = false;
 
   @Output()
   readonly close = new EventEmitter<R>();

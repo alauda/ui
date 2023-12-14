@@ -26,4 +26,5 @@ export interface DrawerOptions<T = unknown, C extends object = object> {
   mask?: boolean;
   maskClosable?: boolean; // 点击背景是否关闭抽屉
   hideOnClickOutside?: boolean; // 在抽屉外点击是否关闭抽屉，与 maskClosable 的区别是是否有 mask
+  disposeWhenHide?: boolean; // 抽屉不可见时是否销毁，使用组件方式时默认为false
 }
