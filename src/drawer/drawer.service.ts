@@ -5,9 +5,17 @@ import { debounceTime, filter, fromEvent, Subject, takeUntil } from 'rxjs';
 
 import { DrawerInternalComponent } from './component/internal/internal.component';
 import { DrawerRef } from './drawer-ref';
-import { DrawerOptions } from './types';
+import { DrawerOptions, DrawerSize } from './types';
 
 const DRAWER_OVERLAY_CLASS = 'aui-drawer-overlay';
+const DEFAULT_OPTIONS: DrawerOptions = {
+  size: DrawerSize.Medium,
+  offsetY: '0',
+  showClose: true,
+  hideOnClickOutside: false,
+  divider: true,
+  disposeWhenHide: true,
+};
 
 @Injectable()
 export class DrawerService<
@@ -38,7 +46,10 @@ export class DrawerService<
   }
 
   updateOptions(options: DrawerOptions<T, C>): void {
-    this.options = options;
+    this.options = {
+      ...(DEFAULT_OPTIONS as DrawerOptions<T, C>),
+      ...options,
+    };
   }
 
   private createOverlay() {
@@ -93,6 +104,7 @@ export class DrawerService<
     drawerInternalComponentRef.instance.animationStep$.subscribe(step => {
       if (step === 'hideDone') {
         this.invisible$.next();
+        this.options.disposeWhenHide && this.dispose();
         this.overlayRef?.getConfig().scrollStrategy.disable();
       }
     });
@@ -109,12 +121,17 @@ export class DrawerService<
     });
   }
 
-  ngOnDestroy(): void {
-    this.invisible$.next();
+  private dispose() {
     if (this.overlayRef) {
       this.overlayRef.getConfig().scrollStrategy.disable();
       this.overlayRef.dispose();
       this.overlayRef = null;
     }
+    this.drawerInternalComponentRef = null;
+  }
+
+  ngOnDestroy(): void {
+    this.invisible$.next();
+    this.dispose();
   }
 }

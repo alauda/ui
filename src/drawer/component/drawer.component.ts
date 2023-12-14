@@ -42,10 +42,10 @@ export class DrawerComponent<
   footer: string | TemplateRef<C>;
 
   @Input()
-  size: DrawerSize = DrawerSize.Medium;
+  size: DrawerSize;
 
   @Input()
-  offsetY = '0px';
+  offsetY: string;
 
   @Input()
   visible: boolean;
@@ -54,10 +54,10 @@ export class DrawerComponent<
   content: TemplateRef<C> | ComponentType<T>;
 
   @Input()
-  hideOnClickOutside = false;
+  hideOnClickOutside: boolean;
 
   @Input()
-  showClose = true;
+  showClose: boolean;
 
   @Input()
   drawerClass: string;
@@ -69,13 +69,16 @@ export class DrawerComponent<
   maskClosable: boolean;
 
   @Input()
-  divider = true;
+  divider: boolean;
 
   @Input()
   width: number;
 
   @Input()
   contentParams: C;
+
+  @Input()
+  disposeWhenHide = false;
 
   @Output()
   readonly close = new EventEmitter<R>();
