@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.3.1
+
+### Patch Changes
+
+- [#531](https://github.com/alauda/ui/pull/531) [`780dfb2`](https://github.com/alauda/ui/commit/780dfb2830a0cbac327496e13934240760ea36fc) Thanks [@igauch](https://github.com/igauch)! - - fix: no default config for using service mode
+  - fix: not auto destroy when hiding for using service mode
+
 ## 7.3.0
 
 ### Minor Changes
