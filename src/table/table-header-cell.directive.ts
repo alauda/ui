@@ -1,9 +1,7 @@
 import { CdkColumnDef, CdkHeaderCell } from '@angular/cdk/table';
 import { Directive, ElementRef } from '@angular/core';
 
-import { buildBem } from '../utils';
-
-const bem = buildBem('aui-table');
+import { tableBem } from './table.component';
 
 /** Header cell template container that adds the right classes and role. */
 @Directive({
@@ -19,7 +17,7 @@ export class TableHeaderCellDirective extends CdkHeaderCell {
   constructor(columnDef: CdkColumnDef, elementRef: ElementRef<HTMLElement>) {
     super(columnDef, elementRef);
     elementRef.nativeElement.classList.add(
-      bem.element(`column-${columnDef.cssClassFriendlyName}`),
+      tableBem.element(`column-${columnDef.cssClassFriendlyName}`),
     );
   }
 }

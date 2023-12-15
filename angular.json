@@ -74,7 +74,8 @@
             "browserTarget": "storybook:build",
             "compodoc": true,
             "compodocArgs": ["-e", "json", "-d", "."],
-            "outputDir": "dist"
+            "outputDir": "dist",
+            "enableProdMode": false // FIXME: https://github.com/storybookjs/storybook/issues/23534
           }
         }
       }

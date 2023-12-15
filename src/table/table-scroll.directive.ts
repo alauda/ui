@@ -6,6 +6,7 @@ import {
   ElementRef,
   Host,
   HostBinding,
+  inject,
   Input,
   NgZone,
   OnDestroy,
@@ -23,15 +24,13 @@ import {
   BehaviorSubject,
 } from 'rxjs';
 
-import { coerceAttrBoolean, observeResizeOn } from '../utils';
+import { buildBem, coerceAttrBoolean, observeResizeOn } from '../utils';
 
-import { TableComponent } from './table.component';
+import { tableBem, TableComponent } from './table.component';
 
-const CLASS_PREFIX = 'aui-table';
-const SHADOW_CLASS = `${CLASS_PREFIX}__scroll-shadow`;
-const HAS_SCROLL_CLASS = `${SHADOW_CLASS}--has-scroll`;
-const SCROLLING_CLASS = `${SHADOW_CLASS}--scrolling`;
-const SCROLL_BEFORE_END_CLASS = `${SHADOW_CLASS}--before-end`;
+const shadowClass = tableBem.element('scroll-shadow');
+const shadowBem = buildBem(shadowClass);
+const scrollBeforeEndClass = shadowBem.modifier('before-end');
 
 const HAS_TABLE_TOP_SHADOW = 'hasTableTopShadow';
 const HAS_TABLE_BOTTOM_SHADOW = 'hasTableBottomShadow';
@@ -48,6 +47,8 @@ export class TableScrollWrapperDirective {
   @HostBinding('style.max-height')
   @Input()
   auiTableScrollWrapper = '100%';
+
+  elementRef = inject(ElementRef);
 }
 
 @Directive({
@@ -86,11 +87,8 @@ export class TableScrollableDirective
     super(el, scrollDispatcher, ngZone, dir);
   }
 
-  @HostBinding(`class.${SCROLL_BEFORE_END_CLASS}`)
-  SCROLL_BEFORE_END_CLASS = true;
-
-  @HostBinding(`class.${SHADOW_CLASS}`)
-  SHADOW_CLASS = true;
+  @HostBinding('class')
+  className = `${scrollBeforeEndClass} ${shadowClass}`;
 
   get containerEl() {
     return this.el.nativeElement;
@@ -168,19 +166,19 @@ export class TableScrollableDirective
     this.placeClassList(
       this.containerEl.classList,
       scrollDis > 0,
-      HAS_SCROLL_CLASS,
+      shadowBem.modifier('has-scroll'),
     );
 
     const scrollLeft = this.containerEl.scrollLeft;
     this.placeClassList(
       this.containerEl.classList,
       scrollLeft > 0,
-      SCROLLING_CLASS,
+      shadowBem.modifier('scrolling'),
     );
     this.placeClassList(
       this.containerEl.classList,
       scrollLeft < scrollDis,
-      SCROLL_BEFORE_END_CLASS,
+      scrollBeforeEndClass,
     );
   }
 
