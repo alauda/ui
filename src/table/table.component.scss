@@ -2,6 +2,7 @@
 @import '../theme/mixin';
 
 .aui-table {
+  position: relative;
   display: block;
   padding: 0 $table-padding $table-padding;
   @include text-set(m, main);
@@ -40,7 +41,7 @@
       border-top-right-radius: use-var(border-radius-l);
     }
 
-    &:last-child {
+    &:last-of-type {
       border-bottom-width: 1px;
       min-height: $table-row-min-height;
       border-bottom-left-radius: use-var(border-radius-l);
@@ -71,6 +72,7 @@
     display: flex;
     align-items: center;
     flex: 1;
+    position: relative;
   }
 
   &__cell {
@@ -133,5 +135,61 @@
         }
       }
     }
+  }
+}
+
+.aui-table-column-resizable {
+  &__handle {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 5px;
+    color: use-rgb(n-7);
+    cursor: col-resize;
+
+    &:after {
+      content: '';
+      display: block;
+      margin: $table-padding 0 $table-padding auto;
+      width: 1px;
+      height: calc(100% - #{$table-padding} * 2);
+      background-color: currentcolor;
+    }
+
+    &:hover {
+      color: use-rgb(primary);
+    }
+  }
+
+  &__mark-line {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: use-rgb(primary);
+    z-index: 9999;
+    cursor: col-resize;
+  }
+
+  &__overlay {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 9000;
+    cursor: col-resize;
+  }
+}
+
+aui-table.aui-table__scroll-shadow--has-scroll {
+  aui-table-header-cell.aui-table-sticky-border-elem-left
+    .aui-table-column-resizable__handle {
+    transform: translateX(-20px);
+  }
+
+  .aui-table-column-resizable__mark-line.inStickyBorderElemLeft {
+    transform: translateX(-20px);
   }
 }

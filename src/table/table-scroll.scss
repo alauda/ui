@@ -7,6 +7,7 @@ $stickyCssClass: 'aui-table-sticky';
 
 // style for column shadow
 .aui-table__scroll-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   max-height: 100%;

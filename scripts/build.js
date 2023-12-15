@@ -11,9 +11,10 @@ const watch = process.argv.includes('--watch');
 
 const debugNgPackage = '../ng-package.debug.json';
 
-const dest = (isDebug ? require(debugNgPackage).dest : 'release') + '/theme';
+const releaseDest = isDebug ? require(debugNgPackage).dest : 'release';
 
 function copyResources() {
+  const themeDest = path.resolve(releaseDest, 'theme');
   gulp
     .src([
       'src/theme/_base-var.scss',
@@ -22,12 +23,12 @@ function copyResources() {
       'src/theme/_theme-preset.scss',
       'src/theme/_mixin.scss',
     ])
-    .pipe(gulp.dest(dest));
+    .pipe(gulp.dest(themeDest));
 
   gulp
     .src('src/theme/style.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(dest));
+    .pipe(gulp.dest(themeDest));
 }
 
 const packagr = ngPackagr

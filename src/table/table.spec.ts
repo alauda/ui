@@ -3,11 +3,8 @@ import { Component, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { buildBem } from '../utils';
-
-import { TableComponent, TableModule } from '.';
-
-const bem = buildBem('aui-table');
+import { TableComponent, tableBem } from './table.component';
+import { TableModule } from './table.module';
 
 describe('Table', () => {
   beforeEach(() => {
@@ -138,20 +135,20 @@ function getElements(element: Element, query: string) {
 }
 
 function getHeaderRow(tableElement: Element): Element {
-  return tableElement.querySelector(`.${bem.element('header-row')}`);
+  return tableElement.querySelector(`.${tableBem.element('header-row')}`);
 }
 
 function getRows(tableElement: Element): Element[] {
-  return getElements(tableElement, `.${bem.element('row')}`);
+  return getElements(tableElement, `.${tableBem.element('row')}`);
 }
 function getCells(row: Element): Element[] {
-  return row ? getElements(row, `.${bem.element('cell')}`) : [];
+  return row ? getElements(row, `.${tableBem.element('cell')}`) : [];
 }
 
 function getHeaderCells(tableElement: Element): Element[] {
   return getElements(
     getHeaderRow(tableElement),
-    `.${bem.element('header-cell')}`,
+    `.${tableBem.element('header-cell')}`,
   );
 }
 

@@ -1,9 +1,10 @@
-export * from './table.component';
+export { TableComponent } from './table.component';
 export * from './table.module';
 export * from './table-cell.component';
 export * from './table-cell.directive';
 export * from './table-cell-def.directive';
 export * from './table-column-def.directive';
+export * from './table-column-resizable.directive';
 export * from './table-header-cell.directive';
 export * from './table-header-cell-def.directive';
 export * from './table-header-row.component';

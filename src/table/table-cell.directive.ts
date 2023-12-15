@@ -1,9 +1,7 @@
 import { CdkCell, CdkColumnDef } from '@angular/cdk/table';
 import { Directive, ElementRef, Input } from '@angular/core';
 
-import { buildBem } from '../utils';
-
-const bem = buildBem('aui-table');
+import { tableBem } from './table.component';
 
 /** Cell template container that adds the right classes and role. */
 @Directive({
@@ -23,7 +21,7 @@ export class TableCellDirective extends CdkCell {
   constructor(columnDef: CdkColumnDef, elementRef: ElementRef<HTMLElement>) {
     super(columnDef, elementRef);
     elementRef.nativeElement.classList.add(
-      bem.element(`column-${columnDef.cssClassFriendlyName}`),
+      tableBem.element(`column-${columnDef.cssClassFriendlyName}`),
     );
   }
 }

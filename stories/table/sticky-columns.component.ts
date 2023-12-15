@@ -25,7 +25,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           auiTableColumnDef="no"
           [sticky]="true"
         >
-          <aui-table-header-cell *auiTableHeaderCellDef>
+          <aui-table-header-cell
+            *auiTableHeaderCellDef
+            auiTableColumnResizable
+          >
             No.
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">{{
@@ -36,7 +39,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           auiTableColumnDef="cell1"
           [sticky]="true"
         >
-          <aui-table-header-cell *auiTableHeaderCellDef>
+          <aui-table-header-cell
+            *auiTableHeaderCellDef
+            auiTableColumnResizable
+          >
             header cell
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">
@@ -68,7 +74,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </aui-table-cell>
         </ng-container>
         <ng-container auiTableColumnDef="cell5">
-          <aui-table-header-cell *auiTableHeaderCellDef>
+          <aui-table-header-cell
+            *auiTableHeaderCellDef
+            auiTableColumnResizable
+          >
             header cell
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">
@@ -100,7 +109,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           </aui-table-cell>
         </ng-container>
         <ng-container auiTableColumnDef="cell9">
-          <aui-table-header-cell *auiTableHeaderCellDef>
+          <aui-table-header-cell
+            *auiTableHeaderCellDef
+            auiTableColumnResizable
+          >
             header cell
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">
@@ -111,7 +123,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           auiTableColumnDef="cell10"
           stickyEnd
         >
-          <aui-table-header-cell *auiTableHeaderCellDef>
+          <aui-table-header-cell
+            *auiTableHeaderCellDef
+            auiTableColumnResizable
+          >
             header cell
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">
@@ -126,7 +141,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             {{ item[11] }}
           </aui-table-cell> </ng-container
         ><ng-container auiTableColumnDef="cell12">
-          <aui-table-header-cell *auiTableHeaderCellDef>
+          <aui-table-header-cell
+            *auiTableHeaderCellDef
+            auiTableColumnResizable
+          >
             header cell12
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">

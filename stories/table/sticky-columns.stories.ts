@@ -8,6 +8,7 @@ import {
   IconModule,
   ScrollingModule,
   SortModule,
+  TableColumnResizableDirective,
   TableModule,
 } from '@alauda/ui';
 
@@ -24,6 +25,7 @@ const meta: Meta<StickyColumnsDemoComponent> = {
         ScrollingModule,
         TableModule,
         ButtonModule,
+        TableColumnResizableDirective,
       ],
     }),
   ],

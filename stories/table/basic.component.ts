@@ -6,7 +6,10 @@ import { DATA_SOURCE } from './data';
   template: `
     <aui-table [dataSource]="dataSource">
       <ng-container auiTableColumnDef="id">
-        <aui-table-header-cell *auiTableHeaderCellDef>
+        <aui-table-header-cell
+          *auiTableHeaderCellDef
+          auiTableColumnResizable
+        >
           No.
         </aui-table-header-cell>
         <aui-table-cell *auiTableCellDef="let item">

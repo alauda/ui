@@ -15,16 +15,23 @@ import {
   ChangeDetectionStrategy,
   Component,
   ContentChild,
+  ElementRef,
+  HostBinding,
+  inject,
   Input,
   OnDestroy,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 
+import { buildBem } from '../utils';
+
 import {
   TablePlaceholderDefDirective,
   TablePlaceholderOutletDirective,
 } from './table-placeholder.directive';
+
+export const tableBem = buildBem('aui-table');
 
 @Component({
   selector: 'aui-table',
@@ -34,9 +41,6 @@ import {
   template:
     CDK_TABLE_TEMPLATE +
     '<ng-container auiTablePlaceholderOutlet></ng-container>',
-  host: {
-    class: 'aui-table',
-  },
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
@@ -69,6 +73,11 @@ export class TableComponent<T>
   @ContentChild(TablePlaceholderDefDirective, { static: true })
   _placeholderDef: TablePlaceholderDefDirective;
 
+  @HostBinding('class')
+  className = tableBem.block();
+
+  elementRef = inject(ElementRef);
+
   // FIXME: workaround to override because it will break constructor if it is field, but why MatTable works?
   // @ts-ignore
   protected get stickyCssClass() {
@@ -85,12 +94,13 @@ export class TableComponent<T>
 
   private _createPlaceholder() {
     const footerRow = this._placeholderDef;
-    if (!this._placeholderDef) {
+    if (!footerRow) {
       return;
     }
 
-    const container = this._placeholderOutlet.viewContainer;
-    container.createEmbeddedView(footerRow.templateRef);
+    this._placeholderOutlet.viewContainer.createEmbeddedView(
+      footerRow.templateRef,
+    );
   }
 
   private _clearPlaceholder() {

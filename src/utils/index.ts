@@ -5,4 +5,5 @@ export * from './fn';
 export * from './observe-dom';
 export * from './operators';
 export * from './scroll-into-view';
+export * from './styles-renderer';
 export * from './watch-content-exist';

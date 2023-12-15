@@ -1,8 +1,4 @@
-import { CdkTableModule } from '@angular/cdk/table';
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-import { IconModule } from '../icon/icon.module';
 
 import { TableCellDefDirective } from './table-cell-def.directive';
 import {
@@ -11,6 +7,7 @@ import {
 } from './table-cell.component';
 import { TableCellDirective } from './table-cell.directive';
 import { TableColumnDefDirective } from './table-column-def.directive';
+import { TableColumnResizableDirective } from './table-column-resizable.directive';
 import { TableHeaderCellDefDirective } from './table-header-cell-def.directive';
 import { TableHeaderCellDirective } from './table-header-cell.directive';
 import { TableHeaderRowDefDirective } from './table-header-row-def.directive';
@@ -27,49 +24,6 @@ import {
 } from './table-scroll.directive';
 import { TableComponent } from './table.component';
 
-@NgModule({
-  imports: [
-    CommonModule,
-    IconModule,
-    CdkTableModule,
-    TableComponent,
-    TableRowComponent,
-    TableHeaderRowComponent,
-    TableExpandButtonCellComponent,
-    TableExpandPanelCellComponent,
-    TableCellDirective,
-    TableCellDefDirective,
-    TableHeaderCellDirective,
-    TableRowDefDirective,
-    TableHeaderRowDefDirective,
-    TableHeaderCellDefDirective,
-    TableColumnDefDirective,
-    TableScrollableDirective,
-    TablePlaceholderOutletDirective,
-    TablePlaceholderDefDirective,
-    TableScrollWrapperDirective,
-  ],
-  exports: [
-    TableComponent,
-    TableRowComponent,
-    TableHeaderRowComponent,
-    TableExpandButtonCellComponent,
-    TableExpandPanelCellComponent,
-    TableCellDirective,
-    TableCellDefDirective,
-    TableHeaderCellDirective,
-    TableRowDefDirective,
-    TableHeaderRowDefDirective,
-    TableHeaderCellDefDirective,
-    TableColumnDefDirective,
-    TableScrollableDirective,
-    TablePlaceholderOutletDirective,
-    TablePlaceholderDefDirective,
-    TableScrollWrapperDirective,
-  ],
-})
-export class TableModule {}
-
 export const TABLE_MODULE = [
   TableComponent,
   TableRowComponent,
@@ -83,8 +37,15 @@ export const TABLE_MODULE = [
   TableHeaderRowDefDirective,
   TableHeaderCellDefDirective,
   TableColumnDefDirective,
-  TableScrollableDirective,
+  TableColumnResizableDirective,
   TablePlaceholderOutletDirective,
   TablePlaceholderDefDirective,
   TableScrollWrapperDirective,
+  TableScrollableDirective,
 ] as const;
+
+@NgModule({
+  imports: [...TABLE_MODULE],
+  exports: [...TABLE_MODULE],
+})
+export class TableModule {}

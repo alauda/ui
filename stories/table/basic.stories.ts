@@ -9,6 +9,7 @@ import {
   ScrollingModule,
   SortModule,
   TableModule,
+  TableColumnResizableDirective,
 } from '@alauda/ui';
 
 const meta: Meta<TableBasicComponent> = {
@@ -24,6 +25,7 @@ const meta: Meta<TableBasicComponent> = {
         ScrollingModule,
         TableModule,
         ButtonModule,
+        TableColumnResizableDirective,
       ],
     }),
   ],
