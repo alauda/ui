@@ -8,14 +8,6 @@ import { DrawerRef } from './drawer-ref';
 import { DrawerOptions, DrawerSize } from './types';
 
 const DRAWER_OVERLAY_CLASS = 'aui-drawer-overlay';
-const DEFAULT_OPTIONS: DrawerOptions = {
-  size: DrawerSize.Medium,
-  offsetY: '0',
-  showClose: true,
-  hideOnClickOutside: false,
-  divider: true,
-  disposeWhenHide: true,
-};
 
 @Injectable()
 export class DrawerService<
@@ -30,6 +22,15 @@ export class DrawerService<
   private drawerInternalComponentRef: ComponentRef<
     DrawerInternalComponent<T, C>
   >;
+
+  private readonly DEFAULT_OPTIONS: DrawerOptions<T, C> = {
+    size: DrawerSize.Medium,
+    offsetY: '0',
+    showClose: true,
+    hideOnClickOutside: false,
+    divider: true,
+    disposeWhenHide: true,
+  };
 
   constructor(private readonly overlay: Overlay) {}
 
@@ -46,10 +47,7 @@ export class DrawerService<
   }
 
   updateOptions(options: DrawerOptions<T, C>): void {
-    this.options = {
-      ...(DEFAULT_OPTIONS as DrawerOptions<T, C>),
-      ...options,
-    };
+    this.options = merge<DrawerOptions<T, C>>(this.DEFAULT_OPTIONS, options);
   }
 
   private createOverlay() {
@@ -134,4 +132,19 @@ export class DrawerService<
     this.invisible$.next();
     this.dispose();
   }
+}
+
+function merge<T extends object>(target: T, source: T) {
+  return Object.keys(source).reduce(
+    (acc, _key) => {
+      const key = _key as keyof T;
+      if (source[key] !== undefined) {
+        acc[key] = source[key];
+      }
+      return acc;
+    },
+    {
+      ...target,
+    },
+  );
 }
