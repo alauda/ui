@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.3.2
+
+### Patch Changes
+
+- [#535](https://github.com/alauda/ui/pull/535) [`18ab9e9`](https://github.com/alauda/ui/commit/18ab9e90fe4068b188f00a0d74a72a2b465789bf) Thanks [@igauch](https://github.com/igauch)! - - fix(drawer): no default config when using component mode
+  - feat(drawer): template context support contentParams as $implicit
+
 ## 7.3.1
 
 ### Patch Changes
