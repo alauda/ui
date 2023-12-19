@@ -119,6 +119,13 @@ export class DrawerInternalComponent<T = unknown, C extends object = object> {
     );
   }
 
+  get context() {
+    return {
+      $implicit: this.options.contentParams,
+      ...this.options.contentParams,
+    };
+  }
+
   isTemplateRef = isTemplateRef;
 
   constructor(private readonly injector: Injector) {}

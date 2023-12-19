@@ -20,7 +20,7 @@
           <ng-container
             *ngIf="isTemplateRef(options.title); else normal"
             [ngTemplateOutlet]="options.title"
-            [ngTemplateOutletContext]="options.contentParams"
+            [ngTemplateOutletContext]="context"
           ></ng-container>
           <ng-template #normal>
             {{ options.title }}
@@ -42,7 +42,7 @@
         <ng-container
           *ngIf="isTemplateRef(options.content)"
           [ngTemplateOutlet]="options.content"
-          [ngTemplateOutletContext]="options.contentParams"
+          [ngTemplateOutletContext]="context"
         >
         </ng-container>
       </div>
@@ -54,7 +54,7 @@
         <ng-container
           *ngIf="isTemplateRef(options.footer); else normal"
           [ngTemplateOutlet]="options.footer"
-          [ngTemplateOutletContext]="options.contentParams"
+          [ngTemplateOutletContext]="context"
         ></ng-container>
         <ng-template #normal>
           {{ options.footer }}

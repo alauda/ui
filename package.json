@@ -106,7 +106,7 @@
     "zone.js": "^0.13.1"
   },
   "resolutions": {
-    "prettier": "~2.7.1"
+    "prettier": "~2.8.8"
   },
   "publishConfig": {
     "access": "public",
