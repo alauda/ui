@@ -31,7 +31,7 @@
     @include text-overflow;
   }
 
-  &__input.aui-input[readonly] {
+  &__input-inaction {
     background-color: use-rgb(main-bg);
     border-color: use-rgb(n-7) !important;
     cursor: text;
@@ -41,7 +41,7 @@
     }
   }
 
-  &__input.aui-input[disabled] {
+  &__input[disabled] {
     background-color: use-rgb(n-8);
     border-color: use-rgb(n-7);
   }

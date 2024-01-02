@@ -1,5 +1,12 @@
 <div
   [class]="rootClass"
+  [ngClass]="{
+    isDisabled: disabled,
+    isFocused: focused,
+    isClearable: displayClearBtn,
+    withHeightLimit: maxRowCount > 0,
+    isReadonly: readonly
+  }"
   #selectRef
   #tooltipRef="auiTooltip"
   [auiTooltip]="templateRef"
@@ -53,7 +60,7 @@
   <input
     #inputRef
     autocomplete="off"
-    [readonly]="inputReadonly"
+    [readonly]="readonly"
     [class]="inputClass"
     (focus)="onInputFocus()"
     (blur)="onInputBlur()"

@@ -15,6 +15,7 @@ import { SelectModule } from 'src/select';
       [disabled]="disabled"
       [clearable]="clearable"
       [filterable]="filterable"
+      [readonly]="readonly"
       placeholder="select a value"
     >
       <ng-container *auiOptionContent>
@@ -59,9 +60,15 @@ export default class SelectBasicComponent {
   @Input()
   filterable = true;
 
+  /**
+   * 是否只读
+   */
+  @Input()
+  readonly = false;
+
   arr = Array.from({ length: 11 })
     .fill(null)
     .map((_, i) => `option${i + 1}`);
 
-  value = '';
+  value = 'option1';
 }

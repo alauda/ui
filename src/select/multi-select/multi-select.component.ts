@@ -137,11 +137,7 @@ export class MultiSelectComponent<T = unknown>
 
   get rootClass() {
     const size = this.size || ComponentSize.Medium;
-    return `aui-input ${this.bem.block(size)} ${
-      this.disabled ? 'isDisabled' : ''
-    } ${this.focused ? 'isFocused' : ''} ${
-      this.displayClearBtn ? 'isClearable' : ''
-    } ${this.maxRowCount > 0 ? 'withHeightLimit' : ''}`;
+    return `aui-input ${this.bem.block(size)}`;
   }
 
   get tagSize() {
@@ -152,7 +148,7 @@ export class MultiSelectComponent<T = unknown>
 
   get inputClass() {
     return `${this.bem.element('input', {
-      hidden: this.inputReadonly,
+      hidden: this.inaction,
     })} aui-tag aui-tag--${this.tagSize}`;
   }
 
