@@ -49,4 +49,13 @@ $block: aui-multi-select;
   .aui-tag--info {
     background-color: use-rgb(n-10);
   }
+
+  &.isReadonly {
+    cursor: default;
+
+    .aui-tag {
+      color: use-text-color(main);
+      background-color: use-rgb(n-10);
+    }
+  }
 }

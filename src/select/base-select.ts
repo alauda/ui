@@ -92,7 +92,7 @@ export abstract class BaseSelect<T, V = T>
     return this.tooltipRef.isCreated;
   }
 
-  get inputReadonly() {
+  get inaction() {
     return !(this.filterable && this.opened);
   }
 

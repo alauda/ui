@@ -23,5 +23,6 @@ export const Basic: Story = {
     loading: false,
     clearable: false,
     filterable: true,
+    readonly: false,
   },
 };

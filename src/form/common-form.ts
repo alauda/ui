@@ -24,15 +24,16 @@ export class CommonFormControl<V, M = V> implements ControlValueAccessor {
   }
 
   set disabled(val: boolean | '') {
-    this._disabled = coerceAttrBoolean(val);
+    this._disabled = this._readonly || coerceAttrBoolean(val);
   }
 
   @Input()
   get readonly() {
-    return this.disabled;
+    return this._readonly;
   }
 
   set readonly(val) {
+    this._readonly = coerceAttrBoolean(val);
     this.disabled = val;
   }
 
@@ -56,6 +57,7 @@ export class CommonFormControl<V, M = V> implements ControlValueAccessor {
   protected onTouched: () => void;
   private _propValue: V;
   private _disabled = false;
+  private _readonly: boolean;
 
   model: M = null;
   model$ = new ReplaySubject<M>(1);

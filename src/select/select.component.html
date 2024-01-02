@@ -18,11 +18,12 @@
     <input
       #inputRef
       class="aui-select__input"
+      [class.aui-select__input-inaction]="inaction"
       autocomplete="off"
       aui-input
       [disabled]="disabled"
       [size]="size"
-      [readonly]="inputReadonly"
+      [readonly]="readonly"
       [placeholder]="!(hasSelected$ | async) ? placeholder : ''"
       (input)="onInput($event)"
       (keydown)="onKeyDown($event)"
@@ -46,6 +47,7 @@
       *ngIf="(selectedOption$ | async) && !filterString"
       class="aui-select__label-container aui-input aui-input--{{ size }}"
       [attr.disabled]="disabled ? true : null"
+      [attr.readonly]="readonly ? true : null"
     >
       <div class="aui-select__label">
         <ng-container *ngIf="(selectedOption$ | async).label as optionLabel">
