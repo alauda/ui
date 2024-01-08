@@ -1,5 +1,5 @@
 {
-  "node": "16",
+  "node": "20",
   "publishDirectory": {
     "@alauda/ui": "release"
   },

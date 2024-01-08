@@ -1,52 +1,24 @@
 import 'jest-preset-angular/setup-jest';
 
-import { getTestBed } from '@angular/core/testing';
-import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
-} from '@angular/platform-browser-dynamic/testing';
-
-getTestBed().resetTestEnvironment();
-getTestBed().initTestEnvironment(
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting(),
-  { teardown: { destroyAfterEach: false } },
-);
-
-Object.defineProperty(document, 'doctype', {
-  value: '<!DOCTYPE html>',
-});
-
-Object.defineProperty(window, 'CSS', { value: null });
-
-Object.defineProperty(window, 'getComputedStyle', {
-  value() {
-    return {
-      display: 'none',
-      appearance: ['-webkit-appearance'],
-    };
+// @ts-expect-error https://thymikee.github.io/jest-preset-angular/docs/getting-started/test-environment
+globalThis.ngJest = {
+  testEnvironmentOptions: {
+    errorOnUnknownElements: true,
+    errorOnUnknownProperties: true,
   },
-});
+};
 
+// https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
 Object.defineProperty(window, 'matchMedia', {
-  value() {
-    return {
-      matches: 'light',
-      addListener: () => undefined as void,
-      addEventListener: () => undefined as void,
-    };
-  },
-});
-
-/**
- * ISSUE: https://github.com/angular/material2/issues/7101
- * Workaround for JSDOM missing transform property
- */
-Object.defineProperty(document.body.style, 'transform', {
-  value() {
-    return {
-      enumerable: true,
-      configurable: true,
-    };
-  },
+  writable: true,
+  value: jest.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
 });
