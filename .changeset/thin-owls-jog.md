@@ -2,4 +2,4 @@
 "@alauda/ui": patch
 ---
 
-chore: add plus minus square icon
+chore: add plus/minus square icon
