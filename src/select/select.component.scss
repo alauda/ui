@@ -20,6 +20,10 @@
     pointer-events: none;
     background-color: transparent;
     border-color: transparent;
+
+    &[readonly] {
+      pointer-events: auto;
+    }
   }
 
   &.isFilterable.isOpened &__label-container.aui-input {
