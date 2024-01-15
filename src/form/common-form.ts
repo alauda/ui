@@ -20,11 +20,11 @@ import { coerceAttrBoolean } from '../utils';
 export class CommonFormControl<V, M = V> implements ControlValueAccessor {
   @Input()
   get disabled() {
-    return this._disabled;
+    return this._readonly || this._disabled;
   }
 
   set disabled(val: boolean | '') {
-    this._disabled = this._readonly || coerceAttrBoolean(val);
+    this._disabled = coerceAttrBoolean(val);
   }
 
   @Input()
