@@ -7,8 +7,6 @@ export interface I18NInterface {
   translation: Record<string, string>;
 }
 
-export type StringMap = Record<string, string>;
-
 export const I18NInterfaceToken = new InjectionToken('i18n token', {
   factory: () => en,
 });
