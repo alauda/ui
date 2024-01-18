@@ -28,7 +28,7 @@ import {
   delay,
 } from 'rxjs';
 
-import { sleep } from '../utils';
+import { sleep } from '../internal/utils';
 
 import { AnimationType } from './animations';
 import { TooltipComponent } from './tooltip.component';

@@ -8,11 +8,11 @@ import {
 } from '@angular/core';
 
 import { IconComponent } from '../../icon/icon.component';
+import { ComponentSize } from '../../internal/types';
+import { Bem, buildBem } from '../../internal/utils';
 import { TooltipTrigger } from '../../tooltip';
 import { TooltipActiveDirective } from '../../tooltip/tooltip-active.directive';
 import { TooltipDirective } from '../../tooltip/tooltip.directive';
-import { ComponentSize } from '../../types';
-import { Bem, buildBem } from '../../utils';
 import { MenuComponent } from '../menu/menu.component';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 

@@ -24,7 +24,7 @@ import {
 import { Subject, Subscription, merge } from 'rxjs';
 
 import { IconComponent } from '../icon/icon.component';
-import { Bem, buildBem } from '../utils';
+import { Bem, buildBem } from '../internal/utils';
 
 import {
   TabHeaderAddonDirective,

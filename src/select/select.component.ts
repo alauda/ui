@@ -25,8 +25,8 @@ import {
   InputSuffixDirective,
   InputGroupComponent,
 } from '../input';
+import { coerceString, publishRef } from '../internal/utils';
 import { TooltipDirective } from '../tooltip';
-import { coerceString, publishRef } from '../utils';
 
 import { BaseSelect } from './base-select';
 import { OptionComponent } from './option/option.component';

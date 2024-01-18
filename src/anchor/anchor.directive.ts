@@ -21,7 +21,7 @@ import {
 } from '@angular/core';
 import { Subject, fromEvent, merge, startWith, takeUntil } from 'rxjs';
 
-import { observeResizeOn } from '../utils';
+import { observeResizeOn } from '../internal/utils';
 
 import { AnchorComponent } from './anchor.component';
 

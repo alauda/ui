@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 
 import { IconComponent } from '../../icon/icon.component';
-import { Bem, buildBem } from '../../utils';
+import { Bem, buildBem } from '../../internal/utils';
 import { DialogRef } from '../dialog-ref';
 import { DialogService } from '../dialog.service';
 import { getClosestDialog } from '../utils';

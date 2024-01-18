@@ -9,7 +9,7 @@ import {
 } from '@angular/animations';
 
 import { AnimationDuration } from '../core/animation/animation-consts';
-import { getAnimationQueryMetadatas } from '../utils/animations';
+import { getAnimationQueryMetadatas } from '../internal/utils/animations';
 
 export const ZOOM_CLASS_NAME_MAP = {
   enter: 'aui-zoom-enter',

@@ -1,6 +1,6 @@
 import { ConfigType } from 'dayjs';
 
-import { isNumberValue } from '../utils';
+import { isNumberValue } from '../internal/utils';
 
 export enum TimePickerControlType {
   Hour = 'hour',

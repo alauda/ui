@@ -1,4 +1,4 @@
-import { ValueOf } from '../types';
+import { ValueOf } from '../internal/types';
 
 export const TabSize = {
   /** 卡片级尺寸 */

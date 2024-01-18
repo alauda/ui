@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { ComponentSize } from '../types';
-import { coerceAttrBoolean } from '../utils';
+import { ComponentSize } from '../internal/types';
+import { coerceAttrBoolean } from '../internal/utils';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector

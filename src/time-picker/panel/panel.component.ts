@@ -28,8 +28,8 @@ import { ButtonComponent } from '../../button/button.component';
 import { updateDateByTimeModel } from '../../date-picker/calendar/util';
 import { CommonFormControl } from '../../form/common-form';
 import { I18nPipe } from '../../i18n/i18n.pipe';
-import { ComponentSize } from '../../types';
-import { buildBem } from '../../utils';
+import { ComponentSize } from '../../internal/types';
+import { buildBem } from '../../internal/utils';
 import {
   CONTROL_ITEM_HEIGHT,
   HOUR_ITEMS,

@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 
 import { IconComponent } from '../icon/icon.component';
-import { Bem, buildBem } from '../utils';
+import { Bem, buildBem } from '../internal/utils';
 
 import { InlineAlertTitleDirective } from './helper-directives';
 import { InlineAlertType } from './inline-alert.types';

@@ -18,9 +18,9 @@ import { Observable } from 'rxjs';
 
 import { CommonFormControl } from '../../form';
 import { IconComponent } from '../../icon';
+import { ComponentSize } from '../../internal/types';
+import { Bem, buildBem, watchContentExist } from '../../internal/utils';
 import { ClickOutsideDirective } from '../../shared/click-outside.directive';
-import { ComponentSize } from '../../types';
-import { Bem, buildBem, watchContentExist } from '../../utils';
 import {
   InputAddonAfterDirective,
   InputAddonBeforeDirective,

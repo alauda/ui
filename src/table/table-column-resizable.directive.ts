@@ -18,7 +18,7 @@ import {
   takeUntil,
 } from 'rxjs';
 
-import { buildBem, getCompatibleStylesRenderer } from '../utils';
+import { buildBem, getCompatibleStylesRenderer } from '../internal/utils';
 
 import { TableColumnDefDirective } from './table-column-def.directive';
 import { tableBem, TableComponent } from './table.component';

@@ -14,7 +14,7 @@ import isBetween from 'dayjs/plugin/isBetween';
 
 import { ButtonComponent } from '../../../button/button.component';
 import { I18nPipe } from '../../../i18n/i18n.pipe';
-import { buildBem } from '../../../utils';
+import { buildBem } from '../../../internal/utils';
 import { DateNavRange } from '../../date-picker.type';
 import {
   DAY,

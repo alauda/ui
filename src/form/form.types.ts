@@ -1,4 +1,4 @@
-import { ValueOf } from '../types';
+import { ValueOf } from '../internal/types';
 
 export const LabelPosition = {
   Top: 'top',

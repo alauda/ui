@@ -23,7 +23,7 @@ import {
   tap,
 } from 'rxjs';
 
-import { buildBem, isTemplateRef, last } from '../utils';
+import { buildBem, isTemplateRef, last } from '../internal/utils';
 
 import { AnchorDirectiveChild } from './anchor.directive';
 import { AnchorItem, AnchorTreeItem } from './types';

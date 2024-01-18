@@ -15,7 +15,7 @@ import { Subscription, merge } from 'rxjs';
  * TODO: prevent ```public property '' of exported class has or is using name ''
  * from external module '' but cannot be named``` issue.
  */
-import { Bem, buildBem } from '../utils';
+import { Bem, buildBem } from '../internal/utils';
 
 import { getSortHeaderNotContainedWithinSortError } from './sort-errors';
 import { SortDirective } from './sort.directive';

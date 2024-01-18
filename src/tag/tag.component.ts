@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 
 import { IconComponent } from '../icon/icon.component';
-import { ComponentSize } from '../types';
-import { Bem, buildBem } from '../utils';
+import { ComponentSize } from '../internal/types';
+import { Bem, buildBem } from '../internal/utils';
 
 import { TagType } from './tag.types';
 

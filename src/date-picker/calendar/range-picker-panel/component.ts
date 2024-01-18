@@ -13,9 +13,9 @@ import dayjs, { Dayjs } from 'dayjs';
 
 import { CommonFormControl } from '../../../form/common-form';
 import { I18nPipe } from '../../../i18n/i18n.pipe';
+import { buildBem } from '../../../internal/utils';
 import { TimePickerComponent } from '../../../time-picker/component';
 import { TimePickerModel } from '../../../time-picker/time-picker.type';
-import { buildBem } from '../../../utils';
 import { DateNavRange, DisabledTimeFn, Side } from '../../date-picker.type';
 import { DatePickerType, MONTH, YEAR } from '../constant';
 import { CalendarFooterComponent } from '../footer/component';

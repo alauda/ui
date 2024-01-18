@@ -16,6 +16,19 @@ export * from './i18n';
 export * from './icon';
 export * from './inline-alert';
 export * from './input';
+export { ComponentSize } from './internal/types';
+export {
+  AttrBoolean,
+  Bem,
+  buildBem,
+  coerceAttrBoolean,
+  coerceString,
+  getCompatibleStylesRenderer,
+  handlePixel,
+  isTemplateRef,
+  observeMutationOn,
+  observeResizeOn,
+} from './internal/utils';
 export * from './message';
 export * from './notification';
 export * from './paginator';
@@ -34,14 +47,3 @@ export * from './theme';
 export * from './time-picker';
 export * from './tooltip';
 export * from './tree-select';
-export { ComponentSize } from './types';
-export {
-  AttrBoolean,
-  coerceAttrBoolean,
-  coerceString,
-  getCompatibleStylesRenderer,
-  handlePixel,
-  isTemplateRef,
-  observeMutationOn,
-  observeResizeOn,
-} from './utils';

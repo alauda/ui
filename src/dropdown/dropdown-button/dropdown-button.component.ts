@@ -15,8 +15,8 @@ import { Observable, map, startWith } from 'rxjs';
 import { ButtonType } from '../../button';
 import { ButtonComponent } from '../../button/button.component';
 import { IconComponent } from '../../icon/icon.component';
-import { ComponentSize } from '../../types';
-import { Bem, buildBem, coerceAttrBoolean } from '../../utils';
+import { ComponentSize } from '../../internal/types';
+import { Bem, buildBem, coerceAttrBoolean } from '../../internal/utils';
 import { DropdownDirective } from '../dropdown.directive';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 

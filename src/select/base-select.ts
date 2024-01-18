@@ -29,15 +29,15 @@ import {
 } from 'rxjs';
 
 import { CommonFormControl } from '../form';
-import { TooltipDirective } from '../tooltip';
-import { ComponentSize } from '../types';
+import { ComponentSize } from '../internal/types';
 import {
   coerceAttrBoolean,
   coerceString,
   isTemplateRef,
   publishRef,
   scrollIntoView,
-} from '../utils';
+} from '../internal/utils';
+import { TooltipDirective } from '../tooltip';
 
 import { OptionContentDirective } from './helper-directives';
 import { OptionComponent } from './option/option.component';

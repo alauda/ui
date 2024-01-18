@@ -6,8 +6,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
+import { Bem, buildBem, handlePixel } from '../internal/utils';
 import { ThemePickerPipe } from '../theme/theme.pipe';
-import { Bem, buildBem, handlePixel } from '../utils';
 
 import { IconRegisterService } from './icon-register.service';
 

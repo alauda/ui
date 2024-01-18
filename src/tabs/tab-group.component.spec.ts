@@ -8,7 +8,7 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { LifeCycle, LifeCycleDirective } from '../utils/life-cycle';
+import { LifeCycle, LifeCycleDirective } from '../internal/utils/life-cycle';
 
 import { TabContentDirective, TabLabelDirective } from './tab-body.component';
 import { TabChangeEvent, TabGroupComponent } from './tab-group.component';

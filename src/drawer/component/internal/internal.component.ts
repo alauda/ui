@@ -33,7 +33,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 
 import { TimingFunction } from '../../../core/animation/animation-consts';
 import { IconComponent } from '../../../icon/icon.component';
-import { handlePixel, isTemplateRef } from '../../../utils';
+import { handlePixel, isTemplateRef } from '../../../internal/utils';
 import { DrawerOptions, DrawerSize } from '../../types';
 
 export const DATA = new InjectionToken('drawer-data');

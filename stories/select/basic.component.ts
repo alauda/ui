@@ -2,7 +2,7 @@ import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { SelectModule } from 'src/select';
+import { SelectModule } from 'src';
 
 @Component({
   standalone: true,

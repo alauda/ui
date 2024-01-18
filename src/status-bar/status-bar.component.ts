@@ -9,8 +9,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
+import { Bem, buildBem } from '../internal/utils';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
-import { Bem, buildBem } from '../utils';
 
 import { Status, StatusBarSize } from './status-bar.types';
 
