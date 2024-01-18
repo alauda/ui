@@ -7,7 +7,6 @@ import {
 import { Subject, takeUntil } from 'rxjs';
 
 import { I18nService } from './i18n.service';
-import { StringMap } from './i18n.type';
 
 @Pipe({
   name: 'auiI18n',
@@ -26,7 +25,7 @@ export class I18nPipe implements PipeTransform, OnDestroy {
       .subscribe(() => this.cdr.markForCheck());
   }
 
-  transform(value: any, data?: StringMap) {
+  transform(value: any, data?: Record<string, string>) {
     return this.i18n.translate(value, data);
   }
 

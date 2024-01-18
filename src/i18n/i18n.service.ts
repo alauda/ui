@@ -1,7 +1,7 @@
 import { Inject, Injectable, isDevMode } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 
-import { I18NInterface, I18NInterfaceToken, StringMap } from './i18n.type';
+import { I18NInterface, I18NInterfaceToken } from './i18n.type';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +27,11 @@ export class I18nService {
     return this._i18n;
   }
 
-  translate(key: string, data?: StringMap, ignoreNonExist = false) {
+  translate(
+    key: string,
+    data?: Record<string, string>,
+    ignoreNonExist = false,
+  ) {
     let content = this._i18n.translation[key];
     if (content == null) {
       if (isDevMode() && !ignoreNonExist) {

@@ -34,5 +34,14 @@ export * from './theme';
 export * from './time-picker';
 export * from './tooltip';
 export * from './tree-select';
-export * from './types';
-export * from './utils';
+export { ComponentSize } from './types';
+export {
+  AttrBoolean,
+  coerceAttrBoolean,
+  coerceString,
+  getCompatibleStylesRenderer,
+  handlePixel,
+  isTemplateRef,
+  observeMutationOn,
+  observeResizeOn,
+} from './utils';
