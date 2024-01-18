@@ -29,10 +29,7 @@ export class CSSStyleSheetRenderer implements Renderer {
   render(styles: string): void {
     if (!this.styleSheet) {
       this.styleSheet = new CSSStyleSheet(this.options);
-      document.adoptedStyleSheets = [
-        ...document.adoptedStyleSheets,
-        this.styleSheet,
-      ];
+      document.adoptedStyleSheets.push(this.styleSheet);
     }
     this.styleSheet.replaceSync(styles);
   }
