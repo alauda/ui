@@ -34,8 +34,6 @@ import { IconComponent } from '../icon/icon.component';
 import { InputSuffixDirective } from '../input/helper-directives';
 import { InputGroupComponent } from '../input/input-group/input-group.component';
 import { InputComponent } from '../input/input.component';
-import { TrackFn } from '../select/select.types';
-import { TooltipDirective } from '../tooltip/tooltip.directive';
 import {
   Bem,
   buildBem,
@@ -43,7 +41,9 @@ import {
   coerceString,
   publishRef,
   scrollIntoView,
-} from '../utils';
+} from '../internal/utils';
+import { TrackFn } from '../select/select.types';
+import { TooltipDirective } from '../tooltip/tooltip.directive';
 
 import { TreeNode } from './tree-select.types';
 

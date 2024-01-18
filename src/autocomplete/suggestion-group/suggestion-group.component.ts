@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { Observable, combineLatest, of, map, startWith, switchMap } from 'rxjs';
 
-import { publishRef } from '../../utils';
+import { publishRef } from '../../internal/utils';
 import { SuggestionComponent } from '../suggestion/suggestion.component';
 
 @Component({

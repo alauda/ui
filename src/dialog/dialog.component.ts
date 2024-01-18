@@ -21,7 +21,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, filter, fromEvent } from 'rxjs';
 
-import { Bem, buildBem, getElementOffset } from '../utils';
+import { Bem, buildBem, getElementOffset } from '../internal/utils';
 
 import {
   dialogAnimations,

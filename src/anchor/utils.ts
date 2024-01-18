@@ -1,4 +1,4 @@
-import { last } from '../utils';
+import { last } from '../internal/utils';
 
 import { AnchorItem, AnchorTreeItem } from './types';
 

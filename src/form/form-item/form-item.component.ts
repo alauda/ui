@@ -24,7 +24,7 @@ import {
   takeUntil,
 } from 'rxjs';
 
-import { Bem, buildBem, publishRef } from '../../utils';
+import { Bem, buildBem, publishRef } from '../../internal/utils';
 import { FormDirective } from '../form.directive';
 import { FormItemWidth, LabelPosition } from '../form.types';
 import {

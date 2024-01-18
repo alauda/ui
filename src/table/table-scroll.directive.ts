@@ -24,7 +24,11 @@ import {
   BehaviorSubject,
 } from 'rxjs';
 
-import { buildBem, coerceAttrBoolean, observeResizeOn } from '../utils';
+import {
+  buildBem,
+  coerceAttrBoolean,
+  observeResizeOn,
+} from '../internal/utils';
 
 import { tableBem, TableComponent } from './table.component';
 

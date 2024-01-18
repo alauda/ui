@@ -20,7 +20,12 @@ import {
   tap,
 } from 'rxjs';
 
-import { Bem, buildBem, coerceAttrBoolean, publishRef } from '../../utils';
+import {
+  Bem,
+  buildBem,
+  coerceAttrBoolean,
+  publishRef,
+} from '../../internal/utils';
 import { AutocompleteComponent } from '../autocomplete.component';
 
 @Component({

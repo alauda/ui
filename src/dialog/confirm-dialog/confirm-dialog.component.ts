@@ -14,7 +14,7 @@ import { firstValueFrom, Observable } from 'rxjs';
 
 import { ButtonComponent } from '../../button/button.component';
 import { IconComponent } from '../../icon/icon.component';
-import { Bem, buildBem, isString, isTemplateRef } from '../../utils';
+import { Bem, buildBem, isString, isTemplateRef } from '../../internal/utils';
 import { DialogRef } from '../dialog-ref';
 import {
   BeforeAction,

@@ -12,7 +12,7 @@ import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MultiSelectComponent, SelectModule } from '..';
-import { ComponentSize } from '../../types';
+import { ComponentSize } from '../../internal/types';
 
 describe('multiSelectComponent', () => {
   let fixture: ComponentFixture<TestComponent>;

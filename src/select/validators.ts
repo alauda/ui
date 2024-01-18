@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { startWith } from 'rxjs';
 
-import { coerceAttrBoolean } from '../utils';
+import { coerceAttrBoolean } from '../internal/utils';
 
 import { SelectComponent } from './select.component';
 import { TrackFn } from './select.types';

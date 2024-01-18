@@ -24,7 +24,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { buildBem } from '../utils';
+import { buildBem } from '../internal/utils';
 
 import {
   TablePlaceholderDefDirective,

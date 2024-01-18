@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { ComponentSize } from 'src/types';
+import { ComponentSize } from 'src';
 
 @Component({
   template: `

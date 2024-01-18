@@ -13,8 +13,8 @@ import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
 
 import { CommonFormControl } from '../../form/common-form';
+import { ComponentSize } from '../../internal/types';
 import { TooltipDirective } from '../../tooltip/tooltip.directive';
-import { ComponentSize } from '../../types';
 import { DatePickerType } from '../calendar/constant';
 import { DatePickerPanelComponent } from '../calendar/date-picker-panel/component';
 import { DateNavRange, DisabledTimeFn } from '../date-picker.type';

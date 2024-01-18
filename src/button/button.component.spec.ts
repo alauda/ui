@@ -2,7 +2,7 @@ import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { ComponentSize } from '../types';
+import { ComponentSize } from '../internal/types';
 
 import { ButtonComponent } from './button.component';
 import { ButtonType } from './button.types';

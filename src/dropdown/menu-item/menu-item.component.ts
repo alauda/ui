@@ -5,7 +5,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { Bem, buildBem } from '../../utils';
+import { Bem, buildBem } from '../../internal/utils';
 import { MenuItemType } from '../dropdown.types';
 
 @Component({

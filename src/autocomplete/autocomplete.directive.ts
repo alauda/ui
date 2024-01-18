@@ -28,9 +28,9 @@ import {
   distinctUntilChanged,
 } from 'rxjs';
 
+import { scrollIntoView } from '../internal/utils';
 import { BaseTooltip, TooltipTrigger, TooltipType } from '../tooltip';
 import { AnimationType } from '../tooltip/animations';
-import { scrollIntoView } from '../utils';
 
 import { AutocompleteComponent } from './autocomplete.component';
 import { AutoCompleteContext, SuggestionFilterFn } from './autocomplete.types';

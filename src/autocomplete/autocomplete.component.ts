@@ -25,7 +25,7 @@ import {
   withLatestFrom,
 } from 'rxjs';
 
-import { publishRef } from '../utils';
+import { publishRef } from '../internal/utils';
 
 import { AutocompletePlaceholderComponent } from './autocomplete-placeholder.component';
 import { AutoCompleteDirective } from './autocomplete.directive';

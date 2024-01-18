@@ -1,4 +1,4 @@
-import { ComponentSize } from '../../types';
+import { ComponentSize } from '../../internal/types';
 
 function getRowHeight(size: ComponentSize) {
   switch (size) {

@@ -27,9 +27,9 @@ import {
 import { take } from 'rxjs';
 
 import { CommonFormControl } from '../../form';
+import { ComponentSize } from '../../internal/types';
+import { Bem, buildBem } from '../../internal/utils';
 import { TagComponent } from '../../tag/tag.component';
-import { ComponentSize } from '../../types';
-import { Bem, buildBem } from '../../utils';
 
 import { createWithMaxRowCount } from './with-max-row-count';
 

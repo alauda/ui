@@ -34,16 +34,16 @@ import {
 import { I18nPipe } from '../../i18n/i18n.pipe';
 import { IconComponent } from '../../icon/icon.component';
 import { createWithMaxRowCount } from '../../input/tags-input/with-max-row-count';
-import { TagComponent } from '../../tag/tag.component';
-import { TooltipDirective } from '../../tooltip/tooltip.directive';
-import { ComponentSize } from '../../types';
+import { ComponentSize } from '../../internal/types';
 import {
   Bem,
   buildBem,
   coerceAttrBoolean,
   coerceString,
   publishRef,
-} from '../../utils';
+} from '../../internal/utils';
+import { TagComponent } from '../../tag/tag.component';
+import { TooltipDirective } from '../../tooltip/tooltip.directive';
 import { BaseSelect } from '../base-select';
 import { OptionComponent } from '../option/option.component';
 import {

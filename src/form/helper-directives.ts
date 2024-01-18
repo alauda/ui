@@ -1,6 +1,6 @@
 import { Directive, Input } from '@angular/core';
 
-import { coerceAttrBoolean } from '../utils';
+import { coerceAttrBoolean } from '../internal/utils';
 
 @Directive({
   selector: 'label[auiFormItemLabel]',

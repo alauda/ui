@@ -20,8 +20,8 @@ import { IconComponent } from '../icon/icon.component';
 import { InputSuffixDirective } from '../input/helper-directives';
 import { InputGroupComponent } from '../input/input-group/input-group.component';
 import { InputComponent } from '../input/input.component';
+import { ComponentSize } from '../internal/types';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
-import { ComponentSize } from '../types';
 
 import { TimePickerPanelComponent } from './panel/panel.component';
 import {

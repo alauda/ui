@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { IconComponent } from '../../icon';
-import { ComponentSize } from '../../types';
+import { ComponentSize } from '../../internal/types';
 import { InputComponent } from '../input.component';
 
 import { INPUT_GROUP_MODULE } from './input-group.component';

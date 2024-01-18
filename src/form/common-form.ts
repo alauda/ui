@@ -8,7 +8,7 @@ import {
 import { ControlValueAccessor } from '@angular/forms';
 import { ReplaySubject } from 'rxjs';
 
-import { coerceAttrBoolean } from '../utils';
+import { coerceAttrBoolean } from '../internal/utils';
 
 /**
  * form control 内部不保持 value 属性，当不使用 ngModel 时可以通过 [(value)] 实现双向绑定；

@@ -18,7 +18,7 @@ import {
   BehaviorSubject,
 } from 'rxjs';
 
-import { Bem, buildBem, publishRef } from '../utils';
+import { Bem, buildBem, publishRef } from '../internal/utils';
 
 import { animations, AnimationType } from './animations';
 import { TooltipType } from './tooltip.types';

@@ -13,8 +13,8 @@ import { Dayjs } from 'dayjs';
 import { I18nPipe } from '../../i18n/i18n.pipe';
 import { IconComponent } from '../../icon/icon.component';
 import { InputComponent } from '../../input/input.component';
-import { ComponentSize } from '../../types';
-import { buildBem } from '../../utils';
+import { ComponentSize } from '../../internal/types';
+import { buildBem } from '../../internal/utils';
 
 const bem = buildBem('aui-date-picker-trigger');
 

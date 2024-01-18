@@ -5,8 +5,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { ComponentSize } from '../../types';
-import { Bem, buildBem } from '../../utils';
+import { ComponentSize } from '../../internal/types';
+import { Bem, buildBem } from '../../internal/utils';
 
 @Component({
   selector: 'aui-menu',

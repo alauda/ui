@@ -21,8 +21,13 @@ import {
 } from 'rxjs';
 
 import { IconComponent } from '../../icon/icon.component';
-import { ComponentSize } from '../../types';
-import { Bem, buildBem, coerceAttrBoolean, publishRef } from '../../utils';
+import { ComponentSize } from '../../internal/types';
+import {
+  Bem,
+  buildBem,
+  coerceAttrBoolean,
+  publishRef,
+} from '../../internal/utils';
 import { BaseSelect } from '../base-select';
 
 @Component({

@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Bem, buildBem, watchContentExist } from '../../utils';
+import { Bem, buildBem, watchContentExist } from '../../internal/utils';
 import {
   InputAddonAfterDirective,
   InputAddonBeforeDirective,

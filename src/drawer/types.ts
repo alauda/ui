@@ -1,7 +1,7 @@
 import { ComponentType } from '@angular/cdk/portal';
 import { TemplateRef } from '@angular/core';
 
-import { ValueOf } from '../types';
+import { ValueOf } from '../internal/types';
 
 export const DrawerSize = {
   Small: 'small',
