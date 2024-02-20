@@ -1,4 +1,4 @@
-import { NgFor, NgIf, NgClass } from '@angular/common';
+import { NgFor, NgIf, NgClass, NgSwitch, NgSwitchCase } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -31,6 +31,8 @@ import { PaginatorIntl } from './paginator-intl';
   imports: [
     NgFor,
     NgIf,
+    NgSwitch,
+    NgSwitchCase,
     ButtonComponent,
     NgClass,
     IconComponent,

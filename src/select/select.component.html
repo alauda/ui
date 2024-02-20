@@ -23,7 +23,7 @@
       aui-input
       [disabled]="disabled"
       [size]="size"
-      [readonly]="readonly"
+      [readonly]="readonly || inaction"
       [placeholder]="!(hasSelected$ | async) ? placeholder : ''"
       (input)="onInput($event)"
       (keydown)="onKeyDown($event)"
