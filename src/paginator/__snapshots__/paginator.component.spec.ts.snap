@@ -139,6 +139,7 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                         autocomplete="off"
                         class="aui-select__input aui-input aui-input--medium aui-select__input-inaction"
                         placeholder=""
+                        readonly=""
                       />
                       <div
                         class="aui-input aui-input--medium aui-select__label-container"
@@ -416,6 +417,7 @@ exports[`PaginatorComponent should render current template 1`] = `
                         autocomplete="off"
                         class="aui-select__input aui-input aui-input--medium aui-select__input-inaction"
                         placeholder=""
+                        readonly=""
                       />
                       <div
                         class="aui-input aui-input--medium aui-select__label-container"
@@ -703,6 +705,7 @@ exports[`PaginatorComponent should render current template 2`] = `
                         class="aui-select__input aui-input aui-input--medium aui-select__input-inaction"
                         disabled=""
                         placeholder=""
+                        readonly=""
                       />
                       <div
                         class="aui-input aui-input--medium aui-select__label-container"
