@@ -4,7 +4,6 @@
 
 @mixin option($block) {
   .#{$block} {
-    padding: 0 use-var(inline-padding-xs);
     color: use-text-color(main);
     font-weight: use-var(font-weight-normal);
     @include text-overflow;
@@ -13,32 +12,36 @@
 
     &--large {
       padding: calc(
-        (#{use-var(inline-height-l)} - #{use-var(line-height-l)}) / 2
-      );
+          (#{use-var(inline-height-l)} - #{use-var(line-height-l)}) / 2
+        )
+        calc(use-var(inline-padding-xs) + 1px);
       line-height: use-var(line-height-l);
       font-size: use-var(font-size-l);
     }
 
     &--medium {
       padding: calc(
-        (#{use-var(inline-height-m)} - #{use-var(line-height-m)}) / 2
-      );
+          (#{use-var(inline-height-m)} - #{use-var(line-height-m)}) / 2
+        )
+        calc(use-var(inline-padding-xs) + 1px);
       line-height: use-var(line-height-m);
       font-size: use-var(font-size-m);
     }
 
     &--small {
       padding: calc(
-        (#{use-var(inline-height-s)} - #{use-var(line-height-m)}) / 2
-      );
+          (#{use-var(inline-height-s)} - #{use-var(line-height-m)}) / 2
+        )
+        calc(use-var(inline-padding-xs) + 1px);
       line-height: use-var(line-height-m);
       font-size: use-var(font-size-m);
     }
 
     &--mini {
       padding: calc(
-        (#{use-var(inline-height-xs)} - #{use-var(line-height-s)}) / 2
-      );
+          (#{use-var(inline-height-xs)} - #{use-var(line-height-s)}) / 2
+        )
+        calc(use-var(inline-padding-xs) + 1px);
       line-height: use-var(line-height-s);
       font-size: use-var(font-size-s);
     }
