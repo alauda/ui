@@ -36,7 +36,7 @@
   }
 
   &__input-inaction {
-    background-color: use-rgb(main-bg);
+    background-color: use-rgb(main-bg) !important;
     border-color: use-rgb(n-7) !important;
     cursor: text;
 
