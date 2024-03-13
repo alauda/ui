@@ -1,5 +1,19 @@
 # Changelog
 
+## 7.4.0
+
+### Minor Changes
+
+- [#548](https://github.com/alauda/ui/pull/548) [`87d2804`](https://github.com/alauda/ui/commit/87d28042b226d87b8e829bed00f021302a2e9827) Thanks [@fengtianze](https://github.com/fengtianze)! - - [BREAKING CHANGE] refactor: remove unnecessary exports
+
+- [#540](https://github.com/alauda/ui/pull/540) [`4504ba8`](https://github.com/alauda/ui/commit/4504ba8d1c80448e54cf61fa5549ab511320f3e7) Thanks [@igauch](https://github.com/igauch)! - - feat: select support readonly
+
+- [#533](https://github.com/alauda/ui/pull/533) [`b4a96de`](https://github.com/alauda/ui/commit/b4a96de507a8625a55216410abc1fe817e9c4202) Thanks [@igauch](https://github.com/igauch)! - - feat: table support resize column width
+
+### Patch Changes
+
+- [#542](https://github.com/alauda/ui/pull/542) [`893f548`](https://github.com/alauda/ui/commit/893f5480ae4f3d3a3b47dfdf1cda3f6fe9c2547d) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - chore: add plus/minus square icon
+
 ## 7.3.2
 
 ### Patch Changes
