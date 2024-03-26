@@ -36,7 +36,7 @@ export class DrawerService<
   open(options: DrawerOptions<T, C>) {
     this.updateOptions(options);
     this.createOverlay();
-    this.createDrawer();
+    this.updateDrawer();
     this.drawerRef = new DrawerRef<T, C, R>(
       this.drawerInternalComponentRef.instance,
     );
@@ -90,14 +90,17 @@ export class DrawerService<
     }
   }
 
-  private createDrawer() {
-    if (this.drawerInternalComponentRef) {
+  private updateDrawer() {
+    const drawerInternalComponentRef =
+      this.drawerInternalComponentRef ||
+      this.overlayRef.attach(
+        new ComponentPortal(DrawerInternalComponent<T, C>),
+      );
+    drawerInternalComponentRef.instance.options = this.options;
+    if (!this.drawerInternalComponentRef) {
       return;
     }
-    const drawerInternalComponentRef = this.overlayRef.attach(
-      new ComponentPortal(DrawerInternalComponent<T, C>),
-    );
-    drawerInternalComponentRef.instance.options = this.options;
+
     drawerInternalComponentRef.instance.animationStep$.subscribe(step => {
       if (step === 'hideDone') {
         this.invisible$.next();
