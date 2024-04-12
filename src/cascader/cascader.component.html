@@ -1,0 +1,102 @@
+<div
+  [class]="rootClass"
+  [class.isDisabled]="disabled"
+  [class.isClearable]="$hasSelected() && this.clearable && !this.disabled"
+  [class.isFilterable]="filterable"
+  [class.isOpened]="opened"
+  #selectRef
+  #tooltipRef="auiTooltip"
+  [auiTooltip]="templateRef"
+  auiTooltipAnimType="scaleY"
+  [auiTooltipDisabled]="disabled"
+  auiTooltipTrigger="click"
+  auiTooltipPosition="bottom start"
+  auiTooltipType="plain"
+  (auiTooltipVisibleChange)="onOptionsVisibleChange($event)"
+>
+  <aui-input-group>
+    <input
+      #inputRef
+      class="aui-cascader__input"
+      [class.aui-cascader__input-inaction]="inaction"
+      autocomplete="off"
+      aui-input
+      [disabled]="disabled"
+      [size]="size"
+      [readonly]="readonly || inaction"
+      [placeholder]="placeholder"
+      (input)="onInput($event)"
+      (blur)="closeOption()"
+    />
+    <span
+      auiInputSuffix
+      class="aui-cascader__icon-container"
+    >
+      <aui-icon
+        class="aui-cascader__indicator"
+        [icon]="loading ? 'spinner' : 'caret_down_s'"
+      ></aui-icon>
+      <aui-icon
+        class="aui-cascader__clear"
+        icon="xmark_small"
+        (click)="clearValue($event)"
+      ></aui-icon>
+    </span>
+    <div
+      *ngIf="$hasSelected() && !filterString"
+      class="aui-cascader__label-container aui-input aui-input--{{ size }}"
+      [attr.disabled]="disabled ? true : null"
+      [attr.readonly]="readonly ? true : null"
+    >
+      <div class="aui-cascader__label">
+        <ng-container *ngIf="onlyShowLastLabel; else label">
+          {{ $selectedOptions()?.at(-1)?.label }}
+        </ng-container>
+        <ng-template #label>
+          <ng-container
+            *ngFor="let option of $selectedOptions(); let i = index"
+          >
+            <span *ngIf="i !== 0">/</span>
+            {{ option.label }}
+          </ng-container>
+        </ng-template>
+      </div>
+    </div>
+  </aui-input-group>
+</div>
+
+<ng-template #templateRef>
+  <div
+    [class]="containerClass"
+    [style.minWidth]="$containerWidth()"
+    (mousedown)="$event.preventDefault()"
+  >
+    <div
+      *ngIf="$optionsVisible() && !loading"
+      [class]="$OptionsContentClass()"
+    >
+      <div
+        class="aui-cascader-option-container__column"
+        *ngFor="
+          let columnOptions of $any($visibleColumns());
+          let columnIndex = index;
+          trackBy: trackByOptions
+        "
+      >
+        <aui-cascader-option
+          *ngFor="let option of columnOptions; trackBy: trackByOption"
+          [option]="option"
+          (click)="onOptionClick(option, columnIndex)"
+          [activated]="isOptionActivated(option, columnIndex)"
+        ></aui-cascader-option>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!$optionsVisible() || loading"
+      class="aui-cascader-option-container__placeholder"
+    >
+      <ng-content select="aui-option-placeholder"></ng-content>
+    </div>
+  </div>
+</ng-template>
