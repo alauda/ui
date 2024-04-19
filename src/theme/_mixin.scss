@@ -152,15 +152,19 @@
   transform: translate(-50%, -50%);
 }
 
-@mixin scroll-bar($color: #{use-rgba(n-1, 0.2)}) {
+@mixin scroll-bar($color: #{use-rgb(n-7)}, $hover-color: #{use-rgb(n-5)}) {
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 8px;
     height: 4px;
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 2px;
     background-color: $color;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: $hover-color;
   }
 
   &::-webkit-scrollbar-corner {
