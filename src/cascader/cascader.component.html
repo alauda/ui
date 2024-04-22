@@ -86,7 +86,7 @@
         <aui-cascader-option
           *ngFor="let option of columnOptions; trackBy: trackByOption"
           [option]="option"
-          (click)="onOptionClick(option, columnIndex)"
+          (click)="onOptionClick(option, columnIndex); $event.stopPropagation()"
           [activated]="isOptionActivated(option, columnIndex)"
         ></aui-cascader-option>
       </div>

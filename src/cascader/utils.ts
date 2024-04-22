@@ -20,6 +20,9 @@ export function searchCascadeOptions<T>(
     node: CascaderOption<T>,
     path: Array<CascaderOption<T>> = [],
   ) {
+    if (node.disabled) {
+      return;
+    }
     const newPath = path.concat(node);
 
     const pathIncludesFilterString = newPath.some(p =>
@@ -49,12 +52,12 @@ export function searchCascadeOptions<T>(
 }
 
 export function trackByOptions<T>(
-  _: number,
+  columnIndex: number,
   options: Array<CascaderOption<T> | SearchedCascaderOption<T, T[]>>,
 ) {
-  return options.map(option => option.value).join(',');
+  return `${columnIndex}~${options?.map(o => o.label).join(',')}`;
 }
 
 export function trackByOption<T>(_: number, option: CascaderOption<T>) {
-  return [option.value, option.children?.map(o => o.value).join(',')].join('~');
+  return `${option.label}~${option.children?.map(o => o.label).join(',')}`;
 }
