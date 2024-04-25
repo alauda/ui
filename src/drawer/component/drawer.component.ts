@@ -112,6 +112,7 @@ export class DrawerComponent<
         this.drawerRef.close();
       }
     }
+    this.drawerService.updateOptions(this);
   }
 
   ngAfterViewInit() {
