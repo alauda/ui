@@ -29,7 +29,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       [divider]="divider"
       [offsetY]="offsetY + 'px'"
       [visible]="visible"
-      [hideOnClickOutside]="true"
       (close)="closeHandle()"
     >
       <div *auiDrawerHeader>header</div>

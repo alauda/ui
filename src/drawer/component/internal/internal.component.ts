@@ -21,6 +21,7 @@ import {
 } from '@angular/common';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   InjectionToken,
@@ -128,7 +129,10 @@ export class DrawerInternalComponent<T = unknown, C extends object = object> {
 
   isTemplateRef = isTemplateRef;
 
-  constructor(private readonly injector: Injector) {}
+  constructor(
+    private readonly injector: Injector,
+    private readonly cdr: ChangeDetectorRef,
+  ) {}
 
   ngAfterViewInit() {
     this.attachBodyContent();
@@ -204,6 +208,11 @@ export class DrawerInternalComponent<T = unknown, C extends object = object> {
         break;
       }
     }
+  }
+
+  updateOptions(options: DrawerOptions<T, C>) {
+    this.options = options;
+    this.cdr.markForCheck();
   }
 
   show() {

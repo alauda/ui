@@ -47,6 +47,7 @@ export class DrawerService<
 
   updateOptions(options: DrawerOptions<T, C>): void {
     this.options = merge<DrawerOptions<T, C>>(DEFAULT_OPTIONS, options);
+    this.drawerInternalComponentRef?.instance.updateOptions(this.options);
   }
 
   private createOverlay() {
@@ -97,7 +98,7 @@ export class DrawerService<
     const drawerInternalComponentRef = this.overlayRef.attach(
       new ComponentPortal(DrawerInternalComponent<T, C>),
     );
-    drawerInternalComponentRef.instance.options = this.options;
+    drawerInternalComponentRef.instance.updateOptions(this.options);
     drawerInternalComponentRef.instance.animationStep$.subscribe(step => {
       if (step === 'hideDone') {
         this.invisible$.next();
