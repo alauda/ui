@@ -67,7 +67,6 @@ export class DrawerService<
           event.target instanceof Node &&
           !this.overlayRef.hostElement?.parentNode?.contains(event.target)
         ) {
-          event.stopPropagation();
           event.preventDefault();
           this.drawerRef.close();
         }
