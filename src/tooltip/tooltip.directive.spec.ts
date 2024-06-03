@@ -140,7 +140,7 @@ describe('TooltipDirective', () => {
     const tooltipEl = ocEl.querySelector('.aui-tooltip');
     expect(tooltipEl.innerHTML).toContain('custom content');
     expect(tooltipEl.className).toContain('aui-tooltip--primary');
-    expect(tooltipEl.className).toContain('aui-tooltip--start');
+    expect(tooltipEl.className).toContain('aui-tooltip--direction_start');
     expect(tooltipEl.className).toContain('custom-class');
   }));
 

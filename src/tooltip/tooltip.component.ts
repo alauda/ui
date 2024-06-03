@@ -103,13 +103,12 @@ export class TooltipComponent implements OnDestroy {
     ]).pipe(
       map(([inputPosition, inputType, inputClass]) => {
         const b = this.bem.block();
-        const dir = inputPosition.split(' ')[0];
-        return (
-          `${b}--${dir} ${inputClass} ${this.bem.element(
-            'transform-origin',
-          )} ` +
-          (inputType === TooltipType.Plain ? '' : `${b} ${b}--${inputType}`)
-        );
+        const [direction, align] = inputPosition.split(' ');
+        return `${b} ${b}--direction_${direction} ${b}--align_${
+          align ?? 'center'
+        } ${b}--${inputType} ${inputClass} ${this.bem.element(
+          'transform-origin',
+        )} `;
       }),
       publishRef(),
     );

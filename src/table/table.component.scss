@@ -91,7 +91,6 @@
     padding: $table-padding $table-cell-padding-h;
     font-weight: use-var(font-weight-bold);
     background-color: use-rgb(n-9);
-    @include text-overflow;
   }
 
   &__column-expand-button {
