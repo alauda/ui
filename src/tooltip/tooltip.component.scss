@@ -4,22 +4,20 @@
 
 $block: 'aui-tooltip';
 
-.#{$block} {
-  &:not(.#{$block}--empty) {
-    position: relative;
-    border-radius: use-var(border-radius-m);
-    background-color: use-rgb(popper-bg);
-    @include popper-shadow;
-  }
+@mixin text-styles {
+  max-width: 400px;
+  word-wrap: break-word; // do NOT add 'word-break: break-all;', design requirement
+  @include text-set(s);
+}
 
-  &:not(.#{$block}--empty):not(.#{$block}--plain) {
-    max-width: 400px;
-    word-wrap: break-word; // do NOT add 'word-break: break-all;', design requirement
-    @include text-set(s);
-  }
+.#{$block} {
+  border-radius: use-var(border-radius-m);
+  background-color: use-rgb(popper-bg);
+  @include popper-shadow;
 
   &--default {
     padding: use-var(spacing-m) use-var(spacing-xl);
+    @include text-styles;
     @include theme-light {
       color: use-rgb(n-10);
       background-color: use-rgb(n-1);
@@ -33,26 +31,31 @@ $block: 'aui-tooltip';
   &--primary {
     padding: use-var(spacing-xl);
     color: use-rgb(primary);
+    @include text-styles;
   }
 
   &--success {
     padding: use-var(spacing-xl);
     color: use-rgb(green);
+    @include text-styles;
   }
 
   &--warning {
     padding: use-var(spacing-xl);
     color: use-rgb(yellow);
+    @include text-styles;
   }
 
   &--error {
     padding: use-var(spacing-xl);
     color: use-rgb(red);
+    @include text-styles;
   }
 
   &--info {
     padding: use-var(spacing-xl);
     color: use-rgb(n-1);
+    @include text-styles;
   }
 
   &--align {
