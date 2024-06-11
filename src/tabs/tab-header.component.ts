@@ -19,7 +19,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { Subject, debounceTime, merge, takeUntil } from 'rxjs';
 
 import { IconComponent } from '../icon/icon.component';
 import { Bem, buildBem, observeResizeOn } from '../internal/utils';
@@ -195,13 +195,13 @@ export class TabHeaderComponent
       .withWrap();
     this._keyManager.updateActiveItem(0);
 
-    // Defer the first call in order to allow for slower browsers to lay out the elements.
-    // This helps in cases where the user lands directly on a page with paginated tabs.
-    requestAnimationFrame(realign);
-
     // On tab list resize, realign the ink bar and update the orientation of
     // the key manager if the direction has changed.
-    observeResizeOn(this._tabList.nativeElement)
+    merge(
+      observeResizeOn(this._tabList.nativeElement),
+      observeResizeOn(this._tabListContainer.nativeElement),
+      observeResizeOn(this._paginationWrapper.nativeElement),
+    )
       .pipe(debounceTime(100), takeUntil(this._destroyed))
       .subscribe(realign);
 
