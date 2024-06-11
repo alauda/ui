@@ -4,18 +4,20 @@
 
 $block: 'aui-tooltip';
 
-.#{$block} {
-  position: relative;
-  padding: use-var(spacing-xl);
-  border-radius: use-var(border-radius-m);
-  @include popper-shadow;
-  @include text-set(s);
-
+@mixin text-styles {
   max-width: 400px;
   word-wrap: break-word; // do NOT add 'word-break: break-all;', design requirement
+  @include text-set(s);
+}
+
+.#{$block} {
+  border-radius: use-var(border-radius-m);
+  background-color: use-rgb(popper-bg);
+  @include popper-shadow;
 
   &--default {
     padding: use-var(spacing-m) use-var(spacing-xl);
+    @include text-styles;
     @include theme-light {
       color: use-rgb(n-10);
       background-color: use-rgb(n-1);
@@ -27,37 +29,54 @@ $block: 'aui-tooltip';
   }
 
   &--primary {
+    padding: use-var(spacing-xl);
     color: use-rgb(primary);
-    background-color: use-rgb(popper-bg);
+    @include text-styles;
   }
 
   &--success {
+    padding: use-var(spacing-xl);
     color: use-rgb(green);
-    background-color: use-rgb(popper-bg);
+    @include text-styles;
   }
 
   &--warning {
+    padding: use-var(spacing-xl);
     color: use-rgb(yellow);
-    background-color: use-rgb(popper-bg);
+    @include text-styles;
   }
 
   &--error {
+    padding: use-var(spacing-xl);
     color: use-rgb(red);
-    background-color: use-rgb(popper-bg);
+    @include text-styles;
   }
 
   &--info {
+    padding: use-var(spacing-xl);
     color: use-rgb(n-1);
-    background-color: use-rgb(popper-bg);
+    @include text-styles;
   }
 
-  &--top,
-  &--bottom {
-    margin: use-var(spacing-s) 0;
-  }
+  &--align {
+    &_center {
+      margin: use-var(spacing-s);
+    }
 
-  &--start,
-  &--end {
-    margin: 0 use-var(spacing-s);
+    &_top {
+      margin: 0 use-var(spacing-s) use-var(spacing-s) use-var(spacing-s);
+    }
+
+    &_end {
+      margin: use-var(spacing-s) 0 use-var(spacing-s) use-var(spacing-s);
+    }
+
+    &_bottom {
+      margin: use-var(spacing-s) use-var(spacing-s) 0 use-var(spacing-s);
+    }
+
+    &_start {
+      margin: use-var(spacing-s) use-var(spacing-s) use-var(spacing-s) 0;
+    }
   }
 }

@@ -6,9 +6,6 @@
   .#{$block} {
     padding: 8px 0;
     max-width: 90vw;
-    border-radius: use-var(border-radius-m);
-    background-color: use-rgb(popper-bg);
-    @include popper-shadow;
 
     &__content {
       max-height: calc(#{use-var(inline-height-#{$size})} * 10);

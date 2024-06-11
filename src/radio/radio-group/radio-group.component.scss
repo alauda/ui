@@ -5,6 +5,10 @@
     align-items: center;
   }
 
+  &--row:has(aui-radio-button) {
+    align-items: normal;
+  }
+
   &--column {
     flex-direction: column;
 

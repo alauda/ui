@@ -1,8 +1,6 @@
 @import '../../theme/var';
 @import '../../theme/mixin';
 
-$max-width: 280px;
-
 $button-size: (
   large: (
     height: use-var(inline-height-l),
@@ -36,10 +34,6 @@ $button-size: (
 
 .aui-menu {
   padding: use-var(spacing-m);
-  max-width: $max-width;
-  border-radius: use-var(border-radius-m);
-  background-color: use-rgb(popper-bg);
-  @include popper-shadow;
 
   @each $key in large medium small mini {
     $map: map-get($button-size, $key);

@@ -10,11 +10,8 @@ $strut_height: $cell_height * ($col_reveal_items - 1);
 .#{$block} {
   display: flex;
   flex-direction: column;
-  background-color: use-rgb(n-10);
-  border-radius: use-var(border-radius-m);
   overflow: hidden;
   @include text-set(m);
-  @include popper-shadow;
 
   ul,
   li {

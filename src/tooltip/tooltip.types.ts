@@ -6,6 +6,7 @@ export enum TooltipType {
   Error = 'error',
   Info = 'info',
   Plain = 'plain',
+  Empty = 'empty',
 }
 
 export enum TooltipTrigger {

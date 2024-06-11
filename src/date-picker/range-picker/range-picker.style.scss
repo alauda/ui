@@ -1,5 +1,7 @@
-.aui-tooltip.range-picker-wrapper {
-  max-width: none;
+@import '../../theme/var';
+
+.aui-range-picker-wrapper {
+  padding: use-var(spacing-xl);
 }
 
 aui-range-picker {
