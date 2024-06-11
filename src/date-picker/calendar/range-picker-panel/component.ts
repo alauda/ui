@@ -250,7 +250,10 @@ export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {
   }
 
   confirmValue(value: Dayjs[], closeThen = true) {
-    this.emitValue(value);
+    const sortValue = value.sort((startDate, endDate) =>
+      startDate.isAfter(endDate) ? 1 : -1,
+    );
+    this.emitValue(sortValue);
     closeThen && this.confirm.next();
   }
 
