@@ -1,7 +1,6 @@
 import { FocusKeyManager } from '@angular/cdk/a11y';
 import { ObserversModule } from '@angular/cdk/observers';
 import { PortalModule } from '@angular/cdk/portal';
-import { ViewportRuler } from '@angular/cdk/scrolling';
 import { NgClass, NgIf } from '@angular/common';
 import {
   AfterContentChecked,
@@ -20,10 +19,10 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, debounceTime, merge, takeUntil } from 'rxjs';
 
 import { IconComponent } from '../icon/icon.component';
-import { Bem, buildBem } from '../internal/utils';
+import { Bem, buildBem, observeResizeOn } from '../internal/utils';
 
 import {
   TabHeaderAddonDirective,
@@ -95,12 +94,6 @@ export class TabHeaderComponent
   /** Used to manage focus between the tabs. */
   private _keyManager: FocusKeyManager<TabLabelWrapperDirective>;
 
-  /**
-   * The number of tab labels that are displayed on the header. When this changes, the header
-   * should re-evaluate the scroll position.
-   */
-  private _tabLabelCount: number;
-
   @Input()
   type: TabType = TabType.Line;
 
@@ -160,13 +153,6 @@ export class TabHeaderComponent
   }
 
   ngAfterContentChecked(): void {
-    // If the number of tab labels have changed, check if scrolling should be enabled
-    if (this._tabLabelCount !== this._labelWrappers.length) {
-      this._updatePagination();
-      this._tabLabelCount = this._labelWrappers.length;
-      this._changeDetectorRef.markForCheck();
-    }
-
     // If the selected index has changed, scroll to the label and check if the scrolling controls
     // should be disabled.
     if (this._selectedIndexChanged) {
@@ -196,7 +182,6 @@ export class TabHeaderComponent
    * Aligns the ink bar to the selected tab on load.
    */
   ngAfterContentInit() {
-    const resize = this._viewportRuler.change(150);
     const realign = () => {
       this._updatePagination();
       this._alignActiveIndicatorToSelectedTab();
@@ -210,15 +195,15 @@ export class TabHeaderComponent
       .withWrap();
     this._keyManager.updateActiveItem(0);
 
-    // Defer the first call in order to allow for slower browsers to lay out the elements.
-    // This helps in cases where the user lands directly on a page with paginated tabs.
-    requestAnimationFrame(realign);
-
-    // On window resize, realign the ink bar and update the orientation of
+    // On tab list resize, realign the ink bar and update the orientation of
     // the key manager if the direction has changed.
-    resize.pipe(takeUntil(this._destroyed)).subscribe(() => {
-      realign();
-    });
+    merge(
+      observeResizeOn(this._tabList.nativeElement),
+      observeResizeOn(this._tabListContainer.nativeElement),
+      observeResizeOn(this._paginationWrapper.nativeElement),
+    )
+      .pipe(debounceTime(100), takeUntil(this._destroyed))
+      .subscribe(realign);
 
     // If there is a change in the focus key manager we need to emit the `indexFocused`
     // event in order to provide a public event that notifies about focus changes. Also we realign
@@ -456,8 +441,5 @@ export class TabHeaderComponent
     this._activeIndicator.alignToElement(selectedLabelWrapper);
   }
 
-  constructor(
-    private readonly _changeDetectorRef: ChangeDetectorRef,
-    private readonly _viewportRuler: ViewportRuler,
-  ) {}
+  constructor(private readonly _changeDetectorRef: ChangeDetectorRef) {}
 }
