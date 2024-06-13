@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.4.1
+
+### Patch Changes
+
+- [#564](https://github.com/alauda/ui/pull/564) [`a886dcd`](https://github.com/alauda/ui/commit/a886dcdd785835ecfbfb147f6a1cd0b8888df1b8) Thanks [@kkxiaoa](https://github.com/kkxiaoa)! - chore: override button text align to left
+
+- [#565](https://github.com/alauda/ui/pull/565) [`98c3372`](https://github.com/alauda/ui/commit/98c33727bef6155372ea7be8a44170695143785f) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - style: date picker panel row main axis between
+
+- [#562](https://github.com/alauda/ui/pull/562) [`654abd7`](https://github.com/alauda/ui/commit/654abd758d42319b865f507ca1a1e7a315212f9e) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: tab header paginator not show without viewport resize
+
+- [#557](https://github.com/alauda/ui/pull/557) [`fbc5cc0`](https://github.com/alauda/ui/commit/fbc5cc09fcb8217b4ade7a97572a1285f30e7072) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - feat: mod sroll bar style
+
 ## 7.4.0
 
 ### Minor Changes
