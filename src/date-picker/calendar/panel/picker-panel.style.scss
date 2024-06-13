@@ -61,6 +61,7 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
     flex: 1;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     @include text-set(m);
 
     width: 100%;

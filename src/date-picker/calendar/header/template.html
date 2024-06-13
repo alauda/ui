@@ -17,30 +17,35 @@
     *ngIf="dateNavRange === DateNavRange.Month"
     [class]="bem.element('nav-content')"
   >
-    <a
-      href="javascript:;"
+    <button
+      aui-button="text"
       (click)="clickNav(DateNavRange.Year)"
     >
       {{ headerRange?.start?.year() }}{{ 'year_suffix' | auiI18n }}
-    </a>
-    <a
-      href="javascript:;"
+    </button>
+    <div class="separator">
+      <span *ngIf="!('year_suffix' | auiI18n) && !('month_suffix' | auiI18n)">
+        /
+      </span>
+    </div>
+    <button
+      aui-button="text"
       (click)="clickNav(DateNavRange.Month)"
     >
       {{ headerRange?.start?.month() + 1 }}{{ 'month_suffix' | auiI18n }}
-    </a>
+    </button>
   </span>
 
   <span
     *ngIf="dateNavRange === DateNavRange.Year"
     [class]="bem.element('nav-content')"
   >
-    <a
-      href="javascript:;"
+    <button
+      aui-button="text"
       (click)="clickNav(DateNavRange.Year)"
     >
       {{ headerRange?.start?.year() }}{{ 'year_suffix' | auiI18n }}
-    </a>
+    </button>
   </span>
 
   <span

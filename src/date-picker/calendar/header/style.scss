@@ -13,23 +13,35 @@ $block: aui-calendar-header;
   &__nav-content {
     flex: 1;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     font-size: use-var(font-size-l);
     color: use-text-color(main);
     font-weight: use-var(font-weight-bolder);
 
-    a {
+    .separator {
+      margin: 0 use-var(spacing-s);
+    }
+
+    .aui-button--text {
       color: use-text-color(main);
 
+      .aui-button__content {
+        font-size: use-var(font-size-l);
+        font-weight: use-var(font-weight-bolder);
+        padding: 0;
+      }
+
       &:hover {
+        background-color: transparent;
         color: use-rgb(primary);
         text-decoration: none !important;
       }
-    }
 
-    a + a {
-      margin-left: 5px;
+      + .aui-button--text {
+        margin-left: 0;
+      }
     }
   }
 }
