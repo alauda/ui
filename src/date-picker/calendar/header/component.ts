@@ -1,4 +1,4 @@
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -8,18 +8,21 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
+import { map, startWith } from 'rxjs';
 
 import { ButtonComponent } from '../../../button/button.component';
 import { I18nPipe } from '../../../i18n/i18n.pipe';
 import { IconComponent } from '../../../icon/icon.component';
-import { buildBem } from '../../../internal/utils';
+import { buildBem, publishRef } from '../../../internal/utils';
 import {
   CalendarHeaderRange,
   DateNavRange,
   Side,
 } from '../../date-picker.type';
-import { MONTH, YEAR } from '../constant';
+import { DatePickerType, MONTH, YEAR } from '../constant';
 import { calcRangeValue } from '../util';
+
+import { I18nService } from 'src/i18n';
 
 const bem = buildBem('aui-calendar-header');
 
@@ -30,7 +33,14 @@ const bem = buildBem('aui-calendar-header');
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, NgTemplateOutlet, ButtonComponent, IconComponent, I18nPipe],
+  imports: [
+    NgIf,
+    NgTemplateOutlet,
+    ButtonComponent,
+    IconComponent,
+    I18nPipe,
+    AsyncPipe,
+  ],
 })
 export class CalendarHeaderComponent {
   @Input()
@@ -66,6 +76,20 @@ export class CalendarHeaderComponent {
   bem = bem;
 
   DateNavRange = DateNavRange;
+
+  monthBeforeYear$ = this.i18nService.localeChange$.pipe(
+    map(locale => {
+      const parts = new Intl.DateTimeFormat(locale).formatToParts(new Date());
+      return (
+        parts.findIndex(part => part.type === DatePickerType.Month) <
+        parts.findIndex(part => part.type === DatePickerType.Year)
+      );
+    }),
+    startWith(false),
+    publishRef(),
+  );
+
+  constructor(private readonly i18nService: I18nService) {}
 
   // maxAvail > current date ：right btn hide
   // minAvail > current date ：left btn hide

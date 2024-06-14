@@ -17,23 +17,21 @@
     *ngIf="dateNavRange === DateNavRange.Month"
     [class]="bem.element('nav-content')"
   >
-    <button
-      aui-button="text"
-      (click)="clickNav(DateNavRange.Year)"
-    >
-      {{ headerRange?.start?.year() }}{{ 'year_suffix' | auiI18n }}
-    </button>
+    <ng-container
+      [ngTemplateOutlet]="
+        (monthBeforeYear$ | async) ? monthTemplate : yearTemplate
+      "
+    ></ng-container>
     <div class="separator">
       <span *ngIf="!('year_suffix' | auiI18n) && !('month_suffix' | auiI18n)">
         /
       </span>
     </div>
-    <button
-      aui-button="text"
-      (click)="clickNav(DateNavRange.Month)"
-    >
-      {{ headerRange?.start?.month() + 1 }}{{ 'month_suffix' | auiI18n }}
-    </button>
+    <ng-container
+      [ngTemplateOutlet]="
+        (monthBeforeYear$ | async) ? yearTemplate : monthTemplate
+      "
+    ></ng-container>
   </span>
 
   <span
@@ -121,5 +119,22 @@
     <aui-icon
       [icon]="side === 'left' ? 'angles_left' : 'angles_right'"
     ></aui-icon>
+  </button>
+</ng-template>
+
+<ng-template #yearTemplate>
+  <button
+    aui-button="text"
+    (click)="clickNav(DateNavRange.Year)"
+  >
+    {{ headerRange?.start?.year() }}{{ 'year_suffix' | auiI18n }}
+  </button>
+</ng-template>
+<ng-template #monthTemplate>
+  <button
+    aui-button="text"
+    (click)="clickNav(DateNavRange.Month)"
+  >
+    {{ headerRange?.start?.month() + 1 }}{{ 'month_suffix' | auiI18n }}
   </button>
 </ng-template>
