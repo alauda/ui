@@ -7,6 +7,8 @@
   flex-shrink: 0;
   position: relative;
   background-color: use-rgb(n-10);
+  border-radius: use-var(border-radius-l);
+  overflow: hidden;
 
   // Size modifiers:
   &--large {
@@ -53,8 +55,6 @@
   }
 
   &--line {
-    border-radius: use-var(border-radius-l);
-    overflow: hidden;
     box-shadow: 0 0 4px 0 rgb(50 52 55 / 10%);
     background-color: use-rgb(n-10);
   }
@@ -228,9 +228,9 @@ aui-tab-header-active-indicator {
     background-color: use-rgb(n-10);
 
     &:after {
-      width: calc(100% + 2px);
+      width: 100%;
       top: 0;
-      left: -1px;
+      left: 0;
     }
   }
 }
