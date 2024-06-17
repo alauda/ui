@@ -125,6 +125,8 @@
 <ng-template #yearTemplate>
   <button
     aui-button="text"
+    class="header-range"
+    [title]="headerRange?.start?.year() + ('year_suffix' | auiI18n)"
     (click)="clickNav(DateNavRange.Year)"
   >
     {{ headerRange?.start?.year() }}{{ 'year_suffix' | auiI18n }}
@@ -133,6 +135,8 @@
 <ng-template #monthTemplate>
   <button
     aui-button="text"
+    class="header-range"
+    [title]="headerRange?.start?.month() + 1 + ('month_suffix' | auiI18n)"
     (click)="clickNav(DateNavRange.Month)"
   >
     {{ headerRange?.start?.month() + 1 }}{{ 'month_suffix' | auiI18n }}

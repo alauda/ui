@@ -1,6 +1,7 @@
 @import '../../../theme/var';
 
 $block: aui-calendar-header;
+$prev-next-icon-button-width: 24px;
 
 .#{$block} {
   &__container {
@@ -12,6 +13,7 @@ $block: aui-calendar-header;
 
   &__nav-content {
     flex: 1;
+    max-width: calc(100% - $prev-next-icon-button-width * 4);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -42,6 +44,10 @@ $block: aui-calendar-header;
       + .aui-button--text {
         margin-left: 0;
       }
+    }
+
+    .aui-button--text.header-range {
+      max-width: 100%;
     }
   }
 }

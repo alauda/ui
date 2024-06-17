@@ -64,7 +64,8 @@
             "browserTarget": "storybook:build",
             "compodoc": true,
             "compodocArgs": ["-e", "json", "-d", "."],
-            "port": 6006
+            "port": 6006,
+            "styles": [".storybook/global.scss"]
           }
         },
         "build-storybook": {
