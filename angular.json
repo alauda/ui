@@ -76,6 +76,7 @@
             "compodoc": true,
             "compodocArgs": ["-e", "json", "-d", "."],
             "outputDir": "dist",
+            "styles": [".storybook/global.scss"],
             "enableProdMode": false // FIXME: https://github.com/storybookjs/storybook/issues/23534
           }
         }
