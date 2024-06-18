@@ -64,8 +64,7 @@
             "browserTarget": "storybook:build",
             "compodoc": true,
             "compodocArgs": ["-e", "json", "-d", "."],
-            "port": 6006,
-            "styles": [".storybook/global.scss"]
+            "port": 6006
           }
         },
         "build-storybook": {
@@ -76,7 +75,6 @@
             "compodoc": true,
             "compodocArgs": ["-e", "json", "-d", "."],
             "outputDir": "dist",
-            "styles": [".storybook/global.scss"],
             "enableProdMode": false // FIXME: https://github.com/storybookjs/storybook/issues/23534
           }
         }

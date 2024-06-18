@@ -3,6 +3,8 @@ import { addons } from '@storybook/addons';
 import type { Preview } from '@storybook/angular';
 
 import docJson from '../documentation.json';
+// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
+import '!style-loader!css-loader!sass-loader!./global.scss';
 
 setCompodocJson(docJson);
 
