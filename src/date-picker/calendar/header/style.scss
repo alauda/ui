@@ -2,6 +2,7 @@
 
 $block: aui-calendar-header;
 $prev-next-icon-button-width: 24px;
+$prev-next-icon-button-spacing: 2px;
 
 .#{$block} {
   &__container {
@@ -13,7 +14,10 @@ $prev-next-icon-button-width: 24px;
 
   &__nav-content {
     flex: 1;
-    max-width: calc(100% - $prev-next-icon-button-width * 4);
+    max-width: calc(
+      100% - $prev-next-icon-button-width * 4 - $prev-next-icon-button-spacing *
+        2
+    );
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
