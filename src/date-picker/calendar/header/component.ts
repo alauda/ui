@@ -11,7 +11,7 @@ import dayjs, { ConfigType, Dayjs } from 'dayjs';
 import { map, startWith } from 'rxjs';
 
 import { ButtonComponent } from '../../../button/button.component';
-import { I18nPipe } from '../../../i18n/i18n.pipe';
+import { I18nPipe, I18nService } from '../../../i18n';
 import { IconComponent } from '../../../icon/icon.component';
 import { buildBem, publishRef } from '../../../internal/utils';
 import {
@@ -21,8 +21,6 @@ import {
 } from '../../date-picker.type';
 import { DatePickerType, MONTH, YEAR } from '../constant';
 import { calcRangeValue } from '../util';
-
-import { I18nService } from 'src/i18n';
 
 const bem = buildBem('aui-calendar-header');
 

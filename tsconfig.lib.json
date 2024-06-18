@@ -2,6 +2,7 @@
   "extends": "@1stg/tsconfig/ng-lib",
   "compilerOptions": {
     "baseUrl": ".",
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "useDefineForClassFields": false
   }
 }
