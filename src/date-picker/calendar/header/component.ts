@@ -8,7 +8,6 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
-import { map, startWith } from 'rxjs';
 
 import { ButtonComponent } from '../../../button/button.component';
 import { I18nPipe, I18nService } from '../../../i18n';
@@ -19,7 +18,7 @@ import {
   DateNavRange,
   Side,
 } from '../../date-picker.type';
-import { DatePickerType, MONTH, YEAR } from '../constant';
+import { MONTH, YEAR } from '../constant';
 import { calcRangeValue } from '../util';
 
 const bem = buildBem('aui-calendar-header');
@@ -75,17 +74,7 @@ export class CalendarHeaderComponent {
 
   DateNavRange = DateNavRange;
 
-  monthBeforeYear$ = this.i18nService.localeChange$.pipe(
-    map(locale => {
-      const parts = new Intl.DateTimeFormat(locale).formatToParts(new Date());
-      return (
-        parts.findIndex(part => part.type === DatePickerType.Month) <
-        parts.findIndex(part => part.type === DatePickerType.Year)
-      );
-    }),
-    startWith(false),
-    publishRef(),
-  );
+  monthBeforeYear$ = this.i18nService.monthBeforeYear$.pipe(publishRef());
 
   constructor(private readonly i18nService: I18nService) {}
 
