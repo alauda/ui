@@ -18,19 +18,11 @@
     [class]="bem.element('nav-content')"
   >
     <ng-container
-      [ngTemplateOutlet]="
-        (monthBeforeYear$ | async) ? monthTemplate : yearTemplate
-      "
+      [ngTemplateOutlet]="$monthBeforeYear() ? monthTemplate : yearTemplate"
     ></ng-container>
-    <div class="separator">
-      <span *ngIf="!('year_suffix' | auiI18n) && !('month_suffix' | auiI18n)">
-        /
-      </span>
-    </div>
+    <div class="separator"></div>
     <ng-container
-      [ngTemplateOutlet]="
-        (monthBeforeYear$ | async) ? yearTemplate : monthTemplate
-      "
+      [ngTemplateOutlet]="$monthBeforeYear() ? yearTemplate : monthTemplate"
     ></ng-container>
   </span>
 
@@ -42,7 +34,7 @@
       aui-button="text"
       (click)="clickNav(DateNavRange.Year)"
     >
-      {{ headerRange?.start?.year() }}{{ 'year_suffix' | auiI18n }}
+      {{ $headerRange().start.year }}
     </button>
   </span>
 
@@ -50,7 +42,7 @@
     *ngIf="dateNavRange === DateNavRange.Decade"
     [class]="bem.element('nav-content')"
   >
-    {{ headerRange?.start.year() }} - {{ headerRange?.end?.year() }}
+    {{ $headerRange().start.year }} - {{ $headerRange().end.year }}
   </span>
 
   <div [class]="bem.element('nav-action')">
@@ -75,6 +67,8 @@
   <span class="action-bar">
     <button
       aui-button="text"
+      size="mini"
+      [square]="true"
       *ngIf="side === 'right'"
       [class.hidden]="
         !shouldShowNav(DateNavRange.Month, side) ||
@@ -86,6 +80,8 @@
     </button>
     <button
       aui-button="text"
+      size="mini"
+      [square]="true"
       (click)="navHead(DateNavRange.Year, side === 'left' ? -1 : 1)"
       [class.hidden]="!shouldShowNav(DateNavRange.Year, side)"
     >
@@ -95,6 +91,8 @@
     </button>
     <button
       aui-button="text"
+      size="mini"
+      [square]="true"
       *ngIf="side === 'left'"
       [class.hidden]="
         !shouldShowNav(DateNavRange.Month, side) ||
@@ -113,6 +111,8 @@
 >
   <button
     aui-button="text"
+    size="mini"
+    [square]="true"
     (click)="navHead(DateNavRange.Decade, side === 'left' ? -10 : 10)"
     [class.hidden]="!shouldShowNav(DateNavRange.Decade, side)"
   >
@@ -128,7 +128,7 @@
     class="header-range"
     (click)="clickNav(DateNavRange.Year)"
   >
-    {{ headerRange?.start?.year() }}{{ 'year_suffix' | auiI18n }}
+    {{ $headerRange().start.year }}
   </button>
 </ng-template>
 <ng-template #monthTemplate>
@@ -137,6 +137,6 @@
     class="header-range"
     (click)="clickNav(DateNavRange.Month)"
   >
-    {{ headerRange?.start?.month() + 1 }}{{ 'month_suffix' | auiI18n }}
+    {{ $headerRange().start.month }}
   </button>
 </ng-template>

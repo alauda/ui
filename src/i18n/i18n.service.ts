@@ -1,5 +1,4 @@
-import { Injectable, inject, isDevMode } from '@angular/core';
-import { BehaviorSubject, map, startWith } from 'rxjs';
+import { Injectable, computed, inject, isDevMode, signal } from '@angular/core';
 
 import { DatePickerType } from '..';
 
@@ -9,34 +8,22 @@ import { I18NInterface, I18NInterfaceToken } from './i18n.type';
   providedIn: 'root',
 })
 export class I18nService {
-  private _i18n: I18NInterface = inject(I18NInterfaceToken);
+  readonly $$i18n = signal<I18NInterface>(inject(I18NInterfaceToken));
 
-  private readonly i18nChange$$ = new BehaviorSubject<I18NInterface>(
-    this._i18n,
-  );
+  $locale = computed(() => this.$$i18n().locale);
 
-  localeChange$ = this.i18nChange$$
-    .asObservable()
-    .pipe(map(i18n => i18n.locale));
-
-  monthBeforeYear$ = this.localeChange$.pipe(
-    map(locale => {
-      const parts = new Intl.DateTimeFormat(locale).formatToParts(new Date());
-      return (
-        parts.findIndex(part => part.type === DatePickerType.Month) <
-        parts.findIndex(part => part.type === DatePickerType.Year)
-      );
-    }),
-    startWith(false),
-  );
+  $monthBeforeYear = computed(() => {
+    const parts = new Intl.DateTimeFormat(this.$locale()).formatToParts(
+      new Date(),
+    );
+    return (
+      parts.findIndex(part => part.type === DatePickerType.Month) <
+      parts.findIndex(part => part.type === DatePickerType.Year)
+    );
+  });
 
   setI18n(i18n: I18NInterface) {
-    this._i18n = i18n;
-    this.i18nChange$$.next(i18n);
-  }
-
-  get i18n() {
-    return this._i18n;
+    this.$$i18n.set(i18n);
   }
 
   translate(
@@ -44,7 +31,7 @@ export class I18nService {
     data?: Record<string, string>,
     ignoreNonExist = false,
   ) {
-    let content = this._i18n.translation[key];
+    let content = this.$$i18n().translation[key];
     if (content == null) {
       if (isDevMode() && !ignoreNonExist) {
         console.warn(`No exist translate key for ${key}`);

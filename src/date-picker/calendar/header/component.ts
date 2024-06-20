@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,18 +6,16 @@ import {
   Input,
   Output,
   ViewEncapsulation,
+  computed,
+  signal,
 } from '@angular/core';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
 
 import { ButtonComponent } from '../../../button/button.component';
 import { I18nPipe, I18nService } from '../../../i18n';
 import { IconComponent } from '../../../icon/icon.component';
-import { buildBem, publishRef } from '../../../internal/utils';
-import {
-  CalendarHeaderRange,
-  DateNavRange,
-  Side,
-} from '../../date-picker.type';
+import { buildBem } from '../../../internal/utils';
+import { DateNavRange, Side } from '../../date-picker.type';
 import { MONTH, YEAR } from '../constant';
 import { calcRangeValue } from '../util';
 
@@ -30,21 +28,32 @@ const bem = buildBem('aui-calendar-header');
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    NgIf,
-    NgTemplateOutlet,
-    ButtonComponent,
-    IconComponent,
-    I18nPipe,
-    AsyncPipe,
-  ],
+  imports: [NgIf, NgTemplateOutlet, ButtonComponent, IconComponent, I18nPipe],
 })
 export class CalendarHeaderComponent {
   @Input()
-  dateNavRange = DateNavRange.Month;
+  get dateNavRange() {
+    return this.$$dateNavRange();
+  }
+
+  set dateNavRange(val) {
+    if (!val || this.$$dateNavRange() === val) {
+      return;
+    }
+    this.$$dateNavRange.set(val);
+  }
 
   @Input()
-  anchor = dayjs();
+  get anchor() {
+    return this.$$anchor();
+  }
+
+  set anchor(val) {
+    if (!val || this.$$anchor() === val) {
+      return;
+    }
+    this.$$anchor.set(val);
+  }
 
   @Input()
   maxAvail?: ConfigType;
@@ -66,15 +75,32 @@ export class CalendarHeaderComponent {
   @Output()
   anchorChange = new EventEmitter<Dayjs>();
 
-  get headerRange(): CalendarHeaderRange {
-    return calcRangeValue(this.dateNavRange, this.anchor);
-  }
+  private readonly $$dateNavRange = signal(DateNavRange.Month);
+  private readonly $$anchor = signal(dayjs());
 
   bem = bem;
 
   DateNavRange = DateNavRange;
 
-  monthBeforeYear$ = this.i18nService.monthBeforeYear$.pipe(publishRef());
+  $monthBeforeYear = this.i18nService.$monthBeforeYear;
+
+  $headerRange = computed(() => {
+    const locale = this.i18nService.$locale();
+    const [start, end] = Object.values(
+      calcRangeValue(this.$$dateNavRange(), this.$$anchor()),
+    ).map(date => date.toDate());
+
+    return {
+      start: {
+        year: start.toLocaleDateString(locale, { year: 'numeric' }),
+        month: start.toLocaleDateString(locale, { month: 'short' }),
+      },
+      end: {
+        year: end?.toLocaleDateString(locale, { year: 'numeric' }),
+        month: end?.toLocaleDateString(locale, { month: 'short' }),
+      },
+    };
+  });
 
   constructor(private readonly i18nService: I18nService) {}
 
