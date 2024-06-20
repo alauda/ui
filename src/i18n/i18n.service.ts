@@ -1,6 +1,6 @@
 import { Injectable, computed, inject, isDevMode, signal } from '@angular/core';
 
-import { DatePickerType } from '..';
+import { DatePickerType } from '../date-picker/calendar/constant';
 
 import { I18NInterface, I18NInterfaceToken } from './i18n.type';
 
