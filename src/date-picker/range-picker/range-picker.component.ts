@@ -49,7 +49,7 @@ export class RangePickerComponent extends CommonFormControl<
   clearText: string;
 
   @Input()
-  format = 'YYYY-MM-DD';
+  format: string;
 
   @Input()
   showFooter = true;

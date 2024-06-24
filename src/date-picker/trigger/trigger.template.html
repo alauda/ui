@@ -14,7 +14,7 @@
         style="flex: 1"
         aui-input
         #focusRef
-        [value]="$any(value || [])[0]?.format(format)"
+        [value]="$any($formatValue() || [])[0]"
         [readonly]="true"
         [size]="size"
         (focus)="leftFocus = true"
@@ -29,7 +29,7 @@
       <input
         style="flex: 1"
         aui-input
-        [value]="$any(value || [])[1]?.format(format)"
+        [value]="$any($formatValue() || [])[1]"
         [readonly]="true"
         [size]="size"
         (focus)="rightFocus = true"
@@ -41,7 +41,7 @@
       <input
         aui-input
         auiTooltipType="plain"
-        [value]="$any(value)?.format(format)"
+        [value]="$any($formatValue())"
         [readonly]="true"
         #focusRef
         [size]="size"

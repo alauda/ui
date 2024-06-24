@@ -4,7 +4,7 @@ import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { RangeBasicComponent } from './basic.component';
 
-import { ButtonModule, DatePickerModule } from '@alauda/ui';
+import { ButtonModule, DatePickerModule, I18nModule } from '@alauda/ui';
 
 const meta: Meta<RangeBasicComponent> = {
   title: 'Example/RangePicker',
@@ -18,6 +18,7 @@ const meta: Meta<RangeBasicComponent> = {
         ReactiveFormsModule,
         ButtonModule,
         BrowserAnimationsModule,
+        I18nModule,
       ],
     }),
   ],

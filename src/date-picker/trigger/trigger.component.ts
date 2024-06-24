@@ -7,6 +7,9 @@ import {
   Output,
   ViewChild,
   ViewEncapsulation,
+  computed,
+  inject,
+  signal,
 } from '@angular/core';
 import { Dayjs } from 'dayjs';
 
@@ -15,6 +18,8 @@ import { IconComponent } from '../../icon/icon.component';
 import { InputComponent } from '../../input/input.component';
 import { ComponentSize } from '../../internal/types';
 import { buildBem } from '../../internal/utils';
+
+import { I18nService } from 'src/i18n';
 
 const bem = buildBem('aui-date-picker-trigger');
 
@@ -29,16 +34,50 @@ const bem = buildBem('aui-date-picker-trigger');
 })
 export class DatePickerTriggerComponent {
   @Input()
-  format = 'YYYY-MM-DD';
+  get value() {
+    return this.$$value();
+  }
+
+  set value(val) {
+    const currentValue = this.$$value();
+    if (Array.isArray(val)) {
+      if (
+        !Array.isArray(currentValue) ||
+        val.some((v, i) => !v.isSame(currentValue[i]))
+      ) {
+        this.$$value.set(val);
+      }
+    } else {
+      if (Array.isArray(currentValue) || !val?.isSame(currentValue)) {
+        this.$$value.set(val);
+      }
+    }
+  }
+
+  @Input()
+  get format() {
+    return this.$$format();
+  }
+
+  set format(val) {
+    if (this.$$format() !== val) {
+      this.$$format.set(val);
+    }
+  }
+
+  @Input()
+  get isRange() {
+    return this.$$isRange();
+  }
+
+  set isRange(val) {
+    if (this.$$isRange() !== val) {
+      this.$$isRange.set(val);
+    }
+  }
 
   @Input()
   size: ComponentSize;
-
-  @Input()
-  isRange: boolean;
-
-  @Input()
-  value: Dayjs | Dayjs[];
 
   @Input()
   clearable = true;
@@ -83,6 +122,35 @@ export class DatePickerTriggerComponent {
   get showClear() {
     return !this.disabled && this.clearable && this.hasValue && this.hovered;
   }
+
+  private readonly i18nService = inject(I18nService);
+
+  private readonly $$value = signal<Dayjs | Dayjs[]>(null);
+
+  private readonly $$format = signal<string>(null);
+
+  private readonly $$isRange = signal<boolean>(null);
+
+  $formatValue = computed(() => {
+    const format = this.$$format();
+    const value = this.$$value();
+    const isRange = this.$$isRange();
+    const locale = this.i18nService.$locale();
+
+    if (!value) {
+      return isRange ? [null, null] : null;
+    }
+
+    if (this.format) {
+      return Array.isArray(value)
+        ? value.map(v => v.format(format))
+        : value.format(format);
+    }
+
+    return Array.isArray(value)
+      ? value.map(v => v.toDate().toLocaleDateString(locale))
+      : value.toDate().toLocaleDateString(locale);
+  });
 
   constructor() {
     this.focusInput = this.focusInput.bind(this);

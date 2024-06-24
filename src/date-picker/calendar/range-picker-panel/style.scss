@@ -41,6 +41,7 @@ $block: aui-date-range-picker-panel;
 
     aui-calendar-header {
       flex: 0 0 $range-picker-header-width;
+      max-width: 50%;
     }
   }
 

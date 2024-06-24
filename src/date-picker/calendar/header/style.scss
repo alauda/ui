@@ -2,6 +2,9 @@
 
 $block: aui-calendar-header;
 
+$aui-text-button-mini-width: use-var(inline-height-xs);
+$aui-text-button-mini-spacing: use-var(spacing-s);
+
 .#{$block} {
   &__container {
     height: 24px;
@@ -12,6 +15,9 @@ $block: aui-calendar-header;
 
   &__nav-content {
     flex: 1;
+    max-width: calc(
+      100% - $aui-text-button-mini-width * 4 - $aui-text-button-mini-spacing * 2
+    );
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -42,6 +48,10 @@ $block: aui-calendar-header;
       + .aui-button--text {
         margin-left: 0;
       }
+    }
+
+    .aui-button--text.header-range {
+      max-width: 100%;
     }
   }
 }

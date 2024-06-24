@@ -3,7 +3,6 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnInit,
   Output,
   TemplateRef,
   ViewEncapsulation,
@@ -41,10 +40,7 @@ import { DatePickerTriggerComponent } from '../trigger/trigger.component';
     FormsModule,
   ],
 })
-export class DatePickerComponent
-  extends CommonFormControl<ConfigType, Dayjs>
-  implements OnInit
-{
+export class DatePickerComponent extends CommonFormControl<ConfigType, Dayjs> {
   @Input()
   clearable = true;
 
@@ -96,13 +92,6 @@ export class DatePickerComponent
   value: Dayjs;
   DatePickerType = DatePickerType;
 
-  ngOnInit() {
-    if (!this.format) {
-      this.format = this.getDefaultFormat(this.type);
-      this.cdr.markForCheck();
-    }
-  }
-
   override valueIn(obj: ConfigType) {
     return obj ? dayjs(obj) : null;
   }
@@ -111,16 +100,6 @@ export class DatePickerComponent
     super.writeValue(obj);
     this.value = obj;
     this.cdr.markForCheck();
-  }
-
-  private getDefaultFormat(type = DatePickerType.Day) {
-    return type === DatePickerType.Year
-      ? 'YYYY'
-      : type === DatePickerType.Month
-      ? 'YYYY-MM'
-      : this.showTime
-      ? 'YYYY-MM-DD HH:mm:ss'
-      : 'YYYY-MM-DD';
   }
 
   clearValue() {
