@@ -3,7 +3,7 @@
 $block: aui-calendar-header;
 
 $aui-text-button-mini-width: use-var(inline-height-xs);
-$aui-text-button-mini-spacing: 2px;
+$aui-text-button-mini-spacing: use-var(spacing-s);
 
 .#{$block} {
   &__container {

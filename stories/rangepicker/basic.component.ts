@@ -15,7 +15,7 @@ import { I18nService, en, zh } from '@alauda/ui';
     <aui-range-picker
       [(ngModel)]="range"
       required
-      [clearText]="'清除'"
+      [clearText]="'clear' | auiI18n"
     ></aui-range-picker>
     <br />
     Form value: {{ range | json }}
