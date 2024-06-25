@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { ComponentSize } from 'src';
+import { ComponentSize } from '@alauda/ui';
 
 @Component({
   template: `
