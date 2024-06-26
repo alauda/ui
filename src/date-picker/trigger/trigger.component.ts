@@ -13,13 +13,11 @@ import {
 } from '@angular/core';
 import { Dayjs } from 'dayjs';
 
-import { I18nPipe } from '../../i18n/i18n.pipe';
+import { I18nPipe, I18nService } from '../../i18n';
 import { IconComponent } from '../../icon/icon.component';
 import { InputComponent } from '../../input/input.component';
 import { ComponentSize } from '../../internal/types';
 import { buildBem } from '../../internal/utils';
-
-import { I18nService } from 'src/i18n';
 
 const bem = buildBem('aui-date-picker-trigger');
 

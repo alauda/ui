@@ -9,9 +9,8 @@
   ],
   "exclude": ["dist", "release"],
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "@alauda/ui": ["src"]
+      "@alauda/ui": ["./src"]
     },
     "strictNullChecks": false
   },
