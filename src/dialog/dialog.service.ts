@@ -142,14 +142,19 @@ export class DialogService {
       this.ngZone,
     );
 
+    const injector = this.createInjector(config, dialogRef, dialogIns);
     if (compOrTempRef instanceof TemplateRef) {
       dialogIns.attachTemplatePortal(
-        new TemplatePortal(compOrTempRef, null, {
-          $implicit: config.data,
-        } as any),
+        new TemplatePortal(
+          compOrTempRef,
+          null,
+          {
+            $implicit: config.data,
+          } as any,
+          injector,
+        ),
       );
     } else {
-      const injector = this.createInjector(config, dialogRef, dialogIns);
       const contentRef = dialogIns.attachComponentPortal<T>(
         new ComponentPortal(compOrTempRef, null, injector),
       );
