@@ -1,4 +1,4 @@
-<div [class]="bem.block()">
+<div [class]="$hostClass()">
   <div
     [class]="bem.element('viewer-container')"
     *ngIf="$$mode() === EditableMode.View"
@@ -17,11 +17,20 @@
       <ng-container [ngTemplateOutlet]="editor"> </ng-container>
 
       <button
+        *ngIf="!loading"
         aui-button="text"
         [square]="true"
         (click)="saveEdit()"
       >
         <aui-icon icon="check"></aui-icon>
+      </button>
+      <button
+        *ngIf="loading"
+        aui-button="text"
+        [square]="true"
+        (click)="saveEdit()"
+      >
+        <aui-icon icon="spinner"></aui-icon>
       </button>
       <button
         aui-button="text"

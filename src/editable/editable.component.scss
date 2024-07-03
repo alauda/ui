@@ -14,9 +14,21 @@
     }
   }
 
-  &__view-container,
-  &__editor-container {
+  &--center &__view-container,
+  &--center &__editor-container {
     display: flex;
     align-items: center;
+  }
+
+  &--top &__view-container,
+  &--top &__editor-container {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &--bottom &__view-container,
+  &--bottom &__editor-container {
+    display: flex;
+    align-items: flex-end;
   }
 }
