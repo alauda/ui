@@ -1,0 +1,35 @@
+<div [class]="bem.block()">
+  <div
+    [class]="bem.element('viewer-container')"
+    *ngIf="$$mode() === EditableMode.View"
+  >
+    <ng-container [ngTemplateOutlet]="viewer"> </ng-container>
+    <button
+      aui-button="text"
+      [square]="true"
+      (click)="$$mode.set(EditableMode.Edit)"
+    >
+      <aui-icon icon="pencil"></aui-icon>
+    </button>
+  </div>
+  <ng-container *ngIf="$$mode() === EditableMode.Edit">
+    <div [class]="bem.element('editor-container')">
+      <ng-container [ngTemplateOutlet]="editor"> </ng-container>
+
+      <button
+        aui-button="text"
+        [square]="true"
+        (click)="saveEdit()"
+      >
+        <aui-icon icon="check"></aui-icon>
+      </button>
+      <button
+        aui-button="text"
+        [square]="true"
+        (click)="cancelEdit()"
+      >
+        <aui-icon icon="xmark"></aui-icon>
+      </button>
+    </div>
+  </ng-container>
+</div>

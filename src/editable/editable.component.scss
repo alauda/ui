@@ -1,0 +1,22 @@
+@import '../theme/var';
+@import '../theme/mixin';
+
+.aui-editable {
+  .aui-button--text {
+    color: use-rgb(main-text);
+
+    &:first-of-type {
+      margin-left: 8px;
+    }
+
+    &:hover {
+      color: use-rgb(primary);
+    }
+  }
+
+  &__view-container,
+  &__editor-container {
+    display: flex;
+    align-items: center;
+  }
+}

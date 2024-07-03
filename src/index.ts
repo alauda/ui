@@ -11,6 +11,7 @@ export * from './date-picker';
 export * from './dialog';
 export * from './drawer';
 export * from './dropdown';
+export * from './editable';
 export * from './form';
 export * from './i18n';
 export * from './icon';
