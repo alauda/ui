@@ -6,6 +6,7 @@
     <ng-container [ngTemplateOutlet]="viewer"> </ng-container>
     <button
       aui-button="text"
+      size="mini"
       [square]="true"
       (click)="$$mode.set(EditableMode.Edit)"
     >
@@ -18,6 +19,7 @@
 
       <button
         aui-button="text"
+        size="mini"
         [square]="true"
         (click)="saveEdit()"
       >
@@ -25,6 +27,7 @@
       </button>
       <button
         aui-button="text"
+        size="mini"
         [square]="true"
         (click)="cancelEdit()"
       >
