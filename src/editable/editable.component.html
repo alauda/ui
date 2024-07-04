@@ -17,20 +17,12 @@
       <ng-container [ngTemplateOutlet]="editor"> </ng-container>
 
       <button
-        *ngIf="!loading"
         aui-button="text"
         [square]="true"
+        [disabled]="loading"
         (click)="saveEdit()"
       >
-        <aui-icon icon="check"></aui-icon>
-      </button>
-      <button
-        *ngIf="loading"
-        aui-button="text"
-        [square]="true"
-        (click)="saveEdit()"
-      >
-        <aui-icon icon="spinner"></aui-icon>
+        <aui-icon [icon]="loading ? 'spinner' : 'check'"></aui-icon>
       </button>
       <button
         aui-button="text"

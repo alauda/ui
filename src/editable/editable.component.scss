@@ -12,6 +12,10 @@
     &:hover {
       color: use-rgb(primary);
     }
+
+    &[disabled] {
+      color: use-rgb(main-text) !important;
+    }
   }
 
   &--center &__view-container,
