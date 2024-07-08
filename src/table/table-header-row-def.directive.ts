@@ -20,5 +20,11 @@ export class TableHeaderRowDefDirective extends CdkHeaderRowDef {
   override columns: Iterable<string> = [];
 
   @Input('auiTableHeaderRowDefSticky')
-  override sticky: boolean;
+  set auiTableHeaderRowDefSticky(val) {
+    this.sticky = val;
+  }
+
+  get auiTableHeaderRowDefSticky() {
+    return this.sticky;
+  }
 }

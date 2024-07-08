@@ -88,7 +88,8 @@ export class TableComponent<T>
     // nothing
   }
 
-  ngAfterContentInit() {
+  override ngAfterContentInit() {
+    super.ngAfterContentInit();
     this._createPlaceholder();
   }
 
