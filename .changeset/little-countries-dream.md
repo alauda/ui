@@ -1,5 +1,5 @@
 ---
-"@alauda/ui": patch
+"@alauda/ui": major
 ---
 
 Chore/upgrade angular v18
