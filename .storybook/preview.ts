@@ -1,8 +1,9 @@
 import { setCompodocJson } from '@storybook/addon-docs/angular';
-import { addons } from '@storybook/addons';
 import type { Preview } from '@storybook/angular';
+import { addons } from '@storybook/preview-api';
 
 import docJson from '../documentation.json';
+
 // eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
 import '!style-loader!css-loader!sass-loader!./global.scss';
 
