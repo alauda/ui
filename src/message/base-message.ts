@@ -88,7 +88,7 @@ export abstract class BaseMessage<
     return this.createType(MessageType.Info, option);
   }
 
-  remove(id: string | number) {
+  remove(id: number | string) {
     const index = this.componentRefs.findIndex(
       ref => ref.instance.uniqueId === id || ref.instance.id === id,
     );
@@ -127,7 +127,7 @@ export abstract class BaseMessage<
     return componentRef;
   }
 
-  protected removeNeedless(id: string | number) {
+  protected removeNeedless(id: number | string) {
     if (id) {
       this.remove(id);
     }

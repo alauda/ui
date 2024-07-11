@@ -38,7 +38,7 @@ export default class TabsBasicComponent {
    * 样式主题
    */
   @Input()
-  type: 'line' | 'card' = 'line';
+  type: 'card' | 'line' = 'line';
 
   /**
    * 是否禁用

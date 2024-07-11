@@ -45,7 +45,7 @@ export class MessageComponent implements AfterViewInit {
   beforeClosed: Subject<void> = new Subject();
   afterClosed: Subject<void> = new Subject();
 
-  id: string | number;
+  id: number | string;
   type: MessageType;
   content: string;
   duration: number;

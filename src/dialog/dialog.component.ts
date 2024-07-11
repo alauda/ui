@@ -62,7 +62,7 @@ export class DialogComponent {
   config: DialogConfig;
 
   // animation state
-  state: 'void' | 'enter' | 'exit' = 'enter';
+  state: 'enter' | 'exit' | 'void' = 'enter';
 
   animationStateChanged = new EventEmitter<AnimationEvent>();
 

@@ -22,7 +22,7 @@ export class MessageConfig {
   /**
    * The id of this message, The same ID can only have one at the same time
    */
-  id?: string | number;
+  id?: number | string;
 
   /**
    * automatically shut down after a few seconds, if <= 0 ,non automatic closure

@@ -55,7 +55,7 @@ export class AnchorLabelDirective
     this.labelChange.emit(value);
   }
 
-  private _label: string | TemplateRef<unknown>;
+  private _label: TemplateRef<unknown> | string;
 
   @Input('auiAnchorLabelContext')
   labelContext: unknown;
@@ -90,7 +90,7 @@ export class AnchorLabelDirective
   private _level = 0;
 
   @Output()
-  labelChange = new EventEmitter<string | TemplateRef<unknown>>();
+  labelChange = new EventEmitter<TemplateRef<unknown> | string>();
 
   constructor(
     protected override injector: Injector,

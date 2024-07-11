@@ -44,7 +44,7 @@ export class OptionComponent<T> {
   bem: Bem = buildBem('aui-option');
 
   private _disabled = false;
-  private _label: string | TemplateRef<unknown> = '';
+  private _label: TemplateRef<unknown> | string = '';
   private _labelContext: unknown = {};
   private _value: T;
   private readonly label$$ = new BehaviorSubject(this.label);

@@ -142,7 +142,7 @@ export class TabGroupComponent
   }
 
   @Input()
-  title: string | TemplateRef<unknown>;
+  title: TemplateRef<unknown> | string;
 
   @Input()
   get size() {

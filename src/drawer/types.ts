@@ -12,9 +12,9 @@ export const DrawerSize = {
 export type DrawerSize = ValueOf<typeof DrawerSize>;
 
 export interface DrawerOptions<T = unknown, C extends object = object> {
-  title?: string | TemplateRef<C>;
+  title?: TemplateRef<C> | string;
   content?: ComponentType<T> | TemplateRef<C>;
-  footer?: string | TemplateRef<C>;
+  footer?: TemplateRef<C> | string;
   contentParams?: C; // 不仅作为content的参数，同时是title和footer的上下文
   width?: number;
   size?: DrawerSize; // 内置的宽度尺寸，也可以使用 width 自定义

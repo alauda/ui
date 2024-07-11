@@ -18,4 +18,4 @@ export interface StepItem {
 
 export type StepsOrientation = 'horizontal' | 'vertical';
 
-export type StepsType = 'step' | 'progress';
+export type StepsType = 'progress' | 'step';

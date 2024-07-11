@@ -33,7 +33,7 @@ export class CheckboxGroupComponent<T> extends CommonFormControl<T[]> {
   private _trackFn: TrackFn<T>;
 
   @Input()
-  direction: 'row' | 'column' = 'row';
+  direction: 'column' | 'row' = 'row';
 
   @Input()
   get trackFn() {

@@ -16,7 +16,7 @@ import { tableBem } from './table.component';
 })
 export class TableCellDirective extends CdkCell {
   @Input()
-  direction: 'row' | 'column' = 'row';
+  direction: 'column' | 'row' = 'row';
 
   constructor(columnDef: CdkColumnDef, elementRef: ElementRef<HTMLElement>) {
     super(columnDef, elementRef);

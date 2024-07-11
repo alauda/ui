@@ -19,7 +19,7 @@ import { NotificationService } from '@alauda/ui';
             title: '标题',
             content: '这是一条提醒通知',
             duration: 0,
-            id: 'test01'
+            id: 'test01',
           })
         "
       >
@@ -31,7 +31,7 @@ import { NotificationService } from '@alauda/ui';
         aui-button="success"
         (click)="
           notificationService.success({
-            title: '成功标题'
+            title: '成功标题',
           })
         "
       >
@@ -52,7 +52,7 @@ import { NotificationService } from '@alauda/ui';
         (click)="
           notificationService.error({
             title: '错误标题',
-            content: '错误内容'
+            content: '错误内容',
           })
         "
       >
@@ -83,7 +83,7 @@ import { NotificationService } from '@alauda/ui';
             duration: 0,
             title: '自定义 Class',
             content: '在 .aui-notification 同级添加了 class: custom-class',
-            customClass: 'custom-class'
+            customClass: 'custom-class',
           })
         "
       >

@@ -15,7 +15,7 @@ import { BaseTooltip } from './base-tooltip';
 })
 export class TooltipActiveDirective implements OnDestroy {
   @Input('auiTooltipActive')
-  customClass: string | string[] = '';
+  customClass: string[] | string = '';
 
   destroy$ = new Subject();
 

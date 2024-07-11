@@ -2,7 +2,7 @@
 export class Bem {
   constructor(private readonly namespace: string) {}
 
-  block(...modifiers: Array<{ [name: string]: boolean } | string>) {
+  block(...modifiers: Array<string | { [name: string]: boolean }>) {
     const activatedModifiers = getActivatedModifiers(modifiers);
     if (activatedModifiers.length > 0) {
       return `${this.namespace} ${activatedModifiers
@@ -18,7 +18,7 @@ export class Bem {
 
   element(
     name: string,
-    ...modifiers: Array<{ [name: string]: boolean | '' } | string>
+    ...modifiers: Array<string | { [name: string]: boolean | '' }>
   ) {
     const activatedModifiers = getActivatedModifiers(modifiers);
 
@@ -33,7 +33,7 @@ export class Bem {
 }
 
 function getActivatedModifiers(
-  modifiers: Array<{ [name: string]: boolean | '' } | string>,
+  modifiers: Array<string | { [name: string]: boolean | '' }>,
 ) {
   return modifiers.reduce<string[]>((acc, modifier) => {
     if (!modifier) {

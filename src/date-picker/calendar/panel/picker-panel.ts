@@ -199,8 +199,8 @@ export class PickerPanelComponent implements OnChanges {
       this.navRange === DateNavRange.Decade
         ? value.isSame(dateValue, YEAR)
         : this.navRange === DateNavRange.Year
-        ? value.isSame(dateValue, MONTH)
-        : value.isSame(dateValue, DAY),
+          ? value.isSame(dateValue, MONTH)
+          : value.isSame(dateValue, DAY),
     );
   }
 

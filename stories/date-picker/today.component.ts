@@ -26,8 +26,8 @@ export default class DatePickerTodayComponent {
       navRange === DateNavRange.Month
         ? 'date'
         : navRange === DateNavRange.Year
-        ? 'month'
-        : 'year',
+          ? 'month'
+          : 'year',
     );
   };
 }

@@ -19,7 +19,7 @@ import { Observable } from 'rxjs';
 export class VirtualForOfDirective<T> extends CdkVirtualForOf<T> {
   @Input()
   set auiVirtualForOf(
-    value: DataSource<T> | Observable<T[]> | NgIterable<T> | null | undefined,
+    value: DataSource<T> | NgIterable<T> | Observable<T[]> | null | undefined,
   ) {
     this.cdkVirtualForOf = value;
   }

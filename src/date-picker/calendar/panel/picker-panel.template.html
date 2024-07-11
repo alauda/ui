@@ -3,7 +3,7 @@
   [ngClass]="{
     'day-panel-container': navRange === DateNavRange.Month,
     'month-panel-container': navRange === DateNavRange.Year,
-    'year-panel-container': navRange === DateNavRange.Decade
+    'year-panel-container': navRange === DateNavRange.Decade,
   }"
 >
   <div
@@ -31,7 +31,7 @@
         isRangeStart: item.isRangeStart,
         isRangeEnd: item.isRangeEnd,
         isToday: matchToday(item.value) && !item.isBackground,
-        isDisabled: item.isDisabled
+        isDisabled: item.isDisabled,
       }"
       ><button
         aui-button="text"

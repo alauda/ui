@@ -36,7 +36,7 @@ import { TooltipTrigger, TooltipType } from './tooltip.types';
 import { getOriginPosition, getOverlayPosition } from './utils';
 
 export interface TooltipInterface {
-  content: string | TemplateRef<any>;
+  content: TemplateRef<any> | string;
   context: any;
   class: string;
   type: TooltipType;
@@ -50,7 +50,7 @@ export interface TooltipInterface {
 export const DISPLAY_DELAY = 50;
 export const HIDDEN_DELAY = 150;
 
-// @ts-ignore
+// @ts-expect-error hack to enhance overlayRef
 interface HackOverlayRef extends OverlayRef {
   _positionStrategy: {
     _hasExactPosition: () => boolean;
@@ -67,7 +67,7 @@ interface HackOverlayRef extends OverlayRef {
 export class BaseTooltip<T = any>
   implements TooltipInterface, AfterViewInit, OnDestroy
 {
-  set content(value: string | TemplateRef<any>) {
+  set content(value: TemplateRef<any> | string) {
     this._content = value;
     this.inputContent$$.next(value);
   }
@@ -146,7 +146,7 @@ export class BaseTooltip<T = any>
   protected listeners: Array<() => void> = [];
   protected unlistenBody: () => void;
 
-  protected inputContent$$ = new ReplaySubject<string | TemplateRef<any>>(1);
+  protected inputContent$$ = new ReplaySubject<TemplateRef<any> | string>(1);
   protected inputType$$ = new ReplaySubject<TooltipType>(1);
   protected inputPosition$$ = new ReplaySubject<string>(1);
   protected inputClass$$ = new ReplaySubject<string>(1);
@@ -166,7 +166,7 @@ export class BaseTooltip<T = any>
   protected _trigger = TooltipTrigger.Hover;
   protected _disabled = false;
   protected _context: T;
-  protected _content: string | TemplateRef<unknown>;
+  protected _content: TemplateRef<unknown> | string;
 
   get isCreated() {
     return !!this.overlayRef;
@@ -186,7 +186,7 @@ export class BaseTooltip<T = any>
   }
 
   private _updateTransformOrigin() {
-    // @ts-ignore
+    // @ts-expect-error hack to enhance overlayRef
     const overlayRef = this.overlayRef as HackOverlayRef;
     const positionStrategy = overlayRef._positionStrategy;
     const hasExactPosition = positionStrategy._hasExactPosition(); // 是不是应用了精确定位
@@ -198,8 +198,8 @@ export class BaseTooltip<T = any>
     const triggerElReact = this.elRef.nativeElement.getBoundingClientRect(); // 触发点Rect
 
     const position = positionStrategy._lastPosition; // 当前策略位置（调整后的最佳的）
-    let xOrigin: 'left' | 'right' | 'center';
-    const yOrigin: 'top' | 'bottom' | 'center' = position.overlayY;
+    let xOrigin: 'center' | 'left' | 'right';
+    const yOrigin: 'bottom' | 'center' | 'top' = position.overlayY;
     if (position.overlayX === 'center') {
       xOrigin = 'center';
     } else {

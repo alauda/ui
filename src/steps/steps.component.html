@@ -67,8 +67,8 @@
           isProgress
             ? step.state || 'default'
             : i < _currentIndex
-            ? 'done'
-            : 'default'
+              ? 'done'
+              : 'default'
         }}"
         [class.aui-step__info--selected]="getActiveIndex() === i"
       >

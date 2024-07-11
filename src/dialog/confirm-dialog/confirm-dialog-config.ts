@@ -8,7 +8,7 @@ export class ConfirmDialogConfig<
   R = unknown,
 > extends BaseDialogConfig {
   title: string;
-  content?: string | TemplateRef<any> | Type<any>;
+  content?: TemplateRef<any> | Type<any> | string;
   cancelButton? = true;
   confirmType?: ConfirmType = ConfirmType.Primary;
   confirmText? = 'OK';

@@ -29,6 +29,7 @@ import {
   Type,
   ViewChild,
   ViewEncapsulation,
+  AfterViewInit,
 } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -48,7 +49,7 @@ const DRAWER_OVERLAY_BACKDROP_CLASS = 'aui-drawer-mask';
 
 export const duration = '300ms';
 
-type Step = 'showStart' | 'showDone' | 'hideStart' | 'hideDone';
+type Step = 'hideDone' | 'hideStart' | 'showDone' | 'showStart';
 
 @Component({
   templateUrl: './internal.component.html',
@@ -91,7 +92,9 @@ type Step = 'showStart' | 'showDone' | 'hideStart' | 'hideDone';
     ]),
   ],
 })
-export class DrawerInternalComponent<T = unknown, C extends object = object> {
+export class DrawerInternalComponent<T = unknown, C extends object = object>
+  implements AfterViewInit
+{
   @ViewChild(CdkPortalOutlet, { static: false })
   bodyPortalOutlet: CdkPortalOutlet;
 
@@ -101,7 +104,7 @@ export class DrawerInternalComponent<T = unknown, C extends object = object> {
   animationStep$ = new Subject<Step>();
 
   options: DrawerOptions<T, C>;
-  showHide$$ = new BehaviorSubject<'show' | 'hide'>('hide');
+  showHide$$ = new BehaviorSubject<'hide' | 'show'>('hide');
   maskVisible$ = new Subject<boolean>();
 
   get drawerClasses(): Record<string, boolean> {

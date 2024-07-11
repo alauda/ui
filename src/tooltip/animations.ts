@@ -72,4 +72,4 @@ export const scaleY = [
 
 export const animations = [...scale, ...scaleY];
 
-export type AnimationType = 'scale' | 'scaleY' | 'none';
+export type AnimationType = 'none' | 'scale' | 'scaleY';
