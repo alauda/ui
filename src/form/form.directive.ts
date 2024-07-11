@@ -16,7 +16,7 @@ import { LabelPosition } from './form.types';
 })
 export class FormDirective {
   get ngClassSubmitted() {
-    return (this.controlContainer?.formDirective as NgForm | FormGroupDirective)
+    return (this.controlContainer?.formDirective as FormGroupDirective | NgForm)
       .submitted;
   }
 

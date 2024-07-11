@@ -25,7 +25,10 @@ export class DateCell {
   isRangeEnd?: boolean; // 范围组件的范围结束日期
   isDisabled?: boolean;
 
-  constructor(public value: Dayjs, public label: string | number) {}
+  constructor(
+    public value: Dayjs,
+    public label: number | string,
+  ) {}
 }
 
 export function getDatePanelIterable(
@@ -73,8 +76,8 @@ export function getDatePanelIterable(
             navRange === DateNavRange.Month
               ? DAY
               : navRange === DateNavRange.Year
-              ? MONTH
-              : YEAR,
+                ? MONTH
+                : YEAR,
           ),
           done: false,
         };
@@ -95,8 +98,8 @@ export function formatDate(type: DateNavRange, dateValue: Dayjs, date: Dayjs) {
     type === DateNavRange.Decade
       ? dateValue.year()
       : type === DateNavRange.Year
-      ? dateValue.month() + 1
-      : dateValue.date();
+        ? dateValue.month() + 1
+        : dateValue.date();
   const cell = new DateCell(dateValue, label);
   if (type === DateNavRange.Month && date.month() !== dateValue.month()) {
     cell.isBackground = true;

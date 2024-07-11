@@ -30,16 +30,17 @@ import { DrawerOptions, DrawerSize } from '../types';
   providers: [DrawerService],
 })
 export class DrawerComponent<
-  T = unknown,
-  C extends object = object,
-  R = unknown,
-> implements AfterViewInit, OnChanges, Required<DrawerOptions<T, C>>
+    T = unknown,
+    C extends object = object,
+    R = unknown,
+  >
+  implements AfterViewInit, OnChanges, Required<DrawerOptions<T, C>>
 {
   @Input()
-  title: string | TemplateRef<C>;
+  title: TemplateRef<C> | string;
 
   @Input()
-  footer: string | TemplateRef<C>;
+  footer: TemplateRef<C> | string;
 
   @Input()
   size: DrawerSize;
@@ -51,7 +52,7 @@ export class DrawerComponent<
   visible: boolean;
 
   @Input()
-  content: TemplateRef<C> | ComponentType<T>;
+  content: ComponentType<T> | TemplateRef<C>;
 
   @Input()
   hideOnClickOutside: boolean;
@@ -88,8 +89,8 @@ export class DrawerComponent<
 
   @ContentChild(DrawerContentDirective, { read: TemplateRef })
   private readonly contentTemplateOrComponent:
-    | TemplateRef<C>
-    | ComponentType<T>;
+    | ComponentType<T>
+    | TemplateRef<C>;
 
   @ContentChild(DrawerFooterDirective, { read: TemplateRef })
   private readonly footerTemplate: TemplateRef<C>;

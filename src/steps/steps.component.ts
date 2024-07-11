@@ -207,8 +207,8 @@ export class StepsComponent implements OnInit, OnDestroy {
     return i === this.selectedIndex
       ? true
       : firstDefaultIndex === 0
-      ? false
-      : firstDefaultIndex === i;
+        ? false
+        : firstDefaultIndex === i;
   }
 
   ngOnDestroy() {

@@ -62,12 +62,12 @@ export class SortDemoComponent {
       a[activeKey] === b[activeKey]
         ? 0
         : a[activeKey] > b[activeKey]
-        ? sort.direction === 'asc'
-          ? 1
-          : -1
-        : sort.direction === 'asc'
-        ? -1
-        : 1,
+          ? sort.direction === 'asc'
+            ? 1
+            : -1
+          : sort.direction === 'asc'
+            ? -1
+            : 1,
     );
   }
 }

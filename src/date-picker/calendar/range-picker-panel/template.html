@@ -62,7 +62,7 @@
         [ngTemplateOutlet]="datePlaceholder"
         [ngTemplateOutletContext]="{
           placeholder: 'start_date' | auiI18n,
-          value: rangeValue[0]
+          value: rangeValue[0],
         }"
       ></ng-container>
       <aui-time-picker
@@ -82,7 +82,7 @@
         [ngTemplateOutlet]="datePlaceholder"
         [ngTemplateOutletContext]="{
           placeholder: 'end_date' | auiI18n,
-          value: rangeValue[1]
+          value: rangeValue[1],
         }"
       ></ng-container>
       <aui-time-picker
@@ -113,6 +113,6 @@
   <span
     *ngIf="value"
     class="date-value date-holder"
-    >{{ value | date : FOOTER_DATE_FORMAT }}</span
+    >{{ value | date: FOOTER_DATE_FORMAT }}</span
   >
 </ng-template>

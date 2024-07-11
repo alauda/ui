@@ -1,7 +1,7 @@
 import { TemplateRef } from '@angular/core';
 
 export interface SelectOption {
-  label: string | TemplateRef<unknown>;
+  label: TemplateRef<unknown> | string;
   labelContext?: unknown;
 }
 
@@ -19,11 +19,11 @@ export type TrackFn<T, R = unknown> = (value: T) => R;
 
 export type TagClassFn<
   V,
-  T extends string | TemplateRef<unknown> = string | TemplateRef<unknown>,
+  T extends TemplateRef<unknown> | string = TemplateRef<unknown> | string,
 > = (
   label: T,
   value: V,
-) => string | string[] | Set<string> | { [className: string]: unknown };
+) => Set<string> | string[] | string | { [className: string]: unknown };
 
 export enum SelectAllStatus {
   Empty = '',

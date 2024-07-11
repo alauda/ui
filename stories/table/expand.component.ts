@@ -53,7 +53,7 @@ import { DATA_SOURCE } from './data';
         'id',
         'name',
         'value',
-        'expand-panel'
+        'expand-panel',
       ]"
     ></aui-table-header-row>
     <aui-table-row

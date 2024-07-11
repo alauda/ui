@@ -41,7 +41,7 @@ export class TooltipComponent implements OnDestroy {
   showHide = 'scale-hide';
   animationType: AnimationType;
 
-  inputContent$: Observable<string | TemplateRef<any>>;
+  inputContent$: Observable<TemplateRef<any> | string>;
   inputType$: Observable<TooltipType>;
   inputPosition$: Observable<string>;
   inputClass$: Observable<string>;
@@ -70,7 +70,7 @@ export class TooltipComponent implements OnDestroy {
   }
 
   setupInputs(inputs: {
-    inputContent$: Observable<string | TemplateRef<any>>;
+    inputContent$: Observable<TemplateRef<any> | string>;
     inputType$: Observable<TooltipType>;
     inputPosition$: Observable<string>;
     inputClass$: Observable<string>;

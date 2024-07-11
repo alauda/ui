@@ -125,7 +125,7 @@ export class FixedSizeTableVirtualScrollDirective<T = unknown>
   private isStickyEnabled(): boolean {
     return (
       !!this.scrollStrategy.viewport &&
-      // @ts-expect-error
+      // @ts-expect-error should get private property _headerRowDefs
       (this.table._headerRowDefs as CdkHeaderRowDef[])
         .map(def => def.sticky)
         .reduce((prev, curr) => prev && curr, true)

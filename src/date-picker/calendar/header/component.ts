@@ -136,8 +136,8 @@ export class CalendarHeaderComponent {
     return constrainValue.isSame(range.start, MONTH)
       ? 0
       : constrainValue.isBefore(range.start, MONTH)
-      ? -1
-      : 1;
+        ? -1
+        : 1;
   }
 
   navHead(range: DateNavRange, value: number) {

@@ -78,7 +78,7 @@ export default class TagBasicComponent {
    * 标签大小
    */
   @Input()
-  size: 'large' | 'medium' | 'small' | 'mini' = 'medium';
+  size: 'large' | 'medium' | 'mini' | 'small' = 'medium';
 
   /**
    * 是否可以关闭

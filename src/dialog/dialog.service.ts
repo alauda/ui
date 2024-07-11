@@ -71,7 +71,7 @@ export class DialogService {
     const dialogRef = this.open<
       ConfirmDialogComponent<T, R>,
       void,
-      { confirm: boolean; result: T | R }
+      { confirm: boolean; result: R | T }
     >(ConfirmDialogComponent, {
       size: DialogSize.FitContent,
       noAnimation: !!config.noAnimation,

@@ -1,6 +1,6 @@
-export type SortDirection = 'asc' | 'desc' | '';
+export type SortDirection = '' | 'asc' | 'desc';
 
-export type ArrowViewState = SortDirection | 'hint' | 'active';
+export type ArrowViewState = SortDirection | 'active' | 'hint';
 
 export interface Sortable {
   id: string;

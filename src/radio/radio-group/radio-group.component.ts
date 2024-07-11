@@ -38,7 +38,7 @@ export class RadioGroupComponent extends CommonFormControl<any> {
   }
 
   @Input()
-  direction: 'row' | 'column' = 'row';
+  direction: 'column' | 'row' = 'row';
 
   @Input()
   set plain(val: boolean) {

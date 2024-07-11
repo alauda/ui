@@ -69,13 +69,13 @@ export default class RadioBasicComponent {
    * 按钮横纵向排列方式
    */
   @Input()
-  direction: 'row' | 'column' = 'row';
+  direction: 'column' | 'row' = 'row';
 
   /**
    * 按钮大小
    */
   @Input()
-  size: 'mini' | 'small' | 'medium' | 'large' = 'medium';
+  size: 'large' | 'medium' | 'mini' | 'small' = 'medium';
 
   model = '1';
 }

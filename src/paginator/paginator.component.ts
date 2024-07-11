@@ -78,7 +78,7 @@ export class PaginatorComponent implements OnDestroy {
   total = 0;
 
   @Input()
-  layout: string | string[] = 'total,pager,sizes';
+  layout: string[] | string = 'total,pager,sizes';
 
   @Input()
   disabled = false;

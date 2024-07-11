@@ -17,10 +17,10 @@ export enum ConfirmType {
 }
 
 export type PromiseExecutor<T> = (
-  resolve: (result?: T | PromiseLike<T>) => void,
+  resolve: (result?: PromiseLike<T> | T) => void,
   reject: (reason?: unknown) => void,
 ) => void;
 
-export type CustomBeforeAction<T> = () => PromiseLike<T> | Observable<T>;
+export type CustomBeforeAction<T> = () => Observable<T> | PromiseLike<T>;
 
-export type BeforeAction<T> = PromiseExecutor<T> | CustomBeforeAction<T>;
+export type BeforeAction<T> = CustomBeforeAction<T> | PromiseExecutor<T>;

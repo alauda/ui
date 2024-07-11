@@ -16,11 +16,11 @@
           [style.height.px]="CONTROL_ITEM_HEIGHT"
           [ngClass]="{
             disabled: isDisabled(item, TimePickerControlType.Hour),
-            selected: matchValue(item, TimePickerControlType.Hour, model)
+            selected: matchValue(item, TimePickerControlType.Hour, model),
           }"
           (click)="selectValue(item, TimePickerControlType.Hour)"
         >
-          {{ item | number : '2.0-0' }}
+          {{ item | number: '2.0-0' }}
         </li>
       </ul>
       <div [class]="bem.element('column-strut')"></div>
@@ -40,11 +40,11 @@
           [style.height.px]="CONTROL_ITEM_HEIGHT"
           [ngClass]="{
             disabled: isDisabled(item, TimePickerControlType.Minute),
-            selected: matchValue(item, TimePickerControlType.Minute, model)
+            selected: matchValue(item, TimePickerControlType.Minute, model),
           }"
           (click)="selectValue(item, TimePickerControlType.Minute)"
         >
-          {{ item | number : '2.0-0' }}
+          {{ item | number: '2.0-0' }}
         </li>
       </ul>
       <div [class]="bem.element('column-strut')"></div>
@@ -63,11 +63,11 @@
           [style.height.px]="CONTROL_ITEM_HEIGHT"
           [ngClass]="{
             disabled: isDisabled(item, TimePickerControlType.Second),
-            selected: matchValue(item, TimePickerControlType.Second, model)
+            selected: matchValue(item, TimePickerControlType.Second, model),
           }"
           (click)="selectValue(item, TimePickerControlType.Second)"
         >
-          {{ item | number : '2.0-0' }}
+          {{ item | number: '2.0-0' }}
         </li>
       </ul>
       <div [class]="bem.element('column-strut')"></div>

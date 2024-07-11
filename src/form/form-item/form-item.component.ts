@@ -84,7 +84,7 @@ export class FormItemComponent implements AfterContentInit, OnDestroy {
   hasError$: Observable<boolean>;
   errorCount$: Observable<number>;
   hintCount$: Observable<number>;
-  parentForm: NgForm | FormGroupDirective;
+  parentForm: FormGroupDirective | NgForm;
 
   private readonly destroy$$ = new Subject<void>();
 

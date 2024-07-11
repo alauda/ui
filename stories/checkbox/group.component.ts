@@ -30,7 +30,7 @@ export default class CheckboxGroupComponent {
    * 按钮横纵向排列方式
    */
   @Input()
-  direction: 'row' | 'column' = 'row';
+  direction: 'column' | 'row' = 'row';
 
   model = ['label1'];
   checkAll = false;

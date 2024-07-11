@@ -1,6 +1,6 @@
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { ComponentRef, Injectable } from '@angular/core';
+import { ComponentRef, Injectable, OnDestroy } from '@angular/core';
 import { debounceTime, filter, fromEvent, Subject, takeUntil } from 'rxjs';
 
 import { DrawerInternalComponent } from './component/internal/internal.component';
@@ -18,11 +18,9 @@ const DEFAULT_OPTIONS = {
 } as const satisfies DrawerOptions;
 
 @Injectable()
-export class DrawerService<
-  T = unknown,
-  C extends object = object,
-  R = unknown,
-> {
+export class DrawerService<T = unknown, C extends object = object, R = unknown>
+  implements OnDestroy
+{
   private overlayRef: OverlayRef;
   options: DrawerOptions<T, C>;
   drawerRef: DrawerRef<T, C, R>;

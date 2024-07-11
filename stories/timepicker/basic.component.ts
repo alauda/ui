@@ -20,7 +20,7 @@ export default class TimePickerBasicComponent {
    * input 大小
    */
   @Input()
-  size: 'large' | 'medium' | 'small' | 'mini' = 'medium';
+  size: 'large' | 'medium' | 'mini' | 'small' = 'medium';
 
   /**
    * 是否禁用

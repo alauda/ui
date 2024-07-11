@@ -4,7 +4,7 @@
 .aui-menu-group {
   &__title {
     display: inline-block;
-    margin: 0 0 use-var(spacing-s) 0;
+    margin: 0 0 use-var(spacing-s);
     padding: use-var(spacing-s) 0;
     font-size: use-var(font-size-s);
     line-height: use-var(line-height-s);

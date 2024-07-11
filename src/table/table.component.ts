@@ -79,7 +79,7 @@ export class TableComponent<T>
   elementRef = inject(ElementRef);
 
   // FIXME: workaround to override because it will break constructor if it is field, but why MatTable works?
-  // @ts-ignore
+  // @ts-expect-error workaround to override because it will break constructor if it is field
   protected get stickyCssClass() {
     return 'aui-table-sticky';
   }

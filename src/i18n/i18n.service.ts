@@ -40,7 +40,7 @@ export class I18nService {
     }
     if (data) {
       content = content.replaceAll(
-        /{{([^{}]+)}}/,
+        /{{([^{}]+)}}/g,
         (_matched, $0: string) => data[$0.trim()],
       );
     }

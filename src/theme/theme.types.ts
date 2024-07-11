@@ -1,3 +1,3 @@
-export type Theme = 'light' | 'dark';
-export type ThemeMode = 'system' | 'light' | 'dark';
-export type ThemeSet<T> = [T, T] | Record<Theme, T> | ((theme: Theme) => T);
+export type Theme = 'dark' | 'light';
+export type ThemeMode = 'dark' | 'light' | 'system';
+export type ThemeSet<T> = Record<Theme, T> | ((theme: Theme) => T) | [T, T];

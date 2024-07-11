@@ -78,8 +78,8 @@
     z-index: $tab-pagination-button-z-index; // higher than labels
     box-shadow: 0 0 4px #ccc;
     opacity: 0.6;
-    // stylelint-disable-next-line plugin/no-low-performance-animation-properties
-    transition: box-shadow 0.3s, opacity 0.3s, color 0.3s;
+    // prettier-ignore
+    transition: box-shadow 0.3s, opacity 0.3s, color 0.3s; // stylelint-disable-line plugin/no-low-performance-animation-properties
 
     &:hover {
       opacity: 1;

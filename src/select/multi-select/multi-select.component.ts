@@ -167,7 +167,10 @@ export class MultiSelectComponent<T = unknown>
   trackByValue = (_: number, item: SelectFilterOption<T>) =>
     this.trackFn(item.value);
 
-  constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {
+  constructor(
+    cdr: ChangeDetectorRef,
+    private readonly renderer: Renderer2,
+  ) {
     super(cdr);
   }
 
@@ -259,8 +262,8 @@ export class MultiSelectComponent<T = unknown>
         return selected.length === 0
           ? SelectAllStatus.Empty
           : selected.length === statuses.length
-          ? SelectAllStatus.Checked
-          : SelectAllStatus.Indeterminate;
+            ? SelectAllStatus.Checked
+            : SelectAllStatus.Indeterminate;
       }),
       startWith(SelectAllStatus.Empty),
       tap(selectAllStatus => (this.selectAllStatus = selectAllStatus)),

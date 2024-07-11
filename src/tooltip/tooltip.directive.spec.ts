@@ -210,7 +210,7 @@ describe('TooltipDirective', () => {
   imports: [TooltipModule, FormsModule],
 })
 class TestComponent {
-  content: string | TemplateRef<any> = 'hello world';
+  content: TemplateRef<any> | string = 'hello world';
   context: any;
   type: TooltipType;
   className: string;

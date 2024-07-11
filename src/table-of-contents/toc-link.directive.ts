@@ -23,7 +23,7 @@ export class TocLinkDirective implements OnInit, OnDestroy {
   for: TocContainerDirective;
 
   @Input()
-  auiTocLink: string | string[];
+  auiTocLink: string[] | string;
 
   private readonly _subs: Subscription[] = [];
 

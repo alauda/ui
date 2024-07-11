@@ -144,7 +144,7 @@ export class AutoCompleteDirective
     if (this.ngControl) {
       this.ngControl.valueChanges
         .pipe(takeUntil(this.unsubscribe$))
-        .subscribe((value: string | string[]) => {
+        .subscribe((value: string[] | string) => {
           if (!Array.isArray(value)) {
             this.inputValue$$.next(value);
           }
