@@ -1,7 +1,10 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -28,7 +31,9 @@
             "main": "",
             "tsConfig": "tsconfig.json",
             "inlineStyleLanguage": "scss",
-            "styles": ["src/theme/style.scss"]
+            "styles": [
+              "src/theme/style.scss"
+            ]
           },
           "configurations": {
             "production": {
@@ -63,7 +68,12 @@
             "configDir": ".storybook",
             "browserTarget": "storybook:build",
             "compodoc": true,
-            "compodocArgs": ["-e", "json", "-d", "."],
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "."
+            ],
             "port": 6006
           }
         },
@@ -73,9 +83,23 @@
             "configDir": ".storybook",
             "browserTarget": "storybook:build",
             "compodoc": true,
-            "compodocArgs": ["-e", "json", "-d", "."],
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "."
+            ],
             "outputDir": "dist",
-            "enableProdMode": false // FIXME: https://github.com/storybookjs/storybook/issues/23534
+            "enableProdMode": false
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "stories/**/*.ts",
+              "stories/**/*.html"
+            ]
           }
         }
       }

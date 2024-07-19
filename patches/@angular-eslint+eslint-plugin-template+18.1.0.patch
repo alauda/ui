@@ -1,0 +1,14 @@
+diff --git a/node_modules/@angular-eslint/eslint-plugin-template/dist/processors.js b/node_modules/@angular-eslint/eslint-plugin-template/dist/processors.js
+index 4f5fd72..d260afb 100644
+--- a/node_modules/@angular-eslint/eslint-plugin-template/dist/processors.js
++++ b/node_modules/@angular-eslint/eslint-plugin-template/dist/processors.js
+@@ -201,6 +201,9 @@ function postprocessComponentFile(multiDimensionalMessages, filename) {
+ exports.postprocessComponentFile = postprocessComponentFile;
+ exports.default = {
+     'extract-inline-html': {
++        meta:{
++            name:'extract-inline-html'
++        },
+         preprocess: preprocessComponentFile,
+         postprocess: postprocessComponentFile,
+         supportsAutofix: true,

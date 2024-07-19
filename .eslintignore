@@ -1,8 +1,0 @@
-/coverage
-/dist
-/release
-/CHANGELOG.md
-/.angular
-!/.*.js
-!/.storybook
-/documentation.json
