@@ -10,12 +10,14 @@
 >
   <i
     *ngIf="isMulti"
-    class="aui-option__pointer"
+    [class]="bem.element('pointer')"
   >
     <aui-icon
       [hidden]="!(selected$ | async)"
       icon="check"
     ></aui-icon>
   </i>
-  <ng-content></ng-content>
+  <div [class]="bem.element('content')">
+    <ng-content></ng-content>
+  </div>
 </div>

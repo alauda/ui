@@ -4,11 +4,15 @@
 
 @mixin option($block) {
   .#{$block} {
+    display: flex;
+    align-items: center;
     color: use-text-color(main);
     font-weight: use-var(font-weight-normal);
-    @include text-overflow;
-
     cursor: pointer;
+
+    &__content {
+      @include text-overflow;
+    }
 
     &--large {
       padding: calc(

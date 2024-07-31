@@ -64,7 +64,6 @@ export class AutoCompleteDirective
   }
 
   @Input('auiAutocompleteFilterFn')
-  @Input()
   get filterFn() {
     return this._filterFn;
   }

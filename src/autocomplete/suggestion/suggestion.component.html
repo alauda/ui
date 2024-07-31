@@ -7,5 +7,7 @@
   [class.isFocused]="focused"
   (click)="onClick()"
 >
-  <ng-content></ng-content>
+  <div [class]="bem.element('content')">
+    <ng-content></ng-content>
+  </div>
 </div>
