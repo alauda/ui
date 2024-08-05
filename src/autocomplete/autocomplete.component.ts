@@ -64,16 +64,17 @@ export class AutocompleteComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.visibles$ = this.suggestions.changes.pipe(
+      startWith(this.suggestions),
       switchMap((suggestions: QueryList<SuggestionComponent>) =>
         suggestions.length > 0
           ? combineLatest(suggestions.map(suggestion => suggestion.visible$))
           : of([] as boolean[]),
       ),
-      debounceTime(0),
-      startWith(this.suggestions.map(suggestion => suggestion.visible)),
       publishRef(),
     );
+
     this.hasVisibleSuggestion$ = this.visibles$.pipe(
+      debounceTime(0),
       map(visible => visible.some(Boolean)),
       withLatestFrom(this.directive$$),
       map(([hasVisibleSuggestion, directive]) => {
