@@ -7,15 +7,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </button>
     <br />
     <br />
-    <form #form="ngForm">
-      <aui-tags-input
-        name="fruit"
-        [(ngModel)]="value"
-        [auiAutocomplete]="suggestions"
-        placeholder="水果"
-        [disabled]="disabled"
-      ></aui-tags-input>
-    </form>
+    <aui-tags-input
+      name="fruit"
+      [(value)]="value"
+      [auiAutocomplete]="suggestions"
+      placeholder="水果"
+      [disabled]="disabled"
+    ></aui-tags-input>
     <aui-autocomplete #suggestions>
       <aui-suggestion value="apple">apple</aui-suggestion>
       <aui-suggestion value="banana">banana</aui-suggestion>
