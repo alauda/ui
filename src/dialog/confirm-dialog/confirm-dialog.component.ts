@@ -10,7 +10,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, isObservable } from 'rxjs';
 
 import { ButtonComponent } from '../../button/button.component';
 import { IconComponent } from '../../icon/icon.component';
@@ -113,7 +113,7 @@ export class ConfirmDialogComponent<T = unknown, R = unknown> {
 
     const result = (beforeAction as CustomBeforeAction<T>)();
 
-    if (result instanceof Observable) {
+    if (isObservable(result)) {
       return firstValueFrom(result);
     }
 
