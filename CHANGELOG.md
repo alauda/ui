@@ -1,5 +1,25 @@
 # Changelog
 
+## 8.0.0
+
+### Major Changes
+
+- [#573](https://github.com/alauda/ui/pull/573) [`8730422`](https://github.com/alauda/ui/commit/8730422827ca5c01333865aba4f2d162abd0a9a7) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - Chore/upgrade angular v18
+
+### Patch Changes
+
+- [#566](https://github.com/alauda/ui/pull/566) [`a78dbef`](https://github.com/alauda/ui/commit/a78dbef92ad4548c094bcc5f11bd5e0eeb6707fc) Thanks [@fengtianze](https://github.com/fengtianze)! - fix: tabs header style
+
+- [#569](https://github.com/alauda/ui/pull/569) [`6f6c12b`](https://github.com/alauda/ui/commit/6f6c12b43ac07d4ee5e185ce4fcbb3a1647c87fd) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - chore: mod tsconfig to use relative path import
+
+- [#578](https://github.com/alauda/ui/pull/578) [`46eaea0`](https://github.com/alauda/ui/commit/46eaea0d66b5b6034bd0d48a90eec7e353986492) Thanks [@EdisonSu768](https://github.com/EdisonSu768)! - instanceof observable always fail
+
+- [#580](https://github.com/alauda/ui/pull/580) [`b294981`](https://github.com/alauda/ui/commit/b294981d026e0d5e74e7d12f07f9ad59b87ab2eb) Thanks [@zChanges](https://github.com/zChanges)! - range picker year disable error
+
+- [#570](https://github.com/alauda/ui/pull/570) [`fb87f73`](https://github.com/alauda/ui/commit/fb87f73f28b73300e51ac3ea3c95101840ef2274) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - Fix/nested template dialog close error
+
+- [#568](https://github.com/alauda/ui/pull/568) [`ca0c824`](https://github.com/alauda/ui/commit/ca0c824f0932e7dc8657a3868e4e339433c11c90) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - Feat/date picker panel header locale
+
 ## 7.4.1
 
 ### Patch Changes
