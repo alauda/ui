@@ -110,17 +110,23 @@ export class CalendarHeaderComponent {
     const availValue = (
       side === Side.Left ? this._minAvail : this._maxAvail
     )?.clone();
-    if (!availValue) {
-      return true;
+    /**
+     * 对于 range-picker
+     * 左侧部分 minAvail = minDate, maxAvail = min(maxData, rightAnchor)，从而左侧部分的按钮，仅在小于右侧部分时显示
+     * 右侧部分 maxAvail = maxDate, minAvail = max(minData, leftAnchor)，从而左侧部分的按钮，仅在小于右侧部分时显示
+     */
+    if (side === Side.Left) {
+      return type === DateNavRange.Month
+        ? !this.anchor.subtract(1, 'month').isBefore(availValue, 'month')
+        : type === DateNavRange.Year
+        ? !this.anchor.subtract(1, 'year').isBefore(availValue, 'year')
+        : false;
     }
-    // 对于年的判别，2014-5-1至2015-6-1日，仍当展示按钮
-    const constrainDate = [DateNavRange.Month, DateNavRange.Year].includes(type)
-      ? availValue.add(side === Side.Left ? 1 : -1, type as 'month' | 'year')
-      : availValue;
-    return (
-      this.compareNavValue(type, constrainDate, this.anchor) ===
-      (side === Side.Left ? -1 : 1)
-    );
+    return type === DateNavRange.Month
+      ? !this.anchor.add(1, 'month').isAfter(availValue, 'month')
+      : type === DateNavRange.Year
+      ? !this.anchor.add(1, 'year').isAfter(availValue, 'year')
+      : false;
   }
 
   // @return isBetween|isEqual:0, isBefore:-1,isAfter:1
