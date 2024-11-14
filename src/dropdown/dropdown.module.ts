@@ -41,3 +41,14 @@ import { SubmenuComponent } from './submenu/submenu.component';
   ],
 })
 export class DropdownModule {}
+
+export const DROPDOWN_MODULE = [
+  DropdownDirective,
+  DropdownActiveDirective,
+  DropdownButtonComponent,
+  MenuComponent,
+  MenuGroupComponent,
+  MenuGroupTitleDirective,
+  MenuItemComponent,
+  SubmenuComponent,
+] as const;

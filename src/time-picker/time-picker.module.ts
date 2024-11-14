@@ -31,3 +31,8 @@ import { TimePickerPanelComponent } from './panel/panel.component';
   exports: [TimePickerComponent, TimePickerPanelComponent],
 })
 export class TimePickerModule {}
+
+export const TIME_PICKER_MODULE = [
+  TimePickerComponent,
+  TimePickerPanelComponent,
+] as const;

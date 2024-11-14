@@ -19,3 +19,9 @@ import { TooltipDirective } from './tooltip.directive';
   exports: [TooltipDirective, TooltipActiveDirective, TooltipCopyDirective],
 })
 export class TooltipModule {}
+
+export const TOOLTIP_MODULE = [
+  TooltipDirective,
+  TooltipActiveDirective,
+  TooltipCopyDirective,
+] as const;

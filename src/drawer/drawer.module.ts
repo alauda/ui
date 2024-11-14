@@ -26,3 +26,10 @@ const COMMON = [
   providers: [DrawerService],
 })
 export class DrawerModule {}
+
+export const DRAWER_MODULE = [
+  DrawerComponent,
+  DrawerHeaderDirective,
+  DrawerContentDirective,
+  DrawerFooterDirective,
+] as const;

@@ -18,3 +18,9 @@ import { RadioComponent } from './radio.component';
   exports: [RadioComponent, RadioGroupComponent, RadioButtonComponent],
 })
 export class RadioModule {}
+
+export const RADIO_MODULE = [
+  RadioComponent,
+  RadioGroupComponent,
+  RadioButtonComponent,
+] as const;
