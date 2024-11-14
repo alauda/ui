@@ -110,7 +110,7 @@ export class DrawerComponent<
         });
       } else if (!visible.firstChange) {
         // 不希望默认关闭时，drawer 渲染后就触发 close 事件
-        this.drawerRef.close();
+        this.drawerRef?.close();
       }
     }
     this.drawerService.updateOptions(this);

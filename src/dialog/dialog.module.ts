@@ -38,3 +38,11 @@ import { DialogService } from './dialog.service';
   providers: [DialogService],
 })
 export class DialogModule {}
+
+export const DIALOG_MODULE = [
+  DialogComponent,
+  DialogHeaderComponent,
+  DialogContentComponent,
+  DialogFooterComponent,
+  DialogCloseDirective,
+] as const;
