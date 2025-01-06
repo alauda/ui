@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.0.1
+
+### Patch Changes
+
+- [#582](https://github.com/alauda/ui/pull/582) [`2c56211`](https://github.com/alauda/ui/commit/2c56211f8d3e502d1993a2e39036caae9efc761e) Thanks [@frozenwings](https://github.com/frozenwings)! - add more standalone components exports
+
 ## 8.0.0
 
 ### Major Changes
