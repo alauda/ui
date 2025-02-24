@@ -31,14 +31,13 @@ import {
 import { BaseSelect } from '../base-select';
 
 @Component({
-  selector: 'aui-option',
-  templateUrl: './option.component.html',
-  styleUrls: ['./option.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
-  standalone: true,
-  imports: [NgIf, IconComponent, AsyncPipe],
+    selector: 'aui-option',
+    templateUrl: './option.component.html',
+    styleUrls: ['./option.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    preserveWhitespaces: false,
+    imports: [NgIf, IconComponent, AsyncPipe]
 })
 export class OptionComponent<T> {
   bem: Bem = buildBem('aui-option');

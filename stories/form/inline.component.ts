@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <form
       #form="ngForm"
       auiForm
@@ -59,6 +59,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </aui-form-item>
     </form>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class FormInlineComponent {}

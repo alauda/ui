@@ -17,7 +17,7 @@ describe('TagComponent', () => {
 });
 
 @Component({
-  template: `
+    template: `
     <aui-tag>primary</aui-tag>
     <aui-tag
       type="success"
@@ -51,7 +51,6 @@ describe('TagComponent', () => {
       info
     </aui-tag>
   `,
-  standalone: true,
-  imports: [TagModule],
+    imports: [TagModule]
 })
 class TestComponent {}

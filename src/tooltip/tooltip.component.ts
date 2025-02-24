@@ -24,15 +24,14 @@ import { animations, AnimationType } from './animations';
 import { TooltipType } from './tooltip.types';
 
 @Component({
-  selector: 'aui-tooltip',
-  templateUrl: './tooltip.component.html',
-  styleUrls: ['./tooltip.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  animations: [trigger('showHide', animations)],
-  standalone: true,
-  imports: [NgIf, NgTemplateOutlet, AsyncPipe],
+    selector: 'aui-tooltip',
+    templateUrl: './tooltip.component.html',
+    styleUrls: ['./tooltip.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    animations: [trigger('showHide', animations)],
+    imports: [NgIf, NgTemplateOutlet, AsyncPipe]
 })
 export class TooltipComponent implements OnDestroy {
   text: string;

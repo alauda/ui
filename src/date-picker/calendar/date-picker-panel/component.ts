@@ -37,30 +37,29 @@ import {
 } from '../util';
 
 @Component({
-  selector: 'aui-date-picker-panel',
-  templateUrl: './template.html',
-  styleUrls: ['./style.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DatePickerPanelComponent),
-      multi: true,
-    },
-  ],
-  standalone: true,
-  imports: [
-    CalendarHeaderComponent,
-    PickerPanelComponent,
-    NgIf,
-    NgTemplateOutlet,
-    CalendarFooterComponent,
-    TimePickerComponent,
-    FormsModule,
-    ButtonComponent,
-    I18nPipe,
-  ],
+    selector: 'aui-date-picker-panel',
+    templateUrl: './template.html',
+    styleUrls: ['./style.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DatePickerPanelComponent),
+            multi: true,
+        },
+    ],
+    imports: [
+        CalendarHeaderComponent,
+        PickerPanelComponent,
+        NgIf,
+        NgTemplateOutlet,
+        CalendarFooterComponent,
+        TimePickerComponent,
+        FormsModule,
+        ButtonComponent,
+        I18nPipe,
+    ]
 })
 export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
   @Input()

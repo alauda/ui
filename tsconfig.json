@@ -9,6 +9,7 @@
   ],
   "exclude": ["dist", "release"],
   "compilerOptions": {
+    "esModuleInterop": true,
     "paths": {
       "@alauda/ui": ["./src"]
     },

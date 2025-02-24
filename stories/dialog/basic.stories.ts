@@ -3,7 +3,12 @@ import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 
 import { BasicDialogComponent } from './basic.component';
 
-import { ButtonModule, DialogModule, IconModule } from '@alauda/ui';
+import {
+  ButtonModule,
+  DialogModule,
+  IconModule,
+  TooltipModule,
+} from '@alauda/ui';
 
 const meta: Meta<BasicDialogComponent> = {
   title: 'Example/Dialog',
@@ -16,6 +21,7 @@ const meta: Meta<BasicDialogComponent> = {
         ButtonModule,
         DialogModule,
         IconModule,
+        TooltipModule,
       ],
     }),
   ],

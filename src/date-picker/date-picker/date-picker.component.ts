@@ -20,25 +20,24 @@ import { DateNavRange, DisabledTimeFn } from '../date-picker.type';
 import { DatePickerTriggerComponent } from '../trigger/trigger.component';
 
 @Component({
-  selector: 'aui-date-picker',
-  templateUrl: './date-picker.template.html',
-  styleUrls: ['./date-picker.style.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DatePickerComponent),
-      multi: true,
-    },
-  ],
-  standalone: true,
-  imports: [
-    DatePickerTriggerComponent,
-    TooltipDirective,
-    DatePickerPanelComponent,
-    FormsModule,
-  ],
+    selector: 'aui-date-picker',
+    templateUrl: './date-picker.template.html',
+    styleUrls: ['./date-picker.style.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DatePickerComponent),
+            multi: true,
+        },
+    ],
+    imports: [
+        DatePickerTriggerComponent,
+        TooltipDirective,
+        DatePickerPanelComponent,
+        FormsModule,
+    ]
 })
 export class DatePickerComponent extends CommonFormControl<ConfigType, Dayjs> {
   @Input()

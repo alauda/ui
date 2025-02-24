@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'storybook-input-group',
-  template: `
+    selector: 'storybook-input-group',
+    template: `
     <div style="margin-top: 20px;">
       <aui-input-group>
         <span auiInputAddonBefore>HTTPS</span>
@@ -84,7 +84,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       </aui-input-group>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class InputGroupComponent {
   @Input() disabled: boolean;

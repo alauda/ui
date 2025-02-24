@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { MessageService } from '@alauda/ui';
 
 @Component({
-  template: `
+    template: `
     <button
       aui-button="primary"
       (click)="message.info({ content: '这是一条消息提醒', duration: 5000 })"
@@ -29,7 +29,8 @@ import { MessageService } from '@alauda/ui';
       错误消息
     </button>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class BasicDemoComponent implements OnDestroy {
   constructor(public message: MessageService) {}

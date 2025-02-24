@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
 import { DialogService } from '@alauda/ui';
 
 @Component({
-  template: `
+    template: `
     <button
       aui-button="primary"
       (click)="open(dialog)"
@@ -52,7 +52,8 @@ import { DialogService } from '@alauda/ui';
       </aui-dialog-footer>
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FitViewportDialogComponent {
   constructor(private readonly dialog: DialogService) {}

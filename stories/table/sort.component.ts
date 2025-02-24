@@ -5,7 +5,7 @@ import { DATA_SOURCE, Element } from './data';
 import { Sort } from '@alauda/ui';
 
 @Component({
-  template: `<aui-table
+    template: `<aui-table
     auiSort
     [dataSource]="dataSource"
     (sortChange)="sortData($event)"
@@ -50,8 +50,9 @@ import { Sort } from '@alauda/ui';
       *auiTableRowDef="let row; columns: ['id', 'name', 'value']"
     ></aui-table-row>
   </aui-table> `,
-  styleUrls: ['sort.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrls: ['sort.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SortDemoComponent {
   dataSource = DATA_SOURCE.slice();

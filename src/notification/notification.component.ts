@@ -27,15 +27,14 @@ import { NotificationConfig } from './notification.config';
 let uniqueId = 0;
 
 @Component({
-  selector: 'aui-notification',
-  templateUrl: './notification.component.html',
-  animations: [MessageAnimations.inOut],
-  styleUrls: ['./notification.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: true,
-  imports: [IconComponent, NgIf, PortalModule],
+    selector: 'aui-notification',
+    templateUrl: './notification.component.html',
+    animations: [MessageAnimations.inOut],
+    styleUrls: ['./notification.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    imports: [IconComponent, NgIf, PortalModule]
 })
 export class NotificationComponent
   extends MessageComponent

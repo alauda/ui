@@ -19,7 +19,7 @@ const DATA_SOURCE: Element[] = [
 ];
 
 @Component({
-  template: `
+    template: `
     <table
       auiSort
       (sortChange)="sortData($event)"
@@ -41,7 +41,8 @@ const DATA_SOURCE: Element[] = [
       </tr>
     </table>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SortComponent {
   dataSource = DATA_SOURCE.slice();

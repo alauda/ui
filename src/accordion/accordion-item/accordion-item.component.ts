@@ -35,22 +35,21 @@ export class AccordionItemHeaderDirective {}
 })
 export class AccordionItemContentDirective {}
 @Component({
-  selector: 'aui-accordion-item',
-  templateUrl: 'accordion-item.component.html',
-  styleUrls: ['accordion-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
-  animations: [
-    trigger('expand', [
-      state('*', style({ height: 0 })),
-      state('expanded', style({ height: '*' })),
-      transition('* <=> expanded', [animate('0.1s ease-in-out')]),
-    ]),
-  ],
-  viewProviders: [AccordionItemComponent],
-  standalone: true,
-  imports: [IconComponent, NgIf, NgTemplateOutlet],
+    selector: 'aui-accordion-item',
+    templateUrl: 'accordion-item.component.html',
+    styleUrls: ['accordion-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    preserveWhitespaces: false,
+    animations: [
+        trigger('expand', [
+            state('*', style({ height: 0 })),
+            state('expanded', style({ height: '*' })),
+            transition('* <=> expanded', [animate('0.1s ease-in-out')]),
+        ]),
+    ],
+    viewProviders: [AccordionItemComponent],
+    imports: [IconComponent, NgIf, NgTemplateOutlet]
 })
 export class AccordionItemComponent
   extends CdkAccordionItem

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'story-switch-basic',
-  template: `
+    selector: 'story-switch-basic',
+    template: `
     <aui-switch
       style="margin-right:8px;"
       [(ngModel)]="data"
@@ -15,7 +15,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       [loading]="loading"
     ></aui-switch>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class SwitchBasicComponent {
   /**

@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { StepItem } from '@alauda/ui';
 
 @Component({
-  template: `
+    template: `
     <aui-steps
       [currentIndex]="currentIndex"
       [orientation]="orientation"
@@ -30,7 +30,8 @@ import { StepItem } from '@alauda/ui';
     <div>Selectable: <aui-switch [(ngModel)]="selectable"></aui-switch></div>
     <div>Current index: {{ currentIndex }}</div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class BasicHorizontalDemoComponent {
   currentIndex = 0;

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <aui-icon
       icon="spinner"
       style="font-size: 24px;"
@@ -18,6 +18,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       ></aui-icon>
     </button>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class IconBasicComponent {}

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <aui-check-tag
       [(checked)]="model"
       size="mini"
@@ -10,7 +10,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     value: {{ model }}
     <br />
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class TagCheckComponent {
   model = false;

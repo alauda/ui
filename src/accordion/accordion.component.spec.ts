@@ -40,7 +40,7 @@ describe('AccordionComponent', () => {
 });
 
 @Component({
-  template: `
+    template: `
     <aui-accordion
       class="aui-accordion-test"
       #accordionRef
@@ -52,8 +52,7 @@ describe('AccordionComponent', () => {
       </aui-accordion-item>
     </aui-accordion>
   `,
-  standalone: true,
-  imports: [...ACCORDION_MODULE],
+    imports: [...ACCORDION_MODULE]
 })
 class TestComponent {
   multi: boolean;

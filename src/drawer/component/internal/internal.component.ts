@@ -52,45 +52,38 @@ export const duration = '300ms';
 type Step = 'hideDone' | 'hideStart' | 'showDone' | 'showStart';
 
 @Component({
-  templateUrl: './internal.component.html',
-  styleUrls: ['./internal.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    NgIf,
-    NgClass,
-    NgStyle,
-    NgTemplateOutlet,
-    IconComponent,
-    CdkScrollable,
-    PortalModule,
-    AsyncPipe,
-  ],
-  animations: [
-    trigger('showHide', [
-      state(
-        'show',
-        style({
-          opacity: 1,
-          transform: 'translateX(0)',
-        }),
-      ),
-      state(
-        'hide, void',
-        style({
-          opacity: 0,
-          transform: 'translateX(100%)',
-        }),
-      ),
-      transition('hide => show, void => show', [
-        animate(`${duration} ${TimingFunction.easeOut}`),
-      ]),
-      transition('show => hide, show => void', [
-        animate(`${duration} ${TimingFunction.easeInOut}`),
-      ]),
-    ]),
-  ],
+    templateUrl: './internal.component.html',
+    styleUrls: ['./internal.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        NgIf,
+        NgClass,
+        NgStyle,
+        NgTemplateOutlet,
+        IconComponent,
+        CdkScrollable,
+        PortalModule,
+        AsyncPipe,
+    ],
+    animations: [
+        trigger('showHide', [
+            state('show', style({
+                opacity: 1,
+                transform: 'translateX(0)',
+            })),
+            state('hide, void', style({
+                opacity: 0,
+                transform: 'translateX(100%)',
+            })),
+            transition('hide => show, void => show', [
+                animate(`${duration} ${TimingFunction.easeOut}`),
+            ]),
+            transition('show => hide, show => void', [
+                animate(`${duration} ${TimingFunction.easeInOut}`),
+            ]),
+        ]),
+    ]
 })
 export class DrawerInternalComponent<T = unknown, C extends object = object>
   implements AfterViewInit

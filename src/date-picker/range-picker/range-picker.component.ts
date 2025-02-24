@@ -18,25 +18,24 @@ import { DisabledDateFn, DisabledTimeFn } from '../date-picker.type';
 import { DatePickerTriggerComponent } from '../trigger/trigger.component';
 
 @Component({
-  selector: 'aui-range-picker',
-  templateUrl: './range-picker.template.html',
-  styleUrls: ['./range-picker.style.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => RangePickerComponent),
-      multi: true,
-    },
-  ],
-  standalone: true,
-  imports: [
-    DatePickerTriggerComponent,
-    TooltipDirective,
-    DateRangePickerPanelComponent,
-    FormsModule,
-  ],
+    selector: 'aui-range-picker',
+    templateUrl: './range-picker.template.html',
+    styleUrls: ['./range-picker.style.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => RangePickerComponent),
+            multi: true,
+        },
+    ],
+    imports: [
+        DatePickerTriggerComponent,
+        TooltipDirective,
+        DateRangePickerPanelComponent,
+        FormsModule,
+    ]
 })
 export class RangePickerComponent extends CommonFormControl<
   ConfigType[],

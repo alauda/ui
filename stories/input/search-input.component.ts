@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentSize } from '@alauda/ui';
 
 @Component({
-  template: `
+    template: `
     <aui-search
       [size]="size"
       [searchButton]="searchButton"
@@ -75,7 +75,8 @@ import { ComponentSize } from '@alauda/ui';
 
     {{ keyword }}
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SearchInputComponent {
   size = ComponentSize.Medium;

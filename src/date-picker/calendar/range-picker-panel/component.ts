@@ -36,30 +36,29 @@ import {
 const bem = buildBem('aui-date-range-picker-panel');
 
 @Component({
-  selector: 'aui-date-range-picker-panel',
-  templateUrl: './template.html',
-  styleUrls: ['./style.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DateRangePickerPanelComponent),
-      multi: true,
-    },
-  ],
-  standalone: true,
-  imports: [
-    CalendarHeaderComponent,
-    PickerPanelComponent,
-    NgIf,
-    CalendarFooterComponent,
-    NgTemplateOutlet,
-    TimePickerComponent,
-    FormsModule,
-    DatePipe,
-    I18nPipe,
-  ],
+    selector: 'aui-date-range-picker-panel',
+    templateUrl: './template.html',
+    styleUrls: ['./style.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DateRangePickerPanelComponent),
+            multi: true,
+        },
+    ],
+    imports: [
+        CalendarHeaderComponent,
+        PickerPanelComponent,
+        NgIf,
+        CalendarFooterComponent,
+        NgTemplateOutlet,
+        TimePickerComponent,
+        FormsModule,
+        DatePipe,
+        I18nPipe,
+    ]
 })
 export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {
   @Input()

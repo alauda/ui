@@ -9,14 +9,13 @@ import {
 import { IconComponent } from '../icon/icon.component';
 
 @Component({
-  selector: 'aui-breadcrumb-item',
-  templateUrl: './breadcrumb-item.component.html',
-  styleUrls: ['./breadcrumb-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
-  standalone: true,
-  imports: [NgIf, IconComponent],
+    selector: 'aui-breadcrumb-item',
+    templateUrl: './breadcrumb-item.component.html',
+    styleUrls: ['./breadcrumb-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    preserveWhitespaces: false,
+    imports: [NgIf, IconComponent]
 })
 export class BreadcrumbItemComponent {
   get separator() {

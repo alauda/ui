@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'story-paginator-zh',
-  template: `
+    selector: 'story-paginator-zh',
+    template: `
     <aui-paginator
       [layout]="layout"
       [(currentPage)]="currentPage"
@@ -14,7 +14,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       custom content
     </aui-paginator>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class paginatorComponent {
   @Input()

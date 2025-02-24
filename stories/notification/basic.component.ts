@@ -10,7 +10,7 @@ import { noop } from 'rxjs';
 import { NotificationService } from '@alauda/ui';
 
 @Component({
-  template: `
+    template: `
     <span>
       <button
         aui-button="primary"
@@ -113,8 +113,8 @@ import { NotificationService } from '@alauda/ui';
       </div>
     </ng-template>
   `,
-  styles: [
-    `
+    styles: [
+        `
       span {
         display: block;
         margin-bottom: 8px;
@@ -123,8 +123,9 @@ import { NotificationService } from '@alauda/ui';
         font-weight: bold;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class BasicDemoComponent implements OnDestroy {
   @ViewChild('template', { static: true })

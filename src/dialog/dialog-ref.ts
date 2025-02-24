@@ -37,7 +37,7 @@ export class DialogRef<T = ComponentType<any>, R = any> {
   }
 
   close(result: R = null): void {
-    this.scrollable.ngOnDestroy();
+    // this.scrollable?.ngOnDestroy();
 
     this.dialogInstance.animationStateChanged
       .pipe(

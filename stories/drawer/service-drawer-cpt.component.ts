@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { DrawerRef, DrawerService } from '@alauda/ui';
 
 @Component({
-  template: `
+    template: `
     <button
       aui-button="primary"
       (click)="open()"
@@ -23,7 +23,8 @@ import { DrawerRef, DrawerService } from '@alauda/ui';
       关闭
     </button>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ServiceDrawerCptComponent {
   drawerRef: DrawerRef;
@@ -61,16 +62,18 @@ export class ServiceDrawerCptComponent {
 }
 
 @Component({
-  template: ` component {{ data }}`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    template: ` component {{ data }}`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DrawerContentComponent {
   @Input() data: string;
 }
 
 @Component({
-  template: `component {{ data }}`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    template: `component {{ data }}`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DrawerContent1Component {
   @Input() data: string;

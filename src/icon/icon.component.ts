@@ -14,14 +14,13 @@ import { IconRegisterService } from './icon-register.service';
 let id = 0;
 
 @Component({
-  selector: 'aui-icon',
-  templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: true,
-  imports: [NgIf, NgClass, ThemePickerPipe],
+    selector: 'aui-icon',
+    templateUrl: './icon.component.html',
+    styleUrls: ['./icon.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    imports: [NgIf, NgClass, ThemePickerPipe]
 })
 export class IconComponent {
   @Input()

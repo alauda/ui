@@ -4,8 +4,8 @@ import { FormControl, ValidatorFn } from '@angular/forms';
 import { ComponentSize } from '@alauda/ui';
 
 @Component({
-  selector: 'storybook-tags-input',
-  template: `
+    selector: 'storybook-tags-input',
+    template: `
     <aui-tags-input
       [size]="size"
       [formControl]="control"
@@ -34,7 +34,8 @@ import { ComponentSize } from '@alauda/ui';
       placeholder="placeholder"
     ></aui-tags-input>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TagsInputComponent {
   value = ['app', 'service'];

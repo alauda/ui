@@ -17,19 +17,18 @@ import { MenuComponent } from '../menu/menu.component';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 
 @Component({
-  selector: 'aui-submenu',
-  templateUrl: './submenu.component.html',
-  styleUrls: ['./submenu.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
-  standalone: true,
-  imports: [
-    TooltipActiveDirective,
-    TooltipDirective,
-    IconComponent,
-    MenuComponent,
-  ],
+    selector: 'aui-submenu',
+    templateUrl: './submenu.component.html',
+    styleUrls: ['./submenu.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    preserveWhitespaces: false,
+    imports: [
+        TooltipActiveDirective,
+        TooltipDirective,
+        IconComponent,
+        MenuComponent,
+    ]
 })
 export class SubmenuComponent extends MenuItemComponent {
   override bem: Bem = buildBem('aui-submenu');

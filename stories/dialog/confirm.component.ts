@@ -30,6 +30,7 @@ import { DialogService } from '@alauda/ui';
       >This will permanently delete the item.(TemplateRef)</ng-template
     > `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ConfirmDialogComponent {
   @ViewChild('templateContent') contentTemplateRef: TemplateRef<any>;
@@ -71,5 +72,6 @@ export class ConfirmDialogComponent {
 @Component({
   template: 'This will permanently delete the item.(Component)',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ConfirmContentComponent {}

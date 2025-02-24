@@ -82,7 +82,6 @@ export class DialogService {
         if (action.confirm) {
           resolve(action.result as T);
         } else {
-          // eslint-disable-next-line prefer-promise-reject-errors
           reject(action.result as R);
         }
       });

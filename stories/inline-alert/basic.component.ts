@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <aui-inline-alert>
       <ng-container auiInlineAlertTitle>
         Kubernetes 是什么？（下面是 Kubernetes 的概述。下面是 Kubernetes
@@ -24,6 +24,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div>提示内容 <a href="javascript:void(0)">链接</a></div>
     </aui-inline-alert>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class InlineBasicComponent {}

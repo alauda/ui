@@ -18,15 +18,14 @@ import { ButtonType } from './button.types';
 const prefix = 'aui-button--';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'button[aui-button]',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: true,
-  imports: [NgIf, IconComponent],
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: 'button[aui-button]',
+    templateUrl: './button.component.html',
+    styleUrls: ['./button.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    imports: [NgIf, IconComponent]
 })
 export class ButtonComponent implements OnDestroy {
   @Input('aui-button')

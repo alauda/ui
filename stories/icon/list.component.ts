@@ -3,14 +3,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { auiIcons as icons } from '../../src/icon/icons';
 
 @Component({
-  template: ` <ul>
+    template: ` <ul>
     <li *ngFor="let icon of iconList">
       <aui-icon [icon]="icon"></aui-icon>
       <div>{{ icon }}</div>
     </li>
   </ul>`,
-  styleUrls: ['style.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrls: ['style.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class IconListComponent {
   iconList = icons

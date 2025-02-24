@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <aui-form-item>
       <label auiFormItemLabel>启用</label>
       <aui-radio-group
@@ -31,7 +31,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </aui-tab>
     </aui-tab-group>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class TabsLazyComponent {
   tabs = Array.from({ length: 10 }).fill('');
