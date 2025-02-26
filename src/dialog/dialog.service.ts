@@ -2,7 +2,6 @@ import {
   Overlay,
   OverlayConfig,
   OverlayRef,
-  ScrollDispatcher,
 } from '@angular/cdk/overlay';
 import {
   ComponentPortal,
@@ -13,7 +12,6 @@ import {
   Injectable,
   InjectionToken,
   Injector,
-  NgZone,
   TemplateRef,
 } from '@angular/core';
 
@@ -23,6 +21,7 @@ import { DialogConfig } from './dialog-config';
 import { DialogRef } from './dialog-ref';
 import { DialogComponent } from './dialog.component';
 import { DialogSize } from './dialog.types';
+import { DialogContainerComponent } from './dialog-container.component';
 
 export const DIALOG_DATA = new InjectionToken<any>('aui-dialog-data');
 
@@ -38,8 +37,6 @@ export class DialogService {
   constructor(
     private readonly overlay: Overlay,
     private readonly injector: Injector,
-    private readonly scrollDispatcher: ScrollDispatcher,
-    private readonly ngZone: NgZone,
   ) {}
 
   open<T, D = any, R = any>(
@@ -49,6 +46,7 @@ export class DialogService {
     config = { ...new DialogConfig(), ...config };
 
     const overlayRef = this.createOverlay(config);
+
     const dialogIns = this.attachDialog(overlayRef, config);
     const dialogRef = this.attachDialogContent<T, D, R>(
       compOrTempRef,
@@ -118,14 +116,16 @@ export class DialogService {
     overlayRef: OverlayRef,
     config: DialogConfig,
   ): DialogComponent {
-    const dialogPortal = new ComponentPortal(
-      DialogComponent,
+    const containerPortal = new ComponentPortal(
+      DialogContainerComponent,
       config.viewContainerRef,
     );
-    const dialogRef = overlayRef.attach(dialogPortal);
-    dialogRef.instance.config = config;
-    dialogRef.instance.overlayRef = overlayRef;
-    return dialogRef.instance;
+    const containerRef = overlayRef.attach(containerPortal);
+
+    const dialogComponent = containerRef.instance.dialogComponent;
+    dialogComponent.config = config;
+    dialogComponent.overlayRef = overlayRef;
+    return dialogComponent;
   }
 
   private attachDialogContent<T, D, R>(
@@ -134,14 +134,10 @@ export class DialogService {
     overlayRef: OverlayRef,
     config: DialogConfig<D>,
   ): DialogRef<T, R> {
-    const dialogRef = new DialogRef<T, R>(
-      overlayRef,
-      dialogIns,
-      this.scrollDispatcher,
-      this.ngZone,
-    );
+    const dialogRef = new DialogRef<T, R>(overlayRef, dialogIns);
 
     const injector = this.createInjector(config, dialogRef, dialogIns);
+
     if (compOrTempRef instanceof TemplateRef) {
       dialogIns.attachTemplatePortal(
         new TemplatePortal(
@@ -159,6 +155,7 @@ export class DialogService {
       );
       dialogRef.componentInstance = contentRef.instance;
     }
+
     return dialogRef;
   }
 

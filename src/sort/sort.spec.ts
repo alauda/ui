@@ -1,4 +1,4 @@
-/* eslint-disable jest/no-standalone-expect */
+ 
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { CdkTableModule } from '@angular/cdk/table';
 import { Component, ElementRef, ViewChild } from '@angular/core';
@@ -154,7 +154,7 @@ describe('Sort', () => {
 type SimpleAuiSortAppColumnIds = 'defaultA' | 'defaultB' | 'overrideStart';
 
 @Component({
-    template: `
+  template: `
     <div
       auiSort
       [active]="active"
@@ -186,7 +186,7 @@ type SimpleAuiSortAppColumnIds = 'defaultA' | 'defaultB' | 'overrideStart';
       </div>
     </div>
   `,
-    imports: [SortModule, CdkTableModule, TableModule]
+  imports: [SortModule, CdkTableModule, TableModule],
 })
 class SimpleSortAppComponent {
   latestSortEvent: Sort;
@@ -257,7 +257,7 @@ class FakeDataSource extends DataSource<any> {
 }
 
 @Component({
-    template: `
+  template: `
     <cdk-table
       [dataSource]="dataSource"
       auiSort
@@ -296,7 +296,7 @@ class FakeDataSource extends DataSource<any> {
       <cdk-row *cdkRowDef="let row; columns: columnsToRender"></cdk-row>
     </cdk-table>
   `,
-    imports: [SortModule, CdkTableModule, TableModule]
+  imports: [SortModule, CdkTableModule, TableModule],
 })
 class CdkTableSortAppComponent {
   @ViewChild(SortDirective, { static: true })
@@ -307,7 +307,7 @@ class CdkTableSortAppComponent {
 }
 
 @Component({
-    template: `
+  template: `
     <aui-table
       [dataSource]="dataSource"
       auiSort
@@ -350,7 +350,7 @@ class CdkTableSortAppComponent {
       ></aui-table-row>
     </aui-table>
   `,
-    imports: [SortModule, CdkTableModule, TableModule]
+  imports: [SortModule, CdkTableModule, TableModule],
 })
 class AuiTableSortAppComponent {
   @ViewChild(SortDirective, { static: true })

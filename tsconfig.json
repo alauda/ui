@@ -7,7 +7,7 @@
     "jest.config.ts",
     "jest.setup.ts"
   ],
-  "exclude": ["dist", "release"],
+  "exclude": ["dist", "release", "**/*.spec.ts"],
   "compilerOptions": {
     "esModuleInterop": true,
     "paths": {
