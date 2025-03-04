@@ -85,7 +85,7 @@ describe('SwitchComponent', () => {
 });
 
 @Component({
-  template: `
+    template: `
     <aui-switch
       id="switch1"
       [(ngModel)]="switchMap.a"
@@ -105,8 +105,7 @@ describe('SwitchComponent', () => {
       [loading]="true"
     ></aui-switch>
   `,
-  standalone: true,
-  imports: [SwitchModule, FormsModule],
+    imports: [SwitchModule, FormsModule]
 })
 export class TestComponent {
   switchMap = { a: true, b: false, c: true, d: true };

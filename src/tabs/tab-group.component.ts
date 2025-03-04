@@ -45,27 +45,26 @@ export class TabChangeEvent {
 }
 
 @Component({
-  selector: 'aui-tab-group',
-  exportAs: 'auiTabGroup',
-  templateUrl: './tab-group.component.html',
-  styleUrls: ['./tab-group.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: true,
-  imports: [
-    NgClass,
-    TabHeaderComponent,
-    NgIf,
-    TabTitleDirective,
-    PortalModule,
-    NgFor,
-    TabLabelWrapperDirective,
-    A11yModule,
-    IconComponent,
-    TabHeaderAddonDirective,
-    TabBodyComponent,
-  ],
+    selector: 'aui-tab-group',
+    exportAs: 'auiTabGroup',
+    templateUrl: './tab-group.component.html',
+    styleUrls: ['./tab-group.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    imports: [
+        NgClass,
+        TabHeaderComponent,
+        NgIf,
+        TabTitleDirective,
+        PortalModule,
+        NgFor,
+        TabLabelWrapperDirective,
+        A11yModule,
+        IconComponent,
+        TabHeaderAddonDirective,
+        TabBodyComponent,
+    ]
 })
 export class TabGroupComponent
   implements OnChanges, AfterContentChecked, AfterContentInit, OnDestroy

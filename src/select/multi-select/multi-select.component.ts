@@ -53,40 +53,39 @@ import {
 } from '../select.types';
 
 @Component({
-  selector: 'aui-multi-select',
-  templateUrl: './multi-select.component.html',
-  styleUrls: [
-    '../../input/input.component.scss',
-    '../../tag/tag.component.scss',
-    './multi-select.component.scss',
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => MultiSelectComponent),
-      multi: true,
-    },
-    {
-      provide: BaseSelect,
-      useExisting: MultiSelectComponent,
-    },
-  ],
-  standalone: true,
-  imports: [
-    TooltipDirective,
-    IconComponent,
-    NgFor,
-    TagComponent,
-    NgClass,
-    NgIf,
-    NgTemplateOutlet,
-    OptionComponent,
-    AsyncPipe,
-    I18nPipe,
-  ],
+    selector: 'aui-multi-select',
+    templateUrl: './multi-select.component.html',
+    styleUrls: [
+        '../../input/input.component.scss',
+        '../../tag/tag.component.scss',
+        './multi-select.component.scss',
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => MultiSelectComponent),
+            multi: true,
+        },
+        {
+            provide: BaseSelect,
+            useExisting: MultiSelectComponent,
+        },
+    ],
+    imports: [
+        TooltipDirective,
+        IconComponent,
+        NgFor,
+        TagComponent,
+        NgClass,
+        NgIf,
+        NgTemplateOutlet,
+        OptionComponent,
+        AsyncPipe,
+        I18nPipe,
+    ]
 })
 export class MultiSelectComponent<T = unknown>
   extends BaseSelect<T, T[]>

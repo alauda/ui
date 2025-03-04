@@ -11,18 +11,17 @@ import {
 
 /** Data row template container that contains the cell outlet. Adds the right class and role. */
 @Component({
-  selector: 'aui-table-row',
-  template: CDK_ROW_TEMPLATE,
-  host: {
-    class: 'aui-table__row',
-    role: 'row',
-  },
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  exportAs: 'auiTableRow',
-  preserveWhitespaces: false,
-  standalone: true,
-  imports: [CdkTableModule],
+    selector: 'aui-table-row',
+    template: CDK_ROW_TEMPLATE,
+    host: {
+        class: 'aui-table__row',
+        role: 'row',
+    },
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    exportAs: 'auiTableRow',
+    preserveWhitespaces: false,
+    imports: [CdkTableModule]
 })
 export class TableRowComponent extends CdkRow implements AfterContentInit {
   @Input()

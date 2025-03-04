@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <div auiAnchor>
       <ul class="d-block">
         <li>
@@ -69,6 +69,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </ul>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class WindowScrollerComponent {}

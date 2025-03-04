@@ -3,7 +3,7 @@ import chroma from 'chroma-js';
 import { saveAs } from 'file-saver';
 
 @Component({
-  template: `<h2>Select Colors:</h2>
+    template: `<h2>Select Colors:</h2>
     <div class="picker-container">
       <aui-form-item labelPosition="top">
         <label auiFormItemLabel>Primary Color</label>
@@ -88,8 +88,9 @@ import { saveAs } from 'file-saver';
         placeholder="input"
       />
     </div> `,
-  styleUrls: ['./customize.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrls: ['./customize.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CustomizeComponent {
   mainColors = {

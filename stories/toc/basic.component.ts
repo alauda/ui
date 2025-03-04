@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TocContainerDirective } from '@alauda/ui';
 
 @Component({
-  template: `
+    template: `
     <div class="demo-container">
       <div class="links">
         Links:
@@ -73,8 +73,9 @@ import { TocContainerDirective } from '@alauda/ui';
       </div>
     </div>
   `,
-  styleUrls: ['./style.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrls: ['./style.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class TocBasicComponent {
   list: string[] = [];

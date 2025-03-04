@@ -281,7 +281,7 @@ function checkSelectedIndex(
 }
 
 @Component({
-  template: `
+    template: `
     <aui-tab-group
       class="tab-group"
       [(selectedIndex)]="selectedIndex"
@@ -320,14 +320,13 @@ function checkSelectedIndex(
       </aui-tab>
     </aui-tab-group>
   `,
-  standalone: true,
-  imports: [
-    TabGroupComponent,
-    TabComponent,
-    TabLabelDirective,
-    TabContentDirective,
-    LifeCycleDirective,
-  ],
+    imports: [
+        TabGroupComponent,
+        TabComponent,
+        TabLabelDirective,
+        TabContentDirective,
+        LifeCycleDirective,
+    ]
 })
 class SimpleTabsTestAppComponent {
   @ViewChildren(TabComponent)

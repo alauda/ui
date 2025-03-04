@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DATA_SOURCE } from './data';
 
 @Component({
-  template: `
+    template: `
     <div style="height:300px;overflow:auto">
       <h1>Sticky To Parent</h1>
       <aui-table [dataSource]="dataSource">
@@ -46,7 +46,8 @@ import { DATA_SOURCE } from './data';
       </aui-table>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class StickyParentDemoComponent {
   dataSource = [...DATA_SOURCE];

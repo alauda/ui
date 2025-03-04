@@ -4,7 +4,7 @@ import { Dayjs } from 'dayjs';
 import { DatePickerType } from '@alauda/ui';
 
 @Component({
-  template: `
+    template: `
     <aui-date-picker
       placeholder="请选择"
       [type]="DatePickerType.Day"
@@ -29,7 +29,8 @@ import { DatePickerType } from '@alauda/ui';
     <br />
     Form value: {{ time?.toDate() }}
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class DatePickerWithoutTimeComponent {
   time: Dayjs = null;

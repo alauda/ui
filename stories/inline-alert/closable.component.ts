@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <aui-inline-alert
       title="可关闭的提示 标题"
       content="可关闭的提示 内容"
@@ -14,7 +14,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       (close)="onClose()"
     ></aui-inline-alert>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class InlineClosableComponent {
   onClose() {

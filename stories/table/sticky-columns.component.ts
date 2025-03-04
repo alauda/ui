@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `<h1>固定header & 列</h1>
+    template: `<h1>固定header & 列</h1>
     <p>
       <button
         aui-button
@@ -174,8 +174,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </ng-container>
       </aui-table>
     </div> `,
-  styleUrls: ['sticky-columns.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrls: ['sticky-columns.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class StickyColumnsDemoComponent {
   columns = ['no'].concat(

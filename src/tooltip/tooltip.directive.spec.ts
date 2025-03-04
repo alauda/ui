@@ -186,7 +186,7 @@ describe('TooltipDirective', () => {
 });
 
 @Component({
-  template: `
+    template: `
     <div
       id="host"
       [auiTooltip]="content"
@@ -206,8 +206,7 @@ describe('TooltipDirective', () => {
       <div id="dataNode">{{ text }}</div>
     </ng-template>
   `,
-  standalone: true,
-  imports: [TooltipModule, FormsModule],
+    imports: [TooltipModule, FormsModule]
 })
 class TestComponent {
   content: TemplateRef<any> | string = 'hello world';

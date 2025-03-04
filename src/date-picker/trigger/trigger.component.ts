@@ -22,13 +22,12 @@ import { buildBem } from '../../internal/utils';
 const bem = buildBem('aui-date-picker-trigger');
 
 @Component({
-  selector: 'aui-date-picker-trigger',
-  templateUrl: './trigger.template.html',
-  styleUrls: ['./trigger.style.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  standalone: true,
-  imports: [NgClass, NgIf, InputComponent, IconComponent, I18nPipe],
+    selector: 'aui-date-picker-trigger',
+    templateUrl: './trigger.template.html',
+    styleUrls: ['./trigger.style.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    imports: [NgClass, NgIf, InputComponent, IconComponent, I18nPipe]
 })
 export class DatePickerTriggerComponent {
   @Input()

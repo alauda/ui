@@ -33,36 +33,35 @@ import { OptionComponent } from './option/option.component';
 import { SelectOption } from './select.types';
 
 @Component({
-  selector: 'aui-select',
-  templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SelectComponent),
-      multi: true,
-    },
-    {
-      provide: BaseSelect,
-      useExisting: SelectComponent,
-    },
-  ],
-  standalone: true,
-  imports: [
-    TooltipDirective,
-    InputGroupComponent,
-    InputComponent,
-    InputSuffixDirective,
-    IconComponent,
-    NgIf,
-    NgTemplateOutlet,
-    OptionComponent,
-    NgFor,
-    AsyncPipe,
-  ],
+    selector: 'aui-select',
+    templateUrl: './select.component.html',
+    styleUrls: ['./select.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SelectComponent),
+            multi: true,
+        },
+        {
+            provide: BaseSelect,
+            useExisting: SelectComponent,
+        },
+    ],
+    imports: [
+        TooltipDirective,
+        InputGroupComponent,
+        InputComponent,
+        InputSuffixDirective,
+        IconComponent,
+        NgIf,
+        NgTemplateOutlet,
+        OptionComponent,
+        NgFor,
+        AsyncPipe,
+    ]
 })
 export class SelectComponent<T = unknown>
   extends BaseSelect<T>

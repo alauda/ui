@@ -23,13 +23,12 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { coerceAttrBoolean } from '../internal/utils';
 
 @Component({
-  selector: 'aui-tab-body',
-  templateUrl: './tab-body.component.html',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  standalone: true,
-  imports: [forwardRef(() => TabBodyPortalDirective)],
+    selector: 'aui-tab-body',
+    templateUrl: './tab-body.component.html',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    imports: [forwardRef(() => TabBodyPortalDirective)]
 })
 export class TabBodyComponent implements OnDestroy {
   private _content: TemplatePortal;

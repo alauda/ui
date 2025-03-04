@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <input
       aui-input
       [auiAutocomplete]="suggestions"
@@ -18,6 +18,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </aui-autocomplete-placeholder>
     </aui-autocomplete>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AutoCompleteNotFirstComponent {}

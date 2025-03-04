@@ -112,7 +112,7 @@ describe('SelectComponent', () => {
 });
 
 @Component({
-  template: `
+    template: `
     <aui-select
       #selectRef
       [(value)]="value"
@@ -133,8 +133,7 @@ describe('SelectComponent', () => {
       </aui-option>
     </aui-select>
   `,
-  standalone: true,
-  imports: [FormsModule, NgForOf, ...SELECT_MODULE],
+    imports: [FormsModule, NgForOf, ...SELECT_MODULE]
 })
 class TestComponent {
   disabled: boolean;

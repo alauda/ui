@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <button
       aui-button="primary"
       auiTooltipCopy="Content"
@@ -10,6 +10,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       Click to copy
     </button>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class TooltipCopyComponent {}

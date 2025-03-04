@@ -26,21 +26,20 @@ import {
 import { ConfirmDialogConfig } from './confirm-dialog-config';
 
 @Component({
-  selector: 'aui-confirm-dialog',
-  templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
-  standalone: true,
-  imports: [
-    IconComponent,
-    NgIf,
-    NgTemplateOutlet,
-    NgComponentOutlet,
-    ButtonComponent,
-    NgClass,
-  ],
+    selector: 'aui-confirm-dialog',
+    templateUrl: './confirm-dialog.component.html',
+    styleUrls: ['./confirm-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    preserveWhitespaces: false,
+    imports: [
+        IconComponent,
+        NgIf,
+        NgTemplateOutlet,
+        NgComponentOutlet,
+        ButtonComponent,
+        NgClass,
+    ]
 })
 export class ConfirmDialogComponent<T = unknown, R = unknown> {
   bem: Bem = buildBem('aui-confirm-dialog');

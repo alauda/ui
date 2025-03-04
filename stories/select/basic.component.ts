@@ -5,10 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { SelectModule } from '@alauda/ui';
 
 @Component({
-  standalone: true,
-  imports: [SelectModule, FormsModule, NgFor],
-  selector: 'story-select-basic',
-  template: `
+    imports: [SelectModule, FormsModule, NgFor],
+    selector: 'story-select-basic',
+    template: `
     <aui-select
       [(ngModel)]="value"
       [loading]="loading"
@@ -33,7 +32,7 @@ import { SelectModule } from '@alauda/ui';
     <br />
     value: {{ value }}
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class SelectBasicComponent {
   /**

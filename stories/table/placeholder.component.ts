@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DATA_SOURCE } from './data';
 
 @Component({
-  template: `<aui-table [dataSource]="dataSource">
+    template: `<aui-table [dataSource]="dataSource">
       <ng-container auiTableColumnDef="id">
         <aui-table-header-cell *auiTableHeaderCellDef>
           No.
@@ -116,8 +116,9 @@ import { DATA_SOURCE } from './data';
         无数据
       </div>
     </aui-table> `,
-  styleUrls: ['./placeholder.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrls: ['./placeholder.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PlaceholderComponent {
   dataSource = DATA_SOURCE.slice(0, 3);

@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DATA_SOURCE } from './data';
 
 @Component({
-  template: `
+    template: `
     <aui-table [dataSource]="dataSource">
       <ng-container auiTableColumnDef="id">
         <aui-table-header-cell
@@ -46,7 +46,8 @@ import { DATA_SOURCE } from './data';
       ></aui-table-row>
     </aui-table>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class TableBasicComponent {
   dataSource = DATA_SOURCE;

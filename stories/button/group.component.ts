@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <aui-button-group>
       <button aui-button="primary">
         <aui-icon icon="angle_left"></aui-icon>
@@ -45,6 +45,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </button>
     </aui-button-group>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class ButtonGroupComponent {}

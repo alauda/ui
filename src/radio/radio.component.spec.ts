@@ -88,7 +88,7 @@ describe('RadioComponent', () => {
 });
 
 @Component({
-  template: `
+    template: `
     <aui-radio-group
       name="food"
       [(ngModel)]="food"
@@ -125,8 +125,7 @@ describe('RadioComponent', () => {
       </aui-radio-button>
     </aui-radio-group>
   `,
-  standalone: true,
-  imports: [RadioModule, FormsModule],
+    imports: [RadioModule, FormsModule]
 })
 export class TestComponent {
   size: RadioSize = RadioSize.Medium;

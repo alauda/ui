@@ -79,7 +79,7 @@ class FakeDataSource extends DataSource<TestData> {
 }
 
 @Component({
-  template: `
+    template: `
     <aui-table [dataSource]="dataSource">
       <ng-container auiTableColumnDef="column_a">
         <aui-table-header-cell *auiTableHeaderCellDef>
@@ -117,8 +117,7 @@ class FakeDataSource extends DataSource<TestData> {
       ></aui-table-row>
     </aui-table>
   `,
-  standalone: true,
-  imports: [TableModule],
+    imports: [TableModule]
 })
 class SimpleTableAppComponent {
   dataSource: FakeDataSource | null = new FakeDataSource();

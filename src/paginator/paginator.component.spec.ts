@@ -99,7 +99,7 @@ describe('PaginatorComponent', () => {
 });
 
 @Component({
-  template: `
+    template: `
     <aui-paginator
       [(currentPage)]="currentPage"
       [(pageSize)]="pageSize"
@@ -113,8 +113,7 @@ describe('PaginatorComponent', () => {
       custom content
     </aui-paginator>
   `,
-  standalone: true,
-  imports: [PaginatorComponent],
+    imports: [PaginatorComponent]
 })
 class TestComponent {
   currentPage = 1;

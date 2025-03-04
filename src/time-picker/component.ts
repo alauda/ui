@@ -33,29 +33,28 @@ import {
 dayjs.extend(customParseFormat);
 
 @Component({
-  selector: 'aui-time-picker',
-  templateUrl: './template.html',
-  styleUrls: ['./style.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TimePickerComponent),
-      multi: true,
-    },
-  ],
-  standalone: true,
-  imports: [
-    TooltipDirective,
-    InputGroupComponent,
-    InputComponent,
-    FormsModule,
-    NgIf,
-    InputSuffixDirective,
-    IconComponent,
-    TimePickerPanelComponent,
-  ],
+    selector: 'aui-time-picker',
+    templateUrl: './template.html',
+    styleUrls: ['./style.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => TimePickerComponent),
+            multi: true,
+        },
+    ],
+    imports: [
+        TooltipDirective,
+        InputGroupComponent,
+        InputComponent,
+        FormsModule,
+        NgIf,
+        InputSuffixDirective,
+        IconComponent,
+        TimePickerPanelComponent,
+    ]
 })
 export class TimePickerComponent extends CommonFormControl<
   TimePickerDataLike,

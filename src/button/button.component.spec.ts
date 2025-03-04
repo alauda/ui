@@ -97,7 +97,7 @@ describe('ButtonComponent', () => {
 });
 
 @Component({
-  template: `
+    template: `
     <button
       [aui-button]="type"
       [size]="size"
@@ -108,8 +108,7 @@ describe('ButtonComponent', () => {
       {{ content }}
     </button>
   `,
-  standalone: true,
-  imports: [ButtonComponent],
+    imports: [ButtonComponent]
 })
 class TestComponent {
   type: ButtonType;

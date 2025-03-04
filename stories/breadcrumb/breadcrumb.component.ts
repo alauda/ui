@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <aui-breadcrumb>
       <aui-breadcrumb-item><a href="/">storybook</a></aui-breadcrumb-item>
       <aui-breadcrumb-item><a href="./">breadcrumb</a></aui-breadcrumb-item>
@@ -18,6 +18,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <aui-breadcrumb-item>default</aui-breadcrumb-item>
     </aui-breadcrumb>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class BreadcrumbComponent {}

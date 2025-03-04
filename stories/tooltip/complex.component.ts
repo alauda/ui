@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <div style="padding: 64px 0 0 80px;">
       <button
         aui-button="primary"
@@ -46,6 +46,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     </style>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class TooltipComplexComponent {}

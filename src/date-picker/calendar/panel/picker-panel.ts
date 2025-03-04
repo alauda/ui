@@ -44,13 +44,12 @@ dayjs.extend(isBetween);
 const bem = buildBem('aui-picker-panel');
 
 @Component({
-  selector: 'aui-picker-panel',
-  templateUrl: './picker-panel.template.html',
-  styleUrls: ['./picker-panel.style.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [NgClass, NgIf, NgFor, ButtonComponent, I18nPipe],
+    selector: 'aui-picker-panel',
+    templateUrl: './picker-panel.template.html',
+    styleUrls: ['./picker-panel.style.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [NgClass, NgIf, NgFor, ButtonComponent, I18nPipe]
 })
 export class PickerPanelComponent implements OnChanges {
   @Input()

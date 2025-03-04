@@ -22,13 +22,12 @@ import { calcRangeValue } from '../util';
 const bem = buildBem('aui-calendar-header');
 
 @Component({
-  selector: 'aui-calendar-header',
-  templateUrl: './template.html',
-  styleUrls: ['./style.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [NgIf, NgTemplateOutlet, ButtonComponent, IconComponent, I18nPipe],
+    selector: 'aui-calendar-header',
+    templateUrl: './template.html',
+    styleUrls: ['./style.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [NgIf, NgTemplateOutlet, ButtonComponent, IconComponent, I18nPipe]
 })
 export class CalendarHeaderComponent {
   @Input()

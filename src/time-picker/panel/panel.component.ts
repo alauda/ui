@@ -42,28 +42,27 @@ const TIME_PICKER_COLUMN_WIDTH = 80;
 const bem = buildBem('aui-time-picker-panel');
 
 @Component({
-  selector: 'aui-time-picker-panel',
-  templateUrl: './panel.template.html',
-  styleUrls: ['./panel.style.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TimePickerPanelComponent),
-      multi: true,
-    },
-  ],
-  standalone: true,
-  imports: [
-    NgIf,
-    NgFor,
-    NgClass,
-    ButtonComponent,
-    NgTemplateOutlet,
-    DecimalPipe,
-    I18nPipe,
-  ],
+    selector: 'aui-time-picker-panel',
+    templateUrl: './panel.template.html',
+    styleUrls: ['./panel.style.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => TimePickerPanelComponent),
+            multi: true,
+        },
+    ],
+    imports: [
+        NgIf,
+        NgFor,
+        NgClass,
+        ButtonComponent,
+        NgTemplateOutlet,
+        DecimalPipe,
+        I18nPipe,
+    ]
 })
 export class TimePickerPanelComponent
   extends CommonFormControl<Dayjs>

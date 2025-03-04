@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <aui-tag
       type="primary"
       [border]="true"
@@ -54,6 +54,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       info</aui-tag
     >
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class TagIconComponent {}

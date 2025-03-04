@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <button aui-button="text">文字按钮</button>
     <button
       aui-button="text"
@@ -19,6 +19,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       行内按钮
     </button>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class TextComponent {}

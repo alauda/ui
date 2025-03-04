@@ -32,14 +32,13 @@ import { AutoCompleteDirective } from './autocomplete.directive';
 import { SuggestionComponent } from './suggestion/suggestion.component';
 
 @Component({
-  selector: 'aui-autocomplete',
-  templateUrl: './autocomplete.component.html',
-  styleUrls: ['./autocomplete.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false,
-  standalone: true,
-  imports: [AsyncPipe],
+    selector: 'aui-autocomplete',
+    templateUrl: './autocomplete.component.html',
+    styleUrls: ['./autocomplete.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    preserveWhitespaces: false,
+    imports: [AsyncPipe]
 })
 export class AutocompleteComponent implements AfterContentInit {
   @ContentChildren(SuggestionComponent, { descendants: true })

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'story-basic-radio',
-  template: `
+    selector: 'story-basic-radio',
+    template: `
     <p>aui-radio</p>
     <aui-radio-group
       [direction]="direction"
@@ -50,7 +50,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       >
     </aui-radio-group>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class RadioBasicComponent {
   /**

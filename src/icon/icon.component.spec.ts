@@ -96,7 +96,7 @@ describe('IconComponent', () => {
 });
 
 @Component({
-  template: `
+    template: `
     <aui-icon
       [icon]="icon"
       [link]="link"
@@ -105,8 +105,7 @@ describe('IconComponent', () => {
       [size]="size"
     ></aui-icon>
   `,
-  standalone: true,
-  imports: [IconComponent],
+    imports: [IconComponent]
 })
 class TestComponent {
   icon = '';

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'story-basic-time-picker',
-  template: `
+    selector: 'story-basic-time-picker',
+    template: `
     <aui-time-picker
       [(ngModel)]="time"
       [size]="size"
@@ -13,7 +13,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     <br />
     Form value: {{ time | json }}
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class TimePickerBasicComponent {
   /**

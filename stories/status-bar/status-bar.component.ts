@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Status, StatusType } from '@alauda/ui';
 
 @Component({
-  template: `
+    template: `
     <aui-status-bar
       [status]="status2"
       size="medium"
@@ -41,7 +41,8 @@ import { Status, StatusType } from '@alauda/ui';
       <div>{{ type }}: {{ value }}</div>
     </ng-template>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class StatusBarComponent {
   status1: Status[] = [

@@ -24,21 +24,20 @@ import { CheckboxGroupComponent } from './checkbox-group/checkbox-group.componen
 
 let uniqueId = 0;
 @Component({
-  selector: 'aui-checkbox',
-  templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CheckboxComponent),
-      multi: true,
-    },
-  ],
-  standalone: true,
-  imports: [NgIf, IconComponent],
+    selector: 'aui-checkbox',
+    templateUrl: './checkbox.component.html',
+    styleUrls: ['./checkbox.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => CheckboxComponent),
+            multi: true,
+        },
+    ],
+    imports: [NgIf, IconComponent]
 })
 export class CheckboxComponent<T>
   extends CommonFormControl<boolean>

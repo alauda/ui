@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  template: `
+    template: `
     <aui-card>
       <div auiCardHeader>header</div>
       <div style="line-height: 64px; background-color: #ededed;">content</div>
@@ -12,6 +12,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div auiCardFooter>footer</div>
     </aui-card>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export default class CardNestedComponent {}
