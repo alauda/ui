@@ -34,7 +34,7 @@
     "storybook": "ng run storybook:storybook",
     "storybook:build": "ng run storybook:build-storybook",
     "test": "jest --coverage",
-    "test:ci": "JEST_JUNIT_OUTPUT_DIR=reports jest --runInBand --coverage --reporters=jest-junit",
+    "test:ci": "JEST_JUNIT_OUTPUT_DIR=reports jest --runInBand",
     "test:clear": "jest --clearCache",
     "test:update": "jest -u",
     "test:watch": "jest --watch"
