@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 @Component({
-    template: `<div #ref>
+  template: `<div #ref>
     <div class="container">
       <div class="panel">
         <div class="indicator b-0">
@@ -458,9 +458,9 @@ import {
       </div>
     </div>
   </div> `,
-    styleUrls: ['./palette.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  styleUrls: ['./palette.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PaletteComponent implements AfterViewInit {
   @ViewChild('ref')

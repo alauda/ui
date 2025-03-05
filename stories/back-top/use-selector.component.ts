@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <div
       style="height:300px;overflow:auto;"
       class="target"
@@ -10,7 +10,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
     <aui-back-top target=".target"></aui-back-top>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class UseSelectorComponent {}

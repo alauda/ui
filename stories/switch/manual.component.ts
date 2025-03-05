@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `<aui-switch
+  template: `<aui-switch
     [value]="data"
     [loading]="loading"
     (valueChange)="toggle()"
   ></aui-switch> `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class LoadingSwitchComponent {
   data = false;

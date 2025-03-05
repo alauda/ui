@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { StepItem, StepState, StepsOrientation } from '@alauda/ui';
 
 @Component({
-    template: `
+  template: `
     <aui-steps
       [orientation]="orientation"
       [type]="'progress'"
@@ -37,8 +37,8 @@ import { StepItem, StepState, StepsOrientation } from '@alauda/ui';
       Selected Index: {{ selectedIndex }}, Current index: {{ currentIndex }}
     </div>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class BasicVerticalDemoComponent {
   orientation: StepsOrientation = 'vertical';

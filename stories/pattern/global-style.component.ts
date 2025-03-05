@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `<section>
+  template: `<section>
       <div>跳转链接:</div>
       <div><a href=".">link</a></div>
     </section>
@@ -15,8 +15,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         ></aui-icon>
       </div>
     </section> `,
-    styleUrls: ['./global-style.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  styleUrls: ['./global-style.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class GlobalStyleComponent {}

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'story-checkbox-basic',
-    template: `
+  selector: 'story-checkbox-basic',
+  template: `
     value: {{ model | json }}
     <br />
     <aui-checkbox
@@ -18,8 +18,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       >选项B</aui-checkbox
     >
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class CheckboxBasicComponent {
   @Input()

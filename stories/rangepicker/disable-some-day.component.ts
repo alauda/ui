@@ -5,7 +5,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { DateNavRange } from '@alauda/ui';
 
 @Component({
-    template: `
+  template: `
     <aui-range-picker
       [(ngModel)]="range"
       [showTime]="true"
@@ -18,8 +18,8 @@ import { DateNavRange } from '@alauda/ui';
     <br />
     Form value: {{ control?.value | json }}
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class RangeDisableSomeDayComponent {
   range = [dayjs(), dayjs()];

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <div
       style="height:300px;overflow:auto;"
       cdkScrollable
@@ -12,7 +12,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <aui-back-top></aui-back-top>
     </div>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class InscrollComponent {}

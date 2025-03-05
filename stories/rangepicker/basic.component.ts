@@ -4,7 +4,7 @@ import { Dayjs } from 'dayjs';
 import { I18nService, en, zh } from '@alauda/ui';
 
 @Component({
-    template: `
+  template: `
     <div>
       Current Locale: {{ $locale() }}
       <button (click)="changeLocale()">Toggle</button>
@@ -20,8 +20,8 @@ import { I18nService, en, zh } from '@alauda/ui';
     <br />
     Form value: {{ range | json }}
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class RangeBasicComponent {
   range: [Dayjs, Dayjs] = null;

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <aui-form-item>
       <label auiFormItemLabel>启用虚拟滚动</label>
       <aui-radio-group [(ngModel)]="enabled">
@@ -35,9 +35,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
     </div>
   `,
-    styleUrls: ['style.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  styleUrls: ['style.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class ScrollingBasicComponent {
   items = Array.from({ length: 100_000 }).map((_, i) => `Item #${i}`);

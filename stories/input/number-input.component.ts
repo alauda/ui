@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentSize } from '@alauda/ui';
 
 @Component({
-    template: `
+  template: `
     <aui-number-input
       [size]="size"
       [step]="step"
@@ -53,8 +53,8 @@ import { ComponentSize } from '@alauda/ui';
     <br />
     value: {{ value | json }}
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class numberInputComponent {
   size = ComponentSize.Medium;

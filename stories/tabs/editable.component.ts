@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <aui-tab-group>
       <aui-tab
         *ngFor="let tab of tabs; index as i; count as len"
@@ -22,8 +22,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </button>
     </aui-tab-group>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TabsEditableComponent {
   tabs = [1, 2, 3];

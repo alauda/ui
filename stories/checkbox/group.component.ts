@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'story-checkbox-group',
-    template: `
+  selector: 'story-checkbox-group',
+  template: `
     value: {{ model }}
     <br />
     <aui-checkbox
@@ -23,8 +23,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       <aui-checkbox label="label3">选项三</aui-checkbox>
     </aui-checkbox-group>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class CheckboxGroupComponent {
   /**

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <button
       aui-button
       [square]="true"
@@ -90,7 +90,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <aui-icon icon="magnifier"></aui-icon>
     </button>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class IconComponent {}

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'story-basic-accordion',
-    template: `
+  selector: 'story-basic-accordion',
+  template: `
     <aui-accordion
       [multi]="multi"
       [background]="background"
@@ -21,8 +21,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       </aui-accordion-item>
     </aui-accordion>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class AccordionBasicComponent {
   /**

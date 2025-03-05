@@ -4,7 +4,7 @@ import { Dayjs } from 'dayjs';
 import { DatePickerType } from '@alauda/ui';
 
 @Component({
-    template: `
+  template: `
     <aui-date-picker
       placeholder="请选择"
       [type]="DatePickerType.Month"
@@ -14,8 +14,8 @@ import { DatePickerType } from '@alauda/ui';
     Form value: {{ month?.toDate() }}
     <br />
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class DatePickerMonthComponent {
   month: Dayjs = null;

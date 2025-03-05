@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <aui-dropdown-button type="primary">
       dropdown button
       <aui-menu>
@@ -12,7 +12,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </aui-menu>
     </aui-dropdown-button>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class DropdownButtonComponent {}

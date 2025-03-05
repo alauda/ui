@@ -4,7 +4,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { DateNavRange, DatePickerType } from '@alauda/ui';
 
 @Component({
-    template: `
+  template: `
     <aui-date-picker
       placeholder="请选择"
       [type]="DatePickerType.Day"
@@ -15,8 +15,8 @@ import { DateNavRange, DatePickerType } from '@alauda/ui';
     <br />
     Form value: {{ time?.toDate() }}
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class DatePickerTodayComponent {
   time: Dayjs = null;
@@ -27,8 +27,8 @@ export default class DatePickerTodayComponent {
       navRange === DateNavRange.Month
         ? 'date'
         : navRange === DateNavRange.Year
-          ? 'month'
-          : 'year',
+        ? 'month'
+        : 'year',
     );
   };
 }

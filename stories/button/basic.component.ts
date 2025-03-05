@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'story-basic-button',
-    template: `
+  selector: 'story-basic-button',
+  template: `
     <button
       aui-button
       [plain]="plain"
@@ -54,8 +54,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       危险按钮
     </button>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class ButtonBasicComponent {
   /**

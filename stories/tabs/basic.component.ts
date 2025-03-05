@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'story-basic-tabs',
-    template: `
+  selector: 'story-basic-tabs',
+  template: `
     <aui-tab-group
       [type]="type"
       [size]="size"
@@ -31,8 +31,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       </aui-tab>
     </aui-tab-group>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TabsBasicComponent {
   /**

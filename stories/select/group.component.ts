@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <aui-select
       [(ngModel)]="value"
       [labelFn]="labelFn"
@@ -29,8 +29,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <br />
     value: {{ value | json }}
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class SelectGroupComponent {
   arr = Array.from({ length: 5 })

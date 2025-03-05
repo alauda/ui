@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <aui-inline-alert
       title="默认标题"
       content="默认内容"
@@ -22,7 +22,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       content="危险内容"
     ></aui-inline-alert>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class InlineTypeComponent {}

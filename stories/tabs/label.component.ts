@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <aui-tab-group>
       <ng-container *auiTabTitle>aa2</ng-container>
       <aui-tab>
@@ -21,8 +21,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </aui-tab>
     </aui-tab-group>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TabsLabelComponent {
   tab = Array.from({ length: 3 }).fill('');

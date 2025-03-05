@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
 import { DrawerRef, DrawerService } from '@alauda/ui';
 
 @Component({
-    template: `
+  template: `
     <button
       aui-button="primary"
       (click)="open(customContent)"
@@ -46,8 +46,8 @@ import { DrawerRef, DrawerService } from '@alauda/ui';
       自定义content
     </ng-template>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ServiceDrawerComponent {
   drawerRef: DrawerRef;

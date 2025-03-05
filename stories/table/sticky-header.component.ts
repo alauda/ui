@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DATA_SOURCE } from './data';
 
 @Component({
-    template: `
+  template: `
     <div auiTableScrollWrapper="300px">
       <aui-table
         auiTableScrollable
@@ -42,8 +42,8 @@ import { DATA_SOURCE } from './data';
       </aui-table>
     </div>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class StickyHeadersDemoComponent {
   dataSource = [...DATA_SOURCE];

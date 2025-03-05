@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <button (click)="disabled = !disabled">
       {{ disabled ? 'Enable' : 'Disable' }}
     </button>
@@ -25,8 +25,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </aui-autocomplete-placeholder>
     </aui-autocomplete>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AutoCompleteDisabledComponent {
   disabled: true;

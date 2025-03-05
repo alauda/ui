@@ -9,10 +9,10 @@ import { Subject, takeUntil } from 'rxjs';
 import { TabComponent, TabContextService } from '@alauda/ui';
 
 @Component({
-    selector: 'tabs-active-test',
-    template: ` <ng-content></ng-content> `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'tabs-active-test',
+  template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ActiveTestComponent implements OnInit, OnDestroy {
   private readonly destroy$$ = new Subject<void>();

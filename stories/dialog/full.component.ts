@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, TemplateRef } from '@angular/core';
 import { DialogService, DialogSize } from '@alauda/ui';
 
 @Component({
-    template: `
+  template: `
     <button
       aui-button="primary"
       (click)="open(dialog)"
@@ -42,8 +42,8 @@ import { DialogService, DialogSize } from '@alauda/ui';
       </aui-dialog-footer>
     </ng-template>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class FullScreenDialogComponent {
   constructor(private readonly dialog: DialogService) {}

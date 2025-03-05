@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <aui-multi-select
       [(ngModel)]="value"
       [maxRowCount]="6"
@@ -22,8 +22,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <br />
     value: {{ value | json }}
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class SelectMultipleComponent {
   arr = Array.from({ length: 50 })

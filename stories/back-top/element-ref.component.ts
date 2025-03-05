@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <div
       style="height:300px;overflow:auto;"
       #containerRef
@@ -12,7 +12,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
     <aui-back-top [target]="containerRef"></aui-back-top>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class UseElementRefComponent {}

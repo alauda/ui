@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'story-basic-tag',
-    template: `
+  selector: 'story-basic-tag',
+  template: `
     <aui-tag
       type="primary"
       [border]="border"
@@ -59,8 +59,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       >info</aui-tag
     >
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TagBasicComponent {
   /**

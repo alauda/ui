@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DATA_SOURCE } from './data';
 
 @Component({
-    template: `<aui-table [dataSource]="dataSource">
+  template: `<aui-table [dataSource]="dataSource">
     <ng-container auiTableColumnDef="expand-button">
       <aui-table-header-cell *auiTableHeaderCellDef></aui-table-header-cell>
       <aui-table-cell
@@ -53,7 +53,7 @@ import { DATA_SOURCE } from './data';
         'id',
         'name',
         'value',
-        'expand-panel',
+        'expand-panel'
       ]"
     ></aui-table-header-row>
     <aui-table-row
@@ -63,8 +63,8 @@ import { DATA_SOURCE } from './data';
       "
     ></aui-table-row>
   </aui-table> `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ExpandDemoComponent {
   dataSource = DATA_SOURCE.slice();

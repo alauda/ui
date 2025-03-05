@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <div>
       <p style="margin-top: 26px;">Input:</p>
       <input
@@ -70,8 +70,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </p>
     </div>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InputComponent {
   value: string;

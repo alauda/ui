@@ -4,8 +4,8 @@ import dayjs, { Dayjs } from 'dayjs';
 import { DatePickerType } from '@alauda/ui';
 
 @Component({
-    selector: 'story-date-picker-with-max-min-date',
-    template: `
+  selector: 'story-date-picker-with-max-min-date',
+  template: `
     <aui-date-picker
       [type]="DatePickerType.Day"
       [clearText]="'清除'"
@@ -21,8 +21,8 @@ import { DatePickerType } from '@alauda/ui';
     <br />
     Form value: {{ time?.toDate() }}
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class DatePickerWithMaxAndMinComponent {
   @Input()

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <button
       aui-button="primary"
       (click)="open()"
@@ -38,8 +38,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div *auiDrawerFooter>footer</div>
     </aui-drawer>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class BasicDrawerComponent {
   offsetY = 0;

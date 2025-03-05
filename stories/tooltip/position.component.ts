@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <div class="container">
       <div class="center">
         <button
@@ -118,7 +118,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     </style>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TooltipPositionComponent {}

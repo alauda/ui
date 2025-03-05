@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { TreeNode } from '@alauda/ui';
 
 @Component({
-    selector: 'tree-select',
-    template: `
+  selector: 'tree-select',
+  template: `
     {{ value | json }}
     <aui-tree-select
       [(value)]="value"
@@ -19,8 +19,8 @@ import { TreeNode } from '@alauda/ui';
       <aui-tree-node-placeholder>None</aui-tree-node-placeholder>
     </aui-tree-select>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TreeSelectComponent {
   /**

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'story-card',
-    template: `
+  selector: 'story-card',
+  template: `
     <aui-card [divider]="divider">
       <div auiCardHeader>header</div>
       <div style="line-height: 64px; background-color: #ededed;">content</div>
@@ -19,8 +19,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       <div auiCardFooter>footer</div>
     </aui-card>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class CardBasicComponent {
   /**

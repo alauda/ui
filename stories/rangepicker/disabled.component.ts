@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import dayjs from 'dayjs';
 
 @Component({
-    template: `
+  template: `
     <aui-range-picker
       [formControl]="control"
       [showTime]="false"
@@ -11,8 +11,8 @@ import dayjs from 'dayjs';
     <br />
     Form value: {{ control?.value | json }}
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class RangeDisabledComponent {
   control = new FormControl({

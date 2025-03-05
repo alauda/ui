@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
     <textarea
       [autosize]="{ minRows: minRows, maxRows: maxRows }"
       [(ngModel)]="value"
     ></textarea>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AutoSizeComponent {
   minRows = 0;
