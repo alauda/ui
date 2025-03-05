@@ -182,6 +182,7 @@ exports[`Status Bar should match snapshot 3`] = `
   >
     <div
       class="cdk-overlay-pane"
+      id="cdk-overlay-a0"
       style="position: static;"
     >
       <aui-tooltip>
