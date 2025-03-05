@@ -1,5 +1,17 @@
 # Changelog
 
+## 9.0.0
+
+### Major Changes
+
+- [#585](https://github.com/alauda/ui/pull/585) [`e928e62`](https://github.com/alauda/ui/commit/e928e62427c75b0fa4aec547a1b634c00c3745c9) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - chore/upgrade angular 19 & migrate fix
+
+### Patch Changes
+
+- [#582](https://github.com/alauda/ui/pull/582) [`2c56211`](https://github.com/alauda/ui/commit/2c56211f8d3e502d1993a2e39036caae9efc761e) Thanks [@frozenwings](https://github.com/frozenwings)! - add more standalone components exports
+
+- [#584](https://github.com/alauda/ui/pull/584) [`ec6e62a`](https://github.com/alauda/ui/commit/ec6e62a01e400a5bf69654ae5abfcd504c13e08e) Thanks [@kkxiaoa](https://github.com/kkxiaoa)! - chore: add upload circle icon
+
 ## 8.0.0
 
 ### Major Changes
