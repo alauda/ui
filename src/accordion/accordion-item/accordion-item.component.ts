@@ -66,7 +66,6 @@ export class AccordionItemComponent
 
   lazyContentTpl: TemplateRef<unknown>;
 
-   
   constructor(
     accordion: AccordionComponent,
     cdr: ChangeDetectorRef,

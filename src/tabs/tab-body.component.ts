@@ -63,7 +63,6 @@ export class TabBodyComponent implements OnDestroy {
   standalone: true,
 })
 export class TabLabelDirective extends CdkPortal {
-   
   constructor(
     templateRef: TemplateRef<any>,
     viewContainerRef: ViewContainerRef,
@@ -89,7 +88,6 @@ export class TabContentDirective {
   standalone: true,
 })
 export class TabHeaderAddonDirective extends CdkPortal {
-   
   constructor(
     templateRef: TemplateRef<any>,
     viewContainerRef: ViewContainerRef,
@@ -135,7 +133,6 @@ export class TabLabelWrapperDirective {
   standalone: true,
 })
 export class TabTitleDirective extends CdkPortal {
-   
   constructor(
     templateRef: TemplateRef<any>,
     viewContainerRef: ViewContainerRef,

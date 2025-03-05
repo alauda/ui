@@ -36,7 +36,6 @@ export class RadioButtonComponent extends BaseRadio implements OnInit {
     } ${this.isPlain ? 'isPlain' : ''}`;
   }
 
-   
   constructor(
     radioGroup: RadioGroupComponent,
     focusMonitor: FocusMonitor,

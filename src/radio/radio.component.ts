@@ -30,7 +30,6 @@ export class RadioComponent extends BaseRadio {
     }`;
   }
 
-   
   constructor(
     radioGroup: RadioGroupComponent,
     focusMonitor: FocusMonitor,

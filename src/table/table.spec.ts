@@ -188,7 +188,6 @@ function expectTableToMatchContent(
   });
 
   if (missedExpectations.length > 0) {
-     
     fail(missedExpectations.join('\n'));
   }
 }

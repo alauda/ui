@@ -261,7 +261,6 @@ describe('DialogService', () => {
         });
       fixture.detectChanges();
 
-       
       const cancelBtn = ocEl.querySelector(
         '.aui-confirm-dialog__cancel-button',
       ) as HTMLButtonElement;
