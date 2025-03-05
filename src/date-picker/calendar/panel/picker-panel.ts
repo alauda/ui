@@ -131,7 +131,6 @@ export class PickerPanelComponent implements OnChanges {
   }
 
   // 根据当前数据，计算渲染表格
-
   renderPanelData(date: Dayjs, navRange: DateNavRange) {
     const value = [];
     let colCounts = 0;
@@ -202,8 +201,8 @@ export class PickerPanelComponent implements OnChanges {
       this.navRange === DateNavRange.Decade
         ? value.isSame(dateValue, YEAR)
         : this.navRange === DateNavRange.Year
-        ? value.isSame(dateValue, MONTH)
-        : value.isSame(dateValue, DAY),
+          ? value.isSame(dateValue, MONTH)
+          : value.isSame(dateValue, DAY),
     );
   }
 
