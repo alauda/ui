@@ -52,7 +52,6 @@ export class TabChangeEvent {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [
     NgClass,
     TabHeaderComponent,

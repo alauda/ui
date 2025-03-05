@@ -19,7 +19,6 @@ import { RadioGroupComponent } from './radio-group/radio-group.component';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgClass],
 })
 export class RadioComponent extends BaseRadio {
@@ -31,7 +30,6 @@ export class RadioComponent extends BaseRadio {
     }`;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(
     radioGroup: RadioGroupComponent,
     focusMonitor: FocusMonitor,

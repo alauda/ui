@@ -30,6 +30,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     value: {{ value | json }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class SelectGroupComponent {
   arr = Array.from({ length: 5 })

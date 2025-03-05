@@ -75,7 +75,6 @@ interface Tab {
       }
     `,
   ],
-  standalone: true,
   imports: [NgFor, TabHeaderComponent, TabLabelWrapperDirective],
 })
 class SimpleTabHeaderAppComponent {

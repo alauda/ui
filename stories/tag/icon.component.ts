@@ -55,5 +55,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     >
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TagIconComponent {}

@@ -50,7 +50,6 @@ import { SelectOption } from './select.types';
       useExisting: SelectComponent,
     },
   ],
-  standalone: true,
   imports: [
     TooltipDirective,
     InputGroupComponent,

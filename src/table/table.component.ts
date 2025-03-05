@@ -57,7 +57,6 @@ export const tableBem = buildBem('aui-table');
       useClass: _CoalescedStyleScheduler,
     },
   ],
-  standalone: true,
   imports: [CdkTableModule, TablePlaceholderOutletDirective],
 })
 export class TableComponent<T>

@@ -17,5 +17,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </section> `,
   styleUrls: ['./global-style.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class GlobalStyleComponent {}

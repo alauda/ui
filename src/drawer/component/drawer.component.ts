@@ -30,11 +30,10 @@ import { DrawerOptions, DrawerSize } from '../types';
   providers: [DrawerService],
 })
 export class DrawerComponent<
-    T = unknown,
-    C extends object = object,
-    R = unknown,
-  >
-  implements AfterViewInit, OnChanges, Required<DrawerOptions<T, C>>
+  T = unknown,
+  C extends object = object,
+  R = unknown,
+> implements AfterViewInit, OnChanges, Required<DrawerOptions<T, C>>
 {
   @Input()
   title: TemplateRef<C> | string;

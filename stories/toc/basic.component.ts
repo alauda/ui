@@ -75,6 +75,7 @@ import { TocContainerDirective } from '@alauda/ui';
   `,
   styleUrls: ['./style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TocBasicComponent {
   list: string[] = [];

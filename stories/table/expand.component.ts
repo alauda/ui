@@ -53,7 +53,7 @@ import { DATA_SOURCE } from './data';
         'id',
         'name',
         'value',
-        'expand-panel',
+        'expand-panel'
       ]"
     ></aui-table-header-row>
     <aui-table-row
@@ -64,6 +64,7 @@ import { DATA_SOURCE } from './data';
     ></aui-table-row>
   </aui-table> `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ExpandDemoComponent {
   dataSource = DATA_SOURCE.slice();

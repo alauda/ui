@@ -16,6 +16,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     ></aui-switch>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class SwitchBasicComponent {
   /**

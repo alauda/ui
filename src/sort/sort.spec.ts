@@ -1,4 +1,3 @@
-/* eslint-disable jest/no-standalone-expect */
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { CdkTableModule } from '@angular/cdk/table';
 import { Component, ElementRef, ViewChild } from '@angular/core';
@@ -186,7 +185,6 @@ type SimpleAuiSortAppColumnIds = 'defaultA' | 'defaultB' | 'overrideStart';
       </div>
     </div>
   `,
-  standalone: true,
   imports: [SortModule, CdkTableModule, TableModule],
 })
 class SimpleSortAppComponent {
@@ -297,7 +295,6 @@ class FakeDataSource extends DataSource<any> {
       <cdk-row *cdkRowDef="let row; columns: columnsToRender"></cdk-row>
     </cdk-table>
   `,
-  standalone: true,
   imports: [SortModule, CdkTableModule, TableModule],
 })
 class CdkTableSortAppComponent {
@@ -352,7 +349,6 @@ class CdkTableSortAppComponent {
       ></aui-table-row>
     </aui-table>
   `,
-  standalone: true,
   imports: [SortModule, CdkTableModule, TableModule],
 })
 class AuiTableSortAppComponent {

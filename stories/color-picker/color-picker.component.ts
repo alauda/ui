@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     {{ value }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class ColorPickerComponent {
   value = '#009ce3';

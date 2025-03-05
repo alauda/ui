@@ -56,7 +56,6 @@ type Step = 'hideDone' | 'hideStart' | 'showDone' | 'showStart';
   styleUrls: ['./internal.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     NgIf,
     NgClass,

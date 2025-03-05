@@ -52,6 +52,7 @@ import { Sort } from '@alauda/ui';
   </aui-table> `,
   styleUrls: ['sort.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SortDemoComponent {
   dataSource = DATA_SOURCE.slice();
@@ -62,12 +63,12 @@ export class SortDemoComponent {
       a[activeKey] === b[activeKey]
         ? 0
         : a[activeKey] > b[activeKey]
-          ? sort.direction === 'asc'
-            ? 1
-            : -1
-          : sort.direction === 'asc'
-            ? -1
-            : 1,
+        ? sort.direction === 'asc'
+          ? 1
+          : -1
+        : sort.direction === 'asc'
+        ? -1
+        : 1,
     );
   }
 }

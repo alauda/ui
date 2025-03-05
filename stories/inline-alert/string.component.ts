@@ -9,5 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <aui-inline-alert content="文本内容"></aui-inline-alert>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class InlineStringComponent {}

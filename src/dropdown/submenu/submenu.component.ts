@@ -23,7 +23,6 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [
     TooltipActiveDirective,
     TooltipDirective,

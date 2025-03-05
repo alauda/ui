@@ -19,6 +19,7 @@ import { DateNavRange } from '@alauda/ui';
     Form value: {{ control?.value | json }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class RangeDisableSomeDayComponent {
   range = [dayjs(), dayjs()];

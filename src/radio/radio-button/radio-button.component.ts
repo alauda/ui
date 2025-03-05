@@ -22,7 +22,6 @@ import { RadioSize } from '../radio.types';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgClass, NgIf, IconComponent],
 })
 export class RadioButtonComponent extends BaseRadio implements OnInit {
@@ -37,7 +36,6 @@ export class RadioButtonComponent extends BaseRadio implements OnInit {
     } ${this.isPlain ? 'isPlain' : ''}`;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(
     radioGroup: RadioGroupComponent,
     focusMonitor: FocusMonitor,

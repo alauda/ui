@@ -37,6 +37,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   styleUrls: ['style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class ScrollingBasicComponent {
   items = Array.from({ length: 100_000 }).map((_, i) => `Item #${i}`);

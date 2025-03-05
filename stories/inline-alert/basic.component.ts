@@ -25,5 +25,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </aui-inline-alert>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class InlineBasicComponent {}

@@ -40,7 +40,6 @@ import { throwDialogContentAlreadyAttachedError } from './utils';
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
   changeDetection: ChangeDetectionStrategy.Default,
   preserveWhitespaces: false,
   animations: [dialogAnimations.dialogContainer],
@@ -50,7 +49,6 @@ import { throwDialogContentAlreadyAttachedError } from './utils';
     '(@dialogContainer.start)': 'onAnimationStart($event)',
     '(@dialogContainer.done)': 'onAnimationDone($event)',
   },
-  standalone: true,
   imports: [NgClass, PortalModule],
 })
 export class DialogComponent {

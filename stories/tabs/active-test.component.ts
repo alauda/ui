@@ -12,6 +12,7 @@ import { TabComponent, TabContextService } from '@alauda/ui';
   selector: 'tabs-active-test',
   template: ` <ng-content></ng-content> `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ActiveTestComponent implements OnInit, OnDestroy {
   private readonly destroy$$ = new Subject<void>();

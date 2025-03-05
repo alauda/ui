@@ -13,5 +13,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </aui-dropdown-button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class DropdownButtonComponent {}

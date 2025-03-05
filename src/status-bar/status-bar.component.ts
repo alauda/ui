@@ -21,7 +21,6 @@ import { Status, StatusBarSize } from './status-bar.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgFor, NgIf, NgClass, TooltipDirective],
 })
 export class StatusBarComponent {

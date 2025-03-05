@@ -24,6 +24,7 @@ import { DrawerRef, DrawerService } from '@alauda/ui';
     </button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ServiceDrawerCptComponent {
   drawerRef: DrawerRef;
@@ -63,6 +64,7 @@ export class ServiceDrawerCptComponent {
 @Component({
   template: ` component {{ data }}`,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DrawerContentComponent {
   @Input() data: string;
@@ -71,6 +73,7 @@ export class DrawerContentComponent {
 @Component({
   template: `component {{ data }}`,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DrawerContent1Component {
   @Input() data: string;

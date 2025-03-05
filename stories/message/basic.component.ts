@@ -30,6 +30,7 @@ import { MessageService } from '@alauda/ui';
     </button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class BasicDemoComponent implements OnDestroy {
   constructor(public message: MessageService) {}

@@ -54,6 +54,7 @@ import { ComponentSize } from '@alauda/ui';
     value: {{ value | json }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class numberInputComponent {
   size = ComponentSize.Medium;

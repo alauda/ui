@@ -12,6 +12,7 @@ import dayjs from 'dayjs';
     Form value: {{ control?.value | json }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class RangeDisabledComponent {
   control = new FormControl({

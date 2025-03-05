@@ -90,6 +90,7 @@ import { saveAs } from 'file-saver';
     </div> `,
   styleUrls: ['./customize.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class CustomizeComponent {
   mainColors = {

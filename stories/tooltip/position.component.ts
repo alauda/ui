@@ -119,5 +119,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </style>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TooltipPositionComponent {}

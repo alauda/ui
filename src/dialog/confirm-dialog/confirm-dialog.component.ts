@@ -32,7 +32,6 @@ import { ConfirmDialogConfig } from './confirm-dialog-config';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [
     IconComponent,
     NgIf,

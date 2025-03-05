@@ -29,7 +29,6 @@ describe('BreadcrumbComponent', () => {
       <aui-breadcrumb-item>default</aui-breadcrumb-item>
     </aui-breadcrumb>
   `,
-  standalone: true,
   imports: [...BREADCRUMB_MODULE],
 })
 class TestComponent {}

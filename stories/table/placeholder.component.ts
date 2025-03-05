@@ -118,6 +118,7 @@ import { DATA_SOURCE } from './data';
     </aui-table> `,
   styleUrls: ['./placeholder.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PlaceholderComponent {
   dataSource = DATA_SOURCE.slice(0, 3);

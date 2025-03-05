@@ -42,6 +42,7 @@ const DATA_SOURCE: Element[] = [
     </table>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SortComponent {
   dataSource = DATA_SOURCE.slice();
@@ -52,12 +53,12 @@ export class SortComponent {
       a[activeKey] === b[activeKey]
         ? 0
         : a[activeKey] > b[activeKey]
-          ? sort.direction === 'asc'
-            ? 1
-            : -1
-          : sort.direction === 'asc'
-            ? -1
-            : 1,
+        ? sort.direction === 'asc'
+          ? 1
+          : -1
+        : sort.direction === 'asc'
+        ? -1
+        : 1,
     );
   }
 }

@@ -51,6 +51,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     </aui-radio-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class RadioBasicComponent {
   /**

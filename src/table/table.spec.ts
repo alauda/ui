@@ -117,7 +117,6 @@ class FakeDataSource extends DataSource<TestData> {
       ></aui-table-row>
     </aui-table>
   `,
-  standalone: true,
   imports: [TableModule],
 })
 class SimpleTableAppComponent {
@@ -189,7 +188,6 @@ function expectTableToMatchContent(
   });
 
   if (missedExpectations.length > 0) {
-    // eslint-disable-next-line jest/no-jasmine-globals
     fail(missedExpectations.join('\n'));
   }
 }

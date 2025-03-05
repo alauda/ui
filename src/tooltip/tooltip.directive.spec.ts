@@ -206,7 +206,6 @@ describe('TooltipDirective', () => {
       <div id="dataNode">{{ text }}</div>
     </ng-template>
   `,
-  standalone: true,
   imports: [TooltipModule, FormsModule],
 })
 class TestComponent {

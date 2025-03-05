@@ -53,6 +53,7 @@ import { DialogService } from '@alauda/ui';
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class FitViewportDialogComponent {
   constructor(private readonly dialog: DialogService) {}

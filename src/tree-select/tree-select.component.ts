@@ -61,7 +61,6 @@ import { TreeNode } from './tree-select.types';
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     InputGroupComponent,
     InputComponent,
@@ -290,7 +289,6 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgIf, IconComponent, NgFor],
 })
 export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {

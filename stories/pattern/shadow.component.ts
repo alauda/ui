@@ -9,5 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   </div> `,
   styleUrls: ['shadow.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ShadowComponent {}

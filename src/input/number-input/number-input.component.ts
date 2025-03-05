@@ -40,7 +40,6 @@ import {
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     NgClass,
     NgIf,

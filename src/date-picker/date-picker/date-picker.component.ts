@@ -32,7 +32,6 @@ import { DatePickerTriggerComponent } from '../trigger/trigger.component';
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     DatePickerTriggerComponent,
     TooltipDirective,

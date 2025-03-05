@@ -28,7 +28,6 @@ import { coerceAttrBoolean } from '../internal/utils';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [forwardRef(() => TabBodyPortalDirective)],
 })
 export class TabBodyComponent implements OnDestroy {
@@ -64,7 +63,6 @@ export class TabBodyComponent implements OnDestroy {
   standalone: true,
 })
 export class TabLabelDirective extends CdkPortal {
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(
     templateRef: TemplateRef<any>,
     viewContainerRef: ViewContainerRef,
@@ -90,7 +88,6 @@ export class TabContentDirective {
   standalone: true,
 })
 export class TabHeaderAddonDirective extends CdkPortal {
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(
     templateRef: TemplateRef<any>,
     viewContainerRef: ViewContainerRef,
@@ -136,7 +133,6 @@ export class TabLabelWrapperDirective {
   standalone: true,
 })
 export class TabTitleDirective extends CdkPortal {
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(
     templateRef: TemplateRef<any>,
     viewContainerRef: ViewContainerRef,

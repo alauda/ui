@@ -61,5 +61,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </form>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class DropdownLabelComponent {}

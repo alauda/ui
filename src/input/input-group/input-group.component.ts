@@ -26,7 +26,6 @@ import { InputComponent } from '../input.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgClass, NgIf, AsyncPipe],
 })
 export class InputGroupComponent implements AfterContentInit {

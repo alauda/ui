@@ -105,7 +105,6 @@ describe('SwitchComponent', () => {
       [loading]="true"
     ></aui-switch>
   `,
-  standalone: true,
   imports: [SwitchModule, FormsModule],
 })
 export class TestComponent {

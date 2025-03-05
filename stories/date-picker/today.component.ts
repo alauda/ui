@@ -16,6 +16,7 @@ import { DateNavRange, DatePickerType } from '@alauda/ui';
     Form value: {{ time?.toDate() }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class DatePickerTodayComponent {
   time: Dayjs = null;
@@ -26,8 +27,8 @@ export default class DatePickerTodayComponent {
       navRange === DateNavRange.Month
         ? 'date'
         : navRange === DateNavRange.Year
-          ? 'month'
-          : 'year',
+        ? 'month'
+        : 'year',
     );
   };
 }

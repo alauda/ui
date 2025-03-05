@@ -176,6 +176,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div> `,
   styleUrls: ['sticky-columns.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class StickyColumnsDemoComponent {
   columns = ['no'].concat(

@@ -53,7 +53,6 @@ export const INPUT_ERROR_KEY = 'input_data_error';
       multi: true,
     },
   ],
-  standalone: true,
   imports: [NgFor, TagComponent],
 })
 export class TagsInputComponent

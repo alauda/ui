@@ -36,7 +36,6 @@ const bem = buildBem('aui-anchor');
   templateUrl: 'anchor-tree.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [NgFor, NgIf, NgTemplateOutlet],
 })
 export class AnchorTreeComponent
@@ -123,7 +122,6 @@ export class AnchorTreeComponent
   styleUrls: ['anchor.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [AnchorTreeComponent],
 })
 export class AnchorComponent

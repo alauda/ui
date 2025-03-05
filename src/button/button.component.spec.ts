@@ -108,7 +108,6 @@ describe('ButtonComponent', () => {
       {{ content }}
     </button>
   `,
-  standalone: true,
   imports: [ButtonComponent],
 })
 class TestComponent {

@@ -46,5 +46,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </aui-button-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class ButtonGroupComponent {}

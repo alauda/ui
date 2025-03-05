@@ -113,7 +113,6 @@ describe('InlineAlertComponent', () => {
       #inlineAlertRef
     ></aui-inline-alert>
   `,
-  standalone: true,
   imports: [...INLINE_ALERT_MODULE],
 })
 export class TestComponent {

@@ -20,6 +20,7 @@ import { TreeNode } from '@alauda/ui';
     </aui-tree-select>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TreeSelectComponent {
   /**

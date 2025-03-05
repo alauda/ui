@@ -125,6 +125,7 @@ import { NotificationService } from '@alauda/ui';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class BasicDemoComponent implements OnDestroy {
   @ViewChild('template', { static: true })

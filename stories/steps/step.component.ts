@@ -31,6 +31,7 @@ import { StepItem } from '@alauda/ui';
     <div>Current index: {{ currentIndex }}</div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class BasicHorizontalDemoComponent {
   currentIndex = 0;

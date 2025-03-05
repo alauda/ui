@@ -191,7 +191,6 @@ describe('InputNumberComponent', () => {
       [clearable]="clearable"
     ></aui-number-input>
   `,
-  standalone: true,
   imports: [FormsModule, ...NUMBER_INPUT_MODULE],
 })
 class TestComponent {

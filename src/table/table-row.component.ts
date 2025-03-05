@@ -21,7 +21,6 @@ import {
   encapsulation: ViewEncapsulation.None,
   exportAs: 'auiTableRow',
   preserveWhitespaces: false,
-  standalone: true,
   imports: [CdkTableModule],
 })
 export class TableRowComponent extends CdkRow implements AfterContentInit {

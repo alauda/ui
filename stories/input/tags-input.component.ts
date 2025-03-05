@@ -35,6 +35,7 @@ import { ComponentSize } from '@alauda/ui';
     ></aui-tags-input>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TagsInputComponent {
   value = ['app', 'service'];

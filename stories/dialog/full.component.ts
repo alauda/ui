@@ -43,6 +43,7 @@ import { DialogService, DialogSize } from '@alauda/ui';
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class FullScreenDialogComponent {
   constructor(private readonly dialog: DialogService) {}

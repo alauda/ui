@@ -11,5 +11,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <aui-back-top target=".target"></aui-back-top>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class UseSelectorComponent {}

@@ -47,6 +47,7 @@ import { DrawerRef, DrawerService } from '@alauda/ui';
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ServiceDrawerComponent {
   drawerRef: DrawerRef;

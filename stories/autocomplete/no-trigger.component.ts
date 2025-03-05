@@ -20,5 +20,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </aui-autocomplete>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AutoCompleteNoTriggerComponent {}

@@ -15,6 +15,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     </aui-paginator>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class paginatorComponent {
   @Input()

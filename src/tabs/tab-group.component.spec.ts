@@ -320,7 +320,6 @@ function checkSelectedIndex(
       </aui-tab>
     </aui-tab-group>
   `,
-  standalone: true,
   imports: [
     TabGroupComponent,
     TabComponent,

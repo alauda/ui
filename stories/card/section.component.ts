@@ -16,5 +16,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </aui-card>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class CardSectionComponent {}

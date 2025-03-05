@@ -460,6 +460,7 @@ import {
   </div> `,
   styleUrls: ['./palette.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PaletteComponent implements AfterViewInit {
   @ViewChild('ref')

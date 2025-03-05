@@ -37,7 +37,6 @@ let uniqueId = 0;
       multi: true,
     },
   ],
-  standalone: true,
   imports: [NgIf, IconComponent],
 })
 export class CheckboxComponent<T>

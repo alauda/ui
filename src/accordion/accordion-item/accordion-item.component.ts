@@ -49,7 +49,6 @@ export class AccordionItemContentDirective {}
     ]),
   ],
   viewProviders: [AccordionItemComponent],
-  standalone: true,
   imports: [IconComponent, NgIf, NgTemplateOutlet],
 })
 export class AccordionItemComponent
@@ -67,7 +66,6 @@ export class AccordionItemComponent
 
   lazyContentTpl: TemplateRef<unknown>;
 
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(
     accordion: AccordionComponent,
     cdr: ChangeDetectorRef,

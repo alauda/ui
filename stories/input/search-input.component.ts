@@ -76,6 +76,7 @@ import { ComponentSize } from '@alauda/ui';
     {{ keyword }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SearchInputComponent {
   size = ComponentSize.Medium;

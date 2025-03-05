@@ -206,7 +206,6 @@ describe('SearchComponent', () => {
       [placeholder]="placeholder"
     ></aui-search>
   `,
-  standalone: true,
   imports: [SearchComponent],
 })
 class TestComponent {

@@ -20,7 +20,6 @@ import { OptionComponent } from '../option/option.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [AsyncPipe],
 })
 export class OptionGroupComponent<T> implements AfterContentInit {

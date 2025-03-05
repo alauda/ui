@@ -45,7 +45,6 @@ dayjs.extend(customParseFormat);
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     TooltipDirective,
     InputGroupComponent,

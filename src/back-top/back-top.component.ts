@@ -32,7 +32,6 @@ type TargetType = Element | Window | string;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [ButtonComponent, IconComponent, AsyncPipe],
 })
 export class BackTopComponent {

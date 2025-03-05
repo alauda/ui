@@ -122,7 +122,6 @@ describe('TreeSelectComponent', () => {
       <aui-tree-node-placeholder>None</aui-tree-node-placeholder>
     </aui-tree-select>
   `,
-  standalone: true,
   imports: [TreeSelectComponent, TreeNodePlaceholderComponent],
 })
 class TestComponent {

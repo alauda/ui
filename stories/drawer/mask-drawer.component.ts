@@ -20,6 +20,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </aui-drawer>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class MaskDrawerComponent {
   visible = false;

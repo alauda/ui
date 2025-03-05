@@ -21,6 +21,7 @@ import { I18nService, en, zh } from '@alauda/ui';
     Form value: {{ range | json }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class RangeBasicComponent {
   range: [Dayjs, Dayjs] = null;

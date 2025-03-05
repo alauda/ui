@@ -27,7 +27,6 @@ const bem = buildBem('aui-date-picker-trigger');
   styleUrls: ['./trigger.style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [NgClass, NgIf, InputComponent, IconComponent, I18nPipe],
 })
 export class DatePickerTriggerComponent {

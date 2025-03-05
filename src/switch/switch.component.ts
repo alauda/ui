@@ -27,7 +27,6 @@ const prefix = 'aui-switch';
       multi: true,
     },
   ],
-  standalone: true,
   imports: [NgClass],
 })
 export class SwitchComponent extends CommonFormControl<boolean> {

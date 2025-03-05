@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { SelectModule } from '@alauda/ui';
 
 @Component({
-  standalone: true,
   imports: [SelectModule, FormsModule, NgFor],
   selector: 'story-select-basic',
   template: `

@@ -25,7 +25,6 @@ const prefix = 'aui-button--';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgIf, IconComponent],
 })
 export class ButtonComponent implements OnDestroy {

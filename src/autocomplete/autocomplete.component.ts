@@ -38,7 +38,6 @@ import { SuggestionComponent } from './suggestion/suggestion.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [AsyncPipe],
 })
 export class AutocompleteComponent implements AfterContentInit {

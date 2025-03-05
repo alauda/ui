@@ -49,7 +49,6 @@ const bem = buildBem('aui-picker-panel');
   styleUrls: ['./picker-panel.style.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [NgClass, NgIf, NgFor, ButtonComponent, I18nPipe],
 })
 export class PickerPanelComponent implements OnChanges {
@@ -132,7 +131,6 @@ export class PickerPanelComponent implements OnChanges {
   }
 
   // 根据当前数据，计算渲染表格
-   
   renderPanelData(date: Dayjs, navRange: DateNavRange) {
     const value = [];
     let colCounts = 0;
@@ -203,8 +201,8 @@ export class PickerPanelComponent implements OnChanges {
       this.navRange === DateNavRange.Decade
         ? value.isSame(dateValue, YEAR)
         : this.navRange === DateNavRange.Year
-        ? value.isSame(dateValue, MONTH)
-        : value.isSame(dateValue, DAY),
+          ? value.isSame(dateValue, MONTH)
+          : value.isSame(dateValue, DAY),
     );
   }
 

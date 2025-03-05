@@ -14,6 +14,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     Form value: {{ time | json }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TimePickerBasicComponent {
   /**

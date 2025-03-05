@@ -119,7 +119,6 @@ describe('CheckboxComponent', () => {
       {{ content }}
     </aui-checkbox>
   `,
-  standalone: true,
   imports: [FormsModule, CheckboxComponent],
 })
 export class TestComponent {

@@ -42,6 +42,7 @@ import { Status, StatusType } from '@alauda/ui';
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class StatusBarComponent {
   status1: Status[] = [

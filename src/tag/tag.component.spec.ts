@@ -51,7 +51,6 @@ describe('TagComponent', () => {
       info
     </aui-tag>
   `,
-  standalone: true,
   imports: [TagModule],
 })
 class TestComponent {}

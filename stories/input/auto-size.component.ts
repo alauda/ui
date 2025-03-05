@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     ></textarea>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AutoSizeComponent {
   minRows = 0;

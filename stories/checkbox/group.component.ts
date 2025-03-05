@@ -24,6 +24,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     </aui-checkbox-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class CheckboxGroupComponent {
   /**

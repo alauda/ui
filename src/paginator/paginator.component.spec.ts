@@ -113,7 +113,6 @@ describe('PaginatorComponent', () => {
       custom content
     </aui-paginator>
   `,
-  standalone: true,
   imports: [PaginatorComponent],
 })
 class TestComponent {

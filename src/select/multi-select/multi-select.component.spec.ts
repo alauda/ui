@@ -141,7 +141,6 @@ describe('multiSelectComponent', () => {
       >
     </aui-multi-select>
   `,
-  standalone: true,
   imports: [SelectModule, FormsModule],
 })
 class TestComponent {

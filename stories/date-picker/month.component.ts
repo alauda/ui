@@ -15,6 +15,7 @@ import { DatePickerType } from '@alauda/ui';
     <br />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class DatePickerMonthComponent {
   month: Dayjs = null;

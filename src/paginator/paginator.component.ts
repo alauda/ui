@@ -27,7 +27,6 @@ import { PaginatorIntl } from './paginator-intl';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [
     NgFor,
     NgIf,

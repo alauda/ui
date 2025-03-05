@@ -22,6 +22,7 @@ import { DatePickerType } from '@alauda/ui';
     Form value: {{ time?.toDate() }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class DatePickerWithMaxAndMinComponent {
   @Input()

@@ -21,7 +21,6 @@ import { TagType } from './tag.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgStyle, NgIf, IconComponent],
 })
 export class TagComponent {

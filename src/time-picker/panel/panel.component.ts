@@ -54,7 +54,6 @@ const bem = buildBem('aui-time-picker-panel');
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     NgIf,
     NgFor,

@@ -18,7 +18,6 @@ import { TabType } from './tabs.types';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgClass],
 })
 export class TabHeaderActiveIndicatorComponent {

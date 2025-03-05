@@ -42,7 +42,6 @@ const StepSelectedIcon = {
   styleUrls: ['./steps.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [
     NgFor,
     NgIf,
@@ -207,8 +206,8 @@ export class StepsComponent implements OnInit, OnDestroy {
     return i === this.selectedIndex
       ? true
       : firstDefaultIndex === 0
-        ? false
-        : firstDefaultIndex === i;
+      ? false
+      : firstDefaultIndex === i;
   }
 
   ngOnDestroy() {

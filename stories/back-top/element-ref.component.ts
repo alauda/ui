@@ -13,5 +13,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <aui-back-top [target]="containerRef"></aui-back-top>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class UseElementRefComponent {}

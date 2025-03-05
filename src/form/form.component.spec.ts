@@ -64,7 +64,6 @@ describe('FormComponent', () => {
       </aui-form-item>
     </form>
   `,
-  standalone: true,
   imports: [FormsModule, NgIf, InputComponent, ...FORM_MODULE],
 })
 class TestComponent {

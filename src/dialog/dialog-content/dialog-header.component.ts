@@ -21,7 +21,6 @@ import { getClosestDialog } from '../utils';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgIf, IconComponent],
 })
 export class DialogHeaderComponent implements OnInit {

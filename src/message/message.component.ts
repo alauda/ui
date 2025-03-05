@@ -32,7 +32,6 @@ const typeIcon: { [key: string]: string } = {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [IconComponent],
 })
 export class MessageComponent implements AfterViewInit {

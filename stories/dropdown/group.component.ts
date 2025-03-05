@@ -30,5 +30,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class DropdownGroupComponent {}

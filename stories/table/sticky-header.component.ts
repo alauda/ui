@@ -43,6 +43,7 @@ import { DATA_SOURCE } from './data';
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class StickyHeadersDemoComponent {
   dataSource = [...DATA_SOURCE];

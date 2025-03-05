@@ -34,7 +34,6 @@ import { IconComponent } from '../icon/icon.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [IconComponent],
 })
 export class TableExpandButtonCellComponent extends CdkCell {
@@ -77,7 +76,6 @@ export class TableExpandButtonCellComponent extends CdkCell {
       transition('* <=> expanded', [animate('0.1s ease-in-out')]),
     ]),
   ],
-  standalone: true,
   imports: [NgIf],
 })
 export class TableExpandPanelCellComponent extends CdkCell {

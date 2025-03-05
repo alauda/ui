@@ -23,7 +23,6 @@ import { InputComponent } from '../input.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgClass, NgIf, IconComponent, InputComponent, FormsModule],
 })
 export class SearchComponent {

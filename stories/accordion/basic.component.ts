@@ -22,6 +22,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     </aui-accordion>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class AccordionBasicComponent {
   /**

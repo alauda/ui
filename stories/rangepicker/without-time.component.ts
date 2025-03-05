@@ -11,6 +11,7 @@ import dayjs from 'dayjs';
     Form value: {{ range | json }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class RangeWithoutTimeComponent {
   range = [dayjs(), dayjs()];

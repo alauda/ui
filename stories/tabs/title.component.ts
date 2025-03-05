@@ -11,5 +11,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </aui-tab-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TabsTitleComponent {}

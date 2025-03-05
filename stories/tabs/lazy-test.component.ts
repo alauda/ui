@@ -8,6 +8,7 @@ import { interval, take } from 'rxjs';
     num: {{ num$ | async }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class LazyTestComponent {
   num$ = interval(1000).pipe(take(100));

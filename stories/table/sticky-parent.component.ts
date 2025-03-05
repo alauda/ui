@@ -47,6 +47,7 @@ import { DATA_SOURCE } from './data';
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class StickyParentDemoComponent {
   dataSource = [...DATA_SOURCE];

@@ -96,7 +96,6 @@ describe('Status Bar', () => {
       <div>{{ type }}: {{ value }}</div>
     </ng-template>
   `,
-  standalone: true,
   imports: [StatusBarModule],
 })
 class TestComponent {

@@ -105,7 +105,6 @@ describe('IconComponent', () => {
       [size]="size"
     ></aui-icon>
   `,
-  standalone: true,
   imports: [IconComponent],
 })
 class TestComponent {

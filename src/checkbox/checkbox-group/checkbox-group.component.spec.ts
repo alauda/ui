@@ -94,7 +94,6 @@ describe('CheckboxGroupComponent', () => {
       </aui-checkbox-group>
     </div>
   `,
-  standalone: true,
   imports: [FormsModule, NgForOf, ...CHECKBOX_MODULE],
 })
 class TestComponent {

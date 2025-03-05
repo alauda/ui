@@ -14,6 +14,7 @@ import dayjs from 'dayjs';
     Form value: {{ range | json }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class RangeCustomFormatComponent {
   range = [dayjs(), dayjs()];

@@ -38,6 +38,7 @@ import { StepItem, StepState, StepsOrientation } from '@alauda/ui';
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class BasicVerticalDemoComponent {
   orientation: StepsOrientation = 'vertical';

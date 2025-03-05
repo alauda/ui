@@ -49,7 +49,6 @@ import {
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     CalendarHeaderComponent,
     PickerPanelComponent,

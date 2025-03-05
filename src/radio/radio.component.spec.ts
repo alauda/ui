@@ -125,7 +125,6 @@ describe('RadioComponent', () => {
       </aui-radio-button>
     </aui-radio-group>
   `,
-  standalone: true,
   imports: [RadioModule, FormsModule],
 })
 export class TestComponent {

@@ -85,6 +85,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InputGroupComponent {
   @Input() disabled: boolean;

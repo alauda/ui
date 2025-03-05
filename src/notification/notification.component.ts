@@ -34,7 +34,6 @@ let uniqueId = 0;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [IconComponent, NgIf, PortalModule],
 })
 export class NotificationComponent

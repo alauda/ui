@@ -27,7 +27,6 @@ const bem = buildBem('aui-calendar-header');
   styleUrls: ['./style.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [NgIf, NgTemplateOutlet, ButtonComponent, IconComponent, I18nPipe],
 })
 export class CalendarHeaderComponent {
@@ -142,8 +141,8 @@ export class CalendarHeaderComponent {
     return constrainValue.isSame(range.start, MONTH)
       ? 0
       : constrainValue.isBefore(range.start, MONTH)
-        ? -1
-        : 1;
+      ? -1
+      : 1;
   }
 
   navHead(range: DateNavRange, value: number) {

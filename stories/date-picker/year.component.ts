@@ -14,6 +14,7 @@ import { DatePickerType } from '@alauda/ui';
     Form value: {{ year?.toDate() }}
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class DatePickerYearComponent {
   year: Dayjs = null;

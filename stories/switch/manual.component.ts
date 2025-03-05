@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     (valueChange)="toggle()"
   ></aui-switch> `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class LoadingSwitchComponent {
   data = false;

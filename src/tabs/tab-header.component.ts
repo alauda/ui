@@ -51,7 +51,6 @@ const EXAGGERATED_OVERSCROLL = 60;
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     NgClass,
     NgIf,

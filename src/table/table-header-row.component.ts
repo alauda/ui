@@ -21,7 +21,6 @@ import {
   encapsulation: ViewEncapsulation.None,
   exportAs: 'auiTableHeaderRow',
   preserveWhitespaces: false,
-  standalone: true,
   imports: [CdkTableModule],
 })
 export class TableHeaderRowComponent extends CdkHeaderRow {}

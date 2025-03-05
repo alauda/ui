@@ -47,6 +47,7 @@ import { DATA_SOURCE } from './data';
     </aui-table>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class TableBasicComponent {
   dataSource = DATA_SOURCE;

@@ -19,5 +19,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </aui-breadcrumb>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export default class BreadcrumbComponent {}

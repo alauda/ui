@@ -11,6 +11,7 @@ import { auiIcons as icons } from '../../src/icon/icons';
   </ul>`,
   styleUrls: ['style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class IconListComponent {
   iconList = icons

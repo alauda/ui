@@ -37,7 +37,6 @@ import { BaseSelect } from '../base-select';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgIf, IconComponent, AsyncPipe],
 })
 export class OptionComponent<T> {

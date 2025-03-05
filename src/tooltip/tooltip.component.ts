@@ -31,7 +31,6 @@ import { TooltipType } from './tooltip.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
   animations: [trigger('showHide', animations)],
-  standalone: true,
   imports: [NgIf, NgTemplateOutlet, AsyncPipe],
 })
 export class TooltipComponent implements OnDestroy {

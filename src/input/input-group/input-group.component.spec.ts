@@ -104,7 +104,6 @@ describe('InputGroupComponent', () => {
       />
     </aui-input-group>
   `,
-  standalone: true,
   imports: [InputComponent, IconComponent, ...INPUT_GROUP_MODULE],
 })
 class TestComponent {

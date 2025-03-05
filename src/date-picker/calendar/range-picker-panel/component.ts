@@ -48,7 +48,6 @@ const bem = buildBem('aui-date-range-picker-panel');
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     CalendarHeaderComponent,
     PickerPanelComponent,

@@ -22,7 +22,6 @@ import { InlineAlertType } from './inline-alert.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  standalone: true,
   imports: [NgIf, IconComponent],
 })
 export class InlineAlertComponent {

@@ -52,7 +52,6 @@ describe('AccordionComponent', () => {
       </aui-accordion-item>
     </aui-accordion>
   `,
-  standalone: true,
   imports: [...ACCORDION_MODULE],
 })
 class TestComponent {

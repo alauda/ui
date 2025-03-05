@@ -88,7 +88,6 @@ describe('TagsInputComponent', () => {
       [placeholder]="placeholder"
     ></aui-tags-input>
   `,
-  standalone: true,
   imports: [FormsModule, TagsInputComponent],
 })
 class TestComponent {
