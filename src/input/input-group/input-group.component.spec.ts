@@ -85,7 +85,7 @@ describe('InputGroupComponent', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <aui-input-group>
       <span auiInputAddonBefore>HTTPS</span>
       <span auiInputAddonAfter>GB</span>
@@ -104,7 +104,7 @@ describe('InputGroupComponent', () => {
       />
     </aui-input-group>
   `,
-    imports: [InputComponent, IconComponent, ...INPUT_GROUP_MODULE]
+  imports: [InputComponent, IconComponent, ...INPUT_GROUP_MODULE],
 })
 class TestComponent {
   size: ComponentSize;

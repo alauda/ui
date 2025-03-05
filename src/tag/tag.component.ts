@@ -15,13 +15,13 @@ import { Bem, buildBem } from '../internal/utils';
 import { TagType } from './tag.types';
 
 @Component({
-    selector: 'aui-tag',
-    templateUrl: './tag.component.html',
-    styleUrls: ['./tag.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [NgStyle, NgIf, IconComponent]
+  selector: 'aui-tag',
+  templateUrl: './tag.component.html',
+  styleUrls: ['./tag.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [NgStyle, NgIf, IconComponent],
 })
 export class TagComponent {
   bem: Bem = buildBem('aui-tag');

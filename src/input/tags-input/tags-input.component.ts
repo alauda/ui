@@ -36,24 +36,24 @@ import { createWithMaxRowCount } from './with-max-row-count';
 export const INPUT_ERROR_KEY = 'input_data_error';
 
 @Component({
-    selector: 'aui-tags-input',
-    templateUrl: './tags-input.component.html',
-    styleUrls: [
-        '../../input/input.component.scss',
-        '../../tag/tag.component.scss',
-        './tags-input.component.scss',
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => TagsInputComponent),
-            multi: true,
-        },
-    ],
-    imports: [NgFor, TagComponent]
+  selector: 'aui-tags-input',
+  templateUrl: './tags-input.component.html',
+  styleUrls: [
+    '../../input/input.component.scss',
+    '../../tag/tag.component.scss',
+    './tags-input.component.scss',
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TagsInputComponent),
+      multi: true,
+    },
+  ],
+  imports: [NgFor, TagComponent],
 })
 export class TagsInputComponent
   extends CommonFormControl<string[]>

@@ -33,8 +33,8 @@ describe('InputComponent', () => {
 });
 
 @Component({
-    template: '<input aui-input [size]="size">',
-    imports: [InputComponent]
+  template: '<input aui-input [size]="size">',
+  imports: [InputComponent],
 })
 class TestComponent {
   size: ComponentSize;

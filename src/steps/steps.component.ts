@@ -36,20 +36,20 @@ const StepSelectedIcon = {
 };
 
 @Component({
-    selector: 'aui-steps',
-    exportAs: 'auiSteps',
-    templateUrl: './steps.component.html',
-    styleUrls: ['./steps.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    imports: [
-        NgFor,
-        NgIf,
-        NgSwitch,
-        NgSwitchCase,
-        IconComponent,
-        NgSwitchDefault,
-    ]
+  selector: 'aui-steps',
+  exportAs: 'auiSteps',
+  templateUrl: './steps.component.html',
+  styleUrls: ['./steps.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  imports: [
+    NgFor,
+    NgIf,
+    NgSwitch,
+    NgSwitchCase,
+    IconComponent,
+    NgSwitchDefault,
+  ],
 })
 export class StepsComponent implements OnInit, OnDestroy {
   _currentIndex: number;
@@ -206,8 +206,8 @@ export class StepsComponent implements OnInit, OnDestroy {
     return i === this.selectedIndex
       ? true
       : firstDefaultIndex === 0
-        ? false
-        : firstDefaultIndex === i;
+      ? false
+      : firstDefaultIndex === i;
   }
 
   ngOnDestroy() {

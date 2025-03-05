@@ -103,7 +103,7 @@ describe('InlineAlertComponent', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <aui-inline-alert
       id="inline-alert"
       [title]="title"
@@ -113,7 +113,7 @@ describe('InlineAlertComponent', () => {
       #inlineAlertRef
     ></aui-inline-alert>
   `,
-    imports: [...INLINE_ALERT_MODULE]
+  imports: [...INLINE_ALERT_MODULE],
 })
 export class TestComponent {
   title = '';

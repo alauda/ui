@@ -177,7 +177,7 @@ describe('InputNumberComponent', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <aui-number-input
       #inputNumberRef
       [size]="size"
@@ -191,7 +191,7 @@ describe('InputNumberComponent', () => {
       [clearable]="clearable"
     ></aui-number-input>
   `,
-    imports: [FormsModule, ...NUMBER_INPUT_MODULE]
+  imports: [FormsModule, ...NUMBER_INPUT_MODULE],
 })
 class TestComponent {
   size: string;

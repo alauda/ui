@@ -195,7 +195,7 @@ describe('SearchComponent', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <aui-search
       #searchRef
       [searchButton]="searchButton"
@@ -206,7 +206,7 @@ describe('SearchComponent', () => {
       [placeholder]="placeholder"
     ></aui-search>
   `,
-    imports: [SearchComponent]
+  imports: [SearchComponent],
 })
 class TestComponent {
   searchButton: boolean;

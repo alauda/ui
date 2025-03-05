@@ -261,7 +261,7 @@ describe('DialogService', () => {
         });
       fixture.detectChanges();
 
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- no idea
+       
       const cancelBtn = ocEl.querySelector(
         '.aui-confirm-dialog__cancel-button',
       ) as HTMLButtonElement;
@@ -356,7 +356,7 @@ describe('DialogService', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <ng-template #template>
       <aui-dialog-header [closeable]="false">title</aui-dialog-header>
       <button
@@ -367,8 +367,8 @@ describe('DialogService', () => {
       </button>
     </ng-template>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [DialogHeaderComponent, DialogCloseDirective]
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [DialogHeaderComponent, DialogCloseDirective],
 })
 class TestComponent {
   result: any;
@@ -392,8 +392,8 @@ class ContentTemplateRefTestComponent {
 }
 
 @Component({
-    selector: 'test-dialog-content',
-    template: `
+  selector: 'test-dialog-content',
+  template: `
     <aui-dialog-header>title</aui-dialog-header>
     <aui-dialog-content>content</aui-dialog-content>
     <aui-dialog-footer>
@@ -409,12 +409,12 @@ class ContentTemplateRefTestComponent {
       </div>
     </aui-dialog-footer>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        DialogHeaderComponent,
-        DialogContentComponent,
-        DialogFooterComponent,
-        DialogCloseDirective,
-    ]
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    DialogHeaderComponent,
+    DialogContentComponent,
+    DialogFooterComponent,
+    DialogCloseDirective,
+  ],
 })
 class TestDialogContentComponent {}

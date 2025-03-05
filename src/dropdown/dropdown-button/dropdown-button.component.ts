@@ -21,13 +21,13 @@ import { DropdownDirective } from '../dropdown.directive';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 
 @Component({
-    selector: 'aui-dropdown-button',
-    templateUrl: './dropdown-button.component.html',
-    styleUrls: ['./dropdown-button.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [ButtonComponent, DropdownDirective, IconComponent, AsyncPipe]
+  selector: 'aui-dropdown-button',
+  templateUrl: './dropdown-button.component.html',
+  styleUrls: ['./dropdown-button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [ButtonComponent, DropdownDirective, IconComponent, AsyncPipe],
 })
 export class DropdownButtonComponent implements AfterContentInit {
   bem: Bem = buildBem('aui-dropdown-button');

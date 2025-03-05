@@ -55,7 +55,7 @@ interface Tab {
 }
 
 @Component({
-    template: `
+  template: `
     <aui-tab-header [selectedIndex]="selectedIndex">
       <div
         auiTabLabelWrapper
@@ -67,15 +67,15 @@ interface Tab {
       </div>
     </aui-tab-header>
   `,
-    styles: [
-        `
+  styles: [
+    `
       :host {
         display: block;
         width: 100px;
       }
     `,
-    ],
-    imports: [NgFor, TabHeaderComponent, TabLabelWrapperDirective]
+  ],
+  imports: [NgFor, TabHeaderComponent, TabLabelWrapperDirective],
 })
 class SimpleTabHeaderAppComponent {
   selectedIndex = 0;

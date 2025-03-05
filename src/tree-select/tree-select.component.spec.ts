@@ -109,7 +109,7 @@ describe('TreeSelectComponent', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <aui-tree-select
       #selectRef
       [(value)]="value"
@@ -122,7 +122,7 @@ describe('TreeSelectComponent', () => {
       <aui-tree-node-placeholder>None</aui-tree-node-placeholder>
     </aui-tree-select>
   `,
-    imports: [TreeSelectComponent, TreeNodePlaceholderComponent]
+  imports: [TreeSelectComponent, TreeNodePlaceholderComponent],
 })
 class TestComponent {
   value = 'a-1';

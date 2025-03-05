@@ -17,13 +17,13 @@ import { Bem, buildBem } from '../../internal/utils';
 import { InputComponent } from '../input.component';
 
 @Component({
-    selector: 'aui-search',
-    templateUrl: './search.component.html',
-    styleUrls: ['./search.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [NgClass, NgIf, IconComponent, InputComponent, FormsModule]
+  selector: 'aui-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [NgClass, NgIf, IconComponent, InputComponent, FormsModule],
 })
 export class SearchComponent {
   bem: Bem = buildBem('aui-search');

@@ -27,27 +27,27 @@ import {
 } from '../helper-directives';
 
 @Component({
-    selector: 'aui-number-input',
-    templateUrl: './number-input.component.html',
-    styleUrls: ['./number-input.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => NumberInputComponent),
-            multi: true,
-        },
-    ],
-    imports: [
-        NgClass,
-        NgIf,
-        ClickOutsideDirective,
-        IconComponent,
-        NgStyle,
-        AsyncPipe,
-    ]
+  selector: 'aui-number-input',
+  templateUrl: './number-input.component.html',
+  styleUrls: ['./number-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NumberInputComponent),
+      multi: true,
+    },
+  ],
+  imports: [
+    NgClass,
+    NgIf,
+    ClickOutsideDirective,
+    IconComponent,
+    NgStyle,
+    AsyncPipe,
+  ],
 })
 export class NumberInputComponent
   extends CommonFormControl<number>

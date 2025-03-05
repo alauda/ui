@@ -16,13 +16,13 @@ import { RadioGroupComponent } from '../radio-group/radio-group.component';
 import { RadioSize } from '../radio.types';
 
 @Component({
-    selector: 'aui-radio-button',
-    templateUrl: './radio-button.component.html',
-    styleUrls: ['./radio-button.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    imports: [NgClass, NgIf, IconComponent]
+  selector: 'aui-radio-button',
+  templateUrl: './radio-button.component.html',
+  styleUrls: ['./radio-button.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  imports: [NgClass, NgIf, IconComponent],
 })
 export class RadioButtonComponent extends BaseRadio implements OnInit {
   bem: Bem = buildBem('aui-radio-button');
@@ -36,7 +36,7 @@ export class RadioButtonComponent extends BaseRadio implements OnInit {
     } ${this.isPlain ? 'isPlain' : ''}`;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+   
   constructor(
     radioGroup: RadioGroupComponent,
     focusMonitor: FocusMonitor,

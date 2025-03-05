@@ -79,7 +79,7 @@ class FakeDataSource extends DataSource<TestData> {
 }
 
 @Component({
-    template: `
+  template: `
     <aui-table [dataSource]="dataSource">
       <ng-container auiTableColumnDef="column_a">
         <aui-table-header-cell *auiTableHeaderCellDef>
@@ -117,7 +117,7 @@ class FakeDataSource extends DataSource<TestData> {
       ></aui-table-row>
     </aui-table>
   `,
-    imports: [TableModule]
+  imports: [TableModule],
 })
 class SimpleTableAppComponent {
   dataSource: FakeDataSource | null = new FakeDataSource();
@@ -188,7 +188,7 @@ function expectTableToMatchContent(
   });
 
   if (missedExpectations.length > 0) {
-    // eslint-disable-next-line jest/no-jasmine-globals
+     
     fail(missedExpectations.join('\n'));
   }
 }

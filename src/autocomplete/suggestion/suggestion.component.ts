@@ -29,13 +29,13 @@ import {
 import { AutocompleteComponent } from '../autocomplete.component';
 
 @Component({
-    selector: 'aui-suggestion',
-    templateUrl: './suggestion.component.html',
-    styleUrls: ['./suggestion.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [AsyncPipe]
+  selector: 'aui-suggestion',
+  templateUrl: './suggestion.component.html',
+  styleUrls: ['./suggestion.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [AsyncPipe],
 })
 export class SuggestionComponent {
   bem: Bem = buildBem('aui-suggestion');

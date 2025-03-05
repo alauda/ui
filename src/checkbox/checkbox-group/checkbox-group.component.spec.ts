@@ -67,7 +67,7 @@ describe('CheckboxGroupComponent', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <div class="group1">
       <aui-checkbox-group [(ngModel)]="value">
         <aui-checkbox label="box0">box0</aui-checkbox>
@@ -94,7 +94,7 @@ describe('CheckboxGroupComponent', () => {
       </aui-checkbox-group>
     </div>
   `,
-    imports: [FormsModule, NgForOf, ...CHECKBOX_MODULE]
+  imports: [FormsModule, NgForOf, ...CHECKBOX_MODULE],
 })
 class TestComponent {
   value: string[];

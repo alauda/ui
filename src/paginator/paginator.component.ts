@@ -21,24 +21,24 @@ import { SelectComponent } from '../select/select.component';
 import { PaginatorIntl } from './paginator-intl';
 
 @Component({
-    selector: 'aui-paginator',
-    templateUrl: 'paginator.component.html',
-    styleUrls: ['paginator.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [
-        NgFor,
-        NgIf,
-        NgSwitch,
-        NgSwitchCase,
-        ButtonComponent,
-        NgClass,
-        IconComponent,
-        SelectComponent,
-        OptionComponent,
-        InputComponent,
-    ]
+  selector: 'aui-paginator',
+  templateUrl: 'paginator.component.html',
+  styleUrls: ['paginator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [
+    NgFor,
+    NgIf,
+    NgSwitch,
+    NgSwitchCase,
+    ButtonComponent,
+    NgClass,
+    IconComponent,
+    SelectComponent,
+    OptionComponent,
+    InputComponent,
+  ],
 })
 export class PaginatorComponent implements OnDestroy {
   bem: Bem = buildBem('aui-paginator');

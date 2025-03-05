@@ -45,20 +45,20 @@ export type ScrollDirection = 'after' | 'before';
 const EXAGGERATED_OVERSCROLL = 60;
 
 @Component({
-    selector: 'aui-tab-header',
-    templateUrl: './tab-header.component.html',
-    styleUrls: ['./tab-header.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        NgClass,
-        NgIf,
-        PortalModule,
-        IconComponent,
-        ObserversModule,
-        TabHeaderActiveIndicatorComponent,
-    ]
+  selector: 'aui-tab-header',
+  templateUrl: './tab-header.component.html',
+  styleUrls: ['./tab-header.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    NgClass,
+    NgIf,
+    PortalModule,
+    IconComponent,
+    ObserversModule,
+    TabHeaderActiveIndicatorComponent,
+  ],
 })
 export class TabHeaderComponent
   implements OnDestroy, AfterContentChecked, AfterContentInit

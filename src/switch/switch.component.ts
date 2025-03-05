@@ -14,20 +14,20 @@ import { Bem, buildBem } from '../internal/utils';
 const prefix = 'aui-switch';
 
 @Component({
-    selector: 'aui-switch',
-    templateUrl: './switch.component.html',
-    styleUrls: ['./switch.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => SwitchComponent),
-            multi: true,
-        },
-    ],
-    imports: [NgClass]
+  selector: 'aui-switch',
+  templateUrl: './switch.component.html',
+  styleUrls: ['./switch.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SwitchComponent),
+      multi: true,
+    },
+  ],
+  imports: [NgClass],
 })
 export class SwitchComponent extends CommonFormControl<boolean> {
   bem: Bem = buildBem(prefix);

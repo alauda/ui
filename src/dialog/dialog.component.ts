@@ -36,20 +36,20 @@ import { DialogConfig } from './dialog-config';
 import { throwDialogContentAlreadyAttachedError } from './utils';
 
 @Component({
-    selector: 'aui-dialog',
-    templateUrl: './dialog.component.html',
-    styleUrls: ['./dialog.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.Default,
-    preserveWhitespaces: false,
-    animations: [dialogAnimations.dialogContainer],
-    host: {
-        '[@.disabled]': 'config.noAnimation',
-        '[@dialogContainer]': 'state',
-        '(@dialogContainer.start)': 'onAnimationStart($event)',
-        '(@dialogContainer.done)': 'onAnimationDone($event)',
-    },
-    imports: [NgClass, PortalModule]
+  selector: 'aui-dialog',
+  templateUrl: './dialog.component.html',
+  styleUrls: ['./dialog.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.Default,
+  preserveWhitespaces: false,
+  animations: [dialogAnimations.dialogContainer],
+  host: {
+    '[@.disabled]': 'config.noAnimation',
+    '[@dialogContainer]': 'state',
+    '(@dialogContainer.start)': 'onAnimationStart($event)',
+    '(@dialogContainer.done)': 'onAnimationDone($event)',
+  },
+  imports: [NgClass, PortalModule],
 })
 export class DialogComponent {
   @ViewChild(CdkPortalOutlet, { static: true })

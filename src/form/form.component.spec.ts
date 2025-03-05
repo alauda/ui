@@ -27,7 +27,7 @@ describe('FormComponent', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <form
       #form="ngForm"
       auiForm
@@ -64,7 +64,7 @@ describe('FormComponent', () => {
       </aui-form-item>
     </form>
   `,
-    imports: [FormsModule, NgIf, InputComponent, ...FORM_MODULE]
+  imports: [FormsModule, NgIf, InputComponent, ...FORM_MODULE],
 })
 class TestComponent {
   @ViewChild('form', { static: true })

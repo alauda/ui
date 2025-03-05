@@ -13,12 +13,12 @@ import { ButtonComponent } from '../../../button/button.component';
 import { I18nPipe } from '../../../i18n/i18n.pipe';
 
 @Component({
-    selector: 'aui-calendar-footer',
-    templateUrl: './template.html',
-    styleUrls: ['./style.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgIf, NgTemplateOutlet, ButtonComponent, I18nPipe]
+  selector: 'aui-calendar-footer',
+  templateUrl: './template.html',
+  styleUrls: ['./style.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, NgTemplateOutlet, ButtonComponent, I18nPipe],
 })
 export class CalendarFooterComponent {
   @Input()

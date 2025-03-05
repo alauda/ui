@@ -19,8 +19,8 @@ import {
 import { IconComponent } from '../icon/icon.component';
 
 @Component({
-    selector: 'aui-table-cell[auiExpandButton]',
-    template: `
+  selector: 'aui-table-cell[auiExpandButton]',
+  template: `
     <button
       type="button"
       class="aui-expand-button"
@@ -31,10 +31,10 @@ import { IconComponent } from '../icon/icon.component';
       <aui-icon icon="angle_right"></aui-icon>
     </button>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [IconComponent]
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [IconComponent],
 })
 export class TableExpandButtonCellComponent extends CdkCell {
   @Input()
@@ -51,8 +51,8 @@ export class TableExpandButtonCellComponent extends CdkCell {
   }
 }
 @Component({
-    selector: 'aui-table-cell[auiExpandPanel]',
-    template: `
+  selector: 'aui-table-cell[auiExpandPanel]',
+  template: `
     <div
       *ngIf="expand"
       class="aui-table__cell-expand-panel"
@@ -66,17 +66,17 @@ export class TableExpandButtonCellComponent extends CdkCell {
       </div>
     </div>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    animations: [
-        trigger('expand', [
-            state('*', style({ height: 0 })),
-            state('expanded', style({ height: '*', 'margin-bottom': '15px' })),
-            transition('* <=> expanded', [animate('0.1s ease-in-out')]),
-        ]),
-    ],
-    imports: [NgIf]
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  animations: [
+    trigger('expand', [
+      state('*', style({ height: 0 })),
+      state('expanded', style({ height: '*', 'margin-bottom': '15px' })),
+      transition('* <=> expanded', [animate('0.1s ease-in-out')]),
+    ]),
+  ],
+  imports: [NgIf],
 })
 export class TableExpandPanelCellComponent extends CdkCell {
   @Input()

@@ -92,7 +92,7 @@ describe('CheckboxComponent', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <aui-checkbox
       id="checkbox1"
       [(ngModel)]="checkedMap.a"
@@ -119,7 +119,7 @@ describe('CheckboxComponent', () => {
       {{ content }}
     </aui-checkbox>
   `,
-    imports: [FormsModule, CheckboxComponent]
+  imports: [FormsModule, CheckboxComponent],
 })
 export class TestComponent {
   checkedMap = { a: true, b: false, c: true, d: true };

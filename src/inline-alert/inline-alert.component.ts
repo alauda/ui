@@ -16,13 +16,13 @@ import { InlineAlertTitleDirective } from './helper-directives';
 import { InlineAlertType } from './inline-alert.types';
 
 @Component({
-    selector: 'aui-inline-alert',
-    templateUrl: './inline-alert.component.html',
-    styleUrls: ['./inline-alert.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [NgIf, IconComponent]
+  selector: 'aui-inline-alert',
+  templateUrl: './inline-alert.component.html',
+  styleUrls: ['./inline-alert.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [NgIf, IconComponent],
 })
 export class InlineAlertComponent {
   bem: Bem = buildBem('aui-inline-alert');

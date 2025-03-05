@@ -119,7 +119,7 @@ describe('multiSelectComponent', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <aui-multi-select
       #selectRef
       [(value)]="value"
@@ -141,7 +141,7 @@ describe('multiSelectComponent', () => {
       >
     </aui-multi-select>
   `,
-    imports: [SelectModule, FormsModule]
+  imports: [SelectModule, FormsModule],
 })
 class TestComponent {
   value: number[];

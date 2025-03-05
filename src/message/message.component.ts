@@ -25,14 +25,14 @@ const typeIcon: { [key: string]: string } = {
 };
 
 @Component({
-    selector: 'aui-message',
-    templateUrl: './message.component.html',
-    animations: [MessageAnimations.inOut],
-    styleUrls: ['./message.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    imports: [IconComponent]
+  selector: 'aui-message',
+  templateUrl: './message.component.html',
+  animations: [MessageAnimations.inOut],
+  styleUrls: ['./message.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  imports: [IconComponent],
 })
 export class MessageComponent implements AfterViewInit {
   protected readonly animateStartState: string = 'slideDown';

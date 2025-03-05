@@ -12,7 +12,7 @@ describe('BreadcrumbComponent', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <aui-breadcrumb>
       <aui-breadcrumb-item><a href="/">storybook</a></aui-breadcrumb-item>
       <aui-breadcrumb-item><a href="./">breadcrumb</a></aui-breadcrumb-item>
@@ -29,6 +29,6 @@ describe('BreadcrumbComponent', () => {
       <aui-breadcrumb-item>default</aui-breadcrumb-item>
     </aui-breadcrumb>
   `,
-    imports: [...BREADCRUMB_MODULE]
+  imports: [...BREADCRUMB_MODULE],
 })
 class TestComponent {}

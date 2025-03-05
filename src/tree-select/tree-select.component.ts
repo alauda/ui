@@ -48,29 +48,29 @@ import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { TreeNode } from './tree-select.types';
 
 @Component({
-    selector: 'aui-tree-select',
-    templateUrl: './tree-select.component.html',
-    styleUrls: ['./tree-select.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => TreeSelectComponent),
-            multi: true,
-        },
-    ],
-    imports: [
-        InputGroupComponent,
-        InputComponent,
-        InputSuffixDirective,
-        IconComponent,
-        TooltipDirective,
-        NgIf,
-        NgFor,
-        forwardRef(() => TreeNodeComponent),
-    ]
+  selector: 'aui-tree-select',
+  templateUrl: './tree-select.component.html',
+  styleUrls: ['./tree-select.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TreeSelectComponent),
+      multi: true,
+    },
+  ],
+  imports: [
+    InputGroupComponent,
+    InputComponent,
+    InputSuffixDirective,
+    IconComponent,
+    TooltipDirective,
+    NgIf,
+    NgFor,
+    forwardRef(() => TreeNodeComponent),
+  ],
 })
 export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
   @Input()
@@ -283,13 +283,13 @@ export class TreeSelectComponent<T = unknown> extends CommonFormControl<T> {
 }
 
 @Component({
-    selector: 'aui-tree-node',
-    templateUrl: './tree-node.component.html',
-    styleUrls: ['./tree-node.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [NgIf, IconComponent, NgFor]
+  selector: 'aui-tree-node',
+  templateUrl: './tree-node.component.html',
+  styleUrls: ['./tree-node.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [NgIf, IconComponent, NgFor],
 })
 export class TreeNodeComponent<T> implements AfterViewInit, OnDestroy {
   bem: Bem = buildBem('aui-tree-node');

@@ -15,13 +15,13 @@ import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { Status, StatusBarSize } from './status-bar.types';
 
 @Component({
-    selector: 'aui-status-bar',
-    templateUrl: './status-bar.component.html',
-    styleUrls: ['./status-bar.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [NgFor, NgIf, NgClass, TooltipDirective]
+  selector: 'aui-status-bar',
+  templateUrl: './status-bar.component.html',
+  styleUrls: ['./status-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [NgFor, NgIf, NgClass, TooltipDirective],
 })
 export class StatusBarComponent {
   bem: Bem = buildBem('aui-status-bar');

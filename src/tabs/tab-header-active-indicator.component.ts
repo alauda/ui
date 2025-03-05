@@ -13,12 +13,12 @@ import { Bem, buildBem } from '../internal/utils';
 import { TabType } from './tabs.types';
 
 @Component({
-    selector: 'aui-tab-header-active-indicator',
-    templateUrl: './tab-header-active-indicator.component.html',
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    imports: [NgClass]
+  selector: 'aui-tab-header-active-indicator',
+  templateUrl: './tab-header-active-indicator.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  imports: [NgClass],
 })
 export class TabHeaderActiveIndicatorComponent {
   @Input()

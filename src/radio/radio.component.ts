@@ -13,13 +13,13 @@ import { BaseRadio } from './base-radio';
 import { RadioGroupComponent } from './radio-group/radio-group.component';
 
 @Component({
-    selector: 'aui-radio',
-    templateUrl: './radio.component.html',
-    styleUrls: ['./radio.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    imports: [NgClass]
+  selector: 'aui-radio',
+  templateUrl: './radio.component.html',
+  styleUrls: ['./radio.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  imports: [NgClass],
 })
 export class RadioComponent extends BaseRadio {
   bem: Bem = buildBem('aui-radio');
@@ -30,7 +30,7 @@ export class RadioComponent extends BaseRadio {
     }`;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+   
   constructor(
     radioGroup: RadioGroupComponent,
     focusMonitor: FocusMonitor,

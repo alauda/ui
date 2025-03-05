@@ -14,13 +14,13 @@ import { publishRef } from '../../internal/utils';
 import { SuggestionComponent } from '../suggestion/suggestion.component';
 
 @Component({
-    selector: 'aui-suggestion-group',
-    templateUrl: './suggestion-group.component.html',
-    styleUrls: ['./suggestion-group.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [AsyncPipe]
+  selector: 'aui-suggestion-group',
+  templateUrl: './suggestion-group.component.html',
+  styleUrls: ['./suggestion-group.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [AsyncPipe],
 })
 export class SuggestionGroupComponent implements AfterContentInit {
   @ContentChildren(forwardRef(() => SuggestionComponent))

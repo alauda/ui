@@ -26,13 +26,13 @@ import { IconComponent } from '../icon/icon.component';
 type TargetType = Element | Window | string;
 
 @Component({
-    selector: 'aui-back-top',
-    templateUrl: './back-top.component.html',
-    styleUrls: ['./back-top.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    imports: [ButtonComponent, IconComponent, AsyncPipe]
+  selector: 'aui-back-top',
+  templateUrl: './back-top.component.html',
+  styleUrls: ['./back-top.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  imports: [ButtonComponent, IconComponent, AsyncPipe],
 })
 export class BackTopComponent {
   @Input()

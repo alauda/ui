@@ -34,29 +34,30 @@ import {
 export const tableBem = buildBem('aui-table');
 
 @Component({
-    selector: 'aui-table',
-    exportAs: 'auiTable',
-    encapsulation: ViewEncapsulation.None,
-    styleUrls: ['table.component.scss', 'table-scroll.scss'],
-    template: CDK_TABLE_TEMPLATE +
-        '<ng-container auiTablePlaceholderOutlet></ng-container>',
-    preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: CDK_TABLE,
-            useExisting: TableComponent,
-        },
-        {
-            provide: _VIEW_REPEATER_STRATEGY,
-            useClass: _DisposeViewRepeaterStrategy,
-        },
-        {
-            provide: _COALESCED_STYLE_SCHEDULER,
-            useClass: _CoalescedStyleScheduler,
-        },
-    ],
-    imports: [CdkTableModule, TablePlaceholderOutletDirective]
+  selector: 'aui-table',
+  exportAs: 'auiTable',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['table.component.scss', 'table-scroll.scss'],
+  template:
+    CDK_TABLE_TEMPLATE +
+    '<ng-container auiTablePlaceholderOutlet></ng-container>',
+  preserveWhitespaces: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: CDK_TABLE,
+      useExisting: TableComponent,
+    },
+    {
+      provide: _VIEW_REPEATER_STRATEGY,
+      useClass: _DisposeViewRepeaterStrategy,
+    },
+    {
+      provide: _COALESCED_STYLE_SCHEDULER,
+      useClass: _CoalescedStyleScheduler,
+    },
+  ],
+  imports: [CdkTableModule, TablePlaceholderOutletDirective],
 })
 export class TableComponent<T>
   extends CdkTable<T>

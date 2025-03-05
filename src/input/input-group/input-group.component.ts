@@ -20,13 +20,13 @@ import {
 import { InputComponent } from '../input.component';
 
 @Component({
-    selector: 'aui-input-group',
-    templateUrl: './input-group.component.html',
-    styleUrls: ['./input-group.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [NgClass, NgIf, AsyncPipe]
+  selector: 'aui-input-group',
+  templateUrl: './input-group.component.html',
+  styleUrls: ['./input-group.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [NgClass, NgIf, AsyncPipe],
 })
 export class InputGroupComponent implements AfterContentInit {
   bem: Bem = buildBem('aui-input-group');

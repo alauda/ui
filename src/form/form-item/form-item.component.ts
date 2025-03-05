@@ -36,13 +36,13 @@ import {
 } from '../helper-directives';
 
 @Component({
-    selector: 'aui-form-item',
-    templateUrl: './form-item.component.html',
-    styleUrls: ['./form-item.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [NgClass, NgIf, AsyncPipe]
+  selector: 'aui-form-item',
+  templateUrl: './form-item.component.html',
+  styleUrls: ['./form-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [NgClass, NgIf, AsyncPipe],
 })
 export class FormItemComponent implements AfterContentInit, OnDestroy {
   bem: Bem = buildBem('aui-form-item');

@@ -66,7 +66,7 @@ describe('Status Bar', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <aui-status-bar
       [status]="status1"
       [template]="ref"
@@ -96,7 +96,7 @@ describe('Status Bar', () => {
       <div>{{ type }}: {{ value }}</div>
     </ng-template>
   `,
-    imports: [StatusBarModule]
+  imports: [StatusBarModule],
 })
 class TestComponent {
   status1: Status[] = [

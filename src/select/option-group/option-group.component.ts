@@ -14,13 +14,13 @@ import { publishRef } from '../../internal/utils';
 import { OptionComponent } from '../option/option.component';
 
 @Component({
-    selector: 'aui-option-group',
-    templateUrl: './option-group.component.html',
-    styleUrls: ['./option-group.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    imports: [AsyncPipe]
+  selector: 'aui-option-group',
+  templateUrl: './option-group.component.html',
+  styleUrls: ['./option-group.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  imports: [AsyncPipe],
 })
 export class OptionGroupComponent<T> implements AfterContentInit {
   @ContentChildren(forwardRef(() => OptionComponent))

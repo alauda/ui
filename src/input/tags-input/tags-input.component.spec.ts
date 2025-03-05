@@ -81,14 +81,14 @@ describe('TagsInputComponent', () => {
 });
 
 @Component({
-    template: `
+  template: `
     <aui-tags-input
       [(ngModel)]="value"
       [disabled]="disabled"
       [placeholder]="placeholder"
     ></aui-tags-input>
   `,
-    imports: [FormsModule, TagsInputComponent]
+  imports: [FormsModule, TagsInputComponent],
 })
 class TestComponent {
   value: string[];

@@ -53,39 +53,39 @@ import {
 } from '../select.types';
 
 @Component({
-    selector: 'aui-multi-select',
-    templateUrl: './multi-select.component.html',
-    styleUrls: [
-        '../../input/input.component.scss',
-        '../../tag/tag.component.scss',
-        './multi-select.component.scss',
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => MultiSelectComponent),
-            multi: true,
-        },
-        {
-            provide: BaseSelect,
-            useExisting: MultiSelectComponent,
-        },
-    ],
-    imports: [
-        TooltipDirective,
-        IconComponent,
-        NgFor,
-        TagComponent,
-        NgClass,
-        NgIf,
-        NgTemplateOutlet,
-        OptionComponent,
-        AsyncPipe,
-        I18nPipe,
-    ]
+  selector: 'aui-multi-select',
+  templateUrl: './multi-select.component.html',
+  styleUrls: [
+    '../../input/input.component.scss',
+    '../../tag/tag.component.scss',
+    './multi-select.component.scss',
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => MultiSelectComponent),
+      multi: true,
+    },
+    {
+      provide: BaseSelect,
+      useExisting: MultiSelectComponent,
+    },
+  ],
+  imports: [
+    TooltipDirective,
+    IconComponent,
+    NgFor,
+    TagComponent,
+    NgClass,
+    NgIf,
+    NgTemplateOutlet,
+    OptionComponent,
+    AsyncPipe,
+    I18nPipe,
+  ],
 })
 export class MultiSelectComponent<T = unknown>
   extends BaseSelect<T, T[]>
@@ -166,10 +166,7 @@ export class MultiSelectComponent<T = unknown>
   trackByValue = (_: number, item: SelectFilterOption<T>) =>
     this.trackFn(item.value);
 
-  constructor(
-    cdr: ChangeDetectorRef,
-    private readonly renderer: Renderer2,
-  ) {
+  constructor(cdr: ChangeDetectorRef, private readonly renderer: Renderer2) {
     super(cdr);
   }
 
@@ -261,8 +258,8 @@ export class MultiSelectComponent<T = unknown>
         return selected.length === 0
           ? SelectAllStatus.Empty
           : selected.length === statuses.length
-            ? SelectAllStatus.Checked
-            : SelectAllStatus.Indeterminate;
+          ? SelectAllStatus.Checked
+          : SelectAllStatus.Indeterminate;
       }),
       startWith(SelectAllStatus.Empty),
       tap(selectAllStatus => (this.selectAllStatus = selectAllStatus)),

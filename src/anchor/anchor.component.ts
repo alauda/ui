@@ -32,11 +32,11 @@ import { getAnchorTreeItems } from './utils';
 const bem = buildBem('aui-anchor');
 
 @Component({
-    selector: 'aui-anchor-tree',
-    templateUrl: 'anchor-tree.component.html',
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgFor, NgIf, NgTemplateOutlet]
+  selector: 'aui-anchor-tree',
+  templateUrl: 'anchor-tree.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgFor, NgIf, NgTemplateOutlet],
 })
 export class AnchorTreeComponent
   extends AnchorDirectiveChild
@@ -117,12 +117,12 @@ export class AnchorTreeComponent
 }
 
 @Component({
-    selector: 'aui-anchor',
-    templateUrl: 'anchor.component.html',
-    styleUrls: ['anchor.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [AnchorTreeComponent]
+  selector: 'aui-anchor',
+  templateUrl: 'anchor.component.html',
+  styleUrls: ['anchor.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [AnchorTreeComponent],
 })
 export class AnchorComponent
   extends AnchorDirectiveChild
