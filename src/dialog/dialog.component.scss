@@ -145,13 +145,13 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
   &--fullscreen {
     width: $fullscreen-width;
     height: $fullscreen-height;
-    margin: 0;
+    margin: auto;
   }
 
   &--fit-viewport {
     max-width: $fullscreen-width;
     max-height: $fullscreen-height;
-    margin: 0;
+    margin: auto;
 
     .aui-dialog {
       &__header {
