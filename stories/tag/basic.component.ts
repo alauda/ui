@@ -97,7 +97,7 @@ export default class TagBasicComponent {
    * 是否为圆角
    */
   @Input()
-  round = true;
+  round = false;
 
   /**
    * hover是下划线

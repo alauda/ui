@@ -45,7 +45,7 @@ export class TagComponent {
   invalid = false;
 
   @Input()
-  round = true;
+  round = false;
 
   @Input()
   color = '';
