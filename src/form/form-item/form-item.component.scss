@@ -5,6 +5,9 @@ $form-item-width: (
   large: (
     width: use-var(form-item-width-l),
   ),
+  medium: (
+    width: use-var(form-item-width-m),
+  ),
   small: (
     width: use-var(form-item-width-s),
   ),
@@ -85,7 +88,7 @@ $form-item-width: (
     align-items: center;
     min-height: use-var(inline-height-m);
 
-    @each $key in large small {
+    @each $key in large medium small {
       $map: map-get($form-item-width, $key);
       &--#{$key} {
         .aui-form-item__control {
