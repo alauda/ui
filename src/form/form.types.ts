@@ -8,6 +8,10 @@ export const LabelPosition = {
 
 export const FormItemWidth = {
   Small: 'small',
+  /**
+   * @deprecated Prefer to 'Large'
+   */
+  Medium: 'medium',
   Large: 'large',
 } as const;
 
