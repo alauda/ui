@@ -27,7 +27,7 @@ export const Basic: Story = {
     size: 'medium',
     closeable: false,
     invalid: false,
-    round: false,
+    round: true,
     allowClick: false,
   },
   parameters: {

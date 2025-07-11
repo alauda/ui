@@ -41,8 +41,8 @@
   <aui-tag
     *ngFor="let option of selectedOptions$ | async; trackBy: trackByValue"
     type="info"
-    [round]="false"
-    [border]="false"
+    [round]="true"
+    [border]="true"
     [size]="tagSize"
     [closeable]="!disabled && !option.disabled"
     (close)="removeValue(option.value)"
