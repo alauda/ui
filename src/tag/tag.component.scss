@@ -87,7 +87,7 @@
 
   &--mini {
     padding: 0 use-var(inline-padding-xs);
-    height: 18px;
+    height: 20px;
     @include text-set(s);
 
     &.isRound {
@@ -133,7 +133,7 @@
 
   &--info {
     color: use-rgb(n-2);
-    background-color: use-rgb(n-7);
+    background-color: use-rgb(n-8);
 
     &.hasBorder {
       border-color: use-rgb(n-7);
