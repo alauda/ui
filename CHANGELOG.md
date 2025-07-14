@@ -1,5 +1,13 @@
 # Changelog
 
+## 9.1.0
+
+### Minor Changes
+
+- [#586](https://github.com/alauda/ui/pull/586) [`f255c12`](https://github.com/alauda/ui/commit/f255c12a04130d7ebd9f954c4993157bb8f2380c) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - feat: remove medium form width and modify tag styles
+
+- [#589](https://github.com/alauda/ui/pull/589) [`9d0a9f5`](https://github.com/alauda/ui/commit/9d0a9f5dc4fc234eafc28d5a732c99e22f19caef) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - chore: revert tag style modify
+
 ## 9.0.0
 
 ### Major Changes
