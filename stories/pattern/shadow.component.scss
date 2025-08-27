@@ -1,4 +1,4 @@
-@import '../../src/theme/pattern';
+@use '../../src/theme/pattern' as pattern;
 
 .container {
   padding: 20px;
@@ -16,17 +16,17 @@
 }
 
 .shadow-0 {
-  @include shadow-0;
+  @include pattern.shadow-0;
 }
 
 .shadow-2 {
-  @include shadow-2;
+  @include pattern.shadow-2;
 }
 
 .shadow-8 {
-  @include shadow-8;
+  @include pattern.shadow-8;
 }
 
 .shadow-16 {
-  @include shadow-16;
+  @include pattern.shadow-16;
 }
