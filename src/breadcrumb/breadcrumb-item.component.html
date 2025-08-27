@@ -1,0 +1,10 @@
+<div class="aui-breadcrumb__item">
+  <span class="aui-breadcrumb__content"><ng-content></ng-content></span>
+  <span class="aui-breadcrumb__separator">
+    <ng-container *ngIf="!separatorIcon">{{ separator }}</ng-container>
+    <aui-icon
+      *ngIf="separatorIcon"
+      [icon]="separatorIcon"
+    ></aui-icon>
+  </span>
+</div>

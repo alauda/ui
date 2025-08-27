@@ -1,2 +1,2 @@
-@import './reset-browser';
-@import '../src/theme/style.scss';
+@use './reset-browser' as *;
+@use '../src/theme/style.scss' as *;

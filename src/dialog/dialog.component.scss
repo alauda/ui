@@ -1,0 +1,197 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+@use '../theme/motion' as motion;
+@use '../../node_modules/@angular/cdk/overlay-prebuilt' as *;
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing.aui-dialog-backdrop {
+  @include mixin.modal-backdrop;
+}
+
+.cdk-overlay-pane.aui-dialog-overlay-pane {
+  @include mixin.overlay-pane(normal);
+}
+
+.cdk-overlay-pane.aui-dialog-overlay-pane--fit-viewport {
+  @include mixin.overlay-pane;
+}
+
+$spacing: 20px;
+$fullscreen-width: 90vw;
+$fullscreen-height: calc(100vh - (#{$spacing} * 2));
+
+@include motion.zoom-motion(aui-zoom, aui-zoom);
+@include motion.zoom-motion(
+  aui-zoom-slow,
+  aui-zoom,
+  var.$animation-duration-slow
+);
+@include motion.fade-motion(aui-fade, aui-fade);
+@include motion.fade-motion(
+  aui-fade-slow,
+  aui-fade,
+  var.$animation-duration-slow
+);
+
+.aui-dialog {
+  // FIXME: margin-bottom is not working
+  margin: 18vh auto 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: var.use-rgb(n-10);
+  border-radius: var.use-var(border-radius-l);
+  overflow: hidden;
+  @include mixin.modal-shadow;
+  @include mixin.text-set(m, main);
+
+  aui-dialog-content {
+    height: 100%;
+    overflow: auto;
+    @include mixin.scroll-bar;
+
+    &:first-child .aui-dialog__content {
+      padding-top: $spacing;
+    }
+
+    &:last-child .aui-dialog__content {
+      padding-bottom: $spacing;
+    }
+  }
+
+  &__header {
+    margin: 0 $spacing;
+    padding: $spacing 0 16px;
+    display: flex;
+    justify-content: space-between;
+
+    &.hasDivider {
+      margin-bottom: 16px;
+      border-bottom: 1px solid var.use-rgb(divider);
+    }
+
+    &-title {
+      width: 100%;
+      @include mixin.text-set(xl, main, bolder);
+
+      > aui-icon:first-child {
+        font-size: var.use-var(icon-size-xl);
+        margin-right: var.use-var(spacing-m);
+
+        &[icon='info_circle_s'] {
+          color: var.use-rgb(primary);
+        }
+
+        &[icon='check_circle_s'] {
+          color: var.use-rgb(green);
+        }
+
+        &[icon='exclamation_circle_s'] {
+          color: var.use-rgb(yellow);
+        }
+
+        &[icon='exclamation_triangle_s'] {
+          color: var.use-rgb(red);
+        }
+      }
+    }
+
+    &-close {
+      flex-shrink: 0;
+      margin-left: var.use-var(spacing-xl);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      font-size: var.use-var(icon-size-l);
+      color: var.use-text-color(secondary);
+      border-radius: var.use-var(border-radius-m);
+      cursor: pointer;
+
+      &:hover {
+        color: var.use-rgb(primary);
+        background-color: var.use-rgb(p-6);
+      }
+
+      &:active {
+        color: var.use-rgb(p-0);
+        background-color: var.use-rgb(p-5);
+      }
+    }
+  }
+
+  &__content {
+    padding: 0 $spacing;
+    min-height: 80px;
+  }
+
+  &__footer {
+    padding: $spacing;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &--small {
+    width: 400px;
+  }
+
+  &--medium {
+    width: 600px;
+  }
+
+  &--big {
+    width: 800px;
+  }
+
+  &--large {
+    width: 960px;
+  }
+
+  &--fit-content {
+    width: fit-content;
+  }
+
+  &--fullscreen {
+    width: $fullscreen-width;
+    height: $fullscreen-height;
+    margin: auto;
+  }
+
+  &--fit-viewport {
+    max-width: $fullscreen-width;
+    max-height: $fullscreen-height;
+    margin: auto;
+
+    .aui-dialog {
+      &__header {
+        margin: 0;
+        padding: $spacing $spacing 16px $spacing;
+        border-bottom: 1px solid var.use-rgb(divider);
+      }
+
+      &__footer {
+        padding-top: 16px;
+        border-top: 1px solid var.use-rgb(divider);
+      }
+    }
+
+    aui-dialog-content {
+      &:not(:first-child) .aui-dialog__content {
+        padding-top: 16px;
+      }
+
+      &:not(:last-child) .aui-dialog__content {
+        padding-bottom: 16px;
+      }
+    }
+
+    > ng-component {
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+
+      &:after {
+        clear: both;
+      }
+    }
+  }
+}

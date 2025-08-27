@@ -1,0 +1,10 @@
+@use '../../theme/var' as var;
+
+.aui-range-picker-wrapper {
+  padding: var.use-var(spacing-xl);
+}
+
+aui-range-picker {
+  display: inline-block;
+  width: 260px;
+}

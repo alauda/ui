@@ -1,0 +1,3 @@
+@use '../../select/option-group/option-group-style' as option-group;
+
+@include option-group.option-group(aui-suggestion-group);

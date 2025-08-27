@@ -1,0 +1,48 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as progress from './progress.stories';
+import * as step from './step.stories';
+
+<Meta title="Example/Steps" />
+
+# Steps
+
+Steps
+
+<Canvas
+  of={step.Step}
+  meta={step}
+></Canvas>
+
+<Canvas
+  of={progress.Progress}
+  meta={progress}
+></Canvas>
+
+## Steps API
+
+### Steps Properties
+
+| 名称         | 类型                       | 描述                                                                          |
+| ------------ | -------------------------- | ----------------------------------------------------------------------------- |
+| selectable   | boolean                    | 是否可以点击步骤切换或查看。默认为 false                                      |
+| orientation  | 'vertical' or 'horizontal' | 方向                                                                          |
+| currentIndex | number                     | 当前的步骤。当 type 为 progress 时，无需传入，组件会根据 steps 的状态自动设置 |
+| steps        | StepItem[]                 | 步骤                                                                          |
+| type         | 'step' or 'progress'       | 默认为 step                                                                   |
+
+### Steps Output
+
+| 名称                | 返回值类型 | 描述                                                              |
+| ------------------- | ---------- | ----------------------------------------------------------------- |
+| currentIndexChange  | number     | 当前步骤变化时触发                                                |
+| selectedIndexChange | number     | 选中的步骤变化时触发。type 为 step 时当前值与选中值相同，无需监听 |
+
+### StepItem Definition
+
+| 名称        | 类型      | 可选  | 描述                               |
+| ----------- | --------- | ----- | ---------------------------------- |
+| label       | string    | false | 步骤名称                           |
+| description | string    | true  | 步骤描述                           |
+| state       | StepState | true  | 状态。'done', 'pending' or 'error' |
+| optional    | boolean   | true  | 是否可跳过。默认为 false           |

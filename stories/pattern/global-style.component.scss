@@ -1,0 +1,9 @@
+@import '../../src/theme/style';
+
+section {
+  padding: 20px;
+
+  > div + div {
+    margin-top: 8px;
+  }
+}

@@ -1,0 +1,38 @@
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+@use '../menu-item/mixin' as menuMixin;
+
+@include menuMixin.component-style(aui-submenu);
+
+.aui-submenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: var.use-var(spacing-s);
+
+  &__title {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__arrow {
+    margin-left: var.use-var(spacing-l);
+  }
+
+  &--default {
+    &.isActive {
+      color: var.use-rgb(n-1);
+    }
+  }
+}
+
+.aui-sub-dropdown {
+  &.aui-tooltip {
+    &--start,
+    &--end {
+      margin: calc(0px - #{var.use-var(spacing-m)}) var.use-var(spacing-m);
+    }
+  }
+}

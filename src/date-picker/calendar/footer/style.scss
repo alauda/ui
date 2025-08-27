@@ -1,0 +1,9 @@
+@use '../../../theme/var' as var;
+
+.aui-calendar-footer__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1px solid var.use-rgb(n-8);
+  padding: 8px 0 0;
+}

@@ -1,0 +1,216 @@
+@use 'sass:math';
+@use '../theme/var' as *;
+@use '../theme/mixin' as *;
+
+@mixin colorful-tag($color) {
+  color: use-rgb($color);
+  background-color: use-rgb($color, 6);
+
+  &.hasBorder {
+    border-color: use-rgb($color, 2);
+
+    &.allowClick {
+      &:hover {
+        border-color: use-rgb($color, 1);
+      }
+
+      &:active {
+        border-color: use-rgb($color, 0);
+      }
+    }
+  }
+
+  &.allowClick {
+    &:hover {
+      background-color: use-rgb($color, 7);
+      cursor: pointer;
+    }
+
+    &:active {
+      color: use-rgb($color);
+      background-color: use-rgb($color, 6);
+    }
+  }
+}
+
+.aui-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: use-var(border-radius-m);
+  border: 1px solid transparent;
+  max-width: 240px;
+  vertical-align: middle;
+  @include transition(background-color);
+
+  &__content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .aui-tag__close .aui-icon {
+    margin-left: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+    @include transition;
+  }
+
+  &--large {
+    padding: 0 use-var(inline-padding-m);
+    height: use-var(inline-height-m);
+    @include text-set(m);
+
+    &.isRound {
+      border-radius: calc(#{use-var(inline-height-m)} / 2);
+    }
+  }
+
+  &--medium {
+    padding: 0 use-var(inline-padding-s);
+    height: use-var(inline-height-s);
+    @include text-set(s);
+
+    &.isRound {
+      border-radius: calc(#{use-var(inline-height-s)} / 2);
+    }
+  }
+
+  &--small {
+    padding: 0 use-var(inline-padding-xs);
+    height: use-var(inline-height-xs);
+    @include text-set(s);
+
+    &.isRound {
+      border-radius: calc(#{use-var(inline-height-xs)} / 2);
+    }
+  }
+
+  &--mini {
+    padding: 0 use-var(inline-padding-xs);
+    height: 20px;
+    @include text-set(s);
+
+    &.isRound {
+      border-radius: calc(#{use-var(inline-height-xs)} / 2);
+    }
+  }
+
+  &--primary {
+    @include colorful-tag(primary);
+
+    .aui-tag__close .aui-icon:hover {
+      color: use-rgb(p-6);
+      background-color: use-rgb(primary);
+    }
+  }
+
+  &--success {
+    @include colorful-tag(green);
+
+    .aui-tag__close .aui-icon:hover {
+      color: use-rgb(g-6);
+      background-color: use-rgb(green);
+    }
+  }
+
+  &--warning {
+    @include colorful-tag(yellow);
+
+    .aui-tag__close .aui-icon:hover {
+      color: use-rgb(y-6);
+      background-color: use-rgb(yellow);
+    }
+  }
+
+  &--error {
+    @include colorful-tag(red);
+
+    .aui-tag__close .aui-icon:hover {
+      color: use-rgb(r-6);
+      background-color: use-rgb(red);
+    }
+  }
+
+  &--info {
+    color: use-rgb(n-2);
+    background-color: use-rgb(n-8);
+
+    &.hasBorder {
+      border-color: use-rgb(n-7);
+      background-color: use-rgb(button-bg);
+    }
+
+    .aui-tag__close .aui-icon:hover {
+      color: use-rgb(n-9);
+      background-color: use-rgb(n-4);
+    }
+  }
+
+  &.isInvalid {
+    text-decoration: line-through;
+  }
+
+  &.isSolid#{&} {
+    &--primary {
+      color: white;
+      background-color: use-rgb(primary);
+
+      .aui-tag__close .aui-icon:hover {
+        color: use-rgb(primary);
+        background-color: white;
+      }
+    }
+
+    &--success {
+      color: white;
+      background-color: use-rgb(green);
+
+      .aui-tag__close .aui-icon:hover {
+        color: use-rgb(green);
+        background-color: white;
+      }
+    }
+
+    &--warning {
+      color: white;
+      background-color: use-rgb(yellow);
+
+      .aui-tag__close .aui-icon:hover {
+        color: use-rgb(yellow);
+        background-color: white;
+      }
+    }
+
+    &--error {
+      color: white;
+      background-color: use-rgb(red);
+
+      .aui-tag__close .aui-icon:hover {
+        color: use-rgb(red);
+        background-color: white;
+      }
+    }
+  }
+
+  &.allowClick {
+    a {
+      color: inherit;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+aui-tag + aui-tag {
+  .aui-tag--large,
+  .aui-tag--medium,
+  .aui-tag--small {
+    margin-left: use-var(spacing-m);
+  }
+
+  .aui-tag--mini {
+    margin-left: 6px;
+  }
+}

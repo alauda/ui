@@ -1,0 +1,219 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.aui-step {
+  display: flex;
+  align-items: center;
+  font-weight: var.use-var(font-weight-normal);
+
+  &__indicator {
+    margin-right: var.use-var(spacing-m);
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    color: var.use-rgb(n-4);
+
+    &--index {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var.use-rgb(n-7);
+      background-color: var.use-rgb(n-8);
+      font-weight: var.use-var(font-weight-bolder);
+      font-size: var.use-var(font-size-l);
+      line-height: var.use-var(line-height-l);
+
+      &.isActive {
+        color: white;
+        border-color: var.use-rgb(primary);
+        background-color: var.use-rgb(primary);
+      }
+    }
+
+    &--pending,
+    &--done,
+    &--error {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      font-size: var.use-var(icon-size-l);
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 50%;
+    }
+
+    &--pending {
+      color: var.use-rgb(primary);
+      border-color: var.use-rgb(primary);
+      background-color: var.use-rgb(p-6);
+      transform-origin: center;
+      animation: spin 2s infinite linear;
+
+      &.isActive {
+        color: white;
+        border-color: var.use-rgb(primary);
+        background-color: var.use-rgb(primary);
+      }
+    }
+
+    &--done {
+      color: var.use-rgb(green);
+      border-color: var.use-rgb(green);
+      background-color: var.use-rgb(g-6);
+
+      &.isActive {
+        color: white;
+        background-color: var.use-rgb(green);
+      }
+    }
+
+    &--error {
+      color: var.use-rgb(red);
+      border-color: var.use-rgb(red);
+      background-color: var.use-rgb(r-6);
+
+      &.isActive {
+        color: white;
+        background-color: var.use-rgb(red);
+      }
+    }
+  }
+
+  &__name {
+    @include mixin.text-set(l);
+  }
+
+  &__description {
+    font-size: var.use-var(font-size-s);
+    margin-top: var.use-var(spacing-s);
+    line-height: var.use-var(line-height-s);
+  }
+
+  &__info {
+    color: var.use-rgb(n-4);
+
+    &--selected,
+    &--pending,
+    &--done,
+    &--error {
+      color: var.use-rgb(n-1);
+    }
+
+    &--selected {
+      .aui-step__name {
+        font-weight: var.use-var(font-weight-bolder);
+      }
+    }
+  }
+
+  &.clickable {
+    cursor: pointer;
+  }
+}
+
+.aui-steps {
+  &--progress {
+    .aui-step {
+      &.clickable {
+        .aui-step__info {
+          &:hover {
+            color: var.use-rgb(primary);
+          }
+        }
+      }
+    }
+  }
+
+  &__horizontal-line {
+    height: 1px;
+    background-color: var.use-rgb(n-7);
+    flex: 1;
+    min-width: 40px;
+    max-width: 200px;
+    margin: 0 var.use-var(spacing-l);
+  }
+
+  &__vertical-line {
+    min-height: 12px;
+    width: 1px;
+    background-color: var.use-rgb(n-7);
+    margin-top: var.use-var(spacing-s);
+    flex: 1;
+
+    &--done {
+      background-color: var.use-rgb(green);
+    }
+
+    &--error {
+      background-color: var.use-rgb(red);
+    }
+
+    &--pending {
+      background-color: var.use-rgb(primary);
+    }
+  }
+
+  &--horizontal {
+    padding: 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--vertical {
+    max-width: 200px;
+
+    .aui-step {
+      align-items: stretch;
+
+      &:not(:last-child) {
+        margin-bottom: var.use-var(spacing-s);
+      }
+
+      &__indicator {
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        &-icon {
+          &--done {
+            color: var.use-rgb(green);
+            background-color: var.use-rgb(g-6);
+
+            &.selected {
+              background-color: white;
+            }
+          }
+        }
+      }
+
+      &__info {
+        padding-bottom: 13px;
+      }
+
+      &.isLastActive .aui-steps__vertical-line {
+        background-color: var.use-rgb(n-7);
+      }
+    }
+  }
+}
+
+aui-steps .aui-steps .aui-step__indicator-icon {
+  font-size: var.use-var(icon-size-xl);
+}

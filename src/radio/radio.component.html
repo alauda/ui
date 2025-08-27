@@ -1,0 +1,22 @@
+<div
+  #elRef
+  [ngClass]="rootClass"
+>
+  <input
+    [name]="name"
+    [id]="id"
+    class="aui-radio__input"
+    type="radio"
+    [disabled]="disabled"
+    [checked]="checked"
+    (click)="onClick()"
+    (blur)="onBlur()"
+  />
+  <label
+    class="aui-radio__label"
+    [for]="id"
+  >
+    <i class="aui-radio__pointer"></i>
+    <span class="aui-radio__content"><ng-content></ng-content></span>
+  </label>
+</div>

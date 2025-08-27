@@ -1,0 +1,81 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+
+.aui-tree-node {
+  &__content {
+    display: flex;
+    height: var.use-var(inline-height-m);
+    line-height: var.use-var(inline-height-m);
+    font-size: var.use-var(font-size-m);
+    color: var.use-text-color(main);
+    margin-left: 4px;
+    cursor: pointer;
+
+    aui-icon {
+      color: var.use-rgb(n-2);
+    }
+
+    &.isLeftOnly {
+      &:hover {
+        background-color: var.use-rgb(p-6);
+      }
+    }
+  }
+
+  &__title {
+    display: inline-block;
+    padding: 6px 8px;
+    width: 100%;
+    height: 100%;
+    @include mixin.text-set(m);
+    @include mixin.text-overflow;
+
+    &:hover {
+      background-color: use-rgb(p-6);
+    }
+
+    &.unselectable {
+      color: var.use-rgb(n-4);
+
+      aui-icon {
+        color: var.use-rgb(n-4);
+      }
+    }
+
+    &.isSelected {
+      color: var.use-rgb(primary);
+      background-color: var.use-rgb(p-6);
+
+      aui-icon {
+        color: var.use-rgb(primary);
+      }
+    }
+
+    &.isDisabled {
+      color: var.use-rgb(n-6);
+      cursor: not-allowed;
+
+      aui-icon {
+        color: var.use-rgb(n-6);
+      }
+    }
+  }
+
+  &__loading {
+    cursor: not-allowed;
+  }
+
+  &__indicator {
+    &:not(.isVisible) {
+      visibility: hidden;
+    }
+
+    &:hover {
+      color: var.use-rgb(primary);
+    }
+  }
+
+  &__children {
+    margin-left: calc(#{var.use-var(font-size-m)} + 6px);
+  }
+}

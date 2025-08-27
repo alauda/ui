@@ -1,0 +1,109 @@
+@use '../theme/var' as *;
+@use '../theme/mixin' as *;
+@use '../../node_modules/@angular/cdk/text-field' as *;
+
+.aui-input {
+  display: inline-block;
+  padding: 0 use-var(inline-padding-xs);
+  width: 100%;
+  // firefox has default min-width, override it for flex shrinking
+  min-width: 0;
+  border: 1px solid use-rgb(n-7);
+  border-radius: use-var(border-radius-m);
+  background-color: use-rgb(main-bg);
+  color: use-text-color(main);
+  outline: none;
+  text-overflow: ellipsis;
+  font-weight: use-var(font-weight-normal);
+  @include text-field-autofill-color(use-rgb(n-9), use-text-color(main));
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    appearance: textfield;
+  }
+
+  &::placeholder {
+    color: use-text-color(placeholder);
+  }
+
+  &:invalid,
+  &:required {
+    box-shadow: none;
+  }
+
+  &:hover {
+    border-color: use-rgb(primary);
+  }
+
+  &:focus,
+  &.isFocused {
+    border-color: use-rgb(primary);
+    @include outline-shadow(primary);
+  }
+
+  &[disabled] {
+    color: use-text-color(disabled);
+    background-color: use-rgb(n-8);
+    border-color: use-rgb(n-7) !important;
+    cursor: not-allowed;
+  }
+
+  &[readonly] {
+    color: use-text-color(main);
+    background-color: use-rgb(n-8);
+    border-color: use-rgb(n-7);
+    cursor: default;
+  }
+
+  &--large {
+    height: use-var(inline-height-l);
+    font-size: use-var(font-size-l);
+  }
+
+  &--medium {
+    height: use-var(inline-height-m);
+    font-size: use-var(font-size-m);
+  }
+
+  &--small {
+    height: use-var(inline-height-s);
+    font-size: use-var(font-size-m);
+  }
+
+  &--mini {
+    height: use-var(inline-height-xs);
+    font-size: use-var(font-size-s);
+  }
+}
+
+textarea.aui-input {
+  $default-line-count: 3;
+  $max-line-count: 6;
+
+  resize: vertical;
+  overflow: auto;
+
+  @function get-height-calc($line-height, $line-count) {
+    @return calc(
+      #{use-var(inline-padding-xxs)} * 2 + #{use-var(
+          line-height-#{$line-height}
+        )} * #{$line-count} + 2px
+    );
+  }
+
+  padding: use-var(inline-padding-xxs) use-var(inline-padding-xs);
+  height: get-height-calc(m, $default-line-count);
+  max-height: get-height-calc(m, $max-line-count);
+  min-height: use-var(inline-height-m);
+  @include text-set(m, main);
+}
+
+.aui-input.ng-invalid.ng-dirty,
+.ng-submitted .aui-input.ng-invalid {
+  @include input-error;
+}

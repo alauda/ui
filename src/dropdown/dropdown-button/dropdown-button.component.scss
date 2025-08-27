@@ -1,0 +1,74 @@
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+
+.aui-dropdown-button {
+  display: inline-block;
+
+  &--large #{&} {
+    &__trigger .aui-button__content {
+      padding: 0 7px;
+    }
+  }
+
+  &--medium #{&} {
+    &__trigger .aui-button__content {
+      padding: 0 5px;
+    }
+  }
+
+  &--small #{&} {
+    &__trigger .aui-button__content {
+      padding: 0 3px;
+    }
+  }
+
+  &--mini #{&} {
+    &__trigger .aui-button__content {
+      padding: 0 3px;
+    }
+  }
+
+  &__content.aui-button {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    z-index: 1;
+
+    &:not([disabled]) {
+      &:hover,
+      &:active,
+      &:focus {
+        z-index: 2;
+      }
+    }
+  }
+
+  &__trigger.aui-button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    z-index: 1;
+
+    &[disabled] {
+      z-index: 0;
+    }
+
+    &:not([disabled]) {
+      &:focus {
+        z-index: 2;
+      }
+    }
+  }
+
+  &__content.aui-button + &__trigger.aui-button {
+    margin-left: 1px;
+
+    &.isPlain {
+      margin-left: -1px;
+    }
+  }
+}
+
+aui-dropdown-button + aui-dropdown-button > .aui-dropdown-button,
+aui-dropdown-button + .aui-button,
+.aui-button + aui-dropdown-button > .aui-dropdown-button {
+  margin-left: var.use-var(spacing-m);
+}
