@@ -40,11 +40,13 @@
 }
 
 @mixin text-set($size: m, $color: none, $weight: normal) {
-  font-size: var.use-var(font-size-#{$size});
-  line-height: var.use-var(line-height-#{$size});
-  font-weight: var.use-var(font-weight-#{$weight});
-  @if $color != none {
-    color: var.use-text-color($color);
+  & {
+    font-size: var.use-var(font-size-#{$size});
+    line-height: var.use-var(line-height-#{$size});
+    font-weight: var.use-var(font-weight-#{$weight});
+    @if $color != none {
+      color: var.use-text-color($color);
+    }
   }
 }
 
@@ -288,9 +290,11 @@
 }
 
 @mixin text-overflow {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  & {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 @mixin flex-center($alignItems: center) {
