@@ -4,7 +4,6 @@ import { addons } from 'storybook/manager-api';
 
 import docJson from '../documentation.json';
 
- 
 import '!style-loader!css-loader!sass-loader!./global.scss';
 
 setCompodocJson(docJson);

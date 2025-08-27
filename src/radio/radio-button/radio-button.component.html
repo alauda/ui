@@ -1,0 +1,27 @@
+<div
+  #elRef
+  [ngClass]="rootClass"
+>
+  <input
+    [name]="name"
+    [id]="id"
+    class="aui-radio-button__input"
+    type="radio"
+    [disabled]="disabled"
+    [checked]="checked"
+    (click)="onClick()"
+    (blur)="onBlur()"
+  />
+  <i
+    *ngIf="checked && isPlain"
+    class="aui-radio-button__pointer"
+  >
+    <aui-icon icon="check"></aui-icon>
+  </i>
+  <label
+    class="aui-radio-button__label"
+    [for]="id"
+  >
+    <span class="aui-radio-button__content"><ng-content></ng-content></span>
+  </label>
+</div>

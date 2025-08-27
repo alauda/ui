@@ -1,0 +1,34 @@
+@use 'sass:math';
+@use '../../theme/var' as *;
+@use '../../theme/mixin' as *;
+
+.aui-check-tag {
+  cursor: pointer;
+
+  .aui-tag__content {
+    display: flex;
+    user-select: none;
+  }
+
+  .aui-tag__checkbox {
+    align-self: center;
+  }
+
+  &.aui-tag--info {
+    color: use-rgb(n-1);
+  }
+
+  &.aui-tag--medium {
+    font-size: use-var(font-size-m);
+
+    &.isRound {
+      border-radius: calc(#{use-var(inline-height-s)} / 2);
+    }
+  }
+}
+
+aui-check-tag + aui-check-tag {
+  .aui-check-tag {
+    margin-left: 8px;
+  }
+}

@@ -1,0 +1,25 @@
+<div
+  [class]="bem.element('item')"
+  [class.active]="isActive(item)"
+  *ngFor="let item of treeItems; trackBy: trackById"
+>
+  <a
+    *ngIf="item.label as label"
+    [href]="parent.injectId ? '#' + item.id : undefined"
+    (click)="onItemClick($event, item)"
+  >
+    <ng-container *ngIf="isTemplateRef(label); else plain">
+      <ng-container
+        *ngTemplateOutlet="label; context: item.labelContext"
+      ></ng-container>
+    </ng-container>
+    <ng-template #plain>
+      {{ item.label }}
+    </ng-template>
+  </a>
+  <aui-anchor-tree
+    *ngIf="item.children?.length"
+    [treeItems]="item.children"
+    [(activeId)]="activeId"
+  ></aui-anchor-tree>
+</div>

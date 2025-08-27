@@ -1,0 +1,3 @@
+@use '../../select/option/option-style' as option;
+
+@include option.option(aui-suggestion);

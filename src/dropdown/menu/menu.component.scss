@@ -1,0 +1,56 @@
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+@use 'sass:map';
+
+$button-size: (
+  large: (
+    height: var.use-var(inline-height-l),
+    padding-hoz: var.use-var(inline-padding-l),
+    font-size: var.use-var(font-size-l),
+    line-height: var.use-var(line-height-l),
+    icon-size: var.use-var(icon-size-l),
+  ),
+  medium: (
+    height: var.use-var(inline-height-m),
+    padding-hoz: var.use-var(inline-padding-m),
+    font-size: var.use-var(font-size-m),
+    line-height: var.use-var(line-height-m),
+    icon-size: var.use-var(icon-size-m),
+  ),
+  small: (
+    height: var.use-var(inline-height-s),
+    padding-hoz: var.use-var(inline-padding-s),
+    font-size: var.use-var(font-size-m),
+    line-height: var.use-var(line-height-m),
+    icon-size: var.use-var(icon-size-m),
+  ),
+  mini: (
+    height: var.use-var(inline-height-xs),
+    padding-hoz: var.use-var(inline-padding-xs),
+    font-size: var.use-var(font-size-s),
+    line-height: var.use-var(line-height-s),
+    icon-size: var.use-var(icon-size-s),
+  ),
+);
+
+.aui-menu {
+  padding: var.use-var(spacing-m);
+
+  @each $key in large medium small mini {
+    $map: map.get($button-size, $key);
+
+    &--#{$key} {
+      .aui-menu-item,
+      .aui-submenu {
+        height: map.get($map, height);
+        font-size: map.get($map, font-size);
+        line-height: map.get($map, line-height);
+
+        aui-icon {
+          height: map.get($map, line-height);
+          font-size: map.get($map, icon-size);
+        }
+      }
+    }
+  }
+}

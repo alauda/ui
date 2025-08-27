@@ -1,0 +1,3 @@
+@use './option-group-style' as optionGroupStyle;
+
+@include optionGroupStyle.option-group(aui-option-group);

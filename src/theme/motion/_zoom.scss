@@ -1,19 +1,19 @@
-@import '../mixin';
-@import '../var';
+@use '../mixin' as mixin;
+@use '../var' as var;
 
 @mixin zoom-motion(
   $className,
   $keyframeName,
-  $duration: $animation-duration-base
+  $duration: var.$animation-duration-base
 ) {
-  @include make-motion($className, $keyframeName, $duration);
+  @include mixin.make-motion($className, $keyframeName, $duration);
 
   .#{$className}-enter {
     opacity: 0;
-    animation-timing-function: $ease-out;
+    animation-timing-function: var.$ease-out;
   }
   .#{$className}-leave {
-    animation-timing-function: $ease-in-out;
+    animation-timing-function: var.$ease-in-out;
   }
 }
 

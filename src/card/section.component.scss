@@ -1,0 +1,22 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+
+$b: aui-section;
+
+.#{$b} {
+  padding: var.use-var(spacing-xl) 0;
+  @include mixin.text-set(m, main);
+
+  &__title {
+    margin-bottom: var.use-var(spacing-l);
+    @include mixin.text-set(l, main, bolder);
+  }
+}
+
+#{$b}:first-child > .#{$b} {
+  padding-top: 0;
+}
+
+#{$b}:last-child > .#{$b} {
+  padding-bottom: 0;
+}

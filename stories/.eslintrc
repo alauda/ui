@@ -1,0 +1,9 @@
+{
+  "settings": {
+    "node": {
+      "allowModules": [
+        "@alauda/ui"
+      ]
+    }
+  }
+}

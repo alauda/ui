@@ -1,0 +1,96 @@
+@use '../../src/theme/var' as var;
+@use '../../src/theme/mixin' as mixin;
+
+.container {
+  display: flex;
+  margin-bottom: 32px;
+
+  .panel {
+    overflow: hidden;
+    width: 100%;
+    flex-shrink: 1;
+    border-radius: var.use-var(border-radius-m);
+
+    &:not(:last-child) {
+      margin-right: var.use-var(spacing-m);
+    }
+  }
+
+  .indicator {
+    height: var.use-var(inline-height-m);
+    padding: 0 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @each $color in b-0 'blue' b-1 b-2 b-3 {
+      &.#{$color} {
+        color: var.use-rgb(n-10);
+        background-color: var.use-rgb($color);
+      }
+    }
+
+    @each $color in b-4 b-5 b-6 b-7 {
+      &.#{$color} {
+        color: var.use-rgb(n-1);
+        background-color: var.use-rgb($color);
+      }
+    }
+
+    @each $color in g-0 'green' g-1 g-2 g-3 {
+      &.#{$color} {
+        color: var.use-rgb(n-10);
+        background-color: var.use-rgb($color);
+      }
+    }
+
+    @each $color in g-4 g-5 g-6 g-7 {
+      &.#{$color} {
+        color: var.use-rgb(n-1);
+        background-color: var.use-rgb($color);
+      }
+    }
+
+    @each $color in y-0 'yellow' y-1 y-2 y-3 {
+      &.#{$color} {
+        color: var.use-rgb(n-10);
+        background-color: var.use-rgb($color);
+      }
+    }
+
+    @each $color in y-4 y-5 y-6 y-7 {
+      &.#{$color} {
+        color: var.use-rgb(n-1);
+        background-color: var.use-rgb($color);
+      }
+    }
+
+    @each $color in r-0 'red' r-1 r-2 r-3 {
+      &.#{$color} {
+        color: var.use-rgb(n-10);
+        background-color: var.use-rgb($color);
+      }
+    }
+
+    @each $color in r-4 r-5 r-6 r-7 {
+      &.#{$color} {
+        color: var.use-rgb(n-1);
+        background-color: var.use-rgb($color);
+      }
+    }
+
+    @each $color in n-1 n-2 n-3 n-4 {
+      &.#{$color} {
+        color: var.use-rgb(n-10);
+        background-color: var.use-rgb($color);
+      }
+    }
+
+    @each $color in n-5 n-6 n-7 n-8 n-9 n-10 {
+      &.#{$color} {
+        color: use-rgb(n-1);
+        background-color: use-rgb($color);
+      }
+    }
+  }
+}

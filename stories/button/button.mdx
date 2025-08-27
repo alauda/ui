@@ -1,0 +1,42 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
+
+import * as basic from './basic.stories';
+import * as group from './group.stories';
+import * as icon from './icon.stories';
+import * as text from './text.stories';
+
+<Meta title="Example/Button" />
+
+# Button
+
+点击操作按钮
+
+## 基本按钮
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+<Controls of={basic.Basic} />
+
+## 按钮组
+
+<Canvas
+  of={group.Group}
+  meta={group}
+></Canvas>
+
+## 文字按钮
+
+<Canvas
+  of={text.Text}
+  meta={text}
+></Canvas>
+
+## 图标按钮
+
+<Canvas
+  of={icon.Icon}
+  meta={icon}
+></Canvas>

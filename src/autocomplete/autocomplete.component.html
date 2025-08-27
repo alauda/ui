@@ -1,0 +1,21 @@
+<ng-template let-width="width">
+  <div
+    [hidden]="!(hasContent$ | async)"
+    class="aui-autocomplete"
+    [style.minWidth]="width"
+    (mousedown)="$event.preventDefault()"
+  >
+    <div
+      #suggestionListRef
+      class="aui-autocomplete__content"
+    >
+      <ng-content></ng-content>
+    </div>
+    <div
+      [hidden]="hasVisibleSuggestion$ | async"
+      class="aui-autocomplete__placeholder"
+    >
+      <ng-content select="aui-autocomplete-placeholder"></ng-content>
+    </div>
+  </div>
+</ng-template>

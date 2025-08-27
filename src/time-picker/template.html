@@ -1,0 +1,60 @@
+<div
+  class="aui-time-picker"
+  [class.isDisabled]="disabled"
+  [class.isClearable]="clearable && timeFormatValue"
+  #tooltipRef="auiTooltip"
+  [auiTooltip]="template"
+  auiTooltipAnimType="none"
+  auiTooltipType="plain"
+  auiTooltipTrigger="click"
+  auiTooltipPosition="bottom start"
+  [auiTooltipDisabled]="disabled"
+  (auiTooltipVisibleChange)="handleTooltipVisible($event)"
+>
+  <aui-input-group>
+    <input
+      aui-input
+      autocomplete="off"
+      [size]="size"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [(ngModel)]="timeFormatValue"
+      (ngModelChange)="changeFromInput($event)"
+      (keydown)="onKeyDown($event)"
+    />
+    <span
+      *ngIf="showIcon"
+      auiInputSuffix
+      class="aui-time-picker__icon-container"
+    >
+      <aui-icon
+        class="aui-time-picker__indicator"
+        icon="clock"
+      ></aui-icon>
+      <aui-icon
+        class="aui-time-picker__clear"
+        icon="xmark_small"
+        (click)="clearValue($event)"
+      ></aui-icon>
+    </span>
+  </aui-input-group>
+</div>
+
+<ng-template #template>
+  <aui-time-picker-panel
+    [disabled]="disabled"
+    [disableHours]="disableHours"
+    [disableMinutes]="disableMinutes"
+    [disableSeconds]="disableSeconds"
+    [hourStep]="hourStep"
+    [minuteStep]="minuteStep"
+    [secondStep]="secondStep"
+    [format]="format"
+    [footerTemplate]="footerTemplate"
+    [(ngModel)]="timeValue"
+    (ngModelChange)="changeFromPanel($event)"
+    (confirm)="submit()"
+    (click)="$event.stopPropagation()"
+    (mousedown)="$event.preventDefault()"
+  ></aui-time-picker-panel>
+</ng-template>

@@ -1,0 +1,112 @@
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+
+$block: aui-date-picker-trigger;
+
+$height-mapper: (
+  'large': l,
+  'medium': m,
+  'small': s,
+  'mini': xs,
+);
+
+aui-range-picker,
+aui-date-picker {
+  &.ng-invalid {
+    &.ng-submitted,
+    &.ng-dirty {
+      .#{$block}__container {
+        @include mixin.input-error;
+      }
+    }
+  }
+}
+
+aui-date-picker-trigger {
+  display: block;
+}
+
+.#{$block} {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid var.use-rgb(n-7);
+    position: relative;
+    width: 100%;
+    background-color: var.use-rgb(n-9);
+    border-radius: var.use-var(border-radius-m);
+    @include mixin.text-set(m);
+
+    &:hover:not(.disabled) {
+      border-color: var.use-rgb(primary);
+      cursor: pointer;
+    }
+
+    // trigger有自己的border，隐藏了input的border，修正input由于border-box设定引起的高度差异
+    @each $name, $height in $height-mapper {
+      .aui-input--#{$name} {
+        height: calc(#{var.use-var(inline-height-#{$height})} - 2px);
+      }
+    }
+
+    &.isFocused:not(.disabled) {
+      border-color: use-rgb(primary);
+      @include mixin.outline-shadow(primary);
+    }
+
+    .aui-input {
+      border: none;
+      background-color: transparent !important;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: none !important;
+      }
+    }
+
+    &.disabled {
+      .aui-input {
+        background: transparent;
+        cursor: not-allowed;
+        color: var.use-rgb(n-7);
+      }
+
+      background: var.use-rgb(n-8);
+      border: 1px solid var.use-rgb(n-7) !important;
+
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    .placeholder {
+      color: var.use-rgb(n-6);
+    }
+  }
+
+  &__addon {
+    color: var.use-text-color(help);
+    margin-right: 8px;
+    font-size: var.use-var(icon-size-m);
+    width: var.use-var(icon-size-m);
+    height: var.use-var(icon-size-m);
+    line-height: var.use-var(icon-size-m);
+
+    .clear {
+      display: inline-flex;
+      @include mixin.clear-button;
+    }
+  }
+}

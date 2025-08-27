@@ -1,0 +1,10 @@
+@use '../theme/mixin' as mixin;
+
+.aui-breadcrumb__item {
+  display: flex;
+
+  .aui-breadcrumb__content {
+    max-width: 224px;
+    @include mixin.text-overflow;
+  }
+}

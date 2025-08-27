@@ -1,0 +1,16 @@
+@use '../theme/mixin' as mixin;
+@use '../theme/var' as var;
+
+$block: 'aui-back-top';
+
+.#{$block} {
+  background-color: var.use-rgb(n-10);
+  height: var.use-var(inline-height-m);
+  width: var.use-var(inline-height-m);
+  border-radius: var.use-var(border-radius-m);
+  overflow: hidden;
+  cursor: pointer;
+
+  @include mixin.flex-center;
+  @include mixin.popper-shadow;
+}

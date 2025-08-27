@@ -1,0 +1,106 @@
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+
+@mixin component-style($block) {
+  .#{$block} {
+    @include mixin.transition;
+
+    display: block;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-align: left;
+    padding: 0 var.use-var(spacing-l);
+    height: var.use-var(inline-height-m);
+    font-size: var.use-var(font-size-m);
+    color: var.use-rgb(n-1);
+    background-color: transparent;
+    border-radius: var.use-var(border-radius-m);
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+    &--default {
+      &:hover {
+        background-color: var.use-rgb(p-6);
+      }
+
+      &.isActive {
+        color: var.use-rgb(primary);
+        background-color: var.use-rgb(p-6);
+      }
+    }
+
+    &--primary {
+      color: var.use-rgb(primary);
+
+      &:hover,
+      &.isActive {
+        background-color: var.use-rgb(p-6);
+      }
+    }
+
+    &--success {
+      color: var.use-rgb(green);
+
+      &:hover,
+      &.isActive {
+        background-color: var.use-rgb(p-6);
+      }
+    }
+
+    &--warning {
+      color: var.use-rgb(yellow);
+
+      &:hover,
+      &.isActive {
+        background-color: var.use-rgb(y-6);
+      }
+    }
+
+    &--danger {
+      color: var.use-rgb(red);
+
+      &:hover,
+      &.isActive {
+        background-color: var.use-rgb(r-6);
+      }
+    }
+
+    &[disabled],
+    &[disabled]:hover {
+      color: var.use-rgb(n-6);
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+
+    &[disabled] > * {
+      pointer-events: none;
+    }
+
+    aui-icon:first-child {
+      margin-right: var.use-var(spacing-m);
+    }
+  }
+
+  #{$block} {
+    &:not(:first-child) .hasDivider {
+      overflow: visible;
+      margin-top: var.use-var(spacing-xl);
+
+      &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        left: 0;
+        right: 0;
+        top: calc(0px - #{var.use-var(spacing-m)});
+        height: 1px;
+        background: var.use-rgb(n-8);
+        pointer-events: none;
+      }
+    }
+  }
+}
