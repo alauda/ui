@@ -9,6 +9,7 @@
   ],
   "exclude": ["dist", "release", "**/*.spec.ts"],
   "compilerOptions": {
+    "target": "ES2022",
     "esModuleInterop": true,
     "paths": {
       "@alauda/ui": ["./src"]

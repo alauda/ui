@@ -1,0 +1,84 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+@use '../../node_modules/@angular/cdk/overlay-prebuilt' as *;
+
+$block: 'aui-tooltip';
+
+@mixin text-styles {
+  max-width: 400px;
+  word-wrap: break-word; // do NOT add 'word-break: break-all;', design requirement
+  @include mixin.text-set(s);
+}
+
+.#{$block} {
+  border-radius: var.use-var(border-radius-m);
+  background-color: var.use-rgb(popper-bg);
+  @include mixin.popper-shadow;
+
+  &--default {
+    padding: var.use-var(spacing-m) var.use-var(spacing-xl);
+    @include text-styles;
+    @include mixin.theme-light {
+      color: var.use-rgb(n-10);
+      background-color: var.use-rgb(n-1);
+    }
+    @include mixin.theme-dark {
+      color: var.use-rgb(n-1);
+      background-color: var.use-rgb(popper-bg);
+    }
+  }
+
+  &--primary {
+    padding: var.use-var(spacing-xl);
+    color: var.use-rgb(primary);
+    @include text-styles;
+  }
+
+  &--success {
+    padding: var.use-var(spacing-xl);
+    color: var.use-rgb(green);
+    @include text-styles;
+  }
+
+  &--warning {
+    padding: var.use-var(spacing-xl);
+    color: var.use-rgb(yellow);
+    @include text-styles;
+  }
+
+  &--error {
+    padding: var.use-var(spacing-xl);
+    color: var.use-rgb(red);
+    @include text-styles;
+  }
+
+  &--info {
+    padding: var.use-var(spacing-xl);
+    color: var.use-rgb(n-1);
+    @include text-styles;
+  }
+
+  &--align {
+    &_center {
+      margin: var.use-var(spacing-s);
+    }
+
+    &_top {
+      margin: 0 var.use-var(spacing-s) var.use-var(spacing-s);
+    }
+
+    &_end {
+      margin: var.use-var(spacing-s) 0 var.use-var(spacing-s)
+        var.use-var(spacing-s);
+    }
+
+    &_bottom {
+      margin: var.use-var(spacing-s) var.use-var(spacing-s) 0;
+    }
+
+    &_start {
+      margin: var.use-var(spacing-s) var.use-var(spacing-s)
+        var.use-var(spacing-s) 0;
+    }
+  }
+}

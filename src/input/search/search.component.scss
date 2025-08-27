@@ -1,0 +1,133 @@
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+@use 'sass:map';
+
+$block: 'aui-search';
+
+.#{$block} {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  color: var.use-rgb(n-4);
+
+  &.isDisabled {
+    color: var.use-text-color(disabled);
+    cursor: not-allowed;
+  }
+
+  @each $key in large medium small mini {
+    $map: map.get(var.$input-size, $key);
+
+    &--#{$key} {
+      font-size: map.get($map, font-size);
+      line-height: map.get($map, line-height);
+
+      aui-icon {
+        font-size: map.get($map, icon-size);
+      }
+
+      .#{$block}__clear,
+      .#{$block}__spinner {
+        right: calc(#{var.use-var(inline-padding-xs)} + 1px);
+      }
+
+      .#{$block}__icon {
+        left: calc(#{var.use-var(inline-padding-xs)} + 1px);
+      }
+
+      .#{$block}__button-icon {
+        padding: 0 var.use-var(inline-padding-xs);
+        color: var.use-rgb(n-2);
+      }
+
+      &.hasIcon .#{$block}__input {
+        padding-left: calc(
+          #{map.get($map, icon-size)} +
+            #{var.use-var(inline-padding-xs)} *
+            2 +
+            1px
+        );
+      }
+
+      &.hasIcon.isSearching .#{$block}__input,
+      &.hasIcon.isClearable .#{$block}__input {
+        padding-right: calc(
+          #{map.get($map, icon-size)} +
+            #{var.use-var(inline-padding-xs)} *
+            2 +
+            1px
+        );
+      }
+
+      &.hasButton .#{$block} {
+        &__input {
+          padding-right: calc(
+            #{map.get($map, icon-size)} +
+              #{var.use-var(inline-padding-xs)} *
+              3 +
+              1px
+          );
+        }
+
+        &__clear {
+          right: calc(
+            #{map.get($map, icon-size)} +
+              #{var.use-var(inline-padding-xs)} *
+              3 +
+              1px *
+              2
+          );
+        }
+      }
+
+      &.hasButton.isClearable .#{$block}__input {
+        padding-right: calc(
+          #{map.get($map, icon-size)} *
+            2 +
+            #{var.use-var(inline-padding-xs)} *
+            4 +
+            3px
+        );
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var.use-text-color(placeholder);
+  }
+
+  &__button {
+    position: absolute;
+    top: 0;
+    right: 1px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &:not(.isDisabled, .isSearching) &__button {
+    cursor: pointer;
+
+    &:hover {
+      color: var.use-rgb(primary);
+    }
+  }
+
+  &__button-icon {
+    border-left: 1px solid var.use-rgb(n-7);
+  }
+
+  &__clear,
+  &__spinner {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__clear .aui-icon {
+    @include mixin.clear-button;
+  }
+}

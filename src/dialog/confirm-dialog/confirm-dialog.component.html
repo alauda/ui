@@ -1,0 +1,60 @@
+<div [class]="bem.block()">
+  <div [class]="bem.element('title')">
+    <span [class]="bem.element('icon', config.confirmType + '')">
+      <aui-icon
+        [icon]="iconMap(config.confirmType)"
+        [background]="
+          iconMap(config.confirmType).endsWith('_triangle_s')
+            ? 'triangle'
+            : 'circle'
+        "
+      ></aui-icon>
+    </span>
+    <span>{{ config.title }}</span>
+  </div>
+  <div [class]="bem.element('content')">
+    <ng-container *ngIf="config.content">
+      <ng-container
+        *ngIf="
+          isTemplateRef(config.content) || isString(config.content);
+          else componentTemplate
+        "
+      >
+        <ng-container
+          *ngIf="isTemplateRef(config.content); else stringTemplate"
+        >
+          <ng-template *ngTemplateOutlet="config.content"></ng-template>
+        </ng-container>
+        <ng-template #stringTemplate>
+          {{ config.content }}
+        </ng-template>
+      </ng-container>
+      <ng-template #componentTemplate>
+        <ng-container *ngComponentOutlet="$any(config.content)"></ng-container>
+      </ng-template>
+    </ng-container>
+  </div>
+  <div [class]="bem.element('button-wrapper')">
+    <div>
+      <button
+        [aui-button]="config.confirmType"
+        [ngClass]="bem.element('confirm-button')"
+        [loading]="waitConfirm"
+        [disabled]="waitConfirm || waitCancel"
+        (click)="confirm()"
+      >
+        {{ config.confirmText }}
+      </button>
+      <button
+        *ngIf="config.cancelButton"
+        aui-button
+        [ngClass]="bem.element('cancel-button')"
+        [loading]="waitCancel"
+        [disabled]="waitConfirm || waitCancel"
+        (click)="cancel()"
+      >
+        {{ config.cancelText }}
+      </button>
+    </div>
+  </div>
+</div>

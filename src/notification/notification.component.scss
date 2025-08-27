@@ -1,0 +1,101 @@
+@use 'sass:math';
+
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+@use '../../node_modules/@angular/cdk/overlay-prebuilt' as *;
+
+.cdk-overlay-pane.aui-notification-overlay-pane {
+  z-index: 1001;
+}
+
+.aui-notification {
+  margin: 0 20px 10px 0;
+  width: 400px;
+  border-radius: 4px;
+  padding: 20px 16px 20px 20px;
+  background-color: var.use-rgb(popper-bg);
+  @include mixin.modal-shadow;
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__icon {
+    font-size: var.use-var(icon-size-l);
+    line-height: var.use-var(line-height-xl);
+  }
+
+  @each $status, $color in var.$status-color-map {
+    &--#{$status} {
+      border-left: 4px solid $color;
+
+      .aui-notification__icon {
+        color: $color;
+      }
+    }
+  }
+
+  &__body {
+    flex: 1;
+    margin: 0 16px 0 8px;
+    overflow: hidden;
+  }
+
+  &__title {
+    overflow-wrap: break-word;
+    @include mixin.text-set(xl, main);
+
+    &:not(:only-child) {
+      margin-bottom: 6px;
+    }
+  }
+
+  &__content {
+    margin-top: calc(
+      (#{var.use-var(line-height-xl)} - #{var.use-var(line-height-m)}) / 2
+    );
+    padding-right: 4px;
+    max-height: 140px;
+    overflow: auto;
+    overflow-wrap: break-word;
+    @include mixin.text-set(m, secondary);
+    @include mixin.scroll-bar;
+  }
+
+  &__remove {
+    color: var.use-text-color(secondary);
+    font-size: var.use-var(font-size-m);
+  }
+
+  &__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var.use-var(line-height-xl);
+    height: var.use-var(line-height-xl);
+    font-size: var.use-var(icon-size-l);
+    border-radius: var.use-var(border-radius-m);
+    cursor: pointer;
+
+    &:hover {
+      color: var.use-rgb(primary);
+      background-color: var.use-rgb(p-6);
+    }
+
+    &:active {
+      color: var.use-rgb(p-0);
+      background-color: var.use-rgb(p-5);
+    }
+  }
+
+  &__duration {
+    line-height: var.use-var(line-height-xl);
+    min-width: var.use-var(line-height-xl);
+    text-align: right;
+  }
+
+  &__footer {
+    width: 360px;
+    margin-top: 12px;
+  }
+}

@@ -1,0 +1,157 @@
+@use 'sass:math';
+
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+
+@mixin component-style($block) {
+  .#{$block} {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    color: var.use-text-color(main);
+    vertical-align: middle;
+
+    &:hover {
+      cursor: text;
+    }
+
+    .aui-tag {
+      max-width: 100%;
+    }
+
+    &.isDisabled {
+      background-color: var.use-rgb(n-8);
+      border-color: var.use-rgb(n-7);
+      cursor: not-allowed;
+
+      .aui-tag {
+        color: var.use-text-color(disabled);
+        background-color: var.use-rgb(n-8);
+      }
+    }
+
+    &__placeholder {
+      display: inline-block;
+      width: 100%;
+      color: var.use-text-color(placeholder);
+      vertical-align: middle;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      position: absolute;
+      right: 0;
+      left: 0;
+      padding-left: inherit;
+      padding-right: inherit;
+      margin-left: 1px;
+
+      &[hidden] {
+        display: none;
+      }
+    }
+
+    &__mirror {
+      opacity: 0;
+      left: 0;
+      z-index: -99;
+      position: absolute;
+      // 光标宽度
+      padding-left: 1px;
+    }
+
+    &--large {
+      $ver-margin: calc((#{var.use-var(inline-height-l)} - 20px) / 2 - 1px);
+
+      min-height: var.use-var(inline-height-l);
+      padding: $ver-margin var.use-var(inline-padding-xs) 0 !important;
+      @include mixin.text-set(l);
+
+      .aui-tag {
+        margin: 0 4px $ver-margin 0;
+      }
+    }
+
+    &--medium {
+      $ver-margin: calc((#{var.use-var(inline-height-m)} - 20px) / 2 - 1px);
+
+      min-height: var.use-var(inline-height-m);
+      padding: $ver-margin var.use-var(inline-padding-xs) 0 !important;
+      @include mixin.text-set(m);
+
+      .aui-tag {
+        margin: 0 4px $ver-margin 0;
+      }
+    }
+
+    &--small {
+      $ver-margin: calc((#{var.use-var(inline-height-s)} - 20px) / 2 - 1px);
+
+      min-height: var.use-var(inline-height-s);
+      padding: $ver-margin var.use-var(inline-padding-xs) 0 !important;
+      @include mixin.text-set(s);
+
+      .aui-tag {
+        margin: 0 4px $ver-margin 0;
+      }
+    }
+
+    &--mini {
+      $ver-margin: calc((#{var.use-var(inline-height-xs)} - 20px) / 2 - 1px);
+
+      min-height: var.use-var(inline-height-xs);
+      padding: $ver-margin var.use-var(inline-padding-xs) 0 !important;
+      @include mixin.text-set(s);
+
+      .aui-tag {
+        margin: 0 4px $ver-margin 0;
+      }
+    }
+
+    &__suffix {
+      position: absolute;
+      top: 50%;
+      right: var.use-var(inline-padding-xs);
+      transform: translateY(-50%);
+    }
+
+    .aui-tag#{&}__input {
+      margin-right: 0;
+      padding: 0;
+      width: 1em;
+      max-width: 100%;
+      border: none;
+      outline: none;
+      background: none;
+      color: var.use-text-color(main);
+      font-family: inherit;
+      font-size: inherit;
+
+      &--hidden {
+        opacity: 0;
+        width: 0;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+      }
+    }
+  }
+
+  #{$block}.ng-invalid.ng-dirty,
+  .ng-submitted #{$block}.ng-invalid {
+    .aui-input,
+    .aui-tags-input {
+      @include mixin.input-error;
+
+      .aui-tags-input__input {
+        color: var.use-rgb(red);
+      }
+    }
+  }
+}
+
+@mixin with-height-limit {
+  @include mixin.scroll-bar;
+
+  overflow: auto;
+  position: static;
+}

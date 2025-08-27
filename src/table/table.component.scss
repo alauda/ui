@@ -1,0 +1,193 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+
+.aui-table {
+  position: relative;
+  display: block;
+  padding: 0 var.$table-padding var.$table-padding;
+  background-color: var.use-rgb(n-9);
+  border-radius: var.use-var(border-radius-l);
+  @include mixin.text-set(m, main);
+
+  &__row,
+  &__header-row {
+    display: flex;
+    align-items: center;
+
+    &.hasPanel {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__header-row + &__row {
+    border-top-left-radius: var.use-var(border-radius-l);
+    border-top-right-radius: var.use-var(border-radius-l);
+  }
+
+  &__row {
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var.use-rgb(n-8);
+    border-bottom-width: 0;
+    background-color: var.use-rgb(n-10);
+    padding: 0 (var.$table-cell-padding-h - 1);
+    min-height: var.$table-row-min-height;
+    box-sizing: content-box;
+
+    &:first-child {
+      border-top-left-radius: var.use-var(border-radius-l);
+      border-top-right-radius: var.use-var(border-radius-l);
+    }
+
+    &:last-of-type {
+      border-bottom-width: 1px;
+      min-height: var.$table-row-min-height;
+      border-bottom-left-radius: var.use-var(border-radius-l);
+      border-bottom-right-radius: var.use-var(border-radius-l);
+    }
+
+    &.isDisabled:before {
+      content: '';
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var.use-rgb(n-10);
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+
+  &__header-row {
+    background-color: var.use-rgb(n-9);
+    padding: 0 var.$table-cell-padding-h;
+  }
+
+  &__cell,
+  &__header-cell {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    position: relative;
+  }
+
+  &__cell {
+    padding: var.$table-cell-padding-v var.$table-cell-padding-h;
+    background-color: var.use-rgb(n-10);
+    overflow: hidden;
+
+    &--column {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  }
+
+  &__header-cell {
+    padding: var.$table-padding var.$table-cell-padding-h;
+    font-weight: var.use-var(font-weight-bold);
+    background-color: var.use-rgb(n-9);
+  }
+
+  &__column-expand-button {
+    display: flex;
+    align-items: center;
+    max-width: calc(var.$table-cell-padding-h * 2 + var.use-var(icon-size-m));
+
+    &.aui-table__cell {
+      height: var.$table-row-min-height;
+    }
+
+    .aui-expand-button {
+      @include mixin.expand-button;
+    }
+  }
+
+  &__column-expand-panel {
+    margin-top: -6px;
+
+    &.aui-table__header-cell {
+      display: none;
+    }
+
+    &.aui-table__cell {
+      width: 100%;
+      flex-shrink: 0;
+      flex-basis: 100%;
+      padding: 0 var.$table-cell-padding-h;
+      overflow: hidden;
+
+      .aui-table__cell-expand-panel {
+        width: 100%;
+        border-radius: var.use-var(border-radius-l);
+        overflow: hidden;
+
+        &-content {
+          &.hasBackground {
+            padding: 16px;
+            background-color: var.use-rgb(n-9);
+          }
+        }
+      }
+    }
+  }
+}
+
+.aui-table-column-resizable {
+  &__handle {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 5px;
+    color: var.use-rgb(n-7);
+    cursor: col-resize;
+
+    &:after {
+      content: '';
+      display: block;
+      margin: var.$table-padding 0 var.$table-padding auto;
+      width: 1px;
+      height: calc(100% - var.$table-padding * 2);
+      background-color: currentcolor;
+    }
+
+    &:hover {
+      color: var.use-rgb(primary);
+    }
+  }
+
+  &__mark-line {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: var.use-rgb(primary);
+    z-index: 9999;
+    cursor: col-resize;
+  }
+
+  &__overlay {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 9000;
+    cursor: col-resize;
+  }
+}
+
+aui-table.aui-table__scroll-shadow--has-scroll {
+  aui-table-header-cell.aui-table-sticky-border-elem-left
+    .aui-table-column-resizable__handle {
+    transform: translateX(-20px);
+  }
+
+  .aui-table-column-resizable__mark-line.inStickyBorderElemLeft {
+    transform: translateX(-20px);
+  }
+}

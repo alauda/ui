@@ -1,0 +1,120 @@
+@use '../../theme/var' as var;
+@use 'sass:map';
+
+.aui-input-group {
+  display: inline-block;
+  width: 100%;
+  color: var.use-text-color(main);
+  font-weight: var.use-var(font-weight-normal);
+
+  &.isDisabled {
+    color: var.use-text-color(disabled);
+    cursor: not-allowed;
+  }
+
+  @each $key in large medium small mini {
+    $map: map.get(var.$input-size, $key);
+    $padding: calc(
+      #{var.use-var(inline-padding-xs)} * 2 + #{map.get($map, icon-size)} + 1px
+    );
+
+    &--#{$key} {
+      height: map.get($map, height);
+      font-size: map.get($map, font-size);
+      line-height: map.get($map, line-height);
+
+      .aui-input-group__prefix,
+      .aui-input-group__suffix {
+        aui-icon {
+          font-size: map.get($map, icon-size);
+        }
+      }
+
+      &.hasPrefix .aui-input {
+        padding-left: $padding;
+      }
+
+      &.hasSuffix .aui-input {
+        padding-right: $padding;
+      }
+    }
+  }
+
+  &__inner-wrapper {
+    display: flex;
+    height: 100%;
+  }
+
+  &__input-wrapper {
+    width: 100%;
+    position: relative;
+
+    &:hover {
+      .aui-input {
+        border-color: var.use-rgb(primary);
+      }
+    }
+  }
+
+  &__addon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    height: 100%;
+    padding: 0 var.use-var(inline-padding-xs);
+    border: 1px solid var.use-rgb(n-7);
+    background-color: var.use-rgb(n-8);
+
+    &--before {
+      border-right: none;
+      border-radius: var.use-var(border-radius-m) 0 0
+        var.use-var(border-radius-m);
+    }
+
+    &--after {
+      border-left: none;
+      border-radius: 0 var.use-var(border-radius-m) var.use-var(border-radius-m)
+        0;
+    }
+  }
+
+  &__prefix {
+    position: absolute;
+    top: 50%;
+    left: calc(#{var.use-var(inline-padding-xs)} + 1px);
+    transform: translateY(-50%);
+    color: var.use-text-color(secondary);
+    pointer-events: none;
+
+    > * {
+      pointer-events: auto;
+    }
+  }
+
+  &__suffix {
+    position: absolute;
+    top: 50%;
+    right: calc(#{var.use-var(inline-padding-xs)} + 1px);
+    transform: translateY(-50%);
+    color: var.use-text-color(secondary);
+    pointer-events: none;
+
+    > * {
+      pointer-events: auto;
+    }
+  }
+
+  &.hasAddonBefore {
+    .aui-input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  &.hasAddonAfter {
+    .aui-input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

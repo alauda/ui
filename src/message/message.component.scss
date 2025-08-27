@@ -1,0 +1,37 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+@use '../../node_modules/@angular/cdk/overlay-prebuilt' as *;
+
+.cdk-overlay-pane.aui-message-overlay-pane {
+  z-index: 1001;
+}
+
+$color-map: (
+  success: green,
+  warning: yellow,
+  error: red,
+  info: blue,
+);
+
+.aui-message {
+  display: flex;
+  margin-bottom: var.use-var(spacing-xxl);
+  padding: 8px 16px;
+  min-width: 100px;
+  max-width: 800px;
+  border-radius: var.use-var(border-radius-m);
+  background-color: var.use-rgb(popper-bg);
+  @include mixin.text-set(m, main);
+  @include mixin.modal-shadow;
+
+  &__icon {
+    font-size: var.use-var(icon-size-m);
+  }
+
+  @each $status, $color in $color-map {
+    &__icon--#{$status} {
+      margin-right: var.use-var(spacing-m);
+      color: var.use-rgb($color);
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@use '../theme/mixin' as mixin;
+@use '../theme/var' as var;
+
+@mixin pointer($checkedStatus) {
+  &__pointer {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: var.use-var(icon-size-m);
+    height: var.use-var(icon-size-m);
+    margin-right: var.use-var(spacing-m);
+    border-radius: var.use-var(border-radius-m);
+    border: 1px solid var.use-rgb(n-7);
+    color: white;
+    background-color: var.use-rgb(main-bg);
+    position: relative;
+    vertical-align: middle;
+    @include mixin.transition;
+  }
+
+  &.cdk-keyboard-focused &__pointer {
+    border-color: var.use-rgb(primary);
+    @include mixin.outline-shadow(primary);
+  }
+
+  &.#{$checkedStatus} &__pointer {
+    border-color: var.use-rgb(primary);
+    background-color: var.use-rgb(primary);
+  }
+
+  &.isIndeterminate &__pointer {
+    border-color: var.use-rgb(primary);
+    background-color: var.use-rgb(main-bg);
+
+    &:before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 1px;
+      background-color: var.use-rgb(primary);
+    }
+  }
+
+  &.#{$checkedStatus}.isDisabled &__pointer {
+    border-color: var.use-rgb(p-4);
+    background-color: var.use-rgb(p-4);
+  }
+
+  &.isDisabled &__label {
+    cursor: not-allowed;
+  }
+
+  &.isDisabled &__pointer {
+    border-color: var.use-rgb(n-7);
+    background-color: var.use-rgb(n-8);
+  }
+}

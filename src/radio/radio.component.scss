@@ -1,0 +1,98 @@
+@use '../theme/mixin' as mixin;
+@use '../theme/var' as var;
+
+$block: 'aui-radio';
+
+.#{$block} {
+  display: inline-flex;
+  align-items: center;
+  min-height: var.use-var(inline-height-m);
+  position: relative;
+  @include mixin.text-set(m, main);
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      .#{$block}__pointer {
+        border-color: var.use-rgb(primary);
+        background-color: var.use-rgb(n-10);
+      }
+    }
+  }
+
+  &__content {
+    vertical-align: middle;
+  }
+
+  &__pointer {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: var.use-var(icon-size-m);
+    height: var.use-var(icon-size-m);
+    margin-right: var.use-var(spacing-m);
+    border-radius: 50%;
+    border: 1px solid var.use-rgb(n-7);
+    background-color: var.use-rgb(main-bg);
+    vertical-align: middle;
+    @include mixin.transition;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+  }
+
+  &.cdk-keyboard-focused &__pointer {
+    border-color: var.use-rgb(primary);
+    @include mixin.outline-shadow(primary);
+  }
+
+  &.isChecked &__pointer {
+    border-color: var.use-rgb(primary);
+    background-color: var.use-rgb(primary);
+
+    &:before {
+      background-color: white;
+    }
+  }
+
+  &.isDisabled &__label {
+    cursor: not-allowed;
+  }
+
+  &.isDisabled &__pointer {
+    border-color: var.use-rgb(n-7);
+    background-color: var.use-rgb(n-8);
+  }
+
+  &.isDisabled.isChecked &__pointer {
+    border-color: var.use-rgb(p-4);
+    background-color: var.use-rgb(p-4);
+
+    &:before {
+      @include mixin.theme-dark {
+        background-color: var.use-rgb(n-4);
+      }
+    }
+  }
+}
+
+#{$block}:not(:last-child) {
+  .#{$block} {
+    margin-right: var.use-var(spacing-xxxl);
+  }
+}

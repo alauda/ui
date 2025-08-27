@@ -1,0 +1,65 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+
+$default-border: 1px solid var.use-rgb(n-8);
+
+$b: aui-card;
+
+.#{$b} {
+  padding: 20px;
+  border-radius: var.use-var(border-radius-l);
+  background-color: var.use-rgb(n-10);
+  @include mixin.text-set(m, main);
+  @include mixin.card-shadow;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    @include mixin.text-set(xl, main, bolder);
+
+    + .#{$b}__content {
+      margin-top: var.use-var(spacing-xl);
+    }
+  }
+
+  &__content {
+    padding: 0;
+
+    + .#{$b}__footer {
+      margin-top: var.use-var(spacing-xl);
+    }
+  }
+
+  &__footer {
+    padding: 0;
+  }
+
+  &.hasDivider {
+    > .#{$b} {
+      &__header {
+        padding-bottom: var.use-var(spacing-xl);
+        border-bottom: $default-border;
+
+        + .#{$b}__content {
+          margin-top: var.use-var(spacing-xl);
+        }
+      }
+
+      &__content {
+        + .#{$b}__footer {
+          margin-top: var.use-var(spacing-xl);
+        }
+      }
+
+      &__footer {
+        padding-top: var.use-var(spacing-xl);
+        border-top: $default-border;
+      }
+    }
+  }
+}
+
+#{$b} + #{$b} > .#{$b} {
+  margin-top: var.use-var(spacing-xl);
+}

@@ -1,0 +1,158 @@
+// stylelint-disable plugin/no-low-performance-animation-properties
+@use '../../../theme/mixin' as mixin;
+@use '../../../theme/var' as var;
+
+$block: aui-picker-panel;
+$in-range-bgcolor: var.use-rgb(p-6);
+$left-in-range-shadow: -6px 0 0 0 $in-range-bgcolor;
+$right-in-range-shadow: 6px 0 0 0 $in-range-bgcolor;
+
+$left-disabled-shadow: -6px 0 0 0 var.use-rgb(n-8);
+$right-disabled-shadow: 6px 0 0 0 var.use-rgb(n-8);
+
+$left-mask-shadow: -12px 0 0 0 var.use-rgb(popper-bg);
+
+.#{$block} {
+  &__container {
+    height: min-content;
+    box-sizing: border-box;
+    justify-content: stretch;
+    display: flex;
+    flex-direction: column;
+    margin: 12px 9px;
+    align-items: center;
+
+    .aui-button {
+      box-sizing: border-box;
+
+      &__content {
+        padding: 0 !important;
+      }
+    }
+
+    &.month-panel-container,
+    &.year-panel-container {
+      button {
+        width: 56px;
+        height: 28px !important;
+      }
+    }
+
+    &.day-panel-container {
+      height: min-content;
+      padding: 0;
+      margin: 0;
+
+      button {
+        height: var.$date-picker-cell-size !important;
+        width: var.$date-picker-cell-size !important;
+      }
+
+      .#{$block}__row + .#{$block}__row {
+        margin-top: var.$date-picker-row-gap;
+      }
+    }
+  }
+
+  &__row + &__row {
+    margin-top: var.$date-picker-seprator-gap;
+  }
+
+  &__row {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    @include mixin.text-set(m);
+
+    &.week-header {
+      span {
+        display: inline-block;
+        margin: 0;
+        width: 36px;
+        text-align: center;
+      }
+
+      color: var.use-text-color(help);
+      margin-bottom: 8px;
+    }
+  }
+
+  &__cell {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin-inline: 6px;
+
+    button {
+      box-sizing: content-box;
+      // Use trackby to enhance performence, which reuses button and may cause size change with animation.So overwrite transition
+      transition:
+        color var.$animation-duration-slow var.$animation-interpolation,
+        background-color var.$animation-duration-slow
+          var.$animation-interpolation;
+    }
+
+    &.inRange {
+      background-color: $in-range-bgcolor;
+      box-shadow: $left-in-range-shadow, $right-in-range-shadow;
+    }
+
+    &.isRangeEnd {
+      box-shadow: $left-in-range-shadow;
+    }
+
+    &.isRangeStart {
+      box-shadow: $right-in-range-shadow;
+    }
+
+    &.isDisabled {
+      background-color: var.use-rgb(n-8);
+      box-shadow: $left-disabled-shadow, $right-disabled-shadow;
+
+      button {
+        color: var.use-text-color(disabled) !important;
+        border-color: var.use-text-color(disabled) !important;
+      }
+
+      &.isActive,
+      &.isToday {
+        button {
+          color: white !important;
+          border-color: var.use-rgb(p-4) !important;
+          background-color: var.use-rgb(p-4) !important;
+        }
+      }
+    }
+
+    &.isDisabled + &:not(.isDisabled, .isRangeStart) {
+      box-shadow: $left-mask-shadow;
+    }
+
+    &.isDisabled + &:not(.isDisabled).isRangeStart {
+      box-shadow: $left-mask-shadow, $right-in-range-shadow;
+    }
+
+    &:not(.isDisabled) + &.isDisabled {
+      box-shadow: $right-disabled-shadow;
+    }
+
+    &.isToday button {
+      border: var.use-rgb(primary) 1px solid;
+      color: var.use-rgb(primary);
+      background-color: var.use-rgb(p-7);
+    }
+
+    &.isActive button {
+      color: white;
+      background-color: var.use-rgb(primary);
+    }
+
+    &.isBackground button {
+      background-color: initial !important;
+      color: var.use-text-color(disabled);
+    }
+  }
+}

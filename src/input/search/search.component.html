@@ -1,0 +1,49 @@
+<div
+  [ngClass]="bem.block(size)"
+  [class.hasIcon]="!searchButton"
+  [class.hasButton]="searchButton"
+  [class.isClearable]="showClear"
+  [class.isSearching]="searching"
+  [class.isDisabled]="disabled"
+>
+  <div
+    *ngIf="!searchButton"
+    [class]="bem.element('icon')"
+  >
+    <aui-icon icon="magnifier"></aui-icon>
+  </div>
+  <input
+    #input
+    aui-input
+    autocomplete="off"
+    [ngModel]="value"
+    (ngModelChange)="emitChange($event)"
+    [disabled]="disabled"
+    (keyup.enter)="emitSearch()"
+    [ngClass]="bem.element('input')"
+    [placeholder]="placeholder"
+    [size]="size"
+  />
+  <div
+    *ngIf="showSpinner"
+    [class]="bem.element('spinner')"
+  >
+    <aui-icon icon="spinner"></aui-icon>
+  </div>
+  <div
+    [hidden]="!showClear"
+    [class]="bem.element('clear')"
+    (click)="emitClear()"
+  >
+    <aui-icon icon="xmark_small"></aui-icon>
+  </div>
+  <div
+    *ngIf="searchButton"
+    [class]="bem.element('button')"
+    (click)="emitSearch()"
+  >
+    <div [class]="bem.element('button-icon')">
+      <aui-icon [icon]="searching ? 'spinner' : 'magnifier'"></aui-icon>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Status Bar should match snapshot 1`] = `
+<ng-component
+  status1={[Function Array]}
+  status2={[Function Array]}
+>
+  <aui-status-bar
+    size="medium"
+  >
+    <div
+      class="aui-status-bar aui-status-bar--medium"
+    >
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--info custom-class"
+        style="width: 10%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--error"
+        style="width: 30%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--warning"
+        style="width: 20%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--success"
+        style="width: 20%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--primary"
+        style="width: 20%;"
+      />
+    </div>
+  </aui-status-bar><aui-status-bar
+    size="small"
+  >
+    <div
+      class="aui-status-bar aui-status-bar--small"
+    >
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--info custom-class"
+        style="width: 10%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--error"
+        style="width: 30%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--warning"
+        style="width: 20%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--success"
+        style="width: 20%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--primary"
+        style="width: 20%;"
+      />
+    </div>
+  </aui-status-bar><aui-status-bar
+    size="medium"
+  >
+    <div
+      class="aui-status-bar aui-status-bar--medium"
+    >
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--pending"
+        style="width: 100%;"
+      />
+    </div>
+  </aui-status-bar><aui-status-bar
+    size="small"
+  >
+    <div
+      class="aui-status-bar aui-status-bar--small"
+    >
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--pending"
+        style="width: 100%;"
+      />
+    </div>
+  </aui-status-bar>
+</ng-component>
+`;
+
+exports[`Status Bar should match snapshot 2`] = `
+<ng-component
+  status1={[Function Array]}
+  status2={[Function Array]}
+>
+  <aui-status-bar
+    size="medium"
+  >
+    <div
+      class="aui-status-bar aui-status-bar--medium"
+    >
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--info custom-class"
+        style="width: 10%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--error"
+        style="width: 30%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--warning"
+        style="width: 20%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--success"
+        style="width: 20%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--primary"
+        style="width: 20%;"
+      />
+    </div>
+  </aui-status-bar><aui-status-bar
+    size="small"
+  >
+    <div
+      class="aui-status-bar aui-status-bar--small"
+    >
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--info custom-class"
+        style="width: 10%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--error"
+        style="width: 30%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--warning"
+        style="width: 20%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--success"
+        style="width: 20%;"
+      />
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--primary"
+        style="width: 20%;"
+      />
+    </div>
+  </aui-status-bar><aui-status-bar
+    size="medium"
+  >
+    <div
+      class="aui-status-bar aui-status-bar--medium"
+    >
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--pending"
+        style="width: 100%;"
+      />
+    </div>
+  </aui-status-bar><aui-status-bar
+    size="small"
+  >
+    <div
+      class="aui-status-bar aui-status-bar--small"
+    >
+      <div
+        class="aui-status-bar__chunk aui-status-bar__chunk--pending"
+        style="width: 100%;"
+      />
+    </div>
+  </aui-status-bar>
+</ng-component>
+`;
+
+exports[`Status Bar should match snapshot 3`] = `
+<div
+  class="cdk-overlay-container"
+  platform="test"
+>
+  <div
+    class="cdk-overlay-connected-position-bounding-box"
+    dir="ltr"
+    style="left: 0px; bottom: 0px; height: 0px; width: 0px; align-items: center; justify-content: flex-end;"
+  >
+    <div
+      class="cdk-overlay-pane"
+      id="cdk-overlay-a0"
+      style="position: static;"
+    >
+      <aui-tooltip>
+        <div
+          class="ng-trigger ng-trigger-showHide aui-tooltip aui-tooltip--align_center aui-tooltip--default aui-tooltip--direction_top aui-tooltip__transform-origin"
+        >
+            
+          <div
+            style=""
+          >
+            info: 0.1
+          </div>
+          
+          
+        </div>
+        
+      </aui-tooltip>
+    </div>
+  </div>
+</div>
+`;

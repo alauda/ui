@@ -46,7 +46,8 @@
 }
 
 @function rgb-string($color) {
-  @return color.red($color), color.green($color), color.blue($color);
+  @return color.channel($color, 'red'), color.channel($color, 'green'),
+    color.channel($color, 'blue');
 }
 
 @mixin light-mode {

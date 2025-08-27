@@ -1,5 +1,5 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
 
 .aui-button-group {
   display: inline-block;
@@ -9,13 +9,13 @@
     z-index: 1;
 
     &:first-child {
-      border-top-left-radius: use-var(border-radius-m);
-      border-bottom-left-radius: use-var(border-radius-m);
+      border-top-left-radius: var.use-var(border-radius-m);
+      border-bottom-left-radius: var.use-var(border-radius-m);
     }
 
     &:last-child {
-      border-top-right-radius: use-var(border-radius-m);
-      border-bottom-right-radius: use-var(border-radius-m);
+      border-top-right-radius: var.use-var(border-radius-m);
+      border-bottom-right-radius: var.use-var(border-radius-m);
     }
 
     &:hover,
@@ -42,5 +42,5 @@
 aui-button-group + aui-button-group > .aui-button-group,
 aui-button-group + .aui-button,
 .aui-button + aui-button-group > .aui-button-group {
-  margin-left: use-var(spacing-m);
+  margin-left: var.use-var(spacing-m);
 }

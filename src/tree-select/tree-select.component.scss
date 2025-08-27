@@ -1,0 +1,31 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+@use '../select/option-container' as optionContainer;
+
+@include optionContainer.option-container(aui-tree-node-container, s);
+
+.aui-tree-select {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+
+  @include mixin.input-field-indicator;
+
+  &:not(.isDisabled) {
+    &:hover .aui-input {
+      border-color: var.use-rgb(primary);
+    }
+  }
+
+  &__input.aui-input[readonly]:not([disabled]) {
+    background-color: var.use-rgb(n-9);
+    cursor: text;
+  }
+}
+
+aui-tree-select.ng-invalid.ng-dirty,
+.ng-submitted aui-tree-select.ng-invalid {
+  .aui-input {
+    @include mixin.input-error;
+  }
+}

@@ -1,0 +1,164 @@
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+@use 'sass:map';
+
+$form-item-width: (
+  large: (
+    width: var.use-var(form-item-width-l),
+  ),
+  medium: (
+    width: var.use-var(form-item-width-m),
+  ),
+  small: (
+    width: var.use-var(form-item-width-s),
+  ),
+);
+
+.aui-form-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var.use-var(spacing-xl);
+  @include mixin.text-set(m, main);
+
+  &--top {
+    flex-direction: column;
+
+    .aui-form-item__label {
+      line-height: var.use-var(line-height-m);
+
+      &-wrapper {
+        line-height: var.use-var(line-height-m);
+        margin-bottom: var.use-var(spacing-s);
+
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__label-wrapper {
+    display: flex;
+    align-items: center;
+    line-height: var.use-var(inline-height-m);
+    flex-shrink: 0;
+    padding-right: var.use-var(spacing-m);
+    overflow: hidden;
+
+    &--required .aui-form-item__label:before {
+      content: '*';
+      color: var.use-rgb(red);
+      margin-right: var.use-var(spacing-s);
+    }
+
+    &.hasLabel:after {
+      content: ':';
+      align-self: flex-start;
+      margin-left: var.use-var(spacing-xs);
+    }
+
+    &--left {
+      justify-content: flex-start;
+
+      .aui-form-item__label {
+        text-align: start;
+      }
+    }
+
+    &--right {
+      justify-content: flex-end;
+
+      .aui-form-item__label {
+        text-align: end;
+      }
+    }
+  }
+
+  &__label {
+    display: block;
+    line-height: var.use-var(line-height-s);
+  }
+
+  &__container {
+    width: 100%;
+    min-width: 0;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    min-height: var.use-var(inline-height-m);
+
+    @each $key in large medium small {
+      $map: map.get($form-item-width, $key);
+      &--#{$key} {
+        .aui-form-item__control {
+          flex: 1;
+          max-width: map.get($map, width);
+        }
+      }
+    }
+  }
+
+  &__content + &__hint-wrapper,
+  &__content + &__error-wrapper {
+    margin-top: var.use-var(spacing-s);
+  }
+
+  &__hint-wrapper,
+  &__error-wrapper {
+    @include mixin.text-set(s);
+  }
+
+  &__hint-wrapper {
+    color: var.use-text-color(help);
+  }
+
+  &__error-wrapper {
+    color: var.use-rgb(red);
+  }
+
+  &__addon-wrapper {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: content-box;
+    height: var.use-var(inline-height-m);
+    min-width: var.use-var(icon-size-m);
+    padding-left: var.use-var(spacing-m);
+    color: var.use-rgb(n-4);
+    font-size: var.use-var(font-size-m);
+
+    aui-icon {
+      font-size: var.use-var(icon-size-m);
+    }
+  }
+
+  &.isPlain & {
+    &__label-wrapper {
+      line-height: var.use-var(line-height-m);
+
+      &--required .aui-form-item__label:before {
+        display: none;
+      }
+    }
+
+    &__content {
+      min-height: var.use-var(line-height-m);
+    }
+
+    &__addon-wrapper {
+      height: var.use-var(line-height-m);
+    }
+  }
+}
+
+.aui-form--inline {
+  display: flex;
+
+  .aui-form-item {
+    margin-bottom: 0;
+    margin-right: var.use-var(spacing-m);
+  }
+}

@@ -1,0 +1,17 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+
+.aui-time-picker {
+  display: inline-block;
+  position: relative;
+  width: var.use-var(form-item-width-s);
+
+  @include mixin.input-field-indicator;
+}
+
+aui-time-picker.ng-invalid.ng-dirty,
+.ng-submitted aui-time-picker.ng-invalid {
+  .aui-input {
+    @include mixin.input-error;
+  }
+}

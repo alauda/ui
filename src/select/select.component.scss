@@ -1,0 +1,59 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+@use './option-container' as optionContainer;
+
+@include optionContainer.option-container(aui-option-container);
+
+.aui-select {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+
+  @include mixin.input-field-indicator;
+
+  &__label-container.aui-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-flex;
+    align-items: center;
+    pointer-events: none;
+    background-color: transparent;
+    border-color: transparent;
+
+    &[readonly] {
+      pointer-events: auto;
+    }
+  }
+
+  &.isFilterable.isOpened &__label-container.aui-input {
+    color: var.use-rgb(n-4);
+  }
+
+  &__label {
+    width: 100%;
+    @include mixin.text-overflow;
+  }
+
+  &__input-inaction {
+    background-color: var.use-rgb(main-bg) !important;
+    border-color: var.use-rgb(n-7) !important;
+    cursor: text;
+
+    &:focus {
+      border-color: var.use-rgb(primary);
+    }
+  }
+
+  &__input[disabled] {
+    background-color: var.use-rgb(n-8);
+    border-color: var.use-rgb(n-7);
+  }
+}
+
+aui-select.ng-invalid.ng-dirty,
+.ng-submitted aui-select.ng-invalid {
+  .aui-input {
+    @include mixin.input-error;
+  }
+}

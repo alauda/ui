@@ -1,18 +1,18 @@
-@import 'base-var';
-@import 'mixin';
-@import 'theme-preset';
-@import 'node_modules/@angular/cdk/overlay-prebuilt';
+@use 'var' as var;
+@use 'mixin' as mixin;
+@use 'theme-preset' as preset;
+@use '../../node_modules/@angular/cdk/overlay-prebuilt' as *;
 
-@include theme-light {
-  @include light-mode;
+@include mixin.theme-light {
+  @include preset.light-mode;
 }
 
-@include theme-dark {
-  @include dark-mode;
+@include mixin.theme-dark {
+  @include preset.dark-mode;
 }
 
 :root {
-  @include component-size;
+  @include preset.component-size;
 }
 
 body {
@@ -24,21 +24,21 @@ body {
 }
 
 button {
-  @include text-set(m);
+  @include mixin.text-set(m);
 }
 
 a {
-  color: use-rgb(primary);
+  color: var.use-rgb(primary);
   text-decoration: none;
 
   &:hover {
-    color: use-rgb(p-1);
+    color: var.use-rgb(p-1);
     text-decoration: underline;
   }
 
   &:active,
   &:focus {
-    color: use-rgb(p-0);
+    color: var.use-rgb(p-0);
     text-decoration: underline;
   }
 }
@@ -58,14 +58,14 @@ a {
 
 aui-icon.aui-tooltip-copy {
   span + & {
-    margin-left: use-var(spacing-s);
+    margin-left: var.use-var(spacing-s);
   }
 
   &:hover {
-    color: use-rgb(primary);
+    color: var.use-rgb(primary);
   }
 }
 
 .aui-tab-label__content aui-icon:first-child .aui-icon {
-  margin-right: use-var(spacing-s);
+  margin-right: var.use-var(spacing-s);
 }

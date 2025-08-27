@@ -1,0 +1,103 @@
+@use '../theme/mixin' as mixin;
+@use '../theme/var' as var;
+
+$page-content-padding: 20px;
+
+aui-anchor {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.aui-anchor {
+  padding: 30px 16px;
+  border-left: 1px solid var.use-rgb(border);
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate3d(-50%, -50%, 0);
+    @include mixin.point(5px, var.use-rgb(border));
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate3d(-50%, 50%, 0);
+    @include mixin.point(5px, var.use-rgb(border));
+  }
+
+  $p: &;
+
+  &__label {
+    scroll-margin-top: $page-content-padding;
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: 12px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 9px;
+      left: -16px;
+      transform: translate3d(-50%, -50%, 0);
+      box-sizing: border-box;
+      border: 1px solid var.use-text-color(help);
+      @include mixin.point(9px, var.use-rgb(n-1));
+    }
+
+    a {
+      color: var.use-text-color(main);
+
+      &:hover {
+        color: var.use-rgb(primary);
+      }
+    }
+
+    $p: &;
+
+    &.active {
+      &:before {
+        border: 0;
+        @include mixin.point(9px, var.use-rgb(primary));
+      }
+
+      &,
+      & & {
+        a {
+          color: var.use-rgb(primary);
+        }
+      }
+
+      #{$p}:not(.active) a {
+        color: var.use-text-color(secondary);
+      }
+    }
+
+    & & {
+      margin-top: 4px;
+      margin-bottom: 0;
+      margin-left: 14px;
+      font-size: 10px;
+
+      &:before {
+        display: none;
+      }
+
+      a {
+        color: var.use-text-color(help);
+
+        &:hover {
+          color: var.use-rgb(primary);
+        }
+      }
+    }
+  }
+}

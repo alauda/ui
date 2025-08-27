@@ -1,0 +1,49 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
+
+import * as basic from './basic.stories';
+
+<Meta title="Example/TimePicker" />
+
+# TimePicker
+
+时间选择器
+
+## 基本
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+<Controls of={basic.Basic} />
+
+## TimePicker Inputs
+
+| 名称           | 类型                                         | 默认值               | 描述                             |
+| -------------- | -------------------------------------------- | -------------------- | -------------------------------- |
+| format         | string                                       | 'HH:mm:ss'           | 日期格式                         |
+| size           | ComponentSize                                | ComponentSize.Medium | input 大小                       |
+| placeholder    | string                                       | -                    | 自定义 placeholder               |
+| clearable      | boolean                                      | true                 | 可否清除                         |
+| showIcon       | boolean                                      | true                 | 是否显示图标                     |
+| hourStep       | number                                       | 1                    | 小时步长                         |
+| minuteStep     | number                                       | 1                    | 分钟步长                         |
+| secondStep     | number                                       | 1                    | 秒步长                           |
+| footerTemplate | TemplateRef                                  | null                 | footer 模板，不传显示默认 footer |
+| disableHours   | () => number[]                               | ()=>[]               | 禁用的小时                       |
+| disableMinutes | (hour?: number) => number[]                  | ()=>[]               | 禁用的分钟                       |
+| disableSeconds | (hour?: number, minute?: number) => number[] | ()=>[]               | 禁用的秒钟                       |
+
+## TimePicker Outputs
+
+| 名称          | 类型    | 默认值 | 描述                  |
+| ------------- | ------- | ------ | --------------------- |
+| visibleChange | boolean | -      | 打开或关闭事件 output |
+
+### TimePicker 表单输入数据格式
+
+`Dayjs.ConfigType | TimePickerModel`
+
+### TimePicker 表单输出数据格式
+
+`TimePickerModel`

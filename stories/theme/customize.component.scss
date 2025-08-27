@@ -1,0 +1,9 @@
+@use 'sass:color';
+
+.picker-container {
+  display: flex;
+
+  aui-form-item + aui-form-item {
+    margin-left: 32px;
+  }
+}

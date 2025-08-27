@@ -1,0 +1,46 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+
+.aui-color-picker {
+  display: inline-block;
+  padding: 3px;
+  width: var.use-var(inline-height-m);
+  height: var.use-var(inline-height-m);
+  border: 1px solid var.use-rgb(n-7);
+  border-radius: var.use-var(border-radius-m);
+  background-color: var.use-rgb(main-bg);
+  color: var.use-text-color(main);
+  outline: none;
+  cursor: pointer;
+  @include mixin.text-set(m);
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-moz-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-webkit-color-swatch {
+    border: none;
+    border-radius: var.use-var(border-radius-m);
+  }
+
+  &::-moz-color-swatch {
+    border: none;
+    border-radius: var.use-var(border-radius-m);
+  }
+
+  &:hover,
+  &:focus {
+    border-color: var.use-rgb(primary);
+  }
+
+  &[disabled] {
+    background-color: var.use-rgb(n-8);
+    border-color: var.use-rgb(n-7) !important;
+    color: var.use-text-color(disabled);
+    cursor: not-allowed;
+  }
+}

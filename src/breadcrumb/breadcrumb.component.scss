@@ -1,0 +1,16 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+
+.aui-breadcrumb {
+  display: flex;
+  align-items: center;
+  @include mixin.text-set(m, secondary);
+
+  &__separator {
+    margin: 0 var.use-var(spacing-s);
+  }
+
+  aui-breadcrumb-item:last-child #{&}__separator {
+    display: none;
+  }
+}

@@ -1,0 +1,19 @@
+.aui-radio-group {
+  display: inline-flex;
+
+  &--row {
+    align-items: center;
+  }
+
+  &--row:has(aui-radio-button) {
+    align-items: normal;
+  }
+
+  &--column {
+    flex-direction: column;
+
+    .aui-radio {
+      margin-right: 0;
+    }
+  }
+}

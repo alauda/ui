@@ -1,7 +1,8 @@
 const path = require('node:path');
+const fs = require('node:fs');
 
 const gulp = require('gulp');
-const sass = require('gulp-dart-sass');
+const sass = require('sass');
 const ngPackagr = require('ng-packagr');
 
 const { getBuildDest, copyDist } = require('./utils');
@@ -15,6 +16,8 @@ const releaseDest = isDebug ? require(debugNgPackage).dest : 'release';
 
 function copyResources() {
   const themeDest = path.resolve(releaseDest, 'theme');
+  
+  // 复制 SCSS 源文件
   gulp
     .src([
       'src/theme/_base-var.scss',
@@ -25,10 +28,33 @@ function copyResources() {
     ])
     .pipe(gulp.dest(themeDest));
 
+  // 复制 Angular CDK overlay CSS 文件
   gulp
-    .src('src/theme/style.scss')
-    .pipe(sass().on('error', sass.logError))
+    .src('node_modules/@angular/cdk/overlay-prebuilt.css')
     .pipe(gulp.dest(themeDest));
+
+  // 使用现代 sass API 编译 style.scss（移除 CDK 导入）
+  try {
+    // 临时创建一个不包含 CDK 导入的版本
+    const styleContent = fs.readFileSync('src/theme/style.scss', 'utf8');
+    const tempStyleContent = styleContent.replace(/@use 'node_modules\/@angular\/cdk\/overlay-prebuilt';\n?/, '');
+    
+    const result = sass.compileString(tempStyleContent, {
+      style: 'compressed',
+      loadPaths: ['src/theme', 'node_modules']
+    });
+    
+    // 确保目标目录存在
+    if (!fs.existsSync(themeDest)) {
+      fs.mkdirSync(themeDest, { recursive: true });
+    }
+    
+    // 写入编译后的 CSS
+    fs.writeFileSync(path.join(themeDest, 'style.css'), result.css);
+  } catch (error) {
+    console.error('Sass compilation error:', error);
+    process.exit(1);
+  }
 }
 
 const packagr = ngPackagr
@@ -50,6 +76,6 @@ if (watch) {
     }
   });
 } else {
-  // eslint-disable-next-line unicorn/prefer-top-level-await
+   
   packagr.build().then(copyResources);
 }

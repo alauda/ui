@@ -1,0 +1,82 @@
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+@use '../../checkbox/mixin' as checkboxMixin;
+
+@mixin option($block) {
+  .#{$block} {
+    display: flex;
+    align-items: center;
+    color: var.use-text-color(main);
+    font-weight: var.use-var(font-weight-normal);
+    cursor: pointer;
+
+    &__content {
+      @include mixin.text-overflow;
+    }
+
+    &--large {
+      padding: calc(
+          (#{var.use-var(inline-height-l)} - #{var.use-var(line-height-l)}) / 2
+        )
+        calc(var.use-var(inline-padding-xs) + 1px);
+      line-height: var.use-var(line-height-l);
+      font-size: var.use-var(font-size-l);
+    }
+
+    &--medium {
+      padding: calc(
+          (#{var.use-var(inline-height-m)} - #{var.use-var(line-height-m)}) / 2
+        )
+        calc(var.use-var(inline-padding-xs) + 1px);
+      line-height: var.use-var(line-height-m);
+      font-size: var.use-var(font-size-m);
+    }
+
+    &--small {
+      padding: calc(
+          (#{var.use-var(inline-height-s)} - #{var.use-var(line-height-m)}) / 2
+        )
+        calc(var.use-var(inline-padding-xs) + 1px);
+      line-height: var.use-var(line-height-m);
+      font-size: var.use-var(font-size-m);
+    }
+
+    &--mini {
+      padding: calc(
+          (#{var.use-var(inline-height-xs)} - #{var.use-var(line-height-s)}) / 2
+        )
+        calc(var.use-var(inline-padding-xs) + 1px);
+      line-height: var.use-var(line-height-s);
+      font-size: var.use-var(font-size-s);
+    }
+
+    &:not(.isMulti).isSelected {
+      color: var.use-rgb(primary);
+      background-color: var.use-rgb(p-6);
+    }
+
+    &:hover,
+    &.isFocused {
+      background-color: var.use-rgb(p-6);
+    }
+
+    &.isDisabled {
+      color: var.use-rgb(n-6);
+      cursor: not-allowed;
+    }
+
+    @include checkboxMixin.pointer('isSelected');
+
+    &:not(.isDisabled):hover &__pointer,
+    &:not(.isDisabled).isFocused &__pointer {
+      border-color: var.use-rgb(primary);
+    }
+
+    &__divider {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: var.use-rgb(divider);
+    }
+  }
+}

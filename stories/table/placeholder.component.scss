@@ -1,0 +1,9 @@
+@use '../../src/theme/pattern' as pattern;
+
+:host::ng-deep {
+  @include pattern.table-placeholder('.placeholder');
+}
+
+aui-table {
+  margin-bottom: 20px;
+}

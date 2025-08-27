@@ -1,0 +1,101 @@
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+
+$block: 'aui-paginator';
+$input-width: 80px;
+
+.#{$block} {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  @include mixin.text-set(m);
+
+  .aui-button {
+    width: var.use-var(line-height-xl);
+    height: var.use-var(line-height-xl);
+    border: unset;
+
+    &--default {
+      background-color: transparent;
+    }
+
+    .aui-button__content {
+      padding: unset;
+    }
+  }
+
+  &__fast-navigator {
+    &[hidden] {
+      display: none;
+    }
+
+    .aui-icon {
+      margin: 0;
+    }
+
+    aui-icon:last-child {
+      display: none;
+    }
+
+    &:hover aui-icon {
+      &:first-child {
+        display: none;
+      }
+
+      &:last-child {
+        display: inline;
+      }
+    }
+  }
+
+  &__sizes {
+    display: inline-flex;
+    align-items: center;
+
+    .aui-select {
+      width: $input-width;
+      margin-right: var.use-var(spacing-s);
+    }
+  }
+
+  &__jumper {
+    .aui-input {
+      width: $input-width;
+    }
+
+    span + input {
+      margin-left: var.use-var(spacing-m);
+    }
+
+    input + span {
+      margin-left: var.use-var(spacing-s);
+    }
+  }
+
+  &__navigator.aui-button {
+    background-color: var.use-rgb(n-8);
+
+    aui-icon {
+      font-size: var.use-var(icon-size-m);
+    }
+
+    &:hover:not([disabled]) {
+      background-color: var.use-rgb(p-6);
+    }
+  }
+
+  &__pager {
+    border: 1px solid var.use-rgb(n-7);
+    padding: 3px;
+    border-radius: var.use-var(border-radius-m);
+    background-color: var.use-rgb(main-bg);
+  }
+
+  &__layout {
+    display: inline-block;
+
+    + .#{$block}__layout {
+      margin-left: var.use-var(spacing-l);
+    }
+  }
+}

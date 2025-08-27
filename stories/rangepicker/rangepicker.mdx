@@ -1,0 +1,69 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import * as basic from './basic.stories';
+import * as disableSomeDay from './disable-some-day.stories';
+import * as disabled from './disabled.stories';
+import * as format from './format.stories';
+import * as withoutTime from './without-time.stories';
+
+<Meta title="Example/RangePicker" />
+
+# RangePicker
+
+## Range Picker
+
+<Canvas
+  of={basic.Basic}
+  meta={basic}
+></Canvas>
+
+## Without time
+
+<Canvas
+  of={withoutTime.WithoutTime}
+  meta={withoutTime}
+></Canvas>
+
+## Disabled
+
+<Canvas
+  of={disabled.Disabled}
+  meta={disabled}
+></Canvas>
+
+## Custom format
+
+<Canvas
+  of={format.CustomFormat}
+  meta={format}
+></Canvas>
+
+## Disable some day
+
+<Canvas
+  of={disableSomeDay.DisableSomeDay}
+  meta={disableSomeDay}
+></Canvas>
+
+## RangePicker Inputs
+
+| 名称         | 类型                                           | 默认值               | 描述                   |
+| ------------ | ---------------------------------------------- | -------------------- | ---------------------- |
+| clearable    | boolean                                        | true                 | 是否显示清除按钮       |
+| clearText    | string                                         | 'clear'              | 清除按钮文案           |
+| format       | string                                         | 'YYYY-MM-DD'         | 日期显示格式           |
+| showTime     | boolean                                        | false                | 是否显示选择时间       |
+| size         | ComponentSize                                  | ComponentSize.Medium | 触发器大小             |
+| weekStartDay | number                                         | 0                    | 面板的第一个日期为周几 |
+| disabledDate | `(date: Dayjs, type: DateNavRange) => boolean` | () => false          | 禁用某些日期           |
+| disabledTime | `{left: DisabledTimeFn,right:DisabledTimeFn}`  | null                 | 禁用某些时间           |
+| minDate      | Dayjs                                          | null                 | 最小日期               |
+| maxDate      | Dayjs                                          | null                 | 最大日期               |
+
+### RangePicker 表单输入数据格式
+
+`[DayJs,Dayjs]`
+
+### RangePicker 表单输出数据格式
+
+`[DayJs,Dayjs]`

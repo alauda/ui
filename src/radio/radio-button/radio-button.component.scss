@@ -1,0 +1,183 @@
+@use '../../theme/mixin' as mixin;
+@use '../../theme/var' as var;
+
+$block: 'aui-radio-button';
+
+#{$block} {
+  display: flex;
+  min-height: 100%;
+}
+
+.#{$block} {
+  font-size: 0;
+  margin-left: -1px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  color: var.use-rgb(primary);
+  border: 1px solid var.use-rgb(primary);
+  background-color: var.use-rgb(button-bg);
+  overflow: hidden;
+  z-index: 1;
+  @include mixin.transition;
+
+  &.cdk-keyboard-focused {
+    z-index: 2;
+    @include mixin.outline-shadow(primary);
+  }
+
+  &:hover {
+    background-color: var.use-rgb(p-7);
+  }
+
+  &.isDisabled {
+    z-index: 0;
+    color: var.use-rgb(p-4);
+    border-color: var.use-rgb(p-4);
+    background-color: var.use-rgb(p-7);
+
+    .#{$block}__label {
+      cursor: not-allowed;
+    }
+  }
+
+  &:not(.isPlain) {
+    &.isChecked {
+      z-index: 2;
+      color: white;
+      background-color: var.use-rgb(primary);
+    }
+
+    &.isChecked.isDisabled {
+      border-color: var.use-rgb(p-4);
+      background-color: var.use-rgb(p-4);
+
+      @include mixin.theme-dark {
+        color: var.use-rgb(n-4);
+      }
+    }
+  }
+
+  &.isPlain {
+    color: var.use-rgb(n-1);
+    border: 1px solid var.use-rgb(n-7);
+    background-color: var.use-rgb(button-bg);
+
+    &:hover,
+    &.isChecked {
+      z-index: 2;
+
+      &:not(.isDisabled) {
+        color: var.use-rgb(primary);
+        border-color: var.use-rgb(primary);
+      }
+    }
+
+    &.isDisabled {
+      color: var.use-rgb(n-6);
+      border-color: var.use-rgb(n-7);
+
+      &.isChecked {
+        color: var.use-rgb(p-4);
+        border-color: var.use-rgb(p-4);
+
+        .#{$block}__pointer {
+          background-image: linear-gradient(
+            to bottom right,
+            transparent 50%,
+            var.use-rgb(p-4) 50%
+          );
+        }
+      }
+    }
+  }
+
+  &__pointer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: white;
+    background-image: linear-gradient(
+      to bottom right,
+      transparent 50%,
+      var.use-rgb(primary) 50%
+    );
+
+    aui-icon {
+      position: absolute;
+      line-height: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    @include mixin.text-set(m);
+  }
+
+  &--medium {
+    .#{$block} {
+      &__pointer {
+        width: var.use-var(icon-size-m);
+        height: var.use-var(icon-size-m);
+        font-size: 10px;
+      }
+
+      &__label {
+        min-height: calc(#{var.use-var(inline-height-m)} - 2px);
+        padding: calc(
+            (
+                #{var.use-var(inline-height-m)} - #{var.use-var(line-height-m)} -
+                  2px
+              ) / 2
+          )
+          var.use-var(inline-padding-m);
+      }
+    }
+  }
+
+  &--small {
+    .#{$block} {
+      &__pointer {
+        width: var.use-var(icon-size-s);
+        height: var.use-var(icon-size-s);
+        font-size: 7px;
+      }
+
+      &__label {
+        min-height: calc(#{var.use-var(inline-height-s)} - 2px);
+        padding: calc(
+            (
+                #{var.use-var(inline-height-s)} - #{var.use-var(line-height-s)} -
+                  2px
+              ) / 2
+          )
+          var.use-var(inline-padding-s);
+      }
+    }
+  }
+}
+
+#{$block}:first-child {
+  .#{$block} {
+    margin-left: 0;
+    border-top-left-radius: var.use-var(border-radius-m);
+    border-bottom-left-radius: var.use-var(border-radius-m);
+  }
+}
+
+#{$block}:last-child {
+  .#{$block} {
+    border-top-right-radius: var.use-var(border-radius-m);
+    border-bottom-right-radius: var.use-var(border-radius-m);
+  }
+}
