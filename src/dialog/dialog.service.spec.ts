@@ -53,7 +53,7 @@ describe('DialogService', () => {
     fixture.detectChanges();
 
     expect(ocEl.querySelector('.aui-dialog')).not.toBeNull();
-    expect(ocEl.querySelector('.aui-dialog').classList).toContain(
+    expect(ocEl.querySelector('.aui-dialog')?.classList).toContain(
       'aui-dialog--large',
     );
     expect(
@@ -69,7 +69,9 @@ describe('DialogService', () => {
     fixture.detectChanges();
 
     expect(ocEl.querySelector('.aui-dialog')).not.toBeNull();
-    expect(ocEl.querySelector('.aui-dialog').classList).toContain('test-class');
+    expect(ocEl.querySelector('.aui-dialog')?.classList).toContain(
+      'test-class',
+    );
   });
 
   it('should be closed by click cancel button', () => {
@@ -82,7 +84,7 @@ describe('DialogService', () => {
     });
 
     fixture.detectChanges();
-    ocEl.querySelector('#cancel').dispatchEvent(new Event('click'));
+    ocEl.querySelector('#cancel')?.dispatchEvent(new Event('click'));
   });
 
   it('should open dialog with template portal', () => {
@@ -90,7 +92,7 @@ describe('DialogService', () => {
     dialogService.open(ins.templateRef, { noAnimation: true });
     fixture.detectChanges();
 
-    expect(ocEl.querySelector('.aui-dialog button').innerHTML).toContain(
+    expect(ocEl.querySelector('.aui-dialog button')?.innerHTML).toContain(
       'close',
     );
   });
@@ -108,7 +110,7 @@ describe('DialogService', () => {
           resolve();
         });
       fixture.detectChanges();
-      ocEl.querySelector('#close').dispatchEvent(new Event('click'));
+      ocEl.querySelector('#close')?.dispatchEvent(new Event('click'));
       fixture.detectChanges();
     }));
 
@@ -128,7 +130,7 @@ describe('DialogService', () => {
 
       ocEl
         .querySelector('.aui-confirm-dialog__confirm-button')
-        .dispatchEvent(new Event('click'));
+        ?.dispatchEvent(new Event('click'));
     })));
 
   it('should open confirm dialog and invoke cancel callback', () =>
@@ -147,14 +149,14 @@ describe('DialogService', () => {
       fixture.detectChanges();
 
       expect(
-        ocEl.querySelector('.aui-confirm-dialog__title').innerHTML,
+        ocEl.querySelector('.aui-confirm-dialog__title')?.innerHTML,
       ).toContain('custom title');
       expect(
-        ocEl.querySelector('.aui-confirm-dialog__content').innerHTML,
+        ocEl.querySelector('.aui-confirm-dialog__content')?.innerHTML,
       ).toContain('custom content');
       ocEl
         .querySelector('.aui-confirm-dialog__cancel-button')
-        .dispatchEvent(new Event('click'));
+        ?.dispatchEvent(new Event('click'));
     }));
 
   it('should before confirm work correctly', fakeAsync(() =>
@@ -177,7 +179,8 @@ describe('DialogService', () => {
 
       const confirmBtn: HTMLButtonElement = ocEl.querySelector(
         '.aui-confirm-dialog__confirm-button',
-      );
+      )!;
+      console.log('confirm', confirmBtn);
       confirmBtn.dispatchEvent(new Event('click'));
       fixture.detectChanges();
 
@@ -205,7 +208,7 @@ describe('DialogService', () => {
 
       const confirmBtn: HTMLButtonElement = ocEl.querySelector(
         '.aui-confirm-dialog__confirm-button',
-      );
+      )!;
       confirmBtn.dispatchEvent(new Event('click'));
       fixture.detectChanges();
 
@@ -236,7 +239,7 @@ describe('DialogService', () => {
 
       const cancelBtn: HTMLButtonElement = ocEl.querySelector(
         '.aui-confirm-dialog__cancel-button',
-      );
+      )!;
       cancelBtn.dispatchEvent(new Event('click'));
       fixture.detectChanges();
 
@@ -290,10 +293,10 @@ describe('DialogService', () => {
 
     const confirmBtn: HTMLButtonElement = ocEl.querySelector(
       '.aui-confirm-dialog__confirm-button',
-    );
+    )!;
     const cancelBtn: HTMLButtonElement = ocEl.querySelector(
       '.aui-confirm-dialog__cancel-button',
-    );
+    )!;
     confirmBtn.dispatchEvent(new Event('click'));
     fixture.detectChanges();
 
@@ -331,7 +334,7 @@ describe('DialogService', () => {
       expect(ocEl.querySelector('.content-template')).toBeTruthy();
       ocEl
         .querySelector('.aui-confirm-dialog__confirm-button')
-        .dispatchEvent(new Event('click'));
+        ?.dispatchEvent(new Event('click'));
     })));
 
   it('should open confirm dialog with component content', fakeAsync(() =>
@@ -350,7 +353,7 @@ describe('DialogService', () => {
       expect(ocEl.querySelector('content-component')).toBeTruthy();
       ocEl
         .querySelector('.aui-confirm-dialog__confirm-button')
-        .dispatchEvent(new Event('click'));
+        ?.dispatchEvent(new Event('click'));
     })));
 });
 
