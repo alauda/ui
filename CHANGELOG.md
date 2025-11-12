@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.1.1
+
+### Patch Changes
+
+- [#591](https://github.com/alauda/ui/pull/591) [`7c1847a`](https://github.com/alauda/ui/commit/7c1847a7b89e5584b43675ab407d59b667119c25) Thanks [@zChanges](https://github.com/zChanges)! - fix: optimize tags input
+
 ## 9.1.0
 
 ### Minor Changes
