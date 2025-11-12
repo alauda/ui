@@ -5,7 +5,8 @@
 
 @mixin component-style($block) {
   .#{$block} {
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
     position: relative;
     width: 100%;
     color: use-text-color(main);
@@ -115,6 +116,7 @@
     }
 
     .aui-tag#{&}__input {
+      flex: 1 0 auto;
       margin-right: 0;
       padding: 0;
       width: 1em;
