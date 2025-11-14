@@ -6,7 +6,6 @@ import {
 } from '@angular/cdk/portal';
 import {
   ApplicationRef,
-  ComponentFactoryResolver,
   ComponentRef,
   ElementRef,
   Injector,
@@ -32,7 +31,6 @@ export abstract class BaseMessage<
     protected overlay: Overlay,
     protected injector: Injector,
     protected applicationRef: ApplicationRef,
-    protected cfr: ComponentFactoryResolver,
     protected overlayPaneClassName: string,
     protected wrapperClass: ComponentType<Wrapper>,
     protected componentClass: ComponentType<Component>,
@@ -116,7 +114,6 @@ export abstract class BaseMessage<
   protected initComponentRef(config: Config): ComponentRef<Component> {
     const portalHost = new DomPortalOutlet(
       this.wrapperInstance.elementRef.nativeElement,
-      this.cfr,
       this.applicationRef,
       this.injector,
     );

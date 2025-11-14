@@ -2,14 +2,7 @@ import {
   _DisposeViewRepeaterStrategy,
   _VIEW_REPEATER_STRATEGY,
 } from '@angular/cdk/collections';
-import {
-  CDK_TABLE,
-  CDK_TABLE_TEMPLATE,
-  CdkTable,
-  _COALESCED_STYLE_SCHEDULER,
-  _CoalescedStyleScheduler,
-  CdkTableModule,
-} from '@angular/cdk/table';
+import { CDK_TABLE, CdkTable, CdkTableModule } from '@angular/cdk/table';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -38,9 +31,41 @@ export const tableBem = buildBem('aui-table');
   exportAs: 'auiTable',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['table.component.scss', 'table-scroll.scss'],
-  template:
-    CDK_TABLE_TEMPLATE +
-    '<ng-container auiTablePlaceholderOutlet></ng-container>',
+  template: `
+    <ng-content select="caption" />
+    <ng-content select="colgroup, col" />
+
+    <!--
+      Unprojected content throws a hydration error so we need this to capture it.
+      It gets removed on the client so it doesn't affect the layout.
+    -->
+    @if (_isServer) {
+      <ng-content />
+    }
+
+    @if (_isNativeHtmlTable) {
+      <thead role="rowgroup">
+        <ng-container headerRowOutlet />
+      </thead>
+      <tbody
+        class="mdc-data-table__content"
+        role="rowgroup"
+      >
+        <ng-container rowOutlet />
+        <ng-container noDataRowOutlet />
+      </tbody>
+      <tfoot role="rowgroup">
+        <ng-container footerRowOutlet />
+      </tfoot>
+    } @else {
+      <ng-container headerRowOutlet />
+      <ng-container rowOutlet />
+      <ng-container noDataRowOutlet />
+      <ng-container footerRowOutlet />
+    }
+    <ng-container auiTablePlaceholderOutlet></ng-container>
+  `,
+
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
@@ -52,12 +77,8 @@ export const tableBem = buildBem('aui-table');
       provide: _VIEW_REPEATER_STRATEGY,
       useClass: _DisposeViewRepeaterStrategy,
     },
-    {
-      provide: _COALESCED_STYLE_SCHEDULER,
-      useClass: _CoalescedStyleScheduler,
-    },
   ],
-  imports: [CdkTableModule, TablePlaceholderOutletDirective],
+  imports: [CdkTableModule],
 })
 export class TableComponent<T>
   extends CdkTable<T>

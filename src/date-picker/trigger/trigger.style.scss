@@ -1,5 +1,5 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
 
 $block: aui-date-picker-trigger;
 
@@ -16,7 +16,7 @@ aui-date-picker {
     &.ng-submitted,
     &.ng-dirty {
       .#{$block}__container {
-        @include input-error;
+        @include mixin.input-error;
       }
     }
   }
@@ -32,28 +32,28 @@ aui-date-picker-trigger {
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
-    border: 1px solid use-rgb(n-7);
+    border: 1px solid var.use-rgb(n-7);
     position: relative;
     width: 100%;
-    background-color: use-rgb(n-9);
-    border-radius: use-var(border-radius-m);
-    @include text-set(m);
+    background-color: var.use-rgb(n-9);
+    border-radius: var.use-var(border-radius-m);
+    @include mixin.text-set(m);
 
     &:hover:not(.disabled) {
-      border-color: use-rgb(primary);
+      border-color: var.use-rgb(primary);
       cursor: pointer;
     }
 
     // trigger有自己的border，隐藏了input的border，修正input由于border-box设定引起的高度差异
     @each $name, $height in $height-mapper {
       .aui-input--#{$name} {
-        height: calc(#{use-var(inline-height-#{$height})} - 2px);
+        height: calc(#{var.use-var(inline-height-#{$height})} - 2px);
       }
     }
 
     &.isFocused:not(.disabled) {
       border-color: use-rgb(primary);
-      @include outline-shadow(primary);
+      @include mixin.outline-shadow(primary);
     }
 
     .aui-input {
@@ -74,11 +74,11 @@ aui-date-picker-trigger {
       .aui-input {
         background: transparent;
         cursor: not-allowed;
-        color: use-rgb(n-7);
+        color: var.use-rgb(n-7);
       }
 
-      background: use-rgb(n-8);
-      border: 1px solid use-rgb(n-7) !important;
+      background: var.use-rgb(n-8);
+      border: 1px solid var.use-rgb(n-7) !important;
 
       &:hover {
         cursor: not-allowed;
@@ -92,21 +92,21 @@ aui-date-picker-trigger {
     align-items: center;
 
     .placeholder {
-      color: use-rgb(n-6);
+      color: var.use-rgb(n-6);
     }
   }
 
   &__addon {
-    color: use-text-color(help);
+    color: var.use-text-color(help);
     margin-right: 8px;
-    font-size: use-var(icon-size-m);
-    width: use-var(icon-size-m);
-    height: use-var(icon-size-m);
-    line-height: use-var(icon-size-m);
+    font-size: var.use-var(icon-size-m);
+    width: var.use-var(icon-size-m);
+    height: var.use-var(icon-size-m);
+    line-height: var.use-var(icon-size-m);
 
     .clear {
       display: inline-flex;
-      @include clear-button;
+      @include mixin.clear-button;
     }
   }
 }

@@ -1,11 +1,10 @@
-@import '../theme/var';
-@import '../theme/mixin';
+@use '../theme/mixin' as mixin;
 
 .aui-breadcrumb__item {
   display: flex;
 
   .aui-breadcrumb__content {
     max-width: 224px;
-    @include text-overflow;
+    @include mixin.text-overflow;
   }
 }

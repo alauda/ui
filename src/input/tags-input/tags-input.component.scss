@@ -1,13 +1,11 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
-@import './mixin';
+@use './mixin' as mixin;
 
 $block: aui-tags-input;
 
-@include component-style(aui-tags-input);
+@include mixin.component-style(aui-tags-input);
 
 .#{$block} {
   &.withHeightLimit {
-    @include with-height-limit;
+    @include mixin.with-height-limit;
   }
 }

@@ -1,35 +1,39 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
-@import '../../input/tags-input/mixin';
-@import '../option/option-style';
-@import '../option-container';
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+@use '../../input/tags-input/mixin' as tagsInputMixin;
+@use '../option/option-style' as optionStyle;
+@use '../option-container' as optionContainer;
+@use 'sass:map';
 
-@include option('aui-option');
+@include optionStyle.option('aui-option');
 
-@include option-container(aui-option-container);
+@include optionContainer.option-container(aui-option-container);
 
 $block: aui-multi-select;
 
-@include component-style($block);
+@include tagsInputMixin.component-style($block);
 
 .#{$block} {
   @each $key in large medium small mini {
-    $map: map-get($input-size, $key);
+    $map: map.get(var.$input-size, $key);
     $padding: calc(
-      #{use-var(inline-padding-xs)} * 2 + #{map-get($map, icon-size)} + 1px
+      #{var.use-var(inline-padding-xs)} * 2 + #{map.get($map, icon-size)} + 1px
     );
 
     &--#{$key} {
-      min-height: map-get($map, height);
-      font-size: map-get($map, font-size);
-      line-height: map-get($map, line-height);
+      min-height: map.get($map, height);
+      font-size: map.get($map, font-size);
+      line-height: map.get($map, line-height);
       padding-right: calc(
-        #{use-var(inline-padding-xs)} * 2 + #{map-get($map, icon-size)} + 1px
+        #{var.use-var(inline-padding-xs)} *
+          2 +
+          #{map.get($map, icon-size)} +
+          1px
       );
 
       .#{$block}__suffix {
-        right: calc(#{use-var(inline-padding-xs)} + 1px);
-        font-size: map-get($map, icon-size);
+        right: calc(#{var.use-var(inline-padding-xs)} + 1px);
+        font-size: map.get($map, icon-size);
       }
     }
   }
@@ -40,22 +44,22 @@ $block: aui-multi-select;
     transform: translateY(-50%);
   }
 
-  @include input-field-indicator;
+  @include mixin.input-field-indicator;
 
   &.withHeightLimit {
-    @include with-height-limit;
+    @include tagsInputMixin.with-height-limit;
   }
 
   .aui-tag--info {
-    background-color: use-rgb(n-10);
+    background-color: var.use-rgb(n-10);
   }
 
   &.isReadonly {
     cursor: default;
 
     .aui-tag {
-      color: use-text-color(main);
-      background-color: use-rgb(n-10);
+      color: var.use-text-color(main);
+      background-color: var.use-rgb(n-10);
     }
   }
 }

@@ -7,12 +7,13 @@ import {
   Output,
   ViewEncapsulation,
   computed,
+  inject,
   signal,
 } from '@angular/core';
 import dayjs, { ConfigType, Dayjs } from 'dayjs';
 
 import { ButtonComponent } from '../../../button/button.component';
-import { I18nPipe, I18nService } from '../../../i18n';
+import { I18nService } from '../../../i18n';
 import { IconComponent } from '../../../icon/icon.component';
 import { buildBem } from '../../../internal/utils';
 import { DateNavRange, Side } from '../../date-picker.type';
@@ -27,7 +28,7 @@ const bem = buildBem('aui-calendar-header');
   styleUrls: ['./style.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgTemplateOutlet, ButtonComponent, IconComponent, I18nPipe],
+  imports: [NgIf, NgTemplateOutlet, ButtonComponent, IconComponent],
 })
 export class CalendarHeaderComponent {
   @Input()
@@ -76,6 +77,7 @@ export class CalendarHeaderComponent {
 
   private readonly $$dateNavRange = signal(DateNavRange.Month);
   private readonly $$anchor = signal(dayjs());
+  private readonly i18nService = inject(I18nService);
 
   bem = bem;
 
@@ -101,8 +103,6 @@ export class CalendarHeaderComponent {
     };
   });
 
-  constructor(private readonly i18nService: I18nService) {}
-
   // maxAvail > current date ：right btn hide
   // minAvail > current date ：left btn hide
   shouldShowNav(type: DateNavRange, side: Side) {
@@ -118,14 +118,14 @@ export class CalendarHeaderComponent {
       return type === DateNavRange.Month
         ? !this.anchor.subtract(1, 'month').isBefore(availValue, 'month')
         : type === DateNavRange.Year
-        ? !this.anchor.subtract(1, 'year').isBefore(availValue, 'year')
-        : false;
+          ? !this.anchor.subtract(1, 'year').isBefore(availValue, 'year')
+          : false;
     }
     return type === DateNavRange.Month
       ? !this.anchor.add(1, 'month').isAfter(availValue, 'month')
       : type === DateNavRange.Year
-      ? !this.anchor.add(1, 'year').isAfter(availValue, 'year')
-      : false;
+        ? !this.anchor.add(1, 'year').isAfter(availValue, 'year')
+        : false;
   }
 
   // @return isBetween|isEqual:0, isBefore:-1,isAfter:1
@@ -141,8 +141,8 @@ export class CalendarHeaderComponent {
     return constrainValue.isSame(range.start, MONTH)
       ? 0
       : constrainValue.isBefore(range.start, MONTH)
-      ? -1
-      : 1;
+        ? -1
+        : 1;
   }
 
   navHead(range: DateNavRange, value: number) {

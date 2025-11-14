@@ -1,23 +1,23 @@
-@import '../theme/var';
-@import '../theme/mixin';
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
 
 .aui-tree-node {
   &__content {
     display: flex;
-    height: use-var(inline-height-m);
-    line-height: use-var(inline-height-m);
-    font-size: use-var(font-size-m);
-    color: use-text-color(main);
+    height: var.use-var(inline-height-m);
+    line-height: var.use-var(inline-height-m);
+    font-size: var.use-var(font-size-m);
+    color: var.use-text-color(main);
     margin-left: 4px;
     cursor: pointer;
 
     aui-icon {
-      color: use-rgb(n-2);
+      color: var.use-rgb(n-2);
     }
 
     &.isLeftOnly {
       &:hover {
-        background-color: use-rgb(p-6);
+        background-color: var.use-rgb(p-6);
       }
     }
   }
@@ -27,36 +27,36 @@
     padding: 6px 8px;
     width: 100%;
     height: 100%;
-    @include text-set(m);
-    @include text-overflow;
+    @include mixin.text-set(m);
+    @include mixin.text-overflow;
 
     &:hover {
       background-color: use-rgb(p-6);
     }
 
     &.unselectable {
-      color: use-rgb(n-4);
+      color: var.use-rgb(n-4);
 
       aui-icon {
-        color: use-rgb(n-4);
+        color: var.use-rgb(n-4);
       }
     }
 
     &.isSelected {
-      color: use-rgb(primary);
-      background-color: use-rgb(p-6);
+      color: var.use-rgb(primary);
+      background-color: var.use-rgb(p-6);
 
       aui-icon {
-        color: use-rgb(primary);
+        color: var.use-rgb(primary);
       }
     }
 
     &.isDisabled {
-      color: use-rgb(n-6);
+      color: var.use-rgb(n-6);
       cursor: not-allowed;
 
       aui-icon {
-        color: use-rgb(n-6);
+        color: var.use-rgb(n-6);
       }
     }
   }
@@ -71,11 +71,11 @@
     }
 
     &:hover {
-      color: use-rgb(primary);
+      color: var.use-rgb(primary);
     }
   }
 
   &__children {
-    margin-left: calc(#{use-var(font-size-m)} + 6px);
+    margin-left: calc(#{var.use-var(font-size-m)} + 6px);
   }
 }

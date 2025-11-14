@@ -1,5 +1,5 @@
-@import '../../theme/mixin';
-@import '../../theme/var';
+@use '../../theme/mixin' as mixin;
+@use '../../theme/var' as var;
 
 $block: 'aui-radio-button';
 
@@ -14,27 +14,27 @@ $block: 'aui-radio-button';
   display: inline-flex;
   align-items: center;
   position: relative;
-  color: use-rgb(primary);
-  border: 1px solid use-rgb(primary);
-  background-color: use-rgb(button-bg);
+  color: var.use-rgb(primary);
+  border: 1px solid var.use-rgb(primary);
+  background-color: var.use-rgb(button-bg);
   overflow: hidden;
   z-index: 1;
-  @include transition;
+  @include mixin.transition;
 
   &.cdk-keyboard-focused {
     z-index: 2;
-    @include outline-shadow(primary);
+    @include mixin.outline-shadow(primary);
   }
 
   &:hover {
-    background-color: use-rgb(p-7);
+    background-color: var.use-rgb(p-7);
   }
 
   &.isDisabled {
     z-index: 0;
-    color: use-rgb(p-4);
-    border-color: use-rgb(p-4);
-    background-color: use-rgb(p-7);
+    color: var.use-rgb(p-4);
+    border-color: var.use-rgb(p-4);
+    background-color: var.use-rgb(p-7);
 
     .#{$block}__label {
       cursor: not-allowed;
@@ -45,47 +45,47 @@ $block: 'aui-radio-button';
     &.isChecked {
       z-index: 2;
       color: white;
-      background-color: use-rgb(primary);
+      background-color: var.use-rgb(primary);
     }
 
     &.isChecked.isDisabled {
-      @include theme-dark {
-        color: use-rgb(n-4);
-      }
+      border-color: var.use-rgb(p-4);
+      background-color: var.use-rgb(p-4);
 
-      border-color: use-rgb(p-4);
-      background-color: use-rgb(p-4);
+      @include mixin.theme-dark {
+        color: var.use-rgb(n-4);
+      }
     }
   }
 
   &.isPlain {
-    color: use-rgb(n-1);
-    border: 1px solid use-rgb(n-7);
-    background-color: use-rgb(button-bg);
+    color: var.use-rgb(n-1);
+    border: 1px solid var.use-rgb(n-7);
+    background-color: var.use-rgb(button-bg);
 
     &:hover,
     &.isChecked {
       z-index: 2;
 
       &:not(.isDisabled) {
-        color: use-rgb(primary);
-        border-color: use-rgb(primary);
+        color: var.use-rgb(primary);
+        border-color: var.use-rgb(primary);
       }
     }
 
     &.isDisabled {
-      color: use-rgb(n-6);
-      border-color: use-rgb(n-7);
+      color: var.use-rgb(n-6);
+      border-color: var.use-rgb(n-7);
 
       &.isChecked {
-        color: use-rgb(p-4);
-        border-color: use-rgb(p-4);
+        color: var.use-rgb(p-4);
+        border-color: var.use-rgb(p-4);
 
         .#{$block}__pointer {
           background-image: linear-gradient(
             to bottom right,
             transparent 50%,
-            use-rgb(p-4) 50%
+            var.use-rgb(p-4) 50%
           );
         }
       }
@@ -100,7 +100,7 @@ $block: 'aui-radio-button';
     background-image: linear-gradient(
       to bottom right,
       transparent 50%,
-      use-rgb(primary) 50%
+      var.use-rgb(primary) 50%
     );
 
     aui-icon {
@@ -120,25 +120,27 @@ $block: 'aui-radio-button';
   &__label {
     display: flex;
     align-items: center;
-    @include text-set(m);
-
     cursor: pointer;
+    @include mixin.text-set(m);
   }
 
   &--medium {
     .#{$block} {
       &__pointer {
-        width: use-var(icon-size-m);
-        height: use-var(icon-size-m);
+        width: var.use-var(icon-size-m);
+        height: var.use-var(icon-size-m);
         font-size: 10px;
       }
 
       &__label {
-        min-height: calc(#{use-var(inline-height-m)} - 2px);
+        min-height: calc(#{var.use-var(inline-height-m)} - 2px);
         padding: calc(
-            (#{use-var(inline-height-m)} - #{use-var(line-height-m)} - 2px) / 2
+            (
+                #{var.use-var(inline-height-m)} - #{var.use-var(line-height-m)} -
+                  2px
+              ) / 2
           )
-          use-var(inline-padding-m);
+          var.use-var(inline-padding-m);
       }
     }
   }
@@ -146,17 +148,20 @@ $block: 'aui-radio-button';
   &--small {
     .#{$block} {
       &__pointer {
-        width: use-var(icon-size-s);
-        height: use-var(icon-size-s);
+        width: var.use-var(icon-size-s);
+        height: var.use-var(icon-size-s);
         font-size: 7px;
       }
 
       &__label {
-        min-height: calc(#{use-var(inline-height-s)} - 2px);
+        min-height: calc(#{var.use-var(inline-height-s)} - 2px);
         padding: calc(
-            (#{use-var(inline-height-s)} - #{use-var(line-height-s)} - 2px) / 2
+            (
+                #{var.use-var(inline-height-s)} - #{var.use-var(line-height-s)} -
+                  2px
+              ) / 2
           )
-          use-var(inline-padding-s);
+          var.use-var(inline-padding-s);
       }
     }
   }
@@ -165,14 +170,14 @@ $block: 'aui-radio-button';
 #{$block}:first-child {
   .#{$block} {
     margin-left: 0;
-    border-top-left-radius: use-var(border-radius-m);
-    border-bottom-left-radius: use-var(border-radius-m);
+    border-top-left-radius: var.use-var(border-radius-m);
+    border-bottom-left-radius: var.use-var(border-radius-m);
   }
 }
 
 #{$block}:last-child {
   .#{$block} {
-    border-top-right-radius: use-var(border-radius-m);
-    border-bottom-right-radius: use-var(border-radius-m);
+    border-top-right-radius: var.use-var(border-radius-m);
+    border-bottom-right-radius: var.use-var(border-radius-m);
   }
 }

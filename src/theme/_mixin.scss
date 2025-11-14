@@ -1,9 +1,9 @@
-@import 'base-var';
-@import 'var';
+@use 'var' as var;
+@use 'sass:selector';
 
 @function theme-selector($theme, $scope) {
   @if ($scope) {
-    @return selector-nest($theme, $scope);
+    @return selector.nest($theme, $scope);
   } @else {
     @return $theme;
   }
@@ -40,96 +40,98 @@
 }
 
 @mixin text-set($size: m, $color: none, $weight: normal) {
-  font-size: use-var(font-size-#{$size});
-  line-height: use-var(line-height-#{$size});
-  font-weight: use-var(font-weight-#{$weight});
-  @if $color != none {
-    color: use-text-color($color);
+  & {
+    font-size: var.use-var(font-size-#{$size});
+    line-height: var.use-var(line-height-#{$size});
+    font-weight: var.use-var(font-weight-#{$weight});
+    @if $color != none {
+      color: var.use-text-color($color);
+    }
   }
 }
 
 @mixin icon-set($size: m, $color: none) {
   display: inline-flex;
   align-items: center;
-  height: use-var(line-height-#{$size});
-  font-size: use-var(font-size-#{$size});
+  height: var.use-var(line-height-#{$size});
+  font-size: var.use-var(font-size-#{$size});
   @if $color != none {
-    color: use-text-color($color);
+    color: var.use-text-color($color);
   }
 }
 
 // 使用 box-shadow 模拟带圆角的 outline
 @mixin outline-shadow($color: primary, $theme: auto) {
   @if ($theme == light) {
-    box-shadow: 0 0 0 2px use-rgba($color, 0.16);
+    box-shadow: 0 0 0 2px var.use-rgba($color, 0.16);
   } @else if($theme == dark) {
-    box-shadow: 0 0 0 2px use-rgba($color, 0.3);
+    box-shadow: 0 0 0 2px var.use-rgba($color, 0.3);
   } @else {
     @include theme-light {
-      box-shadow: 0 0 0 2px use-rgba($color, 0.16);
+      box-shadow: 0 0 0 2px var.use-rgba($color, 0.16);
     }
     @include theme-dark {
-      box-shadow: 0 0 0 2px use-rgba($color, 0.3);
+      box-shadow: 0 0 0 2px var.use-rgba($color, 0.3);
     }
   }
 }
 
 @mixin card-shadow($theme: auto) {
   @if ($theme == light) {
-    box-shadow: 0 0 4px 0 use-rgba(origin-shadow, 0.1);
+    box-shadow: 0 0 4px 0 var.use-rgba(origin-shadow, 0.1);
   } @else if($theme == dark) {
-    box-shadow: 0 0 4px 0 use-rgba(origin-shadow, 0.75);
+    box-shadow: 0 0 4px 0 var.use-rgba(origin-shadow, 0.75);
   } @else {
     @include theme-light {
-      box-shadow: 0 0 4px 0 use-rgba(origin-shadow, 0.1);
+      box-shadow: 0 0 4px 0 var.use-rgba(origin-shadow, 0.1);
     }
     @include theme-dark {
-      box-shadow: 0 0 4px 0 use-rgba(origin-shadow, 0.75);
+      box-shadow: 0 0 4px 0 var.use-rgba(origin-shadow, 0.75);
     }
   }
 }
 
 @mixin popper-shadow($theme: auto) {
   @if ($theme == light) {
-    box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.2);
+    box-shadow: 0 2px 8px 0 var.use-rgba(origin-shadow, 0.2);
   } @else if($theme == dark) {
-    box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.75);
+    box-shadow: 0 2px 8px 0 var.use-rgba(origin-shadow, 0.75);
   } @else {
     @include theme-light {
-      box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.2);
+      box-shadow: 0 2px 8px 0 var.use-rgba(origin-shadow, 0.2);
     }
     @include theme-dark {
-      box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.75);
+      box-shadow: 0 2px 8px 0 var.use-rgba(origin-shadow, 0.75);
     }
   }
 }
 
 @mixin modal-shadow($theme: auto) {
   @if ($theme == light) {
-    box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.2);
+    box-shadow: 0 2px 8px 0 var.use-rgba(origin-shadow, 0.2);
   } @else if($theme == dark) {
-    box-shadow: 0 4px 16px 0 use-rgba(origin-shadow, 0.75);
+    box-shadow: 0 4px 16px 0 var.use-rgba(origin-shadow, 0.75);
   } @else {
     @include theme-light {
-      box-shadow: 0 2px 8px 0 use-rgba(origin-shadow, 0.2);
+      box-shadow: 0 2px 8px 0 var.use-rgba(origin-shadow, 0.2);
     }
     @include theme-dark {
-      box-shadow: 0 4px 16px 0 use-rgba(origin-shadow, 0.75);
+      box-shadow: 0 4px 16px 0 var.use-rgba(origin-shadow, 0.75);
     }
   }
 }
 
 @mixin modal-backdrop($theme: auto) {
   @if ($theme == light) {
-    background-color: use-rgba(origin-shadow, 0.4);
+    background-color: var.use-rgba(origin-shadow, 0.4);
   } @else if($theme == dark) {
-    background-color: use-rgba(origin-shadow, 0.75);
+    background-color: var.use-rgba(origin-shadow, 0.75);
   } @else {
     @include theme-light {
-      background-color: use-rgba(origin-shadow, 0.4);
+      background-color: var.use-rgba(origin-shadow, 0.4);
     }
     @include theme-dark {
-      background-color: use-rgba(origin-shadow, 0.75);
+      background-color: var.use-rgba(origin-shadow, 0.75);
     }
   }
 }
@@ -141,7 +143,7 @@
 }
 
 @mixin transition($target: all) {
-  transition: $target $animation-duration-slow $animation-interpolation;
+  transition: $target var.$animation-duration-slow var.$animation-interpolation;
 }
 
 @mixin absolute-center() {
@@ -152,7 +154,10 @@
   transform: translate(-50%, -50%);
 }
 
-@mixin scroll-bar($color: #{use-rgb(n-7)}, $hover-color: #{use-rgb(n-5)}) {
+@mixin scroll-bar(
+  $color: #{var.use-rgb(n-7)},
+  $hover-color: #{var.use-rgb(n-5)}
+) {
   &::-webkit-scrollbar {
     width: 8px;
     height: 4px;
@@ -174,13 +179,13 @@
 
 @mixin clear-button() {
   border-radius: 50%;
-  color: use-text-color(help);
+  color: var.use-text-color(help);
   cursor: pointer;
   @include transition;
 
   &:hover {
-    color: use-rgb(main-bg);
-    background-color: use-text-color(help);
+    color: var.use-rgb(main-bg);
+    background-color: var.use-text-color(help);
   }
 }
 
@@ -196,7 +201,7 @@
   }
 
   &.isDisabled &__icon-container {
-    color: use-rgb(n-4);
+    color: var.use-rgb(n-4);
   }
 
   &__indicator {
@@ -224,7 +229,7 @@
 }
 
 @mixin input-error() {
-  border-color: use-rgb(red) !important;
+  border-color: var.use-rgb(red) !important;
 
   &:focus,
   &.isFocused {
@@ -236,10 +241,10 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: use-var(icon-size-m);
-  height: use-var(icon-size-m);
-  color: use-rgb(primary);
-  background-color: use-rgb(p-6);
+  width: var.use-var(icon-size-m);
+  height: var.use-var(icon-size-m);
+  color: var.use-rgb(primary);
+  background-color: var.use-rgb(p-6);
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -249,45 +254,47 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: use-var(icon-size-s);
-    height: use-var(icon-size-s);
-    font-size: use-var(icon-size-s);
+    width: var.use-var(icon-size-s);
+    height: var.use-var(icon-size-s);
+    font-size: var.use-var(icon-size-s);
   }
 
   &:hover {
-    background-color: use-rgb(p-7);
+    background-color: var.use-rgb(p-7);
   }
 
   &:active {
-    background-color: use-rgb(p-5);
+    background-color: var.use-rgb(p-5);
   }
 
   &.isExpanded {
     transform: rotate(90deg);
     color: white;
-    background-color: use-rgb(primary);
+    background-color: var.use-rgb(primary);
 
     &:hover {
-      background-color: use-rgb(p-1);
+      background-color: var.use-rgb(p-1);
     }
 
     &:active {
-      background-color: use-rgb(p-0);
+      background-color: var.use-rgb(p-0);
     }
   }
 
   &[disabled],
   &.isExpanded[disabled] {
-    background-color: use-rgb(n-8);
-    color: use-rgb(n-6);
+    background-color: var.use-rgb(n-8);
+    color: var.use-rgb(n-6);
     cursor: not-allowed;
   }
 }
 
 @mixin text-overflow {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  & {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 @mixin flex-center($alignItems: center) {
@@ -304,15 +311,15 @@
 }
 
 @mixin view-readonly {
-  background-color: use-rgb(main-bg);
-  border-color: use-rgb(border);
+  background-color: var.use-rgb(main-bg);
+  border-color: var.use-rgb(border);
 }
 
 @mixin vertical-dashed-line($width: 1px, $color: 'n-7') {
   background: linear-gradient(
     to bottom,
-    use-rgb($color),
-    use-rgb($color) 8px,
+    var.use-rgb($color),
+    var.use-rgb($color) 8px,
     transparent 6px,
     transparent
   );
@@ -322,7 +329,7 @@
 }
 
 // Motion
-@mixin motion-common($duration: $animation-duration-base) {
+@mixin motion-common($duration: var.$animation-duration-base) {
   animation-duration: $duration;
   animation-fill-mode: both;
   animation-play-state: paused;
@@ -331,7 +338,7 @@
 @mixin make-motion(
   $className,
   $keyframeName,
-  $duration: $animation-duration-base
+  $duration: var.$animation-duration-base
 ) {
   .#{$className}-enter,
   .#{$className}-leave {

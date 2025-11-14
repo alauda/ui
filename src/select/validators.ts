@@ -13,7 +13,7 @@ import { coerceAttrBoolean } from '../internal/utils';
 import { SelectComponent } from './select.component';
 import { TrackFn } from './select.types';
 
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
+ 
 export class AuiSelectValidators {
   static includes<T>(
     options: T[],

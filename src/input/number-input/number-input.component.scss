@@ -1,17 +1,17 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
 
 $block: 'aui-number-input';
 
 .#{$block} {
   display: inline-flex;
-  height: use-var(inline-height-m);
-  color: use-rgb(main-text);
-  background-color: use-rgb(main-bg);
-  border-radius: use-var(border-radius-m);
+  height: var.use-var(inline-height-m);
+  color: var.use-rgb(main-text);
+  background-color: var.use-rgb(main-bg);
+  border-radius: var.use-var(border-radius-m);
 
   &--small {
-    height: use-var(inline-height-s);
+    height: var.use-var(inline-height-s);
   }
 
   &--small & {
@@ -20,33 +20,33 @@ $block: 'aui-number-input';
     }
 
     &__control {
-      width: use-var(inline-height-s);
+      width: var.use-var(inline-height-s);
 
       &--angle-up,
       &--angle-down {
-        width: calc(use-var(inline-height-s) - 2px);
+        width: calc(var.use-var(inline-height-s) - 2px);
       }
     }
   }
 
   &__inner {
     display: flex;
-    width: use-var(form-item-width-s);
+    width: var.use-var(form-item-width-s);
     height: 100%;
-    border: 1px solid use-rgb(n-7);
-    border-radius: use-var(border-radius-m);
+    border: 1px solid var.use-rgb(n-7);
+    border-radius: var.use-var(border-radius-m);
     color: inherit;
     background-color: inherit;
     z-index: 1;
 
     &:hover {
-      border-color: use-rgb(primary);
+      border-color: var.use-rgb(primary);
     }
   }
 
   &__input {
     margin: 0;
-    padding: 0 calc(use-var(spacing-m) + 1px);
+    padding: 0 calc(var.use-var(spacing-m) + 1px);
     min-width: 0;
     height: 100%;
     border: 0;
@@ -63,26 +63,26 @@ $block: 'aui-number-input';
   }
 
   &.isFocused &__inner {
-    border-color: use-rgb(primary);
-    @include outline-shadow(primary);
+    border-color: var.use-rgb(primary);
+    @include mixin.outline-shadow(primary);
   }
 
   &.isDisabled {
-    color: use-rgb(disabled-text);
-    background-color: use-rgb(n-8);
+    color: var.use-rgb(disabled-text);
+    background-color: var.use-rgb(n-8);
     cursor: not-allowed;
 
     .#{$block}__inner {
-      border: 1px solid use-rgb(n-7);
+      border: 1px solid var.use-rgb(n-7);
     }
   }
 
   &.hasBefore &__inner {
-    border-radius: 0 use-var(border-radius-m) use-var(border-radius-m) 0;
+    border-radius: 0 var.use-var(border-radius-m) var.use-var(border-radius-m) 0;
   }
 
   &.hasAfter &__inner {
-    border-radius: use-var(border-radius-m) 0 0 use-var(border-radius-m);
+    border-radius: var.use-var(border-radius-m) 0 0 var.use-var(border-radius-m);
   }
 
   &.hasBefore.hasAfter &__inner {
@@ -91,45 +91,45 @@ $block: 'aui-number-input';
 
   &:not(.hasAfter) & {
     &__control--angle-up {
-      border-top-right-radius: use-var(border-radius-m);
+      border-top-right-radius: var.use-var(border-radius-m);
     }
 
     &__control--angle-down {
-      border-bottom-right-radius: use-var(border-radius-m);
+      border-bottom-right-radius: var.use-var(border-radius-m);
     }
   }
 
   &__control {
     flex-shrink: 0;
-    width: calc(use-var(inline-height-m) - 2px);
+    width: calc(var.use-var(inline-height-m) - 2px);
     border: none;
-    color: use-rgb(main-text);
-    background-color: use-rgb(main-bg);
+    color: var.use-rgb(main-text);
+    background-color: var.use-rgb(main-bg);
     background-clip: padding-box;
     cursor: pointer;
     outline: none;
     position: relative;
     height: 100%;
 
-    @include text-set(s);
+    @include mixin.text-set(s);
 
     &:hover {
-      color: use-rgb(primary);
-      background-color: use-rgb(p-6);
+      color: var.use-rgb(primary);
+      background-color: var.use-rgb(p-6);
     }
 
     &:active {
-      color: use-rgb(primary);
-      background-color: use-rgb(p-5);
+      color: var.use-rgb(primary);
+      background-color: var.use-rgb(p-5);
     }
 
     &:focus-visible {
-      @include outline-shadow(primary);
+      @include mixin.outline-shadow(primary);
     }
 
     &[disabled] {
-      color: use-rgb(disabled-text);
-      background-color: use-rgb(n-8);
+      color: var.use-rgb(disabled-text);
+      background-color: var.use-rgb(n-8);
       cursor: not-allowed;
     }
 
@@ -141,11 +141,12 @@ $block: 'aui-number-input';
       left: -1px;
       width: 0;
       height: 100%;
-      border-right: 1px solid use-rgb(border);
+      border-right: 1px solid var.use-rgb(border);
     }
 
     &--decrease {
-      border-radius: use-var(border-radius-m) 0 0 use-var(border-radius-m);
+      border-radius: var.use-var(border-radius-m) 0 0
+        var.use-var(border-radius-m);
 
       &:before {
         left: 100%;
@@ -153,12 +154,13 @@ $block: 'aui-number-input';
     }
 
     &--increase {
-      border-radius: 0 use-var(border-radius-m) use-var(border-radius-m) 0;
+      border-radius: 0 var.use-var(border-radius-m) var.use-var(border-radius-m)
+        0;
     }
 
     &--angle-up,
     &--angle-down {
-      width: calc(use-var(inline-height-m) - 2px);
+      width: calc(var.use-var(inline-height-m) - 2px);
       height: calc(50% - 0.5px) !important;
       border: none;
       display: flex;
@@ -178,7 +180,7 @@ $block: 'aui-number-input';
   &__controls {
     display: none;
     flex-direction: column;
-    border-left: 1px solid use-rgb(border);
+    border-left: 1px solid var.use-rgb(border);
     position: relative;
 
     &:after {
@@ -190,7 +192,7 @@ $block: 'aui-number-input';
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      background-color: use-rgb(border);
+      background-color: var.use-rgb(border);
     }
   }
 
@@ -198,19 +200,21 @@ $block: 'aui-number-input';
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    padding: 0 use-var(inline-padding-xs);
-    border: 1px solid use-rgb(n-7);
-    background-color: use-rgb(n-8);
-    @include text-set(m);
+    padding: 0 var.use-var(inline-padding-xs);
+    border: 1px solid var.use-rgb(n-7);
+    background-color: var.use-rgb(n-8);
+    @include mixin.text-set(m);
 
     &--before {
       border-right: none;
-      border-radius: use-var(border-radius-m) 0 0 use-var(border-radius-m);
+      border-radius: var.use-var(border-radius-m) 0 0
+        var.use-var(border-radius-m);
     }
 
     &--after {
       border-left: none;
-      border-radius: 0 use-var(border-radius-m) use-var(border-radius-m) 0;
+      border-radius: 0 var.use-var(border-radius-m) var.use-var(border-radius-m)
+        0;
     }
   }
 }
@@ -218,6 +222,6 @@ $block: 'aui-number-input';
 aui-number-input.ng-invalid.ng-dirty,
 .ng-submitted aui-number-input.ng-invalid {
   .aui-number-input__inner {
-    border-color: use-rgb(red);
+    border-color: var.use-rgb(red);
   }
 }

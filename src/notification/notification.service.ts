@@ -1,7 +1,6 @@
 import { Overlay } from '@angular/cdk/overlay';
 import {
   ApplicationRef,
-  ComponentFactoryResolver,
   Inject,
   Injectable,
   Injector,
@@ -31,7 +30,6 @@ export class NotificationService extends BaseMessage<
     overlay: Overlay,
     injector: Injector,
     applicationRef: ApplicationRef,
-    cfr: ComponentFactoryResolver,
     @Optional()
     @Inject(NOTIFICATION_CONFIG)
     globalConfig: NotificationGlobalConfig,
@@ -40,7 +38,6 @@ export class NotificationService extends BaseMessage<
       overlay,
       injector,
       applicationRef,
-      cfr,
       'aui-notification-overlay-pane',
       NotificationWrapperComponent,
       NotificationComponent,

@@ -8,11 +8,9 @@ if (version.startsWith('v')) {
   version = version.slice(1);
 } else if (version === 'beta') {
   const distTags = JSON.parse(
-    execSync('yarn info @alauda/ui dist-tags --json').toString(),
+    execSync('npm view @alauda/ui dist-tags --json').toString(),
   );
-
   const { beta, latest } = distTags.data || distTags;
-
   if (semver.gt(beta, latest)) {
     version = beta.endsWith('-beta')
       ? beta + '.0'

@@ -1,6 +1,6 @@
-@import '../theme/var';
-@import '../theme/mixin';
-@import '../../node_modules/@angular/cdk/text-field';
+@use '../theme/var' as *;
+@use '../theme/mixin' as *;
+@use '../../node_modules/@angular/cdk/text-field' as *;
 
 .aui-input {
   display: inline-block;
@@ -85,6 +85,9 @@ textarea.aui-input {
   $default-line-count: 3;
   $max-line-count: 6;
 
+  resize: vertical;
+  overflow: auto;
+
   @function get-height-calc($line-height, $line-count) {
     @return calc(
       #{use-var(inline-padding-xxs)} * 2 + #{use-var(
@@ -98,9 +101,6 @@ textarea.aui-input {
   max-height: get-height-calc(m, $max-line-count);
   min-height: use-var(inline-height-m);
   @include text-set(m, main);
-
-  resize: vertical;
-  overflow: auto;
 }
 
 .aui-input.ng-invalid.ng-dirty,

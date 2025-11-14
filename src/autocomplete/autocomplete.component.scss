@@ -1,6 +1,6 @@
-@import '../select/option-container';
+@use '../select/option-container' as option-container;
 
-@include option-container(aui-autocomplete);
+@include option-container.option-container(aui-autocomplete);
 
 aui-autocomplete {
   display: none;

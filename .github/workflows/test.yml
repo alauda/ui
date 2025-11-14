@@ -10,6 +10,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
+      - name: Corepack Enable
+        run: corepack enable
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -23,4 +26,4 @@ jobs:
         run: yarn lint
 
       - name: Run test
-        run: yarn test:ci
+        run: npm run test:ci

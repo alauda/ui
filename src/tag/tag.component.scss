@@ -1,6 +1,6 @@
 @use 'sass:math';
-@import '../theme/var';
-@import '../theme/mixin';
+@use '../theme/var' as *;
+@use '../theme/mixin' as *;
 
 @mixin colorful-tag($color) {
   color: use-rgb($color);

@@ -11,7 +11,7 @@ export interface NotificationConfig extends MessageConfig {
   customClass?: string;
 }
 
-// eslint-disable-next-line no-restricted-syntax
+ 
 export type NotificationGlobalConfig = MessageGlobalConfig;
 
 export const NOTIFICATION_CONFIG = new InjectionToken<NotificationGlobalConfig>(
