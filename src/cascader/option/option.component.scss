@@ -1,0 +1,38 @@
+@import '../../theme/var';
+@import '../../theme/mixin';
+
+.aui-cascader-option {
+  cursor: pointer;
+  padding: 4px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__icon {
+    margin-left: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__label {
+    @include text-overflow;
+  }
+
+  &.isDisabled {
+    color: use-rgb(n-6);
+    cursor: not-allowed;
+  }
+
+  &:hover,
+  &.isActivated {
+    background-color: use-rgb(p-6);
+  }
+
+  &.isActivated {
+    color: use-rgb(primary);
+  }
+
+  &.isActivated &__icon {
+    color: use-rgb(n-1);
+  }
+}
