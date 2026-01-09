@@ -36,6 +36,9 @@ describe('TagsInputComponent', () => {
 
   it('should push new value when press Enter', fakeAsync(() => {
     inputEl.value = 'app';
+    inputEl.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    tick();
     inputEl.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     fixture.detectChanges();
     tick(20);

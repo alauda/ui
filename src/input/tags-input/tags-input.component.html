@@ -9,18 +9,21 @@
   >
     {{ placeholder }}
   </span>
-  <aui-tag
-    *ngFor="let tag of model; let index = index; trackBy: trackByValue"
-    type="info"
-    [title]="tag"
-    [size]="tagSize"
-    [round]="true"
-    [border]="true"
-    [closeable]="!(disabled || readonlyTags.includes(tag))"
-    (close)="onRemove(index)"
-  >
-    {{ tag }}
-  </aui-tag>
+  @for (item of model; let index = $index; track index) {
+    @if (!item.isInputting) {
+      <aui-tag
+        type="info"
+        [title]="item.value"
+        [size]="tagSize"
+        [round]="true"
+        [border]="true"
+        [closeable]="!(disabled || readonlyTags.includes(item.value))"
+        (close)="onRemove(index)"
+      >
+        {{ item.value }}
+      </aui-tag>
+    }
+  }
   <input
     #inputRef
     [class]="inputClass"

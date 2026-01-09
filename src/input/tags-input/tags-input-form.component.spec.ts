@@ -22,14 +22,10 @@ describe('TagsInputComponent Required Validation Behavior', () => {
   let fixture: ComponentFixture<TestFormComponent>;
   let testHost: TestFormComponent;
   let inputEl: HTMLInputElement;
-  let tagComp: TagsInputComponent;
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestFormComponent);
     fixture.detectChanges();
-    tagComp = fixture.debugElement.query(
-      By.directive(TagsInputComponent),
-    ).componentInstance;
     testHost = fixture.componentInstance;
     const el = fixture.debugElement.query(
       By.css('.aui-tags-input'),
@@ -64,12 +60,24 @@ describe('TagsInputComponent Required Validation Behavior', () => {
 
       inputEl.value = 'a';
       inputEl.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick();
+
+      expect(testHost.form.get('tags')!.value).toEqual(['a']);
+
       inputEl.dispatchEvent(new Event('blur'));
       tick();
       fixture.detectChanges();
 
+      expect(testHost.form.get('tags')!.value).toEqual(['a']);
+
       inputEl.value = 'a';
       inputEl.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick();
+
+      expect(testHost.form.get('tags')!.value).toEqual(['a', 'a']);
+
       inputEl.dispatchEvent(new Event('blur'));
       tick();
       fixture.detectChanges();
@@ -83,12 +91,24 @@ describe('TagsInputComponent Required Validation Behavior', () => {
 
       inputEl.value = 'a';
       inputEl.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick();
+
+      expect(testHost.form.get('tags')!.value).toEqual(['a']);
+
       inputEl.dispatchEvent(new Event('blur'));
       tick();
       fixture.detectChanges();
 
+      expect(testHost.form.get('tags')!.value).toEqual(['a']);
+
       inputEl.value = 'a';
       inputEl.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick();
+
+      expect(testHost.form.get('tags')!.value).toEqual(['a', 'a']);
+
       inputEl.dispatchEvent(new Event('blur'));
       tick();
       fixture.detectChanges();
@@ -104,6 +124,11 @@ describe('TagsInputComponent Required Validation Behavior', () => {
 
       inputEl.value = '';
       inputEl.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick();
+
+      expect(testHost.form.get('tags')!.value).toEqual([]);
+
       inputEl.dispatchEvent(new Event('blur'));
       tick();
       fixture.detectChanges();
@@ -117,18 +142,23 @@ describe('TagsInputComponent Required Validation Behavior', () => {
 
       inputEl.value = '';
       inputEl.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick();
+
+      expect(testHost.form.get('tags')!.value).toEqual([]);
+
       inputEl.dispatchEvent(new Event('blur'));
       tick();
       fixture.detectChanges();
 
-      expect(testHost.form.get('tags')!.value).toEqual(['']);
+      expect(testHost.form.get('tags')!.value).toEqual([]);
     }));
   });
 
   describe('inputValidator behavior', () => {
     it('should NOT add tag when input does NOT pass inputValidator', fakeAsync(() => {
       testHost.checkFn = control => {
-        const value = control.value as string[];
+        const value = control.value as string;
         if (value.includes('a')) {
           return { patternB: true };
         }
@@ -138,30 +168,42 @@ describe('TagsInputComponent Required Validation Behavior', () => {
 
       inputEl.value = 'apple';
       inputEl.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick();
+
+      expect(testHost.form.get('tags')!.value).toEqual(['apple']);
+      expect(testHost.form.valid).toBeTruthy();
+
       inputEl.dispatchEvent(new Event('blur'));
-      tick(0);
+      tick();
       fixture.detectChanges();
 
-      expect(tagComp.model).toEqual([]);
-      expect(testHost.form.get('tags')!.value).toEqual([]);
+      expect(testHost.form.get('tags')!.value).toEqual(['apple']);
       expect(testHost.form.valid).toBeFalsy();
     }));
 
     it('should add tag when input passes inputValidator', fakeAsync(() => {
       testHost.checkFn = control => {
-        const value = control.value as string[];
+        const value = control.value as string;
         if (value.includes('a')) {
           return { patternB: true };
         }
         return null;
       };
-      inputEl.value = 'ccc';
-      inputEl.dispatchEvent(new Event('input'));
-      inputEl.dispatchEvent(new Event('blur'));
-      tick(0);
       fixture.detectChanges();
 
-      expect(tagComp.model).toEqual(['ccc']);
+      inputEl.value = 'ccc';
+      inputEl.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick();
+
+      expect(testHost.form.get('tags')!.value).toEqual(['ccc']);
+      expect(testHost.form.valid).toBeTruthy();
+
+      inputEl.dispatchEvent(new Event('blur'));
+      tick();
+      fixture.detectChanges();
+
       expect(testHost.form.get('tags')!.value).toEqual(['ccc']);
       expect(testHost.form.valid).toBeTruthy();
     }));
@@ -175,12 +217,16 @@ describe('TagsInputComponent Required Validation Behavior', () => {
 
       inputEl.value = 'bad';
       inputEl.dispatchEvent(new Event('input'));
-      inputEl.dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+      tick();
 
+      expect(testHost.form.get('tags')!.value).toEqual(['bad']);
+
+      inputEl.dispatchEvent(new Event('blur'));
       tick();
       fixture.detectChanges();
 
-      expect(testHost.form.get('tags')!.value).toEqual([]);
+      expect(testHost.form.get('tags')!.value).toEqual(['bad']);
     }));
 
     it('should allow adding tag when async validator resolves to true', fakeAsync(() => {

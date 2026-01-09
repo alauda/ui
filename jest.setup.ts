@@ -1,4 +1,18 @@
-import 'jest-preset-angular/setup-jest';
+import { setupZoneTestEnv } from 'jest-preset-angular/setup-env/zone';
+
+setupZoneTestEnv();
+
+// Suppress CSS parsing errors from JSDOM (e.g., @layer rules not supported)
+const originalConsoleError = console.error;
+console.error = (...args: any[]) => {
+  if (
+    typeof args[0] === 'string' &&
+    args[0].includes('Could not parse CSS stylesheet')
+  ) {
+    return;
+  }
+  originalConsoleError.call(console, ...args);
+};
 
 Object.assign(globalThis, {
   ngJest: {

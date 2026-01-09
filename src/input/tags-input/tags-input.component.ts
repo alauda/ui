@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -35,6 +34,11 @@ import { createWithMaxRowCount } from './with-max-row-count';
 
 export const INPUT_ERROR_KEY = 'input_data_error';
 
+interface TagItem {
+  value: string;
+  isInputting: boolean;
+}
+
 @Component({
   selector: 'aui-tags-input',
   templateUrl: './tags-input.component.html',
@@ -46,6 +50,8 @@ export const INPUT_ERROR_KEY = 'input_data_error';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
+  standalone: true,
+  imports: [TagComponent],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -53,10 +59,9 @@ export const INPUT_ERROR_KEY = 'input_data_error';
       multi: true,
     },
   ],
-  imports: [NgFor, TagComponent],
 })
 export class TagsInputComponent
-  extends CommonFormControl<string[]>
+  extends CommonFormControl<string[], TagItem[]>
   implements AfterViewInit, OnChanges
 {
   bem: Bem = buildBem('aui-tags-input');
@@ -132,11 +137,12 @@ export class TagsInputComponent
   private readonly withMaxRowCount = createWithMaxRowCount(this);
 
   focused = false;
-  override model: string[] = [];
 
-  // 内置form control，仅作校验使用
+  get confirmedTags(): TagItem[] {
+    return this.model.filter(item => !item.isInputting);
+  }
+
   readonly inputControl: UntypedFormControl;
-  // 外层 FormControl，所有的校验逻辑针对输入数据
   controlContainer: NgControl;
 
   get rootClass() {
@@ -195,15 +201,34 @@ export class TagsInputComponent
 
   onRemove(index: number) {
     const target = this.model[index];
-    if (target && this.readonlyTags.includes(target)) {
+    if (target && this.readonlyTags.includes(target.value)) {
       return;
     }
-    this.emitValue(this.model.filter((_, i) => i !== index));
+    this.model = this.model.filter((_, i) => i !== index);
+    this.emitModel(this.model);
   }
 
   onInput() {
     const value = this.inputRef.nativeElement.value;
-    // make sure value sync to span element
+    const lastItem = this.model[this.model.length - 1];
+
+    if (lastItem?.isInputting) {
+      this.model = value
+        ? [...this.model.slice(0, -1), { value, isInputting: true }]
+        : this.model.slice(0, -1);
+    } else if (value) {
+      this.model = [...this.model, { value, isInputting: true }];
+    }
+
+    this.emitModel(this.model);
+
+    if (
+      this.controlContainer?.control?.errors?.[INPUT_ERROR_KEY] &&
+      Object.keys(this.controlContainer.control.errors).length === 1
+    ) {
+      this.controlContainer.control.setErrors(null);
+    }
+
     requestAnimationFrame(() => {
       if (value.length) {
         this.renderer.setStyle(
@@ -215,12 +240,6 @@ export class TagsInputComponent
         this.renderer.removeStyle(this.inputRef.nativeElement, 'width');
       }
     });
-    if (
-      this.controlContainer?.control?.errors?.[INPUT_ERROR_KEY] &&
-      Object.keys(this.controlContainer.control.errors).length === 1
-    ) {
-      this.controlContainer.control.setErrors(null);
-    }
   }
 
   onKeyDown(event: KeyboardEvent) {
@@ -233,7 +252,7 @@ export class TagsInputComponent
       event.stopPropagation();
       event.preventDefault();
       requestAnimationFrame(() => {
-        this.pushValue(inputEl.value);
+        this.confirmInput(inputEl.value);
       });
     }
   }
@@ -244,51 +263,88 @@ export class TagsInputComponent
 
   onInputBlur(event: Event) {
     this.focused = false;
-    this.pushValue((event.target as HTMLInputElement).value);
+    this.confirmInput((event.target as HTMLInputElement).value);
     if (this.onTouched) {
       this.onTouched();
     }
   }
 
-  trackByValue(_: number, value: string) {
-    return value;
+  protected override valueIn(v: string[]): TagItem[] {
+    const tags = v || [];
+
+    const items = tags.map((value, index) => ({
+      value,
+      isInputting:
+        this.model?.[index]?.value === value
+          ? this.model[index].isInputting
+          : false,
+    }));
+
+    if (!items.some(item => item.isInputting)) {
+      this.clearInput();
+    }
+
+    return this.sortByReadonly(items);
   }
 
-  protected override valueIn(v: string[]): string[] {
+  protected override modelOut(model: TagItem[]): string[] {
+    return model.map(item => item.value);
+  }
+
+  private sortByReadonly(items: TagItem[]): TagItem[] {
+    if (!this.readonlyTags.length) {
+      return items;
+    }
+    const readonlySet = new Set(this.readonlyTags);
+    const readonlyItems: TagItem[] = [];
+    const normalItems: TagItem[] = [];
+
+    items.forEach(item => {
+      if (readonlySet.has(item.value)) {
+        readonlyItems.push(item);
+      } else {
+        normalItems.push(item);
+      }
+    });
+
+    return [...readonlyItems, ...normalItems];
+  }
+
+  private removeInputtingItem() {
+    this.model = this.model.filter(item => !item.isInputting);
     this.clearInput();
-    return this.sortByReadonly(v || []);
+    this.emitModel(this.model);
   }
 
-  private sortByReadonly(items: string[]) {
-    return this.readonlyTags.length
-      ? [
-          ...items.reduce(
-            (acc, curr) => acc.add(curr),
-            new Set(this.readonlyTags),
-          ),
-        ]
-      : items;
+  private confirmInputtingItem() {
+    this.model = this.model.map(item =>
+      item.isInputting ? { value: item.value, isInputting: false } : item,
+    );
+    this.clearInput();
+    this.emitModel(this.model);
   }
 
-  private pushValue(value: string) {
-    if (!this.allowEmpty && !value) {
+  private confirmInput(value: string) {
+    if (
+      (!this.allowEmpty && !value) ||
+      (!this.allowRepeat &&
+        this.confirmedTags.some(item => item.value === value))
+    ) {
       this.removeInputControlError();
+      this.removeInputtingItem();
       return;
     }
-    if (!this.allowRepeat && this.model.includes(value)) {
-      return;
-    }
-    this.inputControl.setValue(this.inputRef.nativeElement.value);
-    // inputControl 自身的状态为同步计算
+
+    this.inputControl.setValue(value);
     this.syncControlStatus();
+
     if (this.inputControl.valid) {
-      this.emitValue(this.model.concat(value));
+      this.confirmInputtingItem();
     } else if (this.inputControl.pending) {
-      // PENDING 后只会变为 VALID 或 INVALID 的决议状态
       this.inputControl.statusChanges.pipe(take(1)).subscribe(_ => {
         this.syncControlStatus();
         if (this.inputControl.valid) {
-          this.emitValue(this.model.concat(value));
+          this.confirmInputtingItem();
         }
       });
     }
@@ -308,7 +364,6 @@ export class TagsInputComponent
         [INPUT_ERROR_KEY]: errors,
       });
     } else if (disabled) {
-      // 与当前 input 校验脱离
       this.controlContainer?.control?.updateValueAndValidity();
     }
   }
