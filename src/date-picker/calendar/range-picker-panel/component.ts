@@ -107,7 +107,9 @@ export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {
   leftDateRange = DateNavRange.Month;
   rightDateRange = DateNavRange.Month;
 
-  FOOTER_DATE_FORMAT = 'YYYY-MM-dd';
+  // Angular DatePipe uses CLDR date formats.
+  // `YYYY` represents week-based year and may differ from calendar year near year end.
+  FOOTER_DATE_FORMAT = 'yyyy-MM-dd';
 
   leftAnchor = dayjs();
   rightAnchor = dayjs().add(1, MONTH);
