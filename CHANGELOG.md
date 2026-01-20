@@ -1,5 +1,15 @@
 # Changelog
 
+## 9.1.2
+
+### Patch Changes
+
+- [#596](https://github.com/alauda/ui/pull/596) [`7e3f546`](https://github.com/alauda/ui/commit/7e3f546877ae89066dc7cf9f0d6fb61e08306c52) Thanks [@zChanges](https://github.com/zChanges)! - fix: date picker nav availability check
+
+- [#595](https://github.com/alauda/ui/pull/595) [`dea9672`](https://github.com/alauda/ui/commit/dea9672f74eff4ca7f2c7164c3cba652f1bad61f) Thanks [@zChanges](https://github.com/zChanges)! - fix: date format year
+
+- [#593](https://github.com/alauda/ui/pull/593) [`ee1e6a8`](https://github.com/alauda/ui/commit/ee1e6a8b5e43e18ddf5148c2522a2adb3206b212) Thanks [@fengtianze](https://github.com/fengtianze)! - feat: optimize tags input
+
 ## 9.1.1
 
 ### Patch Changes
