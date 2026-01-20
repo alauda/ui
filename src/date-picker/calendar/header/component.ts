@@ -109,6 +109,9 @@ export class CalendarHeaderComponent {
     const availValue = (
       side === Side.Left ? this._minAvail : this._maxAvail
     )?.clone();
+    if (!availValue) {
+      return true;
+    }
     /**
      * 对于 range-picker
      * 左侧部分 minAvail = minDate, maxAvail = min(maxData, rightAnchor)，从而左侧部分的按钮，仅在小于右侧部分时显示
@@ -118,14 +121,14 @@ export class CalendarHeaderComponent {
       return type === DateNavRange.Month
         ? !this.anchor.subtract(1, 'month').isBefore(availValue, 'month')
         : type === DateNavRange.Year
-        ? !this.anchor.subtract(1, 'year').isBefore(availValue, 'year')
-        : false;
+          ? !this.anchor.subtract(1, 'year').isBefore(availValue, 'year')
+          : false;
     }
     return type === DateNavRange.Month
       ? !this.anchor.add(1, 'month').isAfter(availValue, 'month')
       : type === DateNavRange.Year
-      ? !this.anchor.add(1, 'year').isAfter(availValue, 'year')
-      : false;
+        ? !this.anchor.add(1, 'year').isAfter(availValue, 'year')
+        : false;
   }
 
   // @return isBetween|isEqual:0, isBefore:-1,isAfter:1
@@ -141,8 +144,8 @@ export class CalendarHeaderComponent {
     return constrainValue.isSame(range.start, MONTH)
       ? 0
       : constrainValue.isBefore(range.start, MONTH)
-      ? -1
-      : 1;
+        ? -1
+        : 1;
   }
 
   navHead(range: DateNavRange, value: number) {
