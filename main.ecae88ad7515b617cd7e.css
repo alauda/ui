@@ -1,0 +1,441 @@
+.cdk-overlay-container, .cdk-global-overlay-wrapper {
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1000;
+}
+
+.cdk-overlay-container:empty {
+  display: none;
+}
+
+.cdk-global-overlay-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 1000;
+}
+
+.cdk-overlay-pane {
+  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 1000;
+}
+
+.cdk-overlay-backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  opacity: 0;
+  z-index: 1000;
+  transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.cdk-overlay-backdrop-showing {
+  opacity: 1;
+}
+
+@media (forced-colors: active) {
+  .cdk-overlay-backdrop-showing {
+    opacity: 0.6;
+  }
+}
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.cdk-overlay-transparent-backdrop {
+  transition: visibility 1ms linear, opacity 1ms linear;
+  visibility: hidden;
+  opacity: 1;
+}
+
+.cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing, .cdk-high-contrast-active .cdk-overlay-transparent-backdrop {
+  opacity: 0;
+  visibility: visible;
+}
+
+.cdk-overlay-backdrop-noop-animation {
+  transition: none;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 1px;
+  min-height: 1px;
+  z-index: 1000;
+}
+
+.cdk-global-scrollblock {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+:root {
+  color-scheme: light;
+  --aui-color-blue: 0, 122, 245;
+  --aui-color-b-0: 0, 103, 208;
+  --aui-color-b-1: 38, 141, 246;
+  --aui-color-b-2: 77, 162, 248;
+  --aui-color-b-3: 102, 175, 249;
+  --aui-color-b-4: 179, 215, 252;
+  --aui-color-b-5: 204, 228, 253;
+  --aui-color-b-6: 229, 241, 254;
+  --aui-color-b-7: 242, 248, 254;
+  --aui-color-primary: var(--aui-color-blue);
+  --aui-color-p-0: var(--aui-color-b-0);
+  --aui-color-p-1: var(--aui-color-b-1);
+  --aui-color-p-2: var(--aui-color-b-2);
+  --aui-color-p-3: var(--aui-color-b-3);
+  --aui-color-p-4: var(--aui-color-b-4);
+  --aui-color-p-5: var(--aui-color-b-5);
+  --aui-color-p-6: var(--aui-color-b-6);
+  --aui-color-p-7: var(--aui-color-b-7);
+  --aui-color-green: 0, 194, 97;
+  --aui-color-g-0: 0, 165, 82;
+  --aui-color-g-1: 38, 203, 120;
+  --aui-color-g-2: 76, 212, 144;
+  --aui-color-g-4: 179, 236, 207;
+  --aui-color-g-6: 230, 249, 239;
+  --aui-color-g-7: 242, 251, 246;
+  --aui-color-yellow: 245, 163, 0;
+  --aui-color-y-0: 220, 146, 0;
+  --aui-color-y-1: 246, 176, 38;
+  --aui-color-y-2: 248, 190, 77;
+  --aui-color-y-4: 252, 227, 179;
+  --aui-color-y-6: 254, 245, 230;
+  --aui-color-y-7: 254, 250, 243;
+  --aui-color-red: 235, 0, 39;
+  --aui-color-r-0: 199, 0, 33;
+  --aui-color-r-1: 237, 38, 71;
+  --aui-color-r-2: 241, 76, 103;
+  --aui-color-r-4: 249, 179, 190;
+  --aui-color-r-6: 253, 230, 233;
+  --aui-color-r-7: 254, 243, 244;
+  --aui-color-n-1: 50, 52, 55;
+  --aui-color-n-2: 100, 102, 105;
+  --aui-color-n-3: 124, 126, 129;
+  --aui-color-n-4: 150, 152, 155;
+  --aui-color-n-5: 174, 176, 179;
+  --aui-color-n-6: 200, 202, 205;
+  --aui-color-n-7: 212, 214, 217;
+  --aui-color-n-8: 237, 239, 242;
+  --aui-color-n-9: 247, 249, 252;
+  --aui-color-n-10: 255, 255, 255;
+  --aui-color-origin-shadow: var(--aui-color-n-1);
+  --aui-color-popper-bg: var(--aui-color-n-10);
+  --aui-color-button-bg: var(--aui-color-n-9);
+  --aui-color-main-bg: var(--aui-color-n-9);
+  --aui-color-divider: var(--aui-color-n-8);
+  --aui-color-border: var(--aui-color-n-7);
+  --aui-color-main-text: var(--aui-color-n-1);
+  --aui-color-secondary-text: var(--aui-color-n-2);
+  --aui-color-help-text: var(--aui-color-n-4);
+  --aui-color-disabled-text: var(--aui-color-n-6);
+  --aui-color-placeholder-text: var(--aui-color-n-6);
+}
+
+html[aui-theme-mode=light] {
+  color-scheme: light;
+  --aui-color-blue: 0, 122, 245;
+  --aui-color-b-0: 0, 103, 208;
+  --aui-color-b-1: 38, 141, 246;
+  --aui-color-b-2: 77, 162, 248;
+  --aui-color-b-3: 102, 175, 249;
+  --aui-color-b-4: 179, 215, 252;
+  --aui-color-b-5: 204, 228, 253;
+  --aui-color-b-6: 229, 241, 254;
+  --aui-color-b-7: 242, 248, 254;
+  --aui-color-primary: var(--aui-color-blue);
+  --aui-color-p-0: var(--aui-color-b-0);
+  --aui-color-p-1: var(--aui-color-b-1);
+  --aui-color-p-2: var(--aui-color-b-2);
+  --aui-color-p-3: var(--aui-color-b-3);
+  --aui-color-p-4: var(--aui-color-b-4);
+  --aui-color-p-5: var(--aui-color-b-5);
+  --aui-color-p-6: var(--aui-color-b-6);
+  --aui-color-p-7: var(--aui-color-b-7);
+  --aui-color-green: 0, 194, 97;
+  --aui-color-g-0: 0, 165, 82;
+  --aui-color-g-1: 38, 203, 120;
+  --aui-color-g-2: 76, 212, 144;
+  --aui-color-g-4: 179, 236, 207;
+  --aui-color-g-6: 230, 249, 239;
+  --aui-color-g-7: 242, 251, 246;
+  --aui-color-yellow: 245, 163, 0;
+  --aui-color-y-0: 220, 146, 0;
+  --aui-color-y-1: 246, 176, 38;
+  --aui-color-y-2: 248, 190, 77;
+  --aui-color-y-4: 252, 227, 179;
+  --aui-color-y-6: 254, 245, 230;
+  --aui-color-y-7: 254, 250, 243;
+  --aui-color-red: 235, 0, 39;
+  --aui-color-r-0: 199, 0, 33;
+  --aui-color-r-1: 237, 38, 71;
+  --aui-color-r-2: 241, 76, 103;
+  --aui-color-r-4: 249, 179, 190;
+  --aui-color-r-6: 253, 230, 233;
+  --aui-color-r-7: 254, 243, 244;
+  --aui-color-n-1: 50, 52, 55;
+  --aui-color-n-2: 100, 102, 105;
+  --aui-color-n-3: 124, 126, 129;
+  --aui-color-n-4: 150, 152, 155;
+  --aui-color-n-5: 174, 176, 179;
+  --aui-color-n-6: 200, 202, 205;
+  --aui-color-n-7: 212, 214, 217;
+  --aui-color-n-8: 237, 239, 242;
+  --aui-color-n-9: 247, 249, 252;
+  --aui-color-n-10: 255, 255, 255;
+  --aui-color-origin-shadow: var(--aui-color-n-1);
+  --aui-color-popper-bg: var(--aui-color-n-10);
+  --aui-color-button-bg: var(--aui-color-n-9);
+  --aui-color-main-bg: var(--aui-color-n-9);
+  --aui-color-divider: var(--aui-color-n-8);
+  --aui-color-border: var(--aui-color-n-7);
+  --aui-color-main-text: var(--aui-color-n-1);
+  --aui-color-secondary-text: var(--aui-color-n-2);
+  --aui-color-help-text: var(--aui-color-n-4);
+  --aui-color-disabled-text: var(--aui-color-n-6);
+  --aui-color-placeholder-text: var(--aui-color-n-6);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[aui-theme-mode=system] {
+    color-scheme: dark;
+    --aui-color-blue: 61, 142, 255;
+    --aui-color-b-0: 54, 116, 204;
+    --aui-color-b-1: 109, 170, 255;
+    --aui-color-b-2: 53, 111, 193;
+    --aui-color-b-3: 50, 101, 173;
+    --aui-color-b-4: 47, 85, 143;
+    --aui-color-b-5: 40, 54, 81;
+    --aui-color-b-6: 42, 64, 102;
+    --aui-color-b-7: 44, 74, 122;
+    --aui-color-primary: var(--aui-color-blue);
+    --aui-color-p-0: var(--aui-color-b-0);
+    --aui-color-p-1: var(--aui-color-b-1);
+    --aui-color-p-2: var(--aui-color-b-2);
+    --aui-color-p-3: var(--aui-color-b-3);
+    --aui-color-p-4: var(--aui-color-b-4);
+    --aui-color-p-5: var(--aui-color-b-5);
+    --aui-color-p-6: var(--aui-color-b-6);
+    --aui-color-p-7: var(--aui-color-b-7);
+    --aui-color-green: 17, 182, 113;
+    --aui-color-g-0: 21, 146, 97;
+    --aui-color-g-1: 76, 200, 148;
+    --aui-color-g-2: 22, 139, 93;
+    --aui-color-g-4: 27, 103, 78;
+    --aui-color-g-6: 31, 74, 66;
+    --aui-color-g-7: 28, 88, 72;
+    --aui-color-yellow: 237, 172, 44;
+    --aui-color-y-0: 186, 138, 45;
+    --aui-color-y-1: 241, 192, 96;
+    --aui-color-y-2: 176, 132, 45;
+    --aui-color-y-4: 126, 98, 47;
+    --aui-color-y-6: 86, 72, 49;
+    --aui-color-y-7: 105, 85, 48;
+    --aui-color-red: 226, 50, 79;
+    --aui-color-r-0: 178, 47, 72;
+    --aui-color-r-1: 233, 101, 123;
+    --aui-color-r-2: 168, 46, 70;
+    --aui-color-r-4: 121, 43, 63;
+    --aui-color-r-6: 83, 41, 57;
+    --aui-color-r-7: 101, 42, 60;
+    --aui-color-n-1: 238, 239, 243;
+    --aui-color-n-2: 200, 201, 205;
+    --aui-color-n-3: 184, 186, 194;
+    --aui-color-n-4: 152, 154, 162;
+    --aui-color-n-5: 144, 147, 159;
+    --aui-color-n-6: 120, 123, 135;
+    --aui-color-n-7: 92, 95, 107;
+    --aui-color-n-8: 67, 70, 82;
+    --aui-color-n-9: 24, 27, 39;
+    --aui-color-n-10: 36, 39, 51;
+    --aui-color-origin-shadow: var(--aui-color-n-9);
+    --aui-color-popper-bg: 56, 59, 71;
+    --aui-color-button-bg: 56, 59, 71;
+    --aui-color-main-bg: var(--aui-color-n-9);
+    --aui-color-divider: var(--aui-color-n-8);
+    --aui-color-border: var(--aui-color-n-7);
+    --aui-color-main-text: var(--aui-color-n-1);
+    --aui-color-secondary-text: var(--aui-color-n-2);
+    --aui-color-help-text: var(--aui-color-n-4);
+    --aui-color-disabled-text: var(--aui-color-n-6);
+    --aui-color-placeholder-text: var(--aui-color-n-6);
+  }
+}
+
+html[aui-theme-mode=dark] {
+  color-scheme: dark;
+  --aui-color-blue: 61, 142, 255;
+  --aui-color-b-0: 54, 116, 204;
+  --aui-color-b-1: 109, 170, 255;
+  --aui-color-b-2: 53, 111, 193;
+  --aui-color-b-3: 50, 101, 173;
+  --aui-color-b-4: 47, 85, 143;
+  --aui-color-b-5: 40, 54, 81;
+  --aui-color-b-6: 42, 64, 102;
+  --aui-color-b-7: 44, 74, 122;
+  --aui-color-primary: var(--aui-color-blue);
+  --aui-color-p-0: var(--aui-color-b-0);
+  --aui-color-p-1: var(--aui-color-b-1);
+  --aui-color-p-2: var(--aui-color-b-2);
+  --aui-color-p-3: var(--aui-color-b-3);
+  --aui-color-p-4: var(--aui-color-b-4);
+  --aui-color-p-5: var(--aui-color-b-5);
+  --aui-color-p-6: var(--aui-color-b-6);
+  --aui-color-p-7: var(--aui-color-b-7);
+  --aui-color-green: 17, 182, 113;
+  --aui-color-g-0: 21, 146, 97;
+  --aui-color-g-1: 76, 200, 148;
+  --aui-color-g-2: 22, 139, 93;
+  --aui-color-g-4: 27, 103, 78;
+  --aui-color-g-6: 31, 74, 66;
+  --aui-color-g-7: 28, 88, 72;
+  --aui-color-yellow: 237, 172, 44;
+  --aui-color-y-0: 186, 138, 45;
+  --aui-color-y-1: 241, 192, 96;
+  --aui-color-y-2: 176, 132, 45;
+  --aui-color-y-4: 126, 98, 47;
+  --aui-color-y-6: 86, 72, 49;
+  --aui-color-y-7: 105, 85, 48;
+  --aui-color-red: 226, 50, 79;
+  --aui-color-r-0: 178, 47, 72;
+  --aui-color-r-1: 233, 101, 123;
+  --aui-color-r-2: 168, 46, 70;
+  --aui-color-r-4: 121, 43, 63;
+  --aui-color-r-6: 83, 41, 57;
+  --aui-color-r-7: 101, 42, 60;
+  --aui-color-n-1: 238, 239, 243;
+  --aui-color-n-2: 200, 201, 205;
+  --aui-color-n-3: 184, 186, 194;
+  --aui-color-n-4: 152, 154, 162;
+  --aui-color-n-5: 144, 147, 159;
+  --aui-color-n-6: 120, 123, 135;
+  --aui-color-n-7: 92, 95, 107;
+  --aui-color-n-8: 67, 70, 82;
+  --aui-color-n-9: 24, 27, 39;
+  --aui-color-n-10: 36, 39, 51;
+  --aui-color-origin-shadow: var(--aui-color-n-9);
+  --aui-color-popper-bg: 56, 59, 71;
+  --aui-color-button-bg: 56, 59, 71;
+  --aui-color-main-bg: var(--aui-color-n-9);
+  --aui-color-divider: var(--aui-color-n-8);
+  --aui-color-border: var(--aui-color-n-7);
+  --aui-color-main-text: var(--aui-color-n-1);
+  --aui-color-secondary-text: var(--aui-color-n-2);
+  --aui-color-help-text: var(--aui-color-n-4);
+  --aui-color-disabled-text: var(--aui-color-n-6);
+  --aui-color-placeholder-text: var(--aui-color-n-6);
+}
+
+:root {
+  --aui-inline-height-l: 40px;
+  --aui-inline-height-m: 32px;
+  --aui-inline-height-s: 28px;
+  --aui-inline-height-xs: 24px;
+  --aui-inline-padding-l: 19px;
+  --aui-inline-padding-m: 15px;
+  --aui-inline-padding-s: 11px;
+  --aui-inline-padding-xs: 7px;
+  --aui-inline-padding-xxs: 5px;
+  --aui-spacing-xxxxxl: 40px;
+  --aui-spacing-xxxxl: 32px;
+  --aui-spacing-xxxl: 24px;
+  --aui-spacing-xxl: 20px;
+  --aui-spacing-xl: 16px;
+  --aui-spacing-l: 12px;
+  --aui-spacing-m: 8px;
+  --aui-spacing-s: 4px;
+  --aui-spacing-xs: 2px;
+  --aui-font-weight-bold: 500;
+  --aui-font-weight-bolder: 600;
+  --aui-font-weight-normal: 400;
+  --aui-font-size-xxl: 20px;
+  --aui-font-size-xl: 18px;
+  --aui-font-size-l: 16px;
+  --aui-font-size-m: 14px;
+  --aui-font-size-s: 12px;
+  --aui-line-height-xxxl: 32px;
+  --aui-line-height-xxl: 28px;
+  --aui-line-height-xl: 24px;
+  --aui-line-height-l: 22px;
+  --aui-line-height-m: 20px;
+  --aui-line-height-s: 16px;
+  --aui-icon-size-xxl: 24px;
+  --aui-icon-size-xl: 24px;
+  --aui-icon-size-l: 16px;
+  --aui-icon-size-m: 16px;
+  --aui-icon-size-s: 12px;
+  --aui-border-radius-l: 4px;
+  --aui-border-radius-m: 2px;
+  --aui-form-item-width-l: 732px;
+  --aui-form-item-width-m: 732px;
+  --aui-form-item-width-s: 140px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", Arial, "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
+}
+
+button {
+  font-size: var(--aui-font-size-m);
+  line-height: var(--aui-line-height-m);
+  font-weight: var(--aui-font-weight-normal);
+}
+
+a {
+  color: rgb(var(--aui-color-primary));
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(var(--aui-color-p-1));
+  text-decoration: underline;
+}
+a:active, a:focus {
+  color: rgb(var(--aui-color-p-0));
+  text-decoration: underline;
+}
+
+[class^=aui-],
+[class*=" aui-"] {
+  box-sizing: border-box;
+}
+[class^=aui-][hidden],
+[class*=" aui-"][hidden] {
+  display: none;
+}
+
+.aui-tooltip-copy {
+  cursor: pointer;
+}
+
+span + aui-icon.aui-tooltip-copy {
+  margin-left: var(--aui-spacing-s);
+}
+aui-icon.aui-tooltip-copy:hover {
+  color: rgb(var(--aui-color-primary));
+}
+
+.aui-tab-label__content aui-icon:first-child .aui-icon {
+  margin-right: var(--aui-spacing-s);
+}
