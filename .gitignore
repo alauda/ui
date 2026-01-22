@@ -12,4 +12,4 @@ reports
 /documentation.json
 /ng-package.debug.json
 /report.*.json
-.yarn
+.yarn/install-state.gz
