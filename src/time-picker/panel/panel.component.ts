@@ -1,10 +1,4 @@
-import {
-  NgIf,
-  NgFor,
-  NgClass,
-  NgTemplateOutlet,
-  DecimalPipe,
-} from '@angular/common';
+import { NgClass, NgTemplateOutlet, DecimalPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -55,14 +49,12 @@ const bem = buildBem('aui-time-picker-panel');
     },
   ],
   imports: [
-    NgIf,
-    NgFor,
     NgClass,
     ButtonComponent,
     NgTemplateOutlet,
     DecimalPipe,
-    I18nPipe,
-  ],
+    I18nPipe
+],
 })
 export class TimePickerPanelComponent
   extends CommonFormControl<Dayjs>

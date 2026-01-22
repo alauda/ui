@@ -1,5 +1,5 @@
 import { AnimationEvent, trigger } from '@angular/animations';
-import { NgIf, NgTemplateOutlet, AsyncPipe } from '@angular/common';
+import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -31,7 +31,7 @@ import { TooltipType } from './tooltip.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
   animations: [trigger('showHide', animations)],
-  imports: [NgIf, NgTemplateOutlet, AsyncPipe],
+  imports: [NgTemplateOutlet, AsyncPipe],
 })
 export class TooltipComponent implements OnDestroy {
   text: string;

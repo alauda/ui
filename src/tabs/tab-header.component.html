@@ -1,53 +1,55 @@
 <div [ngClass]="bem.block(type, size)">
-  <ng-container *ngIf="_title">
+  @if (_title) {
     <div [ngClass]="bem.element('title')">
       <ng-template [cdkPortalOutlet]="_title"></ng-template>
     </div>
-  </ng-container>
+  }
   <div [ngClass]="bem.element('header-wrapper')">
     <div
       [ngClass]="bem.element('pagination-wrapper')"
       #paginationWrapper
-    >
-      <div
-        *ngIf="_showPaginationControls"
-        (click)="_scrollHeader('before')"
-        [attr.disabled]="_disableScrollBefore ? '' : null"
-        [ngClass]="bem.element('pagination-button')"
       >
-        <aui-icon icon="angle_left"></aui-icon>
-      </div>
+      @if (_showPaginationControls) {
+        <div
+          (click)="_scrollHeader('before')"
+          [attr.disabled]="_disableScrollBefore ? '' : null"
+          [ngClass]="bem.element('pagination-button')"
+          >
+          <aui-icon icon="angle_left"></aui-icon>
+        </div>
+      }
       <div
         [ngClass]="bem.element('tab-list-container')"
         (keydown)="_handleKeydown($event)"
         #tabListContainer
-      >
+        >
         <div
           role="tablist"
           (cdkObserveContent)="_onContentChanges()"
           [ngClass]="bem.element('tab-list')"
           #tabList
-        >
+          >
           <div [ngClass]="bem.element('labels')"><ng-content></ng-content></div>
           <aui-tab-header-active-indicator
             [type]="type"
           ></aui-tab-header-active-indicator>
         </div>
       </div>
-      <div
-        *ngIf="_showPaginationControls"
-        (click)="_scrollHeader('after')"
-        [attr.disabled]="_disableScrollAfter ? '' : null"
-        [ngClass]="bem.element('pagination-button')"
-      >
-        <aui-icon icon="angle_right"></aui-icon>
-      </div>
+      @if (_showPaginationControls) {
+        <div
+          (click)="_scrollHeader('after')"
+          [attr.disabled]="_disableScrollAfter ? '' : null"
+          [ngClass]="bem.element('pagination-button')"
+          >
+          <aui-icon icon="angle_right"></aui-icon>
+        </div>
+      }
     </div>
     <!-- If there is addon template, use it. -->
-    <ng-container *ngIf="_showAddon">
+    @if (_showAddon) {
       <div [ngClass]="bem.element('addon')">
         <ng-template [cdkPortalOutlet]="_headerAddon"></ng-template>
       </div>
-    </ng-container>
+    }
   </div>
 </div>

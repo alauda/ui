@@ -10,7 +10,7 @@
   auiTooltipPosition="bottom start"
   [auiTooltipDisabled]="disabled"
   (auiTooltipVisibleChange)="handleTooltipVisible($event)"
->
+  >
   <aui-input-group>
     <input
       aui-input
@@ -21,22 +21,23 @@
       [(ngModel)]="timeFormatValue"
       (ngModelChange)="changeFromInput($event)"
       (keydown)="onKeyDown($event)"
-    />
-    <span
-      *ngIf="showIcon"
-      auiInputSuffix
-      class="aui-time-picker__icon-container"
-    >
-      <aui-icon
-        class="aui-time-picker__indicator"
-        icon="clock"
-      ></aui-icon>
-      <aui-icon
-        class="aui-time-picker__clear"
-        icon="xmark_small"
-        (click)="clearValue($event)"
-      ></aui-icon>
-    </span>
+      />
+    @if (showIcon) {
+      <span
+        auiInputSuffix
+        class="aui-time-picker__icon-container"
+        >
+        <aui-icon
+          class="aui-time-picker__indicator"
+          icon="clock"
+        ></aui-icon>
+        <aui-icon
+          class="aui-time-picker__clear"
+          icon="xmark_small"
+          (click)="clearValue($event)"
+        ></aui-icon>
+      </span>
+    }
   </aui-input-group>
 </div>
 

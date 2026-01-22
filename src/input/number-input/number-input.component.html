@@ -6,27 +6,29 @@
     hasBefore: hasAddonBefore$ | async,
     hasAfter: hasAddonAfter$ | async,
   }"
->
-  <div
-    *ngIf="hasAddonBefore$ | async"
-    [class]="bem.element('addon', 'before')"
   >
-    <ng-content select="[auiInputAddonBefore]"></ng-content>
-  </div>
+  @if (hasAddonBefore$ | async) {
+    <div
+      [class]="bem.element('addon', 'before')"
+      >
+      <ng-content select="[auiInputAddonBefore]"></ng-content>
+    </div>
+  }
   <div
     [class]="bem.element('inner')"
     auiClickOutside
     (auiClickOutside)="isFocus = false"
-  >
-    <button
-      *ngIf="controls && !angleControls"
-      type="button"
-      [ngClass]="bem.element('control', 'decrease')"
-      [disabled]="disabled || model <= min"
-      (click)="takeOneStep(false); isFocus = true"
     >
-      <aui-icon icon="minus"></aui-icon>
-    </button>
+    @if (controls && !angleControls) {
+      <button
+        type="button"
+        [ngClass]="bem.element('control', 'decrease')"
+        [disabled]="disabled || model <= min"
+        (click)="takeOneStep(false); isFocus = true"
+        >
+        <aui-icon icon="minus"></aui-icon>
+      </button>
+    }
     <input
       #inputRef
       autocomplete="off"
@@ -37,42 +39,45 @@
       (focus)="isFocus = true"
       (blur)="isFocus = false"
       [ngStyle]="{ 'text-align': angleControls ? 'left' : 'center' }"
-    />
-    <button
-      *ngIf="controls && !angleControls"
-      type="button"
-      [ngClass]="bem.element('control', 'increase')"
-      [disabled]="disabled || model >= max"
-      (click)="takeOneStep(true); isFocus = true"
-    >
-      <aui-icon icon="plus"></aui-icon>
-    </button>
-    <div
-      *ngIf="controls && angleControls"
-      class="aui-number-input__controls"
-    >
+      />
+    @if (controls && !angleControls) {
       <button
         type="button"
-        [ngClass]="bem.element('control', 'angle-up')"
+        [ngClass]="bem.element('control', 'increase')"
         [disabled]="disabled || model >= max"
         (click)="takeOneStep(true); isFocus = true"
-      >
-        <aui-icon icon="angle_up"></aui-icon>
+        >
+        <aui-icon icon="plus"></aui-icon>
       </button>
-      <button
-        type="button"
-        [ngClass]="bem.element('control', 'angle-down')"
-        [disabled]="disabled || model <= min"
-        (click)="takeOneStep(false); isFocus = true"
+    }
+    @if (controls && angleControls) {
+      <div
+        class="aui-number-input__controls"
+        >
+        <button
+          type="button"
+          [ngClass]="bem.element('control', 'angle-up')"
+          [disabled]="disabled || model >= max"
+          (click)="takeOneStep(true); isFocus = true"
+          >
+          <aui-icon icon="angle_up"></aui-icon>
+        </button>
+        <button
+          type="button"
+          [ngClass]="bem.element('control', 'angle-down')"
+          [disabled]="disabled || model <= min"
+          (click)="takeOneStep(false); isFocus = true"
+          >
+          <aui-icon icon="angle_down"></aui-icon>
+        </button>
+      </div>
+    }
+  </div>
+  @if (hasAddonAfter$ | async) {
+    <div
+      [class]="bem.element('addon', 'after')"
       >
-        <aui-icon icon="angle_down"></aui-icon>
-      </button>
+      <ng-content select="[auiInputAddonAfter]"></ng-content>
     </div>
-  </div>
-  <div
-    *ngIf="hasAddonAfter$ | async"
-    [class]="bem.element('addon', 'after')"
-  >
-    <ng-content select="[auiInputAddonAfter]"></ng-content>
-  </div>
+  }
 </div>

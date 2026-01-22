@@ -1,4 +1,4 @@
-import { NgClass, NgIf, NgStyle, AsyncPipe } from '@angular/common';
+import { NgClass, NgStyle, AsyncPipe } from '@angular/common';
 import {
   AfterContentInit,
   AfterViewInit,
@@ -42,12 +42,11 @@ import {
   ],
   imports: [
     NgClass,
-    NgIf,
     ClickOutsideDirective,
     IconComponent,
     NgStyle,
-    AsyncPipe,
-  ],
+    AsyncPipe
+],
 })
 export class NumberInputComponent
   extends CommonFormControl<number>

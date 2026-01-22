@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -53,7 +53,7 @@ export const INPUT_ERROR_KEY = 'input_data_error';
       multi: true,
     },
   ],
-  imports: [NgFor, TagComponent],
+  imports: [TagComponent],
 })
 export class TagsInputComponent
   extends CommonFormControl<string[]>

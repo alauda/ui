@@ -4,11 +4,13 @@ import { auiIcons as icons } from '../../src/icon/icons';
 
 @Component({
   template: ` <ul>
-    <li *ngFor="let icon of iconList">
-      <aui-icon [icon]="icon"></aui-icon>
-      <div>{{ icon }}</div>
-    </li>
-  </ul>`,
+      @for (icon of iconList; track icon) {
+        <li>
+          <aui-icon [icon]="icon"></aui-icon>
+          <div>{{ icon }}</div>
+        </li>
+      }
+    </ul>`,
   styleUrls: ['style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,

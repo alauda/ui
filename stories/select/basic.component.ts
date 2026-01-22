@@ -1,11 +1,11 @@
-import { NgFor } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { SelectModule } from '@alauda/ui';
 
 @Component({
-  imports: [SelectModule, FormsModule, NgFor],
+  imports: [SelectModule, FormsModule],
   selector: 'story-select-basic',
   template: `
     <aui-select
@@ -16,22 +16,23 @@ import { SelectModule } from '@alauda/ui';
       [filterable]="filterable"
       [readonly]="readonly"
       placeholder="select a value"
-    >
+      >
       <ng-container *auiOptionContent>
-        <aui-option
-          *ngFor="let option of arr"
-          [value]="option"
-          [disabled]="option === 'option5'"
-        >
-          {{ option }}
-        </aui-option>
+        @for (option of arr; track option) {
+          <aui-option
+            [value]="option"
+            [disabled]="option === 'option5'"
+            >
+            {{ option }}
+          </aui-option>
+        }
       </ng-container>
       <aui-option-placeholder>Empty</aui-option-placeholder>
     </aui-select>
     <br />
     <br />
     value: {{ value }}
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SelectBasicComponent {

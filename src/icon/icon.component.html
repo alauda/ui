@@ -1,86 +1,88 @@
-<svg
-  *ngIf="icon === 'spinner'; else icons"
-  [attr.class]="getClass('aui-icon-spinner')"
-  [style.fill]="color"
-  [style.width]="getWidth()"
-  [style.height]="getHeight()"
-  viewBox="0 0 200 200"
->
-  <defs>
-    <linearGradient
-      [attr.id]="'right-' + id"
-      gradientUnits="userSpaceOnUse"
-      x1="150"
-      y1="20"
-      x2="150"
-      y2="180"
-    >
-      <stop
-        offset="0"
-        style="stop-color: #000"
-      />
-      <stop
-        offset="1"
-        style="stop-color: #808080"
-      />
-    </linearGradient>
-    <linearGradient
-      [attr.id]="'left-' + id"
-      gradientUnits="userSpaceOnUse"
-      x1="50"
-      y1="0"
-      x2="50"
-      y2="180"
-    >
-      <stop
-        offset="0"
-        style="stop-color: #fff"
-      />
-      <stop
-        offset="1"
-        style="stop-color: #808080"
-      />
-    </linearGradient>
-    <mask [attr.id]="'mask-' + id">
-      <g>
-        <path
-          [attr.fill]="'url(#right-' + id + ')'"
-          d="M100,0v20c44.1,0,80,35.9,80,80c0,44.1-35.9,80-80,80v20c55.2,0,100-44.8,100-100S155.2,0,100,0z"
-        />
-        <path
-          [attr.fill]="'url(#left-' + id + ')'"
-          d="M20,100c0-44.1,35.9-80,80-80V0C44.8,0,0,44.8,0,100s44.8,100,100,100v-20C55.9,180,20,144.1,20,100z"
-        />
-      </g>
-    </mask>
-  </defs>
-  <rect
-    x="0"
-    y="0"
-    width="200"
-    height="200"
-    [attr.mask]="'url(#mask-' + id + ')'"
-  />
-</svg>
-
-<ng-template #icons>
+@if (icon === 'spinner') {
   <svg
-    *ngIf="getIconId(icon ? icon : ([light, dark] | auiThemePicker)) as iconId"
-    [ngClass]="getClass(iconId)"
+    [attr.class]="getClass('aui-icon-spinner')"
     [style.fill]="color"
     [style.width]="getWidth()"
     [style.height]="getHeight()"
-  >
+    viewBox="0 0 200 200"
+    >
+    <defs>
+      <linearGradient
+        [attr.id]="'right-' + id"
+        gradientUnits="userSpaceOnUse"
+        x1="150"
+        y1="20"
+        x2="150"
+        y2="180"
+        >
+        <stop
+          offset="0"
+          style="stop-color: #000"
+          />
+        <stop
+          offset="1"
+          style="stop-color: #808080"
+          />
+      </linearGradient>
+      <linearGradient
+        [attr.id]="'left-' + id"
+        gradientUnits="userSpaceOnUse"
+        x1="50"
+        y1="0"
+        x2="50"
+        y2="180"
+        >
+        <stop
+          offset="0"
+          style="stop-color: #fff"
+          />
+        <stop
+          offset="1"
+          style="stop-color: #808080"
+          />
+      </linearGradient>
+      <mask [attr.id]="'mask-' + id">
+        <g>
+          <path
+            [attr.fill]="'url(#right-' + id + ')'"
+            d="M100,0v20c44.1,0,80,35.9,80,80c0,44.1-35.9,80-80,80v20c55.2,0,100-44.8,100-100S155.2,0,100,0z"
+            />
+          <path
+            [attr.fill]="'url(#left-' + id + ')'"
+            d="M20,100c0-44.1,35.9-80,80-80V0C44.8,0,0,44.8,0,100s44.8,100,100,100v-20C55.9,180,20,144.1,20,100z"
+            />
+        </g>
+      </mask>
+    </defs>
     <rect
-      *ngIf="background"
-      class="aui-icon__background"
-      [ngClass]="background"
-      [attr.fill]="backgroundColor"
-      [style.width]="getWidth()"
-      [style.height]="getHeight()"
       x="0"
       y="0"
-    ></rect>
-    <use [attr.xlink:href]="link + '#' + iconId"></use>
+      width="200"
+      height="200"
+      [attr.mask]="'url(#mask-' + id + ')'"
+      />
   </svg>
-</ng-template>
+} @else {
+  @if (getIconId(icon ? icon : ([light, dark] | auiThemePicker)); as iconId) {
+    <svg
+      [ngClass]="getClass(iconId)"
+      [style.fill]="color"
+      [style.width]="getWidth()"
+      [style.height]="getHeight()"
+      >
+      @if (background) {
+        <rect
+          class="aui-icon__background"
+          [ngClass]="background"
+          [attr.fill]="backgroundColor"
+          [style.width]="getWidth()"
+          [style.height]="getHeight()"
+          x="0"
+          y="0"
+        ></rect>
+      }
+      <use [attr.xlink:href]="link + '#' + iconId"></use>
+    </svg>
+  }
+}
+

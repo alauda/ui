@@ -1,4 +1,4 @@
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -18,7 +18,7 @@ import { I18nPipe } from '../../../i18n/i18n.pipe';
   styleUrls: ['./style.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgTemplateOutlet, ButtonComponent, I18nPipe],
+  imports: [NgTemplateOutlet, ButtonComponent, I18nPipe],
 })
 export class CalendarFooterComponent {
   @Input()

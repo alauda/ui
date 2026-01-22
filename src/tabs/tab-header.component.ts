@@ -1,7 +1,7 @@
 import { FocusKeyManager } from '@angular/cdk/a11y';
 import { ObserversModule } from '@angular/cdk/observers';
 import { PortalModule } from '@angular/cdk/portal';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   AfterContentChecked,
   AfterContentInit,
@@ -53,12 +53,11 @@ const EXAGGERATED_OVERSCROLL = 60;
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NgClass,
-    NgIf,
     PortalModule,
     IconComponent,
     ObserversModule,
-    TabHeaderActiveIndicatorComponent,
-  ],
+    TabHeaderActiveIndicatorComponent
+],
 })
 export class TabHeaderComponent
   implements OnDestroy, AfterContentChecked, AfterContentInit

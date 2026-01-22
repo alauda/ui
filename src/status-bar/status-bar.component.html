@@ -1,12 +1,13 @@
 <div [class]="bem.block(size)">
-  <ng-container *ngFor="let item of status">
-    <div
-      *ngIf="item.scale"
-      [ngClass]="[bem.element('chunk', item.type), item.class || '']"
-      [style.width]="item.scale * 100 + '%'"
-      (click)="statusClick.emit(item)"
-      [auiTooltip]="template"
-      [auiTooltipContext]="item"
-    ></div>
-  </ng-container>
+  @for (item of status; track item) {
+    @if (item.scale) {
+      <div
+        [ngClass]="[bem.element('chunk', item.type), item.class || '']"
+        [style.width]="item.scale * 100 + '%'"
+        (click)="statusClick.emit(item)"
+        [auiTooltip]="template"
+        [auiTooltipContext]="item"
+      ></div>
+    }
+  }
 </div>

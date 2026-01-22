@@ -7,7 +7,7 @@ import {
 } from '@angular/animations';
 import { CdkAccordionItem } from '@angular/cdk/accordion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -49,7 +49,7 @@ export class AccordionItemContentDirective {}
     ]),
   ],
   viewProviders: [AccordionItemComponent],
-  imports: [IconComponent, NgIf, NgTemplateOutlet],
+  imports: [IconComponent, NgTemplateOutlet],
 })
 export class AccordionItemComponent
   extends CdkAccordionItem

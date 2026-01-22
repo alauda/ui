@@ -1,5 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -22,7 +22,7 @@ import { RadioSize } from '../radio.types';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  imports: [NgClass, NgIf, IconComponent],
+  imports: [NgClass, IconComponent],
 })
 export class RadioButtonComponent extends BaseRadio implements OnInit {
   bem: Bem = buildBem('aui-radio-button');

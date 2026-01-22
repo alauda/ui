@@ -1,4 +1,4 @@
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -28,7 +28,7 @@ const bem = buildBem('aui-calendar-header');
   styleUrls: ['./style.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgTemplateOutlet, ButtonComponent, IconComponent],
+  imports: [NgTemplateOutlet, ButtonComponent, IconComponent],
 })
 export class CalendarHeaderComponent {
   @Input()

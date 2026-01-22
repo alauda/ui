@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -50,11 +50,10 @@ dayjs.extend(customParseFormat);
     InputGroupComponent,
     InputComponent,
     FormsModule,
-    NgIf,
     InputSuffixDirective,
     IconComponent,
-    TimePickerPanelComponent,
-  ],
+    TimePickerPanelComponent
+],
 })
 export class TimePickerComponent extends CommonFormControl<
   TimePickerDataLike,

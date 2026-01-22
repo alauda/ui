@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       auiForm
       [auiFormInline]="true"
       [auiFormEmptyAddon]="true"
-    >
+      >
       <aui-form-item [width]="contentWidth">
         <label auiFormItemLabel>姓名</label>
         <input
@@ -18,19 +18,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           required
           minlength="3"
           [(ngModel)]="value1"
-        />
-        <div
-          auiFormItemError
-          *ngIf="name.errors?.required"
-        >
-          required
-        </div>
-        <div
-          auiFormItemError
-          *ngIf="name.errors?.minlength"
-        >
-          minlength: 3
-        </div>
+          />
+        @if (name.errors?.required) {
+          <div
+            auiFormItemError
+            >
+            required
+          </div>
+        }
+        @if (name.errors?.minlength) {
+          <div
+            auiFormItemError
+            >
+            minlength: 3
+          </div>
+        }
         <div auiFormItemHint>input your name</div>
         <div auiFormItemAddon>
           <aui-icon
@@ -47,7 +49,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           #sex="ngModel"
           required
           [(ngModel)]="value2"
-        >
+          >
           <aui-option value="test">test</aui-option>
         </aui-select>
         <div auiFormItemAddon>
@@ -58,7 +60,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </div>
       </aui-form-item>
     </form>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })

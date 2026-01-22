@@ -1,5 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { NgIf } from '@angular/common';
+
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -37,7 +37,7 @@ let uniqueId = 0;
       multi: true,
     },
   ],
-  imports: [NgIf, IconComponent],
+  imports: [IconComponent],
 })
 export class CheckboxComponent<T>
   extends CommonFormControl<boolean>

@@ -1,4 +1,4 @@
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -52,14 +52,13 @@ import {
   imports: [
     CalendarHeaderComponent,
     PickerPanelComponent,
-    NgIf,
     NgTemplateOutlet,
     CalendarFooterComponent,
     TimePickerComponent,
     FormsModule,
     ButtonComponent,
-    I18nPipe,
-  ],
+    I18nPipe
+],
 })
 export class DatePickerPanelComponent extends CommonFormControl<Dayjs> {
   @Input()

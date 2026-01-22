@@ -1,10 +1,4 @@
-import {
-  NgFor,
-  NgClass,
-  NgIf,
-  NgTemplateOutlet,
-  AsyncPipe,
-} from '@angular/common';
+import { NgClass, NgTemplateOutlet, AsyncPipe } from '@angular/common';
 import {
   AfterContentInit,
   AfterViewInit,
@@ -77,15 +71,13 @@ import {
   imports: [
     TooltipDirective,
     IconComponent,
-    NgFor,
     TagComponent,
     NgClass,
-    NgIf,
     NgTemplateOutlet,
     OptionComponent,
     AsyncPipe,
-    I18nPipe,
-  ],
+    I18nPipe
+],
 })
 export class MultiSelectComponent<T = unknown>
   extends BaseSelect<T, T[]>

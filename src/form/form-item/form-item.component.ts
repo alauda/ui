@@ -1,4 +1,4 @@
-import { NgClass, NgIf, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -42,7 +42,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  imports: [NgClass, NgIf, AsyncPipe],
+  imports: [NgClass, AsyncPipe],
 })
 export class FormItemComponent implements AfterContentInit, OnDestroy {
   bem: Bem = buildBem('aui-form-item');
