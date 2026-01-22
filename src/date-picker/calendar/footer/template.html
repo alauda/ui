@@ -3,27 +3,28 @@
     <ng-content></ng-content>
   </div>
   <div>
-    <ng-container
-      *ngIf="customAction; else default"
-      [ngTemplateOutlet]="customAction"
-    >
-    </ng-container>
-    <ng-template #default>
-      <button
-        aui-button="text"
-        *ngIf="clearable"
-        (click)="clear.emit()"
-        size="small"
-      >
-        {{ clearText || ('clear' | auiI18n) }}
-      </button>
+    @if (customAction) {
+      <ng-container
+        [ngTemplateOutlet]="customAction"
+        >
+      </ng-container>
+    } @else {
+      @if (clearable) {
+        <button
+          aui-button="text"
+          (click)="clear.emit()"
+          size="small"
+          >
+          {{ clearText || ('clear' | auiI18n) }}
+        </button>
+      }
       <button
         aui-button="primary"
         (click)="confirm.emit()"
         size="small"
-      >
+        >
         {{ 'confirm' | auiI18n }}
       </button>
-    </ng-template>
+    }
   </div>
 </div>

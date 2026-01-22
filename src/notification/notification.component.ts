@@ -3,7 +3,7 @@ import {
   TemplatePortal,
   PortalModule,
 } from '@angular/cdk/portal';
-import { NgIf } from '@angular/common';
+
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -34,7 +34,7 @@ let uniqueId = 0;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  imports: [IconComponent, NgIf, PortalModule],
+  imports: [IconComponent, PortalModule],
 })
 export class NotificationComponent
   extends MessageComponent

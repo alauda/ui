@@ -6,28 +6,29 @@
       [class.isExpanded]="expanded"
       [disabled]="disabled"
       (click)="toggle()"
-    >
+      >
       <aui-icon icon="angle_right"></aui-icon>
     </button>
     <div
       class="aui-accordion-item__header-content"
       [class.aui-accordion-item__header-content--expanded]="expanded"
-    >
+      >
       <ng-content select="[auiAccordionItemHeader]"></ng-content>
     </div>
   </div>
-  <div
-    *ngIf="expanded"
-    class="aui-accordion-item__body"
-    [id]="id"
-    [@expand]="expanded ? 'expanded' : 'collapsed'"
-  >
+  @if (expanded) {
     <div
-      class="aui-accordion-item__content"
-      [class.hasBackground]="background"
-    >
-      <ng-content></ng-content>
-      <ng-template [ngTemplateOutlet]="lazyContentTpl"></ng-template>
+      class="aui-accordion-item__body"
+      [id]="id"
+      [@expand]="expanded ? 'expanded' : 'collapsed'"
+      >
+      <div
+        class="aui-accordion-item__content"
+        [class.hasBackground]="background"
+        >
+        <ng-content></ng-content>
+        <ng-template [ngTemplateOutlet]="lazyContentTpl"></ng-template>
+      </div>
     </div>
-  </div>
+  }
 </div>

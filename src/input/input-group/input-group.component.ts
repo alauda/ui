@@ -1,4 +1,4 @@
-import { NgClass, NgIf, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -26,7 +26,7 @@ import { InputComponent } from '../input.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  imports: [NgClass, NgIf, AsyncPipe],
+  imports: [NgClass, AsyncPipe],
 })
 export class InputGroupComponent implements AfterContentInit {
   bem: Bem = buildBem('aui-input-group');

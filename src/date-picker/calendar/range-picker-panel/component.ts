@@ -1,4 +1,4 @@
-import { NgIf, NgTemplateOutlet, DatePipe } from '@angular/common';
+import { NgTemplateOutlet, DatePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -51,14 +51,13 @@ const bem = buildBem('aui-date-range-picker-panel');
   imports: [
     CalendarHeaderComponent,
     PickerPanelComponent,
-    NgIf,
     CalendarFooterComponent,
     NgTemplateOutlet,
     TimePickerComponent,
     FormsModule,
     DatePipe,
-    I18nPipe,
-  ],
+    I18nPipe
+],
 })
 export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {
   @Input()

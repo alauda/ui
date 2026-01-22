@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -21,7 +21,7 @@ import { getClosestDialog } from '../utils';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  imports: [NgIf, IconComponent],
+  imports: [IconComponent],
 })
 export class DialogHeaderComponent implements OnInit {
   bem: Bem = buildBem('aui-dialog');

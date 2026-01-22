@@ -4,27 +4,29 @@
   [class.isDisabled]="nodeData.disabled"
   [class.isSelected]="selected"
   [attr.data-value]="nodeData.value"
->
+  >
   <div
     class="aui-tree-node__content"
     [class.isLeftOnly]="leafOnly && !isLeaf && !nodeData.disabled"
-  >
-    <aui-icon
-      *ngIf="nodeData.loading"
-      class="aui-tree-node__loading"
-      margin="left"
-      size="16"
-      [icon]="'spinner'"
-    ></aui-icon>
-    <aui-icon
-      *ngIf="!nodeData.loading"
-      class="aui-tree-node__indicator"
-      [class.isVisible]="nodeData.children"
-      margin="left"
-      size="16"
-      [icon]="nodeData.expanded ? 'angle_down' : 'angle_right'"
-      (click)="switchExpanded()"
-    ></aui-icon>
+    >
+    @if (nodeData.loading) {
+      <aui-icon
+        class="aui-tree-node__loading"
+        margin="left"
+        size="16"
+        [icon]="'spinner'"
+      ></aui-icon>
+    }
+    @if (!nodeData.loading) {
+      <aui-icon
+        class="aui-tree-node__indicator"
+        [class.isVisible]="nodeData.children"
+        margin="left"
+        size="16"
+        [icon]="nodeData.expanded ? 'angle_down' : 'angle_right'"
+        (click)="switchExpanded()"
+      ></aui-icon>
+    }
     <span
       #titleRef
       class="aui-tree-node__title"
@@ -32,25 +34,28 @@
       [class.isSelected]="selected"
       [class.unselectable]="leafOnly && !isLeaf"
       (click)="onClick()"
-    >
-      <aui-icon
-        *ngIf="nodeData.icon"
-        margin="right"
-        [icon]="getIcon()"
-      ></aui-icon>
+      >
+      @if (nodeData.icon) {
+        <aui-icon
+          margin="right"
+          [icon]="getIcon()"
+        ></aui-icon>
+      }
       {{ nodeData.label }}
     </span>
   </div>
-  <div
-    *ngIf="nodeData.children"
-    [hidden]="!nodeData.expanded"
-    class="aui-tree-node__children"
-  >
-    <aui-tree-node
-      #treeNodes
-      *ngFor="let data of nodeData.children; trackBy: trackByLabel"
-      [nodeData]="data"
-      [leafOnly]="leafOnly"
-    ></aui-tree-node>
-  </div>
+  @if (nodeData.children) {
+    <div
+      [hidden]="!nodeData.expanded"
+      class="aui-tree-node__children"
+      >
+      @for (data of nodeData.children; track trackByLabel($index, data)) {
+        <aui-tree-node
+          #treeNodes
+          [nodeData]="data"
+          [leafOnly]="leafOnly"
+        ></aui-tree-node>
+      }
+    </div>
+  }
 </div>

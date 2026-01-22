@@ -23,24 +23,26 @@ const DATA_SOURCE: Element[] = [
     <table
       auiSort
       (sortChange)="sortData($event)"
-    >
+      >
       <tr>
         <th aui-sort-header="id">No.</th>
         <th aui-sort-header="name">Name</th>
         <th
           aui-sort-header="value"
           start="desc"
-        >
+          >
           Value
         </th>
       </tr>
-      <tr *ngFor="let item of dataSource">
-        <td>{{ item.id }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.value }}</td>
-      </tr>
+      @for (item of dataSource; track item) {
+        <tr>
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.value }}</td>
+        </tr>
+      }
     </table>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })

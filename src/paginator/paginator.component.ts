@@ -1,4 +1,4 @@
-import { NgFor, NgIf, NgClass, NgSwitch, NgSwitchCase } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -28,17 +28,13 @@ import { PaginatorIntl } from './paginator-intl';
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
   imports: [
-    NgFor,
-    NgIf,
-    NgSwitch,
-    NgSwitchCase,
     ButtonComponent,
     NgClass,
     IconComponent,
     SelectComponent,
     OptionComponent,
-    InputComponent,
-  ],
+    InputComponent
+],
 })
 export class PaginatorComponent implements OnDestroy {
   bem: Bem = buildBem('aui-paginator');

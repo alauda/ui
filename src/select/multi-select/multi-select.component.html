@@ -18,7 +18,7 @@
   (auiTooltipVisibleChange)="onVisibleOptions($event)"
   (mousedown)="$event.preventDefault()"
   [style.max-height]="maxHeight"
->
+  >
   <div class="aui-multi-select__suffix">
     <span class="aui-multi-select__icon-container">
       <aui-icon
@@ -35,28 +35,29 @@
   <span
     [hidden]="model.length || inputRef.value.length"
     [class]="bem.element('placeholder')"
-  >
+    >
     {{ placeholder }}
   </span>
-  <aui-tag
-    *ngFor="let option of selectedOptions$ | async; trackBy: trackByValue"
-    type="info"
-    [round]="true"
-    [border]="true"
-    [size]="tagSize"
-    [closeable]="!disabled && !option.disabled"
-    (close)="removeValue(option.value)"
-    [ngClass]="tagClassFn && tagClassFn(option.label, option.value)"
-  >
-    <ng-container
-      *ngIf="isTemplateRef(option.label); else label"
-      [ngTemplateOutlet]="option.label"
-      [ngTemplateOutletContext]="option.labelContext"
-    ></ng-container>
-    <ng-template #label>
-      {{ option.label }}
-    </ng-template>
-  </aui-tag>
+  @for (option of selectedOptions$ | async; track trackByValue($index, option)) {
+    <aui-tag
+      type="info"
+      [round]="true"
+      [border]="true"
+      [size]="tagSize"
+      [closeable]="!disabled && !option.disabled"
+      (close)="removeValue(option.value)"
+      [ngClass]="tagClassFn && tagClassFn(option.label, option.value)"
+      >
+      @if (isTemplateRef(option.label)) {
+        <ng-container
+          [ngTemplateOutlet]="option.label"
+          [ngTemplateOutletContext]="option.labelContext"
+        ></ng-container>
+      } @else {
+        {{ option.label }}
+      }
+    </aui-tag>
+  }
   <input
     #inputRef
     autocomplete="off"
@@ -66,11 +67,11 @@
     (blur)="onInputBlur()"
     (keydown)="onKeyDown($event)"
     (input)="onInput($event)"
-  />
+    />
   <span
     #inputValueMirror
     [class]="bem.element('mirror')"
-  >
+    >
     {{ inputValue }}
   </span>
 </div>
@@ -80,20 +81,18 @@
     class="aui-option-container"
     [style.minWidth]="containerWidth"
     (mousedown)="$event.preventDefault()"
-  >
+    >
     <div
       #optionListRef
       class="aui-option-container__content"
-    >
-      <ng-container
-        *ngIf="
-          allowSelectAll &&
-          (hasEnabledOptions$ | async) &&
-          ((hasVisibleOption$ | async) ||
-            (allowCreate && (customCreatedOptions$ | async).length) ||
-            (allowCreate && filterString))
-        "
       >
+      @if (
+        allowSelectAll &&
+        (hasEnabledOptions$ | async) &&
+        ((hasVisibleOption$ | async) ||
+        (allowCreate && (customCreatedOptions$ | async).length) ||
+        (allowCreate && filterString))
+        ) {
         <div
           class="aui-option"
           [class]="bemSelectAll.block(size$ | async)"
@@ -104,46 +103,50 @@
           "
           [class.isMulti]="true"
           (click)="onSelectAllClick()"
-        >
+          >
           <i class="aui-option__pointer">
-            <aui-icon
-              *ngIf="(selectAllStatus$ | async) === 'checked'"
-              icon="check"
-            ></aui-icon>
+            @if ((selectAllStatus$ | async) === 'checked') {
+              <aui-icon
+                icon="check"
+              ></aui-icon>
+            }
           </i>
           {{ 'select_all' | auiI18n }}
         </div>
         <div class="aui-option__divider"></div>
-      </ng-container>
-      <aui-option
-        #inputtingOption
-        *ngIf="allowCreate && filterString && !(hasMatchedOption$ | async)"
-        [value]="filterString"
-      >
-        {{ filterString }}
-      </aui-option>
-      <ng-container *ngIf="allowCreate">
+      }
+      @if (allowCreate && filterString && !(hasMatchedOption$ | async)) {
         <aui-option
-          *ngFor="let option of customCreatedOptions$ | async"
-          [label]="option.label"
-          [value]="option.value"
-        >
-          {{ option.label }}
+          #inputtingOption
+          [value]="filterString"
+          >
+          {{ filterString }}
         </aui-option>
-      </ng-container>
+      }
+      @if (allowCreate) {
+        @for (option of customCreatedOptions$ | async; track option) {
+          <aui-option
+            [label]="option.label"
+            [value]="option.value"
+            >
+            {{ option.label }}
+          </aui-option>
+        }
+      }
       <ng-content></ng-content>
     </div>
-    <div
-      *ngIf="
-        !(
-          (hasVisibleOption$ | async) ||
-          (allowCreate && (customCreatedOptions$ | async).length) ||
-          (allowCreate && filterString)
-        )
-      "
-      class="aui-option-container__placeholder"
-    >
-      <ng-content select="aui-option-placeholder"></ng-content>
-    </div>
+    @if (
+      !(
+      (hasVisibleOption$ | async) ||
+      (allowCreate && (customCreatedOptions$ | async).length) ||
+      (allowCreate && filterString)
+      )
+      ) {
+      <div
+        class="aui-option-container__placeholder"
+        >
+        <ng-content select="aui-option-placeholder"></ng-content>
+      </div>
+    }
   </div>
 </ng-template>

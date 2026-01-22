@@ -3,25 +3,26 @@
   (mousedown)="$event.preventDefault()"
   (click)="inputRef.focus()"
   [style.max-height]="maxHeight"
->
+  >
   <span
     [hidden]="model.length || inputRef.value.length"
     [class]="bem.element('placeholder')"
-  >
+    >
     {{ placeholder }}
   </span>
-  <aui-tag
-    *ngFor="let tag of model; let index = index; trackBy: trackByValue"
-    type="info"
-    [title]="tag"
-    [size]="tagSize"
-    [round]="true"
-    [border]="true"
-    [closeable]="!(disabled || readonlyTags.includes(tag))"
-    (close)="onRemove(index)"
-  >
-    {{ tag }}
-  </aui-tag>
+  @for (tag of model; track trackByValue(index, tag); let index = $index) {
+    <aui-tag
+      type="info"
+      [title]="tag"
+      [size]="tagSize"
+      [round]="true"
+      [border]="true"
+      [closeable]="!(disabled || readonlyTags.includes(tag))"
+      (close)="onRemove(index)"
+      >
+      {{ tag }}
+    </aui-tag>
+  }
   <input
     #inputRef
     [class]="inputClass"
@@ -31,10 +32,10 @@
     (blur)="onInputBlur($event)"
     (keydown)="onKeyDown($event)"
     (input)="onInput()"
-  />
+    />
   <span
     #inputValueMirror
     [class]="bem.element('mirror')"
     >{{ inputRef.value }}</span
-  >
-</div>
+    >
+  </div>

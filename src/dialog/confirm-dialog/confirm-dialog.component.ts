@@ -1,9 +1,4 @@
-import {
-  NgIf,
-  NgTemplateOutlet,
-  NgComponentOutlet,
-  NgClass,
-} from '@angular/common';
+import { NgTemplateOutlet, NgComponentOutlet, NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -34,12 +29,11 @@ import { ConfirmDialogConfig } from './confirm-dialog-config';
   preserveWhitespaces: false,
   imports: [
     IconComponent,
-    NgIf,
     NgTemplateOutlet,
     NgComponentOutlet,
     ButtonComponent,
-    NgClass,
-  ],
+    NgClass
+],
 })
 export class ConfirmDialogComponent<T = unknown, R = unknown> {
   bem: Bem = buildBem('aui-confirm-dialog');
