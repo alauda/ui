@@ -1,7 +1,3 @@
-import {
-  _DisposeViewRepeaterStrategy,
-  _VIEW_REPEATER_STRATEGY,
-} from '@angular/cdk/collections';
 import { CDK_TABLE, CdkTable, CdkTableModule } from '@angular/cdk/table';
 import {
   AfterContentInit,
@@ -72,10 +68,6 @@ export const tableBem = buildBem('aui-table');
     {
       provide: CDK_TABLE,
       useExisting: TableComponent,
-    },
-    {
-      provide: _VIEW_REPEATER_STRATEGY,
-      useClass: _DisposeViewRepeaterStrategy,
     },
   ],
   imports: [CdkTableModule],
