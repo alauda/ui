@@ -156,7 +156,7 @@ __metadata:
     "@angular-devkit/build-angular": "npm:^20.2.0"
     "@angular/animations": "npm:^21.1.1"
     "@angular/build": "npm:^20.2.0"
-    "@angular/cdk": "npm:^20.2.0"
+    "@angular/cdk": "npm:^21.1.1"
     "@angular/cli": "npm:^21.1.0"
     "@angular/common": "npm:^21.1.1"
     "@angular/compiler": "npm:^21.1.1"
@@ -846,17 +846,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/cdk@npm:^20.2.0":
-  version: 20.2.0
-  resolution: "@angular/cdk@npm:20.2.0"
+"@angular/cdk@npm:^21.1.1":
+  version: 21.1.1
+  resolution: "@angular/cdk@npm:21.1.1"
   dependencies:
     parse5: "npm:^8.0.0"
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/common": ^20.0.0 || ^21.0.0
-    "@angular/core": ^20.0.0 || ^21.0.0
+    "@angular/common": ^21.0.0 || ^22.0.0
+    "@angular/core": ^21.0.0 || ^22.0.0
+    "@angular/platform-browser": ^21.0.0 || ^22.0.0
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: 07a38bb3953754e971761d2607a949be0c2153e26da3543bd498620c2fc99d5eba7c96a5e9a1be693d609dee4638091d093bee18b7e59101f5f1c0e9899e05eb
+  checksum: e1c7877cac6d7969bd4a8c47741f9cfb0e2c468230aec9c73faceb20feae44da45f12b6d7f292cc72da3ed090efd1d01e9a9496a367e2b35c24cb4f51acec875
   languageName: node
   linkType: hard
 
