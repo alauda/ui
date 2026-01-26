@@ -1,10 +1,9 @@
-@import '../../../theme/var';
-@import '../../../theme/mixin';
+@use '../../../theme/mixin' as mixin;
 
 .aui-date-picker-panel__wrapper {
   display: flex;
   flex-direction: column;
-  @include text-set(m);
+  @include mixin.text-set(m);
 
   .aui-time-picker {
     width: 88px;

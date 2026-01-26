@@ -1,5 +1,5 @@
-@import '../../../theme/var';
-@import '../../../theme/mixin';
+@use '../../../theme/var' as var;
+@use '../../../theme/mixin' as mixin;
 
 $block: aui-date-range-picker-panel;
 
@@ -7,11 +7,11 @@ $block: aui-date-range-picker-panel;
   &__container {
     display: flex;
     flex-direction: column;
-    width: $range-picker-body-width;
-    @include text-set(m);
+    width: var.$range-picker-body-width;
+    @include mixin.text-set(m);
 
     .placeholder {
-      color: use-text-color(placeholder);
+      color: var.use-text-color(placeholder);
 
       &.separator {
         margin-inline: 12px;
@@ -19,7 +19,7 @@ $block: aui-date-range-picker-panel;
     }
 
     .date-value {
-      color: use-text-color(main);
+      color: var.use-text-color(main);
     }
 
     .date-holder {
@@ -29,7 +29,7 @@ $block: aui-date-range-picker-panel;
     }
 
     .panel__wrapper {
-      width: $range-picker-header-width;
+      width: var.$range-picker-header-width;
       display: flex;
       justify-content: center;
     }
@@ -40,7 +40,7 @@ $block: aui-date-range-picker-panel;
     justify-content: space-between;
 
     aui-calendar-header {
-      flex: 0 0 $range-picker-header-width;
+      flex: 0 0 var.$range-picker-header-width;
       max-width: 50%;
     }
   }

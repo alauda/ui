@@ -1,14 +1,14 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
-@import '../menu-item/mixin';
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+@use '../menu-item/mixin' as menuMixin;
 
-@include component-style(aui-submenu);
+@include menuMixin.component-style(aui-submenu);
 
 .aui-submenu {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: use-var(spacing-s);
+  padding-right: var.use-var(spacing-s);
 
   &__title {
     display: inline-block;
@@ -18,12 +18,12 @@
   }
 
   &__arrow {
-    margin-left: use-var(spacing-l);
+    margin-left: var.use-var(spacing-l);
   }
 
   &--default {
     &.isActive {
-      color: use-rgb(n-1);
+      color: var.use-rgb(n-1);
     }
   }
 }
@@ -32,7 +32,7 @@
   &.aui-tooltip {
     &--start,
     &--end {
-      margin: calc(0px - #{use-var(spacing-m)}) use-var(spacing-m);
+      margin: calc(0px - #{var.use-var(spacing-m)}) var.use-var(spacing-m);
     }
   }
 }

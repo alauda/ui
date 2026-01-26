@@ -1,7 +1,7 @@
-@import '../../theme/var';
+@use '../../theme/var' as var;
 
 .aui-range-picker-wrapper {
-  padding: use-var(spacing-xl);
+  padding: var.use-var(spacing-xl);
 }
 
 aui-range-picker {

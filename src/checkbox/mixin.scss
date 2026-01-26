@@ -1,5 +1,5 @@
-@import '../theme/mixin';
-@import '../theme/var';
+@use '../theme/mixin' as mixin;
+@use '../theme/var' as var;
 
 @mixin pointer($checkedStatus) {
   &__pointer {
@@ -7,31 +7,31 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    width: use-var(icon-size-m);
-    height: use-var(icon-size-m);
-    margin-right: use-var(spacing-m);
-    border-radius: use-var(border-radius-m);
-    border: 1px solid use-rgb(n-7);
+    width: var.use-var(icon-size-m);
+    height: var.use-var(icon-size-m);
+    margin-right: var.use-var(spacing-m);
+    border-radius: var.use-var(border-radius-m);
+    border: 1px solid var.use-rgb(n-7);
     color: white;
-    background-color: use-rgb(main-bg);
+    background-color: var.use-rgb(main-bg);
     position: relative;
     vertical-align: middle;
-    @include transition;
+    @include mixin.transition;
   }
 
   &.cdk-keyboard-focused &__pointer {
-    border-color: use-rgb(primary);
-    @include outline-shadow(primary);
+    border-color: var.use-rgb(primary);
+    @include mixin.outline-shadow(primary);
   }
 
   &.#{$checkedStatus} &__pointer {
-    border-color: use-rgb(primary);
-    background-color: use-rgb(primary);
+    border-color: var.use-rgb(primary);
+    background-color: var.use-rgb(primary);
   }
 
   &.isIndeterminate &__pointer {
-    border-color: use-rgb(primary);
-    background-color: use-rgb(main-bg);
+    border-color: var.use-rgb(primary);
+    background-color: var.use-rgb(main-bg);
 
     &:before {
       content: '';
@@ -39,13 +39,13 @@
       width: 8px;
       height: 8px;
       border-radius: 1px;
-      background-color: use-rgb(primary);
+      background-color: var.use-rgb(primary);
     }
   }
 
   &.#{$checkedStatus}.isDisabled &__pointer {
-    border-color: use-rgb(p-4);
-    background-color: use-rgb(p-4);
+    border-color: var.use-rgb(p-4);
+    background-color: var.use-rgb(p-4);
   }
 
   &.isDisabled &__label {
@@ -53,7 +53,7 @@
   }
 
   &.isDisabled &__pointer {
-    border-color: use-rgb(n-7);
-    background-color: use-rgb(n-8);
+    border-color: var.use-rgb(n-7);
+    background-color: var.use-rgb(n-8);
   }
 }

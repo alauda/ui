@@ -1,5 +1,5 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
 
 .aui-dropdown-button {
   display: inline-block;
@@ -70,5 +70,5 @@
 aui-dropdown-button + aui-dropdown-button > .aui-dropdown-button,
 aui-dropdown-button + .aui-button,
 .aui-button + aui-dropdown-button > .aui-dropdown-button {
-  margin-left: use-var(spacing-m);
+  margin-left: var.use-var(spacing-m);
 }

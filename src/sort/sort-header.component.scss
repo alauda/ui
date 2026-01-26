@@ -1,4 +1,4 @@
-@import '../theme/var';
+@use '../theme/var' as var;
 
 $block: aui-sort-header;
 
@@ -20,7 +20,7 @@ $block: aui-sort-header;
   }
 
   &__indicator {
-    margin-left: $sort-indicator-margin;
+    margin-left: var.$sort-indicator-margin;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,17 +31,17 @@ $block: aui-sort-header;
       content: '';
       width: 0;
       height: 0;
-      border-left: $sort-indicator-size solid transparent;
-      border-right: $sort-indicator-size solid transparent;
+      border-left: var.$sort-indicator-size solid transparent;
+      border-right: var.$sort-indicator-size solid transparent;
     }
 
     &:before {
-      border-bottom: $sort-indicator-size solid $sort-indicator-color;
-      margin-bottom: $sort-indicator-size;
+      border-bottom: var.$sort-indicator-size solid var.$sort-indicator-color;
+      margin-bottom: var.$sort-indicator-size;
     }
 
     &:after {
-      border-top: $sort-indicator-size solid $sort-indicator-color;
+      border-top: var.$sort-indicator-size solid var.$sort-indicator-color;
     }
   }
 
@@ -49,13 +49,13 @@ $block: aui-sort-header;
     .#{$block}__indicator {
       &--asc {
         &:before {
-          border-bottom-color: $sort-indicator-color-active;
+          border-bottom-color: var.$sort-indicator-color-active;
         }
       }
 
       &--desc {
         &:after {
-          border-top-color: $sort-indicator-color-active;
+          border-top-color: var.$sort-indicator-color-active;
         }
       }
     }

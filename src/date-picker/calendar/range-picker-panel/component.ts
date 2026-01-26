@@ -1,4 +1,4 @@
-import { NgIf, NgTemplateOutlet, DatePipe } from '@angular/common';
+import { NgTemplateOutlet, DatePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -51,14 +51,13 @@ const bem = buildBem('aui-date-range-picker-panel');
   imports: [
     CalendarHeaderComponent,
     PickerPanelComponent,
-    NgIf,
     CalendarFooterComponent,
     NgTemplateOutlet,
     TimePickerComponent,
     FormsModule,
     DatePipe,
-    I18nPipe,
-  ],
+    I18nPipe
+],
 })
 export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {
   @Input()
@@ -107,9 +106,7 @@ export class DateRangePickerPanelComponent extends CommonFormControl<Dayjs[]> {
   leftDateRange = DateNavRange.Month;
   rightDateRange = DateNavRange.Month;
 
-  // Angular DatePipe uses CLDR date formats.
-  // `YYYY` represents week-based year and may differ from calendar year near year end.
-  FOOTER_DATE_FORMAT = 'yyyy-MM-dd';
+  FOOTER_DATE_FORMAT = 'YYYY-MM-dd';
 
   leftAnchor = dayjs();
   rightAnchor = dayjs().add(1, MONTH);

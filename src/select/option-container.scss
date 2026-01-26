@@ -1,6 +1,6 @@
-@import '../theme/var';
-@import '../theme/mixin';
-@import './option-group/option-group-style.scss';
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+@use './option-group/option-group-style' as optionGroupStyle;
 
 @mixin option-container($block, $size: m) {
   .#{$block} {
@@ -8,25 +8,25 @@
     max-width: 90vw;
 
     &__content {
-      max-height: calc(#{use-var(inline-height-#{$size})} * 10);
+      max-height: calc(#{var.use-var(inline-height-#{$size})} * 10);
       position: relative;
       overflow: auto;
-      @include scroll-bar;
+      @include mixin.scroll-bar;
     }
 
     &__placeholder {
-      color: use-rgb(n-4);
-      font-size: use-var(font-size-m);
+      color: var.use-rgb(n-4);
+      font-size: var.use-var(font-size-m);
       text-align: center;
     }
   }
 
   .#{$block}--small {
     .#{$block}__content {
-      max-height: calc(#{use-var(inline-height-s)} * 10);
+      max-height: calc(#{var.use-var(inline-height-s)} * 10);
     }
     .#{$block}__placeholder {
-      font-size: use-var(font-size-s);
+      font-size: var.use-var(font-size-s);
     }
   }
 }

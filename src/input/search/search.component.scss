@@ -1,5 +1,6 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+@use 'sass:map';
 
 $block: 'aui-search';
 
@@ -7,56 +8,62 @@ $block: 'aui-search';
   display: inline-block;
   width: 100%;
   position: relative;
-  color: use-rgb(n-4);
+  color: var.use-rgb(n-4);
 
   &.isDisabled {
-    color: use-text-color(disabled);
+    color: var.use-text-color(disabled);
     cursor: not-allowed;
   }
 
   @each $key in large medium small mini {
-    $map: map-get($input-size, $key);
+    $map: map.get(var.$input-size, $key);
 
     &--#{$key} {
-      font-size: map-get($map, font-size);
-      line-height: map-get($map, line-height);
+      font-size: map.get($map, font-size);
+      line-height: map.get($map, line-height);
 
       aui-icon {
-        font-size: map-get($map, icon-size);
+        font-size: map.get($map, icon-size);
       }
 
       .#{$block}__clear,
       .#{$block}__spinner {
-        right: calc(#{use-var(inline-padding-xs)} + 1px);
+        right: calc(#{var.use-var(inline-padding-xs)} + 1px);
       }
 
       .#{$block}__icon {
-        left: calc(#{use-var(inline-padding-xs)} + 1px);
+        left: calc(#{var.use-var(inline-padding-xs)} + 1px);
       }
 
       .#{$block}__button-icon {
-        padding: 0 use-var(inline-padding-xs);
-        color: use-rgb(n-2);
+        padding: 0 var.use-var(inline-padding-xs);
+        color: var.use-rgb(n-2);
       }
 
       &.hasIcon .#{$block}__input {
         padding-left: calc(
-          #{map-get($map, icon-size)} + #{use-var(inline-padding-xs)} * 2 + 1px
+          #{map.get($map, icon-size)} +
+            #{var.use-var(inline-padding-xs)} *
+            2 +
+            1px
         );
       }
 
       &.hasIcon.isSearching .#{$block}__input,
       &.hasIcon.isClearable .#{$block}__input {
         padding-right: calc(
-          #{map-get($map, icon-size)} + #{use-var(inline-padding-xs)} * 2 + 1px
+          #{map.get($map, icon-size)} +
+            #{var.use-var(inline-padding-xs)} *
+            2 +
+            1px
         );
       }
 
       &.hasButton .#{$block} {
         &__input {
           padding-right: calc(
-            #{map-get($map, icon-size)} +
-              #{use-var(inline-padding-xs)} *
+            #{map.get($map, icon-size)} +
+              #{var.use-var(inline-padding-xs)} *
               3 +
               1px
           );
@@ -64,8 +71,8 @@ $block: 'aui-search';
 
         &__clear {
           right: calc(
-            #{map-get($map, icon-size)} +
-              #{use-var(inline-padding-xs)} *
+            #{map.get($map, icon-size)} +
+              #{var.use-var(inline-padding-xs)} *
               3 +
               1px *
               2
@@ -75,9 +82,9 @@ $block: 'aui-search';
 
       &.hasButton.isClearable .#{$block}__input {
         padding-right: calc(
-          #{map-get($map, icon-size)} *
+          #{map.get($map, icon-size)} *
             2 +
-            #{use-var(inline-padding-xs)} *
+            #{var.use-var(inline-padding-xs)} *
             4 +
             3px
         );
@@ -89,7 +96,7 @@ $block: 'aui-search';
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: use-text-color(placeholder);
+    color: var.use-text-color(placeholder);
   }
 
   &__button {
@@ -105,12 +112,12 @@ $block: 'aui-search';
     cursor: pointer;
 
     &:hover {
-      color: use-rgb(primary);
+      color: var.use-rgb(primary);
     }
   }
 
   &__button-icon {
-    border-left: 1px solid use-rgb(n-7);
+    border-left: 1px solid var.use-rgb(n-7);
   }
 
   &__clear,
@@ -121,6 +128,6 @@ $block: 'aui-search';
   }
 
   &__clear .aui-icon {
-    @include clear-button;
+    @include mixin.clear-button;
   }
 }

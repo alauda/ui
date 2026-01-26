@@ -2,7 +2,7 @@
   [@inOut]="animateState"
   (@inOut.done)="onAnimationEnd($event)"
   [class]="bem.block(type) + ' ' + uniqueId + ' ' + customClass"
->
+  >
   <div [class]="bem.element('wrapper')">
     <div [class]="bem.element('icon')">
       <aui-icon
@@ -11,40 +11,45 @@
       ></aui-icon>
     </div>
     <div [class]="bem.element('body')">
-      <div
-        *ngIf="title"
-        [class]="bem.element('title')"
-      >
-        {{ title }}
-      </div>
-      <div
-        *ngIf="content"
-        [class]="bem.element('content')"
-      >
-        {{ content }}
-      </div>
-      <ng-template cdkPortalHost></ng-template>
+      @if (title) {
+        <div
+          [class]="bem.element('title')"
+          >
+          {{ title }}
+        </div>
+      }
+      @if (content) {
+        <div
+          [class]="bem.element('content')"
+          >
+          {{ content }}
+        </div>
+      }
+      <ng-template cdkPortalOutlet></ng-template>
       <ng-template #modalComponent></ng-template>
     </div>
     <div [class]="bem.element('remove')">
-      <aui-icon
-        *ngIf="duration <= 0 || isHover"
-        [class]="bem.element('close')"
-        icon="xmark"
-        (click)="close()"
-      ></aui-icon>
-      <div
-        *ngIf="duration > 0 && !isHover"
-        [class]="bem.element('duration')"
-      >
-        {{ remains > 0 ? remains : 1 }}s
-      </div>
+      @if (duration <= 0 || isHover) {
+        <aui-icon
+          [class]="bem.element('close')"
+          icon="xmark"
+          (click)="close()"
+        ></aui-icon>
+      }
+      @if (duration > 0 && !isHover) {
+        <div
+          [class]="bem.element('duration')"
+          >
+          {{ remains > 0 ? remains : 1 }}s
+        </div>
+      }
     </div>
   </div>
-  <div
-    *ngIf="footerPortal"
-    [class]="bem.element('footer')"
-  >
-    <ng-template [cdkPortalOutlet]="footerPortal"></ng-template>
-  </div>
+  @if (footerPortal) {
+    <div
+      [class]="bem.element('footer')"
+      >
+      <ng-template [cdkPortalOutlet]="footerPortal"></ng-template>
+    </div>
+  }
 </div>

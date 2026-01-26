@@ -1,39 +1,39 @@
 @use 'sass:math';
-
-@import 'base-var';
+@use 'base-var' as base-var;
+@forward 'base-var';
 
 $status-color-map: (
-  success: use-rgb(green),
-  warning: use-rgb(yellow),
-  error: use-rgb(red),
-  info: use-rgb(primary),
+  success: base-var.use-rgb(green),
+  warning: base-var.use-rgb(yellow),
+  error: base-var.use-rgb(red),
+  info: base-var.use-rgb(primary),
 );
 
 // input
 $input-size: (
   large: (
-    height: use-var(inline-height-l),
-    font-size: use-var(font-size-l),
-    line-height: use-var(line-height-l),
-    icon-size: use-var(icon-size-l),
+    height: base-var.use-var(inline-height-l),
+    font-size: base-var.use-var(font-size-l),
+    line-height: base-var.use-var(line-height-l),
+    icon-size: base-var.use-var(icon-size-l),
   ),
   medium: (
-    height: use-var(inline-height-m),
-    font-size: use-var(font-size-m),
-    line-height: use-var(line-height-m),
-    icon-size: use-var(icon-size-m),
+    height: base-var.use-var(inline-height-m),
+    font-size: base-var.use-var(font-size-m),
+    line-height: base-var.use-var(line-height-m),
+    icon-size: base-var.use-var(icon-size-m),
   ),
   small: (
-    height: use-var(inline-height-s),
-    font-size: use-var(font-size-m),
-    line-height: use-var(line-height-m),
-    icon-size: use-var(icon-size-m),
+    height: base-var.use-var(inline-height-s),
+    font-size: base-var.use-var(font-size-m),
+    line-height: base-var.use-var(line-height-m),
+    icon-size: base-var.use-var(icon-size-m),
   ),
   mini: (
-    height: use-var(inline-height-xs),
-    font-size: use-var(font-size-s),
-    line-height: use-var(line-height-s),
-    icon-size: use-var(icon-size-s),
+    height: base-var.use-var(inline-height-xs),
+    font-size: base-var.use-var(font-size-s),
+    line-height: base-var.use-var(line-height-s),
+    icon-size: base-var.use-var(icon-size-s),
   ),
 );
 
@@ -44,8 +44,8 @@ $table-cell-padding-v: 15px;
 $table-cell-padding-h: 10px;
 
 // Sort
-$sort-indicator-color: use-text-color(placeholder);
-$sort-indicator-color-active: use-text-color(secondary);
+$sort-indicator-color: base-var.use-text-color(placeholder);
+$sort-indicator-color-active: base-var.use-text-color(secondary);
 $sort-indicator-size: 4px;
 $sort-indicator-margin: 4px;
 
@@ -53,17 +53,17 @@ $sort-indicator-margin: 4px;
 $tab-label-padding-large: 16px 20px;
 $tab-label-padding-medium: 12px 20px;
 $tab-label-padding-small: 8px 16px;
-$tab-label-font-size-large: use-var(font-size-xl);
-$tab-label-font-size-medium: use-var(font-size-l);
-$tab-label-font-size-small: use-var(font-size-m);
-$tab-header-type-card-bg-color: use-rgb(n-9);
+$tab-label-font-size-large: base-var.use-var(font-size-xl);
+$tab-label-font-size-medium: base-var.use-var(font-size-l);
+$tab-label-font-size-small: base-var.use-var(font-size-m);
+$tab-header-type-card-bg-color: base-var.use-rgb(n-9);
 $tab-scroll-transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
 $tab-pagination-button-z-index: 3;
 $tab-label-z-index: 2;
 $tab-active-indicator-z-index: 1;
-$tab-label-focus-box-shadow: inset 0 0 0 3px use-rgba(primary, 0.3);
+$tab-label-focus-box-shadow: inset 0 0 0 3px base-var.use-rgba(primary, 0.3);
 $tab-header-close-icon-size: 16px;
-$tab-header-title-font-size: use-var(font-size-xxl);
+$tab-header-title-font-size: base-var.use-var(font-size-xxl);
 $tab-header-title-spacing: 20px;
 $tab-header-title-padding: 20px 0 12px;
 

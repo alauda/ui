@@ -1,5 +1,5 @@
-@import '../theme/var';
-@import '../theme/mixin';
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
 
 @keyframes spin {
   0% {
@@ -14,14 +14,14 @@
 .aui-step {
   display: flex;
   align-items: center;
-  font-weight: use-var(font-weight-normal);
+  font-weight: var.use-var(font-weight-normal);
 
   &__indicator {
-    margin-right: use-var(spacing-m);
+    margin-right: var.use-var(spacing-m);
     width: 24px;
     height: 24px;
     display: inline-flex;
-    color: use-rgb(n-4);
+    color: var.use-rgb(n-4);
 
     &--index {
       display: flex;
@@ -30,16 +30,16 @@
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      border: 1px solid use-rgb(n-7);
-      background-color: use-rgb(n-8);
-      font-weight: use-var(font-weight-bolder);
-      font-size: use-var(font-size-l);
-      line-height: use-var(line-height-l);
+      border: 1px solid var.use-rgb(n-7);
+      background-color: var.use-rgb(n-8);
+      font-weight: var.use-var(font-weight-bolder);
+      font-size: var.use-var(font-size-l);
+      line-height: var.use-var(line-height-l);
 
       &.isActive {
         color: white;
-        border-color: use-rgb(primary);
-        background-color: use-rgb(primary);
+        border-color: var.use-rgb(primary);
+        background-color: var.use-rgb(primary);
       }
     }
 
@@ -51,72 +51,72 @@
       align-items: center;
       width: 24px;
       height: 24px;
-      font-size: use-var(icon-size-l);
+      font-size: var.use-var(icon-size-l);
       border-width: 1px;
       border-style: solid;
       border-radius: 50%;
     }
 
     &--pending {
-      color: use-rgb(primary);
-      border-color: use-rgb(primary);
-      background-color: use-rgb(p-6);
+      color: var.use-rgb(primary);
+      border-color: var.use-rgb(primary);
+      background-color: var.use-rgb(p-6);
       transform-origin: center;
       animation: spin 2s infinite linear;
 
       &.isActive {
         color: white;
-        border-color: use-rgb(primary);
-        background-color: use-rgb(primary);
+        border-color: var.use-rgb(primary);
+        background-color: var.use-rgb(primary);
       }
     }
 
     &--done {
-      color: use-rgb(green);
-      border-color: use-rgb(green);
-      background-color: use-rgb(g-6);
+      color: var.use-rgb(green);
+      border-color: var.use-rgb(green);
+      background-color: var.use-rgb(g-6);
 
       &.isActive {
         color: white;
-        background-color: use-rgb(green);
+        background-color: var.use-rgb(green);
       }
     }
 
     &--error {
-      color: use-rgb(red);
-      border-color: use-rgb(red);
-      background-color: use-rgb(r-6);
+      color: var.use-rgb(red);
+      border-color: var.use-rgb(red);
+      background-color: var.use-rgb(r-6);
 
       &.isActive {
         color: white;
-        background-color: use-rgb(red);
+        background-color: var.use-rgb(red);
       }
     }
   }
 
   &__name {
-    @include text-set(l);
+    @include mixin.text-set(l);
   }
 
   &__description {
-    font-size: use-var(font-size-s);
-    margin-top: use-var(spacing-s);
-    line-height: use-var(line-height-s);
+    font-size: var.use-var(font-size-s);
+    margin-top: var.use-var(spacing-s);
+    line-height: var.use-var(line-height-s);
   }
 
   &__info {
-    color: use-rgb(n-4);
+    color: var.use-rgb(n-4);
 
     &--selected,
     &--pending,
     &--done,
     &--error {
-      color: use-rgb(n-1);
+      color: var.use-rgb(n-1);
     }
 
     &--selected {
       .aui-step__name {
-        font-weight: use-var(font-weight-bolder);
+        font-weight: var.use-var(font-weight-bolder);
       }
     }
   }
@@ -132,7 +132,7 @@
       &.clickable {
         .aui-step__info {
           &:hover {
-            color: use-rgb(primary);
+            color: var.use-rgb(primary);
           }
         }
       }
@@ -141,30 +141,30 @@
 
   &__horizontal-line {
     height: 1px;
-    background-color: use-rgb(n-7);
+    background-color: var.use-rgb(n-7);
     flex: 1;
     min-width: 40px;
     max-width: 200px;
-    margin: 0 use-var(spacing-l);
+    margin: 0 var.use-var(spacing-l);
   }
 
   &__vertical-line {
     min-height: 12px;
     width: 1px;
-    background-color: use-rgb(n-7);
-    margin-top: use-var(spacing-s);
+    background-color: var.use-rgb(n-7);
+    margin-top: var.use-var(spacing-s);
     flex: 1;
 
     &--done {
-      background-color: use-rgb(green);
+      background-color: var.use-rgb(green);
     }
 
     &--error {
-      background-color: use-rgb(red);
+      background-color: var.use-rgb(red);
     }
 
     &--pending {
-      background-color: use-rgb(primary);
+      background-color: var.use-rgb(primary);
     }
   }
 
@@ -182,7 +182,7 @@
       align-items: stretch;
 
       &:not(:last-child) {
-        margin-bottom: use-var(spacing-s);
+        margin-bottom: var.use-var(spacing-s);
       }
 
       &__indicator {
@@ -193,8 +193,8 @@
 
         &-icon {
           &--done {
-            color: use-rgb(green);
-            background-color: use-rgb(g-6);
+            color: var.use-rgb(green);
+            background-color: var.use-rgb(g-6);
 
             &.selected {
               background-color: white;
@@ -208,12 +208,12 @@
       }
 
       &.isLastActive .aui-steps__vertical-line {
-        background-color: use-rgb(n-7);
+        background-color: var.use-rgb(n-7);
       }
     }
   }
 }
 
 aui-steps .aui-steps .aui-step__indicator-icon {
-  font-size: use-var(icon-size-xl);
+  font-size: var.use-var(icon-size-xl);
 }

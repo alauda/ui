@@ -1,6 +1,6 @@
-@import '../theme/mixin';
-@import '../theme/var';
-@import './mixin';
+@use '../theme/mixin' as *;
+@use '../theme/var' as *;
+@use './mixin' as *;
 
 $block: 'aui-checkbox';
 

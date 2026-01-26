@@ -1,8 +1,8 @@
 // stylelint-disable plugin/no-low-performance-animation-properties
 @use 'sass:math';
 
-@import '../theme/mixin';
-@import '../theme/var';
+@use '../theme/mixin' as mixin;
+@use '../theme/var' as var;
 
 $block: 'aui-switch';
 $switch-width: 30px;
@@ -14,7 +14,7 @@ $switch-dot-with: $switch-height - ($switch-border-width * 2);
   display: inline-flex;
   position: relative;
   vertical-align: text-bottom;
-  color: use-rgb(n-4);
+  color: var.use-rgb(n-4);
   cursor: pointer;
 
   &__input {
@@ -24,7 +24,7 @@ $switch-dot-with: $switch-height - ($switch-border-width * 2);
     opacity: 0;
     margin: 0;
     &:focus + .#{$block}__bar {
-      @include outline-shadow(primary);
+      @include mixin.outline-shadow(primary);
     }
   }
 
@@ -34,7 +34,7 @@ $switch-dot-with: $switch-height - ($switch-border-width * 2);
     height: $switch-height;
     border-radius: math.div($switch-height, 2);
     background-color: currentcolor;
-    transition: background-color $animation-duration-slow;
+    transition: background-color var.$animation-duration-slow;
     position: relative;
     vertical-align: middle;
     user-select: none;
@@ -48,25 +48,25 @@ $switch-dot-with: $switch-height - ($switch-border-width * 2);
     position: absolute;
     top: $switch-border-width;
     left: $switch-border-width;
-    transition: left $animation-duration-slow;
+    transition: left var.$animation-duration-slow;
   }
 
   &.isDisabled {
-    color: use-rgb(n-7);
+    color: var.use-rgb(n-7);
     cursor: not-allowed;
 
     .#{$block}__dot {
-      @include theme-dark {
-        background-color: use-rgb(n-4);
+      @include mixin.theme-dark {
+        background-color: var.use-rgb(n-4);
       }
     }
   }
 
   &.isChecked {
-    color: use-rgb(primary);
+    color: var.use-rgb(primary);
 
     &.isDisabled {
-      color: use-rgb(p-4);
+      color: var.use-rgb(p-4);
     }
 
     .#{$block}__dot {

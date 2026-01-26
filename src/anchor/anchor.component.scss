@@ -1,5 +1,5 @@
-@import '../theme/mixin';
-@import '../theme/var';
+@use '../theme/mixin' as mixin;
+@use '../theme/var' as var;
 
 $page-content-padding: 20px;
 
@@ -12,7 +12,7 @@ aui-anchor {
 
 .aui-anchor {
   padding: 30px 16px;
-  border-left: 1px solid use-rgb(border);
+  border-left: 1px solid var.use-rgb(border);
 
   &:before {
     content: '';
@@ -20,7 +20,7 @@ aui-anchor {
     left: 0;
     top: 0;
     transform: translate3d(-50%, -50%, 0);
-    @include point(5px, use-rgb(border));
+    @include mixin.point(5px, var.use-rgb(border));
   }
 
   &:after {
@@ -29,7 +29,7 @@ aui-anchor {
     left: 0;
     bottom: 0;
     transform: translate3d(-50%, 50%, 0);
-    @include point(5px, use-rgb(border));
+    @include mixin.point(5px, var.use-rgb(border));
   }
 
   $p: &;
@@ -49,15 +49,15 @@ aui-anchor {
       left: -16px;
       transform: translate3d(-50%, -50%, 0);
       box-sizing: border-box;
-      border: 1px solid use-text-color(help);
-      @include point(9px, use-rgb(n-1));
+      border: 1px solid var.use-text-color(help);
+      @include mixin.point(9px, var.use-rgb(n-1));
     }
 
     a {
-      color: use-text-color(main);
+      color: var.use-text-color(main);
 
       &:hover {
-        color: use-rgb(primary);
+        color: var.use-rgb(primary);
       }
     }
 
@@ -66,18 +66,18 @@ aui-anchor {
     &.active {
       &:before {
         border: 0;
-        @include point(9px, use-rgb(primary));
+        @include mixin.point(9px, var.use-rgb(primary));
       }
 
       &,
       & & {
         a {
-          color: use-rgb(primary);
+          color: var.use-rgb(primary);
         }
       }
 
       #{$p}:not(.active) a {
-        color: use-text-color(secondary);
+        color: var.use-text-color(secondary);
       }
     }
 
@@ -92,10 +92,10 @@ aui-anchor {
       }
 
       a {
-        color: use-text-color(help);
+        color: var.use-text-color(help);
 
         &:hover {
-          color: use-rgb(primary);
+          color: var.use-rgb(primary);
         }
       }
     }

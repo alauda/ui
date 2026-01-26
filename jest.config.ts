@@ -1,7 +1,24 @@
 import { Config } from '@jest/types';
+import { createEsmPreset } from 'jest-preset-angular/presets';
+
+const preset = createEsmPreset();
 
 const config: Config.InitialOptions = {
-  preset: 'jest-preset-angular',
+  ...preset,
+  // Angular packages ship ESM (.mjs); allow transforming those in node_modules
+  transformIgnorePatterns: [
+    'node_modules/(?!(.*\\.mjs$|@angular/common/locales/.*\\.js$|tslib))',
+  ],
+  transform: {
+    '^.+\\.(ts|js|mjs|html|svg)$': [
+      'jest-preset-angular',
+      {
+        tsconfig: '<rootDir>/tsconfig.spec.json',
+        stringifyContentPathRegex: '\\.(html|svg)$',
+        useESM: true,
+      },
+    ],
+  },
   testMatch: ['<rootDir>/src/**/*.+(spec|test).+(ts|js)?(x)'],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],

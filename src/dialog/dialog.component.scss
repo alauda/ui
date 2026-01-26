@@ -1,44 +1,52 @@
-@import '../theme/var';
-@import '../theme/mixin';
-@import '../theme/motion';
-@import '../../node_modules/@angular/cdk/overlay-prebuilt';
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+@use '../theme/motion' as motion;
+@use '../../node_modules/@angular/cdk/overlay-prebuilt' as *;
 
 .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.aui-dialog-backdrop {
-  @include modal-backdrop;
+  @include mixin.modal-backdrop;
 }
 
 .cdk-overlay-pane.aui-dialog-overlay-pane {
-  @include overlay-pane(normal);
+  @include mixin.overlay-pane(normal);
 }
 
 .cdk-overlay-pane.aui-dialog-overlay-pane--fit-viewport {
-  @include overlay-pane;
+  @include mixin.overlay-pane;
 }
 
 $spacing: 20px;
 $fullscreen-width: 90vw;
 $fullscreen-height: calc(100vh - (#{$spacing} * 2));
 
-@include zoom-motion(aui-zoom, aui-zoom);
-@include zoom-motion(aui-zoom-slow, aui-zoom, $animation-duration-slow);
-@include fade-motion(aui-fade, aui-fade);
-@include fade-motion(aui-fade-slow, aui-fade, $animation-duration-slow);
+@include motion.zoom-motion(aui-zoom, aui-zoom);
+@include motion.zoom-motion(
+  aui-zoom-slow,
+  aui-zoom,
+  var.$animation-duration-slow
+);
+@include motion.fade-motion(aui-fade, aui-fade);
+@include motion.fade-motion(
+  aui-fade-slow,
+  aui-fade,
+  var.$animation-duration-slow
+);
 
 .aui-dialog {
   // FIXME: margin-bottom is not working
   margin: 18vh auto 20px;
   display: flex;
   flex-direction: column;
-  background-color: use-rgb(n-10);
-  border-radius: use-var(border-radius-l);
+  background-color: var.use-rgb(n-10);
+  border-radius: var.use-var(border-radius-l);
   overflow: hidden;
-  @include modal-shadow;
-  @include text-set(m, main);
+  @include mixin.modal-shadow;
+  @include mixin.text-set(m, main);
 
   aui-dialog-content {
     height: 100%;
     overflow: auto;
-    @include scroll-bar;
+    @include mixin.scroll-bar;
 
     &:first-child .aui-dialog__content {
       padding-top: $spacing;
@@ -57,56 +65,56 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
 
     &.hasDivider {
       margin-bottom: 16px;
-      border-bottom: 1px solid use-rgb(divider);
+      border-bottom: 1px solid var.use-rgb(divider);
     }
 
     &-title {
       width: 100%;
-      @include text-set(xl, main, bolder);
+      @include mixin.text-set(xl, main, bolder);
 
       > aui-icon:first-child {
-        font-size: use-var(icon-size-xl);
-        margin-right: use-var(spacing-m);
+        font-size: var.use-var(icon-size-xl);
+        margin-right: var.use-var(spacing-m);
 
         &[icon='info_circle_s'] {
-          color: use-rgb(primary);
+          color: var.use-rgb(primary);
         }
 
         &[icon='check_circle_s'] {
-          color: use-rgb(green);
+          color: var.use-rgb(green);
         }
 
         &[icon='exclamation_circle_s'] {
-          color: use-rgb(yellow);
+          color: var.use-rgb(yellow);
         }
 
         &[icon='exclamation_triangle_s'] {
-          color: use-rgb(red);
+          color: var.use-rgb(red);
         }
       }
     }
 
     &-close {
       flex-shrink: 0;
-      margin-left: use-var(spacing-xl);
+      margin-left: var.use-var(spacing-xl);
       display: flex;
       justify-content: center;
       align-items: center;
       width: 24px;
       height: 24px;
-      font-size: use-var(icon-size-l);
-      color: use-text-color(secondary);
-      border-radius: use-var(border-radius-m);
+      font-size: var.use-var(icon-size-l);
+      color: var.use-text-color(secondary);
+      border-radius: var.use-var(border-radius-m);
       cursor: pointer;
 
       &:hover {
-        color: use-rgb(primary);
-        background-color: use-rgb(p-6);
+        color: var.use-rgb(primary);
+        background-color: var.use-rgb(p-6);
       }
 
       &:active {
-        color: use-rgb(p-0);
-        background-color: use-rgb(p-5);
+        color: var.use-rgb(p-0);
+        background-color: var.use-rgb(p-5);
       }
     }
   }
@@ -157,12 +165,12 @@ $fullscreen-height: calc(100vh - (#{$spacing} * 2));
       &__header {
         margin: 0;
         padding: $spacing $spacing 16px $spacing;
-        border-bottom: 1px solid use-rgb(divider);
+        border-bottom: 1px solid var.use-rgb(divider);
       }
 
       &__footer {
         padding-top: 16px;
-        border-top: 1px solid use-rgb(divider);
+        border-top: 1px solid var.use-rgb(divider);
       }
     }
 

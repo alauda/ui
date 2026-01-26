@@ -1,124 +1,123 @@
-@import '../theme/var';
-@import '../theme/mixin';
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+@use 'sass:map';
 
 $button-size: (
   large: (
-    height: use-var(inline-height-l),
-    padding-hoz: use-var(inline-padding-l),
-    font-size: use-var(font-size-l),
-    line-height: use-var(line-height-l),
-    icon-size: use-var(icon-size-l),
+    height: var.use-var(inline-height-l),
+    padding-hoz: var.use-var(inline-padding-l),
+    font-size: var.use-var(font-size-l),
+    line-height: var.use-var(line-height-l),
+    icon-size: var.use-var(icon-size-l),
   ),
   medium: (
-    height: use-var(inline-height-m),
-    padding-hoz: use-var(inline-padding-m),
-    font-size: use-var(font-size-m),
-    line-height: use-var(line-height-m),
-    icon-size: use-var(icon-size-m),
+    height: var.use-var(inline-height-m),
+    padding-hoz: var.use-var(inline-padding-m),
+    font-size: var.use-var(font-size-m),
+    line-height: var.use-var(line-height-m),
+    icon-size: var.use-var(icon-size-m),
   ),
   small: (
-    height: use-var(inline-height-s),
-    padding-hoz: use-var(inline-padding-s),
-    font-size: use-var(font-size-m),
-    line-height: use-var(line-height-m),
-    icon-size: use-var(icon-size-m),
+    height: var.use-var(inline-height-s),
+    padding-hoz: var.use-var(inline-padding-s),
+    font-size: var.use-var(font-size-m),
+    line-height: var.use-var(line-height-m),
+    icon-size: var.use-var(icon-size-m),
   ),
   mini: (
-    height: use-var(inline-height-xs),
-    padding-hoz: use-var(inline-padding-xs),
-    font-size: use-var(font-size-s),
-    line-height: use-var(line-height-s),
-    icon-size: use-var(icon-size-s),
+    height: var.use-var(inline-height-xs),
+    padding-hoz: var.use-var(inline-padding-xs),
+    font-size: var.use-var(font-size-s),
+    line-height: var.use-var(line-height-s),
+    icon-size: var.use-var(icon-size-s),
   ),
 );
 
 @mixin text-button-sizes() {
   &.aui-button--large:not(.isSquare) {
-    height: use-var(line-height-l);
-    line-height: use-var(line-height-l);
-    font-size: use-var(font-size-l);
+    height: var.use-var(line-height-l);
+    line-height: var.use-var(line-height-l);
+    font-size: var.use-var(font-size-l);
   }
 
   &.aui-button--medium:not(.isSquare) {
-    height: use-var(line-height-m);
-    line-height: use-var(line-height-m);
-    font-size: use-var(font-size-m);
+    height: var.use-var(line-height-m);
+    line-height: var.use-var(line-height-m);
+    font-size: var.use-var(font-size-m);
   }
 
   &.aui-button--small:not(.isSquare) {
-    height: use-var(line-height-m);
-    line-height: use-var(line-height-m);
-    font-size: use-var(font-size-m);
+    height: var.use-var(line-height-m);
+    line-height: var.use-var(line-height-m);
+    font-size: var.use-var(font-size-m);
   }
 
   &.aui-button--mini:not(.isSquare) {
-    height: use-var(line-height-s);
-    line-height: use-var(line-height-s);
-    font-size: use-var(font-size-s);
+    height: var.use-var(line-height-s);
+    line-height: var.use-var(line-height-s);
+    font-size: var.use-var(font-size-s);
   }
 }
 
 @mixin colorful-button($color) {
   color: white;
-  border-color: use-rgb($color);
-  background-color: use-rgb($color);
+  border-color: var.use-rgb($color);
+  background-color: var.use-rgb($color);
 
   &:hover {
-    border-color: use-rgb($color, 1);
-    background-color: use-rgb($color, 1);
+    border-color: var.use-rgb($color, 1);
+    background-color: var.use-rgb($color, 1);
   }
 
   &:active,
   &.isActive {
-    border-color: use-rgb($color, 0);
-    background-color: use-rgb($color, 0);
+    border-color: var.use-rgb($color, 0);
+    background-color: var.use-rgb($color, 0);
   }
 
   &[disabled]:not(.isPlain) {
-    @include theme-dark {
-      color: use-rgb(n-4);
+    border-color: var.use-rgb($color, 4);
+    background-color: var.use-rgb($color, 4);
+    @include mixin.theme-dark {
+      color: var.use-rgb(n-4);
     }
-
-    border-color: use-rgb($color, 4);
-    background-color: use-rgb($color, 4);
   }
 
   &.cdk-focused:not(.cdk-mouse-focused) {
-    @include outline-shadow($color);
+    @include mixin.outline-shadow($color);
   }
 
   &.isPlain {
-    color: use-rgb($color);
-    border-color: use-rgb($color);
-    background-color: use-rgb($color, 6);
+    color: var.use-rgb($color);
+    border-color: var.use-rgb($color);
+    background-color: var.use-rgb($color, 6);
 
     &:hover {
-      color: use-rgb($color, 1);
-      border-color: use-rgb($color, 1);
-      background-color: use-rgb($color, 7);
+      color: var.use-rgb($color, 1);
+      border-color: var.use-rgb($color, 1);
+      background-color: var.use-rgb($color, 7);
     }
 
     &:active,
     &.isActive {
-      color: use-rgb($color, 0);
-      border-color: use-rgb($color, 0);
-      background-color: use-rgb($color, 5);
+      color: var.use-rgb($color, 0);
+      border-color: var.use-rgb($color, 0);
+      background-color: var.use-rgb($color, 5);
     }
 
     &[disabled] {
-      @include theme-light {
-        color: use-rgb($color, 4);
+      border-color: var.use-rgb($color, 4);
+      background-color: var.use-rgb($color, 7);
+      @include mixin.theme-light {
+        color: var.use-rgb($color, 4);
       }
-      @include theme-dark {
-        color: use-rgb($color, 0);
+      @include mixin.theme-dark {
+        color: var.use-rgb($color, 0);
       }
-
-      border-color: use-rgb($color, 4);
-      background-color: use-rgb($color, 7);
     }
 
     &.cdk-focused:not(.cdk-mouse-focused) {
-      @include outline-shadow(primary);
+      @include mixin.outline-shadow(primary);
     }
   }
 }
@@ -139,7 +138,7 @@ $button-size: (
   user-select: none;
   cursor: pointer;
   font-weight: use-var(font-weight-normal);
-  @include transition;
+  @include mixin.transition;
 
   &::-moz-focus-inner {
     border: none;
@@ -162,28 +161,28 @@ $button-size: (
   }
 
   @each $key in large medium small mini {
-    $map: map-get($button-size, $key);
+    $map: map.get($button-size, $key);
 
     &--#{$key} {
-      height: map-get($map, height);
-      font-size: map-get($map, font-size);
-      line-height: map-get($map, line-height);
+      height: map.get($map, height);
+      font-size: map.get($map, font-size);
+      line-height: map.get($map, line-height);
 
       aui-icon {
-        height: map-get($map, line-height);
-        font-size: map-get($map, icon-size);
+        height: map.get($map, line-height);
+        font-size: map.get($map, icon-size);
       }
 
       .aui-button__content {
-        padding: 0 map-get($map, padding-hoz);
+        padding: 0 map.get($map, padding-hoz);
       }
 
       &.isRound {
-        border-radius: calc(#{map-get($map, height)} / 2);
+        border-radius: calc(#{map.get($map, height)} / 2);
       }
 
       &.isSquare {
-        width: map-get($map, height);
+        width: map.get($map, height);
 
         .aui-button__content {
           padding: 0;
@@ -204,40 +203,40 @@ $button-size: (
     @include text-button-sizes;
 
     &.isPlain {
-      color: use-text-color(main);
+      color: var.use-text-color(main);
 
       aui-icon {
-        color: use-text-color(secondary);
+        color: var.use-text-color(secondary);
       }
 
       &[disabled] {
-        color: use-text-color(disabled);
+        color: var.use-text-color(disabled);
       }
     }
 
     &:hover {
-      color: use-rgb(p-1);
-      background-color: use-rgb(p-6);
+      color: var.use-rgb(p-1);
+      background-color: var.use-rgb(p-6);
     }
 
     &:active,
     &.isActive {
-      color: use-rgb(p-0);
-      background-color: use-rgb(p-5);
+      color: var.use-rgb(p-0);
+      background-color: var.use-rgb(p-5);
     }
 
     &[disabled] {
-      color: use-rgb(p-4);
+      color: var.use-rgb(p-4);
       background-color: transparent;
     }
 
     &.cdk-focused:not(.cdk-mouse-focused) {
-      @include outline-shadow(primary);
+      @include mixin.outline-shadow(primary);
     }
   }
 
   &--inline {
-    color: use-rgb(primary);
+    color: var.use-rgb(primary);
     border: none;
     background-color: none;
 
@@ -248,65 +247,65 @@ $button-size: (
     @include text-button-sizes;
 
     &.isPlain {
-      color: use-text-color(main);
+      color: var.use-text-color(main);
 
       aui-icon {
-        color: use-text-color(secondary);
+        color: var.use-text-color(secondary);
       }
 
       &[disabled] {
-        color: use-rgb(n-6);
+        color: var.use-rgb(n-6);
       }
     }
 
     &:hover {
-      color: use-rgb(p-1);
+      color: var.use-rgb(p-1);
     }
 
     &:active,
     &.isActive {
-      color: use-rgb(p-0);
+      color: var.use-rgb(p-0);
     }
 
     &[disabled] {
-      color: use-rgb(p-4);
+      color: var.use-rgb(p-4);
     }
 
     &.cdk-focused:not(.cdk-mouse-focused) {
-      @include outline-shadow(primary);
+      @include mixin.outline-shadow(primary);
     }
   }
 
   &--default {
-    color: use-text-color(main);
-    border-color: use-rgb(n-7);
-    background-color: use-rgb(button-bg);
+    color: var.use-text-color(main);
+    border-color: var.use-rgb(n-7);
+    background-color: var.use-rgb(button-bg);
 
     aui-icon {
-      color: use-text-color(secondary);
+      color: var.use-text-color(secondary);
     }
 
     &:hover {
-      color: use-rgb(primary);
-      border-color: use-rgb(primary);
-      background-color: use-rgb(p-6);
+      color: var.use-rgb(primary);
+      border-color: var.use-rgb(primary);
+      background-color: var.use-rgb(p-6);
     }
 
     &:active,
     &.isActive {
-      color: use-rgb(p-0);
-      border-color: use-rgb(p-0);
-      background-color: use-rgb(p-5);
+      color: var.use-rgb(p-0);
+      border-color: var.use-rgb(p-0);
+      background-color: var.use-rgb(p-5);
     }
 
     &[disabled] {
-      color: use-text-color(disabled);
-      border-color: use-rgb(n-7);
-      background-color: use-rgb(n-8);
+      color: var.use-text-color(disabled);
+      border-color: var.use-rgb(n-7);
+      background-color: var.use-rgb(n-8);
     }
 
     &.cdk-focused:not(.cdk-mouse-focused) {
-      @include outline-shadow(primary);
+      @include mixin.outline-shadow(primary);
     }
   }
 
@@ -353,9 +352,9 @@ $button-size: (
 aui-dropdown-button + aui-dropdown-button > .aui-dropdown-button,
 aui-dropdown-button + .aui-button,
 .aui-button + aui-dropdown-button > .aui-dropdown-button {
-  margin-left: use-var(spacing-m);
+  margin-left: var.use-var(spacing-m);
 }
 
 .aui-button--text + .aui-button--text {
-  margin-left: use-var(spacing-s);
+  margin-left: var.use-var(spacing-s);
 }

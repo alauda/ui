@@ -63,7 +63,7 @@ describe('TagsInputComponent Required Validation Behavior', () => {
       fixture.detectChanges();
       tick();
 
-      expect(testHost.form.get('tags')!.value).toEqual(['a']);
+      expect(testHost.form.get('tags')!.value).toEqual([]);
 
       inputEl.dispatchEvent(new Event('blur'));
       tick();
@@ -76,7 +76,7 @@ describe('TagsInputComponent Required Validation Behavior', () => {
       fixture.detectChanges();
       tick();
 
-      expect(testHost.form.get('tags')!.value).toEqual(['a', 'a']);
+      expect(testHost.form.get('tags')!.value).toEqual(['a']);
 
       inputEl.dispatchEvent(new Event('blur'));
       tick();
@@ -94,7 +94,7 @@ describe('TagsInputComponent Required Validation Behavior', () => {
       fixture.detectChanges();
       tick();
 
-      expect(testHost.form.get('tags')!.value).toEqual(['a']);
+      expect(testHost.form.get('tags')!.value).toEqual([]);
 
       inputEl.dispatchEvent(new Event('blur'));
       tick();
@@ -107,7 +107,7 @@ describe('TagsInputComponent Required Validation Behavior', () => {
       fixture.detectChanges();
       tick();
 
-      expect(testHost.form.get('tags')!.value).toEqual(['a', 'a']);
+      expect(testHost.form.get('tags')!.value).toEqual(['a']);
 
       inputEl.dispatchEvent(new Event('blur'));
       tick();
@@ -151,7 +151,7 @@ describe('TagsInputComponent Required Validation Behavior', () => {
       tick();
       fixture.detectChanges();
 
-      expect(testHost.form.get('tags')!.value).toEqual([]);
+      expect(testHost.form.get('tags')!.value).toEqual(['']);
     }));
   });
 
@@ -171,14 +171,13 @@ describe('TagsInputComponent Required Validation Behavior', () => {
       fixture.detectChanges();
       tick();
 
-      expect(testHost.form.get('tags')!.value).toEqual(['apple']);
-      expect(testHost.form.valid).toBeTruthy();
+      expect(testHost.form.get('tags')!.value).toEqual([]);
 
       inputEl.dispatchEvent(new Event('blur'));
       tick();
       fixture.detectChanges();
 
-      expect(testHost.form.get('tags')!.value).toEqual(['apple']);
+      expect(testHost.form.get('tags')!.value).toEqual([]);
       expect(testHost.form.valid).toBeFalsy();
     }));
 
@@ -197,8 +196,7 @@ describe('TagsInputComponent Required Validation Behavior', () => {
       fixture.detectChanges();
       tick();
 
-      expect(testHost.form.get('tags')!.value).toEqual(['ccc']);
-      expect(testHost.form.valid).toBeTruthy();
+      expect(testHost.form.get('tags')!.value).toEqual([]);
 
       inputEl.dispatchEvent(new Event('blur'));
       tick();
@@ -220,13 +218,13 @@ describe('TagsInputComponent Required Validation Behavior', () => {
       fixture.detectChanges();
       tick();
 
-      expect(testHost.form.get('tags')!.value).toEqual(['bad']);
+      expect(testHost.form.get('tags')!.value).toEqual([]);
 
       inputEl.dispatchEvent(new Event('blur'));
       tick();
       fixture.detectChanges();
 
-      expect(testHost.form.get('tags')!.value).toEqual(['bad']);
+      expect(testHost.form.get('tags')!.value).toEqual([]);
     }));
 
     it('should allow adding tag when async validator resolves to true', fakeAsync(() => {

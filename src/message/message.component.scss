@@ -1,6 +1,6 @@
-@import '../theme/var';
-@import '../theme/mixin';
-@import '../../node_modules/@angular/cdk/overlay-prebuilt';
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+@use '../../node_modules/@angular/cdk/overlay-prebuilt' as *;
 
 .cdk-overlay-pane.aui-message-overlay-pane {
   z-index: 1001;
@@ -15,23 +15,23 @@ $color-map: (
 
 .aui-message {
   display: flex;
-  margin-bottom: use-var(spacing-xxl);
+  margin-bottom: var.use-var(spacing-xxl);
   padding: 8px 16px;
   min-width: 100px;
   max-width: 800px;
-  border-radius: use-var(border-radius-m);
-  background-color: use-rgb(popper-bg);
-  @include text-set(m, main);
-  @include modal-shadow;
+  border-radius: var.use-var(border-radius-m);
+  background-color: var.use-rgb(popper-bg);
+  @include mixin.text-set(m, main);
+  @include mixin.modal-shadow;
 
   &__icon {
-    font-size: use-var(icon-size-m);
+    font-size: var.use-var(icon-size-m);
   }
 
   @each $status, $color in $color-map {
     &__icon--#{$status} {
-      margin-right: use-var(spacing-m);
-      color: use-rgb($color);
+      margin-right: var.use-var(spacing-m);
+      color: var.use-rgb($color);
     }
   }
 }

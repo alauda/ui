@@ -6,29 +6,33 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       [(ngModel)]="value"
       [labelFn]="labelFn"
       [trackFn]="trackFn"
-    >
-      <aui-option-group *ngFor="let i of arr">
-        <div
-          auiOptionGroupTitle
-          *ngIf="i !== 1"
-        >
-          group {{ i }}
-        </div>
-        <aui-option
-          *ngFor="let j of arr"
-          [label]="'option' + (arr.length * i + j)"
-          [value]="{ key: 'option' + (arr.length * i + j) }"
-        >
-          <aui-icon icon="sun"></aui-icon>
-          option {{ arr.length * i + j }}
-        </aui-option>
-      </aui-option-group>
+      >
+      @for (i of arr; track i) {
+        <aui-option-group>
+          @if (i !== 1) {
+            <div
+              auiOptionGroupTitle
+              >
+              group {{ i }}
+            </div>
+          }
+          @for (j of arr; track j) {
+            <aui-option
+              [label]="'option' + (arr.length * i + j)"
+              [value]="{ key: 'option' + (arr.length * i + j) }"
+              >
+              <aui-icon icon="sun"></aui-icon>
+              option {{ arr.length * i + j }}
+            </aui-option>
+          }
+        </aui-option-group>
+      }
       <aui-option-placeholder>Empty</aui-option-placeholder>
     </aui-select>
     <br />
     <br />
     value: {{ value | json }}
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })

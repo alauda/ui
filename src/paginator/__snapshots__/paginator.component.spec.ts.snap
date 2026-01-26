@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`PaginatorComponent should change page size correctly 1`] = `
 <ng-component
@@ -147,7 +147,7 @@ exports[`PaginatorComponent should change page size correctly 1`] = `
                         <div
                           class="aui-select__label"
                         >
-                          100
+                           100 
                         </div>
                       </div>
                       <span
@@ -425,7 +425,7 @@ exports[`PaginatorComponent should render current template 1`] = `
                         <div
                           class="aui-select__label"
                         >
-                          20
+                           20 
                         </div>
                       </div>
                       <span
@@ -714,7 +714,7 @@ exports[`PaginatorComponent should render current template 2`] = `
                         <div
                           class="aui-select__label"
                         >
-                          20
+                           20 
                         </div>
                       </div>
                       <span

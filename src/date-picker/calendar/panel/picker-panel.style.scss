@@ -1,15 +1,16 @@
 // stylelint-disable plugin/no-low-performance-animation-properties
-@import '../../../theme/mixin';
+@use '../../../theme/mixin' as mixin;
+@use '../../../theme/var' as var;
 
 $block: aui-picker-panel;
-$in-range-bgcolor: use-rgb(p-6);
+$in-range-bgcolor: var.use-rgb(p-6);
 $left-in-range-shadow: -6px 0 0 0 $in-range-bgcolor;
 $right-in-range-shadow: 6px 0 0 0 $in-range-bgcolor;
 
-$left-disabled-shadow: -6px 0 0 0 use-rgb(n-8);
-$right-disabled-shadow: 6px 0 0 0 use-rgb(n-8);
+$left-disabled-shadow: -6px 0 0 0 var.use-rgb(n-8);
+$right-disabled-shadow: 6px 0 0 0 var.use-rgb(n-8);
 
-$left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
+$left-mask-shadow: -12px 0 0 0 var.use-rgb(popper-bg);
 
 .#{$block} {
   &__container {
@@ -43,18 +44,18 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
       margin: 0;
 
       button {
-        height: $date-picker-cell-size !important;
-        width: $date-picker-cell-size !important;
+        height: var.$date-picker-cell-size !important;
+        width: var.$date-picker-cell-size !important;
       }
 
       .#{$block}__row + .#{$block}__row {
-        margin-top: $date-picker-row-gap;
+        margin-top: var.$date-picker-row-gap;
       }
     }
   }
 
   &__row + &__row {
-    margin-top: $date-picker-seprator-gap;
+    margin-top: var.$date-picker-seprator-gap;
   }
 
   &__row {
@@ -62,9 +63,8 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @include text-set(m);
-
     width: 100%;
+    @include mixin.text-set(m);
 
     &.week-header {
       span {
@@ -74,7 +74,7 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
         text-align: center;
       }
 
-      color: use-text-color(help);
+      color: var.use-text-color(help);
       margin-bottom: 8px;
     }
   }
@@ -90,8 +90,9 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
       box-sizing: content-box;
       // Use trackby to enhance performence, which reuses button and may cause size change with animation.So overwrite transition
       transition:
-        color $animation-duration-slow $animation-interpolation,
-        background-color $animation-duration-slow $animation-interpolation;
+        color var.$animation-duration-slow var.$animation-interpolation,
+        background-color var.$animation-duration-slow
+          var.$animation-interpolation;
     }
 
     &.inRange {
@@ -108,20 +109,20 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
     }
 
     &.isDisabled {
-      background-color: use-rgb(n-8);
+      background-color: var.use-rgb(n-8);
       box-shadow: $left-disabled-shadow, $right-disabled-shadow;
 
       button {
-        color: use-text-color(disabled) !important;
-        border-color: use-text-color(disabled) !important;
+        color: var.use-text-color(disabled) !important;
+        border-color: var.use-text-color(disabled) !important;
       }
 
       &.isActive,
       &.isToday {
         button {
           color: white !important;
-          border-color: use-rgb(p-4) !important;
-          background-color: use-rgb(p-4) !important;
+          border-color: var.use-rgb(p-4) !important;
+          background-color: var.use-rgb(p-4) !important;
         }
       }
     }
@@ -139,19 +140,19 @@ $left-mask-shadow: -12px 0 0 0 use-rgb(popper-bg);
     }
 
     &.isToday button {
-      border: use-rgb(primary) 1px solid;
-      color: use-rgb(primary);
-      background-color: use-rgb(p-7);
+      border: var.use-rgb(primary) 1px solid;
+      color: var.use-rgb(primary);
+      background-color: var.use-rgb(p-7);
     }
 
     &.isActive button {
       color: white;
-      background-color: use-rgb(primary);
+      background-color: var.use-rgb(primary);
     }
 
     &.isBackground button {
       background-color: initial !important;
-      color: use-text-color(disabled);
+      color: var.use-text-color(disabled);
     }
   }
 }

@@ -1,5 +1,5 @@
-@import '../theme/var';
-@import '../theme/mixin';
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
 
 $stickyCssClass: 'aui-table-sticky';
 
@@ -12,10 +12,10 @@ $stickyCssClass: 'aui-table-sticky';
   flex-direction: column;
   max-height: 100%;
   overflow: hidden;
-  background-color: use-rgb(n-9);
-  padding: 0 $table-padding $table-padding;
-  border-radius: use-var(border-radius-l);
-  @include scroll-bar;
+  background-color: var.use-rgb(n-9);
+  padding: 0 var.$table-padding var.$table-padding;
+  border-radius: var.use-var(border-radius-l);
+  @include mixin.scroll-bar;
 
   .aui-table {
     padding: 0;
@@ -36,7 +36,7 @@ $stickyCssClass: 'aui-table-sticky';
 .aui-table__scroll-shadow {
   &.aui-table {
     overflow: auto;
-    @include scroll-bar;
+    @include mixin.scroll-bar;
   }
 
   &.hasTableTopShadow:before {
@@ -47,11 +47,11 @@ $stickyCssClass: 'aui-table-sticky';
     margin: -16px -12px 0;
     z-index: 99;
     top: 28px;
-    @include theme-light {
-      box-shadow: 0 10px 10px -4px use-rgba(n-1, 0.16);
+    @include mixin.theme-light {
+      box-shadow: 0 10px 10px -4px var.use-rgba(n-1, 0.16);
     }
-    @include theme-dark {
-      box-shadow: 0 10px 10px -4px use-rgba(n-9, 0.75);
+    @include mixin.theme-dark {
+      box-shadow: 0 10px 10px -4px var.use-rgba(n-9, 0.75);
     }
   }
 
@@ -64,11 +64,11 @@ $stickyCssClass: 'aui-table-sticky';
     z-index: 99;
     bottom: 0;
     margin: -16px -12px 0;
-    @include theme-light {
-      box-shadow: 0 -10px 10px -4px use-rgba(n-1, 0.16) inset;
+    @include mixin.theme-light {
+      box-shadow: 0 -10px 10px -4px var.use-rgba(n-1, 0.16) inset;
     }
-    @include theme-dark {
-      box-shadow: 0 -10px 10px -4px use-rgba(n-9, 0.75) inset;
+    @include mixin.theme-dark {
+      box-shadow: 0 -10px 10px -4px var.use-rgba(n-9, 0.75) inset;
     }
   }
 
@@ -79,22 +79,22 @@ $stickyCssClass: 'aui-table-sticky';
 
     .aui-table__header-cell {
       &:first-of-type {
-        padding-left: $table-cell-padding-h * 2;
+        padding-left: var.$table-cell-padding-h * 2;
       }
 
       &:last-of-type {
-        padding-right: $table-cell-padding-h * 2;
+        padding-right: var.$table-cell-padding-h * 2;
       }
     }
 
     + .aui-table__row {
       .aui-table__cell {
         &:first-of-type {
-          border-top-left-radius: use-var(border-radius-l);
+          border-top-left-radius: var.use-var(border-radius-l);
         }
 
         &:last-of-type {
-          border-top-right-radius: use-var(border-radius-l);
+          border-top-right-radius: var.use-var(border-radius-l);
         }
       }
     }
@@ -104,34 +104,34 @@ $stickyCssClass: 'aui-table-sticky';
     border: none;
     padding: 0;
     align-items: stretch;
-    min-height: $table-row-min-height + 1;
+    min-height: var.$table-row-min-height + 1;
 
     .aui-table__cell {
       border-width: 1px 0;
       border-style: solid;
-      border-color: use-rgb(n-8);
+      border-color: var.use-rgb(n-8);
 
       &:first-of-type {
         border-left-width: 1px;
-        padding-left: $table-cell-padding-h * 2 - 1;
+        padding-left: var.$table-cell-padding-h * 2 - 1;
       }
 
       &:last-of-type {
         border-right-width: 1px;
-        padding-right: $table-cell-padding-h * 2 - 1;
+        padding-right: var.$table-cell-padding-h * 2 - 1;
       }
     }
 
     &:last-child {
-      min-height: $table-row-min-height + 2;
+      min-height: var.$table-row-min-height + 2;
 
       .aui-table__cell {
         &:first-of-type {
-          border-bottom-left-radius: use-var(border-radius-l);
+          border-bottom-left-radius: var.use-var(border-radius-l);
         }
 
         &:last-of-type {
-          border-bottom-right-radius: use-var(border-radius-l);
+          border-bottom-right-radius: var.use-var(border-radius-l);
         }
       }
     }
@@ -162,30 +162,30 @@ $stickyCssClass: 'aui-table-sticky';
         top: 0;
         bottom: -1px;
         content: '';
-        @include vertical-dashed-line(1px, 'n-7');
+        @include mixin.vertical-dashed-line(1px, 'n-7');
       }
 
       &-border-elem-left {
-        padding-right: $table-cell-padding-h * 3;
+        padding-right: var.$table-cell-padding-h * 3;
 
         &:after {
-          right: -$table-cell-padding-h;
+          right: -(var.$table-cell-padding-h);
         }
 
         &:before {
-          right: $table-cell-padding-h;
+          right: var.$table-cell-padding-h;
         }
       }
 
       &-border-elem-right {
-        padding-left: $table-cell-padding-h * 3;
+        padding-left: var.$table-cell-padding-h * 3;
 
         &:after {
-          left: -$table-cell-padding-h;
+          left: -(var.$table-cell-padding-h);
         }
 
         &:before {
-          left: $table-cell-padding-h;
+          left: var.$table-cell-padding-h;
         }
       }
     }
@@ -195,16 +195,16 @@ $stickyCssClass: 'aui-table-sticky';
     .#{$stickyCssClass} {
       &-border-elem-left:not(.aui-table__header-row) {
         &:after {
-          @include theme-light {
-            box-shadow: inset 8px 0 4px -4px use-rgba(n-1, 0.16);
+          @include mixin.theme-light {
+            box-shadow: inset 8px 0 4px -4px var.use-rgba(n-1, 0.16);
           }
-          @include theme-dark {
-            box-shadow: inset 8px 0 4px -4px use-rgba(n-9, 0.75);
+          @include mixin.theme-dark {
+            box-shadow: inset 8px 0 4px -4px var.use-rgba(n-9, 0.75);
           }
         }
 
         &:before {
-          @include vertical-dashed-line(1px, 'primary');
+          @include mixin.vertical-dashed-line(1px, 'primary');
         }
       }
     }
@@ -214,16 +214,16 @@ $stickyCssClass: 'aui-table-sticky';
     .#{$stickyCssClass} {
       &-border-elem-right:not(.aui-table__header-row) {
         &:after {
-          @include theme-light {
-            box-shadow: inset -8px 0 4px -4px use-rgba(n-1, 0.16);
+          @include mixin.theme-light {
+            box-shadow: inset -8px 0 4px -4px var.use-rgba(n-1, 0.16);
           }
-          @include theme-dark {
-            box-shadow: inset -8px 0 4px -4px use-rgba(n-9, 0.75);
+          @include mixin.theme-dark {
+            box-shadow: inset -8px 0 4px -4px var.use-rgba(n-9, 0.75);
           }
         }
 
         &:before {
-          @include vertical-dashed-line(1px, 'primary');
+          @include mixin.vertical-dashed-line(1px, 'primary');
         }
       }
     }

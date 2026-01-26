@@ -1,4 +1,4 @@
-import { NgFor, NgIf, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -21,7 +21,7 @@ import { Status, StatusBarSize } from './status-bar.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  imports: [NgFor, NgIf, NgClass, TooltipDirective],
+  imports: [NgClass, TooltipDirective],
 })
 export class StatusBarComponent {
   bem: Bem = buildBem('aui-status-bar');

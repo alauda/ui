@@ -4,7 +4,6 @@ import {
   AfterContentChecked,
   AfterContentInit,
   ApplicationRef,
-  ComponentFactoryResolver,
   ContentChildren,
   Directive,
   ElementRef,
@@ -154,7 +153,6 @@ export class AnchorDirective implements AfterContentInit, OnDestroy {
   destroy$$ = new Subject<void>();
 
   constructor(
-    private readonly cfr: ComponentFactoryResolver,
     private readonly appRef: ApplicationRef,
     private readonly injector: Injector,
     public readonly elRef: ElementRef<HTMLElement>,
@@ -166,7 +164,6 @@ export class AnchorDirective implements AfterContentInit, OnDestroy {
     this.anchorPortal = new ComponentPortal(AnchorComponent);
     const portalOutlet = new DomPortalOutlet(
       document.body,
-      this.cfr,
       this.appRef,
       this.injector,
     );

@@ -1,9 +1,9 @@
-@import '../../../theme/var';
+@use '../../../theme/var' as var;
 
 $block: aui-calendar-header;
 
-$aui-text-button-mini-width: use-var(inline-height-xs);
-$aui-text-button-mini-spacing: use-var(spacing-s);
+$aui-text-button-mini-width: var.use-var(inline-height-xs);
+$aui-text-button-mini-spacing: var.use-var(spacing-s);
 
 .#{$block} {
   &__container {
@@ -22,26 +22,26 @@ $aui-text-button-mini-spacing: use-var(spacing-s);
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    font-size: use-var(font-size-l);
-    color: use-text-color(main);
-    font-weight: use-var(font-weight-bolder);
+    font-size: var.use-var(font-size-l);
+    color: var.use-text-color(main);
+    font-weight: var.use-var(font-weight-bolder);
 
     .separator {
-      margin: 0 use-var(spacing-s);
+      margin: 0 var.use-var(spacing-s);
     }
 
     .aui-button--text {
-      color: use-text-color(main);
+      color: var.use-text-color(main);
 
       .aui-button__content {
-        font-size: use-var(font-size-l);
-        font-weight: use-var(font-weight-bolder);
+        font-size: var.use-var(font-size-l);
+        font-weight: var.use-var(font-weight-bolder);
         padding: 0;
       }
 
       &:hover {
         background-color: transparent;
-        color: use-rgb(primary);
+        color: var.use-rgb(primary);
         text-decoration: none !important;
       }
 

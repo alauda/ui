@@ -1,28 +1,27 @@
 <div
   [class]="rootClass"
+  (mousedown)="$event.preventDefault()"
   (click)="inputRef.focus()"
   [style.max-height]="maxHeight"
->
+  >
   <span
     [hidden]="model.length || inputRef.value.length"
     [class]="bem.element('placeholder')"
-  >
+    >
     {{ placeholder }}
   </span>
-  @for (item of model; let index = $index; track index) {
-    @if (!item.isInputting) {
-      <aui-tag
-        type="info"
-        [title]="item.value"
-        [size]="tagSize"
-        [round]="true"
-        [border]="true"
-        [closeable]="!(disabled || readonlyTags.includes(item.value))"
-        (close)="onRemove(index)"
+  @for (tag of model; track trackByValue(index, tag); let index = $index) {
+    <aui-tag
+      type="info"
+      [title]="tag"
+      [size]="tagSize"
+      [round]="true"
+      [border]="true"
+      [closeable]="!(disabled || readonlyTags.includes(tag))"
+      (close)="onRemove(index)"
       >
-        {{ item.value }}
-      </aui-tag>
-    }
+      {{ tag }}
+    </aui-tag>
   }
   <input
     #inputRef
@@ -33,10 +32,10 @@
     (blur)="onInputBlur($event)"
     (keydown)="onKeyDown($event)"
     (input)="onInput()"
-  />
+    />
   <span
     #inputValueMirror
     [class]="bem.element('mirror')"
     >{{ inputRef.value }}</span
-  >
-</div>
+    >
+  </div>

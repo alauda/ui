@@ -46,73 +46,76 @@
     ></aui-picker-panel>
   </div>
 
-  <aui-calendar-footer
-    [class]="bem.element('footer')"
-    [clearable]="clearable"
-    [clearText]="clearText"
-    (clear)="clear.next()"
-    (confirm)="confirmValue(rangeValue)"
-    *ngIf="showFooter && showTime"
-  >
-    <div
-      [class]="bem.element('footer-content')"
-      *ngIf="showTime"
-    >
-      <ng-container
-        [ngTemplateOutlet]="datePlaceholder"
+  @if (showFooter && showTime) {
+    <aui-calendar-footer
+      [class]="bem.element('footer')"
+      [clearable]="clearable"
+      [clearText]="clearText"
+      (clear)="clear.next()"
+      (confirm)="confirmValue(rangeValue)"
+      >
+      @if (showTime) {
+        <div
+          [class]="bem.element('footer-content')"
+          >
+          <ng-container
+            [ngTemplateOutlet]="datePlaceholder"
         [ngTemplateOutletContext]="{
           placeholder: 'start_date' | auiI18n,
           value: rangeValue[0],
         }"
-      ></ng-container>
-      <aui-time-picker
-        [showIcon]="false"
-        [(ngModel)]="startTime"
-        size="small"
-        (ngModelChange)="timeChange($event)"
-        [disableHours]="leftDisabledTimeFn(rangeValue[0], 'hours')"
-        [disableMinutes]="leftDisabledTimeFn(rangeValue[0], 'minutes')"
-        [disableSeconds]="leftDisabledTimeFn(rangeValue[0], 'seconds')"
-        [placeholder]="'select_time' | auiI18n"
-        tooltipPosition="top start"
-      ></aui-time-picker>
-
-      <span class="placeholder separator">{{ 'to' | auiI18n }}</span>
-      <ng-container
-        [ngTemplateOutlet]="datePlaceholder"
+          ></ng-container>
+          <aui-time-picker
+            [showIcon]="false"
+            [(ngModel)]="startTime"
+            size="small"
+            (ngModelChange)="timeChange($event)"
+            [disableHours]="leftDisabledTimeFn(rangeValue[0], 'hours')"
+            [disableMinutes]="leftDisabledTimeFn(rangeValue[0], 'minutes')"
+            [disableSeconds]="leftDisabledTimeFn(rangeValue[0], 'seconds')"
+            [placeholder]="'select_time' | auiI18n"
+            tooltipPosition="top start"
+          ></aui-time-picker>
+          <span class="placeholder separator">{{ 'to' | auiI18n }}</span>
+          <ng-container
+            [ngTemplateOutlet]="datePlaceholder"
         [ngTemplateOutletContext]="{
           placeholder: 'end_date' | auiI18n,
           value: rangeValue[1],
         }"
-      ></ng-container>
-      <aui-time-picker
-        [showIcon]="false"
-        size="small"
-        [(ngModel)]="endTime"
-        [disableHours]="rightDisabledTimeFn(rangeValue[1], 'hours')"
-        [disableMinutes]="rightDisabledTimeFn(rangeValue[1], 'minutes')"
-        [disableSeconds]="rightDisabledTimeFn(rangeValue[1], 'seconds')"
-        (ngModelChange)="timeChange($event)"
-        [placeholder]="'select_time' | auiI18n"
-        tooltipPosition="top start"
-      ></aui-time-picker>
-    </div>
-  </aui-calendar-footer>
+          ></ng-container>
+          <aui-time-picker
+            [showIcon]="false"
+            size="small"
+            [(ngModel)]="endTime"
+            [disableHours]="rightDisabledTimeFn(rangeValue[1], 'hours')"
+            [disableMinutes]="rightDisabledTimeFn(rangeValue[1], 'minutes')"
+            [disableSeconds]="rightDisabledTimeFn(rangeValue[1], 'seconds')"
+            (ngModelChange)="timeChange($event)"
+            [placeholder]="'select_time' | auiI18n"
+            tooltipPosition="top start"
+          ></aui-time-picker>
+        </div>
+      }
+    </aui-calendar-footer>
+  }
 </div>
 
 <ng-template
   #datePlaceholder
   let-placeholder="placeholder"
   let-value="value"
->
-  <span
-    *ngIf="!value"
-    class="placeholder date-holder"
-    >{{ placeholder }}</span
   >
-  <span
-    *ngIf="value"
-    class="date-value date-holder"
-    >{{ value | date: FOOTER_DATE_FORMAT }}</span
-  >
-</ng-template>
+  @if (!value) {
+    <span
+      class="placeholder date-holder"
+      >{{ placeholder }}</span
+      >
+    }
+    @if (value) {
+      <span
+        class="date-value date-holder"
+        >{{ value | date: FOOTER_DATE_FORMAT }}</span
+        >
+      }
+    </ng-template>

@@ -2,7 +2,6 @@ import { DomPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
 import {
   ApplicationRef,
-  ComponentFactoryResolver,
   Directive,
   Inject,
   Injector,
@@ -36,7 +35,6 @@ export class OptionContentDirective implements OnDestroy {
     private readonly templateRef: TemplateRef<unknown>,
     private readonly appRef: ApplicationRef,
     private readonly viewContainerRef: ViewContainerRef,
-    private readonly componentFactoryResolver: ComponentFactoryResolver,
     private readonly injector: Injector,
     @Inject(DOCUMENT) document: any,
   ) {
@@ -53,7 +51,6 @@ export class OptionContentDirective implements OnDestroy {
     if (!this.outlet) {
       this.outlet = new DomPortalOutlet(
         this.doc.createElement('div'),
-        this.componentFactoryResolver,
         this.appRef,
         this.injector,
       );

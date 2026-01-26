@@ -1,5 +1,5 @@
-@import '../../src/theme/mixin';
-@import '../../src/theme/pattern';
+@use '../../src/theme/mixin' as mixin;
+@use '../../src/theme/pattern' as pattern;
 
 :host {
   ::ng-deep {
@@ -9,9 +9,9 @@
     }
 
     .aui-table__header-cell {
-      @include text-overflow;
+      @include mixin.text-overflow;
     }
   }
 
-  @include table-placeholder('.empty');
+  @include pattern.table-placeholder('.empty');
 }

@@ -1,8 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`FormComponent should match snapshot 1`] = `
 <ng-component
   form={[Function _NgForm]}
+  value="undefined"
 >
   <form
     auiform=""
@@ -71,6 +72,7 @@ exports[`FormComponent should match snapshot 1`] = `
 exports[`FormComponent should match snapshot 2`] = `
 <ng-component
   form={[Function _NgForm]}
+  value="undefined"
 >
   <form
     auiform=""

@@ -1,17 +1,17 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
 
 @mixin option-group($block) {
   .#{$block} {
     &__title {
       padding: 4px 8px;
-      @include text-set(s, help);
+      @include mixin.text-set(s, help);
     }
   }
 
   #{$block}:not(:first-child) .#{$block} {
     margin-top: 8px;
     padding-top: 8px;
-    border-top: 1px solid use-rgb(n-8);
+    border-top: 1px solid var.use-rgb(n-8);
   }
 }

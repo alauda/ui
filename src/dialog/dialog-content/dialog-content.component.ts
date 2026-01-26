@@ -21,7 +21,7 @@ import { Bem, buildBem } from '../../internal/utils';
 export class DialogContentComponent extends CdkScrollable {
   bem: Bem = buildBem('aui-dialog');
 
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+   
   constructor(
     elementRef: ElementRef<HTMLElement>,
     scrollDispatcher: ScrollDispatcher,

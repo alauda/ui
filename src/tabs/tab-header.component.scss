@@ -1,34 +1,34 @@
-@import '../theme/mixin';
-@import '../theme/var';
+@use '../theme/mixin' as mixin;
+@use '../theme/var' as var;
 
 .aui-tab-header {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   position: relative;
-  background-color: use-rgb(n-10);
-  border-radius: use-var(border-radius-l);
+  background-color: var.use-rgb(n-10);
+  border-radius: var.use-var(border-radius-l);
   overflow: hidden;
 
   // Size modifiers:
   &--large {
     .aui-tab-label {
-      padding: $tab-label-padding-large;
-      @include text-set($size: xl, $weight: bolder);
+      padding: var.$tab-label-padding-large;
+      @include mixin.text-set($size: xl, $weight: bolder);
     }
   }
 
   &--medium {
     .aui-tab-label {
-      padding: $tab-label-padding-medium;
-      @include text-set($size: l, $weight: bolder);
+      padding: var.$tab-label-padding-medium;
+      @include mixin.text-set($size: l, $weight: bolder);
     }
   }
 
   &--small {
     .aui-tab-label {
-      padding: $tab-label-padding-small;
-      @include text-set(m);
+      padding: var.$tab-label-padding-small;
+      @include mixin.text-set(m);
     }
   }
 
@@ -41,22 +41,22 @@
   &__title {
     display: flex;
     justify-content: space-between;
-    color: use-rgb(n-1);
-    font-size: $tab-header-title-font-size;
-    margin-inline: $tab-header-title-spacing;
-    padding: $tab-header-title-padding;
-    font-weight: use-var(font-weight-bolder);
-    border-bottom: 1px use-rgb(n-8) solid;
+    color: var.use-rgb(n-1);
+    font-size: var.$tab-header-title-font-size;
+    margin-inline: var.$tab-header-title-spacing;
+    padding: var.$tab-header-title-padding;
+    font-weight: var.use-var(font-weight-bolder);
+    border-bottom: 1px var.use-rgb(n-8) solid;
     line-height: 32px;
   }
 
   &--card {
-    background-color: use-rgb(button-bg);
+    background-color: var.use-rgb(button-bg);
   }
 
   &--line {
     box-shadow: 0 0 4px 0 rgb(50 52 55 / 10%);
-    background-color: use-rgb(n-10);
+    background-color: var.use-rgb(n-10);
   }
 
   &__pagination-wrapper {
@@ -75,7 +75,7 @@
     justify-content: center;
     flex-shrink: 0;
     cursor: pointer;
-    z-index: $tab-pagination-button-z-index; // higher than labels
+    z-index: var.$tab-pagination-button-z-index; // higher than labels
     box-shadow: 0 0 4px #ccc;
     opacity: 0.6;
     // prettier-ignore
@@ -83,7 +83,7 @@
 
     &:hover {
       opacity: 1;
-      color: use-rgb(primary);
+      color: var.use-rgb(primary);
     }
 
     &:first-of-type {
@@ -112,7 +112,7 @@
   &__tab-list {
     flex-grow: 1;
     position: relative;
-    transition: $tab-scroll-transition;
+    transition: var.$tab-scroll-transition;
   }
 
   &__labels {
@@ -144,9 +144,9 @@
   justify-content: center;
   align-items: center;
   white-space: nowrap;
-  color: use-rgb(n-2);
-  font-weight: use-var(font-weight-bold);
-  z-index: $tab-label-z-index;
+  color: var.use-rgb(n-2);
+  font-weight: var.use-var(font-weight-bold);
+  z-index: var.$tab-label-z-index;
   transition: opacity 0.3s;
 
   &:focus,
@@ -157,7 +157,7 @@
   &:not(.aui-tab-label--disabled) {
     &.isActive,
     &:hover {
-      color: use-rgb(primary);
+      color: var.use-rgb(primary);
     }
   }
 
@@ -174,22 +174,22 @@
 
   &__close {
     margin-left: 8px;
-    font-size: $tab-header-close-icon-size;
+    font-size: var.$tab-header-close-icon-size;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: use-rgb(n-4);
-    @include transition;
+    color: var.use-rgb(n-4);
+    @include mixin.transition;
 
     &:hover {
-      color: use-rgb(n-9);
-      background-color: use-rgb(n-4);
+      color: var.use-rgb(n-9);
+      background-color: var.use-rgb(n-4);
     }
   }
 
   &.cdk-focused:not(.cdk-mouse-focused) {
-    box-shadow: $tab-label-focus-box-shadow;
+    box-shadow: var.$tab-label-focus-box-shadow;
   }
 }
 
@@ -199,20 +199,20 @@ aui-tab-header-active-indicator {
   position: absolute;
   top: 0;
   pointer-events: none;
-  transition: $tab-scroll-transition;
+  transition: var.$tab-scroll-transition;
 }
 
 .aui-tab-header-active-indicator {
   position: relative;
   flex: 1;
   height: 100%;
-  z-index: $tab-active-indicator-z-index;
+  z-index: var.$tab-active-indicator-z-index;
 
   &:after {
     content: '';
     position: absolute;
     display: block;
-    background: use-rgb(primary);
+    background: var.use-rgb(primary);
     height: 2px;
   }
 
@@ -225,7 +225,7 @@ aui-tab-header-active-indicator {
   }
 
   &--card {
-    background-color: use-rgb(n-10);
+    background-color: var.use-rgb(n-10);
 
     &:after {
       width: 100%;

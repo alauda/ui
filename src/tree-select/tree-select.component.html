@@ -11,7 +11,7 @@
   auiTooltipPosition="bottom start"
   auiTooltipType="plain"
   (auiTooltipVisibleChange)="onVisibleNodes($event)"
->
+  >
   <aui-input-group>
     <input
       #inputRef
@@ -25,11 +25,11 @@
       (input)="onInput($event)"
       (blur)="closeOption()"
       (keydown)="onKeyDown($event)"
-    />
+      />
     <span
       auiInputSuffix
       class="aui-tree-select__icon-container"
-    >
+      >
       <aui-icon
         class="aui-tree-select__indicator"
         [icon]="loading ? 'spinner' : 'caret_down_s'"
@@ -48,22 +48,24 @@
     class="aui-tree-node-container"
     [style.minWidth]="containerWidth"
     (mousedown)="$event.preventDefault()"
-  >
+    >
     <div
       #nodeListRef
       class="aui-tree-node-container__content"
-    >
-      <aui-tree-node
-        *ngFor="let data of nodesData; trackBy: trackByLabel"
-        [nodeData]="data"
-        [leafOnly]="leafOnly"
-      ></aui-tree-node>
+      >
+      @for (data of nodesData; track trackByLabel($index, data)) {
+        <aui-tree-node
+          [nodeData]="data"
+          [leafOnly]="leafOnly"
+        ></aui-tree-node>
+      }
     </div>
-    <div
-      *ngIf="!getVisibleNodeCount()"
-      class="aui-tree-node-container__placeholder"
-    >
-      <ng-content select="aui-tree-node-placeholder"></ng-content>
-    </div>
+    @if (!getVisibleNodeCount()) {
+      <div
+        class="aui-tree-node-container__placeholder"
+        >
+        <ng-content select="aui-tree-node-placeholder"></ng-content>
+      </div>
+    }
   </div>
 </ng-template>

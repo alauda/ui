@@ -1,11 +1,12 @@
-@import '../mixin';
+@use '../mixin' as mixin;
+@use '../var' as var;
 
 @mixin fade-motion(
   $className,
   $keyframeName,
-  $duration: $animation-duration-base
+  $duration: var.$animation-duration-base
 ) {
-  @include make-motion($className, $keyframeName, $duration);
+  @include mixin.make-motion($className, $keyframeName, $duration);
 
   .#{$className}-enter {
     opacity: 0;

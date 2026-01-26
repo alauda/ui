@@ -1,4 +1,4 @@
-import { NgClass, NgIf, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -49,7 +49,7 @@ const bem = buildBem('aui-picker-panel');
   styleUrls: ['./picker-panel.style.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgClass, NgIf, NgFor, ButtonComponent, I18nPipe],
+  imports: [NgClass, ButtonComponent, I18nPipe],
 })
 export class PickerPanelComponent implements OnChanges {
   @Input()

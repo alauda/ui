@@ -1,7 +1,6 @@
 import { Overlay } from '@angular/cdk/overlay';
 import {
   ApplicationRef,
-  ComponentFactoryResolver,
   Inject,
   Injectable,
   Injector,
@@ -30,7 +29,6 @@ export class MessageService extends BaseMessage<
     overlay: Overlay,
     injector: Injector,
     applicationRef: ApplicationRef,
-    cfr: ComponentFactoryResolver,
     @Optional()
     @Inject(MESSAGE_CONFIG)
     globalConfig: MessageGlobalConfig,
@@ -39,7 +37,6 @@ export class MessageService extends BaseMessage<
       overlay,
       injector,
       applicationRef,
-      cfr,
       'aui-message-overlay-pane',
       MessageWrapperComponent,
       MessageComponent,

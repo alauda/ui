@@ -1,33 +1,34 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
+@use 'sass:map';
 
 $form-item-width: (
   large: (
-    width: use-var(form-item-width-l),
+    width: var.use-var(form-item-width-l),
   ),
   medium: (
-    width: use-var(form-item-width-m),
+    width: var.use-var(form-item-width-m),
   ),
   small: (
-    width: use-var(form-item-width-s),
+    width: var.use-var(form-item-width-s),
   ),
 );
 
 .aui-form-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: use-var(spacing-xl);
-  @include text-set(m, main);
+  margin-bottom: var.use-var(spacing-xl);
+  @include mixin.text-set(m, main);
 
   &--top {
     flex-direction: column;
 
     .aui-form-item__label {
-      line-height: use-var(line-height-m);
+      line-height: var.use-var(line-height-m);
 
       &-wrapper {
-        line-height: use-var(line-height-m);
-        margin-bottom: use-var(spacing-s);
+        line-height: var.use-var(line-height-m);
+        margin-bottom: var.use-var(spacing-s);
 
         &:after {
           display: none;
@@ -39,21 +40,21 @@ $form-item-width: (
   &__label-wrapper {
     display: flex;
     align-items: center;
-    line-height: use-var(inline-height-m);
+    line-height: var.use-var(inline-height-m);
     flex-shrink: 0;
-    padding-right: use-var(spacing-m);
+    padding-right: var.use-var(spacing-m);
     overflow: hidden;
 
     &--required .aui-form-item__label:before {
       content: '*';
-      color: use-rgb(red);
-      margin-right: use-var(spacing-s);
+      color: var.use-rgb(red);
+      margin-right: var.use-var(spacing-s);
     }
 
     &.hasLabel:after {
       content: ':';
       align-self: flex-start;
-      margin-left: use-var(spacing-xs);
+      margin-left: var.use-var(spacing-xs);
     }
 
     &--left {
@@ -75,7 +76,7 @@ $form-item-width: (
 
   &__label {
     display: block;
-    line-height: use-var(line-height-s);
+    line-height: var.use-var(line-height-s);
   }
 
   &__container {
@@ -86,14 +87,14 @@ $form-item-width: (
   &__content {
     display: flex;
     align-items: center;
-    min-height: use-var(inline-height-m);
+    min-height: var.use-var(inline-height-m);
 
     @each $key in large medium small {
-      $map: map-get($form-item-width, $key);
+      $map: map.get($form-item-width, $key);
       &--#{$key} {
         .aui-form-item__control {
           flex: 1;
-          max-width: map-get($map, width);
+          max-width: map.get($map, width);
         }
       }
     }
@@ -101,20 +102,20 @@ $form-item-width: (
 
   &__content + &__hint-wrapper,
   &__content + &__error-wrapper {
-    margin-top: use-var(spacing-s);
+    margin-top: var.use-var(spacing-s);
   }
 
   &__hint-wrapper,
   &__error-wrapper {
-    @include text-set(s);
+    @include mixin.text-set(s);
   }
 
   &__hint-wrapper {
-    color: use-text-color(help);
+    color: var.use-text-color(help);
   }
 
   &__error-wrapper {
-    color: use-rgb(red);
+    color: var.use-rgb(red);
   }
 
   &__addon-wrapper {
@@ -123,20 +124,20 @@ $form-item-width: (
     align-items: center;
     flex-shrink: 0;
     box-sizing: content-box;
-    height: use-var(inline-height-m);
-    min-width: use-var(icon-size-m);
-    padding-left: use-var(spacing-m);
-    color: use-rgb(n-4);
-    font-size: use-var(font-size-m);
+    height: var.use-var(inline-height-m);
+    min-width: var.use-var(icon-size-m);
+    padding-left: var.use-var(spacing-m);
+    color: var.use-rgb(n-4);
+    font-size: var.use-var(font-size-m);
 
     aui-icon {
-      font-size: use-var(icon-size-m);
+      font-size: var.use-var(icon-size-m);
     }
   }
 
   &.isPlain & {
     &__label-wrapper {
-      line-height: use-var(line-height-m);
+      line-height: var.use-var(line-height-m);
 
       &--required .aui-form-item__label:before {
         display: none;
@@ -144,11 +145,11 @@ $form-item-width: (
     }
 
     &__content {
-      min-height: use-var(line-height-m);
+      min-height: var.use-var(line-height-m);
     }
 
     &__addon-wrapper {
-      height: use-var(line-height-m);
+      height: var.use-var(line-height-m);
     }
   }
 }
@@ -158,6 +159,6 @@ $form-item-width: (
 
   .aui-form-item {
     margin-bottom: 0;
-    margin-right: use-var(spacing-m);
+    margin-right: var.use-var(spacing-m);
   }
 }

@@ -27,6 +27,7 @@
           }
         ],
         "scss/no-duplicate-dollar-variables": null,
+        "scss/selector-no-redundant-nesting-selector": null,
         "scss/function-no-unknown": [
           true,
           {

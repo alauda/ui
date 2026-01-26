@@ -1,5 +1,6 @@
-@import '../theme/var';
-@import '../theme/mixin';
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
+@use 'sass:map';
 
 $block: aui-status-bar;
 $bar-border-radius: 5px;
@@ -7,24 +8,24 @@ $small-bar-border-radius: 4px;
 
 $bar-type: (
   primary: (
-    background: use-rgb(primary),
-    hover-background: use-rgb(p-2),
+    background: var.use-rgb(primary),
+    hover-background: var.use-rgb(p-2),
   ),
   success: (
-    background: use-rgb(green),
-    hover-background: use-rgb(g-2),
+    background: var.use-rgb(green),
+    hover-background: var.use-rgb(g-2),
   ),
   warning: (
-    background: use-rgb(yellow),
-    hover-background: use-rgb(y-2),
+    background: var.use-rgb(yellow),
+    hover-background: var.use-rgb(y-2),
   ),
   error: (
-    background: use-rgb(red),
-    hover-background: use-rgb(r-2),
+    background: var.use-rgb(red),
+    hover-background: var.use-rgb(r-2),
   ),
   info: (
-    background: use-rgb(n-4),
-    hover-background: use-rgb(n-6),
+    background: var.use-rgb(n-4),
+    hover-background: var.use-rgb(n-6),
   ),
 );
 
@@ -59,7 +60,7 @@ $bar-type: (
     min-width: 2px;
     height: 100%;
     flex: 1 1 1;
-    border-radius: use-var(border-radius-m);
+    border-radius: var.use-var(border-radius-m);
 
     &:first-child {
       border-top-left-radius: $bar-border-radius;
@@ -72,31 +73,31 @@ $bar-type: (
     }
 
     @each $type in primary, success, warning, error, info {
-      $map: map-get($bar-type, $type);
+      $map: map.get($bar-type, $type);
       &--#{$type} {
-        background-color: map-get($map, background);
+        background-color: map.get($map, background);
 
         &:hover {
-          background-color: map-get($map, hover-background);
+          background-color: map.get($map, hover-background);
         }
       }
     }
 
     &--pending {
-      height: use-var(inline-height-m);
+      height: var.use-var(inline-height-m);
       animation: pending 0.5s linear infinite;
       background: repeating-linear-gradient(
         -60deg,
-        use-rgb(b-5),
-        use-rgb(b-5) use-var(spacing-s),
-        use-rgb(b-6) use-var(spacing-s),
-        use-rgb(b-6) use-var(spacing-m)
+        var.use-rgb(b-5),
+        var.use-rgb(b-5) var.use-var(spacing-s),
+        var.use-rgb(b-6) var.use-var(spacing-s),
+        var.use-rgb(b-6) var.use-var(spacing-m)
       );
     }
   }
 
   &__chunk + &__chunk {
-    margin-left: use-var(spacing-xs);
+    margin-left: var.use-var(spacing-xs);
   }
 }
 

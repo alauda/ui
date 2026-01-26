@@ -1,8 +1,10 @@
 {
   "extends": "@1stg/tsconfig/ng-lib",
   "compilerOptions": {
+    "target": "ES2022",
+    "moduleResolution": "bundler",
     "baseUrl": ".",
     "strictNullChecks": false,
-    "useDefineForClassFields": false,
+    "useDefineForClassFields": false
   }
 }
