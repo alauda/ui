@@ -117,7 +117,9 @@ export class TableComponent<T>
   }
 
   private _clearPlaceholder() {
-    this._placeholderOutlet.viewContainer.clear();
+    if (this._placeholderOutlet?.viewContainer) {
+      this._placeholderOutlet.viewContainer.clear();
+    }
   }
 
   override ngOnDestroy() {
