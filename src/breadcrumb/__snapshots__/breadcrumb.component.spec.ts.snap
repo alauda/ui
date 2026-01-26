@@ -22,7 +22,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            /
+             / 
           </span>
         </div>
       </aui-breadcrumb-item>
@@ -42,7 +42,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            /
+             / 
           </span>
         </div>
       </aui-breadcrumb-item>
@@ -58,7 +58,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            /
+             / 
           </span>
         </div>
       </aui-breadcrumb-item>
@@ -85,7 +85,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            |
+             | 
           </span>
         </div>
       </aui-breadcrumb-item>
@@ -105,7 +105,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            |
+             | 
           </span>
         </div>
       </aui-breadcrumb-item>
@@ -121,7 +121,7 @@ exports[`BreadcrumbComponent should render correct template 1`] = `
           <span
             class="aui-breadcrumb__separator"
           >
-            |
+             | 
           </span>
         </div>
       </aui-breadcrumb-item>

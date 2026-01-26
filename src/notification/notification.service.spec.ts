@@ -1,6 +1,6 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NOTIFICATION_CONFIG, NotificationService } from '.';
@@ -26,13 +26,9 @@ describe('NotificationService', () => {
 
     fixture = TestBed.createComponent(TestComponent);
 
-    inject(
-      [OverlayContainer, NotificationService],
-      (overlayContainer: OverlayContainer, service: NotificationService) => {
-        ocEl = overlayContainer.getContainerElement();
-        notificationService = service;
-      },
-    )();
+    const overlayContainer = TestBed.inject(OverlayContainer);
+    ocEl = overlayContainer.getContainerElement();
+    notificationService = TestBed.inject(NotificationService);
   });
 
   it('should work with global config', () => {
@@ -80,21 +76,29 @@ describe('NotificationService', () => {
     ).toContain('notification success object');
   });
 
-  it('should show a success notification with template', () => {
+  it('should show a success notification with template', fakeAsync(() => {
     notificationService.success({
       contentRef: fixture.componentInstance.templateRef,
       duration: 10_000,
     });
     fixture.detectChanges();
-
+    
+    // Wait for ngAfterViewInit and portal attachment
+    tick();
+    fixture.detectChanges();
+    
+    // Additional tick to ensure portal is fully attached
+    tick();
+    fixture.detectChanges();
+    
     expect(ocEl.querySelector('.aui-notification button')).not.toBeNull();
-    expect(ocEl.querySelector('.aui-notification button').classList).toContain(
+    expect(ocEl.querySelector('.aui-notification button')!.classList).toContain(
       'temp-btn',
     );
-    expect(ocEl.querySelector('.aui-notification__remove').innerHTML).toContain(
+    expect(ocEl.querySelector('.aui-notification__remove')!.innerHTML).toContain(
       '10s',
     );
-  });
+  }));
 
   it('should show a success notification with component', () => {
     notificationService.success({

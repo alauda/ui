@@ -1,9 +1,13 @@
 {
-  "extends": "./tsconfig",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": ["jest", "node", "resize-observer-browser"],
+    "types": ["jest", "node"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "isolatedModules": true,
     "noImplicitReturns": false,
     "noImplicitAny": false
   },
-  "include": ["src/**/*.spec.ts"]
+  "include": ["src/**/*.spec.ts"],
+  "exclude": ["dist", "release", "stories"]
 }

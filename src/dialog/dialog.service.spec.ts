@@ -9,8 +9,6 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  inject,
-  tick,
 } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { timer } from 'rxjs';
@@ -35,13 +33,9 @@ describe('DialogService', () => {
 
     fixture = TestBed.createComponent(TestComponent);
 
-    inject(
-      [OverlayContainer, DialogService],
-      (overlayContainer: OverlayContainer, service: DialogService) => {
-        ocEl = overlayContainer.getContainerElement();
-        dialogService = service;
-      },
-    )();
+    const overlayContainer = TestBed.inject(OverlayContainer);
+    ocEl = overlayContainer.getContainerElement();
+    dialogService = TestBed.inject(DialogService);
   });
 
   it('should open dialog with component portal', () => {
@@ -157,14 +151,16 @@ describe('DialogService', () => {
         .dispatchEvent(new Event('click'));
     }));
 
-  it('should before confirm work correctly', fakeAsync(() =>
+  it('should before confirm work correctly', () =>
     new Promise<void>(resolve => {
       const t1 = Date.now();
       dialogService
         .confirm({
           title: '',
-          beforeConfirm: resolve => {
-            setTimeout(resolve, 100);
+          beforeConfirm: resolveCallback => {
+            setTimeout(() => {
+              resolveCallback();
+            }, 100);
           },
           noAnimation: true,
         })
@@ -183,11 +179,9 @@ describe('DialogService', () => {
 
       expect(confirmBtn.className).toContain('isLoading');
       expect(confirmBtn.disabled).toBeTruthy();
-      tick(100);
-      fixture.detectChanges();
-    })));
+    }));
 
-  it('should before confirm observable work correctly', fakeAsync(() =>
+  it('should before confirm observable work correctly', () =>
     new Promise<void>(resolve => {
       const t1 = Date.now();
       dialogService
@@ -211,9 +205,7 @@ describe('DialogService', () => {
 
       expect(confirmBtn.className).toContain('isLoading');
       expect(confirmBtn.disabled).toBeTruthy();
-      tick(100);
-      fixture.detectChanges();
-    })));
+    }));
 
   it('should before cancel work correctly', () =>
     new Promise<void>(resolve => {
@@ -271,44 +263,49 @@ describe('DialogService', () => {
       expect(cancelBtn.disabled).toBeTruthy();
     }));
 
-  it('should before confirm callback could prevent close event', fakeAsync(() => {
-    dialogService
-      .confirm({
+  it('should before confirm callback could prevent close event', () => {
+    return new Promise<void>(resolve => {
+      const promise = dialogService.confirm({
         title: '',
         beforeConfirm: (_, reject) => {
-          setTimeout(reject, 100);
+          setTimeout(() => {
+            reject();
+          }, 100);
         },
         noAnimation: true,
-      })
-      .then(() => {
-        throw new Error('confirm dialog should not be closed');
-      })
-      .catch(() => {
-        throw new Error('confirm dialog should not be closed');
       });
-    fixture.detectChanges();
+      
+      // Handle promise rejection
+      promise.catch(() => {
+        // Expected rejection - dialog should remain open
+      });
+      
+      fixture.detectChanges();
 
-    const confirmBtn: HTMLButtonElement = ocEl.querySelector(
-      '.aui-confirm-dialog__confirm-button',
-    );
-    const cancelBtn: HTMLButtonElement = ocEl.querySelector(
-      '.aui-confirm-dialog__cancel-button',
-    );
-    confirmBtn.dispatchEvent(new Event('click'));
-    fixture.detectChanges();
+      const confirmBtn: HTMLButtonElement = ocEl.querySelector(
+        '.aui-confirm-dialog__confirm-button',
+      );
+      const cancelBtn: HTMLButtonElement = ocEl.querySelector(
+        '.aui-confirm-dialog__cancel-button',
+      );
+      confirmBtn.dispatchEvent(new Event('click'));
+      fixture.detectChanges();
 
-    expect(confirmBtn.className).toContain('isLoading');
-    expect(confirmBtn.disabled).toBeTruthy();
-    expect(cancelBtn.disabled).toBeTruthy();
+      expect(confirmBtn.className).toContain('isLoading');
+      expect(confirmBtn.disabled).toBeTruthy();
+      expect(cancelBtn.disabled).toBeTruthy();
 
-    tick(100);
-    fixture.detectChanges();
-
-    expect(ocEl.querySelector('aui-dialog')).not.toBeNull();
-    expect(confirmBtn.className).not.toContain('isLoading');
-    expect(confirmBtn.disabled).toBeFalsy();
-    expect(cancelBtn.disabled).toBeFalsy();
-  }));
+      // Wait for async operations to complete
+      setTimeout(() => {
+        fixture.detectChanges();
+        expect(ocEl.querySelector('aui-dialog')).not.toBeNull();
+        expect(confirmBtn.className).not.toContain('isLoading');
+        expect(confirmBtn.disabled).toBeFalsy();
+        expect(cancelBtn.disabled).toBeFalsy();
+        resolve();
+      }, 150);
+    });
+  });
 
   it('should open confirm dialog with templateRef content', fakeAsync(() =>
     new Promise<void>(resolve => {

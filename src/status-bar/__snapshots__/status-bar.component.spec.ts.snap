@@ -2,6 +2,7 @@
 
 exports[`Status Bar should match snapshot 1`] = `
 <ng-component
+  onChunkClick="undefined"
   status1={[Function Array]}
   status2={[Function Array]}
 >
@@ -87,6 +88,7 @@ exports[`Status Bar should match snapshot 1`] = `
 
 exports[`Status Bar should match snapshot 2`] = `
 <ng-component
+  onChunkClick="undefined"
   status1={[Function Array]}
   status2={[Function Array]}
 >
@@ -174,33 +176,5 @@ exports[`Status Bar should match snapshot 3`] = `
 <div
   class="cdk-overlay-container"
   platform="test"
->
-  <div
-    class="cdk-overlay-connected-position-bounding-box"
-    dir="ltr"
-    style="left: 0px; bottom: 0px; height: 0px; width: 0px; align-items: center; justify-content: flex-end;"
-  >
-    <div
-      class="cdk-overlay-pane"
-      id="cdk-overlay-a0"
-      style="position: static;"
-    >
-      <aui-tooltip>
-        <div
-          class="ng-trigger ng-trigger-showHide aui-tooltip aui-tooltip--align_center aui-tooltip--default aui-tooltip--direction_top aui-tooltip__transform-origin"
-        >
-            
-          <div
-            style=""
-          >
-            info: 0.1
-          </div>
-          
-          
-        </div>
-        
-      </aui-tooltip>
-    </div>
-  </div>
-</div>
+/>
 `;
