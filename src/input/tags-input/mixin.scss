@@ -18,6 +18,7 @@
 
     .aui-tag {
       max-width: 100%;
+      background-color: use-rgb(n-7);
     }
 
     &.isDisabled {
@@ -27,7 +28,6 @@
 
       .aui-tag {
         color: use-text-color(disabled);
-        background-color: use-rgb(n-8);
       }
     }
 
