@@ -70,7 +70,7 @@ export const tableBem = buildBem('aui-table');
       useExisting: TableComponent,
     },
   ],
-  imports: [CdkTableModule],
+  imports: [CdkTableModule, TablePlaceholderOutletDirective],
 })
 export class TableComponent<T>
   extends CdkTable<T>
