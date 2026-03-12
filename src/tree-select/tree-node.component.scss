@@ -31,7 +31,7 @@
     @include mixin.text-overflow;
 
     &:hover {
-      background-color: use-rgb(p-6);
+      background-color: var.use-rgb(p-6);
     }
 
     &.unselectable {

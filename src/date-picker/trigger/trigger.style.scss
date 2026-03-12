@@ -52,7 +52,7 @@ aui-date-picker-trigger {
     }
 
     &.isFocused:not(.disabled) {
-      border-color: use-rgb(primary);
+      border-color: var.use-rgb(primary);
       @include mixin.outline-shadow(primary);
     }
 

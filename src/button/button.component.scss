@@ -131,13 +131,13 @@ $button-size: (
   flex-shrink: 0;
   position: relative;
   border-width: 1px;
-  border-radius: use-var(border-radius-m);
+  border-radius: var.use-var(border-radius-m);
   border-style: solid;
   background: none;
   outline: none;
   user-select: none;
   cursor: pointer;
-  font-weight: use-var(font-weight-normal);
+  font-weight: var.use-var(font-weight-normal);
   @include mixin.transition;
 
   &::-moz-focus-inner {
@@ -192,7 +192,7 @@ $button-size: (
   }
 
   &--text {
-    color: use-rgb(primary);
+    color: var.use-rgb(primary);
     border: none;
     background-color: transparent;
 
