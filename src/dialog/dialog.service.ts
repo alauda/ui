@@ -105,6 +105,7 @@ export class DialogService {
           : DialogService.DIALOG_OVERLAY_PANE_CLASS,
       width: '100vw',
       height: '100vh',
+      usePopover: false,
     };
   }
 

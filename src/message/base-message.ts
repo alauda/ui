@@ -107,6 +107,7 @@ export abstract class BaseMessage<
     this.wrapperInstance = this.overlay
       .create({
         panelClass: this.overlayPaneClassName,
+        usePopover: false,
       })
       .attach(new ComponentPortal(this.wrapperClass)).instance;
   }
