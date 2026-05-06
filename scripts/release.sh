@@ -1,14 +1,10 @@
 #!/bin/sh
 
+set -e
+
 PUBLISH_VERSION=$(node scripts/publish-version)
 PUBLISH_BRANCH=$(node scripts/publish-branch)
 NPM_TAG=$(node scripts/npm-tag)
-
-if [ "$NODE_AUTH_TOKEN" = "" ] && [ "$NPM_TOKEN" = "" ]; then
-  echo "NPM_TOKEN is not available on PR from forked repository!"
-  echo "If you're a member of Alauda, just checkout a new branch instead."
-  exit 0
-fi
 
 if [ "$NPM_TAG" = "latest" ]; then
   echo "Publish latest tag via this script is not permitted anymore."
@@ -26,4 +22,4 @@ if [ "$PUBLISH_BRANCH" != "" ]; then
   git push --follow-tags origin "$PUBLISH_BRANCH"
 fi
 
-npm publish ./release --tag "$NPM_TAG" --provenance --access public
+npm publish ./release --tag "$NPM_TAG" --access public
