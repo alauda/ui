@@ -124,5 +124,19 @@
   "publishConfig": {
     "access": "public",
     "directory": "release"
+  },
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./fesm2022/alauda-ui.mjs"
+    },
+    "./theme/*": {
+      "sass": "./theme/_*.scss",
+      "style": "./theme/_*.scss",
+      "default": "./theme/_*.scss"
+    }
   }
 }
