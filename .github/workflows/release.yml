@@ -20,7 +20,7 @@ permissions:
 jobs:
   release:
     name: Release
-    if: github.event_name == 'push'
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -40,6 +40,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Create Release Pull Request or Publish to npm
+        if: github.event_name == 'push'
         id: changesets
         uses: changesets/action@v1
         with:
@@ -50,66 +51,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Sync Cnpm
-        if: steps.changesets.outputs.published == 'true'
-        run: npx cnpm sync @alauda/ui
-
-  release_beta:
-    name: Release Beta
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: yarn
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
-
       - name: Release beta
+        if: github.event_name == 'pull_request'
         run: sh scripts/release.sh
         env:
           PUBLISH_VERSION: beta
 
-      - name: Sync Cnpm
-        run: npx cnpm sync @alauda/ui
-
-  release_prod:
-    name: Release Prod
-    if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: yarn
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
-
       - name: Set git info
+        if: github.event_name == 'workflow_dispatch'
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-      - name: Release
+      - name: Release prod
+        if: github.event_name == 'workflow_dispatch'
         run: sh scripts/release.sh
         env:
           PUBLISH_VERSION: ${{ github.event.inputs.version }}
 
       - name: Sync Cnpm
+        if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && steps.changesets.outputs.published == 'true')
         run: npx cnpm sync @alauda/ui
