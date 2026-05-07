@@ -13,14 +13,15 @@ on:
         description: Hotfix package version for prod, 5.7.0-prod-3.5-0 for example.
         required: true
 
+permissions:
+  contents: write
+  id-token: write
+
 jobs:
   release:
     name: Release
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      id-token: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -31,12 +32,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22.14.0
+          node-version: 24
           cache: yarn
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Upgrade npm for trusted publishing
-        run: npm install -g npm@^11.5.1
 
       - name: Install Dependencies
         run: yarn --frozen-lockfile
@@ -70,12 +68,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22.14.0
+          node-version: 24
           cache: yarn
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Upgrade npm for trusted publishing
-        run: npm install -g npm@^11.5.1
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
@@ -92,9 +87,6 @@ jobs:
     name: Release Prod
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      id-token: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -102,12 +94,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22.14.0
+          node-version: 24
           cache: yarn
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Upgrade npm for trusted publishing
-        run: npm install -g npm@^11.5.1
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
