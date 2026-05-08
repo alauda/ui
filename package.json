@@ -32,7 +32,7 @@
     "lint:tsc": "npx tsc -p . --noEmit",
     "prepare": "patch-package && simple-git-hooks && touch documentation.json || exit 0",
     "prerelease": "yarn build",
-    "release": "changeset publish",
+    "release": "yarn build && changeset publish",
     "start": "yarn storybook",
     "storybook": "ng run storybook:storybook",
     "storybook:build": "ng run storybook:build-storybook",
