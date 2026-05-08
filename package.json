@@ -31,7 +31,6 @@
     "lint:style": "npx stylelint --cache '{src,stories}/**/*.{html,scss}'",
     "lint:tsc": "npx tsc -p . --noEmit",
     "prepare": "patch-package && simple-git-hooks && touch documentation.json || exit 0",
-    "prerelease": "yarn build",
     "release": "yarn build && changeset publish",
     "start": "yarn storybook",
     "storybook": "ng run storybook:storybook",
