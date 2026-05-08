@@ -6,13 +6,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <button
         aui-button
         (click)="clear()"
-      >
+        >
         清空
       </button>
       <button
         aui-button
         (click)="reset()"
-      >
+        >
         重置
       </button>
     </p>
@@ -20,15 +20,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <aui-table
         [dataSource]="dataSource"
         auiTableScrollable
-      >
+        >
         <ng-container
           auiTableColumnDef="no"
           [sticky]="true"
-        >
+          >
           <aui-table-header-cell
             *auiTableHeaderCellDef
             auiTableColumnResizable
-          >
+            >
             No.
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">{{
@@ -38,11 +38,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <ng-container
           auiTableColumnDef="cell1"
           [sticky]="true"
-        >
+          >
           <aui-table-header-cell
             *auiTableHeaderCellDef
             auiTableColumnResizable
-          >
+            >
             header cell
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">
@@ -77,7 +77,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <aui-table-header-cell
             *auiTableHeaderCellDef
             auiTableColumnResizable
-          >
+            >
             header cell
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">
@@ -112,7 +112,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <aui-table-header-cell
             *auiTableHeaderCellDef
             auiTableColumnResizable
-          >
+            >
             header cell
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">
@@ -122,11 +122,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <ng-container
           auiTableColumnDef="cell10"
           stickyEnd
-        >
+          >
           <aui-table-header-cell
             *auiTableHeaderCellDef
             auiTableColumnResizable
-          >
+            >
             header cell
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">
@@ -140,17 +140,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           <aui-table-cell *auiTableCellDef="let item">
             {{ item[11] }}
           </aui-table-cell> </ng-container
-        ><ng-container auiTableColumnDef="cell12">
+          ><ng-container auiTableColumnDef="cell12">
           <aui-table-header-cell
             *auiTableHeaderCellDef
             auiTableColumnResizable
-          >
+            >
             header cell12
           </aui-table-header-cell>
           <aui-table-cell *auiTableCellDef="let item">
             {{ item[12] }}
           </aui-table-cell> </ng-container
-        ><ng-container auiTableColumnDef="cell13">
+          ><ng-container auiTableColumnDef="cell13">
           <aui-table-header-cell *auiTableHeaderCellDef>
             header cell13
           </aui-table-header-cell>
@@ -165,15 +165,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           *auiTableRowDef="let row; columns: columns"
         ></aui-table-row>
         <ng-container *auiTablePlaceholderDef>
-          <div
-            class="empty"
-            *ngIf="!dataSource.length"
-          >
-            No Data
-          </div>
+          @if (!dataSource.length) {
+            <div
+              class="empty"
+              >
+              No Data
+            </div>
+          }
         </ng-container>
       </aui-table>
-    </div> `,
+    </div>`,
   styleUrls: ['sticky-columns.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,

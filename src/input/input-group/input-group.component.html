@@ -5,34 +5,38 @@
   [class.hasAddonAfter]="hasAddonAfter$ | async"
   [class.hasPrefix]="hasPrefix$ | async"
   [class.hasSuffix]="hasSuffix$ | async"
->
+  >
   <div [class]="bem.element('inner-wrapper')">
-    <div
-      *ngIf="hasAddonBefore$ | async"
-      [class]="bem.element('addon', 'before')"
-    >
-      <ng-content select="[auiInputAddonBefore]"></ng-content>
-    </div>
+    @if (hasAddonBefore$ | async) {
+      <div
+        [class]="bem.element('addon', 'before')"
+        >
+        <ng-content select="[auiInputAddonBefore]"></ng-content>
+      </div>
+    }
     <div [class]="bem.element('input-wrapper')">
-      <span
-        *ngIf="hasPrefix$ | async"
-        [class]="bem.element('prefix')"
-      >
-        <ng-content select="[auiInputPrefix]"></ng-content>
-      </span>
+      @if (hasPrefix$ | async) {
+        <span
+          [class]="bem.element('prefix')"
+          >
+          <ng-content select="[auiInputPrefix]"></ng-content>
+        </span>
+      }
       <ng-content></ng-content>
-      <span
-        *ngIf="hasSuffix$ | async"
-        [class]="bem.element('suffix')"
-      >
-        <ng-content select="[auiInputSuffix]"></ng-content>
-      </span>
+      @if (hasSuffix$ | async) {
+        <span
+          [class]="bem.element('suffix')"
+          >
+          <ng-content select="[auiInputSuffix]"></ng-content>
+        </span>
+      }
     </div>
-    <div
-      *ngIf="hasAddonAfter$ | async"
-      [class]="bem.element('addon', 'after')"
-    >
-      <ng-content select="[auiInputAddonAfter]"></ng-content>
-    </div>
+    @if (hasAddonAfter$ | async) {
+      <div
+        [class]="bem.element('addon', 'after')"
+        >
+        <ng-content select="[auiInputAddonAfter]"></ng-content>
+      </div>
+    }
   </div>
 </div>

@@ -1,5 +1,5 @@
-@import '../theme/var';
-@import '../theme/mixin';
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
 
 $block: 'aui-paginator';
 $input-width: 80px;
@@ -8,11 +8,11 @@ $input-width: 80px;
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
-  @include text-set(m);
+  @include mixin.text-set(m);
 
   .aui-button {
-    width: use-var(line-height-xl);
-    height: use-var(line-height-xl);
+    width: var.use-var(line-height-xl);
+    height: var.use-var(line-height-xl);
     border: unset;
 
     &--default {
@@ -54,7 +54,7 @@ $input-width: 80px;
 
     .aui-select {
       width: $input-width;
-      margin-right: use-var(spacing-s);
+      margin-right: var.use-var(spacing-s);
     }
   }
 
@@ -64,38 +64,38 @@ $input-width: 80px;
     }
 
     span + input {
-      margin-left: use-var(spacing-m);
+      margin-left: var.use-var(spacing-m);
     }
 
     input + span {
-      margin-left: use-var(spacing-s);
+      margin-left: var.use-var(spacing-s);
     }
   }
 
   &__navigator.aui-button {
-    background-color: use-rgb(n-8);
+    background-color: var.use-rgb(n-8);
 
     aui-icon {
-      font-size: use-var(icon-size-m);
+      font-size: var.use-var(icon-size-m);
     }
 
     &:hover:not([disabled]) {
-      background-color: use-rgb(p-6);
+      background-color: var.use-rgb(p-6);
     }
   }
 
   &__pager {
-    border: 1px solid use-rgb(n-7);
+    border: 1px solid var.use-rgb(n-7);
     padding: 3px;
-    border-radius: use-var(border-radius-m);
-    background-color: use-rgb(main-bg);
+    border-radius: var.use-var(border-radius-m);
+    background-color: var.use-rgb(main-bg);
   }
 
   &__layout {
     display: inline-block;
 
     + .#{$block}__layout {
-      margin-left: use-var(spacing-l);
+      margin-left: var.use-var(spacing-l);
     }
   }
 }

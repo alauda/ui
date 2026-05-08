@@ -1,15 +1,14 @@
-@import '../theme/mixin';
-@import '../theme/var';
+@use '../theme/mixin' as mixin;
+@use '../theme/var' as var;
 
 $block: 'aui-radio';
 
 .#{$block} {
   display: inline-flex;
   align-items: center;
-  min-height: use-var(inline-height-m);
-  @include text-set(m, main);
-
+  min-height: var.use-var(inline-height-m);
   position: relative;
+  @include mixin.text-set(m, main);
 
   &__input {
     position: absolute;
@@ -24,8 +23,8 @@ $block: 'aui-radio';
 
     &:hover {
       .#{$block}__pointer {
-        border-color: use-rgb(primary);
-        background-color: use-rgb(n-10);
+        border-color: var.use-rgb(primary);
+        background-color: var.use-rgb(n-10);
       }
     }
   }
@@ -39,14 +38,14 @@ $block: 'aui-radio';
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    width: use-var(icon-size-m);
-    height: use-var(icon-size-m);
-    margin-right: use-var(spacing-m);
+    width: var.use-var(icon-size-m);
+    height: var.use-var(icon-size-m);
+    margin-right: var.use-var(spacing-m);
     border-radius: 50%;
-    border: 1px solid use-rgb(n-7);
-    background-color: use-rgb(main-bg);
+    border: 1px solid var.use-rgb(n-7);
+    background-color: var.use-rgb(main-bg);
     vertical-align: middle;
-    @include transition;
+    @include mixin.transition;
 
     &:before {
       content: '';
@@ -58,13 +57,13 @@ $block: 'aui-radio';
   }
 
   &.cdk-keyboard-focused &__pointer {
-    border-color: use-rgb(primary);
-    @include outline-shadow(primary);
+    border-color: var.use-rgb(primary);
+    @include mixin.outline-shadow(primary);
   }
 
   &.isChecked &__pointer {
-    border-color: use-rgb(primary);
-    background-color: use-rgb(primary);
+    border-color: var.use-rgb(primary);
+    background-color: var.use-rgb(primary);
 
     &:before {
       background-color: white;
@@ -76,17 +75,17 @@ $block: 'aui-radio';
   }
 
   &.isDisabled &__pointer {
-    border-color: use-rgb(n-7);
-    background-color: use-rgb(n-8);
+    border-color: var.use-rgb(n-7);
+    background-color: var.use-rgb(n-8);
   }
 
   &.isDisabled.isChecked &__pointer {
-    border-color: use-rgb(p-4);
-    background-color: use-rgb(p-4);
+    border-color: var.use-rgb(p-4);
+    background-color: var.use-rgb(p-4);
 
     &:before {
-      @include theme-dark {
-        background-color: use-rgb(n-4);
+      @include mixin.theme-dark {
+        background-color: var.use-rgb(n-4);
       }
     }
   }
@@ -94,6 +93,6 @@ $block: 'aui-radio';
 
 #{$block}:not(:last-child) {
   .#{$block} {
-    margin-right: use-var(spacing-xxxl);
+    margin-right: var.use-var(spacing-xxxl);
   }
 }

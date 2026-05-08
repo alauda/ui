@@ -1,15 +1,15 @@
-@import '../theme/var';
-@import '../theme/mixin';
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
 
 $b: aui-section;
 
 .#{$b} {
-  padding: use-var(spacing-xl) 0;
-  @include text-set(m, main);
+  padding: var.use-var(spacing-xl) 0;
+  @include mixin.text-set(m, main);
 
   &__title {
-    margin-bottom: use-var(spacing-l);
-    @include text-set(l, main, bolder);
+    margin-bottom: var.use-var(spacing-l);
+    @include mixin.text-set(l, main, bolder);
   }
 }
 

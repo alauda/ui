@@ -1,4 +1,4 @@
-import { NgStyle, NgIf } from '@angular/common';
+import { NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -21,7 +21,7 @@ import { TagType } from './tag.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  imports: [NgStyle, NgIf, IconComponent],
+  imports: [NgStyle, IconComponent],
 })
 export class TagComponent {
   bem: Bem = buildBem('aui-tag');

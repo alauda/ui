@@ -1,4 +1,4 @@
-@import '../theme/var';
+@use '../theme/var' as *;
 
 aui-icon {
   vertical-align: bottom;

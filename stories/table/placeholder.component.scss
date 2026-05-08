@@ -1,7 +1,7 @@
-@import '../../src/theme/pattern';
+@use '../../src/theme/pattern' as pattern;
 
 :host::ng-deep {
-  @include table-placeholder('.placeholder');
+  @include pattern.table-placeholder('.placeholder');
 }
 
 aui-table {

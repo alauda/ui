@@ -429,6 +429,7 @@ export class BaseTooltip<T = any>
     const config = new OverlayConfig({
       positionStrategy,
       scrollStrategy,
+      usePopover: false,
     });
     return this.overlay.create(config);
   }

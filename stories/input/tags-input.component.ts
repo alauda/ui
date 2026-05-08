@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, ValidatorFn } from '@angular/forms';
 
 import { ComponentSize } from '@alauda/ui';
 
@@ -9,6 +9,7 @@ import { ComponentSize } from '@alauda/ui';
     <aui-tags-input
       [size]="size"
       [formControl]="control"
+      [inputValidator]="checkFn"
       [clearable]="true"
       [allowRepeat]="allowRepeat"
       [allowEmpty]="allowEmpty"
@@ -32,35 +33,12 @@ import { ComponentSize } from '@alauda/ui';
       [allowEmpty]="allowEmpty"
       placeholder="placeholder"
     ></aui-tags-input>
-    <br />
-    <br />
-
-    <div>多行 tags maxRowCount: {{ maxRowCount }}</div>
-    <aui-tags-input
-      style="width: 400px;"
-      [size]="size"
-      [formControl]="rowsControl"
-      [inputValidator]="checkFn"
-      [maxRowCount]="maxRowCount"
-      [clearable]="true"
-      [readonlyTags]="['service']"
-      [allowRepeat]="allowRepeat"
-      [allowEmpty]="allowEmpty"
-      placeholder="placeholder"
-    ></aui-tags-input>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
 export class TagsInputComponent {
   value = ['app', 'service'];
-  rowsValue = [
-    'app123456789123456789123456789',
-    'service',
-    'db23456789123456789123456789',
-    'zxcvbnmasdfghjkqwertyuiop',
-  ];
-  maxRowCount = 2;
   pattern = /^a/;
   sizeOptions = {
     [ComponentSize.Large]: ComponentSize.Large,
@@ -77,14 +55,7 @@ export class TagsInputComponent {
     return null;
   };
 
-  control = new FormControl(this.value, {
-    validators: [Validators.required, this.checkArrFn],
-  });
-
-  rowsControl = new FormControl(this.rowsValue, {
-    validators: [this.checkArrFn],
-  });
-
+  control = new FormControl(this.value, { validators: [this.checkArrFn] });
   size = ComponentSize.Medium;
   allowRepeat = true;
   allowEmpty = false;

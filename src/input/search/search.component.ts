@@ -1,4 +1,4 @@
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -23,7 +23,7 @@ import { InputComponent } from '../input.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  imports: [NgClass, NgIf, IconComponent, InputComponent, FormsModule],
+  imports: [NgClass, IconComponent, InputComponent, FormsModule],
 })
 export class SearchComponent {
   bem: Bem = buildBem('aui-search');

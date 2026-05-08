@@ -1,7 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`InputGroupComponent should match snapshot 1`] = `
-<ng-component>
+<ng-component
+  size="undefined"
+>
   <aui-input-group>
     <div
       class="hasAddonBefore hasAddonAfter hasPrefix hasSuffix aui-input-group aui-input-group--medium"

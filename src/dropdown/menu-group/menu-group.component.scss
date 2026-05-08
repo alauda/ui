@@ -1,20 +1,20 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
 
 .aui-menu-group {
   &__title {
     display: inline-block;
-    margin: 0 0 use-var(spacing-s);
-    padding: use-var(spacing-s) 0;
-    font-size: use-var(font-size-s);
-    line-height: use-var(line-height-s);
-    color: use-rgb(n-4);
-    font-weight: use-var(font-weight-bold);
+    margin: 0 0 var.use-var(spacing-s);
+    padding: var.use-var(spacing-s) 0;
+    font-size: var.use-var(font-size-s);
+    line-height: var.use-var(line-height-s);
+    color: var.use-rgb(n-4);
+    font-weight: var.use-var(font-weight-bold);
   }
 }
 
 aui-menu-group:not(:first-child) .aui-menu-group {
-  margin-top: use-var(spacing-m);
-  padding-top: use-var(spacing-m);
-  border-top: 1px solid use-rgb(n-8);
+  margin-top: var.use-var(spacing-m);
+  padding-top: var.use-var(spacing-m);
+  border-top: 1px solid var.use-rgb(n-8);
 }

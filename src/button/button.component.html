@@ -1,6 +1,7 @@
 <span class="aui-button__content"><ng-content></ng-content></span>
-<aui-icon
-  *ngIf="loading"
-  class="aui-button__spinner"
-  icon="spinner"
-></aui-icon>
+@if (loading) {
+  <aui-icon
+    class="aui-button__spinner"
+    icon="spinner"
+  ></aui-icon>
+}

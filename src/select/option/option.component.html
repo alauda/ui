@@ -7,16 +7,17 @@
   [class.isMulti]="isMulti"
   [class.isFocused]="focused"
   (click)="onClick()"
->
-  <i
-    *ngIf="isMulti"
-    [class]="bem.element('pointer')"
   >
-    <aui-icon
-      [hidden]="!(selected$ | async)"
-      icon="check"
-    ></aui-icon>
-  </i>
+  @if (isMulti) {
+    <i
+      [class]="bem.element('pointer')"
+      >
+      <aui-icon
+        [hidden]="!(selected$ | async)"
+        icon="check"
+      ></aui-icon>
+    </i>
+  }
   <div [class]="bem.element('content')">
     <ng-content></ng-content>
   </div>

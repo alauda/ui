@@ -11,30 +11,33 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </aui-radio-button>
       </aui-radio-group>
     </aui-form-item>
-    <aui-virtual-scroll-viewport
-      *ngIf="enabled"
-      itemSize="50"
-      class="example-viewport"
-    >
+    @if (enabled) {
+      <aui-virtual-scroll-viewport
+        itemSize="50"
+        class="example-viewport"
+        >
+        <div
+          *auiVirtualFor="let item of items"
+          class="example-item"
+          >
+          {{ item }}
+        </div>
+      </aui-virtual-scroll-viewport>
+    }
+    @if (!enabled) {
       <div
-        *auiVirtualFor="let item of items"
-        class="example-item"
-      >
-        {{ item }}
+        class="example-viewport"
+        >
+        @for (item of items; track item) {
+          <div
+            class="example-item"
+            >
+            {{ item }}
+          </div>
+        }
       </div>
-    </aui-virtual-scroll-viewport>
-    <div
-      *ngIf="!enabled"
-      class="example-viewport"
-    >
-      <div
-        *ngFor="let item of items"
-        class="example-item"
-      >
-        {{ item }}
-      </div>
-    </div>
-  `,
+    }
+    `,
   styleUrls: ['style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,

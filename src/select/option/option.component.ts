@@ -1,4 +1,4 @@
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -37,7 +37,7 @@ import { BaseSelect } from '../base-select';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
-  imports: [NgIf, IconComponent, AsyncPipe],
+  imports: [IconComponent, AsyncPipe],
 })
 export class OptionComponent<T> {
   bem: Bem = buildBem('aui-option');

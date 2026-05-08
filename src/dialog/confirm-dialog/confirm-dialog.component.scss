@@ -1,23 +1,23 @@
-@import '../../theme/var';
-@import '../../theme/mixin';
+@use '../../theme/var' as var;
+@use '../../theme/mixin' as mixin;
 
 $padding: 32px;
 $action-padding: 20px;
-$icon-size: use-var(icon-size-xl);
-$icon-margin: use-var(spacing-m);
+$icon-size: var.use-var(icon-size-xl);
+$icon-margin: var.use-var(spacing-m);
 
 .aui-confirm-dialog {
   margin: auto;
   padding: $padding $padding $action-padding;
-  border-radius: use-var(border-radius-m);
+  border-radius: var.use-var(border-radius-m);
   min-width: 400px;
   max-width: 600px;
-  background-color: use-rgb(n-10);
+  background-color: var.use-rgb(n-10);
 
   &__title {
-    margin-bottom: use-var(spacing-m);
+    margin-bottom: var.use-var(spacing-m);
     display: flex;
-    @include text-set(xl, main, bolder);
+    @include mixin.text-set(xl, main, bolder);
   }
 
   &__icon {
@@ -26,21 +26,21 @@ $icon-margin: use-var(spacing-m);
 
     &--primary,
     &--warning {
-      color: use-rgb(yellow);
+      color: var.use-rgb(yellow);
     }
 
     &--success {
-      color: use-rgb(green);
+      color: var.use-rgb(green);
     }
 
     &--danger {
-      color: use-rgb(red);
+      color: var.use-rgb(red);
     }
   }
 
   &__content {
     padding-left: calc(#{$icon-margin} + #{$icon-size});
-    @include text-set(m, secondary);
+    @include mixin.text-set(m, secondary);
   }
 
   &__button-wrapper {

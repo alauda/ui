@@ -3,25 +3,26 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   template: `
     <aui-tab-group>
-      <aui-tab
-        *ngFor="let tab of tabs; index as i; count as len"
-        [closeable]="len > 1"
-        [label]="'tab' + tab"
-        (close)="remove(i)"
-      >
-        <aui-card> content {{ i }} </aui-card>
-      </aui-tab>
+      @for (tab of tabs; track tab; let i = $index; let len = $count) {
+        <aui-tab
+          [closeable]="len > 1"
+          [label]="'tab' + tab"
+          (close)="remove(i)"
+          >
+          <aui-card> content {{ i }} </aui-card>
+        </aui-tab>
+      }
       <button
         *auiTabHeaderAddon
         aui-button="primary"
         (click)="add()"
         size="small"
         [square]="true"
-      >
+        >
         <aui-icon icon="plus"></aui-icon>
       </button>
     </aui-tab-group>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })

@@ -1,4 +1,4 @@
-import { NgIf, NgTemplateOutlet, NgFor, AsyncPipe } from '@angular/common';
+import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -56,12 +56,10 @@ import { SelectOption } from './select.types';
     InputComponent,
     InputSuffixDirective,
     IconComponent,
-    NgIf,
     NgTemplateOutlet,
     OptionComponent,
-    NgFor,
-    AsyncPipe,
-  ],
+    AsyncPipe
+],
 })
 export class SelectComponent<T = unknown>
   extends BaseSelect<T>

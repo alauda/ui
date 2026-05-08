@@ -5,7 +5,7 @@
   [class.isChecked]="model"
   [class.isIndeterminate]="indeterminate"
   [class.isTag]="type === 'tag'"
->
+  >
   <input
     [name]="name"
     [id]="id"
@@ -15,16 +15,17 @@
     [disabled]="disabled"
     (click)="onClick()"
     (blur)="onBlur()"
-  />
+    />
   <label
     class="aui-checkbox__label"
     [for]="id"
-  >
+    >
     <i class="aui-checkbox__pointer">
-      <aui-icon
-        *ngIf="model && !indeterminate"
-        icon="check"
-      ></aui-icon>
+      @if (model && !indeterminate) {
+        <aui-icon
+          icon="check"
+        ></aui-icon>
+      }
     </i>
     <span class="aui-checkbox__content"><ng-content></ng-content></span>
   </label>

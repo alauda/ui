@@ -1,7 +1,7 @@
 /* eslint-disable no-prototype-builtins */
 import { A11yModule } from '@angular/cdk/a11y';
 import { PortalModule } from '@angular/cdk/portal';
-import { NgClass, NgIf, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   AfterContentChecked,
   AfterContentInit,
@@ -55,16 +55,14 @@ export class TabChangeEvent {
   imports: [
     NgClass,
     TabHeaderComponent,
-    NgIf,
     TabTitleDirective,
     PortalModule,
-    NgFor,
     TabLabelWrapperDirective,
     A11yModule,
     IconComponent,
     TabHeaderAddonDirective,
-    TabBodyComponent,
-  ],
+    TabBodyComponent
+],
 })
 export class TabGroupComponent
   implements OnChanges, AfterContentChecked, AfterContentInit, OnDestroy

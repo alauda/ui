@@ -1,10 +1,4 @@
-import {
-  NgFor,
-  NgIf,
-  NgSwitch,
-  NgSwitchCase,
-  NgSwitchDefault,
-} from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -43,13 +37,8 @@ const StepSelectedIcon = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   imports: [
-    NgFor,
-    NgIf,
-    NgSwitch,
-    NgSwitchCase,
-    IconComponent,
-    NgSwitchDefault,
-  ],
+    IconComponent
+],
 })
 export class StepsComponent implements OnInit, OnDestroy {
   _currentIndex: number;

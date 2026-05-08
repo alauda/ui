@@ -1,4 +1,4 @@
-import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -36,7 +36,7 @@ const bem = buildBem('aui-anchor');
   templateUrl: 'anchor-tree.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgFor, NgIf, NgTemplateOutlet],
+  imports: [NgTemplateOutlet],
 })
 export class AnchorTreeComponent
   extends AnchorDirectiveChild

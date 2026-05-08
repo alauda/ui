@@ -4,7 +4,6 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  inject,
   tick,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -26,9 +25,8 @@ describe('Status Bar', () => {
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
 
-    inject([OverlayContainer], (overlayContainer: OverlayContainer) => {
-      ocEl = overlayContainer.getContainerElement();
-    })();
+    const overlayContainer = TestBed.inject(OverlayContainer);
+    ocEl = overlayContainer.getContainerElement();
   });
 
   it('should match snapshot', fakeAsync(() => {

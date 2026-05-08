@@ -1,11 +1,11 @@
-@import '../theme/var';
+@use '../theme/var' as var;
 
 .aui-accordion.hasBg {
-  padding: $table-padding;
-  border-radius: use-var(border-radius-l);
-  background-color: use-rgb(n-9);
+  padding: var.$table-padding;
+  border-radius: var.use-var(border-radius-l);
+  background-color: var.use-rgb(n-9);
 }
 
 aui-accordion + aui-accordion .aui-accordion {
-  margin-top: use-var(spacing-xl);
+  margin-top: var.use-var(spacing-xl);
 }

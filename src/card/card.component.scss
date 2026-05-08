@@ -1,25 +1,25 @@
-@import '../theme/var';
-@import '../theme/mixin';
+@use '../theme/var' as var;
+@use '../theme/mixin' as mixin;
 
-$default-border: 1px solid use-rgb(n-8);
+$default-border: 1px solid var.use-rgb(n-8);
 
 $b: aui-card;
 
 .#{$b} {
   padding: 20px;
-  border-radius: use-var(border-radius-l);
-  background-color: use-rgb(n-10);
-  @include text-set(m, main);
-  @include card-shadow;
+  border-radius: var.use-var(border-radius-l);
+  background-color: var.use-rgb(n-10);
+  @include mixin.text-set(m, main);
+  @include mixin.card-shadow;
 
   &__header {
     display: flex;
     align-items: center;
     padding: 0;
-    @include text-set(xl, main, bolder);
+    @include mixin.text-set(xl, main, bolder);
 
     + .#{$b}__content {
-      margin-top: use-var(spacing-xl);
+      margin-top: var.use-var(spacing-xl);
     }
   }
 
@@ -27,7 +27,7 @@ $b: aui-card;
     padding: 0;
 
     + .#{$b}__footer {
-      margin-top: use-var(spacing-xl);
+      margin-top: var.use-var(spacing-xl);
     }
   }
 
@@ -38,22 +38,22 @@ $b: aui-card;
   &.hasDivider {
     > .#{$b} {
       &__header {
-        padding-bottom: use-var(spacing-xl);
+        padding-bottom: var.use-var(spacing-xl);
         border-bottom: $default-border;
 
         + .#{$b}__content {
-          margin-top: use-var(spacing-xl);
+          margin-top: var.use-var(spacing-xl);
         }
       }
 
       &__content {
         + .#{$b}__footer {
-          margin-top: use-var(spacing-xl);
+          margin-top: var.use-var(spacing-xl);
         }
       }
 
       &__footer {
-        padding-top: use-var(spacing-xl);
+        padding-top: var.use-var(spacing-xl);
         border-top: $default-border;
       }
     }
@@ -61,5 +61,5 @@ $b: aui-card;
 }
 
 #{$b} + #{$b} > .#{$b} {
-  margin-top: use-var(spacing-xl);
+  margin-top: var.use-var(spacing-xl);
 }

@@ -8,20 +8,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       [allowSelectAll]="true"
       [clearable]="true"
       [trackFn]="trackFn"
-    >
-      <aui-option
-        *ngFor="let option of arr"
-        [label]="option.value"
-        [value]="option"
-        [disabled]="option.value === 'option5'"
       >
-        {{ option.value }}
-      </aui-option>
+      @for (option of arr; track option) {
+        <aui-option
+          [label]="option.value"
+          [value]="option"
+          [disabled]="option.value === 'option5'"
+          >
+          {{ option.value }}
+        </aui-option>
+      }
       <aui-option-placeholder>Empty</aui-option-placeholder>
     </aui-multi-select>
     <br />
     value: {{ value | json }}
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })

@@ -3,7 +3,7 @@ import {
   TemplatePortal,
   PortalModule,
 } from '@angular/cdk/portal';
-import { NgIf } from '@angular/common';
+
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -34,7 +34,7 @@ let uniqueId = 0;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
-  imports: [IconComponent, NgIf, PortalModule],
+  imports: [IconComponent, PortalModule],
 })
 export class NotificationComponent
   extends MessageComponent
@@ -53,6 +53,7 @@ export class NotificationComponent
   childComponentInstance: unknown;
   customClass = '';
   footerPortal: TemplatePortal<unknown>;
+  private pendingTemplatePortal: TemplatePortal<unknown> | null = null;
 
   @ViewChild(CdkPortalOutlet, { static: true })
   private readonly portalOutlet: CdkPortalOutlet;
@@ -82,6 +83,11 @@ export class NotificationComponent
     if (this.remains > 0) {
       this.countDown();
     }
+    // Attach pending template portal after view init
+    if (this.pendingTemplatePortal && this.portalOutlet) {
+      this.attachTemplatePortal(this.pendingTemplatePortal);
+      this.pendingTemplatePortal = null;
+    }
   }
 
   override setConfig(config: NotificationConfig) {
@@ -95,7 +101,12 @@ export class NotificationComponent
         const portal = new TemplatePortal(config.contentRef, null, {
           $implicit: config.context,
         });
-        this.attachTemplatePortal(portal);
+        // If portalOutlet is available, attach immediately, otherwise defer to ngAfterViewInit
+        if (this.portalOutlet) {
+          this.attachTemplatePortal(portal);
+        } else {
+          this.pendingTemplatePortal = portal;
+        }
       } else {
         this.attachComponentRef(config.contentRef);
       }
@@ -115,6 +126,9 @@ export class NotificationComponent
   private attachTemplatePortal<C>(
     portal: TemplatePortal<C>,
   ): EmbeddedViewRef<C> {
+    if (!this.portalOutlet) {
+      throw new Error('PortalOutlet is not initialized. Make sure the component view is initialized.');
+    }
     return this.portalOutlet.attachTemplatePortal(portal);
   }
 

@@ -113,6 +113,7 @@ export class DrawerService<T = unknown, C extends object = object, R = unknown>
       scrollStrategy: this.options.mask
         ? this.overlay.scrollStrategies.block()
         : this.overlay.scrollStrategies.noop(),
+      usePopover: false,
     });
   }
 
