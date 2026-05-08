@@ -46,16 +46,11 @@ $block: aui-multi-select;
     @include with-height-limit;
   }
 
-  .aui-tag--info {
-    background-color: use-rgb(n-10);
-  }
-
   &.isReadonly {
     cursor: default;
 
     .aui-tag {
       color: use-text-color(main);
-      background-color: use-rgb(n-10);
     }
   }
 }
