@@ -2,24 +2,56 @@ const { execSync } = require('node:child_process');
 
 const semver = require('semver');
 
-let version = process.env.PUBLISH_VERSION || 'patch';
+const { version: packageVersion } = require('../package.json');
 
-if (version.startsWith('v')) {
-  version = version.slice(1);
-} else if (version === 'beta') {
-  const distTags = JSON.parse(
-    execSync('yarn info @alauda/ui dist-tags --json').toString(),
+const PACKAGE_NAME = '@alauda/ui';
+
+function getNpmInfo(field) {
+  const info = JSON.parse(
+    execSync(`yarn info ${PACKAGE_NAME} ${field} --json`).toString(),
   );
 
-  const { beta, latest } = distTags.data || distTags;
+  return info.data || info;
+}
 
-  if (semver.gt(beta, latest)) {
-    version = beta.endsWith('-beta')
-      ? beta + '.0'
-      : beta.replace(/(-beta\.)(\d+)$/, (_, $0, $1) => $0 + (+$1 + 1));
-  } else {
-    version = semver.minVersion(`>${latest}`) + '-beta';
+function getNextBetaVersion(stable, versions) {
+  const nextBeta = semver.minVersion(`>${stable}`) + '-beta';
+  const nextVersion = semver.parse(nextBeta);
+  const candidates = versions
+    .filter(Boolean)
+    .filter(candidate => {
+      const parsed = semver.parse(candidate);
+
+      return (
+        parsed &&
+        parsed.major === nextVersion.major &&
+        parsed.minor === nextVersion.minor &&
+        parsed.patch === nextVersion.patch &&
+        parsed.prerelease[0] === 'beta'
+      );
+    })
+    .sort(semver.rcompare);
+
+  const latestBeta = candidates[0];
+
+  if (!latestBeta) {
+    return nextBeta;
   }
+
+  return latestBeta.endsWith('-beta')
+    ? latestBeta + '.0'
+    : latestBeta.replace(/(-beta\.)(\d+)$/, (_, $0, $1) => $0 + (+$1 + 1));
+}
+
+let version = process.env.PUBLISH_VERSION || 'patch';
+
+if (version === 'beta' || version === 'v9-beta') {
+  const versions = getNpmInfo('versions');
+  const stable = process.env.PUBLISH_BETA_BASE_VERSION || packageVersion;
+
+  version = getNextBetaVersion(stable, versions);
+} else if (version.startsWith('v')) {
+  version = version.slice(1);
 }
 
 process.stdout.write(version);

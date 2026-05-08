@@ -3,10 +3,10 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - release/v9
   pull_request:
     branches:
-      - master
+      - release/v9
   workflow_dispatch:
     inputs:
       version:
@@ -44,8 +44,8 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          commit: 'chore: release @alauda/ui'
-          title: 'chore: release @alauda/ui'
+          commit: 'chore: release @alauda/ui v9'
+          title: 'chore: release @alauda/ui v9'
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: yarn release
         env:
@@ -55,7 +55,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: sh scripts/release.sh
         env:
-          PUBLISH_VERSION: beta
+          PUBLISH_VERSION: v9-beta
 
       - name: Set git info
         if: github.event_name == 'workflow_dispatch'

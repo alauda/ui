@@ -9,7 +9,7 @@
   "commit": false,
   "linked": [],
   "access": "restricted",
-  "baseBranch": "master",
+  "baseBranch": "release/v9",
   "updateInternalDependencies": "minor",
   "ignore": []
 }

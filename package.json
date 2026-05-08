@@ -32,7 +32,7 @@
     "lint:tsc": "tsc -p . --noEmit",
     "prepare": "patch-package && simple-git-hooks && touch documentation.json && yarn-deduplicate --strategy fewer || exit 0",
     "prerelease": "yarn build",
-    "release": "changeset publish",
+    "release": "changeset publish --tag v9",
     "start": "yarn storybook",
     "storybook": "ng run storybook:storybook",
     "storybook:build": "ng run storybook:build-storybook",
