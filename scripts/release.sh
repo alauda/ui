@@ -2,9 +2,10 @@
 
 set -e
 
+REQUESTED_PUBLISH_VERSION=$PUBLISH_VERSION
 PUBLISH_VERSION=$(node scripts/publish-version)
 PUBLISH_BRANCH=$(node scripts/publish-branch)
-NPM_TAG=$(node scripts/npm-tag)
+NPM_TAG=$(PUBLISH_VERSION="$REQUESTED_PUBLISH_VERSION" node scripts/npm-tag)
 
 if [ "$NPM_TAG" = "latest" ]; then
   echo "Publish latest tag via this script is not permitted anymore."
