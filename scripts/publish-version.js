@@ -45,7 +45,7 @@ function getNextBetaVersion(stable, versions) {
 
 let version = process.env.PUBLISH_VERSION || 'patch';
 
-if (version === 'beta' || version === 'v9-beta') {
+if (version === 'beta' || version === 'aui-v9-beta') {
   const versions = getNpmInfo('versions');
   const stable = process.env.PUBLISH_BETA_BASE_VERSION || packageVersion;
 

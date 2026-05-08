@@ -52,10 +52,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Release beta
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'changeset-release/')
         run: sh scripts/release.sh
         env:
-          PUBLISH_VERSION: v9-beta
+          PUBLISH_VERSION: aui-v9-beta
 
       - name: Set git info
         if: github.event_name == 'workflow_dispatch'
@@ -70,5 +70,5 @@ jobs:
           PUBLISH_VERSION: ${{ github.event.inputs.version }}
 
       - name: Sync Cnpm
-        if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && steps.changesets.outputs.published == 'true')
+        if: (github.event_name == 'pull_request' && !startsWith(github.head_ref, 'changeset-release/')) || github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && steps.changesets.outputs.published == 'true')
         run: npx cnpm sync @alauda/ui
