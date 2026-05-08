@@ -55,7 +55,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: sh scripts/release.sh
         env:
-          PUBLISH_VERSION: v9-beta
+          PUBLISH_VERSION: aui-v9-beta
 
       - name: Set git info
         if: github.event_name == 'workflow_dispatch'
