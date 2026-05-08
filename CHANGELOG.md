@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.0.0
+
+### Major Changes
+
+- [#590](https://github.com/alauda/ui/pull/590) [`b540ffd`](https://github.com/alauda/ui/commit/b540ffdcfbbdc4a5483eeeaca9735eba848aef13) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - feat: upgrade Angular toolchain and Sass theme exports
+
+  BREAKING CHANGE: The main branch now targets the Angular 20+ toolchain and updates Sass theme exports and build outputs. Applications that still depend on the v9 Sass import paths, theme structure, or Angular 19-compatible build setup should stay on the `release/v9` maintenance branch until they complete the migration.
+
 ## 9.1.2
 
 ### Patch Changes
