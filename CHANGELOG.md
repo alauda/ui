@@ -1,5 +1,13 @@
 # Changelog
 
+## 9.1.3
+
+### Patch Changes
+
+- [#601](https://github.com/alauda/ui/pull/601) [`c35e222`](https://github.com/alauda/ui/commit/c35e222eb86df3dd1daf00e3b52cca7d8b215991) Thanks [@yangxiaolang](https://github.com/yangxiaolang)! - fix: configure v9 release workflow
+
+  Fix the `release/v9` release workflow so v9 stable releases publish with the `v9` tag and v9 pull request prereleases publish with the `v9-beta` tag.
+
 ## 9.1.2
 
 ### Patch Changes
