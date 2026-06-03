@@ -11,7 +11,7 @@ if (version.startsWith('v')) {
     execSync('npm view @alauda/ui dist-tags --json').toString(),
   );
   const { beta, latest } = distTags.data || distTags;
-  if (semver.gt(beta, latest)) {
+  if (beta && semver.gt(beta, latest)) {
     version = beta.endsWith('-beta')
       ? beta + '.0'
       : beta.replace(/(-beta\.)(\d+)$/, (_, $0, $1) => $0 + (+$1 + 1));

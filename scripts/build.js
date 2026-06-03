@@ -14,7 +14,7 @@ const debugNgPackage = '../ng-package.debug.json';
 
 const releaseDest = isDebug ? require(debugNgPackage).dest : 'release';
 
-function copyResources() {
+function afterBuild() {
   const themeDest = path.resolve(releaseDest, 'theme');
   
   // 复制 SCSS 源文件
@@ -55,6 +55,17 @@ function copyResources() {
     console.error('Sass compilation error:', error);
     process.exit(1);
   }
+
+  // hack for rspack module federation due to `dayjs -> dayjs/esm` alias
+  const esmEntry = path.resolve(releaseDest, 'fesm2022/alauda-ui.mjs');
+  const esmEntryContent = fs.readFileSync(esmEntry, 'utf-8');
+  fs.writeFileSync(
+    esmEntry,
+    esmEntryContent.replace(
+      "import dayjs from 'dayjs';",
+      "import dayjs_ from 'dayjs';\nconst dayjs = 'default' in dayjs_ ? dayjs_.default : dayjs_;",
+    ),
+  );
 }
 
 const packagr = ngPackagr
@@ -66,7 +77,7 @@ const packagr = ngPackagr
 
 if (watch) {
   packagr.watch().subscribe(() => {
-    copyResources();
+    afterBuild();
 
     if (!isDebug) {
       const src = path.resolve(__dirname, '../release');
@@ -76,6 +87,5 @@ if (watch) {
     }
   });
 } else {
-   
-  packagr.build().then(copyResources);
+  packagr.build().then(afterBuild);
 }
