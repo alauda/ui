@@ -1,3 +1,4 @@
+const fs = require('node:fs/promises');
 const path = require('node:path');
 
 const gulp = require('gulp');
@@ -13,7 +14,7 @@ const debugNgPackage = '../ng-package.debug.json';
 
 const releaseDest = isDebug ? require(debugNgPackage).dest : 'release';
 
-function copyResources() {
+async function afterBuild() {
   const themeDest = path.resolve(releaseDest, 'theme');
   gulp
     .src([
@@ -29,6 +30,17 @@ function copyResources() {
     .src('src/theme/style.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(themeDest));
+
+  // hack for rspack module federation due to `dayjs -> dayjs/esm` alias
+  const esmEntry = path.resolve(releaseDest, 'fesm2022/alauda-ui.mjs');
+  const esmEntryContent = await fs.readFile(esmEntry, 'utf-8');
+  await fs.writeFile(
+    esmEntry,
+    esmEntryContent.replace(
+      "import dayjs from 'dayjs';",
+      "import dayjs_ from 'dayjs';\nconst dayjs = 'default' in dayjs_ ? dayjs_.default : dayjs_;",
+    ),
+  );
 }
 
 const packagr = ngPackagr
@@ -40,7 +52,7 @@ const packagr = ngPackagr
 
 if (watch) {
   packagr.watch().subscribe(() => {
-    copyResources();
+    afterBuild();
 
     if (!isDebug) {
       const src = path.resolve(__dirname, '../release');
@@ -50,6 +62,6 @@ if (watch) {
     }
   });
 } else {
-  // eslint-disable-next-line unicorn/prefer-top-level-await
-  packagr.build().then(copyResources);
+   
+  packagr.build().then(afterBuild);
 }
