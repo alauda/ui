@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.0.1
+
+### Patch Changes
+
+- [#605](https://github.com/alauda/ui/pull/605) [`28dcb7d`](https://github.com/alauda/ui/commit/28dcb7de6a9f6b7a048ad3e8e98c462d5765dcfc) Thanks [@JounQin](https://github.com/JounQin)! - fix: hack for rspack module federation due to `dayjs -> dayjs/esm` alias
+
 ## 10.0.0
 
 ### Major Changes
