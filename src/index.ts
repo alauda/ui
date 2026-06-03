@@ -5,6 +5,7 @@ export * from './back-top';
 export * from './breadcrumb';
 export * from './button';
 export * from './card';
+export * from './cascader';
 export * from './checkbox';
 export * from './color-picker';
 export * from './date-picker';
