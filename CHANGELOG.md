@@ -1,5 +1,11 @@
 # Changelog
 
+## 9.1.4
+
+### Patch Changes
+
+- [#604](https://github.com/alauda/ui/pull/604) [`77fc0e4`](https://github.com/alauda/ui/commit/77fc0e448e7f95749ec5ef8bd9cb741aa239f991) Thanks [@JounQin](https://github.com/JounQin)! - fix: hack for rspack module federation due to `dayjs -> dayjs/esm` alias
+
 ## 9.1.3
 
 ### Patch Changes
