@@ -21,5 +21,13 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {},
+  webpackFinal: async config => {
+    config.module?.rules?.push({
+      test: /\.md$/,
+      type: 'asset/source',
+    });
+
+    return config;
+  },
 };
 export default config;
