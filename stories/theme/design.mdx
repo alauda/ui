@@ -1,0 +1,23 @@
+import { Markdown, Meta, Source } from '@storybook/addon-docs/blocks';
+
+import designMd from '../../DESIGN.md?raw';
+
+export const designBody = designMd.replace(
+  /^---\r?\n[\s\S]*?\r?\n---\r?\n?/,
+  '',
+);
+
+<Meta title="Example/Theme/Design" />
+
+# DESIGN.md
+
+<Markdown children={designBody} />
+
+<details>
+  <summary>Full source</summary>
+
+  <Source
+    code={designMd}
+    language="markdown"
+  />
+</details>
