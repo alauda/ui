@@ -24,6 +24,7 @@ const config: StorybookConfig = {
   webpackFinal: async config => {
     config.module?.rules?.push({
       test: /\.md$/,
+      resourceQuery: /raw/,
       type: 'asset/source',
     });
 
