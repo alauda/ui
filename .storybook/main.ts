@@ -20,6 +20,9 @@ const config: StorybookConfig = {
     name: '@storybook/angular',
     options: {},
   },
+  features: {
+    sidebarOnboardingChecklist: false,
+  },
   docs: {},
   webpackFinal: async config => {
     config.module?.rules?.push({
